@@ -94,3 +94,91 @@ export interface CompoundingRate {
   industrial: string;
   facilities: string;
 }
+
+export interface NonResidentialSetbackRule {
+  id: string;
+  category: 'commercial' | 'healthcare' | 'educational' | 'industrial';
+  plotRange: string;
+  minPlotArea: number;
+  maxPlotArea: number;
+  front: number;
+  rear: number;
+  side1: number;
+  side2: number;
+  maxGroundCoveragePct?: number;
+  maxHeightMeters?: number;
+  minRoadWidthMeters?: number;
+  clauseRef: string;
+  notes?: string;
+}
+
+export interface BazaarStreetSetbackRule {
+  roadWidthMeters: number;
+  frontSetbackMeters: number;
+  clauseRef: string;
+  notes?: string;
+}
+
+export interface TelescopicSlab {
+  slabIndex: number;
+  slabRange: string;
+  slabPlotArea: number;
+  slabBaseFAR: number;
+  slabBuiltUpArea: number;
+}
+
+export interface TelescopicFarResult {
+  plotArea: number;
+  slabs: TelescopicSlab[];
+  totalBaseBuiltUpArea: number;
+  effectiveBaseFAR: number;
+  maxPermissibleFAR: number;
+  maxPermissibleBuiltUpArea: number;
+  purchasableFARCap: number;
+  purchasableAreaAvailable: number;
+}
+
+export interface GroupHousingRoadFarRule {
+  roadWidthRange: string;
+  minRoadWidth: number;
+  maxRoadWidth: number;
+  builtUpBaseFar: number;
+  builtUpPurchasableFar: number;
+  builtUpMaxFar: number;
+  nonBuiltUpBaseFar: number;
+  nonBuiltUpPurchasableFar: number;
+  nonBuiltUpMaxFar: number;
+  minPlotAreaBuiltUp: number;
+  minPlotAreaNonBuiltUp: number;
+  clauseRef: string;
+}
+
+export interface CommercialRoadFarRule {
+  category: string;
+  roadWidthRange: string;
+  minRoadWidth: number;
+  maxRoadWidth: number;
+  minPlotArea: number;
+  baseFar: number;
+  purchasableFar: number;
+  maxFar: number;
+  maxGroundCoveragePct: number;
+  clauseRef: string;
+  notes?: string;
+}
+
+export type StandardZoneCode = 'BU' | 'R' | 'MU' | 'C-1' | 'C-2' | 'SI' | 'LI' | 'PSP' | 'RC' | 'A';
+
+export type PermissibilityStatus = 'Permitted' | 'Conditional' | 'Prohibited';
+
+export interface ActivityPermissibilityRule {
+  activityId: string;
+  activityName: string;
+  category: string;
+  zonePermissibility: Record<StandardZoneCode, {
+    status: PermissibilityStatus;
+    conditions?: string;
+  }>;
+  statutoryNotes?: string;
+  clauseRef: string;
+}

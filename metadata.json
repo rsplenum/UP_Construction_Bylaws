@@ -1,6 +1,6 @@
 {
   "name": "UP Building Byelaws 2025 Portal",
-  "description": "Comprehensive knowledge base, compliance checker, interactive calculators, and AI assistant for the Uttar Pradesh Building Construction and Development Byelaws 2025.",
+  "description": "Comprehensive compliance verification engine, GIS master plan map servers for all 22 UP Development Authorities, interactive calculators, 2D setback visualizer, and AI assistant for the Uttar Pradesh Building Construction and Development Byelaws 2025.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

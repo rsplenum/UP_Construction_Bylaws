@@ -7,6 +7,15 @@ import {
   FarExemptionItem,
   DevelopmentAuthorityUseZone,
   CompoundingRate,
+  NonResidentialSetbackRule,
+  BazaarStreetSetbackRule,
+  TelescopicSlab,
+  TelescopicFarResult,
+  GroupHousingRoadFarRule,
+  CommercialRoadFarRule,
+  StandardZoneCode,
+  PermissibilityStatus,
+  ActivityPermissibilityRule,
 } from '../types';
 
 export const DOCUMENT_METADATA = {
@@ -70,7 +79,7 @@ export const BYELAW_CHAPTERS: ByelawChapter[] = [
         id: "2.1.2",
         clauseNumber: "2.1.2",
         title: "Building Permission & Self-Certification Thresholds",
-        content: "Key regulatory categorization for building sanctions:\n- Plots up to 100 sqm (Residential) and up to 30 sqm (Commercial): EXEMPT from building permission and completion certificate! Requires online registration with token fee of Re. 1/- with self-certification & affidavit. Cannot split larger plots.\n- Plots in approved/developed layouts: Up to 500 sqm (Residential, single/multi) and up to 200 sqm (Commercial): Instant online approval upon submitting plans certified by a Licensed Technical Person (LTP) and fee payment.\n- Other categories: Online unified application form.\n- Deemed Sanction: If authority fails to decide within 15 days of notice for plots in approved layouts, deemed approved after written notice.",
+        content: "Key regulatory categorization for building sanctions:\n- Plots up to 100 sqm (Residential) and up to 30 sqm (Commercial): EXEMPT from building permission and completion certificate! Requires online registration with token fee of Re. 1/- with self-certification & affidavit. Cannot split larger plots.\n- Plots in approved/developed layouts: Up to 500 sqm (Residential, except multi-unit) and up to 200 sqm (Commercial): Instant online approval upon submitting plans certified by a Licensed Technical Person (LTP) and fee payment.\n- Other categories: Online unified application form.\n- Deemed Sanction: If authority fails to decide within 15 days of notice for plots in approved layouts, deemed approved after written notice.",
       },
       {
         id: "2.2.3",
@@ -990,7 +999,7 @@ export const AUTHORITIES_MAPPING: DevelopmentAuthorityUseZone[] = [
       { standardZone: "Commercial 1", localZoneName: "District Centre, City Centre, General Business, Bazaar Street" },
       { standardZone: "Commercial 2", localZoneName: "Wholesale / Storage" },
       { standardZone: "Small Industries", localZoneName: "Small Industries / Cottage" },
-      { standardZone: "Recreational", localZoneName: "Parks, Kumbh Mela, Umsam Riverfront Development, Cultural & Religious Sites" },
+      { standardZone: "Recreational", localZoneName: "Parks, Kumbh Mela, Regional Riverfront Development, Cultural & Religious Sites" },
     ]
   }
 ];
@@ -1002,3 +1011,912 @@ export const EVCI_CHARGER_SPECS = [
   { type: "Slow / Moderate", name: "Bharat DC-001", power: "15 kW", voltage: "72 - 200 V", connectorGuns: "1 / 1 CG", vehicleType: "Light 4Ws, Fleet" },
   { type: "Slow / Moderate", name: "Bharat AC-001", power: "10 kW", voltage: "230 V", connectorGuns: "3 / 3 CG of 3.3 kW each", vehicleType: "2Ws, 3Ws, Cars" },
 ];
+
+/* =====================================================================================
+ * 1. COMMERCIAL, HEALTHCARE, EDUCATIONAL & INDUSTRIAL SETBACKS (CHAPTER 3)
+ * ===================================================================================== */
+
+/**
+ * Section 3.2.4.3: Commercial Plots Setbacks (Building height up to 15m)
+ */
+export const COMMERCIAL_PLOT_SETBACKS: NonResidentialSetbackRule[] = [
+  {
+    id: "comm-up-to-100",
+    category: "commercial",
+    plotRange: "Up to 100 sqm",
+    minPlotArea: 0,
+    maxPlotArea: 100,
+    front: 1.5,
+    rear: 0.0,
+    side1: 0.0,
+    side2: 0.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 6.0,
+    clauseRef: "Section 3.2.4.3",
+    notes: "Front setback 1.5m. Rear and sides zero if light and ventilation are ensured (Note 1)."
+  },
+  {
+    id: "comm-100-to-300",
+    category: "commercial",
+    plotRange: ">100 to 300 sqm",
+    minPlotArea: 100.01,
+    maxPlotArea: 300,
+    front: 3.0,
+    rear: 0.0,
+    side1: 0.0,
+    side2: 0.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 12.0,
+    clauseRef: "Section 3.2.4.3",
+    notes: "Front setback 3.0m. Rear and side setbacks zero if light and ventilation are ensured (Note 1)."
+  },
+  {
+    id: "comm-300-to-1000",
+    category: "commercial",
+    plotRange: ">300 to 1000 sqm",
+    minPlotArea: 300.01,
+    maxPlotArea: 1000,
+    front: 4.5,
+    rear: 3.0,
+    side1: 1.5,
+    side2: 1.5,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 12.0,
+    clauseRef: "Section 3.2.4.3",
+    notes: "Front 4.5m, Rear 3.0m, Sides 1.5m each. Note 1 relaxation applies up to 500 sqm covered area."
+  },
+  {
+    id: "comm-1000-to-3000",
+    category: "commercial",
+    plotRange: ">1000 to 3000 sqm",
+    minPlotArea: 1000.01,
+    maxPlotArea: 3000,
+    front: 6.0,
+    rear: 3.0,
+    side1: 3.0,
+    side2: 3.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 12.0,
+    clauseRef: "Section 3.2.4.3",
+    notes: "Front 6.0m, Rear 3.0m, Sides 3.0m each."
+  },
+  {
+    id: "comm-above-3000",
+    category: "commercial",
+    plotRange: ">3000 sqm",
+    minPlotArea: 3000.01,
+    maxPlotArea: 999999,
+    front: 12.0,
+    rear: 6.0,
+    side1: 6.0,
+    side2: 6.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 18.0,
+    clauseRef: "Section 3.2.4.3",
+    notes: "Shopping mall / commercial complex scale. Front 12.0m, Rear 6.0m, Sides 6.0m each."
+  }
+];
+
+/**
+ * Section 3.2.4.5: Healthcare Buildings (Building height up to 15m)
+ */
+export const HEALTHCARE_BUILDING_SETBACKS: NonResidentialSetbackRule[] = [
+  {
+    id: "health-100-to-300",
+    category: "healthcare",
+    plotRange: "100 to 300 sqm",
+    minPlotArea: 100,
+    maxPlotArea: 300,
+    front: 3.0,
+    rear: 1.5,
+    side1: 0.0,
+    side2: 0.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 9.0,
+    clauseRef: "Section 3.2.4.5",
+    notes: "Diagnostic clinic / OPD clinic / Dispensary. Front 3.0m, Rear 1.5m, Sides 0m."
+  },
+  {
+    id: "health-300-to-1000",
+    category: "healthcare",
+    plotRange: ">300 to 1000 sqm",
+    minPlotArea: 300.01,
+    maxPlotArea: 1000,
+    front: 4.5,
+    rear: 3.0,
+    side1: 3.0,
+    side2: 0.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 12.0,
+    clauseRef: "Section 3.2.4.5",
+    notes: "Nursing home up to 50 beds. Front 4.5m, Rear 3.0m, Side-1 3.0m, Side-2 0m."
+  },
+  {
+    id: "health-1000-to-2000",
+    category: "healthcare",
+    plotRange: ">1000 to 2000 sqm",
+    minPlotArea: 1000.01,
+    maxPlotArea: 2000,
+    front: 6.0,
+    rear: 3.0,
+    side1: 3.0,
+    side2: 3.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 18.0,
+    clauseRef: "Section 3.2.4.5",
+    notes: "Hospitals. Front 6.0m, Rear 3.0m, Sides 3.0m each."
+  },
+  {
+    id: "health-2000-to-4000",
+    category: "healthcare",
+    plotRange: ">2000 to 4000 sqm",
+    minPlotArea: 2000.01,
+    maxPlotArea: 4000,
+    front: 7.5,
+    rear: 4.5,
+    side1: 4.5,
+    side2: 4.5,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 18.0,
+    clauseRef: "Section 3.2.4.5",
+    notes: "Hospitals. Front 7.5m, Rear 4.5m, Sides 4.5m each."
+  },
+  {
+    id: "health-above-4000",
+    category: "healthcare",
+    plotRange: ">4000 sqm",
+    minPlotArea: 4000.01,
+    maxPlotArea: 999999,
+    front: 9.0,
+    rear: 6.0,
+    side1: 6.0,
+    side2: 6.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 24.0,
+    clauseRef: "Section 3.2.4.5",
+    notes: "Large hospital / Medical college. Front 9.0m, Rear 6.0m, Sides 6.0m each."
+  }
+];
+
+/**
+ * Section 3.2.4.6: Educational Buildings (Building height up to 15m)
+ */
+export const EDUCATIONAL_BUILDING_SETBACKS: NonResidentialSetbackRule[] = [
+  {
+    id: "edu-up-to-1000",
+    category: "educational",
+    plotRange: "Up to 1000 sqm",
+    minPlotArea: 0,
+    maxPlotArea: 1000,
+    front: 6.0,
+    rear: 3.0,
+    side1: 3.0,
+    side2: 0.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 9.0,
+    clauseRef: "Section 3.2.4.6",
+    notes: "Nursery / Primary school. Front 6.0m, Rear 3.0m, Side-1 3.0m, Side-2 0m."
+  },
+  {
+    id: "edu-1000-to-2000",
+    category: "educational",
+    plotRange: ">1000 to 2000 sqm",
+    minPlotArea: 1000.01,
+    maxPlotArea: 2000,
+    front: 6.0,
+    rear: 3.0,
+    side1: 3.0,
+    side2: 3.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 12.0,
+    clauseRef: "Section 3.2.4.6",
+    notes: "Secondary / High school. Front 6.0m, Rear 3.0m, Sides 3.0m each."
+  },
+  {
+    id: "edu-2000-to-4000",
+    category: "educational",
+    plotRange: ">2000 to 4000 sqm",
+    minPlotArea: 2000.01,
+    maxPlotArea: 4000,
+    front: 9.0,
+    rear: 3.0,
+    side1: 3.0,
+    side2: 3.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 12.0,
+    clauseRef: "Section 3.2.4.6",
+    notes: "High school / Inter college. Front 9.0m, Rear 3.0m, Sides 3.0m each."
+  },
+  {
+    id: "edu-4000-to-30000",
+    category: "educational",
+    plotRange: ">4000 to 30000 sqm",
+    minPlotArea: 4000.01,
+    maxPlotArea: 30000,
+    front: 9.0,
+    rear: 4.5,
+    side1: 3.0,
+    side2: 3.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 18.0,
+    clauseRef: "Section 3.2.4.6",
+    notes: "Degree college / Technical institute. Front 9.0m, Rear 4.5m, Sides 3.0m each."
+  },
+  {
+    id: "edu-above-30000",
+    category: "educational",
+    plotRange: ">30000 sqm",
+    minPlotArea: 30000.01,
+    maxPlotArea: 999999,
+    front: 15.0,
+    rear: 6.0,
+    side1: 6.0,
+    side2: 6.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 24.0,
+    clauseRef: "Section 3.2.4.6",
+    notes: "Universities. Front 15.0m, Rear 6.0m, Sides 6.0m each."
+  }
+];
+
+/**
+ * Section 3.2.4.8: Industrial Buildings (Building height up to 15m)
+ */
+export const INDUSTRIAL_BUILDING_SETBACKS: NonResidentialSetbackRule[] = [
+  {
+    id: "ind-up-to-150",
+    category: "industrial",
+    plotRange: "Up to 150 sqm",
+    minPlotArea: 0,
+    maxPlotArea: 150,
+    front: 3.0,
+    rear: 0.0,
+    side1: 0.0,
+    side2: 0.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 7.0,
+    clauseRef: "Section 3.2.4.8",
+    notes: "Front 3.0m, Rear 0m, Sides 0m."
+  },
+  {
+    id: "ind-150-to-300",
+    category: "industrial",
+    plotRange: ">150 to 300 sqm",
+    minPlotArea: 150.01,
+    maxPlotArea: 300,
+    front: 3.0,
+    rear: 3.0,
+    side1: 0.0,
+    side2: 0.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 9.0,
+    clauseRef: "Section 3.2.4.8",
+    notes: "Front 3.0m, Rear 3.0m, Sides 0m."
+  },
+  {
+    id: "ind-300-to-500",
+    category: "industrial",
+    plotRange: ">300 to 500 sqm",
+    minPlotArea: 300.01,
+    maxPlotArea: 500,
+    front: 4.5,
+    rear: 3.0,
+    side1: 3.0,
+    side2: 0.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 9.0,
+    clauseRef: "Section 3.2.4.8",
+    notes: "Front 4.5m, Rear 3.0m, Side-1 3.0m, Side-2 0m."
+  },
+  {
+    id: "ind-500-to-2000",
+    category: "industrial",
+    plotRange: ">500 to 2000 sqm",
+    minPlotArea: 500.01,
+    maxPlotArea: 2000,
+    front: 6.0,
+    rear: 3.0,
+    side1: 3.0,
+    side2: 3.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 9.0,
+    clauseRef: "Section 3.2.4.8",
+    notes: "Front 6.0m, Rear 3.0m, Sides 3.0m each."
+  },
+  {
+    id: "ind-2000-to-6000",
+    category: "industrial",
+    plotRange: ">2000 to 6000 sqm",
+    minPlotArea: 2000.01,
+    maxPlotArea: 6000,
+    front: 7.5,
+    rear: 6.0,
+    side1: 4.5,
+    side2: 4.5,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 9.0,
+    clauseRef: "Section 3.2.4.8",
+    notes: "Front 7.5m, Rear 6.0m, Sides 4.5m each."
+  },
+  {
+    id: "ind-above-6000",
+    category: "industrial",
+    plotRange: ">6000 sqm",
+    minPlotArea: 6000.01,
+    maxPlotArea: 999999,
+    front: 9.0,
+    rear: 6.0,
+    side1: 6.0,
+    side2: 6.0,
+    maxGroundCoveragePct: 100,
+    maxHeightMeters: 15.0,
+    minRoadWidthMeters: 9.0,
+    clauseRef: "Section 3.2.4.8",
+    notes: "Front 9.0m, Rear 6.0m, Sides 6.0m each."
+  }
+];
+
+/**
+ * Section 5.1.5: Bazaar Street Front Setback Ladder Based on Abutting Road Width
+ */
+export const BAZAAR_STREET_SETBACK_LADDER: BazaarStreetSetbackRule[] = [
+  { roadWidthMeters: 12.0, frontSetbackMeters: 3.0, clauseRef: "Section 5.1.5", notes: "Min 12m road requirement." },
+  { roadWidthMeters: 18.0, frontSetbackMeters: 4.5, clauseRef: "Section 5.1.5", notes: "Front setback 4.5m." },
+  { roadWidthMeters: 24.0, frontSetbackMeters: 6.0, clauseRef: "Section 5.1.5", notes: "Front setback 6.0m." },
+  { roadWidthMeters: 30.0, frontSetbackMeters: 6.0, clauseRef: "Section 5.1.5", notes: "Front setback 6.0m." },
+  { roadWidthMeters: 36.0, frontSetbackMeters: 7.5, clauseRef: "Section 5.1.5", notes: "Front setback 7.5m." },
+  { roadWidthMeters: 45.0, frontSetbackMeters: 7.5, clauseRef: "Section 5.1.5", notes: "Front setback 7.5m." },
+  { roadWidthMeters: 76.0, frontSetbackMeters: 9.0, clauseRef: "Section 5.1.5", notes: "Front setback 9.0m." }
+];
+
+/* =====================================================================================
+ * 2. TELESCOPIC FAR ENGINE (SECTION 3.2.2 & 3.2.2.1)
+ * ===================================================================================== */
+
+export interface TelescopicSlabDefinition {
+  slabIndex: number;
+  slabRange: string;
+  minArea: number;
+  maxArea: number;
+  slabCapacity: number;
+  baseFAR: number;
+}
+
+export const RESIDENTIAL_PLOTTED_FAR_SLABS: TelescopicSlabDefinition[] = [
+  { slabIndex: 1, slabRange: "Up to 150 sqm", minArea: 0, maxArea: 150, slabCapacity: 150, baseFAR: 2.00 },
+  { slabIndex: 2, slabRange: ">150 to 300 sqm", minArea: 150, maxArea: 300, slabCapacity: 150, baseFAR: 1.80 },
+  { slabIndex: 3, slabRange: ">300 to 500 sqm", minArea: 300, maxArea: 500, slabCapacity: 200, baseFAR: 1.75 },
+  { slabIndex: 4, slabRange: ">500 to 1200 sqm", minArea: 500, maxArea: 1200, slabCapacity: 700, baseFAR: 1.50 },
+  { slabIndex: 5, slabRange: ">1200 sqm", minArea: 1200, maxArea: Infinity, slabCapacity: Infinity, baseFAR: 1.25 },
+];
+
+/**
+ * Pure TypeScript implementation of Section 3.2.2 & 3.2.2.1 telescopic FAR calculation
+ * for plotted residential land.
+ */
+export function calculateTelescopicResidentialFAR(plotArea: number): TelescopicFarResult {
+  const sanitizedPlotArea = Math.max(0, Number(plotArea) || 0);
+
+  if (sanitizedPlotArea === 0) {
+    return {
+      plotArea: 0,
+      slabs: [],
+      totalBaseBuiltUpArea: 0,
+      effectiveBaseFAR: 0,
+      maxPermissibleFAR: 2.00,
+      maxPermissibleBuiltUpArea: 0,
+      purchasableFARCap: 0,
+      purchasableAreaAvailable: 0,
+    };
+  }
+
+  const slabs: TelescopicSlab[] = [];
+  let remainingArea = sanitizedPlotArea;
+  let totalBaseBuiltUpArea = 0;
+
+  for (const slabDef of RESIDENTIAL_PLOTTED_FAR_SLABS) {
+    if (remainingArea <= 0) break;
+
+    const areaInThisSlab = Math.min(remainingArea, slabDef.slabCapacity);
+    const builtUpInThisSlab = Number((areaInThisSlab * slabDef.baseFAR).toFixed(3));
+
+    slabs.push({
+      slabIndex: slabDef.slabIndex,
+      slabRange: slabDef.slabRange,
+      slabPlotArea: Number(areaInThisSlab.toFixed(2)),
+      slabBaseFAR: slabDef.baseFAR,
+      slabBuiltUpArea: builtUpInThisSlab,
+    });
+
+    totalBaseBuiltUpArea += builtUpInThisSlab;
+    remainingArea -= areaInThisSlab;
+  }
+
+  const roundedTotalBuiltUp = Number(totalBaseBuiltUpArea.toFixed(2));
+  const effectiveBaseFAR = Number((roundedTotalBuiltUp / sanitizedPlotArea).toFixed(3));
+  const maxPermissibleFAR = 2.00;
+  const maxPermissibleBuiltUpArea = Number((sanitizedPlotArea * maxPermissibleFAR).toFixed(2));
+  const purchasableAreaAvailable = Math.max(0, Number((maxPermissibleBuiltUpArea - roundedTotalBuiltUp).toFixed(2)));
+  const purchasableFARCap = Math.max(0, Number((maxPermissibleFAR - effectiveBaseFAR).toFixed(3)));
+
+  return {
+    plotArea: Number(sanitizedPlotArea.toFixed(2)),
+    slabs,
+    totalBaseBuiltUpArea: roundedTotalBuiltUp,
+    effectiveBaseFAR,
+    maxPermissibleFAR,
+    maxPermissibleBuiltUpArea,
+    purchasableFARCap,
+    purchasableAreaAvailable,
+  };
+}
+
+/* =====================================================================================
+ * 3. ROAD-WIDTH-TO-FAR LOOKUP MATRICES (SECTION 3.2.2.2, 4.2.8, & 5.2.5)
+ * ===================================================================================== */
+
+/**
+ * Section 3.2.2.2 & 4.2.8: Group Housing Road Width to FAR Matrix
+ */
+export const GROUP_HOUSING_ROAD_FAR_MATRIX: GroupHousingRoadFarRule[] = [
+  {
+    roadWidthRange: "9m to 12m (min 9m Built-up)",
+    minRoadWidth: 9.0,
+    maxRoadWidth: 12.0,
+    builtUpBaseFar: 1.50,
+    builtUpPurchasableFar: 0.30,
+    builtUpMaxFar: 2.10,
+    nonBuiltUpBaseFar: 2.50,
+    nonBuiltUpPurchasableFar: 0.50,
+    nonBuiltUpMaxFar: 3.50,
+    minPlotAreaBuiltUp: 1000,
+    minPlotAreaNonBuiltUp: 1500,
+    clauseRef: "Section 3.2.2.2 & Section 4.2.8"
+  },
+  {
+    roadWidthRange: ">12m to 18m",
+    minRoadWidth: 12.01,
+    maxRoadWidth: 18.0,
+    builtUpBaseFar: 1.50,
+    builtUpPurchasableFar: 0.75,
+    builtUpMaxFar: 3.00,
+    nonBuiltUpBaseFar: 2.50,
+    nonBuiltUpPurchasableFar: 1.25,
+    nonBuiltUpMaxFar: 5.00,
+    minPlotAreaBuiltUp: 1000,
+    minPlotAreaNonBuiltUp: 1500,
+    clauseRef: "Section 3.2.2.2 & Section 4.2.8"
+  },
+  {
+    roadWidthRange: ">18m to 24m",
+    minRoadWidth: 18.01,
+    maxRoadWidth: 24.0,
+    builtUpBaseFar: 1.50,
+    builtUpPurchasableFar: 0.75,
+    builtUpMaxFar: 3.00,
+    nonBuiltUpBaseFar: 2.50,
+    nonBuiltUpPurchasableFar: 1.25,
+    nonBuiltUpMaxFar: 5.00,
+    minPlotAreaBuiltUp: 1000,
+    minPlotAreaNonBuiltUp: 1500,
+    clauseRef: "Section 3.2.2.2 & Section 4.2.8"
+  },
+  {
+    roadWidthRange: ">24m to 45m",
+    minRoadWidth: 24.01,
+    maxRoadWidth: 45.0,
+    builtUpBaseFar: 1.50,
+    builtUpPurchasableFar: 1.50,
+    builtUpMaxFar: 5.25,
+    nonBuiltUpBaseFar: 2.50,
+    nonBuiltUpPurchasableFar: 2.50,
+    nonBuiltUpMaxFar: 8.75,
+    minPlotAreaBuiltUp: 1000,
+    minPlotAreaNonBuiltUp: 1500,
+    clauseRef: "Section 3.2.2.2 & Section 4.2.8"
+  },
+  {
+    roadWidthRange: "> 45m",
+    minRoadWidth: 45.01,
+    maxRoadWidth: 999.0,
+    builtUpBaseFar: 1.50,
+    builtUpPurchasableFar: 1.50,
+    builtUpMaxFar: 999.0,
+    nonBuiltUpBaseFar: 2.50,
+    nonBuiltUpPurchasableFar: 2.50,
+    nonBuiltUpMaxFar: 999.0,
+    minPlotAreaBuiltUp: 1000,
+    minPlotAreaNonBuiltUp: 1500,
+    clauseRef: "Section 3.2.2.2 & Section 4.2.8"
+  }
+];
+
+/**
+ * Section 3.2.2.3 & 5.2.5: Commercial Complex & Shopping Malls FAR by Road Width
+ */
+export const COMMERCIAL_COMPLEX_ROAD_FAR_MATRIX: CommercialRoadFarRule[] = [
+  {
+    category: "Commercial Units (Up to 100 sqm)",
+    roadWidthRange: "Up to 12m",
+    minRoadWidth: 6.0,
+    maxRoadWidth: 12.0,
+    minPlotArea: 10,
+    baseFar: 1.50,
+    purchasableFar: 0.30,
+    maxFar: 2.10,
+    maxGroundCoveragePct: 100,
+    clauseRef: "Section 5.2.5",
+    notes: "Base FAR 1.50 (Built-up) / 1.75 (Non-built-up)."
+  },
+  {
+    category: "Commercial Units & Complexes",
+    roadWidthRange: ">12m to 24m",
+    minRoadWidth: 12.01,
+    maxRoadWidth: 24.0,
+    minPlotArea: 100,
+    baseFar: 1.50,
+    purchasableFar: 0.75,
+    maxFar: 3.00,
+    maxGroundCoveragePct: 100,
+    clauseRef: "Section 5.2.5",
+    notes: "Base FAR 1.50 (Built-up) / 1.75 (Non-built-up)."
+  },
+  {
+    category: "Shopping Malls (>3000 sqm)",
+    roadWidthRange: ">18m to 24m",
+    minRoadWidth: 18.0,
+    maxRoadWidth: 24.0,
+    minPlotArea: 3000,
+    baseFar: 2.00,
+    purchasableFar: 1.00,
+    maxFar: 4.00,
+    maxGroundCoveragePct: 100,
+    clauseRef: "Section 5.2.5",
+    notes: "Shopping malls permitted on roads >=18m. Base FAR 2.0 (Built-up) / 3.0 (Non-built-up)."
+  },
+  {
+    category: "Commercial Complex & Shopping Malls",
+    roadWidthRange: ">24m to 45m",
+    minRoadWidth: 24.01,
+    maxRoadWidth: 45.0,
+    minPlotArea: 300,
+    baseFar: 1.50,
+    purchasableFar: 1.50,
+    maxFar: 5.25,
+    maxGroundCoveragePct: 100,
+    clauseRef: "Section 5.2.5",
+    notes: "High density commercial corridor. Malls: Max FAR 7.0 (Built-up) / 10.5 (Non-built-up)."
+  },
+  {
+    category: "Major Commercial City Corridors",
+    roadWidthRange: "> 45m",
+    minRoadWidth: 45.01,
+    maxRoadWidth: 999.0,
+    minPlotArea: 300,
+    baseFar: 1.50,
+    purchasableFar: 1.50,
+    maxFar: 999.0,
+    maxGroundCoveragePct: 100,
+    clauseRef: "Section 5.2.5",
+    notes: "Unrestricted FAR available in 0.25 Base FAR increments."
+  }
+];
+
+/* =====================================================================================
+ * 4. CHAPTER 15 ACTIVITY PERMISSIBILITY MATRIX (SECTION 15.3.2)
+ * ===================================================================================== */
+
+export const CHAPTER_15_ACTIVITY_PERMISSIBILITY: ActivityPermissibilityRule[] = [
+  {
+    activityId: "act-single-unit",
+    activityName: "Single Unit Residential",
+    category: "Residential",
+    clauseRef: "Section 15.3.2 & Section 4.1",
+    statutoryNotes: "Max 3 storeys, 15m height. Self-certification applicable up to 100 sqm plots.",
+    zonePermissibility: {
+      BU: { status: "Permitted", conditions: "Min road 4m in built-up." },
+      R: { status: "Permitted", conditions: "Min road 9m in non-built-up (7.5m if plots on one side)." },
+      MU: { status: "Permitted", conditions: "Permitted on all floors or upper floors." },
+      "C-1": { status: "Conditional", conditions: "Permitted on upper floors above commercial ground floor." },
+      "C-2": { status: "Prohibited", conditions: "Security guard accommodation only." },
+      SI: { status: "Conditional", conditions: "Staff / watchman accommodation only (up to 5% FAR)." },
+      LI: { status: "Prohibited", conditions: "Residential use prohibited inside heavy industrial estates." },
+      PSP: { status: "Conditional", conditions: "Staff quarters incidental to institutional campus." },
+      RC: { status: "Prohibited", conditions: "No permanent residential construction." },
+      A: { status: "Conditional", conditions: "Farmhouse allowed as per Section 7.2 on min 4000 sqm holding." }
+    }
+  },
+  {
+    activityId: "act-multi-unit",
+    activityName: "Multi Unit Residential",
+    category: "Residential",
+    clauseRef: "Section 15.3.2 & Section 4.1",
+    statutoryNotes: "Max 4 storeys with stilt, 17.5m height. Minimum plot area 150 sqm, road width min 9m.",
+    zonePermissibility: {
+      BU: { status: "Permitted", conditions: "Min road width 9m; min plot 150 sqm." },
+      R: { status: "Permitted", conditions: "Min plot 150 sqm; stilt parking mandatory." },
+      MU: { status: "Permitted", conditions: "Stilt parking or basement parking mandatory." },
+      "C-1": { status: "Conditional", conditions: "Permitted above ground-floor commercial on min 12m road." },
+      "C-2": { status: "Prohibited" },
+      SI: { status: "Prohibited" },
+      LI: { status: "Prohibited" },
+      PSP: { status: "Conditional", conditions: "Staff residential blocks inside institutional campuses." },
+      RC: { status: "Prohibited" },
+      A: { status: "Prohibited" }
+    }
+  },
+  {
+    activityId: "act-group-housing",
+    activityName: "Group Housing",
+    category: "Residential",
+    clauseRef: "Section 15.3.2 & Section 4.2",
+    statutoryNotes: "Min plot 1000 sqm (built-up), 1500 sqm (non-built-up). Mandatory 10% EWS + 10% LIG reservation.",
+    zonePermissibility: {
+      BU: { status: "Conditional", conditions: "Min plot 1000 sqm, min road width 9m." },
+      R: { status: "Permitted", conditions: "Min plot 1500 sqm, min road width 12m in non-built-up." },
+      MU: { status: "Permitted", conditions: "Permitted with commercial use up to 5% FAR on ground floor." },
+      "C-1": { status: "Conditional", conditions: "Permitted on roads >=18m; commercial on lower floors." },
+      "C-2": { status: "Prohibited" },
+      SI: { status: "Prohibited", conditions: "Worker dormitories allowed up to 20% FAR." },
+      LI: { status: "Prohibited" },
+      PSP: { status: "Conditional", conditions: "Staff and student housing inside institutional campuses." },
+      RC: { status: "Prohibited" },
+      A: { status: "Prohibited" }
+    }
+  },
+  {
+    activityId: "act-retail-shops",
+    activityName: "Retail Shops & Convenience Shopping (<100 sqm)",
+    category: "Commercial",
+    clauseRef: "Section 15.3.2 & Section 5.1 / 5.2",
+    statutoryNotes: "Ground floor retail shops, daily convenience items, grocery stores, restaurants.",
+    zonePermissibility: {
+      BU: { status: "Permitted", conditions: "Min road 6m in built-up." },
+      R: { status: "Conditional", conditions: "Permitted on 9m road (non-built-up) or corner plots." },
+      MU: { status: "Permitted", conditions: "Permitted on Ground and First floor." },
+      "C-1": { status: "Permitted", conditions: "Primary commercial activity." },
+      "C-2": { status: "Permitted", conditions: "Permitted subject to loading/unloading spaces." },
+      SI: { status: "Conditional", conditions: "Canteen and convenience store only." },
+      LI: { status: "Conditional", conditions: "Canteen and factory retail outlet only." },
+      PSP: { status: "Conditional", conditions: "Incidental cafeteria, bookstore, ATM." },
+      RC: { status: "Conditional", conditions: "Kiosk / cafeteria up to 5% coverage." },
+      A: { status: "Conditional", conditions: "Agri-inputs, fertilizers, seeds on min 9m road." }
+    }
+  },
+  {
+    activityId: "act-commercial-complex",
+    activityName: "Commercial Complex (>300 sqm)",
+    category: "Commercial",
+    clauseRef: "Section 15.3.2 & Section 5.2",
+    statutoryNotes: "Min plot area 300 sqm, road width min 12m. Basement/podium parking mandatory.",
+    zonePermissibility: {
+      BU: { status: "Conditional", conditions: "Min road 12m, min plot 300 sqm." },
+      R: { status: "Conditional", conditions: "Allowed on 24m roads with Impact Fee (Section 15.4)." },
+      MU: { status: "Permitted", conditions: "Min road 12m, ECS parking compliance." },
+      "C-1": { status: "Permitted", conditions: "Primary commercial activity." },
+      "C-2": { status: "Conditional", conditions: "Permitted with wholesale/storage integration." },
+      SI: { status: "Conditional", conditions: "Commercial display centre / IT software offices." },
+      LI: { status: "Prohibited" },
+      PSP: { status: "Prohibited" },
+      RC: { status: "Prohibited" },
+      A: { status: "Prohibited" }
+    }
+  },
+  {
+    activityId: "act-shopping-mall",
+    activityName: "Shopping Mall & Multiplex (>3000 sqm)",
+    category: "Commercial",
+    clauseRef: "Section 15.3.2 & Section 5.2 / 5.4",
+    statutoryNotes: "Min plot area 3000 sqm, min road width 18m. Peripheral 6m fire driveway mandatory.",
+    zonePermissibility: {
+      BU: { status: "Conditional", conditions: "Min road 18m, min plot 3000 sqm." },
+      R: { status: "Prohibited" },
+      MU: { status: "Conditional", conditions: "Min road 24m, min plot 3000 sqm." },
+      "C-1": { status: "Permitted", conditions: "Min road 18m." },
+      "C-2": { status: "Conditional", conditions: "Permitted in designated commercial sub-centres." },
+      SI: { status: "Prohibited" },
+      LI: { status: "Prohibited" },
+      PSP: { status: "Prohibited" },
+      RC: { status: "Prohibited" },
+      A: { status: "Prohibited" }
+    }
+  },
+  {
+    activityId: "act-hotel",
+    activityName: "Hotel & Guest House",
+    category: "Commercial",
+    clauseRef: "Section 15.3.2 & Section 5.3",
+    statutoryNotes: "Min 6 guest rooms. Heritage hotels get road width relaxation (5m in spiritual hotspots).",
+    zonePermissibility: {
+      BU: { status: "Conditional", conditions: "Min road 6m (<=20 rooms) or 12m (>20 rooms)." },
+      R: { status: "Conditional", conditions: "Min 9m road for <=20 rooms; 12m road for >20 rooms." },
+      MU: { status: "Permitted", conditions: "Min road 12m, ECS parking compliance." },
+      "C-1": { status: "Permitted", conditions: "Primary use in City Centre and tourism zones." },
+      "C-2": { status: "Conditional", conditions: "Motel / highway rest area on major highways." },
+      SI: { status: "Conditional", conditions: "Business hotel inside IT / industrial park." },
+      LI: { status: "Prohibited" },
+      PSP: { status: "Conditional", conditions: "Institutional guest house / transit hostel." },
+      RC: { status: "Conditional", conditions: "Eco-resort up to 20% coverage on min 4000 sqm plot." },
+      A: { status: "Conditional", conditions: "Agri-tourism resort / farmhouse stay as per tourism policy." }
+    }
+  },
+  {
+    activityId: "act-small-industry",
+    activityName: "Small Industry & Flatted Factory",
+    category: "Industrial",
+    clauseRef: "Section 15.3.2 & Section 7.1",
+    statutoryNotes: "Non-polluting micro/small units, IT/electronics assembly, garments, handicrafts.",
+    zonePermissibility: {
+      BU: { status: "Conditional", conditions: "Service workshop / micro-unit without heavy power." },
+      R: { status: "Conditional", conditions: "Cottage industry without hired labour/effluent." },
+      MU: { status: "Conditional", conditions: "IT / software / design studios / non-polluting flatted factories." },
+      "C-1": { status: "Conditional", conditions: "Service and repair establishments incidental to retail." },
+      "C-2": { status: "Permitted", conditions: "Packaging, assembly, and service industries." },
+      SI: { status: "Permitted", conditions: "Primary designated zone. Base FAR 1.50 to 3.00." },
+      LI: { status: "Permitted", conditions: "Ancillary manufacturing." },
+      PSP: { status: "Conditional", conditions: "Vocational training workshops." },
+      RC: { status: "Prohibited" },
+      A: { status: "Conditional", conditions: "Allowed on 7m road in Agriculture; non-polluting only." }
+    }
+  },
+  {
+    activityId: "act-large-industry",
+    activityName: "Large Industry & Manufacturing Plant",
+    category: "Industrial",
+    clauseRef: "Section 15.3.2 & Section 7.1",
+    statutoryNotes: "Heavy fabrication, chemical, engineering plants. UPPCB clearance mandatory.",
+    zonePermissibility: {
+      BU: { status: "Prohibited" },
+      R: { status: "Prohibited" },
+      MU: { status: "Prohibited" },
+      "C-1": { status: "Prohibited" },
+      "C-2": { status: "Prohibited" },
+      SI: { status: "Prohibited", conditions: "Only non-polluting small industries allowed." },
+      LI: { status: "Permitted", conditions: "Primary heavy industrial zone with green buffer." },
+      PSP: { status: "Prohibited" },
+      RC: { status: "Prohibited" },
+      A: { status: "Conditional", conditions: "Single factory unit on min 7m road (Section 3.1.1.3)." }
+    }
+  },
+  {
+    activityId: "act-hospital",
+    activityName: "Hospital & Healthcare Centre",
+    category: "Institutional",
+    clauseRef: "Section 15.3.2 & Section 6.1",
+    statutoryNotes: "Ambulance bay, bio-medical waste compliance, fire tender circulation mandatory.",
+    zonePermissibility: {
+      BU: { status: "Conditional", conditions: "Clinics on 9m road, nursing homes on 12m, hospitals on 18m." },
+      R: { status: "Conditional", conditions: "Nursing homes on min 12m road, plot >300 sqm." },
+      MU: { status: "Permitted", conditions: "Hospitals on min 18m road." },
+      "C-1": { status: "Permitted", conditions: "Permitted on min 18m road." },
+      "C-2": { status: "Conditional", conditions: "Permitted on min 18m road." },
+      SI: { status: "Conditional", conditions: "Dispensary / occupational health unit." },
+      LI: { status: "Conditional", conditions: "First-aid centre inside industrial estate." },
+      PSP: { status: "Permitted", conditions: "Primary public and semi-public institutional use." },
+      RC: { status: "Conditional", conditions: "Wellness / nature cure retreat." },
+      A: { status: "Conditional", conditions: "Hospital on min 18m road with NOC." }
+    }
+  },
+  {
+    activityId: "act-school",
+    activityName: "Educational Institution (School / College)",
+    category: "Institutional",
+    clauseRef: "Section 15.3.2 & Section 6.2",
+    statutoryNotes: "Playground reservation mandatory. Safe internal student drop-off loop.",
+    zonePermissibility: {
+      BU: { status: "Conditional", conditions: "Nursery/primary on 9m road; secondary on 12m road." },
+      R: { status: "Permitted", conditions: "Primary on 9m/12m road; secondary on 12m road." },
+      MU: { status: "Permitted", conditions: "Min road 12m (middle) or 18m (high school/college)." },
+      "C-1": { status: "Conditional", conditions: "Permitted on designated educational plots." },
+      "C-2": { status: "Prohibited" },
+      SI: { status: "Conditional", conditions: "Industrial training institute (ITI) / technical school." },
+      LI: { status: "Prohibited" },
+      PSP: { status: "Permitted", conditions: "Primary public and semi-public institutional use." },
+      RC: { status: "Prohibited" },
+      A: { status: "Conditional", conditions: "Degree college / school on min 18m/12m road." }
+    }
+  }
+];
+
+/* =====================================================================================
+ * 5. STATUTORY QUERY HELPER UTILITIES
+ * ===================================================================================== */
+
+/**
+ * Query non-residential setbacks for commercial, healthcare, educational, or industrial plots.
+ */
+export function getNonResidentialSetback(
+  category: 'commercial' | 'healthcare' | 'educational' | 'industrial',
+  plotArea: number
+): NonResidentialSetbackRule | undefined {
+  let table: NonResidentialSetbackRule[];
+  switch (category) {
+    case 'commercial':
+      table = COMMERCIAL_PLOT_SETBACKS;
+      break;
+    case 'healthcare':
+      table = HEALTHCARE_BUILDING_SETBACKS;
+      break;
+    case 'educational':
+      table = EDUCATIONAL_BUILDING_SETBACKS;
+      break;
+    case 'industrial':
+      table = INDUSTRIAL_BUILDING_SETBACKS;
+      break;
+  }
+  return table.find((rule) => plotArea >= rule.minPlotArea && plotArea <= rule.maxPlotArea)
+    || table[table.length - 1];
+}
+
+/**
+ * Query Section 5.1.5 Bazaar Street front setback based on abutting road width.
+ */
+export function getBazaarStreetFrontSetback(roadWidth: number): BazaarStreetSetbackRule {
+  for (let i = BAZAAR_STREET_SETBACK_LADDER.length - 1; i >= 0; i--) {
+    if (roadWidth >= BAZAAR_STREET_SETBACK_LADDER[i].roadWidthMeters) {
+      return BAZAAR_STREET_SETBACK_LADDER[i];
+    }
+  }
+  return BAZAAR_STREET_SETBACK_LADDER[0];
+}
+
+/**
+ * Query Section 3.2.2.2 & 4.2.8 Group Housing FAR by road width and built-up status.
+ */
+export function getGroupHousingFarRule(roadWidth: number): GroupHousingRoadFarRule {
+  for (const rule of GROUP_HOUSING_ROAD_FAR_MATRIX) {
+    if (roadWidth >= rule.minRoadWidth && roadWidth <= rule.maxRoadWidth) {
+      return rule;
+    }
+  }
+  return GROUP_HOUSING_ROAD_FAR_MATRIX[GROUP_HOUSING_ROAD_FAR_MATRIX.length - 1];
+}
+
+/**
+ * Query Section 5.2.5 Commercial complex & shopping malls FAR by road width.
+ */
+export function getCommercialComplexFarRule(roadWidth: number): CommercialRoadFarRule {
+  for (const rule of COMMERCIAL_COMPLEX_ROAD_FAR_MATRIX) {
+    if (roadWidth >= rule.minRoadWidth && roadWidth <= rule.maxRoadWidth) {
+      return rule;
+    }
+  }
+  return COMMERCIAL_COMPLEX_ROAD_FAR_MATRIX[COMMERCIAL_COMPLEX_ROAD_FAR_MATRIX.length - 1];
+}
+
+/**
+ * Query Section 15.3.2 activity permissibility for a given activity and standardized zone.
+ */
+export function getActivityPermissibility(
+  activityId: string,
+  zoneCode: StandardZoneCode
+): { status: PermissibilityStatus; conditions?: string; activityName?: string } | undefined {
+  const rule = CHAPTER_15_ACTIVITY_PERMISSIBILITY.find((a) => a.activityId === activityId);
+  if (!rule) return undefined;
+  const zoneResult = rule.zonePermissibility[zoneCode];
+  return {
+    activityName: rule.activityName,
+    status: zoneResult.status,
+    conditions: zoneResult.conditions,
+  };
+}

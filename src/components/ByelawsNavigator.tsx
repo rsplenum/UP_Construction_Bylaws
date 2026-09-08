@@ -22,8 +22,10 @@ import {
   Zap,
   Layers,
   Building,
-  Sparkles
+  Sparkles,
+  ArrowLeftRight
 } from 'lucide-react';
+import { AuthorityZoningComparison } from './AuthorityZoningComparison';
 
 interface ByelawsNavigatorProps {
   searchQuery: string;
@@ -34,7 +36,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
   searchQuery,
 }) => {
   const [selectedChapterId, setSelectedChapterId] = useState<number | 'all'>('all');
-  const [subView, setSubView] = useState<'chapters' | 'definitions' | 'deemed_noc' | 'far_exemptions' | 'setback_tables' | 'evci'>('chapters');
+  const [subView, setSubView] = useState<'chapters' | 'definitions' | 'deemed_noc' | 'far_exemptions' | 'setback_tables' | 'evci' | 'authority_comparison'>('chapters');
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     '1.2': true,
     '2.1.2': true,
@@ -132,6 +134,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
         <div className="mt-6 pt-4 border-t border-slate-700/80 flex flex-wrap gap-2">
           {[
             { id: 'chapters', label: 'All 18 Chapters', icon: BookOpen },
+            { id: 'authority_comparison', label: 'Compare Authorities (Zoning Matrix)', icon: ArrowLeftRight },
             { id: 'definitions', label: '102 Definitions Dictionary', icon: FileText },
             { id: 'deemed_noc', label: 'Deemed NOC Timelines (15 Depts)', icon: Clock },
             { id: 'far_exemptions', label: 'FAR Exemptions Matrix', icon: Layers },
@@ -577,6 +580,11 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
             </table>
           </div>
         </div>
+      )}
+
+      {/* SUBVIEW: AUTHORITY ZONING COMPARISON */}
+      {subView === 'authority_comparison' && (
+        <AuthorityZoningComparison />
       )}
     </div>
   );

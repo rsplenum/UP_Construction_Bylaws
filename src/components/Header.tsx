@@ -1,5 +1,18 @@
 import React from 'react';
-import { BookOpen, Calculator, Compass, MapPin, FileCheck2, Bot, Search, ShieldCheck } from 'lucide-react';
+import {
+  BookOpen,
+  Calculator,
+  Compass,
+  MapPin,
+  FileCheck2,
+  Bot,
+  Search,
+  ShieldCheck,
+  Globe,
+  CheckSquare,
+  Sun,
+  Moon
+} from 'lucide-react';
 import { DOCUMENT_METADATA } from '../data/byelawsData';
 
 interface HeaderProps {
@@ -7,6 +20,8 @@ interface HeaderProps {
   setActiveTab: (tab: string) => void;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
+  isDark?: boolean;
+  onToggleTheme?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -14,13 +29,17 @@ export const Header: React.FC<HeaderProps> = ({
   setActiveTab,
   searchQuery,
   setSearchQuery,
+  isDark = false,
+  onToggleTheme,
 }) => {
   const navItems = [
-    { id: 'navigator', label: 'Byelaws Navigator', icon: BookOpen },
-    { id: 'calculators', label: 'FAR & Compliance Calculators', icon: Calculator },
+    { id: 'audit', label: 'Cross-Rule Compliance Audit', icon: CheckSquare, badge: 'New' },
+    { id: 'maps', label: 'UP GIS Map Servers & MP 2031', icon: Globe, badge: '22 DAs' },
+    { id: 'navigator', label: 'Byelaws Navigator (18 Ch)', icon: BookOpen },
+    { id: 'calculators', label: 'FAR & Fee Calculators', icon: Calculator },
     { id: 'visualizer', label: '2D Setback Visualizer', icon: Compass },
-    { id: 'zoning', label: 'Zoning & Authorities', icon: MapPin },
-    { id: 'forms', label: 'Forms & SDBR', icon: FileCheck2 },
+    { id: 'zoning', label: 'Zoning & Master Plans', icon: MapPin },
+    { id: 'forms', label: 'Statutory Forms & SDBR', icon: FileCheck2 },
     { id: 'ai-assistant', label: 'AI Regulatory Assistant', icon: Bot },
   ];
 
@@ -70,6 +89,21 @@ export const Header: React.FC<HeaderProps> = ({
               <ShieldCheck className="w-4 h-4 mr-1 text-emerald-400" />
               <span>Full 224-Page Code</span>
             </div>
+
+            {onToggleTheme && (
+              <button
+                onClick={onToggleTheme}
+                title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                className="flex items-center justify-center p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-colors"
+                aria-label="Toggle theme"
+              >
+                {isDark ? (
+                  <Sun className="w-4 h-4 text-amber-400" />
+                ) : (
+                  <Moon className="w-4 h-4 text-slate-300" />
+                )}
+              </button>
+            )}
           </div>
         </div>
 
@@ -90,6 +124,17 @@ export const Header: React.FC<HeaderProps> = ({
               >
                 <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
                 <span>{item.label}</span>
+                {item.badge && (
+                  <span
+                    className={`text-[10px] px-1.5 py-0.2 rounded font-bold ${
+                      isActive
+                        ? 'bg-white/20 text-white'
+                        : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
+                    }`}
+                  >
+                    {item.badge}
+                  </span>
+                )}
               </button>
             );
           })}
