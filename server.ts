@@ -122,7 +122,7 @@ async function startServer() {
       }
 
       // Format contents for generateContent
-      const contents = [];
+      const contents: { role: string; parts: { text: string }[] }[] = [];
 
       for (const turn of conversationHistory.slice(-6)) {
         if (turn.role === "user" || turn.role === "model") {

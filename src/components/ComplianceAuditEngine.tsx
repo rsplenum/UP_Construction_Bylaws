@@ -28,24 +28,22 @@ import {
   BookmarkPlus,
   Clock
 } from 'lucide-react';
-import { HIGH_RISE_SETBACKS } from '../data/byelawsData';
 import {
-  AuditEngineState,
-  loadAuditState,
-  saveAuditState,
-  clearAuditState,
-  DEFAULT_AUDIT_STATE,
-  loadAuditHistory,
-  saveAuditSessionToHistory,
-  deleteAuditHistoryItem,
-  clearAuditHistory,
-  AuditSessionHistoryItem
-} from '../utils/auditStorage';
+  Occupancy,
+  GreenRating,
+  assessSetbackFaces,
+  resolveBaseFar,
+  resolveRequiredSetbacks,
+  OCCUPANCY_LABELS,
+} from '../domain';
+import { useProject } from '../context/ProjectContext';
+import { TabId } from '../navigation';
+import { AuditEngineState } from '../utils/auditStorage';
+import { SavedProject } from '../context/ProjectContext';
 import {
   evaluateLogicalConstraints,
   RegulatoryConflict
 } from '../utils/constraintEngine';
-import { generateAuditPdfReport } from '../utils/pdfGenerator';
 import { useToast } from '../context/ToastContext';
 
 interface AuditItem {
@@ -60,130 +58,90 @@ interface AuditItem {
   remediation?: string;
 }
 
-export const ComplianceAuditEngine: React.FC = () => {
+interface ComplianceAuditEngineProps {
+  onNavigate?: (tab: TabId) => void;
+}
+
+export const ComplianceAuditEngine: React.FC<ComplianceAuditEngineProps> = ({ onNavigate }) => {
   const toast = useToast();
 
-  // Load Initial State from LocalStorage
-  const initialSavedState = useMemo(() => loadAuditState(), []);
+  // The site description lives in one place now; this screen reads and patches it rather
+  // than keeping a sixteenth private copy of the plot.
+  const {
+    project,
+    patch,
+    reset: resetProject,
+    undo,
+    canUndo,
+    savedProjects,
+    saveSnapshot,
+    loadSnapshot,
+    deleteSnapshot,
+    lastSavedLabel,
+  } = useProject();
 
-  // History Tracker State (stores up to 5 sessions)
-  const [auditHistory, setAuditHistory] = useState<AuditSessionHistoryItem[]>(() => loadAuditHistory());
   const [historyProjectName, setHistoryProjectName] = useState<string>('');
   const [isSavingHistory, setIsSavingHistory] = useState<boolean>(false);
   const [showHistoryPanel, setShowHistoryPanel] = useState<boolean>(true);
 
-  // Project Parameters State
-  const [occupancy, setOccupancy] = useState<'single_unit' | 'multi_unit' | 'group_housing' | 'commercial'>(initialSavedState.occupancy);
-  const [plotArea, setPlotArea] = useState<number>(initialSavedState.plotArea); // sqm
-  const [plotFrontage, setPlotFrontage] = useState<number>(initialSavedState.plotFrontage); // m
-  const [roadWidth, setRoadWidth] = useState<number>(initialSavedState.roadWidth); // m
-  const [buildingHeight, setBuildingHeight] = useState<number>(initialSavedState.buildingHeight); // m
-  const [proposedBuiltUpArea, setProposedBuiltUpArea] = useState<number>(initialSavedState.proposedBuiltUpArea); // sqm
-  const [isCornerPlot, setIsCornerPlot] = useState<boolean>(initialSavedState.isCornerPlot);
-  const [hasStilt, setHasStilt] = useState<boolean>(initialSavedState.hasStilt);
-  const [frontSetbackProvided, setFrontSetbackProvided] = useState<number>(initialSavedState.frontSetbackProvided);
-  const [rearSetbackProvided, setRearSetbackProvided] = useState<number>(initialSavedState.rearSetbackProvided);
-  const [side1Provided, setSide1Provided] = useState<number>(initialSavedState.side1Provided);
-  const [side2Provided, setSide2Provided] = useState<number>(initialSavedState.side2Provided);
-  const [parkingBaysProvided, setParkingBaysProvided] = useState<number>(initialSavedState.parkingBaysProvided);
-  const [hasRWH, setHasRWH] = useState<boolean>(initialSavedState.hasRWH);
-  const [hasSolarHeating, setHasSolarHeating] = useState<boolean>(initialSavedState.hasSolarHeating);
-  const [greenRating, setGreenRating] = useState<'none' | 'silver' | 'gold' | 'platinum'>(initialSavedState.greenRating);
+  // Read-side aliases keep the render tree unchanged while the source of truth moves.
+  const {
+    occupancy,
+    plotArea,
+    plotFrontage,
+    roadWidth,
+    buildingHeight,
+    proposedBuiltUpArea,
+    isCornerPlot,
+    hasStilt,
+    frontSetbackProvided,
+    rearSetbackProvided,
+    side1Provided,
+    side2Provided,
+    parkingBaysProvided,
+    hasRWH,
+    hasSolarHeating,
+    greenRating,
+  } = project;
+
+  const setOccupancy = (v: Occupancy) => patch({ occupancy: v });
+  const setPlotArea = (v: number) => patch({ plotArea: v });
+  const setPlotFrontage = (v: number) => patch({ plotFrontage: v });
+  const setRoadWidth = (v: number) => patch({ roadWidth: v });
+  const setBuildingHeight = (v: number) => patch({ buildingHeight: v });
+  const setProposedBuiltUpArea = (v: number) => patch({ proposedBuiltUpArea: v });
+  const setIsCornerPlot = (v: boolean) => patch({ isCornerPlot: v });
+  const setHasStilt = (v: boolean) => patch({ hasStilt: v });
+  const setFrontSetbackProvided = (v: number) => patch({ frontSetbackProvided: v });
+  const setRearSetbackProvided = (v: number) => patch({ rearSetbackProvided: v });
+  const setSide1Provided = (v: number) => patch({ side1Provided: v });
+  const setSide2Provided = (v: number) => patch({ side2Provided: v });
+  const setParkingBaysProvided = (v: number) => patch({ parkingBaysProvided: v });
+  const setHasRWH = (v: boolean) => patch({ hasRWH: v });
+  const setHasSolarHeating = (v: boolean) => patch({ hasSolarHeating: v });
+  const setGreenRating = (v: GreenRating) => patch({ greenRating: v });
 
   // Persistence tracking
   const [lastSaved, setLastSaved] = useState<string>('');
   const [isGeneratingPdf, setIsGeneratingPdf] = useState<boolean>(false);
 
-  // Consolidated current state object
-  const currentState: AuditEngineState = useMemo(() => ({
-    occupancy,
-    plotArea,
-    plotFrontage,
-    roadWidth,
-    buildingHeight,
-    proposedBuiltUpArea,
-    isCornerPlot,
-    hasStilt,
-    frontSetbackProvided,
-    rearSetbackProvided,
-    side1Provided,
-    side2Provided,
-    parkingBaysProvided,
-    hasRWH,
-    hasSolarHeating,
-    greenRating,
-  }), [
-    occupancy,
-    plotArea,
-    plotFrontage,
-    roadWidth,
-    buildingHeight,
-    proposedBuiltUpArea,
-    isCornerPlot,
-    hasStilt,
-    frontSetbackProvided,
-    rearSetbackProvided,
-    side1Provided,
-    side2Provided,
-    parkingBaysProvided,
-    hasRWH,
-    hasSolarHeating,
-    greenRating,
-  ]);
-
-  // Auto-save to LocalStorage whenever state changes
-  useEffect(() => {
-    saveAuditState(currentState);
-    const timeStr = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    setLastSaved(timeStr);
-  }, [currentState]);
+  const currentState: AuditEngineState = project;
 
   // Evaluate Logical Constraints in Real-Time
   const logicalConflicts = useMemo(() => {
     return evaluateLogicalConstraints(currentState);
   }, [currentState]);
 
-  // Reset to Statutory Defaults
   const handleResetDefaults = () => {
-    clearAuditState();
-    setOccupancy(DEFAULT_AUDIT_STATE.occupancy);
-    setPlotArea(DEFAULT_AUDIT_STATE.plotArea);
-    setPlotFrontage(DEFAULT_AUDIT_STATE.plotFrontage);
-    setRoadWidth(DEFAULT_AUDIT_STATE.roadWidth);
-    setBuildingHeight(DEFAULT_AUDIT_STATE.buildingHeight);
-    setProposedBuiltUpArea(DEFAULT_AUDIT_STATE.proposedBuiltUpArea);
-    setIsCornerPlot(DEFAULT_AUDIT_STATE.isCornerPlot);
-    setHasStilt(DEFAULT_AUDIT_STATE.hasStilt);
-    setFrontSetbackProvided(DEFAULT_AUDIT_STATE.frontSetbackProvided);
-    setRearSetbackProvided(DEFAULT_AUDIT_STATE.rearSetbackProvided);
-    setSide1Provided(DEFAULT_AUDIT_STATE.side1Provided);
-    setSide2Provided(DEFAULT_AUDIT_STATE.side2Provided);
-    setParkingBaysProvided(DEFAULT_AUDIT_STATE.parkingBaysProvided);
-    setHasRWH(DEFAULT_AUDIT_STATE.hasRWH);
-    setHasSolarHeating(DEFAULT_AUDIT_STATE.hasSolarHeating);
-    setGreenRating(DEFAULT_AUDIT_STATE.greenRating);
+    resetProject();
+    toast.info('Reset to defaults', 'Undo is available if that was not what you wanted.');
   };
 
-  // Apply Auto-Fix from Conflict Engine
+  // Apply a remedy proposed by the constraint engine as a single undoable change.
   const applyAutoFix = (conflict: RegulatoryConflict) => {
     if (!conflict.autoFix) return;
-    const fixPatch = conflict.autoFix(currentState);
-    if (fixPatch.occupancy !== undefined) setOccupancy(fixPatch.occupancy);
-    if (fixPatch.plotArea !== undefined) setPlotArea(fixPatch.plotArea);
-    if (fixPatch.plotFrontage !== undefined) setPlotFrontage(fixPatch.plotFrontage);
-    if (fixPatch.roadWidth !== undefined) setRoadWidth(fixPatch.roadWidth);
-    if (fixPatch.buildingHeight !== undefined) setBuildingHeight(fixPatch.buildingHeight);
-    if (fixPatch.proposedBuiltUpArea !== undefined) setProposedBuiltUpArea(fixPatch.proposedBuiltUpArea);
-    if (fixPatch.isCornerPlot !== undefined) setIsCornerPlot(fixPatch.isCornerPlot);
-    if (fixPatch.hasStilt !== undefined) setHasStilt(fixPatch.hasStilt);
-    if (fixPatch.frontSetbackProvided !== undefined) setFrontSetbackProvided(fixPatch.frontSetbackProvided);
-    if (fixPatch.rearSetbackProvided !== undefined) setRearSetbackProvided(fixPatch.rearSetbackProvided);
-    if (fixPatch.side1Provided !== undefined) setSide1Provided(fixPatch.side1Provided);
-    if (fixPatch.side2Provided !== undefined) setSide2Provided(fixPatch.side2Provided);
-    if (fixPatch.parkingBaysProvided !== undefined) setParkingBaysProvided(fixPatch.parkingBaysProvided);
-    if (fixPatch.hasRWH !== undefined) setHasRWH(fixPatch.hasRWH);
-    if (fixPatch.hasSolarHeating !== undefined) setHasSolarHeating(fixPatch.hasSolarHeating);
-    if (fixPatch.greenRating !== undefined) setGreenRating(fixPatch.greenRating);
+    patch(conflict.autoFix(currentState));
+    toast.success('Remedy applied', conflict.remedyActionTitle);
   };
 
   // Load Presets
@@ -316,196 +274,76 @@ export const ComplianceAuditEngine: React.FC = () => {
       });
     }
 
-    // 2. Chapter 3.2.2: Telescopic Base FAR & Maximum Area
-    let baseFar = 1.5;
-    let telescopicExplanation = '';
-    if (occupancy === 'single_unit' || occupancy === 'multi_unit') {
-      if (plotArea <= 100) {
-        baseFar = 2.0;
-        telescopicExplanation = 'Plot <= 100 sqm: Flat FAR = 2.0';
-      } else if (plotArea <= 300) {
-        const area1 = 100 * 2.0;
-        const area2 = (plotArea - 100) * 1.75;
-        baseFar = (area1 + area2) / plotArea;
-        telescopicExplanation = `Telescopic: (100×2.0 + ${plotArea - 100}×1.75)/${plotArea} = ${baseFar.toFixed(2)}`;
-      } else if (plotArea <= 500) {
-        const area1 = 100 * 2.0;
-        const area2 = 200 * 1.75;
-        const area3 = (plotArea - 300) * 1.50;
-        baseFar = (area1 + area2 + area3) / plotArea;
-        telescopicExplanation = `Telescopic: (100×2.0 + 200×1.75 + ${plotArea - 300}×1.50)/${plotArea} = ${baseFar.toFixed(2)}`;
-      } else if (plotArea <= 1200) {
-        const area1 = 100 * 2.0;
-        const area2 = 200 * 1.75;
-        const area3 = 200 * 1.50;
-        const area4 = (plotArea - 500) * 1.25;
-        baseFar = (area1 + area2 + area3 + area4) / plotArea;
-        telescopicExplanation = `Telescopic: (200 + 350 + 300 + ${plotArea - 500}×1.25)/${plotArea} = ${baseFar.toFixed(2)}`;
-      } else {
-        const area1 = 100 * 2.0;
-        const area2 = 200 * 1.75;
-        const area3 = 200 * 1.50;
-        const area4 = 700 * 1.25;
-        const area5 = (plotArea - 1200) * 1.0;
-        baseFar = (area1 + area2 + area3 + area4 + area5) / plotArea;
-        telescopicExplanation = `Telescopic: (200 + 350 + 300 + 875 + ${plotArea - 1200}×1.0)/${plotArea} = ${baseFar.toFixed(2)}`;
-      }
-    } else if (occupancy === 'group_housing') {
-      baseFar = roadWidth >= 24 ? 2.5 : roadWidth >= 18 ? 2.0 : 1.75;
-      telescopicExplanation = `Group Housing Base FAR for ${roadWidth}m road width = ${baseFar}`;
-    } else if (occupancy === 'commercial') {
-      baseFar = roadWidth >= 24 ? 2.0 : roadWidth >= 18 ? 1.75 : 1.5;
-      telescopicExplanation = `Commercial Base FAR for ${roadWidth}m road width = ${baseFar}`;
-    }
+    // 2. FAR — resolved by the shared engine so every screen agrees on the number.
+    const far = resolveBaseFar({ occupancy, plotArea, roadWidth, greenRating });
+    const proposedFar = plotArea > 0 ? proposedBuiltUpArea / plotArea : 0;
 
-    // Green Building Incentive (Chapter 9.3)
-    let greenBonus = 0;
-    if (greenRating === 'silver') greenBonus = 0.03;
-    if (greenRating === 'gold') greenBonus = 0.05;
-    if (greenRating === 'platinum') greenBonus = 0.07;
-    const effectiveBaseFar = baseFar * (1 + greenBonus);
+    let farStatus: AuditItem['status'] = 'compliant';
+    let farRemediation: string | undefined;
 
-    const maxPermissibleBaseBuiltUp = plotArea * effectiveBaseFar;
-    const proposedFar = proposedBuiltUpArea / plotArea;
-
-    let farStatus: 'compliant' | 'conditional' | 'non_compliant' = 'compliant';
-    let farRemediation = undefined;
-
-    if (proposedFar <= effectiveBaseFar) {
+    if (proposedFar <= far.effectiveBaseFar + 1e-9) {
       farStatus = 'compliant';
-    } else if (proposedFar <= effectiveBaseFar * 1.5 && roadWidth >= 12) {
+    } else if (proposedFar <= far.maxPermissibleFar + 1e-9) {
       farStatus = 'conditional';
-      farRemediation = `Purchasable FAR required for excess ${(proposedBuiltUpArea - maxPermissibleBaseBuiltUp).toFixed(1)} sqm under Chapter 9 formula C = Le × Rc × P. Road width ${roadWidth}m >= 12m permits purchasable FAR.`;
+      farRemediation = `The excess ${(proposedBuiltUpArea - far.effectiveBuiltUpArea).toFixed(1)} sqm must be bought as purchasable FAR under the Chapter 9 formula C = Le × Rc × P. The ${roadWidth}m road permits up to FAR ${far.maxPermissibleFar}.`;
     } else {
       farStatus = 'non_compliant';
-      farRemediation = `Proposed FAR (${proposedFar.toFixed(2)}) exceeds maximum cap (Base ${effectiveBaseFar.toFixed(2)} + max purchasable limit) or road width is under 12m. Reduce built-up area to max ${(effectiveBaseFar * plotArea).toFixed(0)} sqm.`;
+      farRemediation = `Proposed FAR ${proposedFar.toFixed(2)} exceeds the absolute ceiling of ${far.maxPermissibleFar} (base ${far.effectiveBaseFar} + purchasable ${far.purchasableFar}). Reduce built-up area to ${far.maxPermissibleBuiltUpArea.toFixed(0)} sqm.${far.caveats.length ? ' ' + far.caveats.join(' ') : ''}`;
     }
 
     items.push({
       id: 'far_audit',
-      chapterRef: 'Chapter 3.2.2 & Chapter 9',
-      ruleTitle: 'Floor Area Ratio (FAR) & Built-up Area',
+      chapterRef: far.clauseRef,
+      ruleTitle: 'Floor Area Ratio (FAR) & built-up area',
       category: 'Building Bulk',
       status: farStatus,
-      statutoryLimit: `Base FAR: ${baseFar.toFixed(2)} ${greenBonus > 0 ? `(+${(greenBonus * 100)}% Green Bonus)` : ''} = Permissible: ${maxPermissibleBaseBuiltUp.toFixed(1)} sqm`,
-      proposedValue: `Proposed: ${proposedBuiltUpArea} sqm (FAR: ${proposedFar.toFixed(2)})`,
-      mathExplanation: `${telescopicExplanation}. Max base area: ${plotArea} × ${effectiveBaseFar.toFixed(2)} = ${maxPermissibleBaseBuiltUp.toFixed(1)} sqm.`,
+      statutoryLimit: `Base FAR ${far.effectiveBaseFar}${far.greenBonusFraction > 0 ? ` (incl. +${(far.greenBonusFraction * 100).toFixed(0)}% green incentive)` : ''} = ${far.effectiveBuiltUpArea.toFixed(1)} sqm; ceiling with purchasable FAR ${far.maxPermissibleFar} = ${far.maxPermissibleBuiltUpArea.toFixed(1)} sqm`,
+      proposedValue: `${proposedBuiltUpArea} sqm (FAR ${proposedFar.toFixed(2)})`,
+      mathExplanation: far.workings,
       remediation: farRemediation,
     });
 
-    // 3. Setback Compliance (Chapter 3.2.4.1 & Chapter 3.2.4.9)
-    let reqFront = 3.0;
-    let reqRear = 1.5;
-    let reqSide1 = 0.0;
-    let reqSide2 = 0.0;
+    // 3. Setbacks — one ladder, no numeric holes, high-rise fire setbacks non-compoundable.
+    const required = resolveRequiredSetbacks({ occupancy, plotArea, buildingHeight, isCornerPlot });
+    const faceVerdicts = assessSetbackFaces(required, {
+      front: frontSetbackProvided,
+      rear: rearSetbackProvided,
+      side1: side1Provided,
+      side2: side2Provided,
+    });
 
-    if (buildingHeight > 15) {
-      const hr = HIGH_RISE_SETBACKS.find(
-        (h) => buildingHeight >= h.minHeight && buildingHeight <= h.maxHeight
-      ) || HIGH_RISE_SETBACKS[HIGH_RISE_SETBACKS.length - 1];
-      reqFront = hr.front;
-      reqRear = hr.rear;
-      reqSide1 = hr.side1;
-      reqSide2 = hr.side2;
-    } else if (occupancy === 'single_unit' || occupancy === 'multi_unit') {
-      if (plotArea <= 150) {
-        reqFront = 1.0;
-        reqRear = 0.0;
-        reqSide1 = 0.0;
-        reqSide2 = 0.0;
-      } else if (plotArea <= 300) {
-        reqFront = 3.0;
-        reqRear = 1.5;
-        reqSide1 = 0.0;
-        reqSide2 = 0.0;
-      } else if (plotArea <= 500) {
-        reqFront = 3.0;
-        reqRear = 3.0;
-        reqSide1 = 0.0;
-        reqSide2 = 0.0;
-      } else if (plotArea <= 1200) {
-        reqFront = 4.5;
-        reqRear = 4.5;
-        reqSide1 = 1.5;
-        reqSide2 = 0.0;
-      } else {
-        reqFront = 6.0;
-        reqRear = 6.0;
-        reqSide1 = 1.5;
-        reqSide2 = 1.5;
-      }
-    } else if (occupancy === 'commercial') {
-      if (plotArea <= 100) {
-        reqFront = 1.5;
-        reqRear = 0;
-        reqSide1 = 0;
-        reqSide2 = 0;
-      } else if (plotArea <= 300) {
-        reqFront = 3.0;
-        reqRear = 0;
-        reqSide1 = 0;
-        reqSide2 = 0;
-      } else if (plotArea <= 1000) {
-        reqFront = 4.5;
-        reqRear = 3.0;
-        reqSide1 = 1.5;
-        reqSide2 = 1.5;
-      } else {
-        reqFront = 6.0;
-        reqRear = 3.0;
-        reqSide1 = 3.0;
-        reqSide2 = 3.0;
-      }
-    }
+    const violations = faceVerdicts.filter((v) => v.status === 'violation');
+    const compoundable = faceVerdicts.filter((v) => v.status === 'compoundable');
 
-    if (isCornerPlot) {
-      reqSide2 = Math.max(reqSide2, reqFront);
-    }
+    let setbackStatus: AuditItem['status'] = 'compliant';
+    let setbackRemediation: string | undefined;
 
-    const frontOk = frontSetbackProvided >= reqFront;
-    const rearOk = rearSetbackProvided >= reqRear;
-    const side1Ok = side1Provided >= reqSide1;
-    const side2Ok = side2Provided >= reqSide2;
-    const allSetbacksOk = frontOk && rearOk && side1Ok && side2Ok;
-
-    // Compounding check for setback: up to 10% encroachment compoundable under Ch 16
-    const minFrontComp = reqFront * 0.9;
-    const minRearComp = reqRear * 0.9;
-    const isWithinCompounding =
-      frontSetbackProvided >= minFrontComp &&
-      rearSetbackProvided >= minRearComp &&
-      side1Provided >= reqSide1 * 0.9 &&
-      side2Provided >= reqSide2 * 0.9;
-
-    let setbackStatus: 'compliant' | 'conditional' | 'non_compliant' = 'compliant';
-    let setbackRemediation = undefined;
-
-    if (allSetbacksOk) {
-      setbackStatus = 'compliant';
-    } else if (isWithinCompounding && buildingHeight <= 15) {
-      setbackStatus = 'conditional';
-      setbackRemediation = `Minor setback deficiency is within 10% permissible compounding limit (Chapter 16.3). Compounding fee payable under Rule 4.`;
-    } else {
+    if (violations.length > 0) {
       setbackStatus = 'non_compliant';
-      setbackRemediation = `Setback deficiency exceeds 10% limit or building height > 15m. Encroachments into mandatory high-rise fire setbacks are strictly non-compoundable! Adjust envelope.`;
+      setbackRemediation = required.isHighRise
+        ? `Fire-tender setbacks on a ${buildingHeight}m building cannot be compounded at any fee (Clause 16.3.2 ii). Deficient: ${violations.map((v) => `${v.face} short by ${v.deficitM}m`).join(', ')}.`
+        : `Beyond the Chapter 16.3 compoundable ceiling: ${violations.map((v) => `${v.face} short by ${v.deficitM}m (${v.deficitPct}%)`).join(', ')}. Redesign the envelope.`;
+    } else if (compoundable.length > 0) {
+      setbackStatus = 'conditional';
+      setbackRemediation = `Within the Chapter 16.3 compoundable range: ${compoundable.map((v) => `${v.face} short by ${v.deficitM}m (${v.deficitPct}%)`).join(', ')}. A compounding fee is payable; regularisation is at the Authority's discretion.`;
     }
 
     items.push({
       id: 'setback_audit',
-      chapterRef: buildingHeight > 15 ? 'Chapter 3.2.4.9 (High Rise)' : 'Chapter 3.2.4.1 (Table 3.2.1)',
-      ruleTitle: 'Building Setbacks & Fire Separation Distances',
+      chapterRef: required.clauseRef,
+      ruleTitle: 'Building setbacks & fire separation',
       category: 'Site Envelope',
       status: setbackStatus,
-      statutoryLimit: `Req: Front ${reqFront}m | Rear ${reqRear}m | Side-1 ${reqSide1}m | Side-2 ${reqSide2}m ${isCornerPlot ? '(Corner Plot Note-2 applied)' : ''}`,
-      proposedValue: `Provided: Front ${frontSetbackProvided}m | Rear ${rearSetbackProvided}m | Side-1 ${side1Provided}m | Side-2 ${side2Provided}m`,
-      mathExplanation: `Front: ${frontSetbackProvided}m vs ${reqFront}m; Rear: ${rearSetbackProvided}m vs ${reqRear}m; Sides: ${side1Provided}m, ${side2Provided}m vs ${reqSide1}m, ${reqSide2}m.`,
+      statutoryLimit: `Front ${required.front}m · Rear ${required.rear}m · Side-1 ${required.side1}m · Side-2 ${required.side2}m${required.cornerRuleApplied ? ' (corner plot: Note 2 applied)' : ''}`,
+      proposedValue: `Front ${frontSetbackProvided}m · Rear ${rearSetbackProvided}m · Side-1 ${side1Provided}m · Side-2 ${side2Provided}m`,
+      mathExplanation: `Band "${required.bandLabel}" (${required.typology}). ${faceVerdicts.map((v) => `${v.face} ${v.provided}/${v.required}m`).join('; ')}.`,
       remediation: setbackRemediation,
     });
 
     // 4. Building Height & Means of Access (Chapter 3.1.1 & Chapter 3.2.4)
     let maxAllowedHeight = roadWidth * 1.5;
     let heightStatus: 'compliant' | 'conditional' | 'non_compliant' = 'compliant';
-    let heightRemediation = undefined;
+    let heightRemediation: string | undefined;
 
     if (occupancy === 'single_unit') {
       if (buildingHeight <= 15.0 && roadWidth >= 6) {
@@ -555,7 +393,7 @@ export const ComplianceAuditEngine: React.FC = () => {
     // 5. Fire Safety & CFO NOC (Chapter 8)
     const isHighRise = buildingHeight > 15;
     let fireStatus: 'compliant' | 'conditional' | 'exempt' = 'exempt';
-    let fireRemediation = undefined;
+    let fireRemediation: string | undefined;
 
     if (isHighRise || (occupancy === 'commercial' && proposedBuiltUpArea > 500)) {
       fireStatus = 'conditional';
@@ -606,7 +444,7 @@ export const ComplianceAuditEngine: React.FC = () => {
     const solarMandatory = plotArea > 500;
 
     let envStatus: 'compliant' | 'non_compliant' | 'conditional' = 'compliant';
-    let envRemediation = undefined;
+    let envRemediation: string | undefined;
 
     if (rwhMandatory && !hasRWH) {
       envStatus = 'non_compliant';
@@ -671,53 +509,34 @@ export const ComplianceAuditEngine: React.FC = () => {
   const scorePercent = Math.round(((compliantCount + conditionalCount * 0.5) / totalCount) * 100);
 
   const handleSaveToHistory = () => {
-    const defaultName = historyProjectName.trim() || `${occupancy.replace('_', ' ').toUpperCase()} (${plotArea} m², Road ${roadWidth}m)`;
-    const updated = saveAuditSessionToHistory(
-      defaultName,
-      currentState,
-      scorePercent,
-      compliantCount,
-      nonCompliantCount
-    );
-    setAuditHistory(updated);
+    const defaultName =
+      historyProjectName.trim() || `${OCCUPANCY_LABELS[occupancy]} · ${plotArea} m² · ${roadWidth}m road`;
+    saveSnapshot(defaultName, scorePercent);
     setHistoryProjectName('');
     setIsSavingHistory(false);
-    toast.success('Audit Session Saved', `"${defaultName}" saved to your last 5 project sessions in localStorage.`);
+    toast.success('Project saved', `"${defaultName}" is in your saved projects on this device.`);
   };
 
-  const handleSwitchSession = (session: AuditSessionHistoryItem) => {
-    setOccupancy(session.state.occupancy);
-    setPlotArea(session.state.plotArea);
-    setPlotFrontage(session.state.plotFrontage);
-    setRoadWidth(session.state.roadWidth);
-    setBuildingHeight(session.state.buildingHeight);
-    setProposedBuiltUpArea(session.state.proposedBuiltUpArea);
-    setIsCornerPlot(session.state.isCornerPlot);
-    setHasStilt(session.state.hasStilt);
-    setFrontSetbackProvided(session.state.frontSetbackProvided);
-    setRearSetbackProvided(session.state.rearSetbackProvided);
-    setSide1Provided(session.state.side1Provided);
-    setSide2Provided(session.state.side2Provided);
-    setParkingBaysProvided(session.state.parkingBaysProvided);
-    setHasRWH(session.state.hasRWH);
-    setHasSolarHeating(session.state.hasSolarHeating);
-    setGreenRating(session.state.greenRating);
-    toast.info('Switched Project Session', `Restored parameters from "${session.projectName}".`);
+  const handleSwitchSession = (session: SavedProject) => {
+    loadSnapshot(session.id);
+    toast.info('Project loaded', `Every tab is now working from "${session.name}".`);
   };
 
   const handleDeleteHistoryItem = (id: string, name: string) => {
-    const updated = deleteAuditHistoryItem(id);
-    setAuditHistory(updated);
-    toast.warning('Session Removed', `"${name}" removed from history.`);
+    deleteSnapshot(id);
+    toast.warning('Project removed', `"${name}" deleted from this device.`);
   };
 
   const handlePrint = () => {
     window.print();
   };
 
-  const handleDownloadPdf = () => {
+  // jsPDF and html2canvas are ~600 KB. Loading them on click keeps them out of the
+  // first paint for the majority of visitors who never export a report.
+  const handleDownloadPdf = async () => {
     setIsGeneratingPdf(true);
     try {
+      const { generateAuditPdfReport } = await import('../utils/pdfGenerator');
       generateAuditPdfReport(currentState, auditResults, logicalConflicts);
       toast.success('PDF Generated', 'Official UP Byelaws 2025 audit report downloaded.');
     } catch (err) {
@@ -843,19 +662,18 @@ export const ComplianceAuditEngine: React.FC = () => {
               <h3 className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <span>Recent Audit Sessions (Last 5 Projects in LocalStorage)</span>
                 <span className="text-[10px] bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 font-mono px-2 py-0.2 rounded-full font-bold">
-                  {auditHistory.length}/5 Saved
+                  {savedProjects.length}/5 Saved
                 </span>
               </h3>
             </div>
           </div>
 
           <div className="flex items-center space-x-2">
-            {auditHistory.length > 0 && (
+            {savedProjects.length > 0 && (
               <button
                 onClick={() => {
-                  clearAuditHistory();
-                  setAuditHistory([]);
-                  toast.info('History Cleared', 'All previous session snapshots removed.');
+                  savedProjects.forEach((p) => deleteSnapshot(p.id));
+                  toast.info('Saved projects cleared', 'All snapshots removed from this device.');
                 }}
                 className="text-[11px] text-slate-400 hover:text-rose-500 transition-colors"
                 title="Clear all saved sessions"
@@ -874,7 +692,7 @@ export const ComplianceAuditEngine: React.FC = () => {
 
         {showHistoryPanel && (
           <>
-            {auditHistory.length === 0 ? (
+            {savedProjects.length === 0 ? (
               <div className="text-center py-4 bg-white dark:bg-slate-850 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400">
                 <FolderGit2 className="w-6 h-6 mx-auto mb-1 text-slate-400" />
                 <p className="font-medium">No saved audit sessions in local history yet.</p>
@@ -884,7 +702,7 @@ export const ComplianceAuditEngine: React.FC = () => {
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 pt-1">
-                {auditHistory.map((item) => (
+                {savedProjects.map((item) => (
                   <div
                     key={item.id}
                     className="bg-white dark:bg-slate-850 p-3 rounded-lg border border-slate-200 dark:border-slate-700 shadow-xs flex flex-col justify-between hover:border-emerald-500 dark:hover:border-emerald-500 transition-all group"
@@ -892,10 +710,10 @@ export const ComplianceAuditEngine: React.FC = () => {
                     <div className="space-y-1.5">
                       <div className="flex items-start justify-between gap-1">
                         <span className="font-bold text-xs text-slate-900 dark:text-white line-clamp-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
-                          {item.projectName}
+                          {item.name}
                         </span>
                         <button
-                          onClick={() => handleDeleteHistoryItem(item.id, item.projectName)}
+                          onClick={() => handleDeleteHistoryItem(item.id, item.name)}
                           className="text-slate-400 hover:text-rose-500 p-0.5 rounded transition-colors"
                           title="Delete this project session"
                         >

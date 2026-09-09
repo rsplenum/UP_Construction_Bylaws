@@ -1711,7 +1711,7 @@ export const MapServerExplorer: React.FC = () => {
       <SpatialDossierModal
         isOpen={isDossierOpen}
         onClose={() => setIsDossierOpen(false)}
-        audit={spatialAudit}
+        spatialAudit={spatialAudit}
       />
 
       {/* Strategic GIS Value & Utility Guide Modal */}

@@ -1,5 +1,10 @@
 import { AuditEngineState } from './auditStorage';
-import { HIGH_RISE_SETBACKS, PLOTTED_RESIDENTIAL_SETBACKS } from '../data/byelawsData';
+import {
+  HIGH_RISE_THRESHOLD_M,
+  PURCHASABLE_FAR_MIN_ROAD_WIDTH,
+  resolveBaseFar,
+  resolveRequiredSetbacks,
+} from '../domain';
 
 export type ConflictSeverity = 'fatal' | 'conflict' | 'prerequisite' | 'divergence';
 
@@ -44,7 +49,7 @@ export function evaluateLogicalConstraints(state: AuditEngineState): RegulatoryC
   } = state;
 
   // 1. High-Rise vs Road Width Constraint (Chapter 8.1 & 3.2.4)
-  const isHighRise = buildingHeight > 15;
+  const isHighRise = buildingHeight > HIGH_RISE_THRESHOLD_M;
   const minRoadForHighRise = occupancy === 'group_housing' || occupancy === 'commercial' ? 18 : 12;
 
   if (isHighRise && roadWidth < minRoadForHighRise) {
@@ -55,7 +60,7 @@ export function evaluateLogicalConstraints(state: AuditEngineState): RegulatoryC
       title: 'High-Rise Construction Prohibited on Sub-Standard Road',
       chapterRef: 'Chapter 8.1 & Chapter 3.2.4',
       byelawClause: 'Clause 8.1.2: Fire Egress and Access Road Width',
-      description: `Building height is ${buildingHeight}m (> 15m high-rise threshold), but abutting road width is ${roadWidth}m. Chapter 8 mandates a minimum ${minRoadForHighRise}m wide abutting road for hydraulic fire tender mobility.`,
+      description: `Building height is ${buildingHeight}m (above the 15m high-rise threshold), but abutting road width is ${roadWidth}m. Chapter 8 mandates a minimum ${minRoadForHighRise}m wide abutting road for hydraulic fire tender mobility.`,
       detectedValues: {
         fieldA: 'Building Height',
         valueA: `${buildingHeight}m`,
@@ -112,25 +117,16 @@ export function evaluateLogicalConstraints(state: AuditEngineState): RegulatoryC
     });
   }
 
-  // 4. Base FAR Calculation & Purchasable FAR Road Threshold (Chapter 9.2.1)
-  let baseFar = 1.5;
-  if (occupancy === 'single_unit') {
-    if (plotArea <= 100) baseFar = 2.0;
-    else if (plotArea <= 300) baseFar = (100 * 2.0 + (plotArea - 100) * 1.75) / plotArea;
-    else if (plotArea <= 500) baseFar = (100 * 2.0 + 200 * 1.75 + (plotArea - 300) * 1.5) / plotArea;
-    else baseFar = (100 * 2.0 + 200 * 1.75 + 200 * 1.5 + (plotArea - 500) * 1.25) / plotArea;
-  } else if (occupancy === 'multi_unit') {
-    baseFar = 1.75;
-  } else if (occupancy === 'group_housing') {
-    baseFar = 1.5;
-  } else if (occupancy === 'commercial') {
-    baseFar = roadWidth >= 18 ? 2.0 : 1.5;
-  }
+  // 4. Base FAR & purchasable FAR road threshold (Chapter 9.2.1)
+  // Resolved centrally: this file used to carry its own ladder that disagreed with the
+  // audit engine's by up to 0.22 FAR on the same plot.
+  const far = resolveBaseFar({ occupancy, plotArea, roadWidth, greenRating });
+  const baseFar = far.baseFar;
 
-  const basePermissibleArea = plotArea * baseFar;
+  const basePermissibleArea = far.effectiveBuiltUpArea;
   const isPurchasableFarNeeded = proposedBuiltUpArea > basePermissibleArea;
 
-  if (isPurchasableFarNeeded && roadWidth < 12) {
+  if (isPurchasableFarNeeded && roadWidth < PURCHASABLE_FAR_MIN_ROAD_WIDTH) {
     conflicts.push({
       id: 'purchasable_far_road_width',
       code: 'ERR-CH09-PURCHASABLE-ROAD',
@@ -151,18 +147,10 @@ export function evaluateLogicalConstraints(state: AuditEngineState): RegulatoryC
     });
   }
 
-  // 5. Maximum Capacity Envelope Exceeded (Base + Max Purchasable + Green Incentive)
-  let maxPurchasableRatio = 0;
-  if (roadWidth >= 24) maxPurchasableRatio = 1.0;
-  else if (roadWidth >= 18) maxPurchasableRatio = 0.75;
-  else if (roadWidth >= 12) maxPurchasableRatio = 0.5;
-
-  let greenBonusRatio = 0;
-  if (greenRating === 'platinum') greenBonusRatio = 0.07;
-  else if (greenRating === 'gold') greenBonusRatio = 0.05;
-  else if (greenRating === 'silver') greenBonusRatio = 0.03;
-
-  const totalMaxPermissibleArea = plotArea * (baseFar + maxPurchasableRatio + greenBonusRatio);
+  // 5. Absolute bulk ceiling (base + green incentive + purchasable), from the shared engine.
+  const totalMaxPermissibleArea = far.maxPermissibleBuiltUpArea;
+  const maxPurchasableRatio = far.purchasableFar;
+  const greenBonusRatio = far.greenBonusFraction;
 
   if (proposedBuiltUpArea > totalMaxPermissibleArea * 1.02) {
     conflicts.push({
@@ -207,31 +195,30 @@ export function evaluateLogicalConstraints(state: AuditEngineState): RegulatoryC
     });
   }
 
-  // 7. High-Rise Fire Progressive Setback Non-Compoundability (Chapter 16.3.2 & 8)
+  // 7. High-rise progressive fire setbacks are non-compoundable (Chapter 16.3.2 ii).
   if (isHighRise) {
-    // Find required high-rise setback from table
-    const hrRule = HIGH_RISE_SETBACKS.find((r) => buildingHeight >= r.minHeight && buildingHeight < r.maxHeight)
-      || HIGH_RISE_SETBACKS[HIGH_RISE_SETBACKS.length - 1];
-    const reqSetback = hrRule ? Math.max(hrRule.front, hrRule.rear, hrRule.side1, hrRule.side2) : 6.0;
-
+    const required = resolveRequiredSetbacks({ occupancy, plotArea, buildingHeight, isCornerPlot });
+    const reqSetback = Math.max(required.front, required.rear, required.side1, required.side2);
     const minProvided = Math.min(frontSetbackProvided, rearSetbackProvided, side1Provided, side2Provided);
+
     if (minProvided < reqSetback) {
       conflicts.push({
         id: 'high_rise_fire_setback_deficit',
         code: 'ERR-CH16-FIRE-SETBACK-FATAL',
         severity: 'fatal',
-        title: 'Non-Compoundable Fire Tender Setback Violation',
-        chapterRef: 'Chapter 8 & Chapter 16.3.2',
-        byelawClause: 'Clause 16.3.2 (ii): Non-Compoundable Building Deviations',
-        description: `Building height is ${buildingHeight}m, which mandates a continuous all-around open space of ${reqSetback}m for fire tender movement. Current minimum provided setback is ${minProvided}m. Chapter 16.3.2 strictly prohibits compounding of fire safety setbacks!`,
+        title: 'Non-compoundable fire tender setback violation',
+        chapterRef: 'Chapter 8 & Clause 16.3.2',
+        byelawClause: 'Clause 16.3.2 (ii): Non-compoundable building deviations',
+        description: `A height of ${buildingHeight}m falls in band "${required.bandLabel}", which mandates ${reqSetback}m of continuous open space for fire tender movement. The smallest setback provided is ${minProvided}m. Clause 16.3.2 bars compounding of fire safety setbacks at any fee.`,
         detectedValues: {
-          fieldA: 'Mandatory Fire Setback',
+          fieldA: 'Mandatory fire setback',
           valueA: `≥ ${reqSetback}m on all sides`,
-          fieldB: 'Minimum Provided Setback',
-          valueB: `${minProvided}m (Deficit: ${(reqSetback - minProvided).toFixed(1)}m)`,
+          fieldB: 'Minimum provided',
+          valueB: `${minProvided}m (deficit ${(reqSetback - minProvided).toFixed(1)}m)`,
         },
-        statutoryRuleSummary: 'Encroachment into statutory fire tender turning radii and progressive setbacks cannot be compounded under any compounding schedule.',
-        remedyActionTitle: `Set All 4 Setbacks to ${reqSetback}m`,
+        statutoryRuleSummary:
+          'Encroachment into statutory fire tender turning radii and progressive setbacks cannot be compounded under any schedule.',
+        remedyActionTitle: `Set all four setbacks to ${reqSetback}m`,
         autoFix: () => ({
           frontSetbackProvided: reqSetback,
           rearSetbackProvided: reqSetback,

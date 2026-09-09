@@ -598,7 +598,7 @@ export const ComplianceCalculators: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Calculator Mode Header */}
-      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-wrap gap-2">
+      <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-wrap gap-2 dark:bg-[#161617] dark:border-white/[0.10]">
         {[
           { id: 'far', label: '1. FAR & Ground Coverage', icon: Calculator },
           { id: 'pfar_fee', label: '2. Purchasable FAR Fee (Ch. 9)', icon: TrendingUp },
@@ -614,7 +614,7 @@ export const ComplianceCalculators: React.FC = () => {
               className={`flex items-center space-x-2 px-4 py-2.5 rounded-lg text-xs sm:text-sm font-semibold transition-all ${
                 isActive
                   ? 'bg-emerald-600 text-white shadow-sm'
-                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-white/[0.08] dark:text-slate-300 dark:hover:bg-white/[0.12]'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -628,19 +628,19 @@ export const ComplianceCalculators: React.FC = () => {
       {activeCalc === 'far' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* Controls */}
-          <div className="lg:col-span-5 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-            <h3 className="text-base font-bold text-slate-900 border-b pb-2">
+          <div className="lg:col-span-5 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4 dark:bg-[#161617] dark:border-white/[0.10]">
+            <h3 className="text-base font-bold text-slate-900 border-b pb-2 dark:text-white">
               Plot & Occupancy Parameters
             </h3>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                 Occupancy Category
               </label>
               <select
                 value={occupancyType}
                 onChange={(e) => setOccupancyType(e.target.value as any)}
-                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500"
+                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 dark:bg-white/[0.04] dark:border-white/[0.14] dark:text-slate-100"
               >
                 <option value="residential_plotted">Residential - Plotted (Single / Multi-unit)</option>
                 <option value="group_housing">Residential - Group Housing</option>
@@ -651,11 +651,11 @@ export const ComplianceCalculators: React.FC = () => {
 
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-xs font-semibold text-slate-700">
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
                   Plot Area (sq.m.)
                 </label>
                 {hasPlotAreaError && (
-                  <span className="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200 flex items-center gap-1">
+                  <span className="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200 flex items-center gap-1 dark:bg-rose-950/40 dark:border-rose-500/30">
                     <XCircle className="w-3 h-3" />
                     <span>Non-compliant</span>
                   </span>
@@ -666,24 +666,24 @@ export const ComplianceCalculators: React.FC = () => {
                 min="10"
                 value={plotArea}
                 onChange={(e) => setPlotArea(Number(e.target.value))}
-                className={`w-full bg-slate-50 border rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none transition-colors ${
+                className={`w-full bg-slate-50 border rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none transition-colors dark:bg-white/[0.04] dark:text-slate-100 ${
                   hasPlotAreaError
                     ? 'border-rose-500 ring-2 ring-rose-100 bg-rose-50/20'
-                    : 'border-slate-300 focus:border-emerald-500'
+                    : 'border-slate-300 focus:border-emerald-500 dark:border-white/[0.14]'
                 }`}
               />
-              <span className="text-[11px] text-slate-500 block mt-1">
+              <span className="text-[11px] text-slate-500 block mt-1 dark:text-slate-400">
                 Example: 280 sqm (Clause 3.2.2 telescopic standard).
               </span>
             </div>
 
             <div>
               <div className="flex items-center justify-between mb-1">
-                <label className="text-xs font-semibold text-slate-700">
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
                   Abutting Road Width (meters)
                 </label>
                 {hasRoadWidthError && (
-                  <span className="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200 flex items-center gap-1">
+                  <span className="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200 flex items-center gap-1 dark:bg-rose-950/40 dark:border-rose-500/30">
                     <XCircle className="w-3 h-3" />
                     <span>Width Barred</span>
                   </span>
@@ -692,10 +692,10 @@ export const ComplianceCalculators: React.FC = () => {
               <select
                 value={roadWidth}
                 onChange={(e) => setRoadWidth(Number(e.target.value))}
-                className={`w-full bg-slate-50 border rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none transition-colors ${
+                className={`w-full bg-slate-50 border rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none transition-colors dark:bg-white/[0.04] dark:text-slate-100 ${
                   hasRoadWidthError
                     ? 'border-rose-500 ring-2 ring-rose-100 bg-rose-50/20'
-                    : 'border-slate-300 focus:border-emerald-500'
+                    : 'border-slate-300 focus:border-emerald-500 dark:border-white/[0.14]'
                 }`}
               >
                 <option value={4}>4 meters (Substandard lane / Built-up lane)</option>
@@ -711,7 +711,7 @@ export const ComplianceCalculators: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                 Location Area Scheme
               </label>
               <div className="grid grid-cols-2 gap-2">
@@ -720,8 +720,8 @@ export const ComplianceCalculators: React.FC = () => {
                   onClick={() => setAreaCategory('built_up')}
                   className={`py-2 px-3 text-xs font-medium rounded-lg border transition-colors ${
                     areaCategory === 'built_up'
-                      ? 'bg-emerald-50 border-emerald-500 text-emerald-800 font-bold'
-                      : 'border-slate-300 text-slate-600 hover:bg-slate-50'
+                      ? 'bg-emerald-50 border-emerald-500 text-emerald-800 font-bold dark:bg-emerald-950/40 dark:text-emerald-300'
+                      : 'border-slate-300 text-slate-600 hover:bg-slate-50 dark:border-white/[0.14] dark:text-slate-400 dark:hover:bg-white/[0.06]'
                   }`}
                 >
                   Built-up Area
@@ -731,8 +731,8 @@ export const ComplianceCalculators: React.FC = () => {
                   onClick={() => setAreaCategory('non_built_up')}
                   className={`py-2 px-3 text-xs font-medium rounded-lg border transition-colors ${
                     areaCategory === 'non_built_up'
-                      ? 'bg-emerald-50 border-emerald-500 text-emerald-800 font-bold'
-                      : 'border-slate-300 text-slate-600 hover:bg-slate-50'
+                      ? 'bg-emerald-50 border-emerald-500 text-emerald-800 font-bold dark:bg-emerald-950/40 dark:text-emerald-300'
+                      : 'border-slate-300 text-slate-600 hover:bg-slate-50 dark:border-white/[0.14] dark:text-slate-400 dark:hover:bg-white/[0.06]'
                   }`}
                 >
                   Non-Built-up Area
@@ -741,13 +741,13 @@ export const ComplianceCalculators: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                 Green Building Certification (Chapter 9.3)
               </label>
               <select
                 value={greenRating}
                 onChange={(e) => setGreenRating(e.target.value as any)}
-                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500"
+                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 dark:bg-white/[0.04] dark:border-white/[0.14] dark:text-slate-100"
               >
                 <option value="none">None (Standard)</option>
                 <option value="silver">GRIHA 3-Star / IGBC Silver / LEED Silver (+3% Free FAR)</option>
@@ -760,21 +760,21 @@ export const ComplianceCalculators: React.FC = () => {
           {/* Results Display */}
           <div className="lg:col-span-7 space-y-4">
             {/* Real-time Validation Banner Card */}
-            <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 space-y-3">
+            <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 space-y-3 dark:bg-[#161617] dark:border-white/[0.10]">
               <div className="flex items-center justify-between border-b pb-2.5">
                 <div className="flex items-center space-x-2">
                   <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800 dark:text-slate-100">
                     2025 Statutory Validation & Rule Engine
                   </h4>
                 </div>
                 <span
                   className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
                     farValidationIssues.some((i) => i.severity === 'error')
-                      ? 'bg-rose-100 text-rose-800 border border-rose-200'
+                      ? 'bg-rose-100 text-rose-800 border border-rose-200 dark:text-rose-300 dark:border-rose-500/30'
                       : farValidationIssues.some((i) => i.severity === 'warning')
-                      ? 'bg-amber-100 text-amber-900 border border-amber-200'
-                      : 'bg-emerald-100 text-emerald-900 border border-emerald-200'
+                      ? 'bg-amber-100 text-amber-900 border border-amber-200 dark:text-amber-200 dark:border-amber-500/30'
+                      : 'bg-emerald-100 text-emerald-900 border border-emerald-200 dark:text-emerald-200 dark:border-emerald-500/30'
                   }`}
                 >
                   {farValidationIssues.some((i) => i.severity === 'error')
@@ -789,12 +789,12 @@ export const ComplianceCalculators: React.FC = () => {
                     key={issue.id}
                     className={`p-2.5 rounded-lg border text-xs flex items-start gap-2.5 ${
                       issue.severity === 'error'
-                        ? 'bg-rose-50/80 border-rose-200 text-rose-900'
+                        ? 'bg-rose-50/80 border-rose-200 text-rose-900 dark:border-rose-500/30 dark:text-rose-200'
                         : issue.severity === 'warning'
-                        ? 'bg-amber-50/80 border-amber-200 text-amber-900'
+                        ? 'bg-amber-50/80 border-amber-200 text-amber-900 dark:border-amber-500/30 dark:text-amber-200'
                         : issue.severity === 'info'
                         ? 'bg-sky-50/80 border-sky-200 text-sky-900'
-                        : 'bg-emerald-50/80 border-emerald-200 text-emerald-900'
+                        : 'bg-emerald-50/80 border-emerald-200 text-emerald-900 dark:border-emerald-500/30 dark:text-emerald-200'
                     }`}
                   >
                     {issue.severity === 'error' && (
@@ -826,61 +826,61 @@ export const ComplianceCalculators: React.FC = () => {
             </div>
 
             {/* Calculated Permissible FAR & Built-up Capacity */}
-            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
-              <h3 className="text-base font-bold text-slate-900 border-b pb-2">
+            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-5 dark:bg-[#161617] dark:border-white/[0.10]">
+              <h3 className="text-base font-bold text-slate-900 border-b pb-2 dark:text-white">
                 Calculated Permissible FAR & Built-up Capacity
               </h3>
 
               {occupancyType === 'residential_plotted' ? (
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                    <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-center">
-                      <span className="text-xs text-emerald-800 font-medium">Effective Base FAR</span>
+                    <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-center dark:bg-emerald-950/40 dark:border-emerald-500/30">
+                      <span className="text-xs text-emerald-800 font-medium dark:text-emerald-300">Effective Base FAR</span>
                       <div className="text-xl font-bold text-emerald-950 mt-0.5">
                         {calculatedPlottedFar.effectiveBaseFAR.toFixed(3)}
                       </div>
                     </div>
-                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg text-center">
-                      <span className="text-xs text-slate-600 font-medium">Base Floor Area</span>
-                      <div className="text-xl font-bold text-slate-900 mt-0.5">
-                        {calculatedPlottedFar.totalBaseBuiltUpArea.toFixed(1)} <span className="text-xs font-normal text-slate-500">sqm</span>
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg text-center dark:bg-white/[0.04] dark:border-white/[0.10]">
+                      <span className="text-xs text-slate-600 font-medium dark:text-slate-400">Base Floor Area</span>
+                      <div className="text-xl font-bold text-slate-900 mt-0.5 dark:text-white">
+                        {calculatedPlottedFar.totalBaseBuiltUpArea.toFixed(1)} <span className="text-xs font-normal text-slate-500 dark:text-slate-400">sqm</span>
                       </div>
                     </div>
-                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-center col-span-2 sm:col-span-1">
-                      <span className="text-xs text-blue-800 font-medium">Max FAR (with PFAR)</span>
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-center col-span-2 sm:col-span-1 dark:bg-blue-950/40 dark:border-blue-500/30">
+                      <span className="text-xs text-blue-800 font-medium dark:text-blue-300">Max FAR (with PFAR)</span>
                       <div className="text-xl font-bold text-blue-950 mt-0.5">
                         {calculatedPlottedFar.maxPermissibleFAR.toFixed(2)}
                       </div>
                     </div>
                   </div>
 
-                  <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
-                    <span className="text-xs font-bold text-slate-800 block">
+                  <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2 dark:bg-white/[0.04] dark:border-white/[0.10]">
+                    <span className="text-xs font-bold text-slate-800 block dark:text-slate-100">
                       Telescopic Slab Calculation Breakdown (Section 3.2.2 & 3.2.2.1):
                     </span>
-                    <div className="space-y-1.5 text-xs text-slate-700">
+                    <div className="space-y-1.5 text-xs text-slate-700 dark:text-slate-300">
                       {calculatedPlottedFar.slabs.map((st) => (
                         <div key={st.slabIndex} className="flex justify-between py-1 border-b border-slate-200/60 last:border-0">
                           <span>
                             {st.slabRange} ({st.slabPlotArea.toFixed(1)} sqm × {st.slabBaseFAR.toFixed(2)}):
                           </span>
-                          <span className="font-mono font-semibold text-slate-900">
+                          <span className="font-mono font-semibold text-slate-900 dark:text-white">
                             {st.slabBuiltUpArea.toFixed(1)} sqm
                           </span>
                         </div>
                       ))}
-                      <div className="flex justify-between pt-2 font-bold text-emerald-900 border-t border-slate-300">
+                      <div className="flex justify-between pt-2 font-bold text-emerald-900 border-t border-slate-300 dark:text-emerald-200 dark:border-white/[0.14]">
                         <span>Total Allowable Base Floor Area:</span>
                         <span className="font-mono">{calculatedPlottedFar.totalBaseBuiltUpArea.toFixed(1)} sqm</span>
                       </div>
-                      <div className="flex justify-between pt-1 text-blue-900 font-medium">
+                      <div className="flex justify-between pt-1 text-blue-900 font-medium dark:text-blue-200">
                         <span>Purchasable FAR Balance Available:</span>
                         <span className="font-mono">+{calculatedPlottedFar.purchasableAreaAvailable.toFixed(1)} sqm (FAR +{calculatedPlottedFar.purchasableFARCap.toFixed(3)})</span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="text-xs text-slate-600 space-y-1 bg-slate-50/70 p-3 rounded-lg border border-slate-200">
+                  <div className="text-xs text-slate-600 space-y-1 bg-slate-50/70 p-3 rounded-lg border border-slate-200 dark:text-slate-400 dark:border-white/[0.10]">
                     <p>
                       <strong>Prescribed Setbacks (Section 3.2.4.1):</strong> Front {plotArea <= 150 ? '1.0m' : plotArea <= 300 ? '3.0m' : plotArea <= 500 ? '4.5m' : '6.0m'}, Rear {plotArea <= 150 ? '0m' : plotArea <= 300 ? '1.5m' : '3.0m'}.
                     </p>
@@ -892,43 +892,43 @@ export const ComplianceCalculators: React.FC = () => {
               ) : occupancyType === 'group_housing' ? (
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                      <span className="text-xs text-slate-500 font-medium">Base FAR</span>
-                      <div className="text-xl font-bold text-slate-900 mt-0.5">{groupHousingFar.baseFar}</div>
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg dark:bg-white/[0.04] dark:border-white/[0.10]">
+                      <span className="text-xs text-slate-500 font-medium dark:text-slate-400">Base FAR</span>
+                      <div className="text-xl font-bold text-slate-900 mt-0.5 dark:text-white">{groupHousingFar.baseFar}</div>
                     </div>
-                    <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg">
-                      <span className="text-xs text-emerald-700 font-medium">Purchasable FAR</span>
-                      <div className="text-xl font-bold text-emerald-900 mt-0.5">+{groupHousingFar.pfar}</div>
+                    <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg dark:bg-emerald-950/40 dark:border-emerald-500/30">
+                      <span className="text-xs text-emerald-700 font-medium dark:text-emerald-300">Purchasable FAR</span>
+                      <div className="text-xl font-bold text-emerald-900 mt-0.5 dark:text-emerald-200">+{groupHousingFar.pfar}</div>
                     </div>
-                    <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-lg">
+                    <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-lg dark:bg-indigo-950/40">
                       <span className="text-xs text-indigo-700 font-medium">Premium PFAR</span>
                       <div className="text-xl font-bold text-indigo-900 mt-0.5">+{groupHousingFar.ppfar}</div>
                     </div>
-                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                      <span className="text-xs text-blue-700 font-medium">Max FAR (MFAR)</span>
-                      <div className="text-xl font-bold text-blue-900 mt-0.5">{groupHousingFar.maxFar}</div>
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg dark:bg-blue-950/40 dark:border-blue-500/30">
+                      <span className="text-xs text-blue-700 font-medium dark:text-blue-300">Max FAR (MFAR)</span>
+                      <div className="text-xl font-bold text-blue-900 mt-0.5 dark:text-blue-200">{groupHousingFar.maxFar}</div>
                     </div>
                   </div>
 
-                  <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 text-xs space-y-2">
+                  <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 text-xs space-y-2 dark:bg-white/[0.04] dark:border-white/[0.10]">
                     <div className="flex justify-between">
-                      <span className="text-slate-600">Statutory Matrix Bracket:</span>
-                      <span className="font-semibold text-slate-900">{groupHousingFar.rule.roadWidthRange}</span>
+                      <span className="text-slate-600 dark:text-slate-400">Statutory Matrix Bracket:</span>
+                      <span className="font-semibold text-slate-900 dark:text-white">{groupHousingFar.rule.roadWidthRange}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-600">Base Covered Floor Area:</span>
-                      <span className="font-bold text-slate-900 font-mono">{(plotArea * groupHousingFar.baseFar).toFixed(1)} sqm</span>
+                      <span className="text-slate-600 dark:text-slate-400">Base Covered Floor Area:</span>
+                      <span className="font-bold text-slate-900 font-mono dark:text-white">{(plotArea * groupHousingFar.baseFar).toFixed(1)} sqm</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-600">Potential Max Floor Area (at MFAR):</span>
-                      <span className="font-bold text-emerald-800 font-mono">
+                      <span className="text-slate-600 dark:text-slate-400">Potential Max Floor Area (at MFAR):</span>
+                      <span className="font-bold text-emerald-800 font-mono dark:text-emerald-300">
                         {typeof groupHousingFar.maxFar === 'number'
                           ? (plotArea * groupHousingFar.maxFar).toFixed(1) + ' sqm'
                           : 'Unrestricted (Subject to Setbacks & Height)'}
                       </span>
                     </div>
                     {groupHousingFar.greenBonusPercent > 0 && (
-                      <div className="flex justify-between text-emerald-700 font-semibold pt-1 border-t">
+                      <div className="flex justify-between text-emerald-700 font-semibold pt-1 border-t dark:text-emerald-300">
                         <span>Green Incentive ({groupHousingFar.greenBonusPercent}% free):</span>
                         <span>+{((plotArea * groupHousingFar.baseFar * groupHousingFar.greenBonusPercent) / 100).toFixed(1)} sqm</span>
                       </div>
@@ -938,64 +938,64 @@ export const ComplianceCalculators: React.FC = () => {
               ) : occupancyType === 'commercial' ? (
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
-                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                      <span className="text-xs text-slate-500 font-medium">Commercial Base FAR</span>
-                      <div className="text-xl font-bold text-slate-900 mt-0.5">{commercialRule.baseFar}</div>
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg dark:bg-white/[0.04] dark:border-white/[0.10]">
+                      <span className="text-xs text-slate-500 font-medium dark:text-slate-400">Commercial Base FAR</span>
+                      <div className="text-xl font-bold text-slate-900 mt-0.5 dark:text-white">{commercialRule.baseFar}</div>
                     </div>
-                    <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg">
-                      <span className="text-xs text-emerald-700 font-medium">Purchasable FAR</span>
-                      <div className="text-xl font-bold text-emerald-900 mt-0.5">+{commercialRule.purchasableFar}</div>
+                    <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg dark:bg-emerald-950/40 dark:border-emerald-500/30">
+                      <span className="text-xs text-emerald-700 font-medium dark:text-emerald-300">Purchasable FAR</span>
+                      <div className="text-xl font-bold text-emerald-900 mt-0.5 dark:text-emerald-200">+{commercialRule.purchasableFar}</div>
                     </div>
-                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg col-span-2 sm:col-span-1">
-                      <span className="text-xs text-blue-700 font-medium">Max FAR Allowed</span>
-                      <div className="text-xl font-bold text-blue-900 mt-0.5">
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg col-span-2 sm:col-span-1 dark:bg-blue-950/40 dark:border-blue-500/30">
+                      <span className="text-xs text-blue-700 font-medium dark:text-blue-300">Max FAR Allowed</span>
+                      <div className="text-xl font-bold text-blue-900 mt-0.5 dark:text-blue-200">
                         {commercialRule.maxFar >= 999 ? 'Unrestricted (UR)' : commercialRule.maxFar}
                       </div>
                     </div>
                   </div>
 
-                  <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 text-xs space-y-2">
+                  <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 text-xs space-y-2 dark:bg-white/[0.04] dark:border-white/[0.10]">
                     <div className="flex justify-between">
-                      <span className="text-slate-600">Road Width Category:</span>
-                      <span className="font-semibold text-slate-900">{commercialRule.roadWidthRange}</span>
+                      <span className="text-slate-600 dark:text-slate-400">Road Width Category:</span>
+                      <span className="font-semibold text-slate-900 dark:text-white">{commercialRule.roadWidthRange}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-600">Applicable Building Class:</span>
-                      <span className="font-semibold text-slate-900">{commercialRule.category}</span>
+                      <span className="text-slate-600 dark:text-slate-400">Applicable Building Class:</span>
+                      <span className="font-semibold text-slate-900 dark:text-white">{commercialRule.category}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-slate-600">Base Covered Floor Area:</span>
-                      <span className="font-bold text-slate-900 font-mono">{(plotArea * commercialRule.baseFar).toFixed(1)} sqm</span>
+                      <span className="text-slate-600 dark:text-slate-400">Base Covered Floor Area:</span>
+                      <span className="font-bold text-slate-900 font-mono dark:text-white">{(plotArea * commercialRule.baseFar).toFixed(1)} sqm</span>
                     </div>
-                    <p className="text-slate-500 pt-2 border-t text-[11px]">
+                    <p className="text-slate-500 pt-2 border-t text-[11px] dark:text-slate-400">
                       {commercialRule.notes}
                     </p>
                   </div>
                 </div>
               ) : (
-                <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-200 text-xs space-y-3">
+                <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-200 text-xs space-y-3 dark:bg-emerald-950/40 dark:border-emerald-500/30">
                   <span className="font-bold text-emerald-950 text-sm block">
                     Transit-Oriented Development (TOD Zone) FAR Multipliers
                   </span>
-                  <p className="text-emerald-900">
+                  <p className="text-emerald-900 dark:text-emerald-200">
                     Under Chapter 8.2.2.2, TOD zones receive enhanced FAR based on right of way:
                   </p>
                   <div className="grid grid-cols-2 gap-2 text-center">
-                    <div className="bg-white p-2.5 rounded border border-emerald-300">
-                      <div className="text-xs text-slate-500">12m Road</div>
-                      <div className="text-base font-bold text-emerald-800">150% of Base FAR</div>
+                    <div className="bg-white p-2.5 rounded border border-emerald-300 dark:bg-[#161617]">
+                      <div className="text-xs text-slate-500 dark:text-slate-400">12m Road</div>
+                      <div className="text-base font-bold text-emerald-800 dark:text-emerald-300">150% of Base FAR</div>
                     </div>
-                    <div className="bg-white p-2.5 rounded border border-emerald-300">
-                      <div className="text-xs text-slate-500">12 - 24m Road</div>
-                      <div className="text-base font-bold text-emerald-800">250% of Base FAR</div>
+                    <div className="bg-white p-2.5 rounded border border-emerald-300 dark:bg-[#161617]">
+                      <div className="text-xs text-slate-500 dark:text-slate-400">12 - 24m Road</div>
+                      <div className="text-base font-bold text-emerald-800 dark:text-emerald-300">250% of Base FAR</div>
                     </div>
-                    <div className="bg-white p-2.5 rounded border border-emerald-300">
-                      <div className="text-xs text-slate-500">24 - 45m Road</div>
-                      <div className="text-base font-bold text-emerald-800">350% of Base FAR</div>
+                    <div className="bg-white p-2.5 rounded border border-emerald-300 dark:bg-[#161617]">
+                      <div className="text-xs text-slate-500 dark:text-slate-400">24 - 45m Road</div>
+                      <div className="text-base font-bold text-emerald-800 dark:text-emerald-300">350% of Base FAR</div>
                     </div>
-                    <div className="bg-white p-2.5 rounded border border-emerald-300">
-                      <div className="text-xs text-slate-500">&gt; 45m Road</div>
-                      <div className="text-base font-bold text-emerald-800">Unrestricted</div>
+                    <div className="bg-white p-2.5 rounded border border-emerald-300 dark:bg-[#161617]">
+                      <div className="text-xs text-slate-500 dark:text-slate-400">&gt; 45m Road</div>
+                      <div className="text-base font-bold text-emerald-800 dark:text-emerald-300">Unrestricted</div>
                     </div>
                   </div>
                 </div>
@@ -1004,31 +1004,31 @@ export const ComplianceCalculators: React.FC = () => {
           </div>
 
           {/* Visual Sensitivity Analysis Chart (Recharts) */}
-          <div className="lg:col-span-12 bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+          <div className="lg:col-span-12 bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4 dark:bg-[#161617] dark:border-white/[0.10]">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-3">
               <div className="space-y-0.5">
                 <div className="flex items-center space-x-2">
-                  <div className="w-6 h-6 rounded bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold">
+                  <div className="w-6 h-6 rounded bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold dark:bg-indigo-950/40">
                     <BarChart3 className="w-3.5 h-3.5" />
                   </div>
-                  <h4 className="text-sm font-bold text-slate-900">
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">
                     Statutory FAR Sensitivity Analysis & Parameter Impact Modeling
                   </h4>
                 </div>
-                <p className="text-xs text-slate-500">
+                <p className="text-xs text-slate-500 dark:text-slate-400">
                   Visual simulation showing how changing road width, land-use classification, or plot size directly scales total permissible FAR under UP Byelaws 2025.
                 </p>
               </div>
 
               {/* Sensitivity Mode Toggles */}
-              <div className="flex items-center p-1 bg-slate-100 rounded-lg space-x-1 text-xs self-start sm:self-center">
+              <div className="flex items-center p-1 bg-slate-100 rounded-lg space-x-1 text-xs self-start sm:self-center dark:bg-white/[0.08]">
                 <button
                   type="button"
                   onClick={() => setSensitivityMode('road_width')}
                   className={`px-2.5 py-1 rounded-md font-medium transition-all ${
                     sensitivityMode === 'road_width'
-                      ? 'bg-white text-indigo-700 font-bold shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'bg-white text-indigo-700 font-bold shadow-xs dark:bg-[#161617]'
+                      : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
                   }`}
                 >
                   Road Width Sensitivity
@@ -1038,8 +1038,8 @@ export const ComplianceCalculators: React.FC = () => {
                   onClick={() => setSensitivityMode('land_use')}
                   className={`px-2.5 py-1 rounded-md font-medium transition-all ${
                     sensitivityMode === 'land_use'
-                      ? 'bg-white text-indigo-700 font-bold shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'bg-white text-indigo-700 font-bold shadow-xs dark:bg-[#161617]'
+                      : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
                   }`}
                 >
                   Land-Use Comparison
@@ -1049,8 +1049,8 @@ export const ComplianceCalculators: React.FC = () => {
                   onClick={() => setSensitivityMode('plot_telescopic')}
                   className={`px-2.5 py-1 rounded-md font-medium transition-all ${
                     sensitivityMode === 'plot_telescopic'
-                      ? 'bg-white text-indigo-700 font-bold shadow-xs'
-                      : 'text-slate-600 hover:text-slate-900'
+                      ? 'bg-white text-indigo-700 font-bold shadow-xs dark:bg-[#161617]'
+                      : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
                   }`}
                 >
                   Plot Telescopic Curve
@@ -1064,16 +1064,16 @@ export const ComplianceCalculators: React.FC = () => {
                 <Sliders className="w-3.5 h-3.5" />
                 <span>Current Plot Configuration:</span>
               </span>
-              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium">
+              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium dark:bg-[#161617]">
                 Road: <strong>{roadWidth}m</strong>
               </span>
-              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium">
+              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium dark:bg-[#161617]">
                 Plot: <strong>{plotArea} m²</strong>
               </span>
-              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium">
+              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium dark:bg-[#161617]">
                 Area: <strong>{areaCategory === 'built_up' ? 'Built-up Area' : 'Non-Built-up Area'}</strong>
               </span>
-              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium">
+              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium dark:bg-[#161617]">
                 Occupancy: <strong>{occupancyType.replace('_', ' ').toUpperCase()}</strong>
               </span>
             </div>
@@ -1101,7 +1101,7 @@ export const ComplianceCalculators: React.FC = () => {
                       content={({ active, payload, label }) => {
                         if (active && payload && payload.length) {
                           return (
-                            <div className="bg-slate-900 text-white p-3 rounded-lg shadow-xl border border-slate-700 text-xs space-y-1">
+                            <div className="bg-slate-900 text-white p-3 rounded-lg shadow-xl border border-slate-700 text-xs space-y-1 dark:bg-black">
                               <p className="font-bold text-slate-200 border-b border-slate-700 pb-1">
                                 Road Width: {label}
                               </p>
@@ -1113,7 +1113,7 @@ export const ComplianceCalculators: React.FC = () => {
                                   <span className="font-mono font-bold">{entry.value}</span>
                                 </div>
                               ))}
-                              <p className="text-[10px] text-slate-400 pt-1 border-t border-slate-800">
+                              <p className="text-[10px] text-slate-400 pt-1 border-t border-slate-800 dark:text-slate-500">
                                 Evaluated in {areaCategory === 'built_up' ? 'Built-up' : 'Non-Built-up'} zone.
                               </p>
                             </div>
@@ -1198,7 +1198,7 @@ export const ComplianceCalculators: React.FC = () => {
                         if (active && payload && payload.length) {
                           const dataItem = payload[0]?.payload;
                           return (
-                            <div className="bg-slate-900 text-white p-3 rounded-lg shadow-xl border border-slate-700 text-xs space-y-1">
+                            <div className="bg-slate-900 text-white p-3 rounded-lg shadow-xl border border-slate-700 text-xs space-y-1 dark:bg-black">
                               <p className="font-bold text-slate-200 border-b border-slate-700 pb-1">
                                 {label} {dataItem?.active && '(Selected Project)'}
                               </p>
@@ -1214,7 +1214,7 @@ export const ComplianceCalculators: React.FC = () => {
                                 <span>Total Permissible:</span>
                                 <span className="font-mono">{dataItem?.totalFAR}</span>
                               </div>
-                              <p className="text-[10px] text-slate-400">
+                              <p className="text-[10px] text-slate-400 dark:text-slate-500">
                                 Statutory Cap: {dataItem?.statutoryCap} on {roadWidth}m Road
                               </p>
                             </div>
@@ -1277,7 +1277,7 @@ export const ComplianceCalculators: React.FC = () => {
                         if (active && payload && payload.length) {
                           const item = payload[0]?.payload;
                           return (
-                            <div className="bg-slate-900 text-white p-3 rounded-lg shadow-xl border border-slate-700 text-xs space-y-1">
+                            <div className="bg-slate-900 text-white p-3 rounded-lg shadow-xl border border-slate-700 text-xs space-y-1 dark:bg-black">
                               <p className="font-bold text-amber-400 border-b border-slate-700 pb-1">
                                 Plot Area: {label}
                               </p>
@@ -1293,7 +1293,7 @@ export const ComplianceCalculators: React.FC = () => {
                                 <span>Statutory Max FAR:</span>
                                 <span className="font-mono">2.00</span>
                               </div>
-                              <p className="text-[10px] text-slate-400">
+                              <p className="text-[10px] text-slate-400 dark:text-slate-500">
                                 As per Section 3.2.2 & 3.2.2.1 Slabs
                               </p>
                             </div>
@@ -1334,7 +1334,7 @@ export const ComplianceCalculators: React.FC = () => {
                 </ResponsiveContainer>
               )}
             </div>
-            <p className="text-[11px] text-slate-500 italic pt-1 text-center">
+            <p className="text-[11px] text-slate-500 italic pt-1 text-center dark:text-slate-400">
               * Data dynamically synchronized with Section 3.2.2 (Residential), Section 3.2.2.2 & 4.2.8 (Group Housing), Section 5.2.5 (Commercial), and Chapter 8 (TOD).
             </p>
           </div>
@@ -1344,19 +1344,19 @@ export const ComplianceCalculators: React.FC = () => {
       {/* CALC 2: PURCHASABLE FAR FEE (CHAPTER 9) */}
       {activeCalc === 'pfar_fee' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-5 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-            <h3 className="text-base font-bold text-slate-900 border-b pb-2">
+          <div className="lg:col-span-5 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4 dark:bg-[#161617] dark:border-white/[0.10]">
+            <h3 className="text-base font-bold text-slate-900 border-b pb-2 dark:text-white">
               Purchasable FAR Parameters (Formula: C = Le × Rc × P)
             </h3>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                 Land Use Category (P Factor)
               </label>
               <select
                 value={factorCat}
                 onChange={(e) => setFactorCat(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500"
+                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 dark:bg-white/[0.04] dark:border-white/[0.14] dark:text-slate-100"
               >
                 {PURCHASABLE_FAR_FACTORS.map((f, idx) => (
                   <option key={idx} value={f.category}>
@@ -1367,20 +1367,20 @@ export const ComplianceCalculators: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                 Plot Area (sqm)
               </label>
               <input
                 type="number"
                 value={feePlotArea}
                 onChange={(e) => setFeePlotArea(Number(e.target.value))}
-                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500"
+                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 dark:bg-white/[0.04] dark:border-white/[0.14] dark:text-slate-100"
               />
             </div>
 
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                   Base FAR
                 </label>
                 <input
@@ -1388,11 +1388,11 @@ export const ComplianceCalculators: React.FC = () => {
                   step="0.05"
                   value={feeBaseFar}
                   onChange={(e) => setFeeBaseFar(Number(e.target.value))}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 dark:bg-white/[0.04] dark:border-white/[0.14] dark:text-slate-100"
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                   Circle Rate (Rs/sqm)
                 </label>
                 <input
@@ -1400,14 +1400,14 @@ export const ComplianceCalculators: React.FC = () => {
                   step="1000"
                   value={circleRate}
                   onChange={(e) => setCircleRate(Number(e.target.value))}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 dark:bg-white/[0.04] dark:border-white/[0.14] dark:text-slate-100"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                   Purchasable FAR (PFAR)
                 </label>
                 <input
@@ -1415,11 +1415,11 @@ export const ComplianceCalculators: React.FC = () => {
                   step="0.1"
                   value={feePfarVal}
                   onChange={(e) => setFeePfarVal(Number(e.target.value))}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 dark:bg-white/[0.04] dark:border-white/[0.14] dark:text-slate-100"
                 />
               </div>
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                   Premium PFAR (PPFAR)
                 </label>
                 <input
@@ -1427,60 +1427,60 @@ export const ComplianceCalculators: React.FC = () => {
                   step="0.1"
                   value={feePpfarVal}
                   onChange={(e) => setFeePpfarVal(Number(e.target.value))}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500"
+                  className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 dark:bg-white/[0.04] dark:border-white/[0.14] dark:text-slate-100"
                 />
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-7 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-            <h3 className="text-base font-bold text-slate-900 border-b pb-2">
+          <div className="lg:col-span-7 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4 dark:bg-[#161617] dark:border-white/[0.10]">
+            <h3 className="text-base font-bold text-slate-900 border-b pb-2 dark:text-white">
               Fee Calculation Summary (Chapter 9.2.5 Example Match)
             </h3>
 
-            <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
-              <span className="text-xs text-emerald-800 font-bold uppercase tracking-wider">
+            <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl dark:bg-emerald-950/40 dark:border-emerald-500/30">
+              <span className="text-xs text-emerald-800 font-bold uppercase tracking-wider dark:text-emerald-300">
                 Total Purchasable FAR Fee Payable
               </span>
               <div className="text-2xl sm:text-3xl font-extrabold text-emerald-950 mt-1 font-mono">
                 ₹ {pfarFeeResult.totalCharge.toLocaleString('en-IN')}
               </div>
-              <span className="text-xs text-emerald-700 mt-1 block">
+              <span className="text-xs text-emerald-700 mt-1 block dark:text-emerald-300">
                 Matches exact methodology from Page 112 of the official Gazette!
               </span>
             </div>
 
             <div className="space-y-3 text-xs">
-              <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
-                <span className="font-bold text-slate-900 block">1. Purchasable FAR (PFAR):</span>
-                <div className="flex justify-between text-slate-600">
+              <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1 dark:bg-white/[0.04] dark:border-white/[0.10]">
+                <span className="font-bold text-slate-900 block dark:text-white">1. Purchasable FAR (PFAR):</span>
+                <div className="flex justify-between text-slate-600 dark:text-slate-400">
                   <span>Additional Floor Area (FP = Plot × FAR):</span>
                   <span className="font-mono font-semibold">{pfarFeeResult.fpPfar.toLocaleString()} sqm</span>
                 </div>
-                <div className="flex justify-between text-slate-600">
+                <div className="flex justify-between text-slate-600 dark:text-slate-400">
                   <span>Proportional Land (Le = FP ÷ Base FAR):</span>
                   <span className="font-mono font-semibold">{pfarFeeResult.lePfar.toFixed(1)} sqm</span>
                 </div>
-                <div className="flex justify-between text-slate-900 font-semibold border-t pt-1">
+                <div className="flex justify-between text-slate-900 font-semibold border-t pt-1 dark:text-white">
                   <span>Charge (Le × Rc × {pfarFeeResult.factorPfar}):</span>
-                  <span className="font-mono text-emerald-800">₹ {pfarFeeResult.chargePfar.toLocaleString('en-IN')}</span>
+                  <span className="font-mono text-emerald-800 dark:text-emerald-300">₹ {pfarFeeResult.chargePfar.toLocaleString('en-IN')}</span>
                 </div>
               </div>
 
               {pfarFeeResult.chargePpfar > 0 && (
-                <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1">
-                  <span className="font-bold text-slate-900 block">2. Premium Purchasable FAR (PPFAR):</span>
-                  <div className="flex justify-between text-slate-600">
+                <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 space-y-1 dark:bg-white/[0.04] dark:border-white/[0.10]">
+                  <span className="font-bold text-slate-900 block dark:text-white">2. Premium Purchasable FAR (PPFAR):</span>
+                  <div className="flex justify-between text-slate-600 dark:text-slate-400">
                     <span>Additional Floor Area:</span>
                     <span className="font-mono font-semibold">{pfarFeeResult.fpPpfar.toLocaleString()} sqm</span>
                   </div>
-                  <div className="flex justify-between text-slate-600">
+                  <div className="flex justify-between text-slate-600 dark:text-slate-400">
                     <span>Proportional Land:</span>
                     <span className="font-mono font-semibold">{pfarFeeResult.lePpfar.toFixed(1)} sqm</span>
                   </div>
-                  <div className="flex justify-between text-slate-900 font-semibold border-t pt-1">
+                  <div className="flex justify-between text-slate-900 font-semibold border-t pt-1 dark:text-white">
                     <span>Charge (Le × Rc × {pfarFeeResult.factorPpfar}):</span>
-                    <span className="font-mono text-emerald-800">₹ {pfarFeeResult.chargePpfar.toLocaleString('en-IN')}</span>
+                    <span className="font-mono text-emerald-800 dark:text-emerald-300">₹ {pfarFeeResult.chargePpfar.toLocaleString('en-IN')}</span>
                   </div>
                 </div>
               )}
@@ -1492,19 +1492,19 @@ export const ComplianceCalculators: React.FC = () => {
       {/* CALC 3: PARKING & EVCI */}
       {activeCalc === 'parking' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-5 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-            <h3 className="text-base font-bold text-slate-900 border-b pb-2">
+          <div className="lg:col-span-5 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4 dark:bg-[#161617] dark:border-white/[0.10]">
+            <h3 className="text-base font-bold text-slate-900 border-b pb-2 dark:text-white">
               Occupancy & Parking Dimensions
             </h3>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                 Facility Type
               </label>
               <select
                 value={parkingOccupancy}
                 onChange={(e) => setParkingOccupancy(e.target.value as any)}
-                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500"
+                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 dark:bg-white/[0.04] dark:border-white/[0.14] dark:text-slate-100"
               >
                 <option value="residential_units">Residential Group Housing (By Dwelling Unit sizes)</option>
                 <option value="commercial_floor">Commercial Complex (2 ECS / 100 sqm)</option>
@@ -1517,39 +1517,39 @@ export const ComplianceCalculators: React.FC = () => {
             {parkingOccupancy === 'residential_units' && (
               <div className="space-y-3 pt-2">
                 <div>
-                  <label className="block text-xs text-slate-600">Units ≤ 50 sqm (2 sqm/DU)</label>
+                  <label className="block text-xs text-slate-600 dark:text-slate-400">Units ≤ 50 sqm (2 sqm/DU)</label>
                   <input
                     type="number"
                     value={unitsSmall}
                     onChange={(e) => setUnitsSmall(Number(e.target.value))}
-                    className="w-full bg-slate-50 border rounded p-2 text-xs"
+                    className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-600">Units 50 - 100 sqm (1.00 ECS/DU)</label>
+                  <label className="block text-xs text-slate-600 dark:text-slate-400">Units 50 - 100 sqm (1.00 ECS/DU)</label>
                   <input
                     type="number"
                     value={unitsMedium}
                     onChange={(e) => setUnitsMedium(Number(e.target.value))}
-                    className="w-full bg-slate-50 border rounded p-2 text-xs"
+                    className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-600">Units 100 - 150 sqm (1.25 ECS/DU)</label>
+                  <label className="block text-xs text-slate-600 dark:text-slate-400">Units 100 - 150 sqm (1.25 ECS/DU)</label>
                   <input
                     type="number"
                     value={unitsLarge}
                     onChange={(e) => setUnitsLarge(Number(e.target.value))}
-                    className="w-full bg-slate-50 border rounded p-2 text-xs"
+                    className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-600">Units &gt; 150 sqm (1.50 ECS/DU)</label>
+                  <label className="block text-xs text-slate-600 dark:text-slate-400">Units &gt; 150 sqm (1.50 ECS/DU)</label>
                   <input
                     type="number"
                     value={unitsXLarge}
                     onChange={(e) => setUnitsXLarge(Number(e.target.value))}
-                    className="w-full bg-slate-50 border rounded p-2 text-xs"
+                    className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
               </div>
@@ -1557,14 +1557,14 @@ export const ComplianceCalculators: React.FC = () => {
 
             {(parkingOccupancy === 'commercial_floor' || parkingOccupancy === 'mall') && (
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                   Floor Area (sqm)
                 </label>
                 <input
                   type="number"
                   value={commercialFloorArea}
                   onChange={(e) => setCommercialFloorArea(Number(e.target.value))}
-                  className="w-full bg-slate-50 border rounded p-2 text-xs"
+                  className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                 />
               </div>
             )}
@@ -1572,21 +1572,21 @@ export const ComplianceCalculators: React.FC = () => {
             {parkingOccupancy === 'hospital' && (
               <div className="space-y-3">
                 <div>
-                  <label className="block text-xs text-slate-600">Total Floor Area (sqm)</label>
+                  <label className="block text-xs text-slate-600 dark:text-slate-400">Total Floor Area (sqm)</label>
                   <input
                     type="number"
                     value={hospitalFloorArea}
                     onChange={(e) => setHospitalFloorArea(Number(e.target.value))}
-                    className="w-full bg-slate-50 border rounded p-2 text-xs"
+                    className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-600">Number of Beds</label>
+                  <label className="block text-xs text-slate-600 dark:text-slate-400">Number of Beds</label>
                   <input
                     type="number"
                     value={hospitalBeds}
                     onChange={(e) => setHospitalBeds(Number(e.target.value))}
-                    className="w-full bg-slate-50 border rounded p-2 text-xs"
+                    className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
               </div>
@@ -1595,61 +1595,61 @@ export const ComplianceCalculators: React.FC = () => {
             {parkingOccupancy === 'school' && (
               <div className="space-y-3">
                 <div>
-                  <label className="block text-xs text-slate-600">Total Built-up Area (sqm)</label>
+                  <label className="block text-xs text-slate-600 dark:text-slate-400">Total Built-up Area (sqm)</label>
                   <input
                     type="number"
                     value={schoolBuiltUp}
                     onChange={(e) => setSchoolBuiltUp(Number(e.target.value))}
-                    className="w-full bg-slate-50 border rounded p-2 text-xs"
+                    className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs text-slate-600">Student Capacity</label>
+                  <label className="block text-xs text-slate-600 dark:text-slate-400">Student Capacity</label>
                   <input
                     type="number"
                     value={schoolStudents}
                     onChange={(e) => setSchoolStudents(Number(e.target.value))}
-                    className="w-full bg-slate-50 border rounded p-2 text-xs"
+                    className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
               </div>
             )}
           </div>
 
-          <div className="lg:col-span-7 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-            <h3 className="text-base font-bold text-slate-900 border-b pb-2">
+          <div className="lg:col-span-7 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4 dark:bg-[#161617] dark:border-white/[0.10]">
+            <h3 className="text-base font-bold text-slate-900 border-b pb-2 dark:text-white">
               Parking & EVCI Provision Requirement
             </h3>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
-              <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                <span className="text-xs text-blue-700 font-medium">Total ECS Required</span>
+              <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg dark:bg-blue-950/40 dark:border-blue-500/30">
+                <span className="text-xs text-blue-700 font-medium dark:text-blue-300">Total ECS Required</span>
                 <div className="text-2xl font-bold text-blue-950 mt-1">{parkingResult.finalEcs}</div>
               </div>
-              <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg">
-                <span className="text-xs text-amber-700 font-medium">EV Share (20%)</span>
+              <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg dark:bg-amber-950/40 dark:border-amber-500/30">
+                <span className="text-xs text-amber-700 font-medium dark:text-amber-300">EV Share (20%)</span>
                 <div className="text-2xl font-bold text-amber-950 mt-1">{parkingResult.evCapacity} bays</div>
               </div>
-              <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg col-span-2 sm:col-span-1">
-                <span className="text-xs text-emerald-700 font-medium">Power Load (+1.25 SF)</span>
+              <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg col-span-2 sm:col-span-1 dark:bg-emerald-950/40 dark:border-emerald-500/30">
+                <span className="text-xs text-emerald-700 font-medium dark:text-emerald-300">Power Load (+1.25 SF)</span>
                 <div className="text-2xl font-bold text-emerald-950 mt-1">~{parkingResult.estimatedLoadKw} kW</div>
               </div>
             </div>
 
-            <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 text-xs space-y-2">
-              <span className="font-bold text-slate-900 block">Required EV Chargers Breakdown (Chapter 17.1.2):</span>
+            <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 text-xs space-y-2 dark:bg-white/[0.04] dark:border-white/[0.10]">
+              <span className="font-bold text-slate-900 block dark:text-white">Required EV Chargers Breakdown (Chapter 17.1.2):</span>
               <div className="flex justify-between">
                 <span>Slow AC Chargers (1 per 3 EVs):</span>
-                <span className="font-bold text-slate-800">{parkingResult.slowChargers} units</span>
+                <span className="font-bold text-slate-800 dark:text-slate-100">{parkingResult.slowChargers} units</span>
               </div>
               <div className="flex justify-between">
                 <span>Fast DC Chargers (1 per 10 EVs):</span>
-                <span className="font-bold text-slate-800">{parkingResult.fastChargers} units</span>
+                <span className="font-bold text-slate-800 dark:text-slate-100">{parkingResult.fastChargers} units</span>
               </div>
             </div>
 
             {parkingResult.extraNotes.length > 0 && (
-              <div className="p-3 bg-blue-50/60 rounded-lg border border-blue-100 text-xs text-blue-900 space-y-1">
+              <div className="p-3 bg-blue-50/60 rounded-lg border border-blue-100 text-xs text-blue-900 space-y-1 dark:text-blue-200">
                 {parkingResult.extraNotes.map((note, i) => (
                   <p key={i} className="flex items-center gap-1.5">
                     <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
@@ -1665,13 +1665,13 @@ export const ComplianceCalculators: React.FC = () => {
       {/* CALC 4: COMPOUNDING FEE & ELIGIBILITY */}
       {activeCalc === 'compounding' && (
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-5 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-            <h3 className="text-base font-bold text-slate-900 border-b pb-2">
+          <div className="lg:col-span-5 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4 dark:bg-[#161617] dark:border-white/[0.10]">
+            <h3 className="text-base font-bold text-slate-900 border-b pb-2 dark:text-white">
               Compounding Assessment (Chapter 16)
             </h3>
 
             {/* Ineligibility checks */}
-            <div className="p-3 bg-rose-50 border border-rose-200 rounded-lg space-y-2 text-xs text-rose-900">
+            <div className="p-3 bg-rose-50 border border-rose-200 rounded-lg space-y-2 text-xs text-rose-900 dark:bg-rose-950/40 dark:border-rose-500/30 dark:text-rose-200">
               <span className="font-bold flex items-center gap-1">
                 <AlertTriangle className="w-3.5 h-3.5 text-rose-600" />
                 <span>Statutory Disqualifications (Clause 16.3.2):</span>
@@ -1706,13 +1706,13 @@ export const ComplianceCalculators: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                 Building Use
               </label>
               <select
                 value={compUse}
                 onChange={(e) => setCompUse(e.target.value as any)}
-                className="w-full bg-slate-50 border rounded p-2 text-xs"
+                className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
               >
                 <option value="residential">Residential</option>
                 <option value="commercial">Commercial (Higher penalty multipliers)</option>
@@ -1721,79 +1721,79 @@ export const ComplianceCalculators: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                 Applicable Circle Rate (Rs/sqm)
               </label>
               <input
                 type="number"
                 value={compLandPrice}
                 onChange={(e) => setCompLandPrice(Number(e.target.value))}
-                className="w-full bg-slate-50 border rounded p-2 text-xs"
+                className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
               />
             </div>
 
             <div className="space-y-2 pt-2 border-t text-xs">
-              <span className="font-bold text-slate-800 block">Deviations to be Compounded:</span>
+              <span className="font-bold text-slate-800 block dark:text-slate-100">Deviations to be Compounded:</span>
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="block text-slate-600">Front Setback (sqm)</label>
+                  <label className="block text-slate-600 dark:text-slate-400">Front Setback (sqm)</label>
                   <input
                     type="number"
                     value={frontEncroachSqm}
                     onChange={(e) => setFrontEncroachSqm(Number(e.target.value))}
-                    className="w-full bg-slate-50 border rounded p-1.5"
+                    className="w-full bg-slate-50 border rounded p-1.5 dark:bg-white/[0.04]"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-600">Side Setback (sqm)</label>
+                  <label className="block text-slate-600 dark:text-slate-400">Side Setback (sqm)</label>
                   <input
                     type="number"
                     value={sideEncroachSqm}
                     onChange={(e) => setSideEncroachSqm(Number(e.target.value))}
-                    className="w-full bg-slate-50 border rounded p-1.5"
+                    className="w-full bg-slate-50 border rounded p-1.5 dark:bg-white/[0.04]"
                   />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="block text-slate-600">Rear Setback (sqm)</label>
+                  <label className="block text-slate-600 dark:text-slate-400">Rear Setback (sqm)</label>
                   <input
                     type="number"
                     value={rearEncroachSqm}
                     onChange={(e) => setRearEncroachSqm(Number(e.target.value))}
-                    className="w-full bg-slate-50 border rounded p-1.5"
+                    className="w-full bg-slate-50 border rounded p-1.5 dark:bg-white/[0.04]"
                   />
                 </div>
                 <div>
-                  <label className="block text-slate-600">Excess FAR (sqm)</label>
+                  <label className="block text-slate-600 dark:text-slate-400">Excess FAR (sqm)</label>
                   <input
                     type="number"
                     value={excessFarSqm}
                     onChange={(e) => setExcessFarSqm(Number(e.target.value))}
-                    className="w-full bg-slate-50 border rounded p-1.5"
+                    className="w-full bg-slate-50 border rounded p-1.5 dark:bg-white/[0.04]"
                   />
                 </div>
               </div>
               <div>
-                <label className="block text-slate-600">Height Deviation (meters)</label>
+                <label className="block text-slate-600 dark:text-slate-400">Height Deviation (meters)</label>
                 <input
                   type="number"
                   step="0.1"
                   value={heightDeviationMeters}
                   onChange={(e) => setHeightDeviationMeters(Number(e.target.value))}
-                  className="w-full bg-slate-50 border rounded p-1.5"
+                  className="w-full bg-slate-50 border rounded p-1.5 dark:bg-white/[0.04]"
                 />
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-7 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-            <h3 className="text-base font-bold text-slate-900 border-b pb-2">
+          <div className="lg:col-span-7 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-4 dark:bg-[#161617] dark:border-white/[0.10]">
+            <h3 className="text-base font-bold text-slate-900 border-b pb-2 dark:text-white">
               Compounding Fee Breakdown (Rule 4 Schedule)
             </h3>
 
             {!compoundingResult.isEligible ? (
-              <div className="p-5 bg-rose-50 border border-rose-300 rounded-xl space-y-2 text-rose-900">
+              <div className="p-5 bg-rose-50 border border-rose-300 rounded-xl space-y-2 text-rose-900 dark:bg-rose-950/40 dark:text-rose-200">
                 <div className="flex items-center space-x-2 font-bold text-sm">
                   <AlertTriangle className="w-5 h-5 text-rose-600" />
                   <span>NON-COMPOUNDABLE OFFENCE DETECTED</span>
@@ -1809,26 +1809,26 @@ export const ComplianceCalculators: React.FC = () => {
               </div>
             ) : (
               <div className="space-y-4">
-                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl">
-                  <span className="text-xs text-emerald-800 font-bold uppercase tracking-wider">
+                <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl dark:bg-emerald-950/40 dark:border-emerald-500/30">
+                  <span className="text-xs text-emerald-800 font-bold uppercase tracking-wider dark:text-emerald-300">
                     Total Estimated Compounding Fee
                   </span>
                   <div className="text-2xl sm:text-3xl font-extrabold text-emerald-950 mt-1 font-mono">
                     ₹ {compoundingResult.totalFee.toLocaleString('en-IN')}
                   </div>
-                  <span className="text-xs text-emerald-700 block mt-1">
+                  <span className="text-xs text-emerald-700 block mt-1 dark:text-emerald-300">
                     Payable in lump-sum or instalments with interest rate (MCLR + 1%).
                   </span>
                 </div>
 
                 <div className="divide-y divide-slate-100 border rounded-lg overflow-hidden text-xs">
                   {compoundingResult.breakdown.map((b, i) => (
-                    <div key={i} className="p-3 bg-slate-50 flex items-center justify-between">
+                    <div key={i} className="p-3 bg-slate-50 flex items-center justify-between dark:bg-white/[0.04]">
                       <div>
-                        <div className="font-bold text-slate-900">{b.item}</div>
-                        <div className="text-[11px] text-slate-500">{b.basis}</div>
+                        <div className="font-bold text-slate-900 dark:text-white">{b.item}</div>
+                        <div className="text-[11px] text-slate-500 dark:text-slate-400">{b.basis}</div>
                       </div>
-                      <div className="font-mono font-bold text-slate-900">
+                      <div className="font-mono font-bold text-slate-900 dark:text-white">
                         ₹ {b.amount.toLocaleString('en-IN')}
                       </div>
                     </div>

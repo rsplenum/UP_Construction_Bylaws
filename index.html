@@ -1,18 +1,69 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>UP Building Byelaws 2025 Portal</title>
-    <meta name="description" content="Comprehensive compliance verification engine, GIS master plan map servers for all 22 UP Development Authorities, interactive calculators, 2D setback visualizer, and AI assistant for the Uttar Pradesh Building Construction and Development Byelaws 2025." />
+    <meta
+      name="description"
+      content="Compliance verification engine, GIS master plan layers for the 22 UP Development Authorities, FAR and fee calculators, a 2D setback visualiser and an AI copilot for the Uttar Pradesh Building Construction and Development Byelaws 2025."
+    />
+    <meta name="theme-color" content="#fbfbfd" />
+    <meta name="color-scheme" content="light dark" />
+
     <meta property="og:title" content="UP Building Byelaws 2025 Portal" />
-    <meta property="og:description" content="Comprehensive compliance verification engine, GIS master plan map servers for all 22 UP Development Authorities, interactive calculators, 2D setback visualizer, and AI assistant for the Uttar Pradesh Building Construction and Development Byelaws 2025." />
+    <meta
+      property="og:description"
+      content="Compliance verification, GIS master plan layers, FAR and fee calculators and a 2D setback visualiser for the UP Building Byelaws 2025."
+    />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_IN" />
     <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Inline SVG favicon: no extra request, and it survives a static deploy. -->
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23059669'/%3E%3Ctext x='16' y='22' font-family='system-ui,sans-serif' font-size='14' font-weight='700' fill='white' text-anchor='middle'%3EUP%3C/text%3E%3C/svg%3E"
+    />
+
+    <!-- Tile and geocoder hosts, warmed before the map chunk asks for them. -->
+    <link rel="preconnect" href="https://basemaps.cartocdn.com" crossorigin />
+    <link rel="preconnect" href="https://server.arcgisonline.com" crossorigin />
+    <link rel="dns-prefetch" href="https://nominatim.openstreetmap.org" />
+
+    <!--
+      Apply the stored theme before first paint. Without this the page painted light,
+      then React's effect swapped it to dark, giving dark-mode users a white flash on
+      every load.
+    -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('up_byelaws_theme');
+          var dark =
+            saved === 'dark' ||
+            ((!saved || saved === 'system') &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (dark) {
+            document.documentElement.classList.add('dark');
+            document.documentElement.style.colorScheme = 'dark';
+            var meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', '#000000');
+          }
+        } catch (e) {
+          /* private mode: fall through to the light default */
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <p style="font-family: system-ui, sans-serif; padding: 2rem; max-width: 40rem">
+        This portal needs JavaScript to run its compliance calculations. The byelaws text itself is
+        published by the Housing &amp; Urban Planning Department, Government of Uttar Pradesh.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

@@ -22,9 +22,8 @@ import {
   Printer,
   FileText
 } from 'lucide-react';
-import { HIGH_RISE_SETBACKS } from '../data/byelawsData';
+import { COMPOUNDABLE_SETBACK_LIMITS, resolveRequiredSetbacks } from '../domain';
 import { useToast } from '../context/ToastContext';
-import { generateSetbackBlueprintPdfReport } from '../utils/pdfGenerator';
 import { RoadFrontagePreset, SiteRoadsConfig } from '../types';
 
 interface CircleRatePreset {
@@ -86,135 +85,42 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
 
   const plotArea = plotWidth * plotDepth;
 
-  // Derive setbacks from the ingested Byelaws Chapter 3.2.4
+  // Setbacks come from the shared resolver. This screen used to carry its own fourth copy
+  // of the ladders, which disagreed with the audit engine on both plot bands and
+  // high-rise heights.
   const setbackInfo = useMemo(() => {
-    let front = 3.0;
-    let rear = 1.5;
-    let side1 = 0.0;
-    let side2 = 0.0;
-    let maxHeight = 15.0;
-    let maxFloors = "3 floors + stilt";
-    let ruleRef = "Chapter 3.2.4.1";
+    const required = resolveRequiredSetbacks({
+      occupancy,
+      plotArea,
+      buildingHeight,
+      isCornerPlot: isCornerPlot || hasSide2Road,
+    });
 
-    if (occupancy === 'single_unit' || occupancy === 'multi_unit') {
-      if (plotArea <= 150) {
-        front = 1.0;
-        rear = 0.0;
-        side1 = 0.0;
-        side2 = 0.0;
-      } else if (plotArea <= 300) {
-        front = 3.0;
-        rear = 1.5;
-        side1 = 0.0;
-        side2 = 0.0;
-      } else if (plotArea <= 500) {
-        front = 3.0;
-        rear = 3.0;
-        side1 = 0.0;
-        side2 = 0.0;
-      } else if (plotArea <= 1200) {
-        front = 4.5;
-        rear = 4.5;
-        side1 = 1.5;
-        side2 = 0.0;
-      } else {
-        front = 6.0;
-        rear = 6.0;
-        side1 = 1.5;
-        side2 = 1.5;
-      }
+    // Table 3.2.1 Note 2 generalised: every road-facing edge carries the front setback.
+    const effectiveSide2 = hasSide2Road || isCornerPlot ? Math.max(required.side2, required.front) : required.side2;
+    const effectiveSide1 = hasSide1Road ? Math.max(required.side1, required.front) : required.side1;
+    const effectiveRear = hasRearRoad ? Math.max(required.rear, required.front) : required.rear;
 
-      if (occupancy === 'multi_unit') {
-        maxHeight = 17.5;
-        maxFloors = "4 storeys + mandatory stilt";
-      } else {
-        maxHeight = 15.0;
-        maxFloors = "3 storeys + optional stilt";
-      }
-    } else if (occupancy === 'group_housing') {
-      ruleRef = "Chapter 3.2.4.2 & 3.2.4.9";
-      if (buildingHeight <= 15) {
-        front = 5.0;
-        rear = 5.0;
-        side1 = 5.0;
-        side2 = 5.0;
-      } else {
-        const hr = HIGH_RISE_SETBACKS.find(
-          (h) => buildingHeight >= h.minHeight && buildingHeight <= h.maxHeight
-        ) || HIGH_RISE_SETBACKS[HIGH_RISE_SETBACKS.length - 1];
-        front = hr.front;
-        rear = hr.rear;
-        side1 = hr.side1;
-        side2 = hr.side2;
-      }
-      maxHeight = 999;
-      maxFloors = "Unrestricted (Subject to airport funnel NOC)";
-    } else if (occupancy === 'commercial') {
-      ruleRef = "Chapter 3.2.4.3";
-      if (plotArea <= 100) {
-        front = 1.5;
-        rear = 0;
-        side1 = 0;
-        side2 = 0;
-      } else if (plotArea <= 300) {
-        front = 3.0;
-        rear = 0;
-        side1 = 0;
-        side2 = 0;
-      } else if (plotArea <= 1000) {
-        front = 4.5;
-        rear = 3.0;
-        side1 = 1.5;
-        side2 = 1.5;
-      } else if (plotArea <= 3000) {
-        front = 6.0;
-        rear = 3.0;
-        side1 = 3.0;
-        side2 = 3.0;
-      } else {
-        front = 12.0;
-        rear = 6.0;
-        side1 = 6.0;
-        side2 = 6.0;
-      }
-      maxHeight = 999;
-      maxFloors = "Unrestricted (Commercial)";
-    }
-
-    // Corner plot & Multi-road setback modifications (Chapter 3.2.4.1 Note-2)
-    // Note-2: For corner plots or plots abutting more than one road, the setback towards each road shall not be less than the prescribed front setback.
-    let effectiveRear = rear;
-    let effectiveSide1 = side1;
-    let effectiveSide2 = side2;
-
-    if (hasSide2Road || isCornerPlot) {
-      effectiveSide2 = Math.max(side2, front);
-    }
-    if (hasSide1Road) {
-      effectiveSide1 = Math.max(side1, front);
-    }
-    if (hasRearRoad) {
-      effectiveRear = Math.max(rear, front);
-    }
-
-    // Standard envelope calculations
     const envelopeWidth = Math.max(0, plotWidth - effectiveSide1 - effectiveSide2);
-    const envelopeDepth = Math.max(0, plotDepth - front - effectiveRear);
+    const envelopeDepth = Math.max(0, plotDepth - required.front - effectiveRear);
     const envelopeArea = envelopeWidth * envelopeDepth;
-    const groundCoveragePercent = plotArea > 0 ? (envelopeArea / plotArea) * 100 : 0;
 
     return {
-      front,
+      front: required.front,
       rear: effectiveRear,
       side1: effectiveSide1,
       side2: effectiveSide2,
-      maxHeight,
-      maxFloors,
-      ruleRef,
+      maxHeight: required.maxHeight,
+      maxFloors: required.maxFloors,
+      ruleRef: required.clauseRef,
+      bandLabel: required.bandLabel,
+      typology: required.typology,
+      isHighRise: required.isHighRise,
+      note: required.note,
       envelopeWidth,
       envelopeDepth,
       envelopeArea,
-      groundCoveragePercent,
+      groundCoveragePercent: plotArea > 0 ? (envelopeArea / plotArea) * 100 : 0,
     };
   }, [plotArea, plotWidth, plotDepth, buildingHeight, isCornerPlot, hasSide2Road, hasSide1Road, hasRearRoad, occupancy]);
 
@@ -224,9 +130,12 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
     // Front setback deviation max 10% (strict due to road ROW and front vista)
     // Rear setback deviation max 15% (subject to retaining light court)
     // Side setback deviation max 15%
-    const STATUTORY_MAX_FRONT_PERCENT = 10;
-    const STATUTORY_MAX_REAR_PERCENT = 15;
-    const STATUTORY_MAX_SIDE_PERCENT = 15;
+    // Chapter 16.3 ceilings, shared with the audit engine and the fee calculator.
+    // A high-rise fire setback is never compoundable, so the ceiling collapses to zero.
+    const highRiseBar = setbackInfo.isHighRise;
+    const STATUTORY_MAX_FRONT_PERCENT = highRiseBar ? 0 : COMPOUNDABLE_SETBACK_LIMITS.front * 100;
+    const STATUTORY_MAX_REAR_PERCENT = highRiseBar ? 0 : COMPOUNDABLE_SETBACK_LIMITS.rear * 100;
+    const STATUTORY_MAX_SIDE_PERCENT = highRiseBar ? 0 : COMPOUNDABLE_SETBACK_LIMITS.side1 * 100;
 
     // Encroached meters
     const frontEncroachMeters = setbackInfo.front * (frontDevPercent / 100);
@@ -349,9 +258,10 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
     side2Width: side2RoadWidth,
   }), [roadPreset, frontRoadWidth, hasNorthRoad, rearRoadWidth, hasWestRoad, side1RoadWidth, hasEastRoad, side2RoadWidth]);
 
-  const handleDownloadPdf = () => {
+  const handleDownloadPdf = async () => {
     setIsGeneratingPdf(true);
     try {
+      const { generateSetbackBlueprintPdfReport } = await import('../utils/pdfGenerator');
       generateSetbackBlueprintPdfReport({
         plotWidth,
         plotDepth,

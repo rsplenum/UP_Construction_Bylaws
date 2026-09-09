@@ -20,22 +20,22 @@ export const FormsAndAppendices: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Top Banner */}
-      <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4 dark:bg-[#161617] dark:border-white/[0.10]">
         <div>
           <div className="flex items-center space-x-2">
             <FileCheck className="w-5 h-5 text-emerald-600" />
-            <h3 className="text-base sm:text-lg font-bold text-slate-900">
+            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
               Official Appendices & Statutory Forms (Appendices 2 – 14)
             </h3>
           </div>
-          <p className="text-xs text-slate-500 mt-1 max-w-3xl">
+          <p className="text-xs text-slate-500 mt-1 max-w-3xl dark:text-slate-400">
             Direct transcription of statutory applications, completion certificates (Forms A, B, C, D), Structural Design Basis Reports (SDBR), and affidavits as prescribed by UP Urban Planning and Development Act, 1973.
           </p>
         </div>
 
         <button
           onClick={handlePrint}
-          className="flex items-center space-x-1.5 px-4 py-2 bg-slate-900 text-white rounded-lg text-xs font-semibold hover:bg-slate-800 transition-colors self-start md:self-auto shadow"
+          className="flex items-center space-x-1.5 px-4 py-2 bg-slate-900 text-white rounded-lg text-xs font-semibold hover:bg-slate-800 transition-colors self-start md:self-auto shadow dark:bg-black"
         >
           <Printer className="w-3.5 h-3.5" />
           <span>Print / Export Form</span>
@@ -58,7 +58,7 @@ export const FormsAndAppendices: React.FC = () => {
             className={`p-2.5 rounded-lg text-xs font-semibold text-center border transition-all ${
               selectedForm === tab.id
                 ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
-                : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50 dark:bg-[#161617] dark:text-slate-300 dark:border-white/[0.10] dark:hover:bg-white/[0.06]'
             }`}
           >
             {tab.label}
@@ -67,68 +67,68 @@ export const FormsAndAppendices: React.FC = () => {
       </div>
 
       {/* Editable Project Inputs for Live Fill */}
-      <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3">
-        <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block">
+      <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-3 dark:bg-white/[0.04] dark:border-white/[0.10]">
+        <span className="text-xs font-bold text-slate-800 uppercase tracking-wider block dark:text-slate-100">
           Live Form Autofill Inputs:
         </span>
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3 text-xs">
           <div>
-            <label className="text-slate-500 block mb-1">Applicant Name</label>
+            <label className="text-slate-500 block mb-1 dark:text-slate-400">Applicant Name</label>
             <input
               type="text"
               value={applicantName}
               onChange={(e) => setApplicantName(e.target.value)}
-              className="w-full bg-white border rounded p-1.5"
+              className="w-full bg-white border rounded p-1.5 dark:bg-[#161617]"
             />
           </div>
           <div>
-            <label className="text-slate-500 block mb-1">Plot / Khasra No.</label>
+            <label className="text-slate-500 block mb-1 dark:text-slate-400">Plot / Khasra No.</label>
             <input
               type="text"
               value={plotNumber}
               onChange={(e) => setPlotNumber(e.target.value)}
-              className="w-full bg-white border rounded p-1.5"
+              className="w-full bg-white border rounded p-1.5 dark:bg-[#161617]"
             />
           </div>
           <div>
-            <label className="text-slate-500 block mb-1">Scheme / City</label>
+            <label className="text-slate-500 block mb-1 dark:text-slate-400">Scheme / City</label>
             <input
               type="text"
               value={schemeName}
               onChange={(e) => setSchemeName(e.target.value)}
-              className="w-full bg-white border rounded p-1.5"
+              className="w-full bg-white border rounded p-1.5 dark:bg-[#161617]"
             />
           </div>
           <div>
-            <label className="text-slate-500 block mb-1">Supervising Architect</label>
+            <label className="text-slate-500 block mb-1 dark:text-slate-400">Supervising Architect</label>
             <input
               type="text"
               value={architectName}
               onChange={(e) => setArchitectName(e.target.value)}
-              className="w-full bg-white border rounded p-1.5"
+              className="w-full bg-white border rounded p-1.5 dark:bg-[#161617]"
             />
           </div>
         </div>
       </div>
 
       {/* Document Sheet Display */}
-      <div className="bg-white p-8 rounded-xl border border-slate-300 shadow-md max-w-4xl mx-auto text-slate-900 font-serif leading-relaxed printable-document space-y-6">
+      <div className="bg-white p-8 rounded-xl border border-slate-300 shadow-md max-w-4xl mx-auto text-slate-900 font-serif leading-relaxed printable-document space-y-6 dark:bg-[#161617] dark:border-white/[0.14] dark:text-white">
         {selectedForm === 'form_a' && (
           <div className="space-y-6 text-xs sm:text-sm">
             <div className="text-center border-b pb-4 space-y-1">
               <h2 className="text-lg font-bold font-sans tracking-wide">
                 APPENDIX-7: APPLICATION FORM-A (B.2.9.2)
               </h2>
-              <h3 className="font-semibold text-slate-700">
+              <h3 className="font-semibold text-slate-700 dark:text-slate-300">
                 Application for Completion Certificate of Residential Building (&gt; 300 sqm.)
               </h3>
-              <p className="text-xs text-slate-500 font-sans">
+              <p className="text-xs text-slate-500 font-sans dark:text-slate-400">
                 Under Section 15A of Uttar Pradesh Urban Planning and Development Act, 1973
               </p>
             </div>
 
             <div className="space-y-3">
-              <p className="font-sans font-semibold text-slate-700">To, The Vice Chairman, {cityName} Development Authority</p>
+              <p className="font-sans font-semibold text-slate-700 dark:text-slate-300">To, The Vice Chairman, {cityName} Development Authority</p>
               <div className="grid grid-cols-2 gap-4 border p-3 rounded bg-slate-50/50 font-sans text-xs">
                 <div>
                   <strong>1. Applicant Name:</strong> {applicantName}
@@ -145,31 +145,31 @@ export const FormsAndAppendices: React.FC = () => {
               </div>
 
               <div className="space-y-2 pt-2">
-                <h4 className="font-sans font-bold text-slate-800">5. Mandatory Compliance Checklist (Clause 7):</h4>
+                <h4 className="font-sans font-bold text-slate-800 dark:text-slate-100">5. Mandatory Compliance Checklist (Clause 7):</h4>
                 <div className="overflow-x-auto">
-                  <table className="w-full border-collapse border border-slate-300 font-sans text-xs">
+                  <table className="w-full border-collapse border border-slate-300 font-sans text-xs dark:border-white/[0.14]">
                     <thead>
-                      <tr className="bg-slate-100">
-                        <th className="border border-slate-300 p-2">Item</th>
-                        <th className="border border-slate-300 p-2">Provision</th>
-                        <th className="border border-slate-300 p-2 text-center">Status</th>
+                      <tr className="bg-slate-100 dark:bg-white/[0.08]">
+                        <th className="border border-slate-300 p-2 dark:border-white/[0.14]">Item</th>
+                        <th className="border border-slate-300 p-2 dark:border-white/[0.14]">Provision</th>
+                        <th className="border border-slate-300 p-2 text-center dark:border-white/[0.14]">Status</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td className="border border-slate-300 p-2 font-medium">7.1 Setbacks (Front / Rear / Sides)</td>
-                        <td className="border border-slate-300 p-2">As per Chapter 3.2.4.1</td>
-                        <td className="border border-slate-300 p-2 text-center text-emerald-700 font-bold">Compliant</td>
+                        <td className="border border-slate-300 p-2 font-medium dark:border-white/[0.14]">7.1 Setbacks (Front / Rear / Sides)</td>
+                        <td className="border border-slate-300 p-2 dark:border-white/[0.14]">As per Chapter 3.2.4.1</td>
+                        <td className="border border-slate-300 p-2 text-center text-emerald-700 font-bold dark:border-white/[0.14] dark:text-emerald-300">Compliant</td>
                       </tr>
                       <tr>
-                        <td className="border border-slate-300 p-2 font-medium">7.3(e) Rainwater Harvesting System</td>
-                        <td className="border border-slate-300 p-2">Mandatory for plots &gt; 300 sqm</td>
-                        <td className="border border-slate-300 p-2 text-center text-emerald-700 font-bold">Installed (Attached Part-C)</td>
+                        <td className="border border-slate-300 p-2 font-medium dark:border-white/[0.14]">7.3(e) Rainwater Harvesting System</td>
+                        <td className="border border-slate-300 p-2 dark:border-white/[0.14]">Mandatory for plots &gt; 300 sqm</td>
+                        <td className="border border-slate-300 p-2 text-center text-emerald-700 font-bold dark:border-white/[0.14] dark:text-emerald-300">Installed (Attached Part-C)</td>
                       </tr>
                       <tr>
-                        <td className="border border-slate-300 p-2 font-medium">7.3(f) Solar Water Heating Plant</td>
-                        <td className="border border-slate-300 p-2">Mandatory if plot area &gt; 500 sqm</td>
-                        <td className="border border-slate-300 p-2 text-center text-slate-600">N/A (Plot &lt; 500 sqm)</td>
+                        <td className="border border-slate-300 p-2 font-medium dark:border-white/[0.14]">7.3(f) Solar Water Heating Plant</td>
+                        <td className="border border-slate-300 p-2 dark:border-white/[0.14]">Mandatory if plot area &gt; 500 sqm</td>
+                        <td className="border border-slate-300 p-2 text-center text-slate-600 dark:border-white/[0.14] dark:text-slate-400">N/A (Plot &lt; 500 sqm)</td>
                       </tr>
                     </tbody>
                   </table>
@@ -202,13 +202,13 @@ export const FormsAndAppendices: React.FC = () => {
               <h2 className="text-lg font-bold font-sans tracking-wide">
                 APPENDIX-7: APPLICATION FORM-B (B.2.9.2)
               </h2>
-              <h3 className="font-semibold text-slate-700">
+              <h3 className="font-semibold text-slate-700 dark:text-slate-300">
                 Application for Completion Certificate of Group Housing, Commercial and Multi-Storey Buildings
               </h3>
             </div>
             <div className="space-y-3 font-sans text-xs">
               <p>Mandatory Enclosures for Form-B:</p>
-              <ul className="list-disc pl-5 space-y-1 text-slate-700">
+              <ul className="list-disc pl-5 space-y-1 text-slate-700 dark:text-slate-300">
                 <li><strong>Clause 8:</strong> Certificate of completeness of firefighting system from Chief Fire Officer (CFO).</li>
                 <li><strong>Clause 9(f):</strong> Certificate of completion of lift from Chief Electrical Inspector, Uttar Pradesh.</li>
                 <li><strong>Clause 12:</strong> Rainwater Harvesting System certificate from Licensed Technical Person.</li>
@@ -232,17 +232,17 @@ export const FormsAndAppendices: React.FC = () => {
               <h2 className="text-lg font-bold font-sans tracking-wide">
                 APPENDIX-4: APPLICATION FORM-D (B.2.9.1)
               </h2>
-              <h3 className="font-semibold text-slate-700">
+              <h3 className="font-semibold text-slate-700 dark:text-slate-300">
                 Application for Completion Certificate of Layout Plan (Sub-division)
               </h3>
             </div>
             <div className="space-y-3 font-sans text-xs">
               <p>Requires detailed feature status comparison:</p>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
-                <div className="p-2 border rounded bg-slate-50">Primary / High Schools</div>
-                <div className="p-2 border rounded bg-slate-50">Dispensaries & Hospitals</div>
-                <div className="p-2 border rounded bg-slate-50">Parks & Miyawaki Green</div>
-                <div className="p-2 border rounded bg-slate-50">Sewerage & Water Grids</div>
+                <div className="p-2 border rounded bg-slate-50 dark:bg-white/[0.04]">Primary / High Schools</div>
+                <div className="p-2 border rounded bg-slate-50 dark:bg-white/[0.04]">Dispensaries & Hospitals</div>
+                <div className="p-2 border rounded bg-slate-50 dark:bg-white/[0.04]">Parks & Miyawaki Green</div>
+                <div className="p-2 border rounded bg-slate-50 dark:bg-white/[0.04]">Sewerage & Water Grids</div>
               </div>
             </div>
           </div>
@@ -254,32 +254,32 @@ export const FormsAndAppendices: React.FC = () => {
               <h2 className="text-lg font-bold font-sans tracking-wide">
                 APPENDIX-14: STRUCTURAL DESIGN BASIS REPORT (SDBR - B.11.7)
               </h2>
-              <h3 className="font-semibold text-slate-700">
+              <h3 className="font-semibold text-slate-700 dark:text-slate-300">
                 Mandatory Structural Design Document in 4 Parts
               </h3>
             </div>
             <div className="space-y-4 font-sans text-xs">
-              <div className="p-3 border rounded bg-slate-50">
-                <div className="font-bold text-slate-800">Part 1: General Data & Seismic Codes</div>
-                <p className="text-slate-600 mt-1">
+              <div className="p-3 border rounded bg-slate-50 dark:bg-white/[0.04]">
+                <div className="font-bold text-slate-800 dark:text-slate-100">Part 1: General Data & Seismic Codes</div>
+                <p className="text-slate-600 mt-1 dark:text-slate-400">
                   Seismic Zone (IS:1893:2002), Zone Factor (Z), Importance Factor (I), Response Reduction (R), Soil Profile (IS:1904), Wind Loads (IS:875 Part 3).
                 </p>
               </div>
-              <div className="p-3 border rounded bg-slate-50">
-                <div className="font-bold text-slate-800">Part 2: Load Bearing Masonry</div>
-                <p className="text-slate-600 mt-1">
+              <div className="p-3 border rounded bg-slate-50 dark:bg-white/[0.04]">
+                <div className="font-bold text-slate-800 dark:text-slate-100">Part 2: Load Bearing Masonry</div>
+                <p className="text-slate-600 mt-1 dark:text-slate-400">
                   Building Category as per IS:4326, Mortar Mix, Lintel & Plinth Seismic Bands.
                 </p>
               </div>
-              <div className="p-3 border rounded bg-slate-50">
-                <div className="font-bold text-slate-800">Part 3: Reinforced Concrete Framed Buildings</div>
-                <p className="text-slate-600 mt-1">
+              <div className="p-3 border rounded bg-slate-50 dark:bg-white/[0.04]">
+                <div className="font-bold text-slate-800 dark:text-slate-100">Part 3: Reinforced Concrete Framed Buildings</div>
+                <p className="text-slate-600 mt-1 dark:text-slate-400">
                   Ductile detailing under IS:13920, soft storey column design, foundation raft/piles, concrete grades.
                 </p>
               </div>
-              <div className="p-3 border rounded bg-slate-50">
-                <div className="font-bold text-slate-800">Part 4: Structural Steel Buildings</div>
-                <p className="text-slate-600 mt-1">
+              <div className="p-3 border rounded bg-slate-50 dark:bg-white/[0.04]">
+                <div className="font-bold text-slate-800 dark:text-slate-100">Part 4: Structural Steel Buildings</div>
+                <p className="text-slate-600 mt-1 dark:text-slate-400">
                   Design method (IS:800 Cl 3.4), deflection limits, corrosion protection, fire rating.
                 </p>
               </div>
@@ -293,11 +293,11 @@ export const FormsAndAppendices: React.FC = () => {
               <h2 className="text-lg font-bold font-sans tracking-wide">
                 APPENDIX-8: BUILDING INFORMATION SCHEDULE (B.11.8.2)
               </h2>
-              <h3 className="font-semibold text-slate-700">
+              <h3 className="font-semibold text-slate-700 dark:text-slate-300">
                 Mandatory Earthquake Resilient Construction Schedule
               </h3>
             </div>
-            <p className="font-sans text-xs text-slate-700">
+            <p className="font-sans text-xs text-slate-700 dark:text-slate-300">
               Must be permanently marked on the architectural plan as a schedule table and certified by the registered Structural Engineer verifying compliance with IS:1893, IS:4326, IS:13920, and NBC 2016 Part 6.
             </p>
           </div>
@@ -309,7 +309,7 @@ export const FormsAndAppendices: React.FC = () => {
               <h2 className="text-lg font-bold font-sans tracking-wide">
                 APPENDIX-12: AFFIDAVIT FOR PLINTH LEVEL CLEARANCE (B.2.2.1)
               </h2>
-              <h3 className="font-semibold text-slate-700">
+              <h3 className="font-semibold text-slate-700 dark:text-slate-300">
                 Mandatory Geo-Tagged Affidavit upon Reaching Plinth Level
               </h3>
             </div>
