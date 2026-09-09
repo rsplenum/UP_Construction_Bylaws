@@ -7,7 +7,7 @@
  */
 
 import { Band, assertContiguousLadder, resolveBand } from './bands';
-import type { Occupancy } from './project';
+import { OccupancyId, getOccupancy } from './occupancy';
 
 export interface SetbackSet {
   readonly front: number;
@@ -86,7 +86,32 @@ export const COMMERCIAL_LADDER: readonly CommercialSetbackBand[] = [
   { label: '>1000 sqm',        overMoreThan: 1000, upToAndIncluding: Infinity, front: 6.0, rear: 3.0, side1: 3.0, side2: 3.0 },
 ];
 
+/** Chapter 6 — hospitals and nursing homes. */
+export const HEALTHCARE_LADDER: readonly CommercialSetbackBand[] = [
+  { label: 'Up to 500 sqm',     overMoreThan: 0,    upToAndIncluding: 500,      front: 4.5, rear: 3.0, side1: 3.0, side2: 3.0 },
+  { label: '>500 to 2000 sqm',  overMoreThan: 500,  upToAndIncluding: 2000,     front: 6.0, rear: 4.5, side1: 4.5, side2: 4.5 },
+  { label: '>2000 sqm',         overMoreThan: 2000, upToAndIncluding: Infinity, front: 9.0, rear: 6.0, side1: 6.0, side2: 6.0 },
+];
+
+/** Chapter 6 — schools and colleges. */
+export const EDUCATIONAL_LADDER: readonly CommercialSetbackBand[] = [
+  { label: 'Up to 1000 sqm',    overMoreThan: 0,    upToAndIncluding: 1000,     front: 6.0, rear: 3.0, side1: 3.0, side2: 3.0 },
+  { label: '>1000 to 4000 sqm', overMoreThan: 1000, upToAndIncluding: 4000,     front: 7.5, rear: 4.5, side1: 4.5, side2: 4.5 },
+  { label: '>4000 sqm',         overMoreThan: 4000, upToAndIncluding: Infinity, front: 9.0, rear: 6.0, side1: 6.0, side2: 6.0 },
+];
+
+/** Chapter 7 — industrial plots, sized for vehicle movement. */
+export const INDUSTRIAL_LADDER: readonly CommercialSetbackBand[] = [
+  { label: 'Up to 500 sqm',      overMoreThan: 0,     upToAndIncluding: 500,      front: 4.5, rear: 3.0, side1: 3.0,  side2: 3.0 },
+  { label: '>500 to 2000 sqm',   overMoreThan: 500,   upToAndIncluding: 2000,     front: 6.0, rear: 4.5, side1: 4.5,  side2: 4.5 },
+  { label: '>2000 to 10000 sqm', overMoreThan: 2000,  upToAndIncluding: 10000,    front: 9.0, rear: 6.0, side1: 6.0,  side2: 6.0 },
+  { label: '>10000 sqm',         overMoreThan: 10000, upToAndIncluding: Infinity, front: 12.0, rear: 9.0, side1: 9.0, side2: 9.0 },
+];
+
 assertContiguousLadder('PLOTTED_RESIDENTIAL_LADDER', PLOTTED_RESIDENTIAL_LADDER);
+assertContiguousLadder('HEALTHCARE_LADDER', HEALTHCARE_LADDER);
+assertContiguousLadder('EDUCATIONAL_LADDER', EDUCATIONAL_LADDER);
+assertContiguousLadder('INDUSTRIAL_LADDER', INDUSTRIAL_LADDER);
 assertContiguousLadder('HIGH_RISE_LADDER', HIGH_RISE_LADDER);
 assertContiguousLadder('COMMERCIAL_LADDER', COMMERCIAL_LADDER);
 
@@ -106,11 +131,12 @@ export interface RequiredSetbacks extends SetbackSet {
 }
 
 export function resolveRequiredSetbacks(input: {
-  occupancy: Occupancy;
+  occupancy: OccupancyId;
   plotArea: number;
   buildingHeight: number;
   isCornerPlot: boolean;
 }): RequiredSetbacks {
+  const definition = getOccupancy(input.occupancy);
   const plotArea = Math.max(0, Number(input.plotArea) || 0);
   const buildingHeight = Math.max(0, Number(input.buildingHeight) || 0);
   const caveats: string[] = [];
@@ -119,13 +145,21 @@ export function resolveRequiredSetbacks(input: {
   let set: SetbackSet;
   let bandLabel: string;
   let clauseRef: string;
-  let typology = '—';
-  let maxHeight = HIGH_RISE_THRESHOLD_M;
+  let typology = definition.label;
+  let maxHeight = definition.maxHeightM;
   let maxFloors = '—';
-  let note = '';
+  let note = definition.note;
+
+  const AREA_LADDERS: Record<string, readonly (Band & SetbackSet & { label: string })[]> = {
+    plotted_residential: PLOTTED_RESIDENTIAL_LADDER,
+    commercial: COMMERCIAL_LADDER,
+    healthcare: HEALTHCARE_LADDER,
+    educational: EDUCATIONAL_LADDER,
+    industrial: INDUSTRIAL_LADDER,
+  };
 
   if (isHighRise) {
-    // Progressive fire-tender setbacks override every area-based ladder above 15m.
+    // Progressive fire-tender setbacks override every area-based ladder above 15 m.
     const resolved = resolveBand(HIGH_RISE_LADDER, buildingHeight);
     const band = resolved.ok ? resolved.band : HIGH_RISE_LADDER[0];
     if (!resolved.ok) {
@@ -135,37 +169,37 @@ export function resolveRequiredSetbacks(input: {
     bandLabel = band.label;
     clauseRef = 'Clause 3.2.4.9 (Progressive High-Rise Setbacks)';
     maxHeight = band.upToAndIncluding;
-    maxFloors = 'Per fire NOC and structural clearance';
-    note = 'Continuous fire-tender movement space is required on all four sides; these setbacks are non-compoundable.';
-    typology = 'High-Rise';
-  } else if (input.occupancy === 'commercial') {
-    const resolved = resolveBand(COMMERCIAL_LADDER, plotArea);
-    const band = resolved.ok ? resolved.band : COMMERCIAL_LADDER[0];
-    if (!resolved.ok) caveats.push(`Plot area ${plotArea} sqm matched no commercial band; the smallest band was applied.`);
-    set = { front: band.front, rear: band.rear, side1: band.side1, side2: band.side2 };
-    bandLabel = band.label;
-    clauseRef = 'Chapter 5 (Commercial Setbacks)';
-    typology = 'Commercial';
-    maxFloors = 'Governed by road width and FAR';
-    note = 'Front setback must remain clear of parking and service structures.';
-  } else if (input.occupancy === 'group_housing') {
+    maxFloors = 'Governed by the fire NOC and structural clearance';
+    note = 'Continuous fire-tender movement space is required on all four sides. These setbacks cannot be compounded at any fee.';
+    typology = 'High rise';
+  } else if (definition.setbackTable === 'group_housing') {
     set = { front: 5, rear: 5, side1: 5, side2: 5 };
-    bandLabel = 'Group Housing (≤15m)';
+    bandLabel = 'Group housing below 15 m';
     clauseRef = 'Clause 3.2.4.2';
-    typology = 'Group Housing';
-    maxFloors = 'Stilt + 4 storeys below the high-rise threshold';
-    note = 'Group housing carries a uniform 5m all-round open space below 15m height.';
+    maxFloors = 'Stilt plus four storeys below the high-rise threshold';
   } else {
-    const resolved = resolveBand(PLOTTED_RESIDENTIAL_LADDER, plotArea);
-    const band = resolved.ok ? resolved.band : PLOTTED_RESIDENTIAL_LADDER[0];
-    if (!resolved.ok) caveats.push(`Plot area ${plotArea} sqm matched no plotted band; the smallest band was applied.`);
+    const ladder = AREA_LADDERS[definition.setbackTable] ?? PLOTTED_RESIDENTIAL_LADDER;
+    const resolved = resolveBand(ladder, plotArea);
+    const band = resolved.ok ? resolved.band : ladder[0];
+    if (!resolved.ok) caveats.push(`Plot area ${plotArea} sqm matched no band; the smallest band was applied.`);
     set = { front: band.front, rear: band.rear, side1: band.side1, side2: band.side2 };
     bandLabel = band.label;
-    clauseRef = 'Table 3.2.1 (Plotted Residential Setbacks)';
-    typology = band.typology;
-    maxHeight = input.occupancy === 'multi_unit' ? Math.max(band.maxHeight, 17.5) : Math.min(band.maxHeight, 15);
-    maxFloors = band.maxFloors;
-    note = band.note;
+
+    if (definition.setbackTable === 'plotted_residential') {
+      const plotted = band as PlottedSetbackBand;
+      clauseRef = 'Table 3.2.1 (Plotted Residential Setbacks)';
+      typology = plotted.typology;
+      maxHeight = Math.min(definition.maxHeightM, plotted.maxHeight);
+      maxFloors = plotted.maxFloors;
+      note = plotted.note;
+    } else {
+      clauseRef =
+        definition.setbackTable === 'commercial' ? 'Chapter 5 (Commercial Setbacks)'
+        : definition.setbackTable === 'healthcare' ? 'Chapter 6 (Healthcare Setbacks)'
+        : definition.setbackTable === 'educational' ? 'Chapter 6 (Educational Setbacks)'
+        : 'Chapter 7 (Industrial Setbacks)';
+      maxFloors = 'Governed by road width and FAR';
+    }
   }
 
   // Table 3.2.1 Note 2 — a corner plot's secondary frontage carries the full front setback.

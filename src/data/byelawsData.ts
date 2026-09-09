@@ -1434,7 +1434,7 @@ export function calculateTelescopicResidentialFAR(plotArea: number): TelescopicF
   // Road width is irrelevant to the base ladder; pass the purchasable-FAR threshold so
   // the ceiling reported here is the unrestricted one this view has always shown.
   const resolved = resolveBaseFar({
-    occupancy: 'single_unit',
+    occupancy: 'res_single',
     plotArea,
     roadWidth: PURCHASABLE_FAR_MIN_ROAD_WIDTH,
   });

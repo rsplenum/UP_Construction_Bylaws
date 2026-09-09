@@ -8,7 +8,8 @@
  */
 
 import { Band, assertContiguousLadder, resolveBand } from './bands';
-import type { Occupancy, GreenRating } from './project';
+import type { GreenRating } from './project';
+import { OccupancyId, getOccupancy } from './occupancy';
 
 export interface FarSlab extends Band {
   readonly index: number;
@@ -105,11 +106,12 @@ const round = (n: number, dp = 3): number => Number(n.toFixed(dp));
 export const PURCHASABLE_FAR_MIN_ROAD_WIDTH = 12;
 
 export function resolveBaseFar(input: {
-  occupancy: Occupancy;
+  occupancy: OccupancyId;
   plotArea: number;
   roadWidth: number;
   greenRating?: GreenRating;
 }): BaseFarResult {
+  const definition = getOccupancy(input.occupancy);
   const plotArea = Math.max(0, Number(input.plotArea) || 0);
   const roadWidth = Math.max(0, Number(input.roadWidth) || 0);
   const greenBonusFraction = GREEN_FAR_BONUS[input.greenRating ?? 'none'] ?? 0;
@@ -130,7 +132,7 @@ export function resolveBaseFar(input: {
     };
   }
 
-  if (input.occupancy === 'single_unit' || input.occupancy === 'multi_unit') {
+  if (definition.farBasis === 'telescopic_plotted') {
     clauseRef = 'Chapter 3.2.2 & 3.2.2.1 (Telescopic Ladder)';
     let remaining = plotArea;
     let totalBuiltUp = 0;
@@ -163,11 +165,11 @@ export function resolveBaseFar(input: {
       );
     }
   } else {
-    const table = input.occupancy === 'group_housing' ? GROUP_HOUSING_ROAD_FAR : COMMERCIAL_ROAD_FAR;
-    clauseRef =
-      input.occupancy === 'group_housing'
-        ? 'Chapter 3.2.2.2 & 4.2.8 (Road-Width FAR Matrix)'
-        : 'Chapter 5.2.5 (Commercial Road-Width FAR Matrix)';
+    const isGroupHousing = definition.farBasis === 'road_width_group_housing';
+    const table = isGroupHousing ? GROUP_HOUSING_ROAD_FAR : COMMERCIAL_ROAD_FAR;
+    clauseRef = isGroupHousing
+      ? 'Chapter 3.2.2.2 & 4.2.8 (Road-Width FAR Matrix)'
+      : 'Chapter 5.2.5 (Commercial Road-Width FAR Matrix)';
 
     const resolved = resolveBand(table, roadWidth);
     if (!resolved.ok) {
@@ -179,7 +181,7 @@ export function resolveBaseFar(input: {
       workings = `Road width ${roadWidth}m falls in band "${resolved.band.label}" → Base FAR ${baseFar}`;
       if (baseFar === 0) {
         caveats.push(
-          `A ${roadWidth}m road is below the minimum right-of-way for ${input.occupancy.replace('_', ' ')}; no FAR is sanctionable.`,
+          `A ${roadWidth}m road is below the minimum right-of-way for ${definition.label.toLowerCase()}; no FAR is sanctionable.`,
         );
       }
       if (purchasableFar === 0 && resolved.band.purchasableFar > 0) {

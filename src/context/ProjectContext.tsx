@@ -1,5 +1,6 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
-import { DEFAULT_PROJECT, ProjectState } from '../domain/project';
+import { DEFAULT_PROJECT, LEGACY_OCCUPANCY, ProjectState } from '../domain/project';
+import { OCCUPANCIES, OccupancyId } from '../domain/occupancy';
 
 const STORAGE_KEY = 'up_byelaws_2025_project';
 const HISTORY_KEY = 'up_byelaws_2025_project_history';
@@ -71,6 +72,15 @@ function sanitize(candidate: unknown): ProjectState {
     } else if (typeof fallback === 'string') {
       (out[key] as string) = String(value);
     }
+  }
+
+  // A project saved before the occupancy taxonomy was widened carries one of the four
+  // original names; translate rather than silently resetting the user's project.
+  const rawOccupancy = String(input.occupancy ?? '');
+  if (rawOccupancy in OCCUPANCIES) {
+    out.occupancy = rawOccupancy as OccupancyId;
+  } else if (rawOccupancy in LEGACY_OCCUPANCY) {
+    out.occupancy = LEGACY_OCCUPANCY[rawOccupancy];
   }
 
   // Fields that are optional on the model and so have no defaults to type-check against.

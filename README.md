@@ -12,17 +12,41 @@ verdict.
 
 ## What it does
 
-| Tab | Purpose |
-| --- | --- |
-| **Compliance Audit** | Cross-rule verdict on the whole project: sanction route, FAR, setbacks, height vs. road width, fire NOC, parking and EVCI, sustainability mandates, EWS/LIG. Exports a PDF pre-scrutiny report. |
-| **FAR & Fees** | Telescopic FAR, purchasable and premium FAR charges, parking ECS with EV load, and a Chapter 16 compounding assessment. |
-| **2D Setbacks** | Scaled site plan with the buildable envelope, multi-road frontage handling, and deviation analysis. Exports a dimensioned blueprint. |
-| **Spatial GIS** | Master plan layers for the 22 Development Authorities, statutory buffers, distance and area measurement, and a point-level spatial audit. |
-| **Byelaws Code** | All 18 chapters with definitions, schedules, NOC timelines, FAR exemptions and setback tables. |
-| **Zoning Matrix** | Activity permissibility across the standard use zones, with the statutory condition on each ruling. |
-| **Planning Rationale** | Why each threshold exists, traced to NBC and IS codes. |
-| **Statutory Forms** | Appendices 2–14, filled from the project. |
-| **AI Copilot** | Questions about any rule, grounded in the byelaws and in the loaded project. Optional. |
+You describe a plot and what you want to build on it. It tells you whether you can, what
+stops you, what it costs, and what to change — on one screen.
+
+```
+  Your site          The site plan            What the byelaws say
+  ─────────          ─────────────            ────────────────────
+  What are you   →   plot drawn to scale  →   ✗ 5 blocking
+  building?          setbacks shaded          ⚠ 3 to settle
+  How big?           buildable area           ✓ 7 clear
+  Which road?
+  How much           605 m² permitted         each one expands to the
+  floor area?        450 m² drawn             rule, the arithmetic,
+  How tall?                                   and a one-click fix
+```
+
+**Simple** mode asks five questions in plain words. **Advanced** mode adds the fields a
+drawing needs — plot shape, each setback, provisions, circle rate. Both write to the same
+project and run the same engine, so switching never loses work and never changes the
+answer, only how much of it you are shown.
+
+Behind the workspace sits a **Reference** shelf: the byelaws text, the master-plan map,
+the planning rationale, the statutory forms, and an assistant. These are supporting
+material you open when a finding raises a question — not places you have to visit to
+assemble an answer yourself.
+
+### Why it is shaped this way
+
+The first version had nine tabs named after chapters of the byelaws — a zoning matrix, a
+FAR calculator, a fee calculator, a chapter reader. Each rendered part of the rulebook
+and left you to carry numbers between them. The zoning tab drew a 13-activity × 10-zone
+grid when the app already knew your project was a single-unit house on a 12 m road; the
+FAR tab computed what was permissible and never mentioned what you had proposed.
+
+Nine screens each showing a table is the easy version. One screen that answers the
+question is the hard one, and it is the one worth building.
 
 ## Running it
 
@@ -56,18 +80,33 @@ message.
 
 ```
 src/
-  domain/          The statutory rules engine — the single source of truth
-    bands.ts       Contiguous band lookup, with a load-time contiguity assertion
+  domain/          The rules engine — the single source of truth
+    occupancy.ts   The 16 occupancies, and which rules each one keys off
+    bands.ts       Contiguous band lookup, asserted at module load
     far.ts         Telescopic and road-width FAR ladders
-    setbacks.ts    Plotted, commercial and progressive high-rise setback ladders
+    setbacks.ts    Plotted, group housing, commercial, healthcare,
+                   educational, industrial and high-rise ladders
     compounding.ts Chapter 16 fee schedule and non-compoundable exclusions
+    findings.ts    assessProject() — every rule, applied to one project
     project.ts     The shared project model
-  context/         ProjectContext (one site, shared by every tab), ThemeContext, ToastContext
-  components/      One component per tab, plus ui/ primitives
+  workspace/       The application
+    Workspace.tsx  The three panels
+    SitePanel.tsx  What you have (simple and advanced)
+    SitePlan.tsx   The drawing
+    VerdictPanel.tsx  What the byelaws say about it
+  context/         ProjectContext, ThemeContext, ToastContext
+  components/      The reference views, plus ui/ primitives
   data/            Byelaw text, tables and the GIS dataset
-  utils/           PDF generation, the constraint engine, storage adapters
 server.ts          Express: static hosting plus the /api/chat proxy
 ```
+
+### One assessment, many findings
+
+`assessProject(project)` returns every finding the byelaws produce for a site. Each one
+carries what the rule requires, what the project proposes, the arithmetic, the clause, and
+where possible the change that would resolve it. The interface renders findings; it does
+not compute. Adding a rule means adding a finding, and it appears everywhere at once —
+the panel, the report, and the tests.
 
 ### The rules engine is the point
 
@@ -84,9 +123,11 @@ Two invariants keep it that way:
   module load if a table develops a hole. The tables previously used `min: 15.01` /
   `max: 15.0` bounds, so a 15.005 m building matched no row and a
   `find(...) || table[table.length - 1]` fallback silently applied the >51 m rule.
-- **The engine is tested.** `src/domain/__tests__` covers the band boundaries, the
-  ladder monotonicity, the purchasable-FAR road threshold, the corner-plot rule, the
-  non-compoundable exclusions and the Chapter 16 ceilings.
+- **The engine is tested.** `src/domain/__tests__` covers the band boundaries, ladder
+  monotonicity, the purchasable-FAR road threshold, the corner-plot rule, the
+  non-compoundable exclusions and the Chapter 16 ceilings — and asserts that every
+  occupancy produces a finished answer, that no finding ever renders `NaN`, and that
+  applying a finding's own fix actually clears it.
 
 If a figure here disagrees with the gazette, fix it in `src/domain` — one edit changes
 every screen, the PDF exports and the tests together.

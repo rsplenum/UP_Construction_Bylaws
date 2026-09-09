@@ -8,7 +8,6 @@
  * Chapter 16.3.2 makes non-compoundable at any price. Both are fixed here.
  */
 
-import type { Occupancy } from './project';
 import { COMPOUNDABLE_SETBACK_LIMITS, SetbackFace } from './setbacks';
 
 export type CompoundingUse = 'residential' | 'commercial' | 'office' | 'industrial' | 'facilities';
@@ -85,7 +84,6 @@ export interface CompoundingAssessment {
 
 export interface CompoundingInput {
   use: CompoundingUse;
-  occupancy?: Occupancy;
   /** ₹ per sqm */
   circleRate: number;
   flags: Partial<NonCompoundableFlags>;

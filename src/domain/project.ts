@@ -6,8 +6,23 @@
  * verdicts. This is the one description of the site; screens read it and patch it.
  */
 
-export type Occupancy = 'single_unit' | 'multi_unit' | 'group_housing' | 'commercial';
+import { OccupancyId, OCCUPANCIES } from './occupancy';
+
 export type GreenRating = 'none' | 'silver' | 'gold' | 'platinum';
+
+/** How much of the app to show. Same engine, same verdict; different depth. */
+export type Mode = 'simple' | 'advanced';
+
+/**
+ * The four occupancy names the first version of the app used, mapped onto the full
+ * taxonomy so a project saved before the rebuild still opens.
+ */
+export const LEGACY_OCCUPANCY: Readonly<Record<string, OccupancyId>> = {
+  single_unit: 'res_single',
+  multi_unit: 'res_multi',
+  group_housing: 'res_group_housing',
+  commercial: 'com_complex',
+};
 
 export interface ProjectState {
   /** Free-text label used in reports and saved sessions. */
@@ -19,7 +34,7 @@ export interface ProjectState {
   architectName: string;
   engineerName: string;
 
-  occupancy: Occupancy;
+  occupancy: OccupancyId;
   /** sqm */
   plotArea: number;
   /** m — road-facing edge */
@@ -49,6 +64,9 @@ export interface ProjectState {
   /** ₹ per sqm — district circle rate, drives every fee figure in the app. */
   circleRate: number;
 
+  /** Which depth of the app the person is working in. */
+  mode: Mode;
+
   /** WGS84, set by picking a point on the GIS map. */
   latitude?: number;
   longitude?: number;
@@ -65,7 +83,7 @@ export const DEFAULT_PROJECT: ProjectState = {
   architectName: '',
   engineerName: '',
 
-  occupancy: 'single_unit',
+  occupancy: 'res_single',
   plotArea: 320,
   plotFrontage: 14,
   plotDepth: 22.86,
@@ -87,14 +105,17 @@ export const DEFAULT_PROJECT: ProjectState = {
   greenRating: 'none',
 
   circleRate: 35000,
+  mode: 'simple',
 };
 
-export const OCCUPANCY_LABELS: Readonly<Record<Occupancy, string>> = {
-  single_unit: 'Single-Unit Plotted',
-  multi_unit: 'Multi-Unit Plotted',
-  group_housing: 'Group Housing',
-  commercial: 'Commercial',
-};
+/** Kept for call sites that want a short name without importing the whole definition. */
+export function occupancyLabel(id: OccupancyId): string {
+  return OCCUPANCIES[id]?.label ?? id;
+}
+
+export function occupancyPlain(id: OccupancyId): string {
+  return OCCUPANCIES[id]?.plain ?? id;
+}
 
 /** Plot depth is optional input; fall back to the area/frontage rectangle. */
 export function derivePlotDepth(project: Pick<ProjectState, 'plotArea' | 'plotFrontage' | 'plotDepth'>): number {

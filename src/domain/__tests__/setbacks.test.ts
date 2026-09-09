@@ -5,7 +5,7 @@ import {
   resolveRequiredSetbacks,
 } from '../setbacks';
 
-const base = { occupancy: 'single_unit' as const, plotArea: 320, buildingHeight: 12, isCornerPlot: false };
+const base = { occupancy: 'res_single' as const, plotArea: 320, buildingHeight: 12, isCornerPlot: false };
 
 describe('resolveRequiredSetbacks — plotted residential', () => {
   it('reads Table 3.2.1 at each band', () => {
@@ -36,7 +36,7 @@ describe('resolveRequiredSetbacks — plotted residential', () => {
   });
 
   it('does not reduce an already-larger side-2 setback on a corner plot', () => {
-    const corner = resolveRequiredSetbacks({ occupancy: 'single_unit', plotArea: 2000, buildingHeight: 12, isCornerPlot: true });
+    const corner = resolveRequiredSetbacks({ occupancy: 'res_single', plotArea: 2000, buildingHeight: 12, isCornerPlot: true });
     expect(corner.side2).toBe(6.0); // raised from 1.5 to the 6.0 front setback
   });
 });
@@ -56,7 +56,7 @@ describe('resolveRequiredSetbacks — high rise', () => {
   });
 
   it('overrides the plot-area ladder regardless of occupancy', () => {
-    const tiny = resolveRequiredSetbacks({ occupancy: 'commercial', plotArea: 80, buildingHeight: 30, isCornerPlot: false });
+    const tiny = resolveRequiredSetbacks({ occupancy: 'com_complex', plotArea: 80, buildingHeight: 30, isCornerPlot: false });
     expect(tiny.front).toBe(8);
     expect(tiny.isHighRise).toBe(true);
   });
