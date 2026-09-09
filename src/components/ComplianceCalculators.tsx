@@ -37,6 +37,7 @@ import {
 } from '../data/byelawsData';
 import { useToast } from '../context/ToastContext';
 import { useProject } from '../context/ProjectContext';
+import { NumberField } from './ui/NumberField';
 import {
   CompoundingUse,
   GreenRating,
@@ -399,7 +400,8 @@ export const ComplianceCalculators: React.FC = () => {
   const [feeBaseFar, setFeeBaseFar] = useState<number>(2.5);
   const [feePfarVal, setFeePfarVal] = useState<number>(2.5);
   const [feePpfarVal, setFeePpfarVal] = useState<number>(3.0);
-  const [circleRate, setCircleRate] = useState<number>(35000);
+  const circleRate = project.circleRate;
+  const setCircleRate = (v: number) => patch({ circleRate: v });
   const [factorCat, setFactorCat] = useState<string>("Residential (Group Housing)");
 
   const pfarFeeResult = useMemo(() => {
@@ -1378,12 +1380,7 @@ export const ComplianceCalculators: React.FC = () => {
               <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                 Plot Area (sqm)
               </label>
-              <input
-                type="number"
-                value={feePlotArea}
-                onChange={(e) => setFeePlotArea(Number(e.target.value))}
-                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 dark:bg-white/[0.04] dark:border-white/[0.14] dark:text-slate-100"
-              />
+              <NumberField label="Plot area" unit="sqm" value={feePlotArea} onChange={setFeePlotArea} min={1} step={10} />
             </div>
 
             <div className="grid grid-cols-2 gap-2">
@@ -1391,24 +1388,20 @@ export const ComplianceCalculators: React.FC = () => {
                 <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                   Base FAR
                 </label>
-                <input
-                  type="number"
-                  step="0.05"
-                  value={feeBaseFar}
-                  onChange={(e) => setFeeBaseFar(Number(e.target.value))}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 dark:bg-white/[0.04] dark:border-white/[0.14] dark:text-slate-100"
-                />
+                <NumberField label="Base FAR" value={feeBaseFar} onChange={setFeeBaseFar} min={0.1} step={0.05} />
               </div>
               <div>
                 <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
                   Circle Rate (Rs/sqm)
                 </label>
-                <input
-                  type="number"
-                  step="1000"
+                <NumberField
+                  label="District circle rate"
+                  unit="₹/sqm"
                   value={circleRate}
-                  onChange={(e) => setCircleRate(Number(e.target.value))}
-                  className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2 text-xs text-slate-800 focus:outline-none focus:border-emerald-500 dark:bg-white/[0.04] dark:border-white/[0.14] dark:text-slate-100"
+                  onChange={setCircleRate}
+                  min={0}
+                  step={1000}
+                  hint="Shared with the compounding tab and the setback study"
                 />
               </div>
             </div>
@@ -1529,7 +1522,7 @@ export const ComplianceCalculators: React.FC = () => {
                   <input
                     type="number"
                     value={unitsSmall}
-                    onChange={(e) => setUnitsSmall(Number(e.target.value))}
+                    onChange={(e) => setUnitsSmall(Math.max(0, Number(e.target.value) || 0))}
                     className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
@@ -1538,7 +1531,7 @@ export const ComplianceCalculators: React.FC = () => {
                   <input
                     type="number"
                     value={unitsMedium}
-                    onChange={(e) => setUnitsMedium(Number(e.target.value))}
+                    onChange={(e) => setUnitsMedium(Math.max(0, Number(e.target.value) || 0))}
                     className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
@@ -1547,7 +1540,7 @@ export const ComplianceCalculators: React.FC = () => {
                   <input
                     type="number"
                     value={unitsLarge}
-                    onChange={(e) => setUnitsLarge(Number(e.target.value))}
+                    onChange={(e) => setUnitsLarge(Math.max(0, Number(e.target.value) || 0))}
                     className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
@@ -1556,7 +1549,7 @@ export const ComplianceCalculators: React.FC = () => {
                   <input
                     type="number"
                     value={unitsXLarge}
-                    onChange={(e) => setUnitsXLarge(Number(e.target.value))}
+                    onChange={(e) => setUnitsXLarge(Math.max(0, Number(e.target.value) || 0))}
                     className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
@@ -1571,7 +1564,7 @@ export const ComplianceCalculators: React.FC = () => {
                 <input
                   type="number"
                   value={commercialFloorArea}
-                  onChange={(e) => setCommercialFloorArea(Number(e.target.value))}
+                  onChange={(e) => setCommercialFloorArea(Math.max(0, Number(e.target.value) || 0))}
                   className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                 />
               </div>
@@ -1584,7 +1577,7 @@ export const ComplianceCalculators: React.FC = () => {
                   <input
                     type="number"
                     value={hospitalFloorArea}
-                    onChange={(e) => setHospitalFloorArea(Number(e.target.value))}
+                    onChange={(e) => setHospitalFloorArea(Math.max(0, Number(e.target.value) || 0))}
                     className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
@@ -1593,7 +1586,7 @@ export const ComplianceCalculators: React.FC = () => {
                   <input
                     type="number"
                     value={hospitalBeds}
-                    onChange={(e) => setHospitalBeds(Number(e.target.value))}
+                    onChange={(e) => setHospitalBeds(Math.max(0, Number(e.target.value) || 0))}
                     className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
@@ -1607,7 +1600,7 @@ export const ComplianceCalculators: React.FC = () => {
                   <input
                     type="number"
                     value={schoolBuiltUp}
-                    onChange={(e) => setSchoolBuiltUp(Number(e.target.value))}
+                    onChange={(e) => setSchoolBuiltUp(Math.max(0, Number(e.target.value) || 0))}
                     className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
@@ -1616,7 +1609,7 @@ export const ComplianceCalculators: React.FC = () => {
                   <input
                     type="number"
                     value={schoolStudents}
-                    onChange={(e) => setSchoolStudents(Number(e.target.value))}
+                    onChange={(e) => setSchoolStudents(Math.max(0, Number(e.target.value) || 0))}
                     className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
                   />
                 </div>
@@ -1735,7 +1728,7 @@ export const ComplianceCalculators: React.FC = () => {
               <input
                 type="number"
                 value={compLandPrice}
-                onChange={(e) => setCompLandPrice(Number(e.target.value))}
+                onChange={(e) => setCompLandPrice(Math.max(0, Number(e.target.value) || 0))}
                 className="w-full bg-slate-50 border rounded p-2 text-xs dark:bg-white/[0.04]"
               />
             </div>
@@ -1748,7 +1741,7 @@ export const ComplianceCalculators: React.FC = () => {
                   <input
                     type="number"
                     value={frontEncroachSqm}
-                    onChange={(e) => setFrontEncroachSqm(Number(e.target.value))}
+                    onChange={(e) => setFrontEncroachSqm(Math.max(0, Number(e.target.value) || 0))}
                     className="w-full bg-slate-50 border rounded p-1.5 dark:bg-white/[0.04]"
                   />
                 </div>
@@ -1757,7 +1750,7 @@ export const ComplianceCalculators: React.FC = () => {
                   <input
                     type="number"
                     value={sideEncroachSqm}
-                    onChange={(e) => setSideEncroachSqm(Number(e.target.value))}
+                    onChange={(e) => setSideEncroachSqm(Math.max(0, Number(e.target.value) || 0))}
                     className="w-full bg-slate-50 border rounded p-1.5 dark:bg-white/[0.04]"
                   />
                 </div>
@@ -1768,7 +1761,7 @@ export const ComplianceCalculators: React.FC = () => {
                   <input
                     type="number"
                     value={rearEncroachSqm}
-                    onChange={(e) => setRearEncroachSqm(Number(e.target.value))}
+                    onChange={(e) => setRearEncroachSqm(Math.max(0, Number(e.target.value) || 0))}
                     className="w-full bg-slate-50 border rounded p-1.5 dark:bg-white/[0.04]"
                   />
                 </div>
@@ -1777,7 +1770,7 @@ export const ComplianceCalculators: React.FC = () => {
                   <input
                     type="number"
                     value={excessFarSqm}
-                    onChange={(e) => setExcessFarSqm(Number(e.target.value))}
+                    onChange={(e) => setExcessFarSqm(Math.max(0, Number(e.target.value) || 0))}
                     className="w-full bg-slate-50 border rounded p-1.5 dark:bg-white/[0.04]"
                   />
                 </div>
@@ -1788,7 +1781,7 @@ export const ComplianceCalculators: React.FC = () => {
                   type="number"
                   step="0.1"
                   value={heightDeviationMeters}
-                  onChange={(e) => setHeightDeviationMeters(Number(e.target.value))}
+                  onChange={(e) => setHeightDeviationMeters(Math.max(0, Number(e.target.value) || 0))}
                   className="w-full bg-slate-50 border rounded p-1.5 dark:bg-white/[0.04]"
                 />
               </div>

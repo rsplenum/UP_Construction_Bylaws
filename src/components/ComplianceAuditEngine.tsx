@@ -38,6 +38,7 @@ import {
 } from '../domain';
 import { useProject } from '../context/ProjectContext';
 import { TabId } from '../navigation';
+import { NumberField } from './ui/NumberField';
 import { AuditEngineState } from '../utils/auditStorage';
 import { SavedProject } from '../context/ProjectContext';
 import {
@@ -918,132 +919,85 @@ export const ComplianceAuditEngine: React.FC<ComplianceAuditEngineProps> = ({ on
               </select>
             </div>
 
-            {/* Plot Area & Road Width */}
+            {/* Site geometry. NumberField clamps on blur, so an intermediate keystroke
+                on the way to a larger number is not rewritten under the user's cursor. */}
             <div className="grid grid-cols-2 gap-2">
-              <div>
-                <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
-                  Plot Area (sqm)
-                </label>
-                <input
-                  type="number"
-                  value={plotArea}
-                  onChange={(e) => setPlotArea(Math.max(10, Number(e.target.value)))}
-                  className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                />
-              </div>
-              <div>
-                <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
-                  Abutting Road Width (m)
-                </label>
-                <input
-                  type="number"
-                  value={roadWidth}
-                  onChange={(e) => setRoadWidth(Math.max(3, Number(e.target.value)))}
-                  className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                />
-              </div>
-            </div>
-
-            {/* Frontage & Height */}
-            <div className="grid grid-cols-2 gap-2">
-              <div>
-                <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
-                  Plot Frontage (m)
-                </label>
-                <input
-                  type="number"
-                  step="0.5"
-                  value={plotFrontage}
-                  onChange={(e) => setPlotFrontage(Math.max(3, Number(e.target.value)))}
-                  className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                />
-              </div>
-              <div>
-                <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
-                  Building Height (m)
-                </label>
-                <input
-                  type="number"
-                  value={buildingHeight}
-                  onChange={(e) => setBuildingHeight(Math.max(3, Number(e.target.value)))}
-                  className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                />
-              </div>
-            </div>
-
-            {/* Total Built-up Area */}
-            <div>
-              <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
-                Total Built-up Area (sqm)
-              </label>
-              <input
-                type="number"
-                value={proposedBuiltUpArea}
-                onChange={(e) => setProposedBuiltUpArea(Math.max(10, Number(e.target.value)))}
-                className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
+              <NumberField
+                label="Plot area"
+                unit="sqm"
+                value={plotArea}
+                onChange={setPlotArea}
+                min={10}
+                step={1}
+              />
+              <NumberField
+                label="Abutting road width"
+                unit="m"
+                value={roadWidth}
+                onChange={setRoadWidth}
+                min={3}
+                step={0.5}
+                warning={
+                  roadWidth < 9 && (occupancy === 'multi_unit' || occupancy === 'group_housing')
+                    ? 'Below the 9 m minimum for multi-family development.'
+                    : undefined
+                }
               />
             </div>
 
-            {/* Setbacks Provided */}
-            <div className="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-2">
-              <span className="font-bold text-slate-800 dark:text-slate-200 block text-[11px] uppercase tracking-wider">
-                Setbacks Provided On-Site (Meters):
+            <div className="grid grid-cols-2 gap-2">
+              <NumberField
+                label="Plot frontage"
+                unit="m"
+                value={plotFrontage}
+                onChange={setPlotFrontage}
+                min={3}
+                step={0.5}
+                hint={plotFrontage > 0 ? `Implied depth ${(plotArea / plotFrontage).toFixed(1)} m` : undefined}
+              />
+              <NumberField
+                label="Building height"
+                unit="m"
+                value={buildingHeight}
+                onChange={setBuildingHeight}
+                min={3}
+                step={0.5}
+                hint={buildingHeight > 15 ? 'High-rise: progressive fire setbacks apply' : undefined}
+              />
+            </div>
+
+            <NumberField
+              label="Total built-up area"
+              unit="sqm"
+              value={proposedBuiltUpArea}
+              onChange={setProposedBuiltUpArea}
+              min={10}
+              step={5}
+              hint={plotArea > 0 ? `Proposed FAR ${(proposedBuiltUpArea / plotArea).toFixed(2)}` : undefined}
+            />
+
+            <div className="space-y-2 border-t border-slate-100 pt-2 dark:border-slate-800">
+              <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
+                Setbacks provided on site
               </span>
               <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="text-slate-500 dark:text-slate-400 block mb-0.5">Front Setback (m)</label>
-                  <input
-                    type="number"
-                    step="0.1"
-                    value={frontSetbackProvided}
-                    onChange={(e) => setFrontSetbackProvided(Number(e.target.value))}
-                    className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                  />
-                </div>
-                <div>
-                  <label className="text-slate-500 dark:text-slate-400 block mb-0.5">Rear Setback (m)</label>
-                  <input
-                    type="number"
-                    step="0.1"
-                    value={rearSetbackProvided}
-                    onChange={(e) => setRearSetbackProvided(Number(e.target.value))}
-                    className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                  />
-                </div>
-                <div>
-                  <label className="text-slate-500 dark:text-slate-400 block mb-0.5">Side-1 (m)</label>
-                  <input
-                    type="number"
-                    step="0.1"
-                    value={side1Provided}
-                    onChange={(e) => setSide1Provided(Number(e.target.value))}
-                    className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                  />
-                </div>
-                <div>
-                  <label className="text-slate-500 dark:text-slate-400 block mb-0.5">Side-2 (m)</label>
-                  <input
-                    type="number"
-                    step="0.1"
-                    value={side2Provided}
-                    onChange={(e) => setSide2Provided(Number(e.target.value))}
-                    className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                  />
-                </div>
+                <NumberField label="Front" unit="m" value={frontSetbackProvided} onChange={setFrontSetbackProvided} min={0} step={0.1} />
+                <NumberField label="Rear" unit="m" value={rearSetbackProvided} onChange={setRearSetbackProvided} min={0} step={0.1} />
+                <NumberField label="Side-1" unit="m" value={side1Provided} onChange={setSide1Provided} min={0} step={0.1} />
+                <NumberField label="Side-2" unit="m" value={side2Provided} onChange={setSide2Provided} min={0} step={0.1} />
               </div>
             </div>
 
             {/* Parking & Sustainable Features */}
             <div className="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-2">
               <div>
-                <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
-                  Parking Spaces Provided (ECS Bays)
-                </label>
-                <input
-                  type="number"
+                <NumberField
+                  label="Parking provided"
+                  unit="ECS bays"
                   value={parkingBaysProvided}
-                  onChange={(e) => setParkingBaysProvided(Number(e.target.value))}
-                  className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
+                  onChange={setParkingBaysProvided}
+                  min={0}
+                  step={1}
                 />
               </div>
 
