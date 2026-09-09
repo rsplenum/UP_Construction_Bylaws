@@ -286,7 +286,7 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
             setIsOpen((prev) => !prev);
             if (!isOpen) setIsComposing(false);
           }}
-          className="flex items-center space-x-2 px-3.5 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-full shadow-lg hover:shadow-xl transition-all border-2 border-amber-300 text-xs sm:text-sm group"
+          className="flex items-center space-x-2 px-3.5 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-full shadow-lg hover:shadow-xl transition-all border-2 border-amber-300 text-xs sm:text-sm group dark:border-amber-500/40"
           title="Toggle session sticky notes overlay"
         >
           <StickyNote className="w-4 h-4 text-slate-950 group-hover:rotate-12 transition-transform" />
@@ -338,7 +338,7 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
           </div>
 
           {/* Color Filter Tabs & Actions */}
-          <div className="px-4 py-2 bg-slate-50 dark:bg-slate-850 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs">
+          <div className="px-4 py-2 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs">
             <div className="flex items-center space-x-1">
               <button
                 onClick={() => setActiveFilterColor('all')}
@@ -549,7 +549,7 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
           </div>
 
           {/* Footer */}
-          <div className="p-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-850 flex items-center justify-between text-[11px] text-slate-500">
+          <div className="p-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 flex items-center justify-between text-[11px] text-slate-500">
             <span>Tip: Select text with mouse to annotate</span>
             <button
               onClick={() => handleStartAnnotating()}

@@ -310,7 +310,7 @@ export const ZoningMatrixExplorer: React.FC = () => {
             <span className="text-[11px] text-emerald-800 font-bold block dark:text-emerald-300">
               Calculated Impact Fee
             </span>
-            <span className="text-xl font-extrabold text-emerald-950 font-mono">
+            <span className="text-xl font-extrabold text-emerald-950 font-mono dark:text-emerald-200">
               ₹ {impactFeeTotal.toLocaleString('en-IN')}
             </span>
           </div>

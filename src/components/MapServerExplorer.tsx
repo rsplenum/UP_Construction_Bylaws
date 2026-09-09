@@ -1110,7 +1110,7 @@ export const MapServerExplorer: React.FC = () => {
                 }
                 className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   layerVisibility.residential
-                    ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-900 dark:text-amber-200 border border-amber-300'
+                    ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-500/40'
                     : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-400'
                 }`}
               >
@@ -1124,7 +1124,7 @@ export const MapServerExplorer: React.FC = () => {
                 }
                 className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   layerVisibility.commercial
-                    ? 'bg-blue-100 dark:bg-blue-950/60 text-blue-900 dark:text-blue-200 border border-blue-300'
+                    ? 'bg-blue-100 dark:bg-blue-950/60 text-blue-900 dark:text-blue-200 border border-blue-300 dark:border-blue-500/40'
                     : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-400'
                 }`}
               >
@@ -1138,7 +1138,7 @@ export const MapServerExplorer: React.FC = () => {
                 }
                 className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   layerVisibility.tod
-                    ? 'bg-rose-100 dark:bg-rose-950/60 text-rose-900 dark:text-rose-200 border border-rose-300'
+                    ? 'bg-rose-100 dark:bg-rose-950/60 text-rose-900 dark:text-rose-200 border border-rose-300 dark:border-rose-500/40'
                     : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-400'
                 }`}
               >
@@ -1152,7 +1152,7 @@ export const MapServerExplorer: React.FC = () => {
                 }
                 className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   layerVisibility.industrial
-                    ? 'bg-purple-100 dark:bg-purple-950/60 text-purple-900 dark:text-purple-200 border border-purple-300'
+                    ? 'bg-purple-100 dark:bg-purple-950/60 text-purple-900 dark:text-purple-200 border border-purple-300 dark:border-purple-500/40'
                     : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-400'
                 }`}
               >
@@ -1166,7 +1166,7 @@ export const MapServerExplorer: React.FC = () => {
                 }
                 className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   layerVisibility.riverBuffers
-                    ? 'bg-sky-100 dark:bg-sky-950/60 text-sky-900 dark:text-sky-200 border border-sky-300'
+                    ? 'bg-sky-100 dark:bg-sky-950/60 text-sky-900 dark:text-sky-200 border border-sky-300 dark:border-sky-500/40'
                     : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-400'
                 }`}
               >
@@ -1180,7 +1180,7 @@ export const MapServerExplorer: React.FC = () => {
                 }
                 className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   layerVisibility.aviationFunnels
-                    ? 'bg-indigo-100 dark:bg-indigo-950/60 text-indigo-900 dark:text-indigo-200 border border-indigo-300'
+                    ? 'bg-indigo-100 dark:bg-indigo-950/60 text-indigo-900 dark:text-indigo-200 border border-indigo-300 dark:border-indigo-500/40'
                     : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-400'
                 }`}
               >

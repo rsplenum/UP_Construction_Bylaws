@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import type { ByelawSection } from '../types';
 import {
   BYELAW_CHAPTERS,
   KEY_DEFINITIONS,
@@ -51,7 +52,7 @@ const HighlightText: React.FC<{ text: string; query: string }> = ({ text, query 
         regex.test(part) ? (
           <mark
             key={i}
-            className="bg-amber-300 text-amber-950 font-semibold px-1 py-0.5 rounded shadow-xs"
+            className="bg-amber-300 text-amber-950 font-semibold px-1 py-0.5 rounded shadow-xs dark:text-amber-200"
           >
             {part}
           </mark>
@@ -82,45 +83,97 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
     setExpandedSections((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  const copyToClipboard = (text: string, id: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedSection(id);
-    setTimeout(() => setCopiedSection(null), 2000);
+  const copyToClipboard = async (text: string, id: string) => {
+    // navigator.clipboard is undefined outside a secure context and rejects when the
+    // document is not focused; the unguarded call threw and left no feedback.
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedSection(id);
+      setTimeout(() => setCopiedSection(null), 2000);
+    } catch {
+      setCopiedSection(`error:${id}`);
+      setTimeout(() => setCopiedSection(null), 2500);
+    }
   };
 
-  // Filter chapters and sections based on search query and chapter filter
-  const filteredChapters = useMemo(() => {
-    const q = searchQuery.toLowerCase().trim();
-    return BYELAW_CHAPTERS.filter((ch) => {
+  /**
+   * Search the whole provision, not just its first paragraph.
+   *
+   * The previous filter looked at the chapter title, the chapter summary and each
+   * section's clauseNumber, title and content — but never the subsections, their
+   * bullets, the statutory tables or the notes, which is where most of the substance
+   * lives. It also matched the query as one literal string, so "far setback" found
+   * nothing, and it reported no hit count.
+   */
+  const searchTerms = useMemo(
+    () =>
+      searchQuery
+        .toLowerCase()
+        .trim()
+        .split(/\s+/)
+        .filter(Boolean),
+    [searchQuery],
+  );
+
+  const sectionHaystack = (sec: ByelawSection): string =>
+    [
+      sec.clauseNumber,
+      sec.title,
+      sec.content,
+      ...(sec.subsections ?? []).flatMap((sub) => [sub.clauseNumber, sub.title, sub.content, ...(sub.bullets ?? [])]),
+      sec.table?.caption ?? '',
+      ...(sec.table?.headers ?? []),
+      ...(sec.table?.rows ?? []).flat(),
+      ...(sec.notes ?? []),
+    ]
+      .join(' ')
+      .toLowerCase();
+
+  const matchesAllTerms = (haystack: string): boolean => searchTerms.every((term) => haystack.includes(term));
+
+  const { filteredChapters, matchingSectionIds, totalMatchCount } = useMemo(() => {
+    const matchIds = new Set<string>();
+    let count = 0;
+
+    const chapters = BYELAW_CHAPTERS.filter((ch) => {
       if (selectedChapterId !== 'all' && ch.id !== selectedChapterId) return false;
-      if (!q) return true;
+      if (searchTerms.length === 0) return true;
 
-      const inChapterMeta =
-        ch.title.toLowerCase().includes(q) ||
-        ch.chapterNumber.toLowerCase().includes(q) ||
-        ch.summary.toLowerCase().includes(q);
+      const chapterMeta = `${ch.chapterNumber} ${ch.title} ${ch.summary}`.toLowerCase();
+      let chapterHasMatch = matchesAllTerms(chapterMeta);
 
-      const inSections = ch.sections.some(
-        (sec) =>
-          sec.clauseNumber.toLowerCase().includes(q) ||
-          sec.title.toLowerCase().includes(q) ||
-          sec.content.toLowerCase().includes(q)
-      );
+      for (const sec of ch.sections) {
+        if (matchesAllTerms(sectionHaystack(sec))) {
+          matchIds.add(sec.id);
+          chapterHasMatch = true;
+          count++;
+        }
+      }
 
-      return inChapterMeta || inSections;
+      return chapterHasMatch;
     });
-  }, [searchQuery, selectedChapterId]);
+
+    return { filteredChapters: chapters, matchingSectionIds: matchIds, totalMatchCount: count };
+  }, [searchTerms, selectedChapterId]);
+
+  // Open the sections that matched, so a hit is not hidden behind a collapsed header.
+  useEffect(() => {
+    if (matchingSectionIds.size === 0) return;
+    setExpandedSections((prev) => {
+      const next = { ...prev };
+      matchingSectionIds.forEach((id) => {
+        next[id] = true;
+      });
+      return next;
+    });
+  }, [matchingSectionIds]);
 
   const filteredDefinitions = useMemo(() => {
-    const q = searchQuery.toLowerCase().trim();
-    if (!q) return KEY_DEFINITIONS;
-    return KEY_DEFINITIONS.filter(
-      (d) =>
-        d.term.toLowerCase().includes(q) ||
-        d.definition.toLowerCase().includes(q) ||
-        d.category.toLowerCase().includes(q)
+    if (searchTerms.length === 0) return KEY_DEFINITIONS;
+    return KEY_DEFINITIONS.filter((d) =>
+      matchesAllTerms(`${d.term} ${d.definition} ${d.category}`.toLowerCase()),
     );
-  }, [searchQuery]);
+  }, [searchTerms]);
 
   return (
     <div className="space-y-6">
@@ -161,6 +214,26 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
           </div>
         </div>
 
+        {searchTerms.length > 0 && (
+          <div
+            role="status"
+            aria-live="polite"
+            className="mt-4 flex flex-wrap items-center gap-2 rounded-lg border border-emerald-500/30 bg-emerald-500/10 px-3 py-2 text-xs text-emerald-200"
+          >
+            <span className="font-semibold">
+              {totalMatchCount === 0
+                ? 'No provision matches'
+                : `${totalMatchCount} provision${totalMatchCount === 1 ? '' : 's'} across ${filteredChapters.length} chapter${filteredChapters.length === 1 ? '' : 's'}`}
+            </span>
+            <span className="text-emerald-300/70">for “{searchQuery.trim()}”</span>
+            {totalMatchCount === 0 && (
+              <span className="text-emerald-300/70">
+                — searching clause numbers, titles, body text, sub-clauses, tables and notes.
+              </span>
+            )}
+          </div>
+        )}
+
         {/* Quick Sub-view Selector */}
         <div className="mt-6 pt-4 border-t border-slate-700/80 flex flex-wrap gap-2">
           {[
@@ -182,7 +255,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                 className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                   active
                     ? 'bg-emerald-500 text-slate-950 font-semibold shadow'
-                    : 'bg-slate-800 text-slate-300 hover:bg-slate-750 hover:text-white border border-slate-700 dark:bg-slate-800'
+                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700 dark:bg-slate-800'
                 }`}
               >
                 <Icon className={`w-3.5 h-3.5 ${tab.highlight && !active ? 'text-emerald-400' : ''}`} />
@@ -266,7 +339,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                           key={sec.id}
                           className={`border rounded-lg p-4 transition-colors ${
                             matchesSearch
-                              ? 'border-amber-300 bg-amber-50/40'
+                              ? 'border-amber-300 bg-amber-50/40 dark:border-amber-500/40 dark:bg-amber-950/40'
                               : 'border-slate-200 bg-slate-50/30 hover:bg-slate-50 dark:border-white/[0.10] dark:hover:bg-white/[0.06]'
                           }`}
                         >
@@ -408,7 +481,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                     <td className="p-3 font-medium text-slate-900 dark:text-white">{d.department}</td>
                     <td className="p-3 text-slate-600 dark:text-slate-400">{d.applicability}</td>
                     <td className="p-3">
-                      <span className="px-2 py-0.5 font-bold text-emerald-800 bg-emerald-100 rounded text-[11px] dark:text-emerald-300">
+                      <span className="px-2 py-0.5 font-bold text-emerald-800 bg-emerald-100 rounded text-[11px] dark:text-emerald-300 dark:bg-emerald-950/50">
                         {d.timeDays}
                       </span>
                     </td>
@@ -464,32 +537,32 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                     <td className="p-2.5 font-medium text-slate-500 dark:text-slate-400">{item.id}</td>
                     <td className="p-2.5 font-medium text-slate-900 dark:text-white">{item.structure}</td>
                     <td className="p-2.5 text-center">
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${item.singleMultiRes ? 'bg-rose-100 text-rose-700 dark:text-rose-300' : 'bg-emerald-100 text-emerald-700 dark:text-emerald-300'}`}>
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${item.singleMultiRes ? 'bg-rose-100 text-rose-700 dark:text-rose-300 dark:bg-rose-950/50' : 'bg-emerald-100 text-emerald-700 dark:text-emerald-300 dark:bg-emerald-950/50'}`}>
                         {item.singleMultiRes ? 'Counted (Y)' : 'Exempt (N)'}
                       </span>
                     </td>
                     <td className="p-2.5 text-center">
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${item.groupHousing ? 'bg-rose-100 text-rose-700 dark:text-rose-300' : 'bg-emerald-100 text-emerald-700 dark:text-emerald-300'}`}>
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${item.groupHousing ? 'bg-rose-100 text-rose-700 dark:text-rose-300 dark:bg-rose-950/50' : 'bg-emerald-100 text-emerald-700 dark:text-emerald-300 dark:bg-emerald-950/50'}`}>
                         {item.groupHousing ? 'Counted (Y)' : 'Exempt (N)'}
                       </span>
                     </td>
                     <td className="p-2.5 text-center">
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${item.commercialMixed ? 'bg-rose-100 text-rose-700 dark:text-rose-300' : 'bg-emerald-100 text-emerald-700 dark:text-emerald-300'}`}>
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${item.commercialMixed ? 'bg-rose-100 text-rose-700 dark:text-rose-300 dark:bg-rose-950/50' : 'bg-emerald-100 text-emerald-700 dark:text-emerald-300 dark:bg-emerald-950/50'}`}>
                         {item.commercialMixed ? 'Counted (Y)' : 'Exempt (N)'}
                       </span>
                     </td>
                     <td className="p-2.5 text-center">
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${item.office ? 'bg-rose-100 text-rose-700 dark:text-rose-300' : 'bg-emerald-100 text-emerald-700 dark:text-emerald-300'}`}>
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${item.office ? 'bg-rose-100 text-rose-700 dark:text-rose-300 dark:bg-rose-950/50' : 'bg-emerald-100 text-emerald-700 dark:text-emerald-300 dark:bg-emerald-950/50'}`}>
                         {item.office ? 'Counted (Y)' : 'Exempt (N)'}
                       </span>
                     </td>
                     <td className="p-2.5 text-center">
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${item.institutional ? 'bg-rose-100 text-rose-700 dark:text-rose-300' : 'bg-emerald-100 text-emerald-700 dark:text-emerald-300'}`}>
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${item.institutional ? 'bg-rose-100 text-rose-700 dark:text-rose-300 dark:bg-rose-950/50' : 'bg-emerald-100 text-emerald-700 dark:text-emerald-300 dark:bg-emerald-950/50'}`}>
                         {item.institutional ? 'Counted (Y)' : 'Exempt (N)'}
                       </span>
                     </td>
                     <td className="p-2.5 text-center">
-                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${item.industrial ? 'bg-rose-100 text-rose-700 dark:text-rose-300' : 'bg-emerald-100 text-emerald-700 dark:text-emerald-300'}`}>
+                      <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${item.industrial ? 'bg-rose-100 text-rose-700 dark:text-rose-300 dark:bg-rose-950/50' : 'bg-emerald-100 text-emerald-700 dark:text-emerald-300 dark:bg-emerald-950/50'}`}>
                         {item.industrial ? 'Counted (Y)' : 'Exempt (N)'}
                       </span>
                     </td>

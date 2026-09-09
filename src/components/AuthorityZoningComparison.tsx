@@ -452,7 +452,7 @@ export const AuthorityZoningComparison: React.FC = () => {
       </div>
 
       {/* Preset Comparisons */}
-      <div className="bg-slate-50 dark:bg-slate-850 p-3 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs">
         <span className="font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1">
           <Sparkles className="w-3.5 h-3.5 text-amber-500" />
           <span>Quick Comparative Presets:</span>

@@ -36,6 +36,14 @@ import {
   getCommercialComplexFarRule,
 } from '../data/byelawsData';
 import { useToast } from '../context/ToastContext';
+import { useProject } from '../context/ProjectContext';
+import {
+  CompoundingUse,
+  GreenRating,
+  assessCompounding,
+  resolveBaseFar,
+  resolveRequiredSetbacks,
+} from '../domain';
 
 export interface ValidationIssue {
   id: string;
@@ -52,13 +60,41 @@ export const ComplianceCalculators: React.FC = () => {
   const [sensitivityMode, setSensitivityMode] = useState<'road_width' | 'land_use' | 'plot_telescopic'>('road_width');
 
   // --- 1. FAR State ---
-  const [occupancyType, setOccupancyType] = useState<'residential_plotted' | 'group_housing' | 'commercial' | 'tod'>('residential_plotted');
-  const [plotArea, setPlotArea] = useState<number>(280);
-  const [roadWidth, setRoadWidth] = useState<number>(12);
+  // Plot area, road width and green rating are the shared project's, so changing them
+  // here also updates the audit, the setback visualiser and the forms. Occupancy is kept
+  // local because this screen offers a TOD mode the project model does not carry.
+  const { project, patch } = useProject();
+  const plotArea = project.plotArea;
+  const roadWidth = project.roadWidth;
+  const greenRating = project.greenRating;
+  const setPlotArea = (v: number) => patch({ plotArea: v });
+  const setRoadWidth = (v: number) => patch({ roadWidth: v });
+  const setGreenRating = (v: GreenRating) => patch({ greenRating: v });
+
+  const [occupancyType, setOccupancyType] = useState<'residential_plotted' | 'group_housing' | 'commercial' | 'tod'>(
+    project.occupancy === 'group_housing' ? 'group_housing' : project.occupancy === 'commercial' ? 'commercial' : 'residential_plotted',
+  );
   const [areaCategory, setAreaCategory] = useState<'built_up' | 'non_built_up'>('built_up');
-  const [greenRating, setGreenRating] = useState<'none' | 'silver' | 'gold' | 'platinum'>('none');
 
   // Telescopic Residential Plotted FAR calculation as per Chapter 3.2.2 & 3.2.2.1
+  // Both this screen and the audit engine now derive FAR from the same resolver, so the
+  // two tabs cannot disagree about the same plot.
+  const plottedFar = useMemo(
+    () => resolveBaseFar({ occupancy: 'single_unit', plotArea, roadWidth, greenRating }),
+    [plotArea, roadWidth, greenRating],
+  );
+
+  const plottedSetbacks = useMemo(
+    () =>
+      resolveRequiredSetbacks({
+        occupancy: project.occupancy,
+        plotArea,
+        buildingHeight: project.buildingHeight,
+        isCornerPlot: project.isCornerPlot,
+      }),
+    [project.occupancy, plotArea, project.buildingHeight, project.isCornerPlot],
+  );
+
   const calculatedPlottedFar = useMemo(() => {
     return calculateTelescopicResidentialFAR(plotArea);
   }, [plotArea]);
@@ -473,9 +509,10 @@ export const ComplianceCalculators: React.FC = () => {
   ]);
 
   // --- 4. Compounding Fee State ---
-  const [compUse, setCompUse] = useState<'residential' | 'commercial' | 'office'>('residential');
-  const [compPlotArea, setCompPlotArea] = useState<number>(300);
-  const [compLandPrice, setCompLandPrice] = useState<number>(25000);
+  const [compUse, setCompUse] = useState<CompoundingUse>('residential');
+  const compPlotArea = project.plotArea;
+  const compLandPrice = project.circleRate;
+  const setCompLandPrice = (v: number) => patch({ circleRate: v });
   const [frontEncroachSqm, setFrontEncroachSqm] = useState<number>(5);
   const [sideEncroachSqm, setSideEncroachSqm] = useState<number>(0);
   const [rearEncroachSqm, setRearEncroachSqm] = useState<number>(0);
@@ -485,106 +522,65 @@ export const ComplianceCalculators: React.FC = () => {
   const [isPublicLand, setIsPublicLand] = useState<boolean>(false);
   const [hasFireNocIssue, setHasFireNocIssue] = useState<boolean>(false);
 
+  // Compounding is assessed by the shared Chapter 16 module. This screen used to carry
+  // its own fee model (percentages of land price plus flat per-sqm rates) that disagreed
+  // with the setback visualiser's (a fraction of the circle rate plus a 10% surcharge)
+  // and with the schedule in the data layer — three answers for one deviation. It also
+  // quoted a fee for deviations beyond the Chapter 16.3 ceilings, which cannot be
+  // regularised at any price.
   const compoundingResult = useMemo(() => {
-    // Check non-compoundable clauses (Chapter 16.3.2)
-    const nonCompoundableReasons: string[] = [];
-    if (isIllegalColony) nonCompoundableReasons.push("Construction done on plots in illegal colonies (Clause 16.3.2 iii)");
-    if (isPublicLand) nonCompoundableReasons.push("Construction done on government/public land or road/park reserves (Clause 16.3.2 i, iv)");
-    if (hasFireNocIssue) nonCompoundableReasons.push("Missing mandatory Fire No Objection Certificate (Clause 16.3.2 vii)");
+    const required = resolveRequiredSetbacks({
+      occupancy: project.occupancy,
+      plotArea: compPlotArea,
+      buildingHeight: project.buildingHeight,
+      isCornerPlot: project.isCornerPlot,
+    });
 
-    if (nonCompoundableReasons.length > 0) {
-      return {
-        isEligible: false,
-        reasons: nonCompoundableReasons,
-        totalFee: 0,
-        breakdown: [],
-      };
-    }
+    // Convert a footprint encroachment in sqm back into the fraction of the setback it
+    // consumes, which is what the Chapter 16.3 ceilings are expressed against.
+    const frontage = Math.max(1, project.plotFrontage);
+    const depth = Math.max(1, compPlotArea / frontage);
+    const asFraction = (encroachedSqm: number, requiredM: number, edgeM: number) =>
+      requiredM > 0 && edgeM > 0 ? Math.min(1, encroachedSqm / edgeM / requiredM) : 0;
 
-    const breakdown: { item: string; amount: number; basis: string }[] = [];
+    const permissibleFar = resolveBaseFar({
+      occupancy: project.occupancy,
+      plotArea: compPlotArea,
+      roadWidth: project.roadWidth,
+      greenRating: project.greenRating,
+    });
 
-    // Schedule 2a: Front setback
-    // Residential: 100% of price of land; Commercial: 200%; Office: 150%
-    if (frontEncroachSqm > 0) {
-      const multiplier = compUse === 'commercial' ? 2.0 : compUse === 'office' ? 1.5 : 1.0;
-      const amt = frontEncroachSqm * compLandPrice * multiplier;
-      breakdown.push({
-        item: `Front Setback Encroachment (${frontEncroachSqm} sqm)`,
-        amount: amt,
-        basis: `${multiplier * 100}% of Land Price (Rs. ${compLandPrice}/sqm)`,
-      });
-    }
-
-    // Schedule 2b: Side setback
-    // Residential: 75%; Commercial: 150%; Office: 100%
-    if (sideEncroachSqm > 0) {
-      const multiplier = compUse === 'commercial' ? 1.5 : compUse === 'office' ? 1.0 : 0.75;
-      const amt = sideEncroachSqm * compLandPrice * multiplier;
-      breakdown.push({
-        item: `Side Setback Encroachment (${sideEncroachSqm} sqm)`,
-        amount: amt,
-        basis: `${multiplier * 100}% of Land Price`,
-      });
-    }
-
-    // Schedule 2c: Rear setback
-    // Residential: 50%; Commercial: 100%; Office: 75%
-    if (rearEncroachSqm > 0) {
-      const multiplier = compUse === 'commercial' ? 1.0 : compUse === 'office' ? 0.75 : 0.5;
-      const amt = rearEncroachSqm * compLandPrice * multiplier;
-      breakdown.push({
-        item: `Rear Setback Encroachment (${rearEncroachSqm} sqm)`,
-        amount: amt,
-        basis: `${multiplier * 100}% of Land Price`,
-      });
-    }
-
-    // Schedule 3: Excess FAR (within permissible ground coverage)
-    // Residential: Rs. 491/sqm + 50% required land price
-    // Commercial: Rs. 982/sqm + 100% required land price
-    // Office: Rs. 736/sqm + 75% required land price
-    if (excessFarSqm > 0) {
-      let flatRate = 491;
-      let landFraction = 0.50;
-      if (compUse === 'commercial') {
-        flatRate = 982;
-        landFraction = 1.00;
-      } else if (compUse === 'office') {
-        flatRate = 736;
-        landFraction = 0.75;
-      }
-      const amt = excessFarSqm * flatRate + (excessFarSqm * compLandPrice * landFraction);
-      breakdown.push({
-        item: `Excess FAR Construction (${excessFarSqm} sqm)`,
-        amount: amt,
-        basis: `Rs. ${flatRate}/sqm + ${landFraction * 100}% Land Price`,
-      });
-    }
-
-    // Schedule 10: Height deviation (Rs. 6132/running meter for residential; 2x commercial; 1.5x office)
-    if (heightDeviationMeters > 0) {
-      let rate = 6132;
-      if (compUse === 'commercial') rate = 6132 * 2;
-      if (compUse === 'office') rate = 6132 * 1.5;
-      const amt = heightDeviationMeters * rate;
-      breakdown.push({
-        item: `Height Deviation (${heightDeviationMeters} m)`,
-        amount: amt,
-        basis: `Rs. ${rate}/running meter`,
-      });
-    }
-
-    const totalFee = breakdown.reduce((sum, b) => sum + b.amount, 0);
-
-    return {
-      isEligible: true,
-      reasons: [],
-      totalFee,
-      breakdown,
-    };
+    return assessCompounding({
+      use: compUse,
+      circleRate: compLandPrice,
+      flags: {
+        inIllegalColony: isIllegalColony,
+        onPublicLandOrAmenity: isPublicLand,
+        breachesFireSafety: hasFireNocIssue,
+        highRiseFireSetbackDeficit:
+          required.isHighRise && (frontEncroachSqm > 0 || sideEncroachSqm > 0 || rearEncroachSqm > 0),
+      },
+      setbackEncroachmentSqm: {
+        front: frontEncroachSqm,
+        rear: rearEncroachSqm,
+        side1: sideEncroachSqm,
+      },
+      setbackDeficitFraction: {
+        front: asFraction(frontEncroachSqm, required.front, frontage),
+        rear: asFraction(rearEncroachSqm, required.rear, frontage),
+        side1: asFraction(sideEncroachSqm, required.side1, depth),
+      },
+      excessFarSqm,
+      excessFarFraction:
+        permissibleFar.maxPermissibleBuiltUpArea > 0 ? excessFarSqm / permissibleFar.maxPermissibleBuiltUpArea : 0,
+      heightDeviationM: heightDeviationMeters,
+      heightDeviationFraction: required.maxHeight > 0 ? heightDeviationMeters / required.maxHeight : 0,
+      heightDeviationFootprintSqm: compPlotArea * 0.5,
+    });
   }, [
     compUse,
     compLandPrice,
+    compPlotArea,
     frontEncroachSqm,
     sideEncroachSqm,
     rearEncroachSqm,
@@ -593,6 +589,13 @@ export const ComplianceCalculators: React.FC = () => {
     isIllegalColony,
     isPublicLand,
     hasFireNocIssue,
+    project.occupancy,
+    project.buildingHeight,
+    project.isCornerPlot,
+    project.plotFrontage,
+    project.roadWidth,
+    project.greenRating,
+    project.plotArea,
   ]);
 
   return (
@@ -668,7 +671,7 @@ export const ComplianceCalculators: React.FC = () => {
                 onChange={(e) => setPlotArea(Number(e.target.value))}
                 className={`w-full bg-slate-50 border rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none transition-colors dark:bg-white/[0.04] dark:text-slate-100 ${
                   hasPlotAreaError
-                    ? 'border-rose-500 ring-2 ring-rose-100 bg-rose-50/20'
+                    ? 'border-rose-500 ring-2 ring-rose-100 bg-rose-50/20 dark:bg-rose-950/40'
                     : 'border-slate-300 focus:border-emerald-500 dark:border-white/[0.14]'
                 }`}
               />
@@ -694,7 +697,7 @@ export const ComplianceCalculators: React.FC = () => {
                 onChange={(e) => setRoadWidth(Number(e.target.value))}
                 className={`w-full bg-slate-50 border rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none transition-colors dark:bg-white/[0.04] dark:text-slate-100 ${
                   hasRoadWidthError
-                    ? 'border-rose-500 ring-2 ring-rose-100 bg-rose-50/20'
+                    ? 'border-rose-500 ring-2 ring-rose-100 bg-rose-50/20 dark:bg-rose-950/40'
                     : 'border-slate-300 focus:border-emerald-500 dark:border-white/[0.14]'
                 }`}
               >
@@ -771,10 +774,10 @@ export const ComplianceCalculators: React.FC = () => {
                 <span
                   className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
                     farValidationIssues.some((i) => i.severity === 'error')
-                      ? 'bg-rose-100 text-rose-800 border border-rose-200 dark:text-rose-300 dark:border-rose-500/30'
+                      ? 'bg-rose-100 text-rose-800 border border-rose-200 dark:text-rose-300 dark:border-rose-500/30 dark:bg-rose-950/50'
                       : farValidationIssues.some((i) => i.severity === 'warning')
-                      ? 'bg-amber-100 text-amber-900 border border-amber-200 dark:text-amber-200 dark:border-amber-500/30'
-                      : 'bg-emerald-100 text-emerald-900 border border-emerald-200 dark:text-emerald-200 dark:border-emerald-500/30'
+                      ? 'bg-amber-100 text-amber-900 border border-amber-200 dark:text-amber-200 dark:border-amber-500/30 dark:bg-amber-950/50'
+                      : 'bg-emerald-100 text-emerald-900 border border-emerald-200 dark:text-emerald-200 dark:border-emerald-500/30 dark:bg-emerald-950/50'
                   }`}
                 >
                   {farValidationIssues.some((i) => i.severity === 'error')
@@ -789,12 +792,12 @@ export const ComplianceCalculators: React.FC = () => {
                     key={issue.id}
                     className={`p-2.5 rounded-lg border text-xs flex items-start gap-2.5 ${
                       issue.severity === 'error'
-                        ? 'bg-rose-50/80 border-rose-200 text-rose-900 dark:border-rose-500/30 dark:text-rose-200'
+                        ? 'bg-rose-50/80 border-rose-200 text-rose-900 dark:border-rose-500/30 dark:text-rose-200 dark:bg-rose-950/40'
                         : issue.severity === 'warning'
-                        ? 'bg-amber-50/80 border-amber-200 text-amber-900 dark:border-amber-500/30 dark:text-amber-200'
+                        ? 'bg-amber-50/80 border-amber-200 text-amber-900 dark:border-amber-500/30 dark:text-amber-200 dark:bg-amber-950/40'
                         : issue.severity === 'info'
-                        ? 'bg-sky-50/80 border-sky-200 text-sky-900'
-                        : 'bg-emerald-50/80 border-emerald-200 text-emerald-900 dark:border-emerald-500/30 dark:text-emerald-200'
+                        ? 'bg-sky-50/80 border-sky-200 text-sky-900 dark:text-sky-200 dark:border-sky-500/30 dark:bg-sky-950/40'
+                        : 'bg-emerald-50/80 border-emerald-200 text-emerald-900 dark:border-emerald-500/30 dark:text-emerald-200 dark:bg-emerald-950/40'
                     }`}
                   >
                     {issue.severity === 'error' && (
@@ -812,7 +815,7 @@ export const ComplianceCalculators: React.FC = () => {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-1 font-bold">
                         <span>{issue.title}</span>
-                        <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-white/70 border border-current/20">
+                        <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-white/70 border border-current/20 dark:bg-white/10">
                           {issue.byelawClause}
                         </span>
                       </div>
@@ -836,7 +839,7 @@ export const ComplianceCalculators: React.FC = () => {
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-center dark:bg-emerald-950/40 dark:border-emerald-500/30">
                       <span className="text-xs text-emerald-800 font-medium dark:text-emerald-300">Effective Base FAR</span>
-                      <div className="text-xl font-bold text-emerald-950 mt-0.5">
+                      <div className="text-xl font-bold text-emerald-950 mt-0.5 dark:text-emerald-200">
                         {calculatedPlottedFar.effectiveBaseFAR.toFixed(3)}
                       </div>
                     </div>
@@ -848,7 +851,7 @@ export const ComplianceCalculators: React.FC = () => {
                     </div>
                     <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-center col-span-2 sm:col-span-1 dark:bg-blue-950/40 dark:border-blue-500/30">
                       <span className="text-xs text-blue-800 font-medium dark:text-blue-300">Max FAR (with PFAR)</span>
-                      <div className="text-xl font-bold text-blue-950 mt-0.5">
+                      <div className="text-xl font-bold text-blue-950 mt-0.5 dark:text-blue-200">
                         {calculatedPlottedFar.maxPermissibleFAR.toFixed(2)}
                       </div>
                     </div>
@@ -880,9 +883,14 @@ export const ComplianceCalculators: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="text-xs text-slate-600 space-y-1 bg-slate-50/70 p-3 rounded-lg border border-slate-200 dark:text-slate-400 dark:border-white/[0.10]">
+                  <div className="space-y-1 rounded-lg border border-slate-200 bg-slate-50/70 p-3 text-xs text-slate-600 dark:border-white/[0.10] dark:bg-white/[0.04] dark:text-slate-400">
                     <p>
-                      <strong>Prescribed Setbacks (Section 3.2.4.1):</strong> Front {plotArea <= 150 ? '1.0m' : plotArea <= 300 ? '3.0m' : plotArea <= 500 ? '4.5m' : '6.0m'}, Rear {plotArea <= 150 ? '0m' : plotArea <= 300 ? '1.5m' : '3.0m'}.
+                      {/* Read from the shared resolver: this line previously carried its own
+                          inline ladder that put the 300–500 sqm front setback at 4.5m, where
+                          Table 3.2.1 has 3.0m. */}
+                      <strong>Prescribed setbacks (Table 3.2.1):</strong> Front {plottedSetbacks.front}m, rear{' '}
+                      {plottedSetbacks.rear}m, sides {plottedSetbacks.side1}m / {plottedSetbacks.side2}m
+                      {' '}<span className="opacity-70">({plottedSetbacks.bandLabel})</span>.
                     </p>
                     <p>
                       <strong>Purchasable FAR Ceiling:</strong> Up to 2.0 total FAR permissible regardless of road width (Chapter 9.2.3 Note-3).
@@ -900,9 +908,9 @@ export const ComplianceCalculators: React.FC = () => {
                       <span className="text-xs text-emerald-700 font-medium dark:text-emerald-300">Purchasable FAR</span>
                       <div className="text-xl font-bold text-emerald-900 mt-0.5 dark:text-emerald-200">+{groupHousingFar.pfar}</div>
                     </div>
-                    <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-lg dark:bg-indigo-950/40">
-                      <span className="text-xs text-indigo-700 font-medium">Premium PFAR</span>
-                      <div className="text-xl font-bold text-indigo-900 mt-0.5">+{groupHousingFar.ppfar}</div>
+                    <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-lg dark:bg-indigo-950/40 dark:border-indigo-500/30">
+                      <span className="text-xs text-indigo-700 font-medium dark:text-indigo-300">Premium PFAR</span>
+                      <div className="text-xl font-bold text-indigo-900 mt-0.5 dark:text-indigo-200">+{groupHousingFar.ppfar}</div>
                     </div>
                     <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg dark:bg-blue-950/40 dark:border-blue-500/30">
                       <span className="text-xs text-blue-700 font-medium dark:text-blue-300">Max FAR (MFAR)</span>
@@ -974,26 +982,26 @@ export const ComplianceCalculators: React.FC = () => {
                 </div>
               ) : (
                 <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-200 text-xs space-y-3 dark:bg-emerald-950/40 dark:border-emerald-500/30">
-                  <span className="font-bold text-emerald-950 text-sm block">
+                  <span className="font-bold text-emerald-950 text-sm block dark:text-emerald-200">
                     Transit-Oriented Development (TOD Zone) FAR Multipliers
                   </span>
                   <p className="text-emerald-900 dark:text-emerald-200">
                     Under Chapter 8.2.2.2, TOD zones receive enhanced FAR based on right of way:
                   </p>
                   <div className="grid grid-cols-2 gap-2 text-center">
-                    <div className="bg-white p-2.5 rounded border border-emerald-300 dark:bg-[#161617]">
+                    <div className="bg-white p-2.5 rounded border border-emerald-300 dark:bg-[#161617] dark:border-emerald-500/40">
                       <div className="text-xs text-slate-500 dark:text-slate-400">12m Road</div>
                       <div className="text-base font-bold text-emerald-800 dark:text-emerald-300">150% of Base FAR</div>
                     </div>
-                    <div className="bg-white p-2.5 rounded border border-emerald-300 dark:bg-[#161617]">
+                    <div className="bg-white p-2.5 rounded border border-emerald-300 dark:bg-[#161617] dark:border-emerald-500/40">
                       <div className="text-xs text-slate-500 dark:text-slate-400">12 - 24m Road</div>
                       <div className="text-base font-bold text-emerald-800 dark:text-emerald-300">250% of Base FAR</div>
                     </div>
-                    <div className="bg-white p-2.5 rounded border border-emerald-300 dark:bg-[#161617]">
+                    <div className="bg-white p-2.5 rounded border border-emerald-300 dark:bg-[#161617] dark:border-emerald-500/40">
                       <div className="text-xs text-slate-500 dark:text-slate-400">24 - 45m Road</div>
                       <div className="text-base font-bold text-emerald-800 dark:text-emerald-300">350% of Base FAR</div>
                     </div>
-                    <div className="bg-white p-2.5 rounded border border-emerald-300 dark:bg-[#161617]">
+                    <div className="bg-white p-2.5 rounded border border-emerald-300 dark:bg-[#161617] dark:border-emerald-500/40">
                       <div className="text-xs text-slate-500 dark:text-slate-400">&gt; 45m Road</div>
                       <div className="text-base font-bold text-emerald-800 dark:text-emerald-300">Unrestricted</div>
                     </div>
@@ -1008,7 +1016,7 @@ export const ComplianceCalculators: React.FC = () => {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-3">
               <div className="space-y-0.5">
                 <div className="flex items-center space-x-2">
-                  <div className="w-6 h-6 rounded bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold dark:bg-indigo-950/40">
+                  <div className="w-6 h-6 rounded bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold dark:bg-indigo-950/40 dark:text-indigo-300">
                     <BarChart3 className="w-3.5 h-3.5" />
                   </div>
                   <h4 className="text-sm font-bold text-slate-900 dark:text-white">
@@ -1027,7 +1035,7 @@ export const ComplianceCalculators: React.FC = () => {
                   onClick={() => setSensitivityMode('road_width')}
                   className={`px-2.5 py-1 rounded-md font-medium transition-all ${
                     sensitivityMode === 'road_width'
-                      ? 'bg-white text-indigo-700 font-bold shadow-xs dark:bg-[#161617]'
+                      ? 'bg-white text-indigo-700 font-bold shadow-xs dark:bg-[#161617] dark:text-indigo-300'
                       : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
                   }`}
                 >
@@ -1038,7 +1046,7 @@ export const ComplianceCalculators: React.FC = () => {
                   onClick={() => setSensitivityMode('land_use')}
                   className={`px-2.5 py-1 rounded-md font-medium transition-all ${
                     sensitivityMode === 'land_use'
-                      ? 'bg-white text-indigo-700 font-bold shadow-xs dark:bg-[#161617]'
+                      ? 'bg-white text-indigo-700 font-bold shadow-xs dark:bg-[#161617] dark:text-indigo-300'
                       : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
                   }`}
                 >
@@ -1049,7 +1057,7 @@ export const ComplianceCalculators: React.FC = () => {
                   onClick={() => setSensitivityMode('plot_telescopic')}
                   className={`px-2.5 py-1 rounded-md font-medium transition-all ${
                     sensitivityMode === 'plot_telescopic'
-                      ? 'bg-white text-indigo-700 font-bold shadow-xs dark:bg-[#161617]'
+                      ? 'bg-white text-indigo-700 font-bold shadow-xs dark:bg-[#161617] dark:text-indigo-300'
                       : 'text-slate-600 hover:text-slate-900 dark:text-slate-400'
                   }`}
                 >
@@ -1059,21 +1067,21 @@ export const ComplianceCalculators: React.FC = () => {
             </div>
 
             {/* Current Parameter Status Pill */}
-            <div className="flex flex-wrap items-center gap-2 text-xs bg-indigo-50/60 p-2.5 rounded-lg border border-indigo-100">
-              <span className="font-bold text-indigo-900 flex items-center gap-1">
+            <div className="flex flex-wrap items-center gap-2 text-xs bg-indigo-50/60 p-2.5 rounded-lg border border-indigo-100 dark:bg-indigo-950/40">
+              <span className="font-bold text-indigo-900 flex items-center gap-1 dark:text-indigo-200">
                 <Sliders className="w-3.5 h-3.5" />
                 <span>Current Plot Configuration:</span>
               </span>
-              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium dark:bg-[#161617]">
+              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium dark:bg-[#161617] dark:text-indigo-300 dark:border-indigo-500/30">
                 Road: <strong>{roadWidth}m</strong>
               </span>
-              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium dark:bg-[#161617]">
+              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium dark:bg-[#161617] dark:text-indigo-300 dark:border-indigo-500/30">
                 Plot: <strong>{plotArea} m²</strong>
               </span>
-              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium dark:bg-[#161617]">
+              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium dark:bg-[#161617] dark:text-indigo-300 dark:border-indigo-500/30">
                 Area: <strong>{areaCategory === 'built_up' ? 'Built-up Area' : 'Non-Built-up Area'}</strong>
               </span>
-              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium dark:bg-[#161617]">
+              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium dark:bg-[#161617] dark:text-indigo-300 dark:border-indigo-500/30">
                 Occupancy: <strong>{occupancyType.replace('_', ' ').toUpperCase()}</strong>
               </span>
             </div>
@@ -1442,7 +1450,7 @@ export const ComplianceCalculators: React.FC = () => {
               <span className="text-xs text-emerald-800 font-bold uppercase tracking-wider dark:text-emerald-300">
                 Total Purchasable FAR Fee Payable
               </span>
-              <div className="text-2xl sm:text-3xl font-extrabold text-emerald-950 mt-1 font-mono">
+              <div className="text-2xl sm:text-3xl font-extrabold text-emerald-950 mt-1 font-mono dark:text-emerald-200">
                 ₹ {pfarFeeResult.totalCharge.toLocaleString('en-IN')}
               </div>
               <span className="text-xs text-emerald-700 mt-1 block dark:text-emerald-300">
@@ -1624,15 +1632,15 @@ export const ComplianceCalculators: React.FC = () => {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
               <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg dark:bg-blue-950/40 dark:border-blue-500/30">
                 <span className="text-xs text-blue-700 font-medium dark:text-blue-300">Total ECS Required</span>
-                <div className="text-2xl font-bold text-blue-950 mt-1">{parkingResult.finalEcs}</div>
+                <div className="text-2xl font-bold text-blue-950 mt-1 dark:text-blue-200">{parkingResult.finalEcs}</div>
               </div>
               <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg dark:bg-amber-950/40 dark:border-amber-500/30">
                 <span className="text-xs text-amber-700 font-medium dark:text-amber-300">EV Share (20%)</span>
-                <div className="text-2xl font-bold text-amber-950 mt-1">{parkingResult.evCapacity} bays</div>
+                <div className="text-2xl font-bold text-amber-950 mt-1 dark:text-amber-200">{parkingResult.evCapacity} bays</div>
               </div>
               <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg col-span-2 sm:col-span-1 dark:bg-emerald-950/40 dark:border-emerald-500/30">
                 <span className="text-xs text-emerald-700 font-medium dark:text-emerald-300">Power Load (+1.25 SF)</span>
-                <div className="text-2xl font-bold text-emerald-950 mt-1">~{parkingResult.estimatedLoadKw} kW</div>
+                <div className="text-2xl font-bold text-emerald-950 mt-1 dark:text-emerald-200">~{parkingResult.estimatedLoadKw} kW</div>
               </div>
             </div>
 
@@ -1649,7 +1657,7 @@ export const ComplianceCalculators: React.FC = () => {
             </div>
 
             {parkingResult.extraNotes.length > 0 && (
-              <div className="p-3 bg-blue-50/60 rounded-lg border border-blue-100 text-xs text-blue-900 space-y-1 dark:text-blue-200">
+              <div className="p-3 bg-blue-50/60 rounded-lg border border-blue-100 text-xs text-blue-900 space-y-1 dark:text-blue-200 dark:bg-blue-950/40">
                 {parkingResult.extraNotes.map((note, i) => (
                   <p key={i} className="flex items-center gap-1.5">
                     <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 flex-shrink-0" />
@@ -1792,8 +1800,8 @@ export const ComplianceCalculators: React.FC = () => {
               Compounding Fee Breakdown (Rule 4 Schedule)
             </h3>
 
-            {!compoundingResult.isEligible ? (
-              <div className="p-5 bg-rose-50 border border-rose-300 rounded-xl space-y-2 text-rose-900 dark:bg-rose-950/40 dark:text-rose-200">
+            {!compoundingResult.isCompoundable ? (
+              <div className="p-5 bg-rose-50 border border-rose-300 rounded-xl space-y-2 text-rose-900 dark:bg-rose-950/40 dark:text-rose-200 dark:border-rose-500/40">
                 <div className="flex items-center space-x-2 font-bold text-sm">
                   <AlertTriangle className="w-5 h-5 text-rose-600" />
                   <span>NON-COMPOUNDABLE OFFENCE DETECTED</span>
@@ -1801,8 +1809,8 @@ export const ComplianceCalculators: React.FC = () => {
                 <p className="text-xs">
                   Under Chapter 16.2 and 16.3.2 of UP Byelaws 2025, the following violations cannot be compounded and are liable for demolition under Section 27 of UP Urban Planning and Development Act:
                 </p>
-                <ul className="list-disc pl-5 text-xs space-y-1 font-semibold">
-                  {compoundingResult.reasons.map((r, i) => (
+                <ul className="list-disc space-y-1 pl-5 text-xs font-semibold">
+                  {compoundingResult.blockingReasons.map((r, i) => (
                     <li key={i}>{r}</li>
                   ))}
                 </ul>
@@ -1813,26 +1821,39 @@ export const ComplianceCalculators: React.FC = () => {
                   <span className="text-xs text-emerald-800 font-bold uppercase tracking-wider dark:text-emerald-300">
                     Total Estimated Compounding Fee
                   </span>
-                  <div className="text-2xl sm:text-3xl font-extrabold text-emerald-950 mt-1 font-mono">
-                    ₹ {compoundingResult.totalFee.toLocaleString('en-IN')}
+                  <div className="text-2xl sm:text-3xl font-extrabold text-emerald-950 mt-1 font-mono dark:text-emerald-200">
+                    ₹ {compoundingResult.totalPayable.toLocaleString('en-IN')}
                   </div>
-                  <span className="text-xs text-emerald-700 block mt-1 dark:text-emerald-300">
-                    Payable in lump-sum or instalments with interest rate (MCLR + 1%).
+                  <span className="mt-1 block text-xs text-emerald-700 dark:text-emerald-300">
+                    Assessed fee ₹{compoundingResult.assessedFee.toLocaleString('en-IN')} plus a 10% administrative
+                    surcharge. An indicative figure — the Authority's assessment governs.
                   </span>
                 </div>
 
                 <div className="divide-y divide-slate-100 border rounded-lg overflow-hidden text-xs">
-                  {compoundingResult.breakdown.map((b, i) => (
-                    <div key={i} className="p-3 bg-slate-50 flex items-center justify-between dark:bg-white/[0.04]">
-                      <div>
-                        <div className="font-bold text-slate-900 dark:text-white">{b.item}</div>
+                  {compoundingResult.lineItems.map((b) => (
+                    <div key={b.id} className="flex items-center justify-between bg-slate-50 p-3 dark:bg-white/[0.04]">
+                      <div className="min-w-0 pr-3">
+                        <div className="font-bold text-slate-900 dark:text-white">
+                          {b.label} · {b.quantity} {b.unit}
+                        </div>
                         <div className="text-[11px] text-slate-500 dark:text-slate-400">{b.basis}</div>
+                        {b.limitNote && (
+                          <div className="mt-0.5 text-[11px] font-semibold text-rose-600 dark:text-rose-400">
+                            {b.limitNote}
+                          </div>
+                        )}
                       </div>
-                      <div className="font-mono font-bold text-slate-900 dark:text-white">
+                      <div className="whitespace-nowrap font-mono font-bold text-slate-900 dark:text-white">
                         ₹ {b.amount.toLocaleString('en-IN')}
                       </div>
                     </div>
                   ))}
+                  {compoundingResult.lineItems.length === 0 && (
+                    <p className="bg-slate-50 p-4 text-center text-slate-400 dark:bg-white/[0.04]">
+                      No deviation entered — nothing to compound.
+                    </p>
+                  )}
                 </div>
               </div>
             )}

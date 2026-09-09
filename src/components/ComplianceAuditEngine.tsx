@@ -693,7 +693,7 @@ export const ComplianceAuditEngine: React.FC<ComplianceAuditEngineProps> = ({ on
         {showHistoryPanel && (
           <>
             {savedProjects.length === 0 ? (
-              <div className="text-center py-4 bg-white dark:bg-slate-850 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400">
+              <div className="text-center py-4 bg-white dark:bg-slate-900 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400">
                 <FolderGit2 className="w-6 h-6 mx-auto mb-1 text-slate-400" />
                 <p className="font-medium">No saved audit sessions in local history yet.</p>
                 <p className="text-[11px] text-slate-400 mt-0.5">
@@ -705,7 +705,7 @@ export const ComplianceAuditEngine: React.FC<ComplianceAuditEngineProps> = ({ on
                 {savedProjects.map((item) => (
                   <div
                     key={item.id}
-                    className="bg-white dark:bg-slate-850 p-3 rounded-lg border border-slate-200 dark:border-slate-700 shadow-xs flex flex-col justify-between hover:border-emerald-500 dark:hover:border-emerald-500 transition-all group"
+                    className="bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 shadow-xs flex flex-col justify-between hover:border-emerald-500 dark:hover:border-emerald-500 transition-all group"
                   >
                     <div className="space-y-1.5">
                       <div className="flex items-start justify-between gap-1">
@@ -769,7 +769,7 @@ export const ComplianceAuditEngine: React.FC<ComplianceAuditEngineProps> = ({ on
       </div>
 
       {/* Preset Quick Loader */}
-      <div className="bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 p-3 rounded-xl flex items-center justify-between flex-wrap gap-2 text-xs">
+      <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 rounded-xl flex items-center justify-between flex-wrap gap-2 text-xs">
         <span className="font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1">
           <Sparkles className="w-3.5 h-3.5 text-amber-500" />
           <span>Load Project Template:</span>

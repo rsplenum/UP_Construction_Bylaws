@@ -84,3 +84,16 @@ describe('resolveBaseFar — green incentive', () => {
     expect(platinum.purchasableFar).toBe(plain.purchasableFar);
   });
 });
+
+describe('the presentation adapter agrees with the resolver', () => {
+  it('reports the same slabs and base FAR as resolveBaseFar', async () => {
+    const { calculateTelescopicResidentialFAR } = await import('../../data/byelawsData');
+    for (const area of [80, 150, 151, 320, 500, 900, 1200, 4000]) {
+      const adapter = calculateTelescopicResidentialFAR(area);
+      const engine = resolveBaseFar({ occupancy: 'single_unit', plotArea: area, roadWidth: 12 });
+      expect(adapter.effectiveBaseFAR).toBe(engine.baseFar);
+      expect(adapter.totalBaseBuiltUpArea).toBe(engine.baseBuiltUpArea);
+      expect(adapter.slabs).toHaveLength(engine.slabs.length);
+    }
+  });
+});
