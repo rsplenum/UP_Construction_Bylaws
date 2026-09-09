@@ -42,7 +42,7 @@ const STATUS_GLYPH: Record<PermissibilityStatus, { short: string; label: string;
   Prohibited: {
     short: '—',
     label: 'Prohibited',
-    className: 'bg-slate-100 text-slate-400 dark:bg-white/[0.06] dark:text-slate-500',
+    className: 'bg-slate-100 text-slate-600 dark:bg-white/[0.06] dark:text-slate-400',
   },
 };
 
@@ -88,12 +88,12 @@ export const ZoningMatrixExplorer: React.FC = () => {
       <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4 dark:bg-[#161617] dark:border-white/[0.10]">
         <div>
           <div className="flex items-center space-x-2">
-            <Landmark className="w-5 h-5 text-emerald-600" />
-            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+            <Landmark className="w-5 h-5 text-emerald-700 dark:text-emerald-300" />
+            <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
               Chapter 15 & Appendix-15: Zoning Regulations & Master Plan Concordance
-            </h3>
+            </h2>
           </div>
-          <p className="text-xs text-slate-500 mt-1 max-w-3xl dark:text-slate-400">
+          <p className="text-xs text-slate-600 mt-1 max-w-3xl dark:text-slate-400">
             Standardizes 16 Land Use Zones across all 22 Development Authorities of Uttar Pradesh. Select any city authority to examine local nomenclature mappings and permissible activities.
           </p>
         </div>
@@ -104,7 +104,8 @@ export const ZoningMatrixExplorer: React.FC = () => {
             Select Authority:
           </span>
           <select
-            value={selectedAuthorityCode}
+            aria-label="Development authority"
+              value={selectedAuthorityCode}
             onChange={(e) => setSelectedAuthorityCode(Number(e.target.value))}
             className="bg-slate-50 border border-slate-300 rounded-lg py-1.5 px-3 text-xs font-medium text-slate-800 focus:outline-none focus:border-emerald-500 shadow-sm dark:bg-white/[0.04] dark:border-white/[0.14] dark:text-slate-100"
           >
@@ -122,11 +123,11 @@ export const ZoningMatrixExplorer: React.FC = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <MapPin className="w-4 h-4 text-emerald-400" />
-            <h4 className="text-sm font-bold tracking-tight">
+            <h3 className="text-sm font-bold tracking-tight">
               {selectedAuthority.name} — Master Plan Zoning Dictionary (Appendix-15)
-            </h4>
+            </h3>
           </div>
-          <span className="text-xs text-slate-400 font-mono dark:text-slate-500">
+          <span className="text-xs text-slate-300 font-mono">
             {selectedAuthority.zones.length} Mapped Zones
           </span>
         </div>
@@ -152,7 +153,7 @@ export const ZoningMatrixExplorer: React.FC = () => {
             <h4 className="text-base font-bold text-slate-900 dark:text-white">
               Activity Permissibility Matrix (Chapter 15.3.2)
             </h4>
-            <div className="flex items-center space-x-3 text-xs mt-1 text-slate-500 dark:text-slate-400">
+            <div className="flex items-center space-x-3 text-xs mt-1 text-slate-600 dark:text-slate-400">
               <span className="flex items-center gap-1">
                 <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block" />
                 <span>Permitted (P)</span>
@@ -169,9 +170,10 @@ export const ZoningMatrixExplorer: React.FC = () => {
           </div>
 
           <div className="relative w-full sm:w-64">
-            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400 dark:text-slate-500" />
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
             <input
               type="text"
+              aria-label="Filter activities"
               value={filterText}
               onChange={(e) => setFilterText(e.target.value)}
               placeholder="Filter activities..."
@@ -200,7 +202,7 @@ export const ZoningMatrixExplorer: React.FC = () => {
                 <tr key={act.activityId} className="hover:bg-slate-50 dark:hover:bg-white/[0.06]">
                   <th scope="row" className="p-2.5 text-left font-normal">
                     <span className="block font-semibold text-slate-900 dark:text-white">{act.activityName}</span>
-                    <span className="block text-[10px] text-slate-500 dark:text-slate-400">{act.category}</span>
+                    <span className="block text-[10px] text-slate-600 dark:text-slate-400">{act.category}</span>
                     {act.statutoryNotes && (
                       <span className="mt-0.5 block text-[10px] italic text-amber-700 dark:text-amber-300">
                         {act.statutoryNotes}
@@ -235,10 +237,10 @@ export const ZoningMatrixExplorer: React.FC = () => {
         </div>
 
         {filteredActivities.length === 0 && (
-          <p className="py-8 text-center text-xs text-slate-400">No activity matches “{filterText}”.</p>
+          <p className="py-8 text-center text-xs text-slate-600 dark:text-slate-400">No activity matches “{filterText}”.</p>
         )}
 
-        <div className="flex flex-wrap items-center gap-4 border-t border-slate-200 pt-3 text-[10.5px] text-slate-500 dark:border-white/[0.10] dark:text-slate-400">
+        <div className="flex flex-wrap items-center gap-4 border-t border-slate-200 pt-3 text-[10.5px] text-slate-600 dark:border-white/[0.10] dark:text-slate-400">
           {(Object.keys(STATUS_GLYPH) as PermissibilityStatus[]).map((status) => (
             <span key={status} className="flex items-center gap-1.5">
               <span className={`inline-block h-4 w-4 rounded text-center text-[10px] font-bold leading-4 ${STATUS_GLYPH[status].className}`}>
@@ -247,7 +249,7 @@ export const ZoningMatrixExplorer: React.FC = () => {
               {STATUS_GLYPH[status].label}
             </span>
           ))}
-          <span className="text-slate-400 dark:text-slate-500">Hover any cell for the statutory condition.</span>
+          <span className="text-slate-600 dark:text-slate-400">Hover any cell for the statutory condition.</span>
         </div>
       </div>
 
@@ -257,17 +259,17 @@ export const ZoningMatrixExplorer: React.FC = () => {
           <h4 className="text-base font-bold text-slate-900 dark:text-white">
             Chapter 15.4: Land Use Change Impact Fee Calculator
           </h4>
-          <p className="text-xs text-slate-500 mt-0.5 dark:text-slate-400">
+          <p className="text-xs text-slate-600 mt-0.5 dark:text-slate-400">
             Formula: <strong>Impact Fee = (Plot Area) × (Circle Rate) × (Coefficient × 0.25)</strong>
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 items-end">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
+            <label htmlFor="zoning-matrix-explorer-plot-area-sqm" className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
               Plot Area (sqm)
             </label>
-            <input
+            <input id="zoning-matrix-explorer-plot-area-sqm"
               type="number"
               value={impactPlotArea}
               onChange={(e) => setImpactPlotArea(Number(e.target.value))}
@@ -276,10 +278,10 @@ export const ZoningMatrixExplorer: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
+            <label htmlFor="zoning-matrix-explorer-residential-circle-rate-rs-sqm" className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
               Residential Circle Rate (Rs/sqm)
             </label>
-            <input
+            <input id="zoning-matrix-explorer-residential-circle-rate-rs-sqm"
               type="number"
               value={impactCircleRate}
               onChange={(e) => setImpactCircleRate(Number(e.target.value))}
@@ -288,10 +290,10 @@ export const ZoningMatrixExplorer: React.FC = () => {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
+            <label htmlFor="zoning-matrix-explorer-impact-fee-coefficient" className="block text-xs font-semibold text-slate-700 mb-1 dark:text-slate-300">
               Impact Fee Coefficient
             </label>
-            <select
+            <select id="zoning-matrix-explorer-impact-fee-coefficient"
               value={impactCoefficient}
               onChange={(e) => setImpactCoefficient(Number(e.target.value))}
               className="w-full bg-slate-50 border rounded-lg p-2 text-xs dark:bg-white/[0.04]"

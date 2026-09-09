@@ -114,7 +114,7 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({ childre
               <button
                 type="button"
                 onClick={() => dismissToast(toast.id)}
-                className="flex-shrink-0 p-1 text-slate-400 hover:text-white rounded-md hover:bg-white/10 transition-colors"
+                className="flex-shrink-0 rounded-md p-1 text-slate-600 transition-colors hover:bg-white/10 hover:text-white dark:text-slate-400"
                 title="Dismiss"
               >
                 <X className="w-3.5 h-3.5" />

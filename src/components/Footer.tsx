@@ -15,12 +15,12 @@ const STATUTORY_REFERENCES = [
 ];
 
 export const Footer: React.FC = () => (
-  <footer className="mt-auto border-t border-black/[0.06] bg-white/80 py-8 text-xs text-slate-500 backdrop-blur-xl print:hidden dark:border-white/[0.08] dark:bg-[#161617]/80 dark:text-slate-400">
+  <footer className="mt-auto border-t border-black/[0.06] bg-white/80 py-8 text-xs text-slate-600 backdrop-blur-xl print:hidden dark:border-white/[0.08] dark:bg-[#161617]/80 dark:text-slate-400">
     <div className="mx-auto max-w-7xl space-y-6 px-4 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 gap-6 border-b border-black/[0.04] pb-6 md:grid-cols-4 dark:border-white/[0.06]">
         <div className="space-y-2">
           <div className="flex items-center gap-2">
-            <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-600 text-xs font-bold text-white">
+            <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-700 text-xs font-bold text-white">
               UP
             </span>
             <span className="font-semibold text-slate-900 dark:text-white">UP Building Byelaws 2025</span>
@@ -69,7 +69,7 @@ export const Footer: React.FC = () => (
         </div>
       </div>
 
-      <div className="flex flex-col items-center justify-between gap-3 text-[11px] text-slate-400 sm:flex-row dark:text-slate-500">
+      <div className="flex flex-col items-center justify-between gap-3 text-[11px] text-slate-600 sm:flex-row dark:text-slate-400">
         <p>Byelaws text © Government of Uttar Pradesh. Reproduced for public reference.</p>
         <p className="flex items-center gap-3">
           <span>Runs entirely in your browser — no project data leaves this device</span>

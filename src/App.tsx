@@ -53,10 +53,13 @@ function AppShell() {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
+  const activeTabDefinition = useMemo(() => TABS.find((t) => t.id === activeTab), [activeTab]);
+
   useEffect(() => {
-    const tab = TABS.find((t) => t.id === activeTab);
-    document.title = tab ? `${tab.label} · UP Building Byelaws 2025` : 'UP Building Byelaws 2025';
-  }, [activeTab]);
+    document.title = activeTabDefinition
+      ? `${activeTabDefinition.label} · UP Building Byelaws 2025`
+      : 'UP Building Byelaws 2025';
+  }, [activeTabDefinition]);
 
   // ⌘K / Ctrl-K, advertised in the header since the first release and wired here.
   useEffect(() => {
@@ -108,9 +111,14 @@ function AppShell() {
       <main
         id="main-content"
         tabIndex={-1}
+        aria-labelledby="page-heading"
         className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 outline-none sm:px-6 lg:px-8"
       >
-        <ErrorBoundary label={TABS.find((t) => t.id === activeTab)?.label}>
+        <h1 id="page-heading" className="sr-only">
+          {activeTabDefinition?.label ?? 'UP Building Byelaws 2025'} — UP Building Byelaws 2025 portal
+        </h1>
+
+        <ErrorBoundary label={activeTabDefinition?.label}>
           <Suspense fallback={<PanelSkeleton />}>
             {activeTab === 'maps' && <MapServerExplorer />}
             {activeTab === 'audit' && <ComplianceAuditEngine onNavigate={goToTab} />}

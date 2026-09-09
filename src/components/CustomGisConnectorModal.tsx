@@ -134,7 +134,7 @@ export const CustomGisConnectorModal: React.FC<CustomGisConnectorModalProps> = (
         {/* Header */}
         <div className="p-6 border-b border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center font-bold">
+            <div className="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-700 flex items-center justify-center font-bold dark:text-emerald-300">
               <Database className="w-5 h-5" />
             </div>
             <div>
@@ -144,7 +144,7 @@ export const CustomGisConnectorModal: React.FC<CustomGisConnectorModalProps> = (
                   Universal
                 </span>
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-600 dark:text-slate-400">
                 Overlay government GeoServer, ISRO Bhuvan, Survey of India, or custom TileXYZ services.
               </p>
             </div>
@@ -152,7 +152,7 @@ export const CustomGisConnectorModal: React.FC<CustomGisConnectorModalProps> = (
 
           <button
             onClick={onClose}
-            className="p-2 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors"
+            className="p-2 rounded-full text-slate-600 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors dark:text-slate-400"
           >
             <X className="w-5 h-5" />
           </button>
@@ -164,7 +164,7 @@ export const CustomGisConnectorModal: React.FC<CustomGisConnectorModalProps> = (
           <div className="space-y-2">
             <label className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider flex items-center justify-between">
               <span>Verified Public & Government GIS Presets</span>
-              <span className="text-[11px] font-normal text-slate-400">Click to autofill</span>
+              <span className="text-[11px] font-normal text-slate-600 dark:text-slate-400">Click to autofill</span>
             </label>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
@@ -179,11 +179,11 @@ export const CustomGisConnectorModal: React.FC<CustomGisConnectorModalProps> = (
                     <span className="text-xs font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 transition-colors">
                       {preset.name}
                     </span>
-                    <span className="text-[9px] font-semibold text-slate-400 font-mono">
+                    <span className="text-[9px] font-semibold text-slate-600 font-mono dark:text-slate-400">
                       {preset.agency}
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-2 leading-relaxed">
+                  <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1 line-clamp-2 leading-relaxed">
                     {preset.description}
                   </p>
                 </button>
@@ -194,10 +194,10 @@ export const CustomGisConnectorModal: React.FC<CustomGisConnectorModalProps> = (
           {/* Custom Form */}
           <form onSubmit={handleSubmit} className="space-y-4 pt-2 border-t border-black/[0.06] dark:border-white/[0.08]">
             <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+              <label htmlFor="custom-gis-connector-modal-gis-provider-layer-name" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                 GIS Provider / Layer Name *
               </label>
-              <input
+              <input id="custom-gis-connector-modal-gis-provider-layer-name"
                 type="text"
                 required
                 value={providerName}
@@ -208,10 +208,10 @@ export const CustomGisConnectorModal: React.FC<CustomGisConnectorModalProps> = (
             </div>
 
             <div>
-              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+              <label htmlFor="custom-gis-connector-modal-tile-endpoint-url-xyz-tms" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                 Tile Endpoint URL (XYZ / TMS format) *
               </label>
-              <input
+              <input id="custom-gis-connector-modal-tile-endpoint-url-xyz-tms"
                 type="text"
                 required
                 value={endpointUrl}
@@ -219,17 +219,17 @@ export const CustomGisConnectorModal: React.FC<CustomGisConnectorModalProps> = (
                 placeholder="https://server.domain.gov.in/tiles/{z}/{x}/{y}.png"
                 className="w-full font-mono text-xs text-slate-900 dark:text-white placeholder-slate-400 px-3.5 py-2.5 rounded-xl bg-slate-100/90 dark:bg-white/[0.06] border border-black/[0.08] dark:border-white/[0.1] focus:outline-none focus:border-emerald-500"
               />
-              <p className="text-[11px] text-slate-400 mt-1">
+              <p className="text-[11px] text-slate-600 mt-1 dark:text-slate-400">
                 Supports Standard Web Mercator (EPSG:3857) Tile XYZ URLs, GeoServer cached layers, and ArcGIS MapServer tile endpoints.
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                <label htmlFor="custom-gis-connector-modal-attribution-license-credit" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                   Attribution & License Credit
                 </label>
-                <input
+                <input id="custom-gis-connector-modal-attribution-license-credit"
                   type="text"
                   value={attribution}
                   onChange={(e) => setAttribution(e.target.value)}
@@ -239,10 +239,10 @@ export const CustomGisConnectorModal: React.FC<CustomGisConnectorModalProps> = (
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
+                <label htmlFor="custom-gis-connector-modal-max-zoom-level" className="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1.5">
                   Max Zoom Level
                 </label>
-                <input
+                <input id="custom-gis-connector-modal-max-zoom-level"
                   type="number"
                   min={5}
                   max={24}
@@ -264,7 +264,7 @@ export const CustomGisConnectorModal: React.FC<CustomGisConnectorModalProps> = (
               </button>
               <button
                 type="submit"
-                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-sm transition-all active:scale-95"
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-emerald-700 hover:bg-emerald-500 text-white text-xs font-bold shadow-sm transition-all active:scale-95"
               >
                 <Plus className="w-4 h-4" />
                 <span>Mount GIS API Layer</span>

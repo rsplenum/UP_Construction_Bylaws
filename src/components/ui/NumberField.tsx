@@ -54,7 +54,7 @@ export const NumberField: React.FC<NumberFieldProps> = ({
     <div className={className}>
       <label htmlFor={id} className="block text-[11px] font-medium text-slate-600 dark:text-slate-400 mb-1">
         {label}
-        {unit && <span className="text-slate-400 dark:text-slate-500 font-normal"> ({unit})</span>}
+        {unit && <span className="text-slate-600 dark:text-slate-400 font-normal"> ({unit})</span>}
       </label>
       <div className="relative">
         <input
@@ -84,7 +84,7 @@ export const NumberField: React.FC<NumberFieldProps> = ({
       {(hint || warning) && (
         <p
           id={`${id}-hint`}
-          className={`mt-1 text-[10.5px] leading-snug ${warning ? 'text-amber-600 dark:text-amber-400' : 'text-slate-400 dark:text-slate-500'}`}
+          className={`mt-1 text-[10.5px] leading-snug ${warning ? 'text-amber-700 dark:text-amber-400' : 'text-slate-600 dark:text-slate-400'}`}
         >
           {warning || hint}
         </p>

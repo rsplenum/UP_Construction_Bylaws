@@ -188,7 +188,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
               {DOCUMENT_METADATA.title}
             </h2>
-            <p className="text-sm text-slate-300 max-w-3xl">
+            <p className="text-sm text-slate-600 max-w-3xl dark:text-slate-400">
               Gazetted by {DOCUMENT_METADATA.department}, {DOCUMENT_METADATA.date} (Version: {DOCUMENT_METADATA.version}).
               Enforced across all 22 Urban Development Authorities and Special Development Areas in Uttar Pradesh.
             </p>
@@ -197,19 +197,19 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
             <div className="bg-slate-800/80 p-3 rounded-lg border border-slate-700">
               <div className="text-xl font-bold text-emerald-400">18</div>
-              <div className="text-xs text-slate-400 dark:text-slate-500">Statutory Chapters</div>
+              <div className="text-xs text-slate-600 dark:text-slate-400">Statutory Chapters</div>
             </div>
             <div className="bg-slate-800/80 p-3 rounded-lg border border-slate-700">
               <div className="text-xl font-bold text-emerald-400">102</div>
-              <div className="text-xs text-slate-400 dark:text-slate-500">Defined Standards</div>
+              <div className="text-xs text-slate-600 dark:text-slate-400">Defined Standards</div>
             </div>
             <div className="bg-slate-800/80 p-3 rounded-lg border border-slate-700">
               <div className="text-xl font-bold text-emerald-400">15</div>
-              <div className="text-xs text-slate-400 dark:text-slate-500">Mandatory Schedules</div>
+              <div className="text-xs text-slate-600 dark:text-slate-400">Mandatory Schedules</div>
             </div>
             <div className="bg-slate-800/80 p-3 rounded-lg border border-slate-700">
               <div className="text-xl font-bold text-emerald-400">22</div>
-              <div className="text-xs text-slate-400 dark:text-slate-500">Development Authorities</div>
+              <div className="text-xs text-slate-600 dark:text-slate-400">Development Authorities</div>
             </div>
           </div>
         </div>
@@ -255,7 +255,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                 className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                   active
                     ? 'bg-emerald-500 text-slate-950 font-semibold shadow'
-                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700 dark:bg-slate-800'
+                    : 'bg-slate-800 text-slate-300 hover:bg-slate-700 hover:text-white border border-slate-700'
                 }`}
               >
                 <Icon className={`w-3.5 h-3.5 ${tab.highlight && !active ? 'text-emerald-400' : ''}`} />
@@ -271,12 +271,12 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
         <div className="space-y-4">
           {/* Chapter Quick Filter pills */}
           <div className="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none text-xs">
-            <span className="text-slate-500 font-medium whitespace-nowrap dark:text-slate-400">Filter Chapter:</span>
+            <span className="text-slate-600 font-medium whitespace-nowrap dark:text-slate-400">Filter Chapter:</span>
             <button
               onClick={() => setSelectedChapterId('all')}
               className={`px-2.5 py-1 rounded-full whitespace-nowrap transition-colors ${
                 selectedChapterId === 'all'
-                  ? 'bg-emerald-600 text-white font-medium'
+                  ? 'bg-emerald-700 text-white font-medium'
                   : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-white/[0.08] dark:text-slate-300 dark:hover:bg-white/[0.12]'
               }`}
             >
@@ -288,7 +288,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                 onClick={() => setSelectedChapterId(ch.id)}
                 className={`px-2.5 py-1 rounded-full whitespace-nowrap transition-colors ${
                   selectedChapterId === ch.id
-                    ? 'bg-emerald-600 text-white font-medium'
+                    ? 'bg-emerald-700 text-white font-medium'
                     : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-white/[0.08] dark:text-slate-300 dark:hover:bg-white/[0.12]'
                 }`}
               >
@@ -298,14 +298,14 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
           </div>
 
           {filteredChapters.length === 0 ? (
-            <div className="p-8 text-center bg-white rounded-xl border border-slate-200 text-slate-500 dark:bg-[#161617] dark:border-white/[0.10] dark:text-slate-400">
+            <div className="p-8 text-center bg-white rounded-xl border border-slate-200 text-slate-600 dark:bg-[#161617] dark:border-white/[0.10] dark:text-slate-400">
               No sections found matching "{searchQuery}". Try searching for terms like "setback", "FAR", "basement", or "fire".
             </div>
           ) : (
             <div className="space-y-4">
               {filteredChapters.map((ch) => (
                 <div key={ch.id} className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden dark:bg-[#161617] dark:border-white/[0.10]">
-                  <div className="p-5 border-b border-slate-100 bg-slate-50/50 flex flex-col md:flex-row md:items-center md:justify-between gap-2 dark:border-white/[0.06]">
+                  <div className="p-5 border-b border-slate-100 bg-slate-50/50 flex flex-col md:flex-row md:items-center md:justify-between gap-2 dark:border-white/[0.06] dark:bg-white/[0.06]">
                     <div>
                       <div className="flex items-center space-x-2">
                         <span className="px-2 py-0.5 text-xs font-bold bg-slate-900 text-white rounded dark:bg-black">
@@ -315,7 +315,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                           <HighlightText text={ch.title} query={searchQuery} />
                         </h3>
                       </div>
-                      <p className="text-xs text-slate-500 mt-1 dark:text-slate-400">
+                      <p className="text-xs text-slate-600 mt-1 dark:text-slate-400">
                         <HighlightText text={ch.summary} query={searchQuery} />
                       </p>
                     </div>
@@ -340,7 +340,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                           className={`border rounded-lg p-4 transition-colors ${
                             matchesSearch
                               ? 'border-amber-300 bg-amber-50/40 dark:border-amber-500/40 dark:bg-amber-950/40'
-                              : 'border-slate-200 bg-slate-50/30 hover:bg-slate-50 dark:border-white/[0.10] dark:hover:bg-white/[0.06]'
+                              : 'border-slate-200 bg-slate-50/30 hover:bg-slate-50 dark:border-white/[0.10] dark:hover:bg-white/[0.06] dark:bg-white/[0.06]'
                           }`}
                         >
                           <div className="flex items-start justify-between gap-2">
@@ -355,9 +355,9 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                                 <HighlightText text={sec.title} query={searchQuery} />
                               </h4>
                               {isExpanded ? (
-                                <ChevronUp className="w-4 h-4 text-slate-400 dark:text-slate-500" />
+                                <ChevronUp className="w-4 h-4 text-slate-600 dark:text-slate-400" />
                               ) : (
-                                <ChevronDown className="w-4 h-4 text-slate-400 dark:text-slate-500" />
+                                <ChevronDown className="w-4 h-4 text-slate-600 dark:text-slate-400" />
                               )}
                             </button>
 
@@ -375,7 +375,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                                   );
                                 }}
                                 title="Pin a session sticky note for this clause"
-                                className="text-slate-400 hover:text-amber-600 p-1 rounded hover:bg-amber-100/60 transition-colors dark:text-slate-500"
+                                className="text-slate-600 hover:text-amber-600 p-1 rounded hover:bg-amber-100/60 transition-colors dark:text-slate-400"
                               >
                                 <Pin className="w-4 h-4" />
                               </button>
@@ -383,10 +383,10 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                               <button
                                 onClick={() => copyToClipboard(textToCopy, sec.id)}
                                 title="Copy clause text"
-                                className="text-slate-400 hover:text-slate-700 p-1 rounded hover:bg-slate-200/60 transition-colors dark:text-slate-500"
+                                className="text-slate-600 hover:text-slate-700 p-1 rounded hover:bg-slate-200/60 transition-colors dark:text-slate-400"
                               >
                                 {copiedSection === sec.id ? (
-                                  <Check className="w-4 h-4 text-emerald-600" />
+                                  <Check className="w-4 h-4 text-emerald-700 dark:text-emerald-300" />
                                 ) : (
                                   <Copy className="w-4 h-4" />
                                 )}
@@ -418,7 +418,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
               <h3 className="text-base font-bold text-slate-900 dark:text-white">
                 Chapter 1.2: Statutory Definitions Dictionary
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-600 dark:text-slate-400">
                 Showing authoritative legal definitions as enacted in the 2025 Byelaws.
               </p>
             </div>
@@ -431,7 +431,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
             {filteredDefinitions.map((item) => (
               <div
                 key={item.id}
-                className="p-4 rounded-lg border border-slate-200 bg-slate-50/40 hover:border-emerald-300 transition-colors space-y-1.5 dark:border-white/[0.10]"
+                className="p-4 rounded-lg border border-slate-200 bg-slate-50/40 hover:border-emerald-300 transition-colors space-y-1.5 dark:border-white/[0.10] dark:bg-white/[0.06]"
               >
                 <div className="flex items-center justify-between">
                   <h4 className="text-sm font-bold text-slate-900 flex items-center gap-1.5 dark:text-white">
@@ -458,7 +458,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
             <h3 className="text-base font-bold text-slate-900 dark:text-white">
               Chapter 2.2.3: Inter-Departmental NOCs & Deemed NOC Mandate
             </h3>
-            <p className="text-xs text-slate-500 mt-1 dark:text-slate-400">
+            <p className="text-xs text-slate-600 mt-1 dark:text-slate-400">
               Statutory response deadlines for planning permission approvals. If the department does not explicitly reject with recorded reasons within the timeframe, approval is deemed granted automatically on the 30th day.
             </p>
           </div>
@@ -477,7 +477,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
               <tbody className="divide-y divide-slate-200 dark:divide-white/[0.10]">
                 {DEEMED_NOC_DEPTS.map((d) => (
                   <tr key={d.id} className="hover:bg-slate-50 dark:hover:bg-white/[0.06]">
-                    <td className="p-3 font-bold text-slate-500 dark:text-slate-400">{d.id}</td>
+                    <td className="p-3 font-bold text-slate-600 dark:text-slate-400">{d.id}</td>
                     <td className="p-3 font-medium text-slate-900 dark:text-white">{d.department}</td>
                     <td className="p-3 text-slate-600 dark:text-slate-400">{d.applicability}</td>
                     <td className="p-3">
@@ -485,7 +485,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                         {d.timeDays}
                       </span>
                     </td>
-                    <td className="p-3 text-slate-500 italic dark:text-slate-400">{d.notes || 'Deemed approval applies'}</td>
+                    <td className="p-3 text-slate-600 italic dark:text-slate-400">{d.notes || 'Deemed approval applies'}</td>
                   </tr>
                 ))}
               </tbody>
@@ -494,7 +494,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
 
           <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-xs text-amber-900 space-y-1 dark:bg-amber-950/40 dark:border-amber-500/30 dark:text-amber-200">
             <div className="font-bold flex items-center gap-1.5">
-              <AlertTriangle className="w-4 h-4 text-amber-600" />
+              <AlertTriangle className="w-4 h-4 text-amber-700 dark:text-amber-300" />
               <span>Crucial Deemed Approval Exception:</span>
             </div>
             <p>
@@ -511,7 +511,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
             <h3 className="text-base font-bold text-slate-900 dark:text-white">
               Chapter 3.2.2.8: Comprehensive FAR Inclusion / Exemption Matrix
             </h3>
-            <p className="text-xs text-slate-500 mt-1 dark:text-slate-400">
+            <p className="text-xs text-slate-600 mt-1 dark:text-slate-400">
               Direct transcription of the official table determining what built elements are counted in Floor Area Ratio calculations.
             </p>
           </div>
@@ -534,7 +534,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
               <tbody className="divide-y divide-slate-200 dark:divide-white/[0.10]">
                 {FAR_EXEMPTIONS_TABLE.map((item) => (
                   <tr key={item.id} className="hover:bg-slate-50 dark:hover:bg-white/[0.06]">
-                    <td className="p-2.5 font-medium text-slate-500 dark:text-slate-400">{item.id}</td>
+                    <td className="p-2.5 font-medium text-slate-600 dark:text-slate-400">{item.id}</td>
                     <td className="p-2.5 font-medium text-slate-900 dark:text-white">{item.structure}</td>
                     <td className="p-2.5 text-center">
                       <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${item.singleMultiRes ? 'bg-rose-100 text-rose-700 dark:text-rose-300 dark:bg-rose-950/50' : 'bg-emerald-100 text-emerald-700 dark:text-emerald-300 dark:bg-emerald-950/50'}`}>
@@ -609,7 +609,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                 </tbody>
               </table>
             </div>
-            <p className="text-[11px] text-slate-500 italic dark:text-slate-400">
+            <p className="text-[11px] text-slate-600 italic dark:text-slate-400">
               Note: On semi-detached plots, construction on 40% rear setback up to 7m height is permissible unless on stilt.
             </p>
           </div>
@@ -643,7 +643,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                 </tbody>
               </table>
             </div>
-            <p className="text-[11px] text-slate-500 italic dark:text-slate-400">
+            <p className="text-[11px] text-slate-600 italic dark:text-slate-400">
               Alternative setback option: Ground floor setback may be 6m (up to 33m ht) or 8m (33-45m ht) with stepped setbacks on subsequent floors.
             </p>
           </div>

@@ -165,17 +165,17 @@ export const AiAssistant: React.FC = () => {
       {/* Header */}
       <div className="p-4 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800 dark:bg-black">
         <div className="flex items-center space-x-3">
-          <div className="w-9 h-9 rounded-lg bg-emerald-600 flex items-center justify-center text-white">
+          <div className="w-9 h-9 rounded-lg bg-emerald-700 flex items-center justify-center text-white">
             <Bot className="w-5 h-5" />
           </div>
           <div>
             <div className="flex items-center space-x-2">
-              <h3 className="text-sm font-bold">UP Byelaws 2025 AI Consultant</h3>
+              <h2 className="text-sm font-bold">UP Byelaws 2025 AI Consultant</h2>
               <span className="text-[10px] bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/30">
                 Grounded in TMPR8 PDF
               </span>
             </div>
-            <p className="text-[11px] text-slate-400 dark:text-slate-500">
+            <p className="text-[11px] text-slate-300">
               Instant answers, clause citations, and compliance guidance
             </p>
           </div>
@@ -192,7 +192,7 @@ export const AiAssistant: React.FC = () => {
               },
             ])
           }
-          className="text-xs text-slate-400 hover:text-white flex items-center gap-1 bg-slate-800 px-2.5 py-1.5 rounded dark:text-slate-500 dark:bg-slate-800"
+          className="text-xs text-slate-400 hover:text-white flex items-center gap-1 bg-slate-800 px-2.5 py-1.5 rounded dark:text-slate-400 dark:bg-slate-800"
           title="Restart Chat"
         >
           <RefreshCw className="w-3.5 h-3.5" />
@@ -202,7 +202,7 @@ export const AiAssistant: React.FC = () => {
 
       {/* Suggested Prompts Bar */}
       <div className="bg-slate-50 border-b border-slate-200 p-2.5 overflow-x-auto flex space-x-2 scrollbar-none text-xs dark:bg-white/[0.04] dark:border-white/[0.10]">
-        <span className="text-slate-500 font-semibold flex items-center gap-1 whitespace-nowrap pl-1 dark:text-slate-400">
+        <span className="text-slate-600 font-semibold flex items-center gap-1 whitespace-nowrap pl-1 dark:text-slate-400">
           <Sparkles className="w-3.5 h-3.5 text-amber-500" />
           <span>Suggested:</span>
         </span>
@@ -218,7 +218,7 @@ export const AiAssistant: React.FC = () => {
       </div>
 
       {/* Chat Messages */}
-      <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-slate-50/40">
+      <div className="flex-1 p-4 overflow-y-auto space-y-4 bg-slate-50/40 dark:bg-white/[0.06]">
         {messages.map((m) => {
           const isUser = m.role === 'user';
           return (
@@ -230,7 +230,7 @@ export const AiAssistant: React.FC = () => {
                 className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 text-xs font-bold ${
                   isUser
                     ? 'bg-slate-800 text-white dark:bg-slate-800'
-                    : 'bg-emerald-600 text-white shadow'
+                    : 'bg-emerald-700 text-white shadow'
                 }`}
               >
                 {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
@@ -252,12 +252,12 @@ export const AiAssistant: React.FC = () => {
                 )}
                 <div
                   className={`text-[10px] mt-2 flex items-center justify-between ${
-                    isUser ? 'text-slate-400 dark:text-slate-500' : 'text-slate-400 dark:text-slate-500'
+                    isUser ? 'text-slate-600 dark:text-slate-400' : 'text-slate-600 dark:text-slate-400'
                   }`}
                 >
                   <span>{m.timestamp}</span>
                   {m.source && (
-                    <span className="text-emerald-600 font-medium">
+                    <span className="text-emerald-700 font-medium dark:text-emerald-300">
                       Source: UP Byelaws 2025 ({m.source})
                     </span>
                   )}
@@ -268,7 +268,7 @@ export const AiAssistant: React.FC = () => {
         })}
 
         {isLoading && (
-          <div className="flex items-center space-x-2 text-xs text-slate-500 p-2 bg-white rounded-lg border w-fit dark:text-slate-400 dark:bg-[#161617]">
+          <div className="flex items-center space-x-2 text-xs text-slate-600 p-2 bg-white rounded-lg border w-fit dark:text-slate-400 dark:bg-[#161617]">
             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span>Consulting Uttar Pradesh Byelaws 2025 text...</span>
           </div>
@@ -288,7 +288,8 @@ export const AiAssistant: React.FC = () => {
         >
           <input
             type="text"
-            value={input}
+            aria-label="Your question about the byelaws"
+              value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask anything about UP Byelaws 2025 (e.g., setbacks, purchasable FAR, fire NOC, basements)..."
             disabled={isLoading}
@@ -307,7 +308,7 @@ export const AiAssistant: React.FC = () => {
             <button
               type="submit"
               disabled={!input.trim()}
-              className="flex items-center gap-1.5 rounded-lg bg-emerald-600 px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-emerald-700 disabled:opacity-50"
+              className="flex items-center gap-1.5 rounded-lg bg-emerald-700 px-4 py-2.5 text-xs font-semibold text-white shadow-sm transition-colors hover:bg-emerald-800 disabled:opacity-50"
             >
               <Send className="h-3.5 w-3.5" aria-hidden="true" />
               <span className="hidden sm:inline">Send</span>

@@ -83,10 +83,11 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose, i
         className="relative w-full max-w-xl overflow-hidden rounded-2xl border border-black/[0.08] bg-white/95 shadow-2xl backdrop-blur-xl dark:border-white/[0.12] dark:bg-[#1d1d1f]/95"
       >
         <div className="flex items-center gap-3 border-b border-black/[0.06] px-4 dark:border-white/[0.08]">
-          <Search className="h-4 w-4 flex-shrink-0 text-slate-400" aria-hidden="true" />
+          <Search className="h-4 w-4 flex-shrink-0 text-slate-600 dark:text-slate-400" aria-hidden="true" />
           <input
             ref={inputRef}
-            value={query}
+            aria-label="Search tools and rules"
+              value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === 'Escape') { e.preventDefault(); onClose(); }
@@ -101,14 +102,14 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose, i
             placeholder="Jump to a tool, rule or calculation…"
             className="h-14 w-full bg-transparent text-sm text-slate-900 placeholder-slate-400 outline-none dark:text-white dark:placeholder-slate-500"
           />
-          <kbd className="hidden flex-shrink-0 rounded border border-slate-200 px-1.5 py-0.5 font-mono text-[10px] text-slate-400 sm:block dark:border-white/10">
+          <kbd className="hidden flex-shrink-0 rounded border border-slate-200 px-1.5 py-0.5 font-mono text-[10px] text-slate-600 sm:block dark:border-white/10 dark:text-slate-400">
             esc
           </kbd>
         </div>
 
         <div ref={listRef} id="command-results" role="listbox" className="max-h-80 overflow-y-auto p-2">
           {results.length === 0 ? (
-            <p className="px-3 py-8 text-center text-xs text-slate-400">No matches for “{query}”.</p>
+            <p className="px-3 py-8 text-center text-xs text-slate-600 dark:text-slate-400">No matches for “{query}”.</p>
           ) : (
             results.map((item, index) => (
               <button
@@ -125,13 +126,13 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ open, onClose, i
               >
                 <span className="min-w-0">
                   <span className="block truncate text-xs font-medium">{item.label}</span>
-                  {item.hint && <span className="block truncate text-[10.5px] text-slate-400 dark:text-slate-500">{item.hint}</span>}
+                  {item.hint && <span className="block truncate text-[10.5px] text-slate-600 dark:text-slate-400">{item.hint}</span>}
                 </span>
                 <span className="flex flex-shrink-0 items-center gap-2">
-                  <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[9.5px] font-semibold uppercase tracking-wide text-slate-500 dark:bg-white/10 dark:text-slate-400">
+                  <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[9.5px] font-semibold uppercase tracking-wide text-slate-600 dark:bg-white/10 dark:text-slate-400">
                     {item.group}
                   </span>
-                  {index === cursor && <CornerDownLeft className="h-3 w-3 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />}
+                  {index === cursor && <CornerDownLeft className="h-3 w-3 text-emerald-700 dark:text-emerald-400" aria-hidden="true" />}
                 </span>
               </button>
             ))

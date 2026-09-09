@@ -72,12 +72,12 @@ export const FormsAndAppendices: React.FC = () => {
       <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4 dark:bg-[#161617] dark:border-white/[0.10]">
         <div>
           <div className="flex items-center space-x-2">
-            <FileCheck className="w-5 h-5 text-emerald-600" />
-            <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+            <FileCheck className="w-5 h-5 text-emerald-700 dark:text-emerald-300" />
+            <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
               Official Appendices & Statutory Forms (Appendices 2 – 14)
-            </h3>
+            </h2>
           </div>
-          <p className="text-xs text-slate-500 mt-1 max-w-3xl dark:text-slate-400">
+          <p className="text-xs text-slate-600 mt-1 max-w-3xl dark:text-slate-400">
             Direct transcription of statutory applications, completion certificates (Forms A, B, C, D), Structural Design Basis Reports (SDBR), and affidavits as prescribed by UP Urban Planning and Development Act, 1973.
           </p>
         </div>
@@ -106,7 +106,7 @@ export const FormsAndAppendices: React.FC = () => {
             onClick={() => setSelectedForm(tab.id)}
             className={`p-2.5 rounded-lg text-xs font-semibold text-center border transition-all ${
               selectedForm === tab.id
-                ? 'bg-emerald-600 text-white border-emerald-600 shadow-sm'
+                ? 'bg-emerald-700 text-white border-emerald-600 shadow-sm'
                 : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50 dark:bg-[#161617] dark:text-slate-300 dark:border-white/[0.10] dark:hover:bg-white/[0.06]'
             }`}
           >
@@ -122,8 +122,8 @@ export const FormsAndAppendices: React.FC = () => {
         </span>
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-3 text-xs">
           <div>
-            <label className="text-slate-500 block mb-1 dark:text-slate-400">Applicant Name</label>
-            <input
+            <label htmlFor="forms-and-appendices-applicant-name" className="text-slate-600 block mb-1 dark:text-slate-400">Applicant Name</label>
+            <input id="forms-and-appendices-applicant-name"
               type="text"
               value={applicantName}
               placeholder="Full name as on the title deed"
@@ -132,8 +132,8 @@ export const FormsAndAppendices: React.FC = () => {
             />
           </div>
           <div>
-            <label className="text-slate-500 block mb-1 dark:text-slate-400">Plot / Khasra No.</label>
-            <input
+            <label htmlFor="forms-and-appendices-plot-khasra-no" className="text-slate-600 block mb-1 dark:text-slate-400">Plot / Khasra No.</label>
+            <input id="forms-and-appendices-plot-khasra-no"
               type="text"
               value={plotNumber}
               placeholder="e.g. Plot 42-B, Sector 7"
@@ -142,8 +142,8 @@ export const FormsAndAppendices: React.FC = () => {
             />
           </div>
           <div>
-            <label className="text-slate-500 block mb-1 dark:text-slate-400">Scheme / City</label>
-            <input
+            <label htmlFor="forms-and-appendices-scheme-city" className="text-slate-600 block mb-1 dark:text-slate-400">Scheme / City</label>
+            <input id="forms-and-appendices-scheme-city"
               type="text"
               value={schemeName}
               placeholder="e.g. Gomti Nagar Extension"
@@ -152,8 +152,8 @@ export const FormsAndAppendices: React.FC = () => {
             />
           </div>
           <div>
-            <label className="text-slate-500 block mb-1 dark:text-slate-400">Supervising Architect</label>
-            <input
+            <label htmlFor="forms-and-appendices-supervising-architect" className="text-slate-600 block mb-1 dark:text-slate-400">Supervising Architect</label>
+            <input id="forms-and-appendices-supervising-architect"
               type="text"
               value={architectName}
               placeholder="Name and CoA registration number"
@@ -189,14 +189,14 @@ export const FormsAndAppendices: React.FC = () => {
               <h3 className="font-semibold text-slate-700 dark:text-slate-300">
                 Application for Completion Certificate of Residential Building (&gt; 300 sqm.)
               </h3>
-              <p className="text-xs text-slate-500 font-sans dark:text-slate-400">
+              <p className="text-xs text-slate-600 font-sans dark:text-slate-400">
                 Under Section 15A of Uttar Pradesh Urban Planning and Development Act, 1973
               </p>
             </div>
 
             <div className="space-y-3">
               <p className="font-sans font-semibold text-slate-700 dark:text-slate-300">To, The Vice Chairman, {cityName} Development Authority</p>
-              <div className="grid grid-cols-2 gap-4 border p-3 rounded bg-slate-50/50 font-sans text-xs">
+              <div className="grid grid-cols-2 gap-4 border p-3 rounded bg-slate-50/50 font-sans text-xs dark:bg-white/[0.06]">
                 <div>
                   <strong>1. Applicant Name:</strong> {applicantName}
                 </div>

@@ -254,11 +254,19 @@ html.dark .segmented-control {
   }
 }
 
-/* A visible focus ring for keyboard users, which the pill buttons had suppressed. */
+/* Keyboard focus. The ring is paired with a soft halo so it stays legible where the
+   focused control sits on an emerald surface and the outline alone would blend in.
+   :focus-visible only matches keyboard interaction, so pointer users see nothing. */
 :focus-visible {
   outline: 2px solid var(--apple-accent-green);
   outline-offset: 2px;
-  border-radius: 6px;
+  box-shadow: 0 0 0 4px rgba(52, 199, 89, 0.22);
+}
+
+/* outline-width is animatable, and several controls carry `transition-all`, so without
+   this the ring fades in over 200ms instead of appearing with the focus move. */
+:focus-visible {
+  transition-property: none;
 }
 
 /* Tabular figures everywhere a statutory number is shown, so columns line up. */

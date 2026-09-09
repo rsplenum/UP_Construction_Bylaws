@@ -73,12 +73,12 @@ UP Building Construction and Development Byelaws 2025
         {/* Top Action Header (Screen only) */}
         <div className="px-6 py-4 border-b border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between bg-slate-50/80 dark:bg-white/[0.02]">
           <div className="flex items-center space-x-2.5">
-            <FileCheck2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+            <FileCheck2 className="w-5 h-5 text-emerald-700 dark:text-emerald-400" />
             <div>
               <h3 className="text-base font-bold text-slate-900 dark:text-white">
                 Statutory Spatial Due Diligence Dossier
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-600 dark:text-slate-400">
                 Georeferenced Master Plan 2031 & Byelaw 2025 Clearance Report
               </p>
             </div>
@@ -95,7 +95,7 @@ UP Building Construction and Development Byelaws 2025
             </button>
             <button
               onClick={handlePrint}
-              className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-600 hover:bg-emerald-500 text-white transition-colors"
+              className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-emerald-700 hover:bg-emerald-500 text-white transition-colors"
               title="Print Dossier"
             >
               <Printer className="w-3.5 h-3.5" />
@@ -103,7 +103,7 @@ UP Building Construction and Development Byelaws 2025
             </button>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors"
+              className="p-1.5 rounded-lg text-slate-600 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors dark:text-slate-400"
             >
               <X className="w-5 h-5" />
             </button>
@@ -121,7 +121,7 @@ UP Building Construction and Development Byelaws 2025
             <h1 className="text-xl sm:text-2xl font-black tracking-tight text-slate-900 dark:text-white">
               Official Spatial Planning & Land-Use Verification Certificate
             </h1>
-            <p className="text-xs text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+            <p className="text-xs text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
               Evaluated under Section 15 of the Uttar Pradesh Urban Planning and Development Act, 1973 and UP Building Construction and Development Byelaws 2025 (Appendix-15 Automated Sanction Directives).
             </p>
           </div>
@@ -153,7 +153,7 @@ UP Building Construction and Development Byelaws 2025
             </div>
           ) : (
             <div className="p-3.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-500/30 flex items-start space-x-3 text-emerald-900 dark:text-emerald-200">
-              <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+              <CheckCircle2 className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5 dark:text-emerald-300" />
               <div className="space-y-0.5 text-xs">
                 <h4 className="font-bold text-emerald-700 dark:text-emerald-300">
                   BUILDABLE URBAN PARCEL CONFIRMED
@@ -167,28 +167,28 @@ UP Building Construction and Development Byelaws 2025
 
           {/* Cadastral & Geodetic Profile */}
           <div className="space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 flex items-center space-x-1.5">
-              <MapPin className="w-3.5 h-3.5 text-emerald-600" />
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center space-x-1.5">
+              <MapPin className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" />
               <span>1. Geodetic & Cadastral Mapping</span>
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs bg-slate-50 dark:bg-white/[0.02] p-3.5 rounded-xl border border-black/[0.06] dark:border-white/[0.06]">
               <div>
-                <span className="text-slate-400 block text-[11px]">WGS84 Coordinates</span>
+                <span className="text-slate-600 block text-[11px] dark:text-slate-400">WGS84 Coordinates</span>
                 <strong className="font-mono text-slate-900 dark:text-white block mt-0.5">
                   {spatialAudit.lat.toFixed(6)}° N, {spatialAudit.lng.toFixed(6)}° E
                 </strong>
               </div>
               <div>
-                <span className="text-slate-400 block text-[11px]">Cadastral Revenue Projection</span>
+                <span className="text-slate-600 block text-[11px] dark:text-slate-400">Cadastral Revenue Projection</span>
                 <strong className="text-slate-900 dark:text-white block mt-0.5">
                   {spatialAudit.khasraProjection}
                 </strong>
               </div>
               <div>
-                <span className="text-slate-400 block text-[11px]">Elevation Above Mean Sea Level</span>
+                <span className="text-slate-600 block text-[11px] dark:text-slate-400">Elevation Above Mean Sea Level</span>
                 <strong className="text-slate-900 dark:text-white block mt-0.5 font-mono">
                   ~{spatialAudit.estimatedElevationAmsl} m AMSL
-                  <span className="mt-0.5 block text-[9.5px] font-normal text-slate-400 dark:text-slate-500">
+                  <span className="mt-0.5 block text-[9.5px] font-normal text-slate-600 dark:text-slate-400">
                     Regional interpolation — not a survey. Use a DEM or site levels for drainage and plinth design.
                   </span>
                 </strong>
@@ -198,31 +198,31 @@ UP Building Construction and Development Byelaws 2025
 
           {/* Development Authority & Master Plan Classification */}
           <div className="space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 flex items-center space-x-1.5">
-              <Building2 className="w-3.5 h-3.5 text-emerald-600" />
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center space-x-1.5">
+              <Building2 className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" />
               <span>2. Authority Jurisdiction & Master Plan 2031 Classification</span>
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs bg-slate-50 dark:bg-white/[0.02] p-3.5 rounded-xl border border-black/[0.06] dark:border-white/[0.06]">
               <div>
-                <span className="text-slate-400 block text-[11px]">Development Authority</span>
+                <span className="text-slate-600 block text-[11px] dark:text-slate-400">Development Authority</span>
                 <strong className="text-slate-900 dark:text-white block mt-0.5">
                   {spatialAudit.nearestAuthority.name} ({spatialAudit.nearestAuthority.shortName})
                 </strong>
-                <span className="text-[10px] text-slate-500 block">
+                <span className="text-[10px] text-slate-600 block dark:text-slate-400">
                   {spatialAudit.distanceToAuthorityCenterKm} km from authority core
                 </span>
               </div>
               <div>
-                <span className="text-slate-400 block text-[11px]">Master Plan Horizon</span>
+                <span className="text-slate-600 block text-[11px] dark:text-slate-400">Master Plan Horizon</span>
                 <strong className="text-slate-900 dark:text-white block mt-0.5">
                   {spatialAudit.nearestAuthority.masterPlanHorizon} (Notified)
                 </strong>
-                <span className="text-[10px] text-slate-500 block">
+                <span className="text-[10px] text-slate-600 block dark:text-slate-400">
                   Area: {spatialAudit.nearestAuthority.planningAreaSqKm} sq. km
                 </span>
               </div>
               <div>
-                <span className="text-slate-400 block text-[11px]">Statutory Land-Use Zone</span>
+                <span className="text-slate-600 block text-[11px] dark:text-slate-400">Statutory Land-Use Zone</span>
                 <strong className="text-slate-900 dark:text-white block mt-0.5">
                   {spatialAudit.matchedZoningFeature
                     ? `Zone ${spatialAudit.matchedZoningFeature.zoneCode} (${spatialAudit.matchedZoningFeature.standardizedChapter15Zone})`
@@ -234,31 +234,31 @@ UP Building Construction and Development Byelaws 2025
 
           {/* Byelaw 2025 Dimensional Parameters */}
           <div className="space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 flex items-center space-x-1.5">
-              <Layers className="w-3.5 h-3.5 text-emerald-600" />
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center space-x-1.5">
+              <Layers className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" />
               <span>3. Statutory Dimensional Parameters (Byelaws 2025)</span>
             </h4>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs bg-slate-50 dark:bg-white/[0.02] p-3.5 rounded-xl border border-black/[0.06] dark:border-white/[0.06]">
               <div>
-                <span className="text-slate-400 block text-[11px]">Permissible Base FAR</span>
+                <span className="text-slate-600 block text-[11px] dark:text-slate-400">Permissible Base FAR</span>
                 <strong className="text-slate-900 dark:text-white block mt-0.5 text-sm font-bold">
                   {spatialAudit.recommendedFAR}
                 </strong>
               </div>
               <div>
-                <span className="text-slate-400 block text-[11px]">Max Ground Coverage</span>
+                <span className="text-slate-600 block text-[11px] dark:text-slate-400">Max Ground Coverage</span>
                 <strong className="text-slate-900 dark:text-white block mt-0.5 text-sm font-bold">
                   {spatialAudit.maxGroundCoverage}
                 </strong>
               </div>
               <div>
-                <span className="text-slate-400 block text-[11px]">Mandatory Road ROW</span>
+                <span className="text-slate-600 block text-[11px] dark:text-slate-400">Mandatory Road ROW</span>
                 <strong className="text-slate-900 dark:text-white block mt-0.5 font-bold">
                   {spatialAudit.minRoadWidthRow}
                 </strong>
               </div>
               <div>
-                <span className="text-slate-400 block text-[11px]">Max Permissible Height</span>
+                <span className="text-slate-600 block text-[11px] dark:text-slate-400">Max Permissible Height</span>
                 <strong className="text-slate-900 dark:text-white block mt-0.5 font-bold">
                   {spatialAudit.maxPermissibleHeightMeters}
                 </strong>
@@ -268,35 +268,35 @@ UP Building Construction and Development Byelaws 2025
 
           {/* Aviation, River, and Environmental Clearances */}
           <div className="space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 flex items-center space-x-1.5">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center space-x-1.5">
               <Plane className="w-3.5 h-3.5 text-indigo-600" />
               <span>4. Airspace & Environmental Envelopes</span>
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs bg-slate-50 dark:bg-white/[0.02] p-3.5 rounded-xl border border-black/[0.06] dark:border-white/[0.06]">
               <div>
-                <span className="text-slate-400 block text-[11px]">Civil Aviation Runway Proximity</span>
+                <span className="text-slate-600 block text-[11px] dark:text-slate-400">Civil Aviation Runway Proximity</span>
                 <strong className="text-slate-900 dark:text-white block mt-0.5">
                   {spatialAudit.distanceToNearestAirportKm} km to nearest runway
                 </strong>
-                <span className="text-[10px] text-slate-500 block">
+                <span className="text-[10px] text-slate-600 block dark:text-slate-400">
                   OLS Ceiling: {spatialAudit.aviationHeightLimitAmsl}
                 </span>
               </div>
               <div>
-                <span className="text-slate-400 block text-[11px]">Nearest River Embankment</span>
+                <span className="text-slate-600 block text-[11px] dark:text-slate-400">Nearest River Embankment</span>
                 <strong className="text-slate-900 dark:text-white block mt-0.5">
                   {spatialAudit.distanceToNearestRiverKm} km to river channel
                 </strong>
-                <span className="text-[10px] text-slate-500 block">
+                <span className="text-[10px] text-slate-600 block dark:text-slate-400">
                   Requirement: Min 200m clear of HFL (Sec 2.11)
                 </span>
               </div>
               <div>
-                <span className="text-slate-400 block text-[11px]">Rapid Transit (RRTS/Metro)</span>
+                <span className="text-slate-600 block text-[11px] dark:text-slate-400">Rapid Transit (RRTS/Metro)</span>
                 <strong className="text-slate-900 dark:text-white block mt-0.5">
                   {spatialAudit.distanceToNearestTransitKm} km to transit spine
                 </strong>
-                <span className="text-[10px] text-slate-500 block">
+                <span className="text-[10px] text-slate-600 block dark:text-slate-400">
                   TOD Influence Zone: 1.5 km band
                 </span>
               </div>
@@ -305,12 +305,12 @@ UP Building Construction and Development Byelaws 2025
 
           {/* Mandatory Statutory NOC Checklist */}
           <div className="space-y-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 flex items-center space-x-1.5">
-              <FileText className="w-3.5 h-3.5 text-amber-600" />
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex items-center space-x-1.5">
+              <FileText className="w-3.5 h-3.5 text-amber-700 dark:text-amber-300" />
               <span>5. Mandatory Statutory Clearances Matrix</span>
             </h4>
             <div className="p-3.5 rounded-xl bg-slate-50 dark:bg-white/[0.02] border border-black/[0.06] dark:border-white/[0.06] space-y-2">
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-slate-600 dark:text-slate-400">
                 Prior to applying for automated sanction under Appendix-15, the following departmental NOCs must be secured based on the georeferenced spatial profile:
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
@@ -319,7 +319,7 @@ UP Building Construction and Development Byelaws 2025
                     key={idx}
                     className="flex items-center space-x-2 p-2 rounded-lg bg-white dark:bg-white/[0.04] border border-black/[0.04] dark:border-white/[0.06]"
                   >
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700 shrink-0 dark:text-emerald-300" />
                     <span className="font-medium text-slate-800 dark:text-slate-200">{noc}</span>
                   </div>
                 ))}
@@ -328,7 +328,7 @@ UP Building Construction and Development Byelaws 2025
           </div>
 
           {/* Official Seal and Footnote */}
-          <div className="pt-4 border-t border-black/[0.08] dark:border-white/[0.08] flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-400 gap-3">
+          <div className="pt-4 border-t border-black/[0.08] dark:border-white/[0.08] flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-600 gap-3 dark:text-slate-400">
             <div>
               <span className="font-mono">VERIFIED VIA UP STATUTORY GIS ENGINE</span>
               <span className="block text-[10px]">Document Hash: SHA256-{(spatialAudit.lat * 100000 + spatialAudit.lng * 100000).toFixed(0)}</span>

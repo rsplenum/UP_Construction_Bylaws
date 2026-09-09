@@ -49,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onNavigate, searchQue
                     2025
                   </span>
                 </span>
-                <span className="block text-[11px] tracking-tight text-slate-500 dark:text-slate-400">
+                <span className="block text-[11px] tracking-tight text-slate-600 dark:text-slate-400">
                   Housing &amp; Urban Planning Dept, Uttar Pradesh
                 </span>
               </span>
@@ -58,7 +58,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onNavigate, searchQue
             {/* One search box for both breakpoints; on small screens it opens the palette. */}
             <div className="mx-2 hidden max-w-md flex-1 md:block">
               <div className="relative">
-                <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" />
+                <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-600 dark:text-slate-400" aria-hidden="true" />
                 <label htmlFor="global-search" className="sr-only">
                   Search the byelaws text
                 </label>
@@ -83,7 +83,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onNavigate, searchQue
                     type="button"
                     onClick={onOpenPalette}
                     title="Open the command palette"
-                    className="absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-0.5 rounded-full px-1.5 py-1 font-mono text-[10px] text-slate-400 transition-colors hover:bg-slate-200/70 hover:text-slate-600 dark:text-slate-500 dark:hover:bg-white/10"
+                    className="absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-0.5 rounded-full px-1.5 py-1 font-mono text-[10px] text-slate-600 transition-colors hover:bg-slate-200/70 hover:text-slate-600 dark:text-slate-400 dark:hover:bg-white/10"
                   >
                     <Command className="h-3 w-3" aria-hidden="true" />K
                   </button>
@@ -101,7 +101,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onNavigate, searchQue
               >
                 <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
                 <span className="font-semibold tabular-nums">{project.plotArea} m²</span>
-                <span className="text-emerald-600/70 dark:text-emerald-400/70">
+                <span className="text-emerald-700 dark:text-emerald-400/70">
                   {OCCUPANCY_LABELS[project.occupancy]}
                 </span>
               </button>
@@ -160,7 +160,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onNavigate, searchQue
                         : 'text-slate-600 hover:bg-slate-100/80 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-white/[0.06] dark:hover:text-white'
                     }`}
                   >
-                    <Icon className={`h-3.5 w-3.5 ${isActive ? '' : 'text-slate-400 dark:text-slate-500'}`} aria-hidden="true" />
+                    <Icon className={`h-3.5 w-3.5 ${isActive ? '' : 'text-slate-600 dark:text-slate-400'}`} aria-hidden="true" />
                     {tab.label}
                     {tab.badge && (
                       <span
@@ -199,14 +199,14 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onNavigate, searchQue
                     }`}
                   >
                     <Icon
-                      className={`mt-0.5 h-4 w-4 flex-shrink-0 ${isActive ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400'}`}
+                      className={`mt-0.5 h-4 w-4 flex-shrink-0 ${isActive ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-600 dark:text-slate-400'}`}
                       aria-hidden="true"
                     />
                     <span className="min-w-0">
                       <span className={`block text-xs font-semibold ${isActive ? 'text-emerald-800 dark:text-emerald-200' : 'text-slate-800 dark:text-slate-200'}`}>
                         {tab.label}
                       </span>
-                      <span className="mt-0.5 block text-[11px] leading-snug text-slate-500 dark:text-slate-400">
+                      <span className="mt-0.5 block text-[11px] leading-snug text-slate-600 dark:text-slate-400">
                         {tab.description}
                       </span>
                     </span>
@@ -225,7 +225,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, onNavigate, searchQue
             <span className="font-medium text-slate-800 dark:text-slate-200">Gazette enacted:</span>
             UP Building Construction &amp; Development Byelaws 2025
           </p>
-          <p className="text-slate-500 dark:text-slate-400">
+          <p className="text-slate-600 dark:text-slate-400">
             Decision-support tool — verify against the gazette before submission
           </p>
         </div>

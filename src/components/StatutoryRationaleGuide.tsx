@@ -269,7 +269,7 @@ export const StatutoryRationaleGuide: React.FC = () => {
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>Statutory Architecture & Applied Physics</span>
               </span>
-              <span className="text-xs text-slate-400 dark:text-slate-500 font-mono">
+              <span className="text-xs text-slate-600 dark:text-slate-400 font-mono">
                 NBC 2016 • IRC • NFPA • Supreme Court Precedents
               </span>
             </div>
@@ -286,7 +286,7 @@ export const StatutoryRationaleGuide: React.FC = () => {
               <div className="text-xl font-bold text-slate-900 dark:text-white font-mono">
                 7 Major Domains
               </div>
-              <div className="text-[11px] text-slate-500 dark:text-slate-400">
+              <div className="text-[11px] text-slate-600 dark:text-slate-400">
                 Literature-Grounded Explanations
               </div>
             </div>
@@ -322,7 +322,7 @@ export const StatutoryRationaleGuide: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Topic Index (4 cols) */}
         <div className="lg:col-span-4 space-y-2.5">
-          <div className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-1">
+          <div className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400 px-1">
             Governing Physics & Legal Modules
           </div>
 
@@ -334,6 +334,7 @@ export const StatutoryRationaleGuide: React.FC = () => {
                 <button
                   key={topic.id}
                   onClick={() => setSelectedTopicId(topic.id)}
+                  aria-pressed={isSelected}
                   className={`w-full text-left p-4 rounded-2xl border transition-all ${
                     isSelected
                       ? 'bg-white dark:bg-[#1c1c1e] border-emerald-500/50 shadow-md ring-1 ring-emerald-500/30'
@@ -353,23 +354,23 @@ export const StatutoryRationaleGuide: React.FC = () => {
 
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-1">
-                        <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-600 dark:text-emerald-400">
+                        <span className="text-[10px] uppercase font-bold tracking-wider text-emerald-700 dark:text-emerald-400">
                           {topic.categoryLabel}
                         </span>
-                        <span className="text-[9px] font-mono text-slate-400 bg-slate-100 dark:bg-white/5 px-1.5 py-0.5 rounded">
+                        <span className="text-[9px] font-mono text-slate-600 bg-slate-100 dark:bg-white/5 px-1.5 py-0.5 rounded dark:text-slate-400">
                           {topic.badge}
                         </span>
                       </div>
-                      <h4
-                        className={`text-xs sm:text-sm font-bold mt-0.5 leading-snug line-clamp-2 ${
+                      <span
+                        className={`mt-0.5 line-clamp-2 block text-xs font-bold leading-snug sm:text-sm ${
                           isSelected
                             ? 'text-slate-900 dark:text-white'
                             : 'text-slate-700 dark:text-slate-300'
                         }`}
                       >
                         {topic.title}
-                      </h4>
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 line-clamp-2 leading-relaxed">
+                      </span>
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1 line-clamp-2 leading-relaxed">
                         {topic.abstract}
                       </p>
                     </div>
@@ -389,7 +390,7 @@ export const StatutoryRationaleGuide: React.FC = () => {
                 <activeTopic.icon className="w-3.5 h-3.5" />
                 <span>{activeTopic.categoryLabel} • {activeTopic.badge}</span>
               </div>
-              <span className="text-xs font-mono text-slate-400">
+              <span className="text-xs font-mono text-slate-600 dark:text-slate-400">
                 Statutory Scientific Foundation
               </span>
             </div>
@@ -398,7 +399,7 @@ export const StatutoryRationaleGuide: React.FC = () => {
               <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                 {activeTopic.title}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
                 {activeTopic.abstract}
               </p>
             </div>
@@ -406,8 +407,8 @@ export const StatutoryRationaleGuide: React.FC = () => {
             {/* Structured Engineering Mechanics Breakdown */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
               <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.08] space-y-1.5">
-                <span className="text-[11px] uppercase font-bold text-slate-400 tracking-wider flex items-center gap-1.5">
-                  <Activity className="w-3.5 h-3.5 text-emerald-600" />
+                <span className="text-[11px] uppercase font-bold text-slate-600 tracking-wider flex items-center gap-1.5 dark:text-slate-400">
+                  <Activity className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" />
                   <span>Governing Physical Concept</span>
                 </span>
                 <p className="text-xs font-bold text-slate-900 dark:text-white">
@@ -419,8 +420,8 @@ export const StatutoryRationaleGuide: React.FC = () => {
               </div>
 
               <div className="p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.03] border border-black/[0.06] dark:border-white/[0.08] space-y-1.5">
-                <span className="text-[11px] uppercase font-bold text-slate-400 tracking-wider flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                <span className="text-[11px] uppercase font-bold text-slate-600 tracking-wider flex items-center gap-1.5 dark:text-slate-400">
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" />
                   <span>Statutory Code Translation</span>
                 </span>
                 <p className="text-xs font-bold text-slate-900 dark:text-white">
@@ -435,7 +436,7 @@ export const StatutoryRationaleGuide: React.FC = () => {
             {/* Failure Mode Warning Callout */}
             <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-xs space-y-1 text-amber-950 dark:text-amber-200">
               <div className="font-bold flex items-center gap-2 text-amber-800 dark:text-amber-300">
-                <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0" />
+                <AlertTriangle className="w-4 h-4 text-amber-700 dark:text-amber-400 flex-shrink-0" />
                 <span>Urban & Structural Consequences of Non-Compliance:</span>
               </div>
               <p className="leading-relaxed pl-6">
@@ -448,10 +449,10 @@ export const StatutoryRationaleGuide: React.FC = () => {
           <div className="apple-card p-6 sm:p-7 space-y-4">
             <div className="flex items-center justify-between">
               <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <BookOpen className="w-4 h-4 text-emerald-600" />
+                <BookOpen className="w-4 h-4 text-emerald-700 dark:text-emerald-300" />
                 <span>Authoritative Standards & Engineering Literature</span>
               </h4>
-              <span className="text-[11px] text-slate-400">
+              <span className="text-[11px] text-slate-600 dark:text-slate-400">
                 {activeTopic.literatureCitations.length} Referenced Standards
               </span>
             </div>
@@ -471,7 +472,7 @@ export const StatutoryRationaleGuide: React.FC = () => {
                     </span>
                   </div>
 
-                  <div className="text-[11px] font-mono text-slate-500 dark:text-slate-400">
+                  <div className="text-[11px] font-mono text-slate-600 dark:text-slate-400">
                     {cit.clauseOrStandard}
                   </div>
 
@@ -487,7 +488,7 @@ export const StatutoryRationaleGuide: React.FC = () => {
           {/* Real-World Context / Historical Case Study */}
           <div className="apple-card p-6 sm:p-7 space-y-2.5">
             <h4 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Info className="w-4 h-4 text-slate-400" />
+              <Info className="w-4 h-4 text-slate-600 dark:text-slate-400" />
               <span>Real-World Context in Uttar Pradesh</span>
             </h4>
             <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">

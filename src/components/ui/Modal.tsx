@@ -92,7 +92,7 @@ export const Modal: React.FC<ModalProps> = ({ open, onClose, title, subtitle, ic
         <div className="flex items-start justify-between gap-4 border-b border-black/[0.06] p-5 dark:border-white/[0.08]">
           <div className="flex min-w-0 items-center gap-3">
             {icon && (
-              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+              <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-700 dark:text-emerald-400">
                 {icon}
               </div>
             )}
@@ -100,14 +100,14 @@ export const Modal: React.FC<ModalProps> = ({ open, onClose, title, subtitle, ic
               <h2 id={titleId} className="truncate text-sm font-semibold text-slate-900 dark:text-white">
                 {title}
               </h2>
-              {subtitle && <p className="mt-0.5 truncate text-[11px] text-slate-500 dark:text-slate-400">{subtitle}</p>}
+              {subtitle && <p className="mt-0.5 truncate text-[11px] text-slate-600 dark:text-slate-400">{subtitle}</p>}
             </div>
           </div>
           <button
             type="button"
             onClick={onClose}
             aria-label="Close dialog"
-            className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-white/10 dark:hover:text-white"
+            className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-700 dark:hover:bg-white/10 dark:hover:text-white dark:text-slate-400"
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </button>
