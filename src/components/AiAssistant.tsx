@@ -14,7 +14,7 @@ export const AiAssistant: React.FC = () => {
     {
       id: 'welcome',
       role: 'model',
-      text: "Hello! I am your AI compliance consultant for the **Uttar Pradesh Building Construction and Development Byelaws 2025** (Version TMPR8).\n\nI have ingested the complete 224-page gazette, including all 18 chapters (FAR, setbacks, room sizes, fire safety, parking, EVCI, environmental sustainability, compounding) and 15 appendices.\n\nHow can I assist your architectural or development planning today?",
+      text: "Welcome to the **Uttar Pradesh Building Construction & Development Byelaws 2025** Regulatory Copilot.\n\nI provide authoritative guidance on statutory planning standards across all 22 Development Authorities—covering permissible FAR, setback geometries, structural safety under NBC 2016, compoundable deviation thresholds, and environmental buffers.\n\nHow can I assist your architectural or development compliance review today?",
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       source: 'gemini-3.8-flash',
     },

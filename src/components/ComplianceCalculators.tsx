@@ -1,9 +1,55 @@
-import React, { useState, useMemo } from 'react';
-import { Calculator, AlertTriangle, CheckCircle2, TrendingUp, Zap, HelpCircle } from 'lucide-react';
-import { PURCHASABLE_FAR_FACTORS } from '../data/byelawsData';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
+import {
+  Calculator,
+  AlertTriangle,
+  CheckCircle2,
+  TrendingUp,
+  Zap,
+  HelpCircle,
+  XCircle,
+  Info,
+  ShieldCheck,
+  ShieldAlert,
+  BarChart3,
+  LineChart as LineChartIcon,
+  Sliders
+} from 'lucide-react';
+import {
+  ResponsiveContainer,
+  ComposedChart,
+  BarChart,
+  Bar,
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  CartesianGrid,
+  ReferenceLine,
+  Cell
+} from 'recharts';
+import {
+  PURCHASABLE_FAR_FACTORS,
+  calculateTelescopicResidentialFAR,
+  getGroupHousingFarRule,
+  getCommercialComplexFarRule,
+} from '../data/byelawsData';
+import { useToast } from '../context/ToastContext';
+
+export interface ValidationIssue {
+  id: string;
+  field: string;
+  severity: 'error' | 'warning' | 'info' | 'success';
+  title: string;
+  message: string;
+  byelawClause: string;
+}
 
 export const ComplianceCalculators: React.FC = () => {
+  const toast = useToast();
   const [activeCalc, setActiveCalc] = useState<'far' | 'pfar_fee' | 'parking' | 'compounding'>('far');
+  const [sensitivityMode, setSensitivityMode] = useState<'road_width' | 'land_use' | 'plot_telescopic'>('road_width');
 
   // --- 1. FAR State ---
   const [occupancyType, setOccupancyType] = useState<'residential_plotted' | 'group_housing' | 'commercial' | 'tod'>('residential_plotted');
@@ -12,115 +58,22 @@ export const ComplianceCalculators: React.FC = () => {
   const [areaCategory, setAreaCategory] = useState<'built_up' | 'non_built_up'>('built_up');
   const [greenRating, setGreenRating] = useState<'none' | 'silver' | 'gold' | 'platinum'>('none');
 
-  // Telescopic Residential Plotted FAR calculation as per Chapter 3.2.2 (p. 46-47)
+  // Telescopic Residential Plotted FAR calculation as per Chapter 3.2.2 & 3.2.2.1
   const calculatedPlottedFar = useMemo(() => {
-    const area = Math.max(0, plotArea);
-    if (area === 0) return { baseFloorArea: 0, baseFar: 0, steps: [], maxFar: 2.0, maxFloorArea: 0 };
-
-    let remaining = area;
-    let totalBuilt = 0;
-    const steps: { range: string; slabArea: number; far: number; built: number }[] = [];
-
-    // First 100 sqm @ 2.0
-    const slab1 = Math.min(remaining, 100);
-    const built1 = slab1 * 2.0;
-    totalBuilt += built1;
-    remaining -= slab1;
-    steps.push({ range: "Up to 100 sqm", slabArea: slab1, far: 2.0, built: built1 });
-
-    // 100 to 300 sqm (next 200) @ 1.75
-    if (remaining > 0) {
-      const slab2 = Math.min(remaining, 200);
-      const built2 = slab2 * 1.75;
-      totalBuilt += built2;
-      remaining -= slab2;
-      steps.push({ range: "100 - 300 sqm", slabArea: slab2, far: 1.75, built: built2 });
-    }
-
-    // 300 to 500 sqm (next 200) @ 1.50
-    if (remaining > 0) {
-      const slab3 = Math.min(remaining, 200);
-      const built3 = slab3 * 1.50;
-      totalBuilt += built3;
-      remaining -= slab3;
-      steps.push({ range: "300 - 500 sqm", slabArea: slab3, far: 1.50, built: built3 });
-    }
-
-    // 500 to 1200 sqm (next 700) @ 1.25
-    if (remaining > 0) {
-      const slab4 = Math.min(remaining, 700);
-      const built4 = slab4 * 1.25;
-      totalBuilt += built4;
-      remaining -= slab4;
-      steps.push({ range: "500 - 1200 sqm", slabArea: slab4, far: 1.25, built: built4 });
-    }
-
-    // > 1200 sqm @ 1.00
-    if (remaining > 0) {
-      const slab5 = remaining;
-      const built5 = slab5 * 1.00;
-      totalBuilt += built5;
-      steps.push({ range: "Above 1200 sqm", slabArea: slab5, far: 1.00, built: built5 });
-    }
-
-    const effectiveBaseFar = totalBuilt / area;
-    const maxFar = 2.0; // Maximum permissible FAR for plotted residential is 2.0 under Chapter 9.2.3 Note-3
-    const maxFloorArea = area * maxFar;
-
-    return {
-      baseFloorArea: totalBuilt,
-      baseFar: effectiveBaseFar,
-      steps,
-      maxFar,
-      maxFloorArea,
-    };
+    return calculateTelescopicResidentialFAR(plotArea);
   }, [plotArea]);
 
-  // Group Housing & Commercial FAR based on road width
+  // Group Housing FAR based on statutory 2025 matrix (Section 3.2.2.2 & 4.2.8)
+  const groupHousingRule = useMemo(() => {
+    return getGroupHousingFarRule(roadWidth);
+  }, [roadWidth]);
+
   const groupHousingFar = useMemo(() => {
     const isBuiltUp = areaCategory === 'built_up';
-    let baseFar = isBuiltUp ? 1.5 : 2.5;
-    let pfar = 0;
-    let ppfar = 0;
-    let maxFar: number | string = baseFar;
-
-    if (roadWidth <= 12) {
-      if (isBuiltUp) {
-        pfar = 0.3;
-        ppfar = 0.3;
-        maxFar = 2.1;
-      } else {
-        baseFar = 2.5;
-        pfar = 0.5;
-        ppfar = 0.5;
-        maxFar = 3.5;
-      }
-    } else if (roadWidth <= 24) {
-      if (isBuiltUp) {
-        pfar = 0.75;
-        ppfar = 0.75;
-        maxFar = 3.0;
-      } else {
-        pfar = 1.25;
-        ppfar = 1.25;
-        maxFar = 5.0;
-      }
-    } else if (roadWidth <= 45) {
-      if (isBuiltUp) {
-        pfar = 1.5;
-        ppfar = 2.25;
-        maxFar = 5.25;
-      } else {
-        pfar = 2.5;
-        ppfar = 3.75;
-        maxFar = 8.75;
-      }
-    } else {
-      // > 45m Unrestricted
-      pfar = isBuiltUp ? 1.5 : 2.5;
-      ppfar = 0;
-      maxFar = "Unrestricted (UR)";
-    }
+    const baseFar = isBuiltUp ? groupHousingRule.builtUpBaseFar : groupHousingRule.nonBuiltUpBaseFar;
+    const pfar = isBuiltUp ? groupHousingRule.builtUpPurchasableFar : groupHousingRule.nonBuiltUpPurchasableFar;
+    const maxFar = isBuiltUp ? groupHousingRule.builtUpMaxFar : groupHousingRule.nonBuiltUpMaxFar;
+    const ppfar = isBuiltUp ? Number((pfar * 1.0).toFixed(2)) : Number((pfar * 1.0).toFixed(2));
 
     let greenBonusPercent = 0;
     if (greenRating === 'silver') greenBonusPercent = 3;
@@ -131,10 +84,279 @@ export const ComplianceCalculators: React.FC = () => {
       baseFar,
       pfar,
       ppfar,
-      maxFar,
+      maxFar: maxFar >= 999 ? 'Unrestricted (UR)' : maxFar,
       greenBonusPercent,
+      rule: groupHousingRule,
     };
-  }, [roadWidth, areaCategory, greenRating]);
+  }, [groupHousingRule, areaCategory, greenRating]);
+
+  // Commercial Complex FAR based on Section 5.2.5
+  const commercialRule = useMemo(() => {
+    return getCommercialComplexFarRule(roadWidth);
+  }, [roadWidth]);
+
+  // --- Real-Time Validation Engine for FAR & Building Parameters ---
+  const farValidationIssues = useMemo<ValidationIssue[]>(() => {
+    const issues: ValidationIssue[] = [];
+    const area = Number(plotArea) || 0;
+    const road = Number(roadWidth) || 0;
+    const isBuiltUp = areaCategory === 'built_up';
+
+    if (area <= 0) {
+      issues.push({
+        id: 'far-zero-area',
+        field: 'plotArea',
+        severity: 'error',
+        title: 'Invalid Plot Area',
+        message: 'Plot area must be greater than 0 sqm to calculate building coverage and FAR.',
+        byelawClause: 'General Byelaws Mandate',
+      });
+      return issues;
+    }
+
+    if (occupancyType === 'residential_plotted') {
+      if (area < 30) {
+        issues.push({
+          id: 'plot-too-small',
+          field: 'plotArea',
+          severity: 'error',
+          title: 'Plot Below Minimum Threshold',
+          message: 'Plot area below 30 sqm is not permissible for standard plotted sanction under 2025 byelaws. Minimum 30 sqm required.',
+          byelawClause: 'Section 2.1.2 & Section 3.2.1',
+        });
+      } else if (area <= 100) {
+        issues.push({
+          id: 'plot-self-cert',
+          field: 'plotArea',
+          severity: 'info',
+          title: 'Eligible for Fast-Track Self-Certification',
+          message: 'Plots up to 100 sqm require no standard building permission fee (token Re. 1 online fee) with registered architect/engineer affidavit.',
+          byelawClause: 'Section 2.1.2 (Self-Certification Scheme)',
+        });
+      }
+
+      if (area > 1200) {
+        issues.push({
+          id: 'plot-large-setbacks',
+          field: 'plotArea',
+          severity: 'warning',
+          title: 'Mandatory 6.0m Peripheral Setbacks',
+          message: 'Residential plots exceeding 1,200 sqm require all-round 6.0m setbacks (front, rear, and sides) and layout scheme approval.',
+          byelawClause: 'Section 3.2.4.1 (Plotted Setbacks)',
+        });
+      }
+
+      if (isBuiltUp && road < 6) {
+        issues.push({
+          id: 'road-too-narrow-bu',
+          field: 'roadWidth',
+          severity: 'error',
+          title: 'Abutting Road Substandard (<6.0m)',
+          message: 'In built-up areas, minimum access road width for residential plots is 6.0m (Section 3.1.1.1). Building sanction is barred on narrower lanes.',
+          byelawClause: 'Section 3.1.1.1',
+        });
+      } else if (!isBuiltUp && road < 9) {
+        issues.push({
+          id: 'road-too-narrow-nbu',
+          field: 'roadWidth',
+          severity: 'error',
+          title: 'Abutting Road Substandard (<9.0m)',
+          message: 'In non-built-up plotted developments, access road must be at least 9.0m (7.5m allowed only if single-sided plots).',
+          byelawClause: 'Section 3.1.1.2',
+        });
+      }
+    } else if (occupancyType === 'group_housing') {
+      const minPlot = isBuiltUp ? 1000 : 1500;
+      if (area < minPlot) {
+        issues.push({
+          id: 'gh-min-plot-violation',
+          field: 'plotArea',
+          severity: 'error',
+          title: 'Group Housing Minimum Area Violation',
+          message: `Group Housing requires minimum plot area of ${minPlot.toLocaleString()} sqm in ${isBuiltUp ? 'Built-up' : 'Non-built-up'} areas. Current plot: ${area} sqm.`,
+          byelawClause: 'Section 3.2.2.2 & Section 4.2.8',
+        });
+      }
+
+      const minRoad = isBuiltUp ? 9 : 12;
+      if (road < minRoad) {
+        issues.push({
+          id: 'gh-min-road-violation',
+          field: 'roadWidth',
+          severity: 'error',
+          title: 'Prohibited on Substandard Road',
+          message: `Group Housing strictly prohibited on roads narrower than ${minRoad}m in ${isBuiltUp ? 'built-up' : 'non-built-up'} areas. Current road: ${road}m.`,
+          byelawClause: 'Section 3.2.2.2 (Table 3.2)',
+        });
+      }
+
+      issues.push({
+        id: 'gh-ews-lig-quota',
+        field: 'occupancy',
+        severity: 'info',
+        title: 'Mandatory Social Housing Quota',
+        message: 'Under Chapter 4.2.1, 10% EWS and 10% LIG dwelling units are mandatory in all group housing schemes.',
+        byelawClause: 'Section 4.2.1',
+      });
+    } else if (occupancyType === 'commercial') {
+      if (road < 9) {
+        issues.push({
+          id: 'comm-road-min',
+          field: 'roadWidth',
+          severity: 'error',
+          title: 'Commercial Road Width Violation',
+          message: 'Commercial buildings require a minimum 9.0m abutting road width (12.0m for plots exceeding 300 sqm).',
+          byelawClause: 'Section 5.2.5',
+        });
+      }
+
+      if (area >= 3000 && road < 18) {
+        issues.push({
+          id: 'mall-road-min',
+          field: 'roadWidth',
+          severity: 'error',
+          title: 'Shopping Mall / Multiplex Road Requirement',
+          message: 'Plots >= 3,000 sqm designated for Shopping Malls strictly require minimum 18.0m abutting road width.',
+          byelawClause: 'Section 5.2.5 (Mall Norms)',
+        });
+      }
+    } else if (occupancyType === 'tod') {
+      if (road < 12) {
+        issues.push({
+          id: 'tod-road-min',
+          field: 'roadWidth',
+          severity: 'error',
+          title: 'TOD Minimum Right-of-Way Violation',
+          message: 'Transit-Oriented Development FAR bonuses apply exclusively along corridors with minimum 12.0m right of way.',
+          byelawClause: 'Chapter 8.2.2',
+        });
+      }
+    }
+
+    // If no critical errors, mark compliance as validated
+    const hasCriticalError = issues.some((i) => i.severity === 'error');
+    if (!hasCriticalError && area > 0) {
+      issues.unshift({
+        id: 'statutory-pass',
+        field: 'general',
+        severity: 'success',
+        title: 'Statutory 2025 Baseline Compliant',
+        message: 'All parameters satisfy statutory Uttar Pradesh 2025 Byelaw baseline criteria. Building plans are permissible for submission.',
+        byelawClause: 'Statutory Compliance Verified',
+      });
+    }
+
+    return issues;
+  }, [plotArea, roadWidth, occupancyType, areaCategory]);
+
+  const hasPlotAreaError = farValidationIssues.some((i) => i.field === 'plotArea' && i.severity === 'error');
+  const hasRoadWidthError = farValidationIssues.some((i) => i.field === 'roadWidth' && i.severity === 'error');
+
+  // Active toast notifications for validation errors
+  const prevErrorsRef = useRef<string[]>([]);
+  useEffect(() => {
+    const currentErrorIds = farValidationIssues.filter((i) => i.severity === 'error').map((i) => i.id);
+    const newErrors = currentErrorIds.filter((id) => !prevErrorsRef.current.includes(id));
+    if (newErrors.length > 0) {
+      const issue = farValidationIssues.find((i) => i.id === newErrors[0]);
+      if (issue) {
+        toast.error(issue.title, `${issue.message} (${issue.byelawClause})`);
+      }
+    }
+    prevErrorsRef.current = currentErrorIds;
+  }, [farValidationIssues, toast]);
+
+  // Sensitivity Analysis Datasets (Road Width vs FAR, Land Use Comparison, Plot Area Curve)
+  const roadWidthSensitivityData = useMemo(() => {
+    const widths = [6, 9, 12, 18, 24, 30, 45, 60];
+    const isBuiltUp = areaCategory === 'built_up';
+
+    return widths.map((w) => {
+      const ghRule = getGroupHousingFarRule(w);
+      const commRule = getCommercialComplexFarRule(w);
+      const ghMax = isBuiltUp ? ghRule.builtUpMaxFar : ghRule.nonBuiltUpMaxFar;
+      const ghVal = ghMax >= 999 ? 6.0 : ghMax;
+      const commVal = commRule.maxFar >= 999 ? 5.5 : commRule.maxFar;
+      const plottedVal = Math.min(2.0, calculatedPlottedFar.effectiveBaseFAR + calculatedPlottedFar.purchasableFARCap);
+      const todVal = w < 12 ? 1.5 : w < 24 ? 2.5 : w < 45 ? 3.5 : 5.0;
+
+      return {
+        roadWidthM: w,
+        roadLabel: w >= 60 ? '>45m' : `${w}m`,
+        plottedFAR: Number(plottedVal.toFixed(2)),
+        groupHousingFAR: Number(ghVal.toFixed(2)),
+        commercialFAR: Number(commVal.toFixed(2)),
+        todFAR: Number(todVal.toFixed(2)),
+      };
+    });
+  }, [areaCategory, calculatedPlottedFar]);
+
+  const landUseSensitivityData = useMemo(() => {
+    const isBuiltUp = areaCategory === 'built_up';
+    const ghMax = isBuiltUp ? groupHousingRule.builtUpMaxFar : groupHousingRule.nonBuiltUpMaxFar;
+    const commTotal = commercialRule.maxFar >= 999 ? 5.5 : commercialRule.maxFar;
+    const plottedBase = calculatedPlottedFar.effectiveBaseFAR;
+    const plottedPfar = calculatedPlottedFar.purchasableFARCap;
+    const plottedTotal = Math.min(2.0, plottedBase + plottedPfar);
+
+    return [
+      {
+        landUse: 'Plotted Residential',
+        baseFAR: Number(plottedBase.toFixed(2)),
+        purchasableFAR: Number(plottedPfar.toFixed(2)),
+        totalFAR: Number(plottedTotal.toFixed(2)),
+        statutoryCap: '2.00 Max',
+        active: occupancyType === 'residential_plotted',
+      },
+      {
+        landUse: 'Group Housing (Built-up)',
+        baseFAR: Number(groupHousingRule.builtUpBaseFar.toFixed(2)),
+        purchasableFAR: Number(groupHousingRule.builtUpPurchasableFar.toFixed(2)),
+        totalFAR: Number((groupHousingRule.builtUpMaxFar >= 999 ? 6.0 : groupHousingRule.builtUpMaxFar).toFixed(2)),
+        statutoryCap: groupHousingRule.builtUpMaxFar >= 999 ? 'Unrestricted' : `${groupHousingRule.builtUpMaxFar} Max`,
+        active: occupancyType === 'group_housing' && isBuiltUp,
+      },
+      {
+        landUse: 'Group Housing (New/NBU)',
+        baseFAR: Number(groupHousingRule.nonBuiltUpBaseFar.toFixed(2)),
+        purchasableFAR: Number(groupHousingRule.nonBuiltUpPurchasableFar.toFixed(2)),
+        totalFAR: Number((groupHousingRule.nonBuiltUpMaxFar >= 999 ? 6.0 : groupHousingRule.nonBuiltUpMaxFar).toFixed(2)),
+        statutoryCap: groupHousingRule.nonBuiltUpMaxFar >= 999 ? 'Unrestricted' : `${groupHousingRule.nonBuiltUpMaxFar} Max`,
+        active: occupancyType === 'group_housing' && !isBuiltUp,
+      },
+      {
+        landUse: 'Commercial Complex',
+        baseFAR: Number(commercialRule.baseFar.toFixed(2)),
+        purchasableFAR: Number(commercialRule.purchasableFar.toFixed(2)),
+        totalFAR: Number(commTotal.toFixed(2)),
+        statutoryCap: commercialRule.maxFar >= 999 ? 'Unrestricted' : `${commercialRule.maxFar} Max`,
+        active: occupancyType === 'commercial',
+      },
+      {
+        landUse: 'TOD Zone Corridor',
+        baseFAR: Number((roadWidth < 12 ? 1.5 : roadWidth < 24 ? 2.5 : 3.5).toFixed(2)),
+        purchasableFAR: Number((roadWidth < 12 ? 0.5 : roadWidth < 24 ? 1.0 : 1.5).toFixed(2)),
+        totalFAR: Number((roadWidth < 12 ? 2.0 : roadWidth < 24 ? 3.5 : roadWidth < 45 ? 5.0 : 6.0).toFixed(2)),
+        statutoryCap: roadWidth >= 45 ? 'Unrestricted' : 'Enhanced Multiplier',
+        active: occupancyType === 'tod',
+      },
+    ];
+  }, [groupHousingRule, commercialRule, calculatedPlottedFar, occupancyType, areaCategory, roadWidth]);
+
+  const plotAreaTelescopicData = useMemo(() => {
+    const areas = [50, 100, 150, 200, 300, 450, 600, 800, 1000];
+    return areas.map((a) => {
+      const calc = calculateTelescopicResidentialFAR(a);
+      return {
+        plotAreaSqm: a,
+        label: `${a} m²`,
+        effectiveBaseFAR: Number(calc.effectiveBaseFAR.toFixed(2)),
+        purchasableFAR: Number(calc.purchasableFARCap.toFixed(2)),
+        totalFAR: 2.00,
+        isCurrent: Math.abs(a - plotArea) < 50,
+      };
+    });
+  }, [plotArea]);
 
   // --- 2. Purchasable FAR Fee State ---
   const [feePlotArea, setFeePlotArea] = useState<number>(2000);
@@ -428,35 +650,63 @@ export const ComplianceCalculators: React.FC = () => {
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Plot Area (sq.m.)
-              </label>
+              <div className="flex items-center justify-between mb-1">
+                <label className="text-xs font-semibold text-slate-700">
+                  Plot Area (sq.m.)
+                </label>
+                {hasPlotAreaError && (
+                  <span className="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200 flex items-center gap-1">
+                    <XCircle className="w-3 h-3" />
+                    <span>Non-compliant</span>
+                  </span>
+                )}
+              </div>
               <input
                 type="number"
-                min="20"
+                min="10"
                 value={plotArea}
                 onChange={(e) => setPlotArea(Number(e.target.value))}
-                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500"
+                className={`w-full bg-slate-50 border rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none transition-colors ${
+                  hasPlotAreaError
+                    ? 'border-rose-500 ring-2 ring-rose-100 bg-rose-50/20'
+                    : 'border-slate-300 focus:border-emerald-500'
+                }`}
               />
-              <span className="text-[11px] text-slate-500">
-                Example: 280 sqm as illustrated on Page 47 of Byelaws.
+              <span className="text-[11px] text-slate-500 block mt-1">
+                Example: 280 sqm (Clause 3.2.2 telescopic standard).
               </span>
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
-                Abutting Road Width (meters)
-              </label>
+              <div className="flex items-center justify-between mb-1">
+                <label className="text-xs font-semibold text-slate-700">
+                  Abutting Road Width (meters)
+                </label>
+                {hasRoadWidthError && (
+                  <span className="text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200 flex items-center gap-1">
+                    <XCircle className="w-3 h-3" />
+                    <span>Width Barred</span>
+                  </span>
+                )}
+              </div>
               <select
                 value={roadWidth}
                 onChange={(e) => setRoadWidth(Number(e.target.value))}
-                className="w-full bg-slate-50 border border-slate-300 rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none focus:border-emerald-500"
+                className={`w-full bg-slate-50 border rounded-lg p-2.5 text-xs text-slate-800 focus:outline-none transition-colors ${
+                  hasRoadWidthError
+                    ? 'border-rose-500 ring-2 ring-rose-100 bg-rose-50/20'
+                    : 'border-slate-300 focus:border-emerald-500'
+                }`}
               >
-                <option value={9}>9 meters (Single Unit residential, minor)</option>
-                <option value={12}>12 meters (Standard residential/commercial)</option>
-                <option value={18}>18 meters (Major sector road / Group Housing)</option>
-                <option value={24}>24 meters (Arterial corridor)</option>
-                <option value={50}>More than 45 meters (Expressway / Unrestricted FAR)</option>
+                <option value={4}>4 meters (Substandard lane / Built-up lane)</option>
+                <option value={6}>6 meters (Minimum plotted residential in Built-up)</option>
+                <option value={9}>9 meters (Minimum plotted in Non-built-up / Clinic)</option>
+                <option value={12}>12 meters (Group Housing min / Commercial corridor)</option>
+                <option value={18}>18 meters (Major sector road / Shopping Mall min)</option>
+                <option value={24}>24 meters (Arterial corridor / Mixed-use highway)</option>
+                <option value={30}>30 meters (Major city corridor)</option>
+                <option value={45}>45 meters (Expressway link / High-density zone)</option>
+                <option value={60}>&gt; 45 meters (Expressway corridor / Unrestricted FAR)</option>
               </select>
             </div>
 
@@ -508,145 +758,585 @@ export const ComplianceCalculators: React.FC = () => {
           </div>
 
           {/* Results Display */}
-          <div className="lg:col-span-7 bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
-            <h3 className="text-base font-bold text-slate-900 border-b pb-2">
-              Calculated Permissible FAR & Built-up Capacity
-            </h3>
-
-            {occupancyType === 'residential_plotted' ? (
-              <div className="space-y-4">
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-center">
-                    <span className="text-xs text-emerald-800 font-medium">Effective Base FAR</span>
-                    <div className="text-xl font-bold text-emerald-950 mt-0.5">
-                      {calculatedPlottedFar.baseFar.toFixed(3)}
-                    </div>
-                  </div>
-                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg text-center">
-                    <span className="text-xs text-slate-600 font-medium">Base Floor Area</span>
-                    <div className="text-xl font-bold text-slate-900 mt-0.5">
-                      {calculatedPlottedFar.baseFloorArea.toFixed(1)} <span className="text-xs font-normal text-slate-500">sqm</span>
-                    </div>
-                  </div>
-                  <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-center col-span-2 sm:col-span-1">
-                    <span className="text-xs text-blue-800 font-medium">Max FAR (with PFAR)</span>
-                    <div className="text-xl font-bold text-blue-950 mt-0.5">
-                      {calculatedPlottedFar.maxFar.toFixed(2)}
-                    </div>
-                  </div>
+          <div className="lg:col-span-7 space-y-4">
+            {/* Real-time Validation Banner Card */}
+            <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 space-y-3">
+              <div className="flex items-center justify-between border-b pb-2.5">
+                <div className="flex items-center space-x-2">
+                  <ShieldCheck className="w-4 h-4 text-emerald-600" />
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800">
+                    2025 Statutory Validation & Rule Engine
+                  </h4>
                 </div>
+                <span
+                  className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
+                    farValidationIssues.some((i) => i.severity === 'error')
+                      ? 'bg-rose-100 text-rose-800 border border-rose-200'
+                      : farValidationIssues.some((i) => i.severity === 'warning')
+                      ? 'bg-amber-100 text-amber-900 border border-amber-200'
+                      : 'bg-emerald-100 text-emerald-900 border border-emerald-200'
+                  }`}
+                >
+                  {farValidationIssues.some((i) => i.severity === 'error')
+                    ? 'Compliance Issues Found'
+                    : 'Statutory Criteria Satisfied'}
+                </span>
+              </div>
 
-                <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
-                  <span className="text-xs font-bold text-slate-800 block">
-                    Telescopic Slab Calculation Breakdown (as per Chapter 3.2.2):
-                  </span>
-                  <div className="space-y-1.5 text-xs text-slate-700">
-                    {calculatedPlottedFar.steps.map((st, i) => (
-                      <div key={i} className="flex justify-between py-1 border-b border-slate-200/60 last:border-0">
-                        <span>
-                          {st.range} ({st.slabArea.toFixed(1)} sqm × {st.far}):
-                        </span>
-                        <span className="font-mono font-semibold text-slate-900">
-                          {st.built.toFixed(1)} sqm
+              <div className="space-y-2">
+                {farValidationIssues.map((issue) => (
+                  <div
+                    key={issue.id}
+                    className={`p-2.5 rounded-lg border text-xs flex items-start gap-2.5 ${
+                      issue.severity === 'error'
+                        ? 'bg-rose-50/80 border-rose-200 text-rose-900'
+                        : issue.severity === 'warning'
+                        ? 'bg-amber-50/80 border-amber-200 text-amber-900'
+                        : issue.severity === 'info'
+                        ? 'bg-sky-50/80 border-sky-200 text-sky-900'
+                        : 'bg-emerald-50/80 border-emerald-200 text-emerald-900'
+                    }`}
+                  >
+                    {issue.severity === 'error' && (
+                      <XCircle className="w-4 h-4 text-rose-600 mt-0.5 flex-shrink-0" />
+                    )}
+                    {issue.severity === 'warning' && (
+                      <AlertTriangle className="w-4 h-4 text-amber-600 mt-0.5 flex-shrink-0" />
+                    )}
+                    {issue.severity === 'info' && (
+                      <Info className="w-4 h-4 text-sky-600 mt-0.5 flex-shrink-0" />
+                    )}
+                    {issue.severity === 'success' && (
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0" />
+                    )}
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-1 font-bold">
+                        <span>{issue.title}</span>
+                        <span className="text-[10px] font-mono px-1.5 py-0.2 rounded bg-white/70 border border-current/20">
+                          {issue.byelawClause}
                         </span>
                       </div>
-                    ))}
-                    <div className="flex justify-between pt-2 font-bold text-emerald-900 border-t border-slate-300">
-                      <span>Total Allowable Base Floor Area:</span>
-                      <span className="font-mono">{calculatedPlottedFar.baseFloorArea.toFixed(1)} sqm</span>
+                      <p className="mt-0.5 text-[11px] leading-relaxed opacity-95">
+                        {issue.message}
+                      </p>
                     </div>
                   </div>
-                </div>
-
-                <div className="text-xs text-slate-600 space-y-1">
-                  <p>
-                    <strong>Max Permissible Coverage:</strong> After leaving prescribed setbacks (Front {plotArea <= 150 ? '1.0m' : plotArea <= 500 ? '3.0m' : '4.5m'}, Rear {plotArea <= 150 ? '0m' : plotArea <= 300 ? '1.5m' : '3.0m'}).
-                  </p>
-                  <p>
-                    <strong>Purchasable FAR:</strong> Up to 2.0 total FAR permissible regardless of road width (Chapter 9.2.3 Note-3).
-                  </p>
-                </div>
+                ))}
               </div>
-            ) : occupancyType === 'group_housing' ? (
-              <div className="space-y-4">
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-                  <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
-                    <span className="text-xs text-slate-500 font-medium">Base FAR</span>
-                    <div className="text-xl font-bold text-slate-900 mt-0.5">{groupHousingFar.baseFar}</div>
-                  </div>
-                  <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg">
-                    <span className="text-xs text-emerald-700 font-medium">Purchasable FAR</span>
-                    <div className="text-xl font-bold text-emerald-900 mt-0.5">+{groupHousingFar.pfar}</div>
-                  </div>
-                  <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-lg">
-                    <span className="text-xs text-indigo-700 font-medium">Premium PFAR</span>
-                    <div className="text-xl font-bold text-indigo-900 mt-0.5">+{groupHousingFar.ppfar}</div>
-                  </div>
-                  <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                    <span className="text-xs text-blue-700 font-medium">Max FAR (MFAR)</span>
-                    <div className="text-xl font-bold text-blue-900 mt-0.5">{groupHousingFar.maxFar}</div>
-                  </div>
-                </div>
+            </div>
 
-                <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 text-xs space-y-2">
-                  <div className="flex justify-between">
-                    <span className="text-slate-600">Base Covered Floor Area:</span>
-                    <span className="font-bold text-slate-900 font-mono">{(plotArea * groupHousingFar.baseFar).toFixed(1)} sqm</span>
+            {/* Calculated Permissible FAR & Built-up Capacity */}
+            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
+              <h3 className="text-base font-bold text-slate-900 border-b pb-2">
+                Calculated Permissible FAR & Built-up Capacity
+              </h3>
+
+              {occupancyType === 'residential_plotted' ? (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg text-center">
+                      <span className="text-xs text-emerald-800 font-medium">Effective Base FAR</span>
+                      <div className="text-xl font-bold text-emerald-950 mt-0.5">
+                        {calculatedPlottedFar.effectiveBaseFAR.toFixed(3)}
+                      </div>
+                    </div>
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg text-center">
+                      <span className="text-xs text-slate-600 font-medium">Base Floor Area</span>
+                      <div className="text-xl font-bold text-slate-900 mt-0.5">
+                        {calculatedPlottedFar.totalBaseBuiltUpArea.toFixed(1)} <span className="text-xs font-normal text-slate-500">sqm</span>
+                      </div>
+                    </div>
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-center col-span-2 sm:col-span-1">
+                      <span className="text-xs text-blue-800 font-medium">Max FAR (with PFAR)</span>
+                      <div className="text-xl font-bold text-blue-950 mt-0.5">
+                        {calculatedPlottedFar.maxPermissibleFAR.toFixed(2)}
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-slate-600">Potential Max Floor Area (at MFAR):</span>
-                    <span className="font-bold text-emerald-800 font-mono">
-                      {typeof groupHousingFar.maxFar === 'number'
-                        ? (plotArea * groupHousingFar.maxFar).toFixed(1) + ' sqm'
-                        : 'Unrestricted (Subject to Setbacks & Height)'}
+
+                  <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                    <span className="text-xs font-bold text-slate-800 block">
+                      Telescopic Slab Calculation Breakdown (Section 3.2.2 & 3.2.2.1):
                     </span>
-                  </div>
-                  {groupHousingFar.greenBonusPercent > 0 && (
-                    <div className="flex justify-between text-emerald-700 font-semibold pt-1 border-t">
-                      <span>Green Incentive ({groupHousingFar.greenBonusPercent}% free):</span>
-                      <span>+{((plotArea * groupHousingFar.baseFar * groupHousingFar.greenBonusPercent) / 100).toFixed(1)} sqm</span>
+                    <div className="space-y-1.5 text-xs text-slate-700">
+                      {calculatedPlottedFar.slabs.map((st) => (
+                        <div key={st.slabIndex} className="flex justify-between py-1 border-b border-slate-200/60 last:border-0">
+                          <span>
+                            {st.slabRange} ({st.slabPlotArea.toFixed(1)} sqm × {st.slabBaseFAR.toFixed(2)}):
+                          </span>
+                          <span className="font-mono font-semibold text-slate-900">
+                            {st.slabBuiltUpArea.toFixed(1)} sqm
+                          </span>
+                        </div>
+                      ))}
+                      <div className="flex justify-between pt-2 font-bold text-emerald-900 border-t border-slate-300">
+                        <span>Total Allowable Base Floor Area:</span>
+                        <span className="font-mono">{calculatedPlottedFar.totalBaseBuiltUpArea.toFixed(1)} sqm</span>
+                      </div>
+                      <div className="flex justify-between pt-1 text-blue-900 font-medium">
+                        <span>Purchasable FAR Balance Available:</span>
+                        <span className="font-mono">+{calculatedPlottedFar.purchasableAreaAvailable.toFixed(1)} sqm (FAR +{calculatedPlottedFar.purchasableFARCap.toFixed(3)})</span>
+                      </div>
                     </div>
-                  )}
-                </div>
-              </div>
-            ) : occupancyType === 'tod' ? (
-              <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-200 text-xs space-y-3">
-                <span className="font-bold text-emerald-950 text-sm block">
-                  Transit-Oriented Development (TOD Zone) FAR Multipliers
-                </span>
-                <p className="text-emerald-900">
-                  Under Chapter 8.2.2.2, TOD zones receive enhanced FAR based on right of way:
-                </p>
-                <div className="grid grid-cols-2 gap-2 text-center">
-                  <div className="bg-white p-2.5 rounded border border-emerald-300">
-                    <div className="text-xs text-slate-500">12m Road</div>
-                    <div className="text-base font-bold text-emerald-800">150% of Base FAR</div>
                   </div>
-                  <div className="bg-white p-2.5 rounded border border-emerald-300">
-                    <div className="text-xs text-slate-500">12 - 24m Road</div>
-                    <div className="text-base font-bold text-emerald-800">250% of Base FAR</div>
-                  </div>
-                  <div className="bg-white p-2.5 rounded border border-emerald-300">
-                    <div className="text-xs text-slate-500">24 - 45m Road</div>
-                    <div className="text-base font-bold text-emerald-800">350% of Base FAR</div>
-                  </div>
-                  <div className="bg-white p-2.5 rounded border border-emerald-300">
-                    <div className="text-xs text-slate-500">&gt; 45m Road</div>
-                    <div className="text-base font-bold text-emerald-800">Unrestricted</div>
+
+                  <div className="text-xs text-slate-600 space-y-1 bg-slate-50/70 p-3 rounded-lg border border-slate-200">
+                    <p>
+                      <strong>Prescribed Setbacks (Section 3.2.4.1):</strong> Front {plotArea <= 150 ? '1.0m' : plotArea <= 300 ? '3.0m' : plotArea <= 500 ? '4.5m' : '6.0m'}, Rear {plotArea <= 150 ? '0m' : plotArea <= 300 ? '1.5m' : '3.0m'}.
+                    </p>
+                    <p>
+                      <strong>Purchasable FAR Ceiling:</strong> Up to 2.0 total FAR permissible regardless of road width (Chapter 9.2.3 Note-3).
+                    </p>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 text-xs space-y-2">
-                <span className="font-bold text-slate-900 block">Commercial Establishments & Malls:</span>
-                <p className="text-slate-600">
-                  Base FAR is 1.5 (Built-up) or 1.75 to 3.0 (Non-built-up). Purchasable FAR expands up to 4.0 (12-24m road), 7.0 (24-45m road), and unrestricted on roads &gt;45m.
+              ) : occupancyType === 'group_housing' ? (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                      <span className="text-xs text-slate-500 font-medium">Base FAR</span>
+                      <div className="text-xl font-bold text-slate-900 mt-0.5">{groupHousingFar.baseFar}</div>
+                    </div>
+                    <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg">
+                      <span className="text-xs text-emerald-700 font-medium">Purchasable FAR</span>
+                      <div className="text-xl font-bold text-emerald-900 mt-0.5">+{groupHousingFar.pfar}</div>
+                    </div>
+                    <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-lg">
+                      <span className="text-xs text-indigo-700 font-medium">Premium PFAR</span>
+                      <div className="text-xl font-bold text-indigo-900 mt-0.5">+{groupHousingFar.ppfar}</div>
+                    </div>
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                      <span className="text-xs text-blue-700 font-medium">Max FAR (MFAR)</span>
+                      <div className="text-xl font-bold text-blue-900 mt-0.5">{groupHousingFar.maxFar}</div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 text-xs space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-slate-600">Statutory Matrix Bracket:</span>
+                      <span className="font-semibold text-slate-900">{groupHousingFar.rule.roadWidthRange}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-600">Base Covered Floor Area:</span>
+                      <span className="font-bold text-slate-900 font-mono">{(plotArea * groupHousingFar.baseFar).toFixed(1)} sqm</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-600">Potential Max Floor Area (at MFAR):</span>
+                      <span className="font-bold text-emerald-800 font-mono">
+                        {typeof groupHousingFar.maxFar === 'number'
+                          ? (plotArea * groupHousingFar.maxFar).toFixed(1) + ' sqm'
+                          : 'Unrestricted (Subject to Setbacks & Height)'}
+                      </span>
+                    </div>
+                    {groupHousingFar.greenBonusPercent > 0 && (
+                      <div className="flex justify-between text-emerald-700 font-semibold pt-1 border-t">
+                        <span>Green Incentive ({groupHousingFar.greenBonusPercent}% free):</span>
+                        <span>+{((plotArea * groupHousingFar.baseFar * groupHousingFar.greenBonusPercent) / 100).toFixed(1)} sqm</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ) : occupancyType === 'commercial' ? (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
+                    <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+                      <span className="text-xs text-slate-500 font-medium">Commercial Base FAR</span>
+                      <div className="text-xl font-bold text-slate-900 mt-0.5">{commercialRule.baseFar}</div>
+                    </div>
+                    <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-lg">
+                      <span className="text-xs text-emerald-700 font-medium">Purchasable FAR</span>
+                      <div className="text-xl font-bold text-emerald-900 mt-0.5">+{commercialRule.purchasableFar}</div>
+                    </div>
+                    <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg col-span-2 sm:col-span-1">
+                      <span className="text-xs text-blue-700 font-medium">Max FAR Allowed</span>
+                      <div className="text-xl font-bold text-blue-900 mt-0.5">
+                        {commercialRule.maxFar >= 999 ? 'Unrestricted (UR)' : commercialRule.maxFar}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-4 bg-slate-50 rounded-lg border border-slate-200 text-xs space-y-2">
+                    <div className="flex justify-between">
+                      <span className="text-slate-600">Road Width Category:</span>
+                      <span className="font-semibold text-slate-900">{commercialRule.roadWidthRange}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-600">Applicable Building Class:</span>
+                      <span className="font-semibold text-slate-900">{commercialRule.category}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-slate-600">Base Covered Floor Area:</span>
+                      <span className="font-bold text-slate-900 font-mono">{(plotArea * commercialRule.baseFar).toFixed(1)} sqm</span>
+                    </div>
+                    <p className="text-slate-500 pt-2 border-t text-[11px]">
+                      {commercialRule.notes}
+                    </p>
+                  </div>
+                </div>
+              ) : (
+                <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-200 text-xs space-y-3">
+                  <span className="font-bold text-emerald-950 text-sm block">
+                    Transit-Oriented Development (TOD Zone) FAR Multipliers
+                  </span>
+                  <p className="text-emerald-900">
+                    Under Chapter 8.2.2.2, TOD zones receive enhanced FAR based on right of way:
+                  </p>
+                  <div className="grid grid-cols-2 gap-2 text-center">
+                    <div className="bg-white p-2.5 rounded border border-emerald-300">
+                      <div className="text-xs text-slate-500">12m Road</div>
+                      <div className="text-base font-bold text-emerald-800">150% of Base FAR</div>
+                    </div>
+                    <div className="bg-white p-2.5 rounded border border-emerald-300">
+                      <div className="text-xs text-slate-500">12 - 24m Road</div>
+                      <div className="text-base font-bold text-emerald-800">250% of Base FAR</div>
+                    </div>
+                    <div className="bg-white p-2.5 rounded border border-emerald-300">
+                      <div className="text-xs text-slate-500">24 - 45m Road</div>
+                      <div className="text-base font-bold text-emerald-800">350% of Base FAR</div>
+                    </div>
+                    <div className="bg-white p-2.5 rounded border border-emerald-300">
+                      <div className="text-xs text-slate-500">&gt; 45m Road</div>
+                      <div className="text-base font-bold text-emerald-800">Unrestricted</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Visual Sensitivity Analysis Chart (Recharts) */}
+          <div className="lg:col-span-12 bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b pb-3">
+              <div className="space-y-0.5">
+                <div className="flex items-center space-x-2">
+                  <div className="w-6 h-6 rounded bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold">
+                    <BarChart3 className="w-3.5 h-3.5" />
+                  </div>
+                  <h4 className="text-sm font-bold text-slate-900">
+                    Statutory FAR Sensitivity Analysis & Parameter Impact Modeling
+                  </h4>
+                </div>
+                <p className="text-xs text-slate-500">
+                  Visual simulation showing how changing road width, land-use classification, or plot size directly scales total permissible FAR under UP Byelaws 2025.
                 </p>
-                <p className="text-slate-600">
-                  Skylighted Atriums up to 20% kiosk area are completely exempted from FAR calculations under Chapter 5.2.5.
-                </p>
               </div>
-            )}
+
+              {/* Sensitivity Mode Toggles */}
+              <div className="flex items-center p-1 bg-slate-100 rounded-lg space-x-1 text-xs self-start sm:self-center">
+                <button
+                  type="button"
+                  onClick={() => setSensitivityMode('road_width')}
+                  className={`px-2.5 py-1 rounded-md font-medium transition-all ${
+                    sensitivityMode === 'road_width'
+                      ? 'bg-white text-indigo-700 font-bold shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  Road Width Sensitivity
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSensitivityMode('land_use')}
+                  className={`px-2.5 py-1 rounded-md font-medium transition-all ${
+                    sensitivityMode === 'land_use'
+                      ? 'bg-white text-indigo-700 font-bold shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  Land-Use Comparison
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSensitivityMode('plot_telescopic')}
+                  className={`px-2.5 py-1 rounded-md font-medium transition-all ${
+                    sensitivityMode === 'plot_telescopic'
+                      ? 'bg-white text-indigo-700 font-bold shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
+                  }`}
+                >
+                  Plot Telescopic Curve
+                </button>
+              </div>
+            </div>
+
+            {/* Current Parameter Status Pill */}
+            <div className="flex flex-wrap items-center gap-2 text-xs bg-indigo-50/60 p-2.5 rounded-lg border border-indigo-100">
+              <span className="font-bold text-indigo-900 flex items-center gap-1">
+                <Sliders className="w-3.5 h-3.5" />
+                <span>Current Plot Configuration:</span>
+              </span>
+              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium">
+                Road: <strong>{roadWidth}m</strong>
+              </span>
+              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium">
+                Plot: <strong>{plotArea} m²</strong>
+              </span>
+              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium">
+                Area: <strong>{areaCategory === 'built_up' ? 'Built-up Area' : 'Non-Built-up Area'}</strong>
+              </span>
+              <span className="bg-white px-2 py-0.5 rounded border border-indigo-200 text-indigo-800 font-medium">
+                Occupancy: <strong>{occupancyType.replace('_', ' ').toUpperCase()}</strong>
+              </span>
+            </div>
+
+            {/* RECHARTS CHART CONTAINER */}
+            <div className="h-72 w-full pt-2">
+              {sensitivityMode === 'road_width' && (
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart
+                    data={roadWidthSensitivityData}
+                    margin={{ top: 10, right: 25, left: -10, bottom: 5 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                    <XAxis
+                      dataKey="roadLabel"
+                      tick={{ fontSize: 11, fill: '#64748b' }}
+                      label={{ value: 'Abutting Road Width (meters)', position: 'insideBottom', offset: -4, fontSize: 11, fill: '#475569' }}
+                    />
+                    <YAxis
+                      domain={[0, 6.5]}
+                      tick={{ fontSize: 11, fill: '#64748b' }}
+                      label={{ value: 'Total Permissible FAR', angle: -90, position: 'insideLeft', offset: 15, fontSize: 11, fill: '#475569' }}
+                    />
+                    <Tooltip
+                      content={({ active, payload, label }) => {
+                        if (active && payload && payload.length) {
+                          return (
+                            <div className="bg-slate-900 text-white p-3 rounded-lg shadow-xl border border-slate-700 text-xs space-y-1">
+                              <p className="font-bold text-slate-200 border-b border-slate-700 pb-1">
+                                Road Width: {label}
+                              </p>
+                              {payload.map((entry, index) => (
+                                <div key={`item-${index}`} className="flex items-center justify-between gap-4">
+                                  <span style={{ color: entry.color }} className="font-medium">
+                                    {entry.name}:
+                                  </span>
+                                  <span className="font-mono font-bold">{entry.value}</span>
+                                </div>
+                              ))}
+                              <p className="text-[10px] text-slate-400 pt-1 border-t border-slate-800">
+                                Evaluated in {areaCategory === 'built_up' ? 'Built-up' : 'Non-Built-up'} zone.
+                              </p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Legend
+                      verticalAlign="top"
+                      height={36}
+                      wrapperStyle={{ fontSize: 11 }}
+                    />
+                    <ReferenceLine
+                      x={roadWidth >= 60 ? '>45m' : `${roadWidth}m`}
+                      stroke="#ef4444"
+                      strokeDasharray="4 4"
+                      label={{
+                        value: `Current: ${roadWidth}m`,
+                        fill: '#dc2626',
+                        fontSize: 11,
+                        position: 'top',
+                      }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="groupHousingFAR"
+                      name="Group Housing Max FAR"
+                      stroke="#6366f1"
+                      strokeWidth={2.5}
+                      dot={{ r: 4 }}
+                      activeDot={{ r: 6 }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="commercialFAR"
+                      name="Commercial Max FAR"
+                      stroke="#0ea5e9"
+                      strokeWidth={2}
+                      dot={{ r: 3 }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="todFAR"
+                      name="TOD Zone Enhanced FAR"
+                      stroke="#10b981"
+                      strokeWidth={2}
+                      strokeDasharray="3 3"
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="plottedFAR"
+                      name="Plotted Res. Max Cap (2.0)"
+                      stroke="#f59e0b"
+                      strokeWidth={1.5}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              )}
+
+              {sensitivityMode === 'land_use' && (
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    data={landUseSensitivityData}
+                    margin={{ top: 10, right: 25, left: -10, bottom: 25 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                    <XAxis
+                      dataKey="landUse"
+                      tick={{ fontSize: 10, fill: '#475569' }}
+                      interval={0}
+                      angle={-10}
+                      textAnchor="end"
+                    />
+                    <YAxis
+                      domain={[0, 6.5]}
+                      tick={{ fontSize: 11, fill: '#64748b' }}
+                      label={{ value: 'FAR Multiplier', angle: -90, position: 'insideLeft', offset: 15, fontSize: 11, fill: '#475569' }}
+                    />
+                    <Tooltip
+                      content={({ active, payload, label }) => {
+                        if (active && payload && payload.length) {
+                          const dataItem = payload[0]?.payload;
+                          return (
+                            <div className="bg-slate-900 text-white p-3 rounded-lg shadow-xl border border-slate-700 text-xs space-y-1">
+                              <p className="font-bold text-slate-200 border-b border-slate-700 pb-1">
+                                {label} {dataItem?.active && '(Selected Project)'}
+                              </p>
+                              <div className="flex justify-between gap-4 text-slate-300">
+                                <span>Base FAR:</span>
+                                <span className="font-mono font-bold text-white">{dataItem?.baseFAR}</span>
+                              </div>
+                              <div className="flex justify-between gap-4 text-emerald-400">
+                                <span>Purchasable FAR:</span>
+                                <span className="font-mono font-bold">+{dataItem?.purchasableFAR}</span>
+                              </div>
+                              <div className="flex justify-between gap-4 text-indigo-300 font-bold border-t border-slate-800 pt-1">
+                                <span>Total Permissible:</span>
+                                <span className="font-mono">{dataItem?.totalFAR}</span>
+                              </div>
+                              <p className="text-[10px] text-slate-400">
+                                Statutory Cap: {dataItem?.statutoryCap} on {roadWidth}m Road
+                              </p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Legend
+                      verticalAlign="top"
+                      height={36}
+                      wrapperStyle={{ fontSize: 11 }}
+                    />
+                    <Bar
+                      dataKey="baseFAR"
+                      name="Base Statutory FAR"
+                      stackId="far"
+                      fill="#64748b"
+                      radius={[0, 0, 0, 0]}
+                    />
+                    <Bar
+                      dataKey="purchasableFAR"
+                      name="Purchasable FAR (PFAR)"
+                      stackId="far"
+                      fill="#10b981"
+                      radius={[4, 4, 0, 0]}
+                    >
+                      {landUseSensitivityData.map((entry, index) => (
+                        <Cell
+                          key={`cell-${index}`}
+                          fill={entry.active ? '#059669' : '#10b981'}
+                          stroke={entry.active ? '#064e3b' : 'none'}
+                          strokeWidth={entry.active ? 2 : 0}
+                        />
+                      ))}
+                    </Bar>
+                  </BarChart>
+                </ResponsiveContainer>
+              )}
+
+              {sensitivityMode === 'plot_telescopic' && (
+                <ResponsiveContainer width="100%" height="100%">
+                  <LineChart
+                    data={plotAreaTelescopicData}
+                    margin={{ top: 10, right: 25, left: -10, bottom: 5 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                    <XAxis
+                      dataKey="label"
+                      tick={{ fontSize: 11, fill: '#64748b' }}
+                      label={{ value: 'Plot Area (sqm) - Section 3.2.2 Telescopic Progression', position: 'insideBottom', offset: -4, fontSize: 11, fill: '#475569' }}
+                    />
+                    <YAxis
+                      domain={[0, 2.5]}
+                      tick={{ fontSize: 11, fill: '#64748b' }}
+                      label={{ value: 'FAR Multiplier', angle: -90, position: 'insideLeft', offset: 15, fontSize: 11, fill: '#475569' }}
+                    />
+                    <Tooltip
+                      content={({ active, payload, label }) => {
+                        if (active && payload && payload.length) {
+                          const item = payload[0]?.payload;
+                          return (
+                            <div className="bg-slate-900 text-white p-3 rounded-lg shadow-xl border border-slate-700 text-xs space-y-1">
+                              <p className="font-bold text-amber-400 border-b border-slate-700 pb-1">
+                                Plot Area: {label}
+                              </p>
+                              <div className="flex justify-between gap-4 text-slate-300">
+                                <span>Effective Base FAR:</span>
+                                <span className="font-mono font-bold text-white">{item?.effectiveBaseFAR}</span>
+                              </div>
+                              <div className="flex justify-between gap-4 text-emerald-400">
+                                <span>Purchasable Cap:</span>
+                                <span className="font-mono font-bold">+{item?.purchasableFAR}</span>
+                              </div>
+                              <div className="flex justify-between gap-4 text-cyan-300 font-bold border-t border-slate-800 pt-1">
+                                <span>Statutory Max FAR:</span>
+                                <span className="font-mono">2.00</span>
+                              </div>
+                              <p className="text-[10px] text-slate-400">
+                                As per Section 3.2.2 & 3.2.2.1 Slabs
+                              </p>
+                            </div>
+                          );
+                        }
+                        return null;
+                      }}
+                    />
+                    <Legend
+                      verticalAlign="top"
+                      height={36}
+                      wrapperStyle={{ fontSize: 11 }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="effectiveBaseFAR"
+                      name="Effective Base FAR (Diminishing Slabs)"
+                      stroke="#d97706"
+                      strokeWidth={2.5}
+                      dot={{ r: 4 }}
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="purchasableFAR"
+                      name="Purchasable FAR Needed to reach 2.0"
+                      stroke="#059669"
+                      strokeWidth={2}
+                      strokeDasharray="4 4"
+                    />
+                    <Line
+                      type="monotone"
+                      dataKey="totalFAR"
+                      name="Statutory Upper Limit (2.00)"
+                      stroke="#64748b"
+                      strokeWidth={1}
+                    />
+                  </LineChart>
+                </ResponsiveContainer>
+              )}
+            </div>
+            <p className="text-[11px] text-slate-500 italic pt-1 text-center">
+              * Data dynamically synchronized with Section 3.2.2 (Residential), Section 3.2.2.2 & 4.2.8 (Group Housing), Section 5.2.5 (Commercial), and Chapter 8 (TOD).
+            </p>
           </div>
         </div>
       )}

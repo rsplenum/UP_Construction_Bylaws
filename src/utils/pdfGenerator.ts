@@ -297,3 +297,7 @@ export function generateAuditPdfReport(
   const filename = `UP_Byelaws_2025_Audit_Report_${state.plotArea}sqm_${Date.now().toString().slice(-6)}.pdf`;
   doc.save(filename);
 }
+
+// Re-export Modular Architectural Setback Blueprint Generator
+export type { SetbackPdfOptions } from './setbackPdfBlueprint';
+export { generateSetbackBlueprintPdfReport } from './setbackPdfBlueprint';

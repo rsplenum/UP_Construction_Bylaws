@@ -23,20 +23,51 @@ import {
   Layers,
   Building,
   Sparkles,
-  ArrowLeftRight
+  ArrowLeftRight,
+  Pin,
+  StickyNote
 } from 'lucide-react';
 import { AuthorityZoningComparison } from './AuthorityZoningComparison';
+import { StickyNotesOverlay } from './StickyNotesOverlay';
+import { StatutoryRationaleGuide } from './StatutoryRationaleGuide';
 
 interface ByelawsNavigatorProps {
   searchQuery: string;
   onSelectCalculator?: (type: string) => void;
 }
 
+const HighlightText: React.FC<{ text: string; query: string }> = ({ text, query }) => {
+  if (!query || !query.trim()) {
+    return <>{text}</>;
+  }
+  const cleanQuery = query.trim();
+  const escaped = cleanQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${escaped})`, 'gi');
+  const parts = text.split(regex);
+
+  return (
+    <>
+      {parts.map((part, i) =>
+        regex.test(part) ? (
+          <mark
+            key={i}
+            className="bg-amber-300 text-amber-950 font-semibold px-1 py-0.5 rounded shadow-xs"
+          >
+            {part}
+          </mark>
+        ) : (
+          part
+        )
+      )}
+    </>
+  );
+};
+
 export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
   searchQuery,
 }) => {
   const [selectedChapterId, setSelectedChapterId] = useState<number | 'all'>('all');
-  const [subView, setSubView] = useState<'chapters' | 'definitions' | 'deemed_noc' | 'far_exemptions' | 'setback_tables' | 'evci' | 'authority_comparison'>('chapters');
+  const [subView, setSubView] = useState<'chapters' | 'rationale' | 'definitions' | 'deemed_noc' | 'far_exemptions' | 'setback_tables' | 'evci' | 'authority_comparison'>('chapters');
   const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
     '1.2': true,
     '2.1.2': true,
@@ -99,33 +130,33 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
           <div className="space-y-2">
             <div className="inline-flex items-center space-x-2 px-2.5 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-xs font-semibold border border-emerald-500/30">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Official Byelaws Document Ingestion (224 Pages Processed)</span>
+              <span>Unified Statutory Planning Code • Uttar Pradesh Official Gazette</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
               {DOCUMENT_METADATA.title}
             </h2>
             <p className="text-sm text-slate-300 max-w-3xl">
               Gazetted by {DOCUMENT_METADATA.department}, {DOCUMENT_METADATA.date} (Version: {DOCUMENT_METADATA.version}).
-              Governs all planning, zoning, FAR, setbacks, safety certificates, and compounding across all Urban Development Authorities in Uttar Pradesh.
+              Enforced across all 22 Urban Development Authorities and Special Development Areas in Uttar Pradesh.
             </p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
             <div className="bg-slate-800/80 p-3 rounded-lg border border-slate-700">
               <div className="text-xl font-bold text-emerald-400">18</div>
-              <div className="text-xs text-slate-400">Chapters</div>
+              <div className="text-xs text-slate-400">Statutory Chapters</div>
             </div>
             <div className="bg-slate-800/80 p-3 rounded-lg border border-slate-700">
               <div className="text-xl font-bold text-emerald-400">102</div>
-              <div className="text-xs text-slate-400">Definitions</div>
+              <div className="text-xs text-slate-400">Defined Standards</div>
             </div>
             <div className="bg-slate-800/80 p-3 rounded-lg border border-slate-700">
               <div className="text-xl font-bold text-emerald-400">15</div>
-              <div className="text-xs text-slate-400">Appendices</div>
+              <div className="text-xs text-slate-400">Mandatory Schedules</div>
             </div>
             <div className="bg-slate-800/80 p-3 rounded-lg border border-slate-700">
               <div className="text-xl font-bold text-emerald-400">22</div>
-              <div className="text-xs text-slate-400">Authorities</div>
+              <div className="text-xs text-slate-400">Development Authorities</div>
             </div>
           </div>
         </div>
@@ -133,10 +164,11 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
         {/* Quick Sub-view Selector */}
         <div className="mt-6 pt-4 border-t border-slate-700/80 flex flex-wrap gap-2">
           {[
-            { id: 'chapters', label: 'All 18 Chapters', icon: BookOpen },
+            { id: 'chapters', label: 'Statutory Provisions', icon: BookOpen },
+            { id: 'rationale', label: 'Engineering & Urban Rationale', icon: Sparkles, highlight: true },
             { id: 'authority_comparison', label: 'Compare Authorities (Zoning Matrix)', icon: ArrowLeftRight },
-            { id: 'definitions', label: '102 Definitions Dictionary', icon: FileText },
-            { id: 'deemed_noc', label: 'Deemed NOC Timelines (15 Depts)', icon: Clock },
+            { id: 'definitions', label: 'Statutory Definitions', icon: FileText },
+            { id: 'deemed_noc', label: 'Inter-Agency NOC Timelines', icon: Clock },
             { id: 'far_exemptions', label: 'FAR Exemptions Matrix', icon: Layers },
             { id: 'setback_tables', label: 'Setback Rules Summary', icon: Building },
             { id: 'evci', label: 'EV Charging Infrastructure', icon: Zap },
@@ -153,7 +185,7 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                     : 'bg-slate-800 text-slate-300 hover:bg-slate-750 hover:text-white border border-slate-700'
                 }`}
               >
-                <Icon className="w-3.5 h-3.5" />
+                <Icon className={`w-3.5 h-3.5 ${tab.highlight && !active ? 'text-emerald-400' : ''}`} />
                 <span>{tab.label}</span>
               </button>
             );
@@ -207,10 +239,12 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                           {ch.chapterNumber}
                         </span>
                         <h3 className="text-base sm:text-lg font-bold text-slate-900">
-                          {ch.title}
+                          <HighlightText text={ch.title} query={searchQuery} />
                         </h3>
                       </div>
-                      <p className="text-xs text-slate-500 mt-1">{ch.summary}</p>
+                      <p className="text-xs text-slate-500 mt-1">
+                        <HighlightText text={ch.summary} query={searchQuery} />
+                      </p>
                     </div>
                     <span className="text-xs font-semibold px-2.5 py-1 bg-slate-200 text-slate-700 rounded self-start md:self-auto">
                       {ch.pageRange}
@@ -219,12 +253,22 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
 
                   <div className="p-5 space-y-4">
                     {ch.sections.map((sec) => {
-                      const isExpanded = expandedSections[sec.id] ?? false;
+                      const matchesSearch = Boolean(
+                        searchQuery.trim() &&
+                        (sec.title.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
+                         sec.content.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
+                         sec.clauseNumber.toLowerCase().includes(searchQuery.toLowerCase().trim()))
+                      );
+                      const isExpanded = matchesSearch || (expandedSections[sec.id] ?? false);
                       const textToCopy = `Clause ${sec.clauseNumber}: ${sec.title}\n\n${sec.content}`;
                       return (
                         <div
                           key={sec.id}
-                          className="border border-slate-200 rounded-lg p-4 bg-slate-50/30 hover:bg-slate-50 transition-colors"
+                          className={`border rounded-lg p-4 transition-colors ${
+                            matchesSearch
+                              ? 'border-amber-300 bg-amber-50/40'
+                              : 'border-slate-200 bg-slate-50/30 hover:bg-slate-50'
+                          }`}
                         >
                           <div className="flex items-start justify-between gap-2">
                             <button
@@ -232,10 +276,10 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                               className="flex items-center space-x-2 text-left flex-1 group"
                             >
                               <span className="font-mono text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                                {sec.clauseNumber}
+                                <HighlightText text={sec.clauseNumber} query={searchQuery} />
                               </span>
                               <h4 className="text-sm font-semibold text-slate-800 group-hover:text-emerald-700 transition-colors">
-                                {sec.title}
+                                <HighlightText text={sec.title} query={searchQuery} />
                               </h4>
                               {isExpanded ? (
                                 <ChevronUp className="w-4 h-4 text-slate-400" />
@@ -244,22 +288,42 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                               )}
                             </button>
 
-                            <button
-                              onClick={() => copyToClipboard(textToCopy, sec.id)}
-                              title="Copy clause text"
-                              className="text-slate-400 hover:text-slate-700 p-1 rounded hover:bg-slate-200/60 transition-colors"
-                            >
-                              {copiedSection === sec.id ? (
-                                <Check className="w-4 h-4 text-emerald-600" />
-                              ) : (
-                                <Copy className="w-4 h-4" />
-                              )}
-                            </button>
+                            <div className="flex items-center space-x-1">
+                              <button
+                                onClick={() => {
+                                  window.dispatchEvent(
+                                    new CustomEvent('open_byelaws_sticky_note', {
+                                      detail: {
+                                        quote: sec.content.slice(0, 160) + (sec.content.length > 160 ? '...' : ''),
+                                        clauseRef: `Clause ${sec.clauseNumber}: ${sec.title}`,
+                                        chapterTitle: ch.title,
+                                      },
+                                    })
+                                  );
+                                }}
+                                title="Pin a session sticky note for this clause"
+                                className="text-slate-400 hover:text-amber-600 p-1 rounded hover:bg-amber-100/60 transition-colors"
+                              >
+                                <Pin className="w-4 h-4" />
+                              </button>
+
+                              <button
+                                onClick={() => copyToClipboard(textToCopy, sec.id)}
+                                title="Copy clause text"
+                                className="text-slate-400 hover:text-slate-700 p-1 rounded hover:bg-slate-200/60 transition-colors"
+                              >
+                                {copiedSection === sec.id ? (
+                                  <Check className="w-4 h-4 text-emerald-600" />
+                                ) : (
+                                  <Copy className="w-4 h-4" />
+                                )}
+                              </button>
+                            </div>
                           </div>
 
                           {isExpanded && (
                             <div className="mt-3 pt-3 border-t border-slate-200/80 text-xs sm:text-sm text-slate-700 whitespace-pre-line leading-relaxed">
-                              {sec.content}
+                              <HighlightText text={sec.content} query={searchQuery} />
                             </div>
                           )}
                         </div>
@@ -299,14 +363,14 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
                 <div className="flex items-center justify-between">
                   <h4 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    {item.term}
+                    <HighlightText text={item.term} query={searchQuery} />
                   </h4>
                   <span className="text-[10px] uppercase font-semibold px-2 py-0.5 rounded bg-slate-200 text-slate-700">
                     {item.category}
                   </span>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  {item.definition}
+                  <HighlightText text={item.definition} query={searchQuery} />
                 </p>
               </div>
             ))}
@@ -582,10 +646,18 @@ export const ByelawsNavigator: React.FC<ByelawsNavigatorProps> = ({
         </div>
       )}
 
+      {/* SUBVIEW: RATIONALE & URBAN PHYSICS */}
+      {subView === 'rationale' && (
+        <StatutoryRationaleGuide />
+      )}
+
       {/* SUBVIEW: AUTHORITY ZONING COMPARISON */}
       {subView === 'authority_comparison' && (
         <AuthorityZoningComparison />
       )}
+
+      {/* Floating Session Sticky Notes Overlay */}
+      <StickyNotesOverlay />
     </div>
   );
 };

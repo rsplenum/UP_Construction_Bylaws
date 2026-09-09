@@ -182,3 +182,16 @@ export interface ActivityPermissibilityRule {
   statutoryNotes?: string;
   clauseRef: string;
 }
+
+export type RoadFrontagePreset = '1_side' | '2_side_corner' | '2_side_through' | '3_side' | '4_side';
+
+export interface SiteRoadsConfig {
+  preset: RoadFrontagePreset;
+  frontWidth: number;   // Front (South) Road in meters (mandatory primary road)
+  hasRearRoad: boolean; // Rear (North) Road
+  rearWidth: number;    // Rear Road in meters
+  hasSide1Road: boolean;// Side-1 (West) Road
+  side1Width: number;   // Side-1 Road in meters
+  hasSide2Road: boolean;// Side-2 (East / Corner) Road
+  side2Width: number;   // Side-2 Road in meters
+}

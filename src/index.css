@@ -3,6 +3,134 @@
 
 @variant dark (&:where(.dark, .dark *));
 
+:root {
+  --apple-canvas: #fbfbfd;
+  --apple-surface: #ffffff;
+  --apple-surface-elevated: #ffffff;
+  --apple-border: rgba(0, 0, 0, 0.08);
+  --apple-text-primary: #1d1d1f;
+  --apple-text-secondary: #86868b;
+  --apple-accent: #0071e3;
+  --apple-accent-green: #34c759;
+}
+
 html.dark {
   color-scheme: dark;
+  --apple-canvas: #000000;
+  --apple-surface: #161617;
+  --apple-surface-elevated: #1d1d1f;
+  --apple-border: rgba(255, 255, 255, 0.12);
+  --apple-text-primary: #f5f5f7;
+  --apple-text-secondary: #86868b;
+  --apple-accent: #2997ff;
+  --apple-accent-green: #30d158;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.011em;
+  background-color: var(--apple-canvas);
+  color: var(--apple-text-primary);
+  overflow-x: hidden;
+}
+
+/* Apple-style Custom Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(134, 134, 139, 0.25);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(134, 134, 139, 0.45);
+}
+
+/* Apple Frosted Glass Utilities */
+.apple-glass {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+html.dark .apple-glass {
+  background: rgba(22, 22, 23, 0.78);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.apple-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+  border-radius: 1.25rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html.dark .apple-card {
+  background: #161617;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.apple-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.07), 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+html.dark .apple-card-hover:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.14);
+}
+
+/* Apple-style Callout Tooltip / Leaflet Popup Redesign */
+.leaflet-popup-content-wrapper {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border-radius: 18px !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.15), 0 0 1px rgba(0,0,0,0.1) !important;
+  padding: 4px !important;
+}
+
+html.dark .leaflet-popup-content-wrapper {
+  background: rgba(22, 22, 23, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.7) !important;
+  color: #f5f5f7 !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(255, 255, 255, 0.95) !important;
+}
+
+html.dark .leaflet-popup-tip {
+  background: rgba(22, 22, 23, 0.92) !important;
+}
+
+.leaflet-container {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif !important;
+}
+
+/* Apple Segmented Control Pill Animations */
+.segmented-control {
+  background: rgba(118, 118, 128, 0.12);
+  padding: 3px;
+  border-radius: 9999px;
+  display: inline-flex;
+}
+
+html.dark .segmented-control {
+  background: rgba(118, 118, 128, 0.24);
 }
