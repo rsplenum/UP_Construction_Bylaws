@@ -35,7 +35,17 @@ export function generateAuditPdfReport(
   const totalCount = auditResults.length;
   const scorePercent = Math.round(((compliantCount + conditionalCount * 0.5) / totalCount) * 100);
 
-  const certId = `UP-BL25-${Math.floor(100000 + Math.random() * 900000)}`;
+  // A reference derived from the inputs, so re-running the same project reproduces the
+  // same reference. The previous Math.random() id looked like a certificate number while
+  // being unverifiable and different on every export.
+  const fingerprint = [
+    state.occupancy, state.plotArea, state.plotFrontage, state.roadWidth, state.buildingHeight,
+    state.proposedBuiltUpArea, state.frontSetbackProvided, state.rearSetbackProvided,
+    state.side1Provided, state.side2Provided, state.parkingBaysProvided, state.greenRating,
+  ].join('|');
+  let hash = 0;
+  for (let i = 0; i < fingerprint.length; i++) hash = (hash * 31 + fingerprint.charCodeAt(i)) >>> 0;
+  const certId = `UP-BL25-${hash.toString(36).toUpperCase().padStart(7, '0').slice(0, 7)}`;
   const dateStr = new Date().toLocaleDateString('en-IN', {
     day: '2-digit',
     month: 'short',
@@ -53,13 +63,13 @@ export function generateAuditPdfReport(
   doc.setTextColor(255, 255, 255);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(13);
-  doc.text('STATE OF UTTAR PRADESH • HOUSING & URBAN PLANNING DEPARTMENT', 14, 11);
+  doc.text('UP BUILDING BYELAWS 2025 — PRE-SCRUTINY REPORT', 14, 11);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8.5);
   doc.setTextColor(203, 213, 225);
-  doc.text('UP Building Construction and Development Byelaws 2025 • Statutory Compliance Audit', 14, 18);
-  doc.text(`Cert. ID: ${certId}   |   Date: ${dateStr}   |   Standard: TMPR8 Gazette`, 14, 23);
+  doc.text('Unofficial decision-support output — not a certificate and not issued by any Authority', 14, 18);
+  doc.text(`Reference: ${certId}   |   Generated: ${dateStr}   |   Basis: UP Byelaws 2025 (TMPR8)`, 14, 23);
 
   y = 36;
 
@@ -67,7 +77,7 @@ export function generateAuditPdfReport(
   doc.setTextColor(15, 23, 42);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(14);
-  doc.text('PROJECT REGULATORY AUDIT & SCRUTINY CERTIFICATE', 14, y);
+  doc.text('PROJECT COMPLIANCE PRE-SCRUTINY', 14, y);
   y += 6;
 
   // Project Specs Grid (2 columns)
@@ -152,13 +162,22 @@ export function generateAuditPdfReport(
   y += 48;
 
   // Compliance Scorecard Bar
-  doc.setFillColor(scorePercent >= 80 ? 236 : scorePercent >= 60 ? 254 : 254, scorePercent >= 80 ? 253 : 243, scorePercent >= 80 ? 245 : 242); // emerald-50 or amber/red
-  doc.setDrawColor(scorePercent >= 80 ? 167 : 245, scorePercent >= 80 ? 243 : 158, scorePercent >= 80 ? 208 : 11);
+  // Bands as whole colours rather than a per-channel ternary blend, which mixed the
+  // amber and rose palettes into arbitrary values at some scores.
+  const band: { fill: [number, number, number]; stroke: [number, number, number]; text: [number, number, number] } =
+    scorePercent >= 80
+      ? { fill: [236, 253, 245], stroke: [167, 243, 208], text: [6, 95, 70] }
+      : scorePercent >= 60
+        ? { fill: [255, 251, 235], stroke: [253, 230, 138], text: [146, 64, 14] }
+        : { fill: [254, 242, 242], stroke: [254, 202, 202], text: [153, 27, 27] };
+
+  doc.setFillColor(...band.fill);
+  doc.setDrawColor(...band.stroke);
   doc.roundedRect(14, y, pageWidth - 28, 16, 2, 2, 'FD');
 
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
-  doc.setTextColor(scorePercent >= 80 ? 6 : 180, scorePercent >= 80 ? 95 : 83, scorePercent >= 80 ? 70 : 9);
+  doc.setTextColor(...band.text);
   doc.text(`OVERALL COMPLIANCE SCORE: ${scorePercent}%`, 18, y + 7);
 
   doc.setFont('helvetica', 'normal');
@@ -172,101 +191,141 @@ export function generateAuditPdfReport(
 
   y += 22;
 
-  // Active Logical Conflicts Banner (if any)
-  if (conflicts.length > 0) {
-    doc.setFillColor(254, 242, 242); // red-50
-    doc.setDrawColor(248, 113, 113); // red-400
-    doc.roundedRect(14, y, pageWidth - 28, 18, 2, 2, 'FD');
+  /** Draw wrapped text, paginating when the block would overflow the page. */
+  const writeWrapped = (
+    text: string,
+    x: number,
+    maxWidth: number,
+    lineHeight = 3.6,
+  ): void => {
+    const lines = doc.splitTextToSize(text, maxWidth) as string[];
+    for (const line of lines) {
+      if (y > pageHeight - 18) {
+        doc.addPage();
+        y = 16;
+      }
+      doc.text(line, x, y);
+      y += lineHeight;
+    }
+  };
 
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(9);
-    doc.setTextColor(185, 28, 28);
-    doc.text(`LOGICAL CONSTRAINTS ENGINE DETECTED ${conflicts.length} REGULATORY CONFLICT(S):`, 18, y + 6);
+  const sectionRule = (): void => {
+    doc.setDrawColor(226, 232, 240);
+    doc.line(14, y, pageWidth - 14, y);
+    y += 4;
+  };
 
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(7.5);
-    doc.setTextColor(153, 27, 27);
-    const conflictSummary = conflicts.map((c) => `• [${c.chapterRef}] ${c.title}`).slice(0, 2).join('   ');
-    doc.text(conflictSummary, 18, y + 11);
-    doc.text('Review detailed conflict resolutions before formal submission to Development Authority OBPAS.', 18, y + 15);
-
-    y += 24;
-  }
-
-  // Audit Checkpoints Table Header
-  doc.setFillColor(241, 245, 249);
-  doc.rect(14, y, pageWidth - 28, 8, 'F');
+  // Findings, in full. The previous version sliced every field to 30–44 characters,
+  // so the statutory limit, the proposed value and the entire remediation — the part
+  // that tells the applicant what to do — never reached the page.
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(7.5);
+  doc.setFontSize(10);
   doc.setTextColor(15, 23, 42);
+  if (y > pageHeight - 30) { doc.addPage(); y = 16; }
+  doc.text('AUDIT FINDINGS', 14, y);
+  y += 5;
+  sectionRule();
 
-  doc.text('CHAPTER / RULE', 16, y + 5.5);
-  doc.text('STATUTORY LIMIT', 75, y + 5.5);
-  doc.text('PROPOSED VALUE', 135, y + 5.5);
-  doc.text('STATUS', 178, y + 5.5);
+  const contentWidth = pageWidth - 32;
 
-  y += 9;
-
-  // Loop through Audit Items
-  auditResults.forEach((item) => {
-    // Check if near page bottom
-    if (y > pageHeight - 25) {
+  auditResults.forEach((item, index) => {
+    if (y > pageHeight - 40) {
       doc.addPage();
       y = 16;
-      // Re-draw table header
-      doc.setFillColor(241, 245, 249);
-      doc.rect(14, y, pageWidth - 28, 8, 'F');
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(7.5);
-      doc.setTextColor(15, 23, 42);
-      doc.text('CHAPTER / RULE', 16, y + 5.5);
-      doc.text('STATUTORY LIMIT', 75, y + 5.5);
-      doc.text('PROPOSED VALUE', 135, y + 5.5);
-      doc.text('STATUS', 178, y + 5.5);
-      y += 10;
     }
 
-    // Row background
     const isPass = item.status === 'compliant' || item.status === 'exempt';
     const isWarn = item.status === 'conditional';
 
+    // Status chip
+    const chipColor: [number, number, number] = isPass ? [5, 150, 105] : isWarn ? [217, 119, 6] : [220, 38, 38];
+    doc.setFillColor(...chipColor);
+    doc.circle(16.5, y - 1.2, 1.4, 'F');
+
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(7.5);
+    doc.setFontSize(8.5);
     doc.setTextColor(15, 23, 42);
-    doc.text(item.ruleTitle.slice(0, 36), 16, y);
+    doc.text(`${index + 1}. ${item.ruleTitle}`, 20, y);
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7);
+    doc.setTextColor(...chipColor);
+    const statusLabel = item.status.replace('_', '-').toUpperCase();
+    doc.text(statusLabel, pageWidth - 14 - doc.getTextWidth(statusLabel), y);
+    y += 4;
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(6.8);
     doc.setTextColor(100, 116, 139);
-    doc.text(item.chapterRef, 16, y + 3.5);
+    writeWrapped(`${item.category} · ${item.chapterRef}`, 20, contentWidth - 6, 3.2);
+    y += 0.8;
 
-    // Limit (wrapped if needed)
+    doc.setFontSize(7.4);
     doc.setTextColor(51, 65, 85);
-    doc.text(item.statutoryLimit.slice(0, 44), 75, y);
-
-    // Proposed
-    doc.text(item.proposedValue.slice(0, 30), 135, y);
-
-    // Status Badge
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(7);
-    if (isPass) {
-      doc.setTextColor(5, 150, 105);
-      doc.text(item.status.toUpperCase(), 178, y);
-    } else if (isWarn) {
-      doc.setTextColor(217, 119, 6);
-      doc.text('CONDITIONAL', 178, y);
-    } else {
-      doc.setTextColor(220, 38, 38);
-      doc.text('NON-COMPLIANT', 178, y);
+    doc.text('Required:', 20, y);
+    doc.setFont('helvetica', 'normal');
+    writeWrapped(item.statutoryLimit, 36, contentWidth - 22, 3.4);
+
+    doc.setFont('helvetica', 'bold');
+    doc.text('Proposed:', 20, y);
+    doc.setFont('helvetica', 'normal');
+    writeWrapped(item.proposedValue, 36, contentWidth - 22, 3.4);
+
+    doc.setFont('helvetica', 'bold');
+    doc.text('Working:', 20, y);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(100, 116, 139);
+    writeWrapped(item.mathExplanation, 36, contentWidth - 22, 3.4);
+
+    if (item.remediation) {
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(...chipColor);
+      doc.text('Action:', 20, y);
+      doc.setFont('helvetica', 'normal');
+      writeWrapped(item.remediation, 36, contentWidth - 22, 3.4);
     }
 
-    // Divider line
+    y += 2.5;
     doc.setDrawColor(241, 245, 249);
-    doc.line(14, y + 5.5, pageWidth - 14, y + 5.5);
-
-    y += 8;
+    doc.line(14, y, pageWidth - 14, y);
+    y += 4;
   });
+
+  // Every detected conflict, not the first two.
+  if (conflicts.length > 0) {
+    if (y > pageHeight - 30) { doc.addPage(); y = 16; }
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.setTextColor(15, 23, 42);
+    doc.text('REGULATORY CONFLICTS', 14, y);
+    y += 5;
+    sectionRule();
+
+    conflicts.forEach((conflict, index) => {
+      if (y > pageHeight - 35) { doc.addPage(); y = 16; }
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8.5);
+      doc.setTextColor(185, 28, 28);
+      writeWrapped(`${index + 1}. [${conflict.code}] ${conflict.title}`, 16, contentWidth, 4);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(7);
+      doc.setTextColor(100, 116, 139);
+      writeWrapped(`${conflict.chapterRef} — ${conflict.byelawClause}`, 20, contentWidth - 6, 3.2);
+
+      doc.setFontSize(7.4);
+      doc.setTextColor(51, 65, 85);
+      writeWrapped(conflict.description, 20, contentWidth - 6, 3.4);
+
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(5, 150, 105);
+      writeWrapped(`Remedy: ${conflict.remedyActionTitle}`, 20, contentWidth - 6, 3.4);
+
+      y += 3;
+    });
+  }
 
   // Footer / Sign-off Block
   if (y > pageHeight - 35) {
@@ -282,16 +341,14 @@ export function generateAuditPdfReport(
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(7);
   doc.setTextColor(100, 116, 139);
-  doc.text(
-    'Statutory Certification Disclaimer: Generated under the provisions of Uttar Pradesh Urban Planning & Development Act, 1973 (Section 15, 15A, 53) and UP Building Byelaws 2025.',
-    14,
-    y
-  );
-  doc.text(
-    'This algorithmic pre-scrutiny report is valid for technical review prior to formal submission on the UP Nivesh Mitra Single Window OBPAS portal.',
-    14,
-    y + 4
-  );
+  const disclaimer = doc.splitTextToSize(
+    'This is an automated pre-scrutiny report produced by an unofficial decision-support tool. It carries no statutory force and is not a certificate. ' +
+      'Figures are computed from the published UP Building Construction and Development Byelaws 2025; verify every value against the gazette and the concerned ' +
+      'Development Authority before submitting on the UP Nivesh Mitra single-window OBPAS portal. Reference ' + certId + ' is derived from the input values and ' +
+      'reproduces for identical inputs; it is not an Authority-issued number.',
+    pageWidth - 28,
+  ) as string[];
+  disclaimer.forEach((line, index) => doc.text(line, 14, y + index * 3.2));
 
   // Download Trigger
   const filename = `UP_Byelaws_2025_Audit_Report_${state.plotArea}sqm_${Date.now().toString().slice(-6)}.pdf`;

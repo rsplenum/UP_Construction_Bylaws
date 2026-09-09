@@ -1,17 +1,66 @@
 import React, { useState } from 'react';
-import { FileCheck, Printer, Download, CheckCircle, FileText, Landmark, ShieldCheck } from 'lucide-react';
+import { AlertTriangle, FileCheck, Printer } from 'lucide-react';
+import { useProject } from '../context/ProjectContext';
 
+/**
+ * Statutory forms, filled from the shared project.
+ *
+ * Two things changed here. The fields used to ship pre-filled with invented people —
+ * including a fabricated architect council registration number — on a form intended for
+ * submission to a Development Authority; they now start empty with placeholders. And the
+ * compliance checklist used to print "Compliant" and "Installed" unconditionally, even
+ * for a project the audit had flagged; it now reads the project.
+ */
 export const FormsAndAppendices: React.FC = () => {
+  const { project, patch } = useProject();
   const [selectedForm, setSelectedForm] = useState<string>('form_a');
 
-  // Interactive form fields
-  const [applicantName, setApplicantName] = useState('Rajesh Sharma');
-  const [plotNumber, setPlotNumber] = useState('Plot No. 42-B, Sector 7');
-  const [schemeName, setSchemeName] = useState('Gomti Nagar Extension');
-  const [cityName, setCityName] = useState('Lucknow');
-  const [plotArea, setPlotArea] = useState('320');
-  const [architectName, setArchitectName] = useState('Ar. Vivek Kumar (CA/2018/98765)');
-  const [engineerName, setEngineerName] = useState('Er. Sunil Verma, M.Tech (Structures)');
+  const {
+    applicantName,
+    plotNumber,
+    schemeName,
+    cityName,
+    architectName,
+    engineerName,
+    plotArea,
+  } = project;
+
+  const setApplicantName = (v: string) => patch({ applicantName: v });
+  const setPlotNumber = (v: string) => patch({ plotNumber: v });
+  const setSchemeName = (v: string) => patch({ schemeName: v });
+  const setCityName = (v: string) => patch({ cityName: v });
+  const setArchitectName = (v: string) => patch({ architectName: v });
+  const setEngineerName = (v: string) => patch({ engineerName: v });
+
+  // Checklist rows reflect the project rather than asserting compliance unconditionally.
+  const rwhRequired = plotArea > 300;
+  const solarRequired = plotArea > 500;
+  const checklist = [
+    {
+      item: '7.1 Setbacks (front / rear / sides)',
+      provision: 'As per Chapter 3.2.4.1',
+      status: `Front ${project.frontSetbackProvided}m · Rear ${project.rearSetbackProvided}m · Sides ${project.side1Provided}m / ${project.side2Provided}m`,
+      ok: true,
+    },
+    {
+      item: '7.3(e) Rainwater harvesting system',
+      provision: 'Mandatory for plots above 300 sqm',
+      status: rwhRequired ? (project.hasRWH ? 'Installed' : 'NOT PROVIDED — required') : 'Not applicable',
+      ok: !rwhRequired || project.hasRWH,
+    },
+    {
+      item: '7.3(f) Solar water heating plant',
+      provision: 'Mandatory for plots above 500 sqm',
+      status: solarRequired ? (project.hasSolarHeating ? 'Installed' : 'NOT PROVIDED — required') : 'Not applicable',
+      ok: !solarRequired || project.hasSolarHeating,
+    },
+  ];
+
+  const unsignedFields = [
+    !applicantName.trim() && 'applicant name',
+    !plotNumber.trim() && 'plot / khasra number',
+    !architectName.trim() && 'supervising architect',
+  ].filter(Boolean) as string[];
 
   const handlePrint = () => {
     window.print();
@@ -77,6 +126,7 @@ export const FormsAndAppendices: React.FC = () => {
             <input
               type="text"
               value={applicantName}
+              placeholder="Full name as on the title deed"
               onChange={(e) => setApplicantName(e.target.value)}
               className="w-full bg-white border rounded p-1.5 dark:bg-[#161617]"
             />
@@ -86,6 +136,7 @@ export const FormsAndAppendices: React.FC = () => {
             <input
               type="text"
               value={plotNumber}
+              placeholder="e.g. Plot 42-B, Sector 7"
               onChange={(e) => setPlotNumber(e.target.value)}
               className="w-full bg-white border rounded p-1.5 dark:bg-[#161617]"
             />
@@ -95,6 +146,7 @@ export const FormsAndAppendices: React.FC = () => {
             <input
               type="text"
               value={schemeName}
+              placeholder="e.g. Gomti Nagar Extension"
               onChange={(e) => setSchemeName(e.target.value)}
               className="w-full bg-white border rounded p-1.5 dark:bg-[#161617]"
             />
@@ -104,12 +156,27 @@ export const FormsAndAppendices: React.FC = () => {
             <input
               type="text"
               value={architectName}
+              placeholder="Name and CoA registration number"
               onChange={(e) => setArchitectName(e.target.value)}
               className="w-full bg-white border rounded p-1.5 dark:bg-[#161617]"
             />
           </div>
         </div>
       </div>
+
+      {unsignedFields.length > 0 && (
+        <div
+          role="status"
+          className="mx-auto flex max-w-4xl items-start gap-2.5 rounded-xl border border-amber-300 bg-amber-50 p-3 text-[11px] leading-relaxed text-amber-900 print:hidden dark:border-amber-500/30 dark:bg-amber-950/40 dark:text-amber-200"
+        >
+          <AlertTriangle className="mt-0.5 h-4 w-4 flex-shrink-0" aria-hidden="true" />
+          <span>
+            <strong>Incomplete draft.</strong> Fill in the {unsignedFields.join(', ')} above before printing. This
+            portal never invents applicant, architect or registration details — a form printed with blanks is a draft,
+            not a submission.
+          </span>
+        </div>
+      )}
 
       {/* Document Sheet Display */}
       <div className="bg-white p-8 rounded-xl border border-slate-300 shadow-md max-w-4xl mx-auto text-slate-900 font-serif leading-relaxed printable-document space-y-6 dark:bg-[#161617] dark:border-white/[0.14] dark:text-white">
@@ -156,21 +223,19 @@ export const FormsAndAppendices: React.FC = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td className="border border-slate-300 p-2 font-medium dark:border-white/[0.14]">7.1 Setbacks (Front / Rear / Sides)</td>
-                        <td className="border border-slate-300 p-2 dark:border-white/[0.14]">As per Chapter 3.2.4.1</td>
-                        <td className="border border-slate-300 p-2 text-center text-emerald-700 font-bold dark:border-white/[0.14] dark:text-emerald-300">Compliant</td>
-                      </tr>
-                      <tr>
-                        <td className="border border-slate-300 p-2 font-medium dark:border-white/[0.14]">7.3(e) Rainwater Harvesting System</td>
-                        <td className="border border-slate-300 p-2 dark:border-white/[0.14]">Mandatory for plots &gt; 300 sqm</td>
-                        <td className="border border-slate-300 p-2 text-center text-emerald-700 font-bold dark:border-white/[0.14] dark:text-emerald-300">Installed (Attached Part-C)</td>
-                      </tr>
-                      <tr>
-                        <td className="border border-slate-300 p-2 font-medium dark:border-white/[0.14]">7.3(f) Solar Water Heating Plant</td>
-                        <td className="border border-slate-300 p-2 dark:border-white/[0.14]">Mandatory if plot area &gt; 500 sqm</td>
-                        <td className="border border-slate-300 p-2 text-center text-slate-600 dark:border-white/[0.14] dark:text-slate-400">N/A (Plot &lt; 500 sqm)</td>
-                      </tr>
+                      {checklist.map((row) => (
+                        <tr key={row.item}>
+                          <td className="border border-slate-300 p-2 font-medium dark:border-white/[0.14]">{row.item}</td>
+                          <td className="border border-slate-300 p-2 dark:border-white/[0.14]">{row.provision}</td>
+                          <td
+                            className={`border border-slate-300 p-2 text-center font-semibold dark:border-white/[0.14] ${
+                              row.ok ? 'text-emerald-700 dark:text-emerald-300' : 'text-rose-700 dark:text-rose-300'
+                            }`}
+                          >
+                            {row.status}
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>

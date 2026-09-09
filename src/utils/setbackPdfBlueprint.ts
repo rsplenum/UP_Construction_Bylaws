@@ -186,7 +186,10 @@ export function generateSetbackBlueprintPdfReport(options: SetbackPdfOptions): v
   doc.line(sheetLeft + sheetW - markLen, sheetTop + sheetH - markLen, sheetLeft + sheetW - markLen, sheetTop + sheetH);
 
   // =========================================================================
-  // 2. OFFICIAL GOVERNMENT HEADER & CADASTRE DOSSIER BLOCK
+  // 2. HEADER BLOCK
+  // This sheet is produced by an unofficial tool. It previously carried a
+  // "GOVERNMENT OF UTTAR PRADESH" masthead and a "FORM CAD-25 / OBPAS" reference —
+  // neither exists — which made a working drawing look like an issued clearance.
   // =========================================================================
   const headerTop = sheetTop + 2;
   const headerH = 19;
@@ -222,11 +225,11 @@ export function generateSetbackBlueprintPdfReport(options: SetbackPdfOptions): v
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(9.2);
   doc.setTextColor(255, 255, 255);
-  doc.text('GOVERNMENT OF UTTAR PRADESH', textX, headerTop + 5.8);
+  doc.text('SETBACK & ENVELOPE STUDY — UNOFFICIAL', textX, headerTop + 5.8);
 
   doc.setFontSize(6.8);
   doc.setTextColor(226, 232, 240); // slate-200
-  doc.text('HOUSING & URBAN PLANNING DEPARTMENT • TOWN & COUNTRY PLANNING DIRECTORATE', textX, headerTop + 10.2);
+  doc.text('COMPUTED FROM THE UP BUILDING BYELAWS 2025 • NOT ISSUED BY ANY DEVELOPMENT AUTHORITY', textX, headerTop + 10.2);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(5.8);
@@ -247,7 +250,7 @@ export function generateSetbackBlueprintPdfReport(options: SetbackPdfOptions): v
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(6);
   doc.setTextColor(245, 158, 11); // amber-400
-  doc.text('FORM CAD-25 / OBPAS', refBoxX + 3.5, refBoxY + 3.8);
+  doc.text('WORKING REFERENCE', refBoxX + 3.5, refBoxY + 3.8);
 
   doc.setFontSize(7.2);
   doc.setTextColor(255, 255, 255);
@@ -267,12 +270,12 @@ export function generateSetbackBlueprintPdfReport(options: SetbackPdfOptions): v
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10.5);
   doc.setTextColor(15, 23, 42); // slate-900
-  doc.text('ARCHITECTURAL SITE BLUEPRINT & SETBACK CLEARANCE DOSSIER', marginX, y + 1);
+  doc.text('SITE PLAN, SETBACKS & BUILDABLE ENVELOPE', marginX, y + 1);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(6.5);
   doc.setTextColor(100, 116, 139); // slate-500
-  doc.text('Statutory Pre-Scrutiny under Section 14, 15 & 32 of Uttar Pradesh Urban Planning & Development Act, 1973', marginX, y + 4.8);
+  doc.text('Pre-scrutiny study against Sections 14, 15 & 32 of the UP Urban Planning & Development Act, 1973 — verify against the gazette before submission', marginX, y + 4.8);
 
   // Overall verdict pill on right (Calculated right-aligned, NO bleed or overlap!)
   const isViol = options.enableCompounding && (options.compoundingAnalysis?.hasStatutoryViolation ?? false);
@@ -1459,7 +1462,7 @@ export function generateSetbackBlueprintPdfReport(options: SetbackPdfOptions): v
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(5.2);
   doc.setTextColor(148, 163, 184);
-  doc.text('UP Model Building & Development Byelaws 2025 • Housing and Urban Planning Department, Government of Uttar Pradesh', sheetLeft + 3, footerY);
+  doc.text('Computed from the UP Building Construction & Development Byelaws 2025 • Unofficial decision-support output, no statutory force', sheetLeft + 3, footerY);
   doc.text('Drawing Title: 2D Setback & Envelope Cadastre • Form CAD-25', sheetLeft + sheetW / 2, footerY, { align: 'center' });
   doc.text('Sheet 1 of 1 • Official Dossier', sheetLeft + sheetW - 3, footerY, { align: 'right' });
 

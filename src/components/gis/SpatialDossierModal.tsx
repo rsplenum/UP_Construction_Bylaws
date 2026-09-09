@@ -55,7 +55,7 @@ UP Building Construction and Development Byelaws 2025
 • Max Ground Coverage: ${spatialAudit.maxGroundCoverage}
 • Abutting ROW Minimum: ${spatialAudit.minRoadWidthRow}
 • Max Permissible Height: ${spatialAudit.maxPermissibleHeightMeters}
-• Estimated Elevation (AMSL): ${spatialAudit.estimatedElevationAmsl} meters
+• Indicative elevation (AMSL): ~${spatialAudit.estimatedElevationAmsl} m — regional interpolation, not a survey
 • Airport Distance & OLS: ${spatialAudit.distanceToNearestAirportKm} km (${spatialAudit.aviationHeightLimitAmsl})
 • River Buffer Status: ${spatialAudit.isProhibitedZone ? 'CRITICAL VIOLATION - 200m Eco-Buffer' : 'Clear (No Eco-Buffer Conflict)'}
 • TOD Status: ${spatialAudit.isTODZone ? 'Eligible for Enhanced TOD Bonus FAR' : 'Standard Development Zone'}
@@ -187,7 +187,10 @@ UP Building Construction and Development Byelaws 2025
               <div>
                 <span className="text-slate-400 block text-[11px]">Elevation Above Mean Sea Level</span>
                 <strong className="text-slate-900 dark:text-white block mt-0.5 font-mono">
-                  {spatialAudit.estimatedElevationAmsl} meters AMSL
+                  ~{spatialAudit.estimatedElevationAmsl} m AMSL
+                  <span className="mt-0.5 block text-[9.5px] font-normal text-slate-400 dark:text-slate-500">
+                    Regional interpolation — not a survey. Use a DEM or site levels for drainage and plinth design.
+                  </span>
                 </strong>
               </div>
             </div>

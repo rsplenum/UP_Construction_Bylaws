@@ -24,11 +24,15 @@ import {
   GISBufferEnvelope
 } from '../data/upGisMasterPlanData';
 
+/** Nominatim asks for at most one request per second; a small cache keeps us well under. */
+const geocodeCache = new Map<string, GeocodedLocation[]>();
+const GEOCODE_CACHE_LIMIT = 50;
+
 export interface GeocodedLocation {
   id: string;
   title: string;
   subtitle: string;
-  source: 'Bhuvan/AMRUT' | 'RSAC-UP' | 'Statutory Master Plan 2031' | 'National Geocoder';
+  source: 'Statutory buffer' | 'RSAC-UP' | 'Statutory Master Plan 2031' | 'OpenStreetMap';
   type: 'authority' | 'parcel' | 'buffer' | 'heritage' | 'tod';
   lat: number;
   lng: number;
@@ -54,6 +58,7 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
   const [results, setResults] = useState<GeocodedLocation[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const abortRef = useRef<AbortController | null>(null);
 
   // Close dropdown on click outside
   useEffect(() => {
@@ -162,7 +167,7 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
             id: buf.id,
             title: buf.name,
             subtitle: `${buf.authority} • ${buf.ruleReference}`,
-            source: 'Bhuvan/AMRUT',
+            source: 'Statutory buffer',
             type: 'buffer',
             lat: bLat,
             lng: bLng,
@@ -174,52 +179,75 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
         }
       });
 
-      // 4. Query live online geocoder (Bhuvan/OpenGIS proxy with UP bounding box)
-      try {
-        const fetchPromise = fetch(
-          `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
-            query + ', Uttar Pradesh'
-          )}&format=json&countrycodes=in&limit=4&addressdetails=1`,
-          { headers: { 'Accept-Language': 'en' } }
-        );
+      // 4. Fall back to the OpenStreetMap Nominatim geocoder, bounded to the UP envelope.
+      //
+      // This is OSM data, not Bhuvan. It was previously labelled "Bhuvan Web API" and
+      // "National Geocoder", which overstated its provenance in a tool people rely on for
+      // statutory decisions. The request is now aborted on timeout rather than merely
+      // raced (the old Promise.race left the connection open), and results are cached so
+      // typing does not hammer a free service that asks for one request per second.
+      const cacheKey = query.trim().toLowerCase();
+      const cached = geocodeCache.get(cacheKey);
 
-        const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Timeout')), 2500)
-        );
+      if (cached) {
+        localMatches.push(...cached);
+      } else {
+        const controller = new AbortController();
+        abortRef.current?.abort();
+        abortRef.current = controller;
+        const timeout = window.setTimeout(() => controller.abort(), 3500);
 
-        const res = (await Promise.race([fetchPromise, timeoutPromise])) as Response;
-        if (res.ok) {
-          const data = await res.json();
-          if (Array.isArray(data)) {
-            data.forEach((item: any, idx: number) => {
-              const lat = parseFloat(item.lat);
-              const lon = parseFloat(item.lon);
-              if (isNaN(lat) || isNaN(lon) || !isFinite(lat) || !isFinite(lon)) return;
-              // Ensure coordinates are within Uttar Pradesh approximate envelope
-              if (lat >= 23.5 && lat <= 30.5 && lon >= 77.0 && lon <= 84.8) {
-                // Avoid near duplicates
-                const exists = localMatches.some(
-                  (m) => Math.abs(m.lat - lat) < 0.01 && Math.abs(m.lng - lon) < 0.01
+        try {
+          const res = await fetch(
+            `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
+              query + ', Uttar Pradesh',
+            )}&format=json&countrycodes=in&limit=4&addressdetails=1`,
+            { headers: { 'Accept-Language': 'en' }, signal: controller.signal },
+          );
+
+          if (res.ok) {
+            const data = await res.json();
+            const remote: GeocodedLocation[] = [];
+
+            if (Array.isArray(data)) {
+              data.forEach((item: any, idx: number) => {
+                const lat = parseFloat(item.lat);
+                const lon = parseFloat(item.lon);
+                if (!isFinite(lat) || !isFinite(lon)) return;
+                // Keep results inside the approximate Uttar Pradesh envelope.
+                if (lat < 23.5 || lat > 30.5 || lon < 77.0 || lon > 84.8) return;
+
+                const duplicate = localMatches.some(
+                  (m) => Math.abs(m.lat - lat) < 0.01 && Math.abs(m.lng - lon) < 0.01,
                 );
-                if (!exists) {
-                  localMatches.push({
-                    id: `bhuvan-live-${idx}-${item.place_id || lat}`,
-                    title: item.name || item.display_name.split(',')[0],
-                    subtitle: item.display_name,
-                    source: 'National Geocoder',
-                    type: 'parcel',
-                    lat,
-                    lng: lon,
-                    zoom: 13,
-                    farInfo: 'Real-time spatial geocoding match via Bhuvan Web API',
-                  });
-                }
-              }
-            });
+                if (duplicate) return;
+
+                remote.push({
+                  id: `osm-${idx}-${item.place_id || lat}`,
+                  title: item.name || String(item.display_name).split(',')[0],
+                  subtitle: item.display_name,
+                  source: 'OpenStreetMap',
+                  type: 'parcel',
+                  lat,
+                  lng: lon,
+                  zoom: 13,
+                  farInfo: 'Address match from OpenStreetMap — not a cadastral or Bhuvan parcel record.',
+                });
+              });
+            }
+
+            geocodeCache.set(cacheKey, remote);
+            if (geocodeCache.size > GEOCODE_CACHE_LIMIT) {
+              geocodeCache.delete(geocodeCache.keys().next().value as string);
+            }
+            localMatches.push(...remote);
           }
+        } catch {
+          // Offline, blocked or timed out: the local statutory geodatabase still answered.
+        } finally {
+          window.clearTimeout(timeout);
+          if (abortRef.current === controller) abortRef.current = null;
         }
-      } catch (err) {
-        // Fallback to rich local UP geodatabase gracefully
       }
 
       setResults(localMatches);
@@ -229,6 +257,8 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
 
     return () => {
       if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
+      abortRef.current?.abort();
+      abortRef.current = null;
     };
   }, [query]);
 

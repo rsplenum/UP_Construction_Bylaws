@@ -1381,7 +1381,7 @@ export const MapServerExplorer: React.FC = () => {
                       )}
                     </h4>
                     <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                      Nearest Authority: <strong>{spatialAudit.nearestAuthority.name}</strong> ({spatialAudit.distanceToAuthorityCenterKm} km from center) • Elevation: ~{spatialAudit.elevationAmslMeters ?? spatialAudit.estimatedElevationAmsl}m AMSL
+                      Nearest Authority: <strong>{spatialAudit.nearestAuthority.name}</strong> ({spatialAudit.distanceToAuthorityCenterKm} km from center) • Elevation ~{spatialAudit.elevationAmslMeters ?? spatialAudit.estimatedElevationAmsl}m AMSL (indicative)
                     </p>
                   </div>
                 </div>
@@ -1416,7 +1416,7 @@ export const MapServerExplorer: React.FC = () => {
                     {spatialAudit.maxGroundCoverage}
                   </strong>
                   <span className="text-[10px] text-slate-500 block mt-0.5">
-                    Elev: ~{spatialAudit.elevationAmslMeters ?? spatialAudit.estimatedElevationAmsl}m AMSL
+                    Elev ~{spatialAudit.elevationAmslMeters ?? spatialAudit.estimatedElevationAmsl}m (est.)
                   </span>
                 </div>
 
