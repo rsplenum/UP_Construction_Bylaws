@@ -28,24 +28,23 @@ import {
   BookmarkPlus,
   Clock
 } from 'lucide-react';
-import { HIGH_RISE_SETBACKS } from '../data/byelawsData';
 import {
-  AuditEngineState,
-  loadAuditState,
-  saveAuditState,
-  clearAuditState,
-  DEFAULT_AUDIT_STATE,
-  loadAuditHistory,
-  saveAuditSessionToHistory,
-  deleteAuditHistoryItem,
-  clearAuditHistory,
-  AuditSessionHistoryItem
-} from '../utils/auditStorage';
+  Occupancy,
+  GreenRating,
+  assessSetbackFaces,
+  resolveBaseFar,
+  resolveRequiredSetbacks,
+  OCCUPANCY_LABELS,
+} from '../domain';
+import { useProject } from '../context/ProjectContext';
+import { TabId } from '../navigation';
+import { NumberField } from './ui/NumberField';
+import { AuditEngineState } from '../utils/auditStorage';
+import { SavedProject } from '../context/ProjectContext';
 import {
   evaluateLogicalConstraints,
   RegulatoryConflict
 } from '../utils/constraintEngine';
-import { generateAuditPdfReport } from '../utils/pdfGenerator';
 import { useToast } from '../context/ToastContext';
 
 interface AuditItem {
@@ -60,130 +59,90 @@ interface AuditItem {
   remediation?: string;
 }
 
-export const ComplianceAuditEngine: React.FC = () => {
+interface ComplianceAuditEngineProps {
+  onNavigate?: (tab: TabId) => void;
+}
+
+export const ComplianceAuditEngine: React.FC<ComplianceAuditEngineProps> = ({ onNavigate }) => {
   const toast = useToast();
 
-  // Load Initial State from LocalStorage
-  const initialSavedState = useMemo(() => loadAuditState(), []);
+  // The site description lives in one place now; this screen reads and patches it rather
+  // than keeping a sixteenth private copy of the plot.
+  const {
+    project,
+    patch,
+    reset: resetProject,
+    undo,
+    canUndo,
+    savedProjects,
+    saveSnapshot,
+    loadSnapshot,
+    deleteSnapshot,
+    lastSavedLabel,
+  } = useProject();
 
-  // History Tracker State (stores up to 5 sessions)
-  const [auditHistory, setAuditHistory] = useState<AuditSessionHistoryItem[]>(() => loadAuditHistory());
   const [historyProjectName, setHistoryProjectName] = useState<string>('');
   const [isSavingHistory, setIsSavingHistory] = useState<boolean>(false);
   const [showHistoryPanel, setShowHistoryPanel] = useState<boolean>(true);
 
-  // Project Parameters State
-  const [occupancy, setOccupancy] = useState<'single_unit' | 'multi_unit' | 'group_housing' | 'commercial'>(initialSavedState.occupancy);
-  const [plotArea, setPlotArea] = useState<number>(initialSavedState.plotArea); // sqm
-  const [plotFrontage, setPlotFrontage] = useState<number>(initialSavedState.plotFrontage); // m
-  const [roadWidth, setRoadWidth] = useState<number>(initialSavedState.roadWidth); // m
-  const [buildingHeight, setBuildingHeight] = useState<number>(initialSavedState.buildingHeight); // m
-  const [proposedBuiltUpArea, setProposedBuiltUpArea] = useState<number>(initialSavedState.proposedBuiltUpArea); // sqm
-  const [isCornerPlot, setIsCornerPlot] = useState<boolean>(initialSavedState.isCornerPlot);
-  const [hasStilt, setHasStilt] = useState<boolean>(initialSavedState.hasStilt);
-  const [frontSetbackProvided, setFrontSetbackProvided] = useState<number>(initialSavedState.frontSetbackProvided);
-  const [rearSetbackProvided, setRearSetbackProvided] = useState<number>(initialSavedState.rearSetbackProvided);
-  const [side1Provided, setSide1Provided] = useState<number>(initialSavedState.side1Provided);
-  const [side2Provided, setSide2Provided] = useState<number>(initialSavedState.side2Provided);
-  const [parkingBaysProvided, setParkingBaysProvided] = useState<number>(initialSavedState.parkingBaysProvided);
-  const [hasRWH, setHasRWH] = useState<boolean>(initialSavedState.hasRWH);
-  const [hasSolarHeating, setHasSolarHeating] = useState<boolean>(initialSavedState.hasSolarHeating);
-  const [greenRating, setGreenRating] = useState<'none' | 'silver' | 'gold' | 'platinum'>(initialSavedState.greenRating);
+  // Read-side aliases keep the render tree unchanged while the source of truth moves.
+  const {
+    occupancy,
+    plotArea,
+    plotFrontage,
+    roadWidth,
+    buildingHeight,
+    proposedBuiltUpArea,
+    isCornerPlot,
+    hasStilt,
+    frontSetbackProvided,
+    rearSetbackProvided,
+    side1Provided,
+    side2Provided,
+    parkingBaysProvided,
+    hasRWH,
+    hasSolarHeating,
+    greenRating,
+  } = project;
+
+  const setOccupancy = (v: Occupancy) => patch({ occupancy: v });
+  const setPlotArea = (v: number) => patch({ plotArea: v });
+  const setPlotFrontage = (v: number) => patch({ plotFrontage: v });
+  const setRoadWidth = (v: number) => patch({ roadWidth: v });
+  const setBuildingHeight = (v: number) => patch({ buildingHeight: v });
+  const setProposedBuiltUpArea = (v: number) => patch({ proposedBuiltUpArea: v });
+  const setIsCornerPlot = (v: boolean) => patch({ isCornerPlot: v });
+  const setHasStilt = (v: boolean) => patch({ hasStilt: v });
+  const setFrontSetbackProvided = (v: number) => patch({ frontSetbackProvided: v });
+  const setRearSetbackProvided = (v: number) => patch({ rearSetbackProvided: v });
+  const setSide1Provided = (v: number) => patch({ side1Provided: v });
+  const setSide2Provided = (v: number) => patch({ side2Provided: v });
+  const setParkingBaysProvided = (v: number) => patch({ parkingBaysProvided: v });
+  const setHasRWH = (v: boolean) => patch({ hasRWH: v });
+  const setHasSolarHeating = (v: boolean) => patch({ hasSolarHeating: v });
+  const setGreenRating = (v: GreenRating) => patch({ greenRating: v });
 
   // Persistence tracking
   const [lastSaved, setLastSaved] = useState<string>('');
   const [isGeneratingPdf, setIsGeneratingPdf] = useState<boolean>(false);
 
-  // Consolidated current state object
-  const currentState: AuditEngineState = useMemo(() => ({
-    occupancy,
-    plotArea,
-    plotFrontage,
-    roadWidth,
-    buildingHeight,
-    proposedBuiltUpArea,
-    isCornerPlot,
-    hasStilt,
-    frontSetbackProvided,
-    rearSetbackProvided,
-    side1Provided,
-    side2Provided,
-    parkingBaysProvided,
-    hasRWH,
-    hasSolarHeating,
-    greenRating,
-  }), [
-    occupancy,
-    plotArea,
-    plotFrontage,
-    roadWidth,
-    buildingHeight,
-    proposedBuiltUpArea,
-    isCornerPlot,
-    hasStilt,
-    frontSetbackProvided,
-    rearSetbackProvided,
-    side1Provided,
-    side2Provided,
-    parkingBaysProvided,
-    hasRWH,
-    hasSolarHeating,
-    greenRating,
-  ]);
-
-  // Auto-save to LocalStorage whenever state changes
-  useEffect(() => {
-    saveAuditState(currentState);
-    const timeStr = new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    setLastSaved(timeStr);
-  }, [currentState]);
+  const currentState: AuditEngineState = project;
 
   // Evaluate Logical Constraints in Real-Time
   const logicalConflicts = useMemo(() => {
     return evaluateLogicalConstraints(currentState);
   }, [currentState]);
 
-  // Reset to Statutory Defaults
   const handleResetDefaults = () => {
-    clearAuditState();
-    setOccupancy(DEFAULT_AUDIT_STATE.occupancy);
-    setPlotArea(DEFAULT_AUDIT_STATE.plotArea);
-    setPlotFrontage(DEFAULT_AUDIT_STATE.plotFrontage);
-    setRoadWidth(DEFAULT_AUDIT_STATE.roadWidth);
-    setBuildingHeight(DEFAULT_AUDIT_STATE.buildingHeight);
-    setProposedBuiltUpArea(DEFAULT_AUDIT_STATE.proposedBuiltUpArea);
-    setIsCornerPlot(DEFAULT_AUDIT_STATE.isCornerPlot);
-    setHasStilt(DEFAULT_AUDIT_STATE.hasStilt);
-    setFrontSetbackProvided(DEFAULT_AUDIT_STATE.frontSetbackProvided);
-    setRearSetbackProvided(DEFAULT_AUDIT_STATE.rearSetbackProvided);
-    setSide1Provided(DEFAULT_AUDIT_STATE.side1Provided);
-    setSide2Provided(DEFAULT_AUDIT_STATE.side2Provided);
-    setParkingBaysProvided(DEFAULT_AUDIT_STATE.parkingBaysProvided);
-    setHasRWH(DEFAULT_AUDIT_STATE.hasRWH);
-    setHasSolarHeating(DEFAULT_AUDIT_STATE.hasSolarHeating);
-    setGreenRating(DEFAULT_AUDIT_STATE.greenRating);
+    resetProject();
+    toast.info('Reset to defaults', 'Undo is available if that was not what you wanted.');
   };
 
-  // Apply Auto-Fix from Conflict Engine
+  // Apply a remedy proposed by the constraint engine as a single undoable change.
   const applyAutoFix = (conflict: RegulatoryConflict) => {
     if (!conflict.autoFix) return;
-    const fixPatch = conflict.autoFix(currentState);
-    if (fixPatch.occupancy !== undefined) setOccupancy(fixPatch.occupancy);
-    if (fixPatch.plotArea !== undefined) setPlotArea(fixPatch.plotArea);
-    if (fixPatch.plotFrontage !== undefined) setPlotFrontage(fixPatch.plotFrontage);
-    if (fixPatch.roadWidth !== undefined) setRoadWidth(fixPatch.roadWidth);
-    if (fixPatch.buildingHeight !== undefined) setBuildingHeight(fixPatch.buildingHeight);
-    if (fixPatch.proposedBuiltUpArea !== undefined) setProposedBuiltUpArea(fixPatch.proposedBuiltUpArea);
-    if (fixPatch.isCornerPlot !== undefined) setIsCornerPlot(fixPatch.isCornerPlot);
-    if (fixPatch.hasStilt !== undefined) setHasStilt(fixPatch.hasStilt);
-    if (fixPatch.frontSetbackProvided !== undefined) setFrontSetbackProvided(fixPatch.frontSetbackProvided);
-    if (fixPatch.rearSetbackProvided !== undefined) setRearSetbackProvided(fixPatch.rearSetbackProvided);
-    if (fixPatch.side1Provided !== undefined) setSide1Provided(fixPatch.side1Provided);
-    if (fixPatch.side2Provided !== undefined) setSide2Provided(fixPatch.side2Provided);
-    if (fixPatch.parkingBaysProvided !== undefined) setParkingBaysProvided(fixPatch.parkingBaysProvided);
-    if (fixPatch.hasRWH !== undefined) setHasRWH(fixPatch.hasRWH);
-    if (fixPatch.hasSolarHeating !== undefined) setHasSolarHeating(fixPatch.hasSolarHeating);
-    if (fixPatch.greenRating !== undefined) setGreenRating(fixPatch.greenRating);
+    patch(conflict.autoFix(currentState));
+    toast.success('Remedy applied', conflict.remedyActionTitle);
   };
 
   // Load Presets
@@ -316,196 +275,76 @@ export const ComplianceAuditEngine: React.FC = () => {
       });
     }
 
-    // 2. Chapter 3.2.2: Telescopic Base FAR & Maximum Area
-    let baseFar = 1.5;
-    let telescopicExplanation = '';
-    if (occupancy === 'single_unit' || occupancy === 'multi_unit') {
-      if (plotArea <= 100) {
-        baseFar = 2.0;
-        telescopicExplanation = 'Plot <= 100 sqm: Flat FAR = 2.0';
-      } else if (plotArea <= 300) {
-        const area1 = 100 * 2.0;
-        const area2 = (plotArea - 100) * 1.75;
-        baseFar = (area1 + area2) / plotArea;
-        telescopicExplanation = `Telescopic: (100×2.0 + ${plotArea - 100}×1.75)/${plotArea} = ${baseFar.toFixed(2)}`;
-      } else if (plotArea <= 500) {
-        const area1 = 100 * 2.0;
-        const area2 = 200 * 1.75;
-        const area3 = (plotArea - 300) * 1.50;
-        baseFar = (area1 + area2 + area3) / plotArea;
-        telescopicExplanation = `Telescopic: (100×2.0 + 200×1.75 + ${plotArea - 300}×1.50)/${plotArea} = ${baseFar.toFixed(2)}`;
-      } else if (plotArea <= 1200) {
-        const area1 = 100 * 2.0;
-        const area2 = 200 * 1.75;
-        const area3 = 200 * 1.50;
-        const area4 = (plotArea - 500) * 1.25;
-        baseFar = (area1 + area2 + area3 + area4) / plotArea;
-        telescopicExplanation = `Telescopic: (200 + 350 + 300 + ${plotArea - 500}×1.25)/${plotArea} = ${baseFar.toFixed(2)}`;
-      } else {
-        const area1 = 100 * 2.0;
-        const area2 = 200 * 1.75;
-        const area3 = 200 * 1.50;
-        const area4 = 700 * 1.25;
-        const area5 = (plotArea - 1200) * 1.0;
-        baseFar = (area1 + area2 + area3 + area4 + area5) / plotArea;
-        telescopicExplanation = `Telescopic: (200 + 350 + 300 + 875 + ${plotArea - 1200}×1.0)/${plotArea} = ${baseFar.toFixed(2)}`;
-      }
-    } else if (occupancy === 'group_housing') {
-      baseFar = roadWidth >= 24 ? 2.5 : roadWidth >= 18 ? 2.0 : 1.75;
-      telescopicExplanation = `Group Housing Base FAR for ${roadWidth}m road width = ${baseFar}`;
-    } else if (occupancy === 'commercial') {
-      baseFar = roadWidth >= 24 ? 2.0 : roadWidth >= 18 ? 1.75 : 1.5;
-      telescopicExplanation = `Commercial Base FAR for ${roadWidth}m road width = ${baseFar}`;
-    }
+    // 2. FAR — resolved by the shared engine so every screen agrees on the number.
+    const far = resolveBaseFar({ occupancy, plotArea, roadWidth, greenRating });
+    const proposedFar = plotArea > 0 ? proposedBuiltUpArea / plotArea : 0;
 
-    // Green Building Incentive (Chapter 9.3)
-    let greenBonus = 0;
-    if (greenRating === 'silver') greenBonus = 0.03;
-    if (greenRating === 'gold') greenBonus = 0.05;
-    if (greenRating === 'platinum') greenBonus = 0.07;
-    const effectiveBaseFar = baseFar * (1 + greenBonus);
+    let farStatus: AuditItem['status'] = 'compliant';
+    let farRemediation: string | undefined;
 
-    const maxPermissibleBaseBuiltUp = plotArea * effectiveBaseFar;
-    const proposedFar = proposedBuiltUpArea / plotArea;
-
-    let farStatus: 'compliant' | 'conditional' | 'non_compliant' = 'compliant';
-    let farRemediation = undefined;
-
-    if (proposedFar <= effectiveBaseFar) {
+    if (proposedFar <= far.effectiveBaseFar + 1e-9) {
       farStatus = 'compliant';
-    } else if (proposedFar <= effectiveBaseFar * 1.5 && roadWidth >= 12) {
+    } else if (proposedFar <= far.maxPermissibleFar + 1e-9) {
       farStatus = 'conditional';
-      farRemediation = `Purchasable FAR required for excess ${(proposedBuiltUpArea - maxPermissibleBaseBuiltUp).toFixed(1)} sqm under Chapter 9 formula C = Le × Rc × P. Road width ${roadWidth}m >= 12m permits purchasable FAR.`;
+      farRemediation = `The excess ${(proposedBuiltUpArea - far.effectiveBuiltUpArea).toFixed(1)} sqm must be bought as purchasable FAR under the Chapter 9 formula C = Le × Rc × P. The ${roadWidth}m road permits up to FAR ${far.maxPermissibleFar}.`;
     } else {
       farStatus = 'non_compliant';
-      farRemediation = `Proposed FAR (${proposedFar.toFixed(2)}) exceeds maximum cap (Base ${effectiveBaseFar.toFixed(2)} + max purchasable limit) or road width is under 12m. Reduce built-up area to max ${(effectiveBaseFar * plotArea).toFixed(0)} sqm.`;
+      farRemediation = `Proposed FAR ${proposedFar.toFixed(2)} exceeds the absolute ceiling of ${far.maxPermissibleFar} (base ${far.effectiveBaseFar} + purchasable ${far.purchasableFar}). Reduce built-up area to ${far.maxPermissibleBuiltUpArea.toFixed(0)} sqm.${far.caveats.length ? ' ' + far.caveats.join(' ') : ''}`;
     }
 
     items.push({
       id: 'far_audit',
-      chapterRef: 'Chapter 3.2.2 & Chapter 9',
-      ruleTitle: 'Floor Area Ratio (FAR) & Built-up Area',
+      chapterRef: far.clauseRef,
+      ruleTitle: 'Floor Area Ratio (FAR) & built-up area',
       category: 'Building Bulk',
       status: farStatus,
-      statutoryLimit: `Base FAR: ${baseFar.toFixed(2)} ${greenBonus > 0 ? `(+${(greenBonus * 100)}% Green Bonus)` : ''} = Permissible: ${maxPermissibleBaseBuiltUp.toFixed(1)} sqm`,
-      proposedValue: `Proposed: ${proposedBuiltUpArea} sqm (FAR: ${proposedFar.toFixed(2)})`,
-      mathExplanation: `${telescopicExplanation}. Max base area: ${plotArea} × ${effectiveBaseFar.toFixed(2)} = ${maxPermissibleBaseBuiltUp.toFixed(1)} sqm.`,
+      statutoryLimit: `Base FAR ${far.effectiveBaseFar}${far.greenBonusFraction > 0 ? ` (incl. +${(far.greenBonusFraction * 100).toFixed(0)}% green incentive)` : ''} = ${far.effectiveBuiltUpArea.toFixed(1)} sqm; ceiling with purchasable FAR ${far.maxPermissibleFar} = ${far.maxPermissibleBuiltUpArea.toFixed(1)} sqm`,
+      proposedValue: `${proposedBuiltUpArea} sqm (FAR ${proposedFar.toFixed(2)})`,
+      mathExplanation: far.workings,
       remediation: farRemediation,
     });
 
-    // 3. Setback Compliance (Chapter 3.2.4.1 & Chapter 3.2.4.9)
-    let reqFront = 3.0;
-    let reqRear = 1.5;
-    let reqSide1 = 0.0;
-    let reqSide2 = 0.0;
+    // 3. Setbacks — one ladder, no numeric holes, high-rise fire setbacks non-compoundable.
+    const required = resolveRequiredSetbacks({ occupancy, plotArea, buildingHeight, isCornerPlot });
+    const faceVerdicts = assessSetbackFaces(required, {
+      front: frontSetbackProvided,
+      rear: rearSetbackProvided,
+      side1: side1Provided,
+      side2: side2Provided,
+    });
 
-    if (buildingHeight > 15) {
-      const hr = HIGH_RISE_SETBACKS.find(
-        (h) => buildingHeight >= h.minHeight && buildingHeight <= h.maxHeight
-      ) || HIGH_RISE_SETBACKS[HIGH_RISE_SETBACKS.length - 1];
-      reqFront = hr.front;
-      reqRear = hr.rear;
-      reqSide1 = hr.side1;
-      reqSide2 = hr.side2;
-    } else if (occupancy === 'single_unit' || occupancy === 'multi_unit') {
-      if (plotArea <= 150) {
-        reqFront = 1.0;
-        reqRear = 0.0;
-        reqSide1 = 0.0;
-        reqSide2 = 0.0;
-      } else if (plotArea <= 300) {
-        reqFront = 3.0;
-        reqRear = 1.5;
-        reqSide1 = 0.0;
-        reqSide2 = 0.0;
-      } else if (plotArea <= 500) {
-        reqFront = 3.0;
-        reqRear = 3.0;
-        reqSide1 = 0.0;
-        reqSide2 = 0.0;
-      } else if (plotArea <= 1200) {
-        reqFront = 4.5;
-        reqRear = 4.5;
-        reqSide1 = 1.5;
-        reqSide2 = 0.0;
-      } else {
-        reqFront = 6.0;
-        reqRear = 6.0;
-        reqSide1 = 1.5;
-        reqSide2 = 1.5;
-      }
-    } else if (occupancy === 'commercial') {
-      if (plotArea <= 100) {
-        reqFront = 1.5;
-        reqRear = 0;
-        reqSide1 = 0;
-        reqSide2 = 0;
-      } else if (plotArea <= 300) {
-        reqFront = 3.0;
-        reqRear = 0;
-        reqSide1 = 0;
-        reqSide2 = 0;
-      } else if (plotArea <= 1000) {
-        reqFront = 4.5;
-        reqRear = 3.0;
-        reqSide1 = 1.5;
-        reqSide2 = 1.5;
-      } else {
-        reqFront = 6.0;
-        reqRear = 3.0;
-        reqSide1 = 3.0;
-        reqSide2 = 3.0;
-      }
-    }
+    const violations = faceVerdicts.filter((v) => v.status === 'violation');
+    const compoundable = faceVerdicts.filter((v) => v.status === 'compoundable');
 
-    if (isCornerPlot) {
-      reqSide2 = Math.max(reqSide2, reqFront);
-    }
+    let setbackStatus: AuditItem['status'] = 'compliant';
+    let setbackRemediation: string | undefined;
 
-    const frontOk = frontSetbackProvided >= reqFront;
-    const rearOk = rearSetbackProvided >= reqRear;
-    const side1Ok = side1Provided >= reqSide1;
-    const side2Ok = side2Provided >= reqSide2;
-    const allSetbacksOk = frontOk && rearOk && side1Ok && side2Ok;
-
-    // Compounding check for setback: up to 10% encroachment compoundable under Ch 16
-    const minFrontComp = reqFront * 0.9;
-    const minRearComp = reqRear * 0.9;
-    const isWithinCompounding =
-      frontSetbackProvided >= minFrontComp &&
-      rearSetbackProvided >= minRearComp &&
-      side1Provided >= reqSide1 * 0.9 &&
-      side2Provided >= reqSide2 * 0.9;
-
-    let setbackStatus: 'compliant' | 'conditional' | 'non_compliant' = 'compliant';
-    let setbackRemediation = undefined;
-
-    if (allSetbacksOk) {
-      setbackStatus = 'compliant';
-    } else if (isWithinCompounding && buildingHeight <= 15) {
-      setbackStatus = 'conditional';
-      setbackRemediation = `Minor setback deficiency is within 10% permissible compounding limit (Chapter 16.3). Compounding fee payable under Rule 4.`;
-    } else {
+    if (violations.length > 0) {
       setbackStatus = 'non_compliant';
-      setbackRemediation = `Setback deficiency exceeds 10% limit or building height > 15m. Encroachments into mandatory high-rise fire setbacks are strictly non-compoundable! Adjust envelope.`;
+      setbackRemediation = required.isHighRise
+        ? `Fire-tender setbacks on a ${buildingHeight}m building cannot be compounded at any fee (Clause 16.3.2 ii). Deficient: ${violations.map((v) => `${v.face} short by ${v.deficitM}m`).join(', ')}.`
+        : `Beyond the Chapter 16.3 compoundable ceiling: ${violations.map((v) => `${v.face} short by ${v.deficitM}m (${v.deficitPct}%)`).join(', ')}. Redesign the envelope.`;
+    } else if (compoundable.length > 0) {
+      setbackStatus = 'conditional';
+      setbackRemediation = `Within the Chapter 16.3 compoundable range: ${compoundable.map((v) => `${v.face} short by ${v.deficitM}m (${v.deficitPct}%)`).join(', ')}. A compounding fee is payable; regularisation is at the Authority's discretion.`;
     }
 
     items.push({
       id: 'setback_audit',
-      chapterRef: buildingHeight > 15 ? 'Chapter 3.2.4.9 (High Rise)' : 'Chapter 3.2.4.1 (Table 3.2.1)',
-      ruleTitle: 'Building Setbacks & Fire Separation Distances',
+      chapterRef: required.clauseRef,
+      ruleTitle: 'Building setbacks & fire separation',
       category: 'Site Envelope',
       status: setbackStatus,
-      statutoryLimit: `Req: Front ${reqFront}m | Rear ${reqRear}m | Side-1 ${reqSide1}m | Side-2 ${reqSide2}m ${isCornerPlot ? '(Corner Plot Note-2 applied)' : ''}`,
-      proposedValue: `Provided: Front ${frontSetbackProvided}m | Rear ${rearSetbackProvided}m | Side-1 ${side1Provided}m | Side-2 ${side2Provided}m`,
-      mathExplanation: `Front: ${frontSetbackProvided}m vs ${reqFront}m; Rear: ${rearSetbackProvided}m vs ${reqRear}m; Sides: ${side1Provided}m, ${side2Provided}m vs ${reqSide1}m, ${reqSide2}m.`,
+      statutoryLimit: `Front ${required.front}m · Rear ${required.rear}m · Side-1 ${required.side1}m · Side-2 ${required.side2}m${required.cornerRuleApplied ? ' (corner plot: Note 2 applied)' : ''}`,
+      proposedValue: `Front ${frontSetbackProvided}m · Rear ${rearSetbackProvided}m · Side-1 ${side1Provided}m · Side-2 ${side2Provided}m`,
+      mathExplanation: `Band "${required.bandLabel}" (${required.typology}). ${faceVerdicts.map((v) => `${v.face} ${v.provided}/${v.required}m`).join('; ')}.`,
       remediation: setbackRemediation,
     });
 
     // 4. Building Height & Means of Access (Chapter 3.1.1 & Chapter 3.2.4)
     let maxAllowedHeight = roadWidth * 1.5;
     let heightStatus: 'compliant' | 'conditional' | 'non_compliant' = 'compliant';
-    let heightRemediation = undefined;
+    let heightRemediation: string | undefined;
 
     if (occupancy === 'single_unit') {
       if (buildingHeight <= 15.0 && roadWidth >= 6) {
@@ -555,7 +394,7 @@ export const ComplianceAuditEngine: React.FC = () => {
     // 5. Fire Safety & CFO NOC (Chapter 8)
     const isHighRise = buildingHeight > 15;
     let fireStatus: 'compliant' | 'conditional' | 'exempt' = 'exempt';
-    let fireRemediation = undefined;
+    let fireRemediation: string | undefined;
 
     if (isHighRise || (occupancy === 'commercial' && proposedBuiltUpArea > 500)) {
       fireStatus = 'conditional';
@@ -606,7 +445,7 @@ export const ComplianceAuditEngine: React.FC = () => {
     const solarMandatory = plotArea > 500;
 
     let envStatus: 'compliant' | 'non_compliant' | 'conditional' = 'compliant';
-    let envRemediation = undefined;
+    let envRemediation: string | undefined;
 
     if (rwhMandatory && !hasRWH) {
       envStatus = 'non_compliant';
@@ -671,53 +510,34 @@ export const ComplianceAuditEngine: React.FC = () => {
   const scorePercent = Math.round(((compliantCount + conditionalCount * 0.5) / totalCount) * 100);
 
   const handleSaveToHistory = () => {
-    const defaultName = historyProjectName.trim() || `${occupancy.replace('_', ' ').toUpperCase()} (${plotArea} m², Road ${roadWidth}m)`;
-    const updated = saveAuditSessionToHistory(
-      defaultName,
-      currentState,
-      scorePercent,
-      compliantCount,
-      nonCompliantCount
-    );
-    setAuditHistory(updated);
+    const defaultName =
+      historyProjectName.trim() || `${OCCUPANCY_LABELS[occupancy]} · ${plotArea} m² · ${roadWidth}m road`;
+    saveSnapshot(defaultName, scorePercent);
     setHistoryProjectName('');
     setIsSavingHistory(false);
-    toast.success('Audit Session Saved', `"${defaultName}" saved to your last 5 project sessions in localStorage.`);
+    toast.success('Project saved', `"${defaultName}" is in your saved projects on this device.`);
   };
 
-  const handleSwitchSession = (session: AuditSessionHistoryItem) => {
-    setOccupancy(session.state.occupancy);
-    setPlotArea(session.state.plotArea);
-    setPlotFrontage(session.state.plotFrontage);
-    setRoadWidth(session.state.roadWidth);
-    setBuildingHeight(session.state.buildingHeight);
-    setProposedBuiltUpArea(session.state.proposedBuiltUpArea);
-    setIsCornerPlot(session.state.isCornerPlot);
-    setHasStilt(session.state.hasStilt);
-    setFrontSetbackProvided(session.state.frontSetbackProvided);
-    setRearSetbackProvided(session.state.rearSetbackProvided);
-    setSide1Provided(session.state.side1Provided);
-    setSide2Provided(session.state.side2Provided);
-    setParkingBaysProvided(session.state.parkingBaysProvided);
-    setHasRWH(session.state.hasRWH);
-    setHasSolarHeating(session.state.hasSolarHeating);
-    setGreenRating(session.state.greenRating);
-    toast.info('Switched Project Session', `Restored parameters from "${session.projectName}".`);
+  const handleSwitchSession = (session: SavedProject) => {
+    loadSnapshot(session.id);
+    toast.info('Project loaded', `Every tab is now working from "${session.name}".`);
   };
 
   const handleDeleteHistoryItem = (id: string, name: string) => {
-    const updated = deleteAuditHistoryItem(id);
-    setAuditHistory(updated);
-    toast.warning('Session Removed', `"${name}" removed from history.`);
+    deleteSnapshot(id);
+    toast.warning('Project removed', `"${name}" deleted from this device.`);
   };
 
   const handlePrint = () => {
     window.print();
   };
 
-  const handleDownloadPdf = () => {
+  // jsPDF and html2canvas are ~600 KB. Loading them on click keeps them out of the
+  // first paint for the majority of visitors who never export a report.
+  const handleDownloadPdf = async () => {
     setIsGeneratingPdf(true);
     try {
+      const { generateAuditPdfReport } = await import('../utils/pdfGenerator');
       generateAuditPdfReport(currentState, auditResults, logicalConflicts);
       toast.success('PDF Generated', 'Official UP Byelaws 2025 audit report downloaded.');
     } catch (err) {
@@ -734,14 +554,14 @@ export const ComplianceAuditEngine: React.FC = () => {
       <div className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold">
+            <div className="w-8 h-8 rounded-lg bg-emerald-700 flex items-center justify-center text-white font-bold">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
               Cross-Rule Automated Compliance & Verification Engine
             </h2>
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-3xl">
+          <p className="text-xs text-slate-600 mt-1 max-w-3xl dark:text-slate-400">
             Evaluates interrelated statutory planning constraints across the unified state code. Simultaneously cross-audits plot bulk, telescopic FAR, purchasable multipliers, progressive fire setbacks, parking ECS, EVCI, rainwater harvesting, and compounding limits.
           </p>
         </div>
@@ -749,7 +569,7 @@ export const ComplianceAuditEngine: React.FC = () => {
         <div className="flex flex-wrap items-center gap-2">
           {/* Persistence status indicator */}
           <div className="flex items-center space-x-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700 text-[11px] text-slate-600 dark:text-slate-300">
-            <Save className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+            <Save className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
             <span>Saved {lastSaved || 'just now'}</span>
           </div>
 
@@ -774,7 +594,7 @@ export const ComplianceAuditEngine: React.FC = () => {
           <button
             onClick={handleDownloadPdf}
             disabled={isGeneratingPdf}
-            className="flex items-center space-x-1.5 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold shadow-xs transition-colors"
+            className="flex items-center space-x-1.5 px-3.5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-semibold shadow-xs transition-colors"
           >
             <FileDown className="w-3.5 h-3.5" />
             <span>{isGeneratingPdf ? 'Generating PDF...' : 'Download PDF Report'}</span>
@@ -794,7 +614,7 @@ export const ComplianceAuditEngine: React.FC = () => {
       {isSavingHistory && (
         <div className="bg-emerald-50 dark:bg-emerald-950/50 border-2 border-emerald-500/40 p-4 rounded-xl flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 animate-in fade-in duration-150">
           <div className="flex items-center space-x-2.5">
-            <BookmarkPlus className="w-5 h-5 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+            <BookmarkPlus className="w-5 h-5 text-emerald-700 dark:text-emerald-400 flex-shrink-0" />
             <div>
               <h4 className="text-xs font-bold text-emerald-950 dark:text-emerald-200">
                 Save Current Audit Snapshot to Local History
@@ -809,6 +629,7 @@ export const ComplianceAuditEngine: React.FC = () => {
             <input
               type="text"
               placeholder={`e.g. ${occupancy.replace('_', ' ')} ${plotArea}sqm road${roadWidth}m`}
+              aria-label="Name for this saved project"
               value={historyProjectName}
               onChange={(e) => setHistoryProjectName(e.target.value)}
               onKeyDown={(e) => {
@@ -818,13 +639,13 @@ export const ComplianceAuditEngine: React.FC = () => {
             />
             <button
               onClick={handleSaveToHistory}
-              className="px-3 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-bold transition-colors whitespace-nowrap shadow-xs"
+              className="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-800 text-white rounded-lg text-xs font-bold transition-colors whitespace-nowrap shadow-xs"
             >
               Confirm Save
             </button>
             <button
               onClick={() => setIsSavingHistory(false)}
-              className="px-2.5 py-1.5 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 text-xs font-medium"
+              className="px-2.5 py-1.5 text-slate-600 hover:text-slate-700 dark:hover:text-slate-300 text-xs font-medium dark:text-slate-400"
             >
               Cancel
             </button>
@@ -843,21 +664,20 @@ export const ComplianceAuditEngine: React.FC = () => {
               <h3 className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <span>Recent Audit Sessions (Last 5 Projects in LocalStorage)</span>
                 <span className="text-[10px] bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 font-mono px-2 py-0.2 rounded-full font-bold">
-                  {auditHistory.length}/5 Saved
+                  {savedProjects.length}/5 Saved
                 </span>
               </h3>
             </div>
           </div>
 
           <div className="flex items-center space-x-2">
-            {auditHistory.length > 0 && (
+            {savedProjects.length > 0 && (
               <button
                 onClick={() => {
-                  clearAuditHistory();
-                  setAuditHistory([]);
-                  toast.info('History Cleared', 'All previous session snapshots removed.');
+                  savedProjects.forEach((p) => deleteSnapshot(p.id));
+                  toast.info('Saved projects cleared', 'All snapshots removed from this device.');
                 }}
-                className="text-[11px] text-slate-400 hover:text-rose-500 transition-colors"
+                className="text-[11px] text-slate-600 hover:text-rose-600 dark:hover:text-rose-400 transition-colors dark:text-slate-400"
                 title="Clear all saved sessions"
               >
                 Clear History
@@ -865,7 +685,7 @@ export const ComplianceAuditEngine: React.FC = () => {
             )}
             <button
               onClick={() => setShowHistoryPanel((prev) => !prev)}
-              className="text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 font-medium"
+              className="text-xs text-slate-600 hover:text-slate-800 dark:hover:text-slate-200 font-medium dark:text-slate-400"
             >
               {showHistoryPanel ? 'Collapse' : 'Expand'}
             </button>
@@ -874,37 +694,37 @@ export const ComplianceAuditEngine: React.FC = () => {
 
         {showHistoryPanel && (
           <>
-            {auditHistory.length === 0 ? (
-              <div className="text-center py-4 bg-white dark:bg-slate-850 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 text-xs text-slate-500 dark:text-slate-400">
-                <FolderGit2 className="w-6 h-6 mx-auto mb-1 text-slate-400" />
+            {savedProjects.length === 0 ? (
+              <div className="text-center py-4 bg-white dark:bg-slate-900 rounded-lg border border-dashed border-slate-300 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-400">
+                <FolderGit2 className="w-6 h-6 mx-auto mb-1 text-slate-600 dark:text-slate-400" />
                 <p className="font-medium">No saved audit sessions in local history yet.</p>
-                <p className="text-[11px] text-slate-400 mt-0.5">
-                  Click <strong className="text-emerald-600">"Save to History"</strong> above to bookmark this project configuration for quick switching.
+                <p className="text-[11px] text-slate-600 mt-0.5 dark:text-slate-400">
+                  Click <strong className="text-emerald-700 dark:text-emerald-300">"Save to History"</strong> above to bookmark this project configuration for quick switching.
                 </p>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3 pt-1">
-                {auditHistory.map((item) => (
+                {savedProjects.map((item) => (
                   <div
                     key={item.id}
-                    className="bg-white dark:bg-slate-850 p-3 rounded-lg border border-slate-200 dark:border-slate-700 shadow-xs flex flex-col justify-between hover:border-emerald-500 dark:hover:border-emerald-500 transition-all group"
+                    className="bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 shadow-xs flex flex-col justify-between hover:border-emerald-500 dark:hover:border-emerald-500 transition-all group"
                   >
                     <div className="space-y-1.5">
                       <div className="flex items-start justify-between gap-1">
                         <span className="font-bold text-xs text-slate-900 dark:text-white line-clamp-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400">
-                          {item.projectName}
+                          {item.name}
                         </span>
                         <button
-                          onClick={() => handleDeleteHistoryItem(item.id, item.projectName)}
-                          className="text-slate-400 hover:text-rose-500 p-0.5 rounded transition-colors"
+                          onClick={() => handleDeleteHistoryItem(item.id, item.name)}
+                          className="text-slate-600 hover:text-rose-500 p-0.5 rounded transition-colors dark:text-slate-400"
                           title="Delete this project session"
                         >
                           <Trash2 className="w-3 h-3" />
                         </button>
                       </div>
 
-                      <div className="flex items-center gap-1.5 text-[10px] text-slate-500 dark:text-slate-400">
-                        <Clock className="w-3 h-3 text-slate-400" />
+                      <div className="flex items-center gap-1.5 text-[10px] text-slate-600 dark:text-slate-400">
+                        <Clock className="w-3 h-3 text-slate-600 dark:text-slate-400" />
                         <span>{item.savedAt}</span>
                       </div>
 
@@ -919,11 +739,11 @@ export const ComplianceAuditEngine: React.FC = () => {
 
                       {item.score !== undefined && (
                         <div className="flex items-center justify-between text-[11px] pt-1 border-t border-slate-100 dark:border-slate-800">
-                          <span className="text-slate-500">Compliance:</span>
+                          <span className="text-slate-600 dark:text-slate-400">Compliance:</span>
                           <span
                             className={`font-bold font-mono ${
                               item.score >= 80
-                                ? 'text-emerald-600 dark:text-emerald-400'
+                                ? 'text-emerald-700 dark:text-emerald-400'
                                 : item.score >= 60
                                 ? 'text-amber-600 dark:text-amber-400'
                                 : 'text-rose-600 dark:text-rose-400'
@@ -951,7 +771,7 @@ export const ComplianceAuditEngine: React.FC = () => {
       </div>
 
       {/* Preset Quick Loader */}
-      <div className="bg-slate-50 dark:bg-slate-850 border border-slate-200 dark:border-slate-800 p-3 rounded-xl flex items-center justify-between flex-wrap gap-2 text-xs">
+      <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-3 rounded-xl flex items-center justify-between flex-wrap gap-2 text-xs">
         <span className="font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1">
           <Sparkles className="w-3.5 h-3.5 text-amber-500" />
           <span>Load Project Template:</span>
@@ -1034,7 +854,7 @@ export const ComplianceAuditEngine: React.FC = () => {
                     <span className="font-bold text-slate-900 dark:text-white">
                       {conflict.title}
                     </span>
-                    <span className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">
+                    <span className="text-[10px] text-slate-600 font-mono dark:text-slate-400">
                       ({conflict.chapterRef})
                     </span>
                   </div>
@@ -1044,7 +864,7 @@ export const ComplianceAuditEngine: React.FC = () => {
                   </p>
 
                   <div className="flex flex-wrap items-center gap-2 text-[10px] pt-0.5">
-                    <span className="text-slate-500 dark:text-slate-400 font-medium">
+                    <span className="text-slate-600 dark:text-slate-400 font-medium">
                       {conflict.detectedValues.fieldA}: <strong>{conflict.detectedValues.valueA}</strong>
                     </span>
                     {conflict.detectedValues.fieldB && (
@@ -1076,19 +896,19 @@ export const ComplianceAuditEngine: React.FC = () => {
         <div className="lg:col-span-4 bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
             <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-              <Building className="w-4 h-4 text-emerald-600" />
+              <Building className="w-4 h-4 text-emerald-700 dark:text-emerald-300" />
               <span>Proposed Project Specifications</span>
             </h3>
-            <span className="text-[10px] text-slate-400">Live Evaluation</span>
+            <span className="text-[10px] text-slate-600 dark:text-slate-400">Live Evaluation</span>
           </div>
 
           <div className="space-y-3 text-xs">
             {/* Occupancy */}
             <div>
-              <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+              <label htmlFor="compliance-audit-engine-occupancy-land-use-classification" className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                 Occupancy / Land Use Classification
               </label>
-              <select
+              <select id="compliance-audit-engine-occupancy-land-use-classification"
                 value={occupancy}
                 onChange={(e) => setOccupancy(e.target.value as any)}
                 className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-2 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:border-emerald-500"
@@ -1100,140 +920,93 @@ export const ComplianceAuditEngine: React.FC = () => {
               </select>
             </div>
 
-            {/* Plot Area & Road Width */}
+            {/* Site geometry. NumberField clamps on blur, so an intermediate keystroke
+                on the way to a larger number is not rewritten under the user's cursor. */}
             <div className="grid grid-cols-2 gap-2">
-              <div>
-                <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
-                  Plot Area (sqm)
-                </label>
-                <input
-                  type="number"
-                  value={plotArea}
-                  onChange={(e) => setPlotArea(Math.max(10, Number(e.target.value)))}
-                  className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                />
-              </div>
-              <div>
-                <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
-                  Abutting Road Width (m)
-                </label>
-                <input
-                  type="number"
-                  value={roadWidth}
-                  onChange={(e) => setRoadWidth(Math.max(3, Number(e.target.value)))}
-                  className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                />
-              </div>
-            </div>
-
-            {/* Frontage & Height */}
-            <div className="grid grid-cols-2 gap-2">
-              <div>
-                <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
-                  Plot Frontage (m)
-                </label>
-                <input
-                  type="number"
-                  step="0.5"
-                  value={plotFrontage}
-                  onChange={(e) => setPlotFrontage(Math.max(3, Number(e.target.value)))}
-                  className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                />
-              </div>
-              <div>
-                <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
-                  Building Height (m)
-                </label>
-                <input
-                  type="number"
-                  value={buildingHeight}
-                  onChange={(e) => setBuildingHeight(Math.max(3, Number(e.target.value)))}
-                  className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                />
-              </div>
-            </div>
-
-            {/* Total Built-up Area */}
-            <div>
-              <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
-                Total Built-up Area (sqm)
-              </label>
-              <input
-                type="number"
-                value={proposedBuiltUpArea}
-                onChange={(e) => setProposedBuiltUpArea(Math.max(10, Number(e.target.value)))}
-                className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
+              <NumberField
+                label="Plot area"
+                unit="sqm"
+                value={plotArea}
+                onChange={setPlotArea}
+                min={10}
+                step={1}
+              />
+              <NumberField
+                label="Abutting road width"
+                unit="m"
+                value={roadWidth}
+                onChange={setRoadWidth}
+                min={3}
+                step={0.5}
+                warning={
+                  roadWidth < 9 && (occupancy === 'multi_unit' || occupancy === 'group_housing')
+                    ? 'Below the 9 m minimum for multi-family development.'
+                    : undefined
+                }
               />
             </div>
 
-            {/* Setbacks Provided */}
-            <div className="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-2">
-              <span className="font-bold text-slate-800 dark:text-slate-200 block text-[11px] uppercase tracking-wider">
-                Setbacks Provided On-Site (Meters):
+            <div className="grid grid-cols-2 gap-2">
+              <NumberField
+                label="Plot frontage"
+                unit="m"
+                value={plotFrontage}
+                onChange={setPlotFrontage}
+                min={3}
+                step={0.5}
+                hint={plotFrontage > 0 ? `Implied depth ${(plotArea / plotFrontage).toFixed(1)} m` : undefined}
+              />
+              <NumberField
+                label="Building height"
+                unit="m"
+                value={buildingHeight}
+                onChange={setBuildingHeight}
+                min={3}
+                step={0.5}
+                hint={buildingHeight > 15 ? 'High-rise: progressive fire setbacks apply' : undefined}
+              />
+            </div>
+
+            <NumberField
+              label="Total built-up area"
+              unit="sqm"
+              value={proposedBuiltUpArea}
+              onChange={setProposedBuiltUpArea}
+              min={10}
+              step={5}
+              hint={plotArea > 0 ? `Proposed FAR ${(proposedBuiltUpArea / plotArea).toFixed(2)}` : undefined}
+            />
+
+            <div className="space-y-2 border-t border-slate-100 pt-2 dark:border-slate-800">
+              <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-800 dark:text-slate-200">
+                Setbacks provided on site
               </span>
               <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="text-slate-500 dark:text-slate-400 block mb-0.5">Front Setback (m)</label>
-                  <input
-                    type="number"
-                    step="0.1"
-                    value={frontSetbackProvided}
-                    onChange={(e) => setFrontSetbackProvided(Number(e.target.value))}
-                    className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                  />
-                </div>
-                <div>
-                  <label className="text-slate-500 dark:text-slate-400 block mb-0.5">Rear Setback (m)</label>
-                  <input
-                    type="number"
-                    step="0.1"
-                    value={rearSetbackProvided}
-                    onChange={(e) => setRearSetbackProvided(Number(e.target.value))}
-                    className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                  />
-                </div>
-                <div>
-                  <label className="text-slate-500 dark:text-slate-400 block mb-0.5">Side-1 (m)</label>
-                  <input
-                    type="number"
-                    step="0.1"
-                    value={side1Provided}
-                    onChange={(e) => setSide1Provided(Number(e.target.value))}
-                    className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                  />
-                </div>
-                <div>
-                  <label className="text-slate-500 dark:text-slate-400 block mb-0.5">Side-2 (m)</label>
-                  <input
-                    type="number"
-                    step="0.1"
-                    value={side2Provided}
-                    onChange={(e) => setSide2Provided(Number(e.target.value))}
-                    className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
-                  />
-                </div>
+                <NumberField label="Front" unit="m" value={frontSetbackProvided} onChange={setFrontSetbackProvided} min={0} step={0.1} />
+                <NumberField label="Rear" unit="m" value={rearSetbackProvided} onChange={setRearSetbackProvided} min={0} step={0.1} />
+                <NumberField label="Side-1" unit="m" value={side1Provided} onChange={setSide1Provided} min={0} step={0.1} />
+                <NumberField label="Side-2" unit="m" value={side2Provided} onChange={setSide2Provided} min={0} step={0.1} />
               </div>
             </div>
 
             {/* Parking & Sustainable Features */}
             <div className="pt-2 border-t border-slate-100 dark:border-slate-800 space-y-2">
               <div>
-                <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
-                  Parking Spaces Provided (ECS Bays)
-                </label>
-                <input
-                  type="number"
+                <NumberField
+                  label="Parking provided"
+                  unit="ECS bays"
                   value={parkingBaysProvided}
-                  onChange={(e) => setParkingBaysProvided(Number(e.target.value))}
-                  className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-1.5 text-xs font-mono text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
+                  onChange={setParkingBaysProvided}
+                  min={0}
+                  step={1}
                 />
               </div>
 
               <div>
-                <label className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
+                <label htmlFor="compliance-audit-engine-green-rating-certification" className="font-semibold text-slate-700 dark:text-slate-300 block mb-1">
                   Green Rating Certification
                 </label>
-                <select
+                <select id="compliance-audit-engine-green-rating-certification"
                   value={greenRating}
                   onChange={(e) => setGreenRating(e.target.value as any)}
                   className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg p-1.5 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
@@ -1251,7 +1024,7 @@ export const ComplianceAuditEngine: React.FC = () => {
                     type="checkbox"
                     checked={isCornerPlot}
                     onChange={(e) => setIsCornerPlot(e.target.checked)}
-                    className="rounded text-emerald-600 focus:ring-emerald-500"
+                    className="rounded text-emerald-700 focus:ring-emerald-500 dark:text-emerald-300"
                   />
                   <span className="text-slate-700 dark:text-slate-300">Corner Plot (Side-2 setback = Front setback)</span>
                 </label>
@@ -1260,7 +1033,7 @@ export const ComplianceAuditEngine: React.FC = () => {
                     type="checkbox"
                     checked={hasStilt}
                     onChange={(e) => setHasStilt(e.target.checked)}
-                    className="rounded text-emerald-600 focus:ring-emerald-500"
+                    className="rounded text-emerald-700 focus:ring-emerald-500 dark:text-emerald-300"
                   />
                   <span className="text-slate-700 dark:text-slate-300">Stilt Floor Proposed (FAR Exempt)</span>
                 </label>
@@ -1269,7 +1042,7 @@ export const ComplianceAuditEngine: React.FC = () => {
                     type="checkbox"
                     checked={hasRWH}
                     onChange={(e) => setHasRWH(e.target.checked)}
-                    className="rounded text-emerald-600 focus:ring-emerald-500"
+                    className="rounded text-emerald-700 focus:ring-emerald-500 dark:text-emerald-300"
                   />
                   <span className="text-slate-700 dark:text-slate-300">Rainwater Harvesting Pit Proposed</span>
                 </label>
@@ -1278,7 +1051,7 @@ export const ComplianceAuditEngine: React.FC = () => {
                     type="checkbox"
                     checked={hasSolarHeating}
                     onChange={(e) => setHasSolarHeating(e.target.checked)}
-                    className="rounded text-emerald-600 focus:ring-emerald-500"
+                    className="rounded text-emerald-700 focus:ring-emerald-500 dark:text-emerald-300"
                   />
                   <span className="text-slate-700 dark:text-slate-300">Solar Water Heating System Proposed</span>
                 </label>
@@ -1298,7 +1071,7 @@ export const ComplianceAuditEngine: React.FC = () => {
               <h3 className="text-lg font-bold">
                 {nonCompliantCount === 0 ? 'Plan Permissible for Sanction' : 'Statutory Violations Detected'}
               </h3>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-300">
                 Cross-evaluated across {totalCount} regulatory checkpoints of UP Byelaws 2025.
               </p>
             </div>
@@ -1308,7 +1081,7 @@ export const ComplianceAuditEngine: React.FC = () => {
                 <div className="text-2xl font-extrabold font-mono text-emerald-400">
                   {scorePercent}%
                 </div>
-                <div className="text-[10px] text-slate-400">Compliance Index</div>
+                <div className="text-[10px] text-slate-300">Compliance Index</div>
               </div>
 
               <div className="h-10 w-[1px] bg-slate-700" />
@@ -1354,7 +1127,7 @@ export const ComplianceAuditEngine: React.FC = () => {
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-2 border-b border-slate-100 dark:border-slate-800">
                     <div className="flex items-center space-x-2">
-                      {isOk && <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />}
+                      {isOk && <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400 flex-shrink-0" />}
                       {isConditional && <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0" />}
                       {isFail && <XCircle className="w-4 h-4 text-rose-600 dark:text-rose-400 flex-shrink-0" />}
 
@@ -1364,7 +1137,7 @@ export const ComplianceAuditEngine: React.FC = () => {
                     </div>
 
                     <div className="flex items-center space-x-2">
-                      <span className="text-[10px] font-mono font-semibold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">
+                      <span className="text-[10px] font-mono font-semibold text-slate-600 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded dark:text-slate-400">
                         {item.chapterRef}
                       </span>
                       <span
@@ -1383,11 +1156,11 @@ export const ComplianceAuditEngine: React.FC = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs pt-2">
                     <div>
-                      <span className="text-slate-500 dark:text-slate-400 text-[11px] block">Statutory Mandate:</span>
+                      <span className="text-slate-600 text-[11px] block dark:text-slate-400">Statutory Mandate:</span>
                       <span className="font-medium text-slate-800 dark:text-slate-200">{item.statutoryLimit}</span>
                     </div>
                     <div>
-                      <span className="text-slate-500 dark:text-slate-400 text-[11px] block">Plan Proposed:</span>
+                      <span className="text-slate-600 text-[11px] block dark:text-slate-400">Plan Proposed:</span>
                       <span className="font-medium text-slate-800 dark:text-slate-200">{item.proposedValue}</span>
                     </div>
                   </div>

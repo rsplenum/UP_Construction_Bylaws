@@ -24,11 +24,15 @@ import {
   GISBufferEnvelope
 } from '../data/upGisMasterPlanData';
 
+/** Nominatim asks for at most one request per second; a small cache keeps us well under. */
+const geocodeCache = new Map<string, GeocodedLocation[]>();
+const GEOCODE_CACHE_LIMIT = 50;
+
 export interface GeocodedLocation {
   id: string;
   title: string;
   subtitle: string;
-  source: 'Bhuvan/AMRUT' | 'RSAC-UP' | 'Statutory Master Plan 2031' | 'National Geocoder';
+  source: 'Statutory buffer' | 'RSAC-UP' | 'Statutory Master Plan 2031' | 'OpenStreetMap';
   type: 'authority' | 'parcel' | 'buffer' | 'heritage' | 'tod';
   lat: number;
   lng: number;
@@ -54,6 +58,7 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
   const [results, setResults] = useState<GeocodedLocation[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
   const searchTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const abortRef = useRef<AbortController | null>(null);
 
   // Close dropdown on click outside
   useEffect(() => {
@@ -162,7 +167,7 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
             id: buf.id,
             title: buf.name,
             subtitle: `${buf.authority} • ${buf.ruleReference}`,
-            source: 'Bhuvan/AMRUT',
+            source: 'Statutory buffer',
             type: 'buffer',
             lat: bLat,
             lng: bLng,
@@ -174,52 +179,75 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
         }
       });
 
-      // 4. Query live online geocoder (Bhuvan/OpenGIS proxy with UP bounding box)
-      try {
-        const fetchPromise = fetch(
-          `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
-            query + ', Uttar Pradesh'
-          )}&format=json&countrycodes=in&limit=4&addressdetails=1`,
-          { headers: { 'Accept-Language': 'en' } }
-        );
+      // 4. Fall back to the OpenStreetMap Nominatim geocoder, bounded to the UP envelope.
+      //
+      // This is OSM data, not Bhuvan. It was previously labelled "Bhuvan Web API" and
+      // "National Geocoder", which overstated its provenance in a tool people rely on for
+      // statutory decisions. The request is now aborted on timeout rather than merely
+      // raced (the old Promise.race left the connection open), and results are cached so
+      // typing does not hammer a free service that asks for one request per second.
+      const cacheKey = query.trim().toLowerCase();
+      const cached = geocodeCache.get(cacheKey);
 
-        const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('Timeout')), 2500)
-        );
+      if (cached) {
+        localMatches.push(...cached);
+      } else {
+        const controller = new AbortController();
+        abortRef.current?.abort();
+        abortRef.current = controller;
+        const timeout = window.setTimeout(() => controller.abort(), 3500);
 
-        const res = (await Promise.race([fetchPromise, timeoutPromise])) as Response;
-        if (res.ok) {
-          const data = await res.json();
-          if (Array.isArray(data)) {
-            data.forEach((item: any, idx: number) => {
-              const lat = parseFloat(item.lat);
-              const lon = parseFloat(item.lon);
-              if (isNaN(lat) || isNaN(lon) || !isFinite(lat) || !isFinite(lon)) return;
-              // Ensure coordinates are within Uttar Pradesh approximate envelope
-              if (lat >= 23.5 && lat <= 30.5 && lon >= 77.0 && lon <= 84.8) {
-                // Avoid near duplicates
-                const exists = localMatches.some(
-                  (m) => Math.abs(m.lat - lat) < 0.01 && Math.abs(m.lng - lon) < 0.01
+        try {
+          const res = await fetch(
+            `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(
+              query + ', Uttar Pradesh',
+            )}&format=json&countrycodes=in&limit=4&addressdetails=1`,
+            { headers: { 'Accept-Language': 'en' }, signal: controller.signal },
+          );
+
+          if (res.ok) {
+            const data = await res.json();
+            const remote: GeocodedLocation[] = [];
+
+            if (Array.isArray(data)) {
+              data.forEach((item: any, idx: number) => {
+                const lat = parseFloat(item.lat);
+                const lon = parseFloat(item.lon);
+                if (!isFinite(lat) || !isFinite(lon)) return;
+                // Keep results inside the approximate Uttar Pradesh envelope.
+                if (lat < 23.5 || lat > 30.5 || lon < 77.0 || lon > 84.8) return;
+
+                const duplicate = localMatches.some(
+                  (m) => Math.abs(m.lat - lat) < 0.01 && Math.abs(m.lng - lon) < 0.01,
                 );
-                if (!exists) {
-                  localMatches.push({
-                    id: `bhuvan-live-${idx}-${item.place_id || lat}`,
-                    title: item.name || item.display_name.split(',')[0],
-                    subtitle: item.display_name,
-                    source: 'National Geocoder',
-                    type: 'parcel',
-                    lat,
-                    lng: lon,
-                    zoom: 13,
-                    farInfo: 'Real-time spatial geocoding match via Bhuvan Web API',
-                  });
-                }
-              }
-            });
+                if (duplicate) return;
+
+                remote.push({
+                  id: `osm-${idx}-${item.place_id || lat}`,
+                  title: item.name || String(item.display_name).split(',')[0],
+                  subtitle: item.display_name,
+                  source: 'OpenStreetMap',
+                  type: 'parcel',
+                  lat,
+                  lng: lon,
+                  zoom: 13,
+                  farInfo: 'Address match from OpenStreetMap — not a cadastral or Bhuvan parcel record.',
+                });
+              });
+            }
+
+            geocodeCache.set(cacheKey, remote);
+            if (geocodeCache.size > GEOCODE_CACHE_LIMIT) {
+              geocodeCache.delete(geocodeCache.keys().next().value as string);
+            }
+            localMatches.push(...remote);
           }
+        } catch {
+          // Offline, blocked or timed out: the local statutory geodatabase still answered.
+        } finally {
+          window.clearTimeout(timeout);
+          if (abortRef.current === controller) abortRef.current = null;
         }
-      } catch (err) {
-        // Fallback to rich local UP geodatabase gracefully
       }
 
       setResults(localMatches);
@@ -229,6 +257,8 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
 
     return () => {
       if (searchTimeoutRef.current) clearTimeout(searchTimeoutRef.current);
+      abortRef.current?.abort();
+      abortRef.current = null;
     };
   }, [query]);
 
@@ -242,9 +272,9 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
     <div ref={containerRef} className={`relative ${className}`}>
       {/* Search Bar Input Pill */}
       <div className="relative group">
-        <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-600 transition-colors">
+        <div className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-600 group-focus-within:text-emerald-600 transition-colors dark:text-slate-400">
           {isLoading ? (
-            <Loader2 className="w-4 h-4 animate-spin text-emerald-600" />
+            <Loader2 className="w-4 h-4 animate-spin text-emerald-700 dark:text-emerald-300" />
           ) : (
             <Search className="w-4 h-4" />
           )}
@@ -252,7 +282,8 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
 
         <input
           type="text"
-          value={query}
+          aria-label="Search a place, landmark or coordinates in Uttar Pradesh"
+              value={query}
           onFocus={() => {
             if (results.length > 0) setIsOpen(true);
           }}
@@ -269,7 +300,7 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
                 setResults([]);
                 setIsOpen(false);
               }}
-              className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-1"
+              className="text-slate-600 hover:text-slate-600 dark:hover:text-slate-200 p-1 dark:text-slate-400"
             >
               <X className="w-3.5 h-3.5" />
             </button>
@@ -284,7 +315,7 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
 
       {/* Preset Quick-Query Pills under search bar */}
       <div className="mt-2 flex items-center gap-1.5 overflow-x-auto scrollbar-none pb-1">
-        <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider pl-1">
+        <span className="text-[10px] font-semibold text-slate-600 uppercase tracking-wider pl-1 dark:text-slate-400">
           Suggestions:
         </span>
         {popularQueries.map((pq, idx) => (
@@ -296,7 +327,7 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
             }}
             className="px-2.5 py-1 rounded-full text-[11px] font-medium bg-slate-100 dark:bg-white/[0.06] text-slate-600 dark:text-slate-400 hover:bg-emerald-50 hover:text-emerald-700 dark:hover:bg-white/10 whitespace-nowrap transition-colors"
           >
-            {pq.label} <span className="text-[9px] text-slate-400">({pq.city})</span>
+            {pq.label} <span className="text-[9px] text-slate-600 dark:text-slate-400">({pq.city})</span>
           </button>
         ))}
       </div>
@@ -306,19 +337,19 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
         <div className="absolute left-0 right-0 top-full mt-1.5 bg-white/95 dark:bg-[#161617]/95 backdrop-blur-xl border border-black/[0.08] dark:border-white/[0.12] rounded-2xl shadow-2xl z-[1000] overflow-hidden max-h-96 overflow-y-auto animate-in fade-in slide-in-from-top-2 duration-150">
           <div className="p-2.5 bg-slate-50 dark:bg-white/[0.03] border-b border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between text-xs">
             <span className="font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-              <Crosshair className="w-3.5 h-3.5 text-emerald-600" />
+              <Crosshair className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" />
               <span>Real-Time Bhuvan Spatial Geocoding Results</span>
             </span>
-            <span className="text-[10px] font-mono text-slate-400">
+            <span className="text-[10px] font-mono text-slate-600 dark:text-slate-400">
               {results.length} Locations Found
             </span>
           </div>
 
           {results.length === 0 ? (
-            <div className="p-8 text-center text-xs text-slate-500">
+            <div className="p-8 text-center text-xs text-slate-600 dark:text-slate-400">
               {isLoading ? (
                 <div className="flex flex-col items-center space-y-2">
-                  <Loader2 className="w-5 h-5 animate-spin text-emerald-600" />
+                  <Loader2 className="w-5 h-5 animate-spin text-emerald-700 dark:text-emerald-300" />
                   <span>Connecting to Bhuvan & RSAC-UP Spatial Servers...</span>
                 </div>
               ) : (
@@ -349,7 +380,7 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
                           ? 'bg-rose-500/10 text-rose-600'
                           : item.type === 'buffer'
                           ? 'bg-sky-500/10 text-sky-600'
-                          : 'bg-emerald-500/10 text-emerald-600'
+                          : 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300'
                       }`}
                     >
                       {item.type === 'authority' ? (
@@ -383,7 +414,7 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
                         </span>
                       </div>
 
-                      <p className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                      <p className="text-[11px] text-slate-600 dark:text-slate-400 truncate mt-0.5">
                         {item.subtitle}
                       </p>
 
@@ -396,10 +427,10 @@ export const BhuvanGeocodingSearch: React.FC<BhuvanGeocodingSearchProps> = ({
                   </div>
 
                   <div className="flex flex-col items-end flex-shrink-0 text-right">
-                    <span className="text-[10px] text-slate-400 font-mono">
+                    <span className="text-[10px] text-slate-600 font-mono dark:text-slate-400">
                       {item.lat.toFixed(4)}°, {item.lng.toFixed(4)}°
                     </span>
-                    <span className="text-[9px] font-semibold text-slate-500 bg-slate-100 dark:bg-white/10 px-2 py-0.5 rounded-md mt-1">
+                    <span className="text-[9px] font-semibold text-slate-600 bg-slate-100 dark:bg-white/10 px-2 py-0.5 rounded-md mt-1 dark:text-slate-400">
                       {item.source}
                     </span>
                   </div>

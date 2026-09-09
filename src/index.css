@@ -134,3 +134,144 @@ html.dark .leaflet-popup-tip {
 html.dark .segmented-control {
   background: rgba(118, 118, 128, 0.24);
 }
+
+/* ============================================================================
+   Print
+   The portal has four "Print" buttons and, until now, no print stylesheet: the
+   output carried the sticky header, the nav pills, the footer and a dark canvas,
+   and modals printed the page behind them. Printed output is a statutory
+   deliverable, so it gets a real layout.
+   ============================================================================ */
+@media print {
+  :root {
+    --apple-canvas: #ffffff;
+    --apple-surface: #ffffff;
+    --apple-text-primary: #000000;
+  }
+
+  /* Always print light, whatever the screen theme is. */
+  html.dark {
+    --apple-canvas: #ffffff;
+    --apple-surface: #ffffff;
+    --apple-text-primary: #000000;
+  }
+
+  html,
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 10.5pt;
+  }
+
+  /* Chrome that has no meaning on paper. */
+  header,
+  footer,
+  nav,
+  [role='tablist'],
+  .print\:hidden,
+  .no-print {
+    display: none !important;
+  }
+
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Flatten the glass and shadow treatment; toner is not a design system. */
+  .apple-card,
+  .apple-glass,
+  [class*='shadow-'],
+  [class*='backdrop-blur'] {
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: #ffffff !important;
+  }
+
+  [class*='rounded-'] {
+    border-radius: 4px !important;
+  }
+
+  /* Keep a rule, a table row or a card from being split across a page break. */
+  table,
+  figure,
+  .apple-card,
+  .avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Reveal link targets, which are invisible on paper. */
+  a[href^='http']::after {
+    content: ' (' attr(href) ')';
+    font-size: 8pt;
+    color: #555;
+    word-break: break-all;
+  }
+
+  @page {
+    margin: 14mm 12mm;
+  }
+}
+
+/* A modal that is open should be the only thing that prints. */
+@media print {
+  body:has([role='dialog']) > #root > * {
+    display: none !important;
+  }
+
+  body:has([role='dialog']) [role='dialog'] {
+    position: static !important;
+    max-height: none !important;
+    max-width: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+}
+
+/* Respect a reduced-motion preference across the whole portal. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Keyboard focus. The ring is paired with a soft halo so it stays legible where the
+   focused control sits on an emerald surface and the outline alone would blend in.
+   :focus-visible only matches keyboard interaction, so pointer users see nothing. */
+:focus-visible {
+  outline: 2px solid var(--apple-accent-green);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(52, 199, 89, 0.22);
+}
+
+/* outline-width is animatable, and several controls carry `transition-all`, so without
+   this the ring fades in over 200ms instead of appearing with the focus move. */
+:focus-visible {
+  transition-property: none;
+}
+
+/* Tabular figures everywhere a statutory number is shown, so columns line up. */
+.tabular-nums,
+table td,
+table th {
+  font-variant-numeric: tabular-nums;
+}

@@ -1326,10 +1326,12 @@ export function auditCoordinatesSpatialCompliance(lat: number, lng: number): Spa
     }
   }
 
-  // Elevation estimation based on UP geodetic slope (210m in NCR down to 75m in Varanasi)
-  const estimatedElevationAmsl = Math.round(
-    220 - ((safeLng - 77.0) / (83.5 - 77.0)) * 145 + Math.sin(safeLat * 10) * 4
-  );
+  // A coarse west-to-east interpolation across the Gangetic plain (roughly 220 m AMSL in
+  // the NCR down to 75 m near Varanasi). This is NOT surveyed elevation: it carries no
+  // terrain detail and can be tens of metres out locally. It is labelled as an estimate
+  // everywhere it is shown, and must not be used for drainage, plinth or aviation
+  // clearance work — those need a real DEM (Bhuvan CartoDEM, SRTM) or a site survey.
+  const estimatedElevationAmsl = Math.round(220 - ((safeLng - 77.0) / (83.5 - 77.0)) * 145);
 
   // CCZM Obstacle Limitation Surface Height calculation
   let aviationHeightLimitAmsl = 'No Obstacle Limitation (>20 km from airport)';

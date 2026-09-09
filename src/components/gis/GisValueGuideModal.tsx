@@ -32,12 +32,12 @@ export const GisValueGuideModal: React.FC<GisValueGuideModalProps> = ({
         {/* Modal Header */}
         <div className="px-6 py-4 border-b border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between bg-slate-50/80 dark:bg-white/[0.02]">
           <div className="flex items-center space-x-2.5">
-            <Globe className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+            <Globe className="w-5 h-5 text-emerald-700 dark:text-emerald-400" />
             <div>
               <h3 className="text-base font-bold text-slate-900 dark:text-white">
                 Strategic Value & Engineering Utility of Spatial GIS
               </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400">
+              <p className="text-xs text-slate-600 dark:text-slate-400">
                 Why Geographic Information Systems drive statutory compliance and urban governance
               </p>
             </div>
@@ -45,7 +45,7 @@ export const GisValueGuideModal: React.FC<GisValueGuideModalProps> = ({
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors"
+            className="p-1.5 rounded-lg text-slate-600 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-white/10 transition-colors dark:text-slate-400"
           >
             <X className="w-5 h-5" />
           </button>
@@ -93,7 +93,7 @@ export const GisValueGuideModal: React.FC<GisValueGuideModalProps> = ({
                 </span>
                 <h4 className="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
                   <span>Appendix-15 Automated Sanction: Zero Bureaucratic Discretion</span>
-                  <Cpu className="w-4 h-4 text-emerald-600" />
+                  <Cpu className="w-4 h-4 text-emerald-700 dark:text-emerald-300" />
                 </h4>
               </div>
               <div className="pl-9 space-y-1.5 text-xs sm:text-sm">
@@ -176,7 +176,7 @@ export const GisValueGuideModal: React.FC<GisValueGuideModalProps> = ({
 
           {/* Comparison Matrix Table */}
           <div className="space-y-3 pt-2">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
               System Comparison: Traditional Paper Maps vs Unified Statutory GIS
             </h4>
             <div className="overflow-x-auto">
@@ -185,7 +185,7 @@ export const GisValueGuideModal: React.FC<GisValueGuideModalProps> = ({
                   <tr>
                     <th className="p-3 border-b border-black/[0.06] dark:border-white/[0.08]">Dimension</th>
                     <th className="p-3 border-b border-black/[0.06] dark:border-white/[0.08]">Traditional Paper Blueprints</th>
-                    <th className="p-3 border-b border-black/[0.06] dark:border-white/[0.08] text-emerald-600 dark:text-emerald-400">
+                    <th className="p-3 border-b border-black/[0.06] dark:border-white/[0.08] text-emerald-700 dark:text-emerald-400">
                       Unified Statutory GIS Engine
                     </th>
                   </tr>
@@ -193,28 +193,28 @@ export const GisValueGuideModal: React.FC<GisValueGuideModalProps> = ({
                 <tbody className="divide-y divide-black/[0.04] dark:divide-white/[0.06]">
                   <tr>
                     <td className="p-3 font-semibold">Boundary Accuracy</td>
-                    <td className="p-3 text-slate-500">±10m to ±50m (paper shrinkage & manual surveying)</td>
+                    <td className="p-3 text-slate-600 dark:text-slate-400">±10m to ±50m (paper shrinkage & manual surveying)</td>
                     <td className="p-3 font-medium text-emerald-700 dark:text-emerald-300">
                       Sub-meter satellite georeferenced (WGS84 datum)
                     </td>
                   </tr>
                   <tr>
                     <td className="p-3 font-semibold">Sanction Speed</td>
-                    <td className="p-3 text-slate-500">30 to 90 days of manual file movement</td>
+                    <td className="p-3 text-slate-600 dark:text-slate-400">30 to 90 days of manual file movement</td>
                     <td className="p-3 font-medium text-emerald-700 dark:text-emerald-300">
                       Instantaneous automated algorithmic audit (seconds)
                     </td>
                   </tr>
                   <tr>
                     <td className="p-3 font-semibold">Aviation Airspace</td>
-                    <td className="p-3 text-slate-500">Manual height guessing; post-facto demolition risk</td>
+                    <td className="p-3 text-slate-600 dark:text-slate-400">Manual height guessing; post-facto demolition risk</td>
                     <td className="p-3 font-medium text-emerald-700 dark:text-emerald-300">
                       3D CCZM obstacle limitation surface calculation
                     </td>
                   </tr>
                   <tr>
                     <td className="p-3 font-semibold">Flood Risk Evaluation</td>
-                    <td className="p-3 text-slate-500">Subjective site inspection often missing high flood levels</td>
+                    <td className="p-3 text-slate-600 dark:text-slate-400">Subjective site inspection often missing high flood levels</td>
                     <td className="p-3 font-medium text-emerald-700 dark:text-emerald-300">
                       DEM hydrological modeling & automated 200m buffer flag
                     </td>
@@ -227,7 +227,7 @@ export const GisValueGuideModal: React.FC<GisValueGuideModalProps> = ({
 
         {/* Footer */}
         <div className="px-6 py-4 border-t border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between bg-slate-50/80 dark:bg-white/[0.02]">
-          <span className="text-xs text-slate-500">
+          <span className="text-xs text-slate-600 dark:text-slate-400">
             Compliant with Ministry of Housing & Urban Affairs (MoHUA) GIS Master Plan Design Standards
           </span>
           <button

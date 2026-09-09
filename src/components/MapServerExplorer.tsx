@@ -208,7 +208,14 @@ export const MapServerExplorer: React.FC = () => {
       if (typeof auth.lat !== 'number' || typeof auth.lng !== 'number' || isNaN(auth.lat) || isNaN(auth.lng) || !isFinite(auth.lat) || !isFinite(auth.lng)) {
         return;
       }
-      const marker = L.marker([auth.lat, auth.lng], { icon: customIcon }).addTo(map);
+      const marker = L.marker([auth.lat, auth.lng], {
+        icon: customIcon,
+        // Leaflet marks each marker role="button" tabindex="0"; without a name the map
+        // announces as a row of unlabelled buttons.
+        alt: `${auth.name} — ${auth.district} district`,
+        title: `${auth.name} — ${auth.district} district`,
+        keyboard: true,
+      }).addTo(map);
 
       marker.bindPopup(`
         <div style="font-family: -apple-system, sans-serif; min-width: 220px; padding: 4px;">
@@ -665,7 +672,11 @@ export const MapServerExplorer: React.FC = () => {
     });
 
     try {
-      const marker = L.marker([validLat, validLng], { icon: auditIcon }).addTo(map);
+      const marker = L.marker([validLat, validLng], {
+        icon: auditIcon,
+        alt: `Audited point at ${validLat.toFixed(4)}, ${validLng.toFixed(4)}`,
+        title: `Audited point at ${validLat.toFixed(4)}, ${validLng.toFixed(4)}`,
+      }).addTo(map);
       auditMarkerRef.current = marker;
     } catch (err) {
       console.warn('Failed to place audit marker:', err);
@@ -812,7 +823,7 @@ export const MapServerExplorer: React.FC = () => {
                 <Globe className="w-3.5 h-3.5" />
                 <span>Statutory Master Plan 2031 & Geoportals</span>
               </span>
-              <span className="text-xs text-slate-400 dark:text-slate-500 font-mono">
+              <span className="text-xs text-slate-600 dark:text-slate-400 font-mono">
                 ISRO Bhuvan • RSAC-UP • AMRUT
               </span>
             </div>
@@ -830,7 +841,7 @@ export const MapServerExplorer: React.FC = () => {
             <button
               type="button"
               onClick={() => setIsGuideOpen(true)}
-              className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-all shadow-sm active:scale-95"
+              className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold transition-all shadow-sm active:scale-95"
             >
               <BookOpen className="w-3.5 h-3.5" />
               <span>Why GIS Matters (Utility Guide)</span>
@@ -850,7 +861,7 @@ export const MapServerExplorer: React.FC = () => {
         {/* Strategic Corridors Quick Jump */}
         <div className="mt-6 pt-4 border-t border-black/[0.06] dark:border-white/[0.08] space-y-2.5">
           <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-1">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 flex-shrink-0 flex items-center gap-1">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400 flex-shrink-0 flex items-center gap-1">
               <Compass className="w-3 h-3" />
               <span>Strategic Corridors:</span>
             </span>
@@ -861,7 +872,7 @@ export const MapServerExplorer: React.FC = () => {
                 className="px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap transition-all active:scale-95 bg-emerald-50 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-200 border border-emerald-500/20 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 flex items-center gap-1.5"
               >
                 <span>{c.name}</span>
-                <span className="text-[10px] opacity-75 font-normal px-1 rounded bg-black/5 dark:bg-white/10">
+                <span className="text-[10px] font-normal px-1 rounded bg-black/10 dark:bg-white/10">
                   {c.tag}
                 </span>
               </button>
@@ -870,7 +881,7 @@ export const MapServerExplorer: React.FC = () => {
 
           {/* Authority Quick-Jump Pills */}
           <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-1">
-            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 flex-shrink-0">
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400 flex-shrink-0">
               Authorities:
             </span>
             {UP_DEVELOPMENT_AUTHORITIES.slice(0, 10).map((auth) => (
@@ -899,7 +910,7 @@ export const MapServerExplorer: React.FC = () => {
             <div className="space-y-3 pb-3 border-b border-black/[0.06] dark:border-white/[0.08]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Building2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                  <Building2 className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
                   <h3 className="text-sm font-bold text-slate-900 dark:text-white">
                     22 Development Authorities
                   </h3>
@@ -911,10 +922,11 @@ export const MapServerExplorer: React.FC = () => {
 
               {/* Filter Input */}
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
                 <input
                   type="text"
-                  value={searchQuery}
+                  aria-label="Filter development authorities"
+              value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Filter by city, region, or district..."
                   className="w-full bg-slate-100/80 dark:bg-white/[0.06] text-xs text-slate-900 dark:text-white placeholder-slate-400 pl-8 pr-3 py-2 rounded-xl border border-black/[0.06] dark:border-white/[0.08] focus:outline-none focus:border-emerald-500 transition-all"
@@ -939,7 +951,7 @@ export const MapServerExplorer: React.FC = () => {
                     <div
                       className={`w-7 h-7 rounded-lg flex items-center justify-center font-bold text-[11px] flex-shrink-0 mt-0.5 ${
                         isSelected
-                          ? 'bg-emerald-600 text-white'
+                          ? 'bg-emerald-700 text-white'
                           : 'bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-400'
                       }`}
                     >
@@ -951,18 +963,18 @@ export const MapServerExplorer: React.FC = () => {
                         <span className="truncate">{auth.name}</span>
                         <ChevronRight
                           className={`w-3.5 h-3.5 transition-transform ${
-                            isSelected ? 'rotate-90 text-emerald-600' : 'text-slate-400'
+                            isSelected ? 'rotate-90 text-emerald-700 dark:text-emerald-300' : 'text-slate-600 dark:text-slate-400'
                           }`}
                         />
                       </div>
-                      <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate mt-0.5">
+                      <div className="text-[11px] text-slate-600 dark:text-slate-400 truncate mt-0.5">
                         {auth.region}
                       </div>
                       <div className="flex items-center gap-1.5 mt-1.5 flex-wrap">
                         <span className="text-[10px] bg-emerald-100/80 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-semibold px-2 py-0.5 rounded-full">
                           {auth.masterPlanHorizon}
                         </span>
-                        <span className="text-[10px] text-slate-400 font-mono">
+                        <span className="text-[10px] text-slate-600 font-mono dark:text-slate-400">
                           {auth.planningAreaSqKm} km²
                         </span>
                       </div>
@@ -973,9 +985,9 @@ export const MapServerExplorer: React.FC = () => {
             </div>
 
             {/* Bottom Status */}
-            <div className="pt-3 border-t border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
+            <div className="pt-3 border-t border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-400">
               <span>Section 15 Master Plan Gazettes</span>
-              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">100% Enforced</span>
+              <span className="text-emerald-700 dark:text-emerald-400 font-semibold">100% Enforced</span>
             </div>
           </div>
         </div>
@@ -991,7 +1003,7 @@ export const MapServerExplorer: React.FC = () => {
           <div className="apple-card p-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             {/* Basemap Switcher Segmented Control */}
             <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 sm:pb-0">
-              <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider pl-1 mr-1">
+              <span className="text-[11px] font-semibold text-slate-600 uppercase tracking-wider pl-1 mr-1 dark:text-slate-400">
                 Basemap:
               </span>
               {allBasemapProviders.map((base) => (
@@ -1022,12 +1034,13 @@ export const MapServerExplorer: React.FC = () => {
             <form onSubmit={handleLandmarkSearch} className="relative flex items-center">
               <input
                 type="text"
-                value={searchLocationQuery}
+                aria-label="Search a landmark, zone or coordinate pair"
+              value={searchLocationQuery}
                 onChange={(e) => setSearchLocationQuery(e.target.value)}
                 placeholder="Search sector, ghat, or monument..."
                 className="w-full sm:w-56 bg-slate-100/80 dark:bg-white/[0.06] text-xs text-slate-900 dark:text-white placeholder-slate-400 pl-8 pr-3 py-1.5 rounded-full border border-black/[0.06] dark:border-white/[0.08] focus:outline-none focus:border-emerald-500"
               />
-              <Crosshair className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
+              <Crosshair className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
             </form>
           </div>
 
@@ -1037,7 +1050,7 @@ export const MapServerExplorer: React.FC = () => {
             <div className="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-black/[0.06] dark:border-white/[0.08]">
               {/* GIS Tool Modes */}
               <div className="flex items-center space-x-1.5 overflow-x-auto">
-                <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider pl-1 mr-1">
+                <span className="text-[11px] font-semibold text-slate-600 uppercase tracking-wider pl-1 mr-1 dark:text-slate-400">
                   Tool:
                 </span>
                 <button
@@ -1045,7 +1058,7 @@ export const MapServerExplorer: React.FC = () => {
                   onClick={() => handleSetToolMode('inspect')}
                   className={`px-3 py-1.5 rounded-full text-xs font-medium flex items-center space-x-1.5 transition-all ${
                     toolMode === 'inspect'
-                      ? 'bg-emerald-600 text-white font-semibold shadow-xs'
+                      ? 'bg-emerald-700 text-white font-semibold shadow-xs'
                       : 'bg-slate-100 dark:bg-white/[0.06] text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-white/10'
                   }`}
                 >
@@ -1071,7 +1084,7 @@ export const MapServerExplorer: React.FC = () => {
                   onClick={() => handleSetToolMode('area')}
                   className={`px-3 py-1.5 rounded-full text-xs font-medium flex items-center space-x-1.5 transition-all ${
                     toolMode === 'area'
-                      ? 'bg-emerald-600 text-white font-semibold shadow-xs'
+                      ? 'bg-emerald-700 text-white font-semibold shadow-xs'
                       : 'bg-slate-100 dark:bg-white/[0.06] text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-white/10'
                   }`}
                 >
@@ -1081,7 +1094,7 @@ export const MapServerExplorer: React.FC = () => {
               </div>
 
               {/* Vector Layer Opacity Slider */}
-              <div className="flex items-center space-x-2 text-xs text-slate-500 dark:text-slate-400">
+              <div className="flex items-center space-x-2 text-xs text-slate-600 dark:text-slate-400">
                 <SlidersHorizontal className="w-3.5 h-3.5" />
                 <span className="text-[11px] whitespace-nowrap">Fill Opacity:</span>
                 <input
@@ -1089,7 +1102,8 @@ export const MapServerExplorer: React.FC = () => {
                   min="0.15"
                   max="0.85"
                   step="0.05"
-                  value={layerOpacity}
+                  aria-label="Zoning layer opacity"
+              value={layerOpacity}
                   onChange={(e) => setLayerOpacity(parseFloat(e.target.value))}
                   className="w-20 sm:w-24 accent-emerald-600 cursor-pointer"
                 />
@@ -1099,8 +1113,8 @@ export const MapServerExplorer: React.FC = () => {
 
             {/* Layer Toggles */}
             <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pt-0.5">
-              <span className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider pl-1 flex items-center gap-1 flex-shrink-0">
-                <Layers className="w-3.5 h-3.5 text-emerald-600" />
+              <span className="text-[11px] font-semibold text-slate-600 uppercase tracking-wider pl-1 flex items-center gap-1 flex-shrink-0 dark:text-slate-400">
+                <Layers className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-300" />
                 <span>Layers:</span>
               </span>
 
@@ -1110,8 +1124,8 @@ export const MapServerExplorer: React.FC = () => {
                 }
                 className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   layerVisibility.residential
-                    ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-900 dark:text-amber-200 border border-amber-300'
-                    : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-400'
+                    ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-900 dark:text-amber-200 border border-amber-300 dark:border-amber-500/40'
+                    : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400'
                 }`}
               >
                 <span className="w-2 h-2 rounded-full bg-amber-500" />
@@ -1124,8 +1138,8 @@ export const MapServerExplorer: React.FC = () => {
                 }
                 className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   layerVisibility.commercial
-                    ? 'bg-blue-100 dark:bg-blue-950/60 text-blue-900 dark:text-blue-200 border border-blue-300'
-                    : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-400'
+                    ? 'bg-blue-100 dark:bg-blue-950/60 text-blue-900 dark:text-blue-200 border border-blue-300 dark:border-blue-500/40'
+                    : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400'
                 }`}
               >
                 <span className="w-2 h-2 rounded-full bg-blue-600" />
@@ -1138,8 +1152,8 @@ export const MapServerExplorer: React.FC = () => {
                 }
                 className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   layerVisibility.tod
-                    ? 'bg-rose-100 dark:bg-rose-950/60 text-rose-900 dark:text-rose-200 border border-rose-300'
-                    : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-400'
+                    ? 'bg-rose-100 dark:bg-rose-950/60 text-rose-900 dark:text-rose-200 border border-rose-300 dark:border-rose-500/40'
+                    : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400'
                 }`}
               >
                 <span className="w-2 h-2 rounded-full bg-rose-600" />
@@ -1152,8 +1166,8 @@ export const MapServerExplorer: React.FC = () => {
                 }
                 className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   layerVisibility.industrial
-                    ? 'bg-purple-100 dark:bg-purple-950/60 text-purple-900 dark:text-purple-200 border border-purple-300'
-                    : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-400'
+                    ? 'bg-purple-100 dark:bg-purple-950/60 text-purple-900 dark:text-purple-200 border border-purple-300 dark:border-purple-500/40'
+                    : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400'
                 }`}
               >
                 <span className="w-2 h-2 rounded-full bg-purple-600" />
@@ -1166,8 +1180,8 @@ export const MapServerExplorer: React.FC = () => {
                 }
                 className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   layerVisibility.riverBuffers
-                    ? 'bg-sky-100 dark:bg-sky-950/60 text-sky-900 dark:text-sky-200 border border-sky-300'
-                    : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-400'
+                    ? 'bg-sky-100 dark:bg-sky-950/60 text-sky-900 dark:text-sky-200 border border-sky-300 dark:border-sky-500/40'
+                    : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400'
                 }`}
               >
                 <Droplets className="w-3 h-3 text-sky-600" />
@@ -1180,8 +1194,8 @@ export const MapServerExplorer: React.FC = () => {
                 }
                 className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   layerVisibility.aviationFunnels
-                    ? 'bg-indigo-100 dark:bg-indigo-950/60 text-indigo-900 dark:text-indigo-200 border border-indigo-300'
-                    : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-400'
+                    ? 'bg-indigo-100 dark:bg-indigo-950/60 text-indigo-900 dark:text-indigo-200 border border-indigo-300 dark:border-indigo-500/40'
+                    : 'opacity-50 bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400'
                 }`}
               >
                 <Plane className="w-3 h-3 text-indigo-600" />
@@ -1218,21 +1232,21 @@ export const MapServerExplorer: React.FC = () => {
                     <Ruler className="w-3.5 h-3.5" />
                     <span>Road / Corridor Ruler</span>
                   </span>
-                  <span className="text-[10px] font-mono text-slate-400">
+                  <span className="text-[10px] font-mono text-slate-600 dark:text-slate-400">
                     {distancePoints.length} points
                   </span>
                 </div>
 
                 <div className="space-y-1">
                   <div className="flex justify-between items-baseline">
-                    <span className="text-slate-500 text-[11px]">Measured Distance:</span>
+                    <span className="text-slate-600 text-[11px] dark:text-slate-400">Measured Distance:</span>
                     <strong className="text-sm font-bold font-mono text-slate-900 dark:text-white">
                       {totalDistanceMeters >= 1000
                         ? `${(totalDistanceMeters / 1000).toFixed(2)} km`
                         : `${totalDistanceMeters.toFixed(1)} m`}
                     </strong>
                   </div>
-                  <div className="text-[11px] text-slate-500 dark:text-slate-400 flex justify-between">
+                  <div className="text-[11px] text-slate-600 dark:text-slate-400 flex justify-between">
                     <span>Byelaw Road Width Class:</span>
                     <strong className="text-sky-600 dark:text-sky-400">
                       {totalDistanceMeters < 9
@@ -1277,26 +1291,26 @@ export const MapServerExplorer: React.FC = () => {
                     <Scale className="w-3.5 h-3.5" />
                     <span>Plot Footprint & FAR Simulator</span>
                   </span>
-                  <span className="text-[10px] font-mono text-slate-400">
+                  <span className="text-[10px] font-mono text-slate-600 dark:text-slate-400">
                     {areaPoints.length} vertices
                   </span>
                 </div>
 
                 <div className="grid grid-cols-3 gap-2 text-center p-2 bg-slate-50 dark:bg-white/[0.03] rounded-xl border border-black/[0.04] dark:border-white/[0.06]">
                   <div>
-                    <span className="text-[10px] text-slate-400 block">Square Meters</span>
+                    <span className="text-[10px] text-slate-600 block dark:text-slate-400">Square Meters</span>
                     <strong className="text-xs font-bold text-slate-900 dark:text-white font-mono">
                       {Math.round(measuredAreaSqM).toLocaleString()} m²
                     </strong>
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-400 block">Gaj (Sq. Yds)</span>
-                    <strong className="text-xs font-bold text-emerald-600 dark:text-emerald-400 font-mono">
+                    <span className="text-[10px] text-slate-600 block dark:text-slate-400">Gaj (Sq. Yds)</span>
+                    <strong className="text-xs font-bold text-emerald-700 dark:text-emerald-400 font-mono">
                       {Math.round(measuredAreaSqM * 1.19599).toLocaleString()}
                     </strong>
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-400 block">Acres</span>
+                    <span className="text-[10px] text-slate-600 block dark:text-slate-400">Acres</span>
                     <strong className="text-xs font-bold text-indigo-600 dark:text-indigo-400 font-mono">
                       {(measuredAreaSqM / 4046.86).toFixed(3)}
                     </strong>
@@ -1337,7 +1351,7 @@ export const MapServerExplorer: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => handleSetToolMode('inspect')}
-                    className="flex-1 px-2.5 py-1 rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 text-[11px] font-semibold transition-colors flex items-center justify-center gap-1"
+                    className="flex-1 px-2.5 py-1 rounded-lg bg-emerald-700 text-white hover:bg-emerald-800 text-[11px] font-semibold transition-colors flex items-center justify-center gap-1"
                   >
                     <Check className="w-3 h-3" />
                     <span>Done</span>
@@ -1380,8 +1394,8 @@ export const MapServerExplorer: React.FC = () => {
                         </span>
                       )}
                     </h4>
-                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                      Nearest Authority: <strong>{spatialAudit.nearestAuthority.name}</strong> ({spatialAudit.distanceToAuthorityCenterKm} km from center) • Elevation: ~{spatialAudit.elevationAmslMeters ?? spatialAudit.estimatedElevationAmsl}m AMSL
+                    <p className="text-[11px] text-slate-600 dark:text-slate-400">
+                      Nearest Authority: <strong>{spatialAudit.nearestAuthority.name}</strong> ({spatialAudit.distanceToAuthorityCenterKm} km from center) • Elevation ~{spatialAudit.elevationAmslMeters ?? spatialAudit.estimatedElevationAmsl}m AMSL (indicative)
                     </p>
                   </div>
                 </div>
@@ -1390,7 +1404,7 @@ export const MapServerExplorer: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => setIsDossierOpen(true)}
-                    className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-all shadow-sm active:scale-95 whitespace-nowrap"
+                    className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold transition-all shadow-sm active:scale-95 whitespace-nowrap"
                   >
                     <FileCheck2 className="w-4 h-4" />
                     <span>Statutory Dossier Certificate</span>
@@ -1401,45 +1415,45 @@ export const MapServerExplorer: React.FC = () => {
               {/* Audit Metrics Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 text-xs">
                 <div className="p-3 bg-slate-50 dark:bg-white/[0.04] rounded-xl border border-black/[0.04] dark:border-white/[0.06]">
-                  <span className="text-slate-400 text-[11px] block">Permissible FAR</span>
+                  <span className="text-slate-600 text-[11px] block dark:text-slate-400">Permissible FAR</span>
                   <strong className="text-slate-900 dark:text-white font-bold text-sm block mt-0.5">
                     {spatialAudit.recommendedFAR}
                   </strong>
-                  <span className="text-[10px] text-emerald-600 block mt-0.5">
+                  <span className="text-[10px] text-emerald-700 block mt-0.5 dark:text-emerald-300">
                     {spatialAudit.isTODZone ? 'TOD Corridors: Up to 4.0 FAR' : 'Standard Cap'}
                   </span>
                 </div>
 
                 <div className="p-3 bg-slate-50 dark:bg-white/[0.04] rounded-xl border border-black/[0.04] dark:border-white/[0.06]">
-                  <span className="text-slate-400 text-[11px] block">Ground Coverage</span>
+                  <span className="text-slate-600 text-[11px] block dark:text-slate-400">Ground Coverage</span>
                   <strong className="text-slate-900 dark:text-white font-bold text-sm block mt-0.5">
                     {spatialAudit.maxGroundCoverage}
                   </strong>
-                  <span className="text-[10px] text-slate-500 block mt-0.5">
-                    Elev: ~{spatialAudit.elevationAmslMeters ?? spatialAudit.estimatedElevationAmsl}m AMSL
+                  <span className="text-[10px] text-slate-600 block mt-0.5 dark:text-slate-400">
+                    Elev ~{spatialAudit.elevationAmslMeters ?? spatialAudit.estimatedElevationAmsl}m (est.)
                   </span>
                 </div>
 
                 <div className="p-3 bg-slate-50 dark:bg-white/[0.04] rounded-xl border border-black/[0.04] dark:border-white/[0.06]">
-                  <span className="text-slate-400 text-[11px] block">River 200m HFL Buffer</span>
+                  <span className="text-slate-600 text-[11px] block dark:text-slate-400">River 200m HFL Buffer</span>
                   <span
                     className={`inline-flex items-center gap-1 font-bold text-xs mt-0.5 ${
-                      spatialAudit.isRiverBufferConflict || spatialAudit.isProhibitedZone ? 'text-rose-600' : 'text-emerald-600'
+                      spatialAudit.isRiverBufferConflict || spatialAudit.isProhibitedZone ? 'text-rose-600' : 'text-emerald-700 dark:text-emerald-300'
                     }`}
                   >
                     {spatialAudit.isRiverBufferConflict || spatialAudit.isProhibitedZone ? 'Conflict (Sec 2.11)' : 'Clear (Sec 2.11 Passed)'}
                   </span>
-                  <span className="text-[10px] text-slate-500 block mt-0.5">
+                  <span className="text-[10px] text-slate-600 block mt-0.5 dark:text-slate-400">
                     ~{spatialAudit.riverDistanceKm ?? spatialAudit.distanceToNearestRiverKm}km to {spatialAudit.nearestRiverName || 'River Channel'}
                   </span>
                 </div>
 
                 <div className="p-3 bg-slate-50 dark:bg-white/[0.04] rounded-xl border border-black/[0.04] dark:border-white/[0.06]">
-                  <span className="text-slate-400 text-[11px] block">Aviation CCZM & OLS</span>
+                  <span className="text-slate-600 text-[11px] block dark:text-slate-400">Aviation CCZM & OLS</span>
                   <strong className="text-slate-900 dark:text-white font-bold text-xs block mt-0.5">
                     {spatialAudit.isAirportOLSConflict ? 'CCZM 45m Height Cap' : 'OLS Funnel Clear'}
                   </strong>
-                  <span className="text-[10px] text-slate-500 block mt-0.5">
+                  <span className="text-[10px] text-slate-600 block mt-0.5 dark:text-slate-400">
                     ~{spatialAudit.airportDistanceKm ?? spatialAudit.distanceToNearestAirportKm}km to {spatialAudit.nearestAirportName || 'Airport Runway'}
                   </span>
                 </div>
@@ -1453,7 +1467,7 @@ export const MapServerExplorer: React.FC = () => {
               {/* Mandatory Statutory Clearances List */}
               {spatialAudit.requiredNOCs && spatialAudit.requiredNOCs.length > 0 && (
                 <div className="space-y-1.5 pt-1">
-                  <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider block">
+                  <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider block dark:text-slate-400">
                     Statutory Clearances Required for this Coordinate ({spatialAudit.requiredNOCs.length}):
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
@@ -1469,12 +1483,12 @@ export const MapServerExplorer: React.FC = () => {
                           key={idx}
                           className="p-2.5 rounded-xl border text-xs flex items-start gap-2 bg-amber-500/5 border-amber-500/20 text-slate-800 dark:text-slate-200"
                         >
-                          <ShieldCheck className="w-4 h-4 flex-shrink-0 mt-0.5 text-amber-600" />
+                          <ShieldCheck className="w-4 h-4 flex-shrink-0 mt-0.5 text-amber-700 dark:text-amber-300" />
                           <div className="min-w-0">
                             <strong className="block truncate text-slate-900 dark:text-white font-semibold">
                               {title}
                             </strong>
-                            <span className="text-[10px] text-slate-500 block">
+                            <span className="text-[10px] text-slate-600 block dark:text-slate-400">
                               {subtitle}
                             </span>
                           </div>
@@ -1504,31 +1518,31 @@ export const MapServerExplorer: React.FC = () => {
                   </span>
                 </div>
 
-                <span className="text-xs font-semibold text-slate-500">
+                <span className="text-xs font-semibold text-slate-600 dark:text-slate-400">
                   {selectedZoningFeature.standardizedChapter15Zone}
                 </span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-xs">
                 <div className="p-3 bg-slate-50 dark:bg-white/[0.04] rounded-xl border border-black/[0.04] dark:border-white/[0.06]">
-                  <span className="text-slate-400 block text-[11px]">Permissible FAR</span>
+                  <span className="text-slate-600 block text-[11px] dark:text-slate-400">Permissible FAR</span>
                   <strong className="text-slate-900 dark:text-white font-bold block mt-0.5">
                     {selectedZoningFeature.permittedFAR}
                   </strong>
-                  <span className="text-[10px] text-emerald-600 block mt-0.5 font-medium">
+                  <span className="text-[10px] text-emerald-700 block mt-0.5 font-medium dark:text-emerald-300">
                     Purchasable: {selectedZoningFeature.purchasableFARCap}
                   </span>
                 </div>
 
                 <div className="p-3 bg-slate-50 dark:bg-white/[0.04] rounded-xl border border-black/[0.04] dark:border-white/[0.06]">
-                  <span className="text-slate-400 block text-[11px]">Max Ground Coverage</span>
+                  <span className="text-slate-600 block text-[11px] dark:text-slate-400">Max Ground Coverage</span>
                   <strong className="text-slate-900 dark:text-white font-bold block mt-0.5">
                     {selectedZoningFeature.maxGroundCoverage}
                   </strong>
                 </div>
 
                 <div className="p-3 bg-slate-50 dark:bg-white/[0.04] rounded-xl border border-black/[0.04] dark:border-white/[0.06]">
-                  <span className="text-slate-400 block text-[11px]">Min Access Road</span>
+                  <span className="text-slate-600 block text-[11px] dark:text-slate-400">Min Access Road</span>
                   <strong className="text-slate-900 dark:text-white font-bold block mt-0.5">
                     {selectedZoningFeature.minRoadWidth}
                   </strong>
@@ -1554,7 +1568,7 @@ export const MapServerExplorer: React.FC = () => {
                       {selectedAuthority.name}
                     </h3>
                   </div>
-                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
                     {selectedAuthority.region} • Jurisdiction Area: {selectedAuthority.planningAreaSqKm} sq. km
                   </p>
                 </div>
@@ -1564,7 +1578,7 @@ export const MapServerExplorer: React.FC = () => {
                     href={selectedAuthority.gisServerUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center space-x-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full text-xs font-semibold shadow-sm transition-all active:scale-95"
+                    className="inline-flex items-center space-x-1.5 px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-white rounded-full text-xs font-semibold shadow-sm transition-all active:scale-95"
                   >
                     <span>Launch Live {selectedAuthority.portalName}</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -1574,7 +1588,7 @@ export const MapServerExplorer: React.FC = () => {
 
               {/* Authority Features Grid */}
               <div className="space-y-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-400">
                   Key Spatial Envelopes & Planning Directives:
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -1604,12 +1618,12 @@ export const MapServerExplorer: React.FC = () => {
       <div className="apple-card p-6 space-y-4">
         <div className="flex items-center justify-between border-b border-black/[0.06] dark:border-white/[0.08] pb-3">
           <div className="flex items-center space-x-2">
-            <Database className="w-5 h-5 text-emerald-600 dark:text-emerald-400" />
+            <Database className="w-5 h-5 text-emerald-700 dark:text-emerald-400" />
             <h3 className="text-base font-bold text-slate-900 dark:text-white">
               Official Government Geoportals & Spatial Repositories
             </h3>
           </div>
-          <span className="text-xs text-slate-500 dark:text-slate-400">
+          <span className="text-xs text-slate-600 dark:text-slate-400">
             Direct WMS / WebGIS Endpoints
           </span>
         </div>
@@ -1622,15 +1636,15 @@ export const MapServerExplorer: React.FC = () => {
             className="apple-card apple-card-hover p-4 group"
           >
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold uppercase text-emerald-600 tracking-wider">
+              <span className="text-[10px] font-bold uppercase text-emerald-700 tracking-wider dark:text-emerald-300">
                 ISRO National Portal
               </span>
-              <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-600" />
+              <ExternalLink className="w-3.5 h-3.5 text-slate-600 group-hover:text-emerald-600 dark:text-slate-400" />
             </div>
             <div className="font-bold text-slate-900 dark:text-white text-sm mt-1">
               ISRO Bhuvan Urban GIS
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
               High-resolution Indian satellite imagery layers (Cartosat/Resourcesat) and AMRUT Master Plan geospatial sub-schemes across 22 UP cities.
             </p>
           </a>
@@ -1642,15 +1656,15 @@ export const MapServerExplorer: React.FC = () => {
             className="apple-card apple-card-hover p-4 group"
           >
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold uppercase text-emerald-600 tracking-wider">
+              <span className="text-[10px] font-bold uppercase text-emerald-700 tracking-wider dark:text-emerald-300">
                 State Spatial Geodatabase
               </span>
-              <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-600" />
+              <ExternalLink className="w-3.5 h-3.5 text-slate-600 group-hover:text-emerald-600 dark:text-slate-400" />
             </div>
             <div className="font-bold text-slate-900 dark:text-white text-sm mt-1">
               RSAC-UP Spatial Data
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
               Remote Sensing Applications Centre, UP: Official state spatial infrastructure for drainage catchments, green belts, and master plan boundaries.
             </p>
           </a>
@@ -1662,15 +1676,15 @@ export const MapServerExplorer: React.FC = () => {
             className="apple-card apple-card-hover p-4 group"
           >
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold uppercase text-emerald-600 tracking-wider">
+              <span className="text-[10px] font-bold uppercase text-emerald-700 tracking-wider dark:text-emerald-300">
                 Statutory Authority
               </span>
-              <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-600" />
+              <ExternalLink className="w-3.5 h-3.5 text-slate-600 group-hover:text-emerald-600 dark:text-slate-400" />
             </div>
             <div className="font-bold text-slate-900 dark:text-white text-sm mt-1">
               Awas Bandhu UP
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
               Housing & Urban Planning Department repository of Government Orders, Byelaws 2025 gazette notifications, and state urban development policies.
             </p>
           </a>
@@ -1682,15 +1696,15 @@ export const MapServerExplorer: React.FC = () => {
             className="apple-card apple-card-hover p-4 group"
           >
             <div className="flex items-center justify-between">
-              <span className="text-[10px] font-bold uppercase text-emerald-600 tracking-wider">
+              <span className="text-[10px] font-bold uppercase text-emerald-700 tracking-wider dark:text-emerald-300">
                 Single Window Clearance
               </span>
-              <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-600" />
+              <ExternalLink className="w-3.5 h-3.5 text-slate-600 group-hover:text-emerald-600 dark:text-slate-400" />
             </div>
             <div className="font-bold text-slate-900 dark:text-white text-sm mt-1">
               Nivesh Mitra OBPAS
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
               Automated Online Building Plan Approval System (OBPAS) with unified 15-department time-bound deemed NOC engine across Uttar Pradesh.
             </p>
           </a>
@@ -1711,7 +1725,7 @@ export const MapServerExplorer: React.FC = () => {
       <SpatialDossierModal
         isOpen={isDossierOpen}
         onClose={() => setIsDossierOpen(false)}
-        audit={spatialAudit}
+        spatialAudit={spatialAudit}
       />
 
       {/* Strategic GIS Value & Utility Guide Modal */}

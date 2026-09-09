@@ -1,212 +1,188 @@
 import React, { useState } from 'react';
-import {
-  BookOpen,
-  Calculator,
-  Compass,
-  MapPin,
-  FileCheck2,
-  Bot,
-  Search,
-  Globe,
-  CheckSquare,
-  Sun,
-  Moon,
-  Sparkles,
-  Command,
-  ChevronRight
-} from 'lucide-react';
-import { DOCUMENT_METADATA } from '../data/byelawsData';
+import { Command, Download, Menu, Monitor, Moon, Search, Sun, X } from 'lucide-react';
+import { TABS, TabId } from '../navigation';
+import { useTheme } from '../context/ThemeContext';
+import { useProject } from '../context/ProjectContext';
+import { OCCUPANCY_LABELS } from '../domain/project';
 
 interface HeaderProps {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
+  activeTab: TabId;
+  onNavigate: (tab: TabId) => void;
   searchQuery: string;
   setSearchQuery: (query: string) => void;
-  isDark?: boolean;
-  onToggleTheme?: () => void;
+  onOpenPalette: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({
-  activeTab,
-  setActiveTab,
-  searchQuery,
-  setSearchQuery,
-  isDark = false,
-  onToggleTheme,
-}) => {
-  const [isSearchFocused, setIsSearchFocused] = useState(false);
+export const Header: React.FC<HeaderProps> = ({ activeTab, onNavigate, searchQuery, setSearchQuery, onOpenPalette }) => {
+  const { preference, resolved, cycle } = useTheme();
+  const { project } = useProject();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  const navItems = [
-    {
-      id: 'maps',
-      label: 'Spatial GIS & Bhuvan',
-      icon: Globe,
-      badge: '22 Authorities',
-      highlight: true
-    },
-    {
-      id: 'audit',
-      label: 'Compliance Audit',
-      icon: CheckSquare,
-      badge: 'Live'
-    },
-    {
-      id: 'navigator',
-      label: 'Statutory Byelaws Code',
-      icon: BookOpen
-    },
-    {
-      id: 'calculators',
-      label: 'FAR & Fee Engine',
-      icon: Calculator
-    },
-    {
-      id: 'visualizer',
-      label: '2D Setbacks',
-      icon: Compass,
-      badge: 'Sec 32'
-    },
-    {
-      id: 'rationale',
-      label: 'Planning Rationale',
-      icon: Sparkles,
-      badge: 'NBC / IS'
-    },
-    {
-      id: 'zoning',
-      label: 'Zoning Matrix',
-      icon: MapPin
-    },
-    {
-      id: 'forms',
-      label: 'Statutory Forms',
-      icon: FileCheck2
-    },
-    {
-      id: 'ai-assistant',
-      label: 'AI Regulatory Copilot',
-      icon: Bot
-    },
-  ];
+  const ThemeIcon = preference === 'system' ? Monitor : resolved === 'dark' ? Sun : Moon;
+  const themeLabel =
+    preference === 'system' ? 'Theme: match system' : preference === 'dark' ? 'Theme: dark' : 'Theme: light';
+
+  const handleNavigate = (tab: TabId) => {
+    onNavigate(tab);
+    setMobileMenuOpen(false);
+  };
 
   return (
-    <header className="sticky top-0 z-50 w-full transition-all duration-300">
-      {/* Top Apple Frosted Glass Header */}
+    <header className="sticky top-0 z-50 w-full print:hidden">
       <div className="apple-glass border-b border-black/[0.06] dark:border-white/[0.08]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 gap-4">
-            {/* Brand Logo & Statutory Title */}
-            <div className="flex items-center space-x-3.5 flex-shrink-0 cursor-pointer" onClick={() => setActiveTab('maps')}>
-              <div className="relative group">
-                <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-600 to-emerald-700 dark:from-emerald-400 dark:to-teal-600 flex items-center justify-center text-white font-bold text-sm shadow-[0_4px_16px_rgba(16,185,129,0.25)] transition-transform duration-200 group-hover:scale-105">
-                  UP
-                </div>
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 rounded-full border-2 border-white dark:border-black animate-pulse" />
-              </div>
-
-              <div>
-                <div className="flex items-center space-x-2">
-                  <h1 className="text-base sm:text-lg font-semibold tracking-tight text-slate-900 dark:text-white">
-                    Uttar Pradesh Byelaws
-                  </h1>
-                  <span className="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 dark:bg-white/10 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-white/10 font-mono tracking-tight">
-                    2025 Code
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between gap-3">
+            <button
+              type="button"
+              onClick={() => handleNavigate('audit')}
+              className="flex flex-shrink-0 items-center gap-3 rounded-xl text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40"
+            >
+              <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-600 to-emerald-700 text-sm font-bold text-white shadow-[0_4px_16px_rgba(16,185,129,0.25)]">
+                UP
+              </span>
+              <span className="hidden sm:block">
+                <span className="flex items-center gap-2">
+                  <span className="text-base font-semibold tracking-tight text-slate-900 dark:text-white">
+                    Building Byelaws
                   </span>
-                </div>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 tracking-tight flex items-center gap-1.5 hidden sm:flex">
-                  <span>Housing & Urban Planning Dept</span>
-                  <span className="w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
-                  <span className="text-emerald-600 dark:text-emerald-400 font-medium">Bhuvan & RSAC-UP Integrated</span>
-                </p>
-              </div>
-            </div>
+                  <span className="rounded-full border border-slate-200/60 bg-slate-100 px-2 py-0.5 font-mono text-[11px] font-semibold tracking-tight text-slate-700 dark:border-white/10 dark:bg-white/10 dark:text-slate-300">
+                    2025
+                  </span>
+                </span>
+                <span className="block text-[11px] tracking-tight text-slate-600 dark:text-slate-400">
+                  Housing &amp; Urban Planning Dept, Uttar Pradesh
+                </span>
+              </span>
+            </button>
 
-            {/* Apple Search Bar */}
-            <div className="flex-1 max-w-md mx-2 hidden md:block">
-              <div className={`relative transition-all duration-200 ${isSearchFocused ? 'scale-[1.01]' : ''}`}>
-                <Search className={`absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 transition-colors ${
-                  isSearchFocused ? 'text-emerald-600 dark:text-emerald-400' : 'text-slate-400'
-                }`} />
+            {/* One search box for both breakpoints; on small screens it opens the palette. */}
+            <div className="mx-2 hidden max-w-md flex-1 md:block">
+              <div className="relative">
+                <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-600 dark:text-slate-400" aria-hidden="true" />
+                <label htmlFor="global-search" className="sr-only">
+                  Search the byelaws text
+                </label>
                 <input
-                  type="text"
+                  id="global-search"
+                  type="search"
                   value={searchQuery}
-                  onFocus={() => setIsSearchFocused(true)}
-                  onBlur={() => setIsSearchFocused(false)}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search statutory rules, FAR slabs, setbacks, Section 3.2.2, GIS..."
-                  className="w-full h-9 bg-slate-100/80 dark:bg-white/[0.08] hover:bg-slate-100 dark:hover:bg-white/[0.12] focus:bg-white dark:focus:bg-black/90 text-xs sm:text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 pl-10 pr-12 rounded-full border border-black/[0.06] dark:border-white/[0.08] focus:border-emerald-500/50 dark:focus:border-emerald-400/50 focus:outline-none focus:ring-2 focus:ring-emerald-500/15 transition-all shadow-xs"
+                  placeholder="Search clauses, tables and definitions…"
+                  className="h-9 w-full rounded-full border border-black/[0.06] bg-slate-100/80 pl-10 pr-20 text-sm text-slate-900 placeholder-slate-400 transition-all focus:border-emerald-500/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/15 dark:border-white/[0.08] dark:bg-white/[0.08] dark:text-white dark:placeholder-slate-500 dark:focus:bg-black/90"
                 />
                 {searchQuery ? (
                   <button
+                    type="button"
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] font-medium bg-slate-200 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/20 px-2 py-0.5 rounded-full text-slate-600 dark:text-slate-300 transition-colors"
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-full bg-slate-200 px-2 py-0.5 text-[10px] font-medium text-slate-600 transition-colors hover:bg-slate-300 dark:bg-white/10 dark:text-slate-300 dark:hover:bg-white/20"
                   >
                     Clear
                   </button>
                 ) : (
-                  <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center space-x-0.5 text-[10px] text-slate-400 dark:text-slate-500 font-mono pointer-events-none">
-                    <Command className="w-3 h-3" />
-                    <span>K</span>
-                  </div>
+                  <button
+                    type="button"
+                    onClick={onOpenPalette}
+                    title="Open the command palette"
+                    className="absolute right-2 top-1/2 flex -translate-y-1/2 items-center gap-0.5 rounded-full px-1.5 py-1 font-mono text-[10px] text-slate-600 transition-colors hover:bg-slate-200/70 hover:text-slate-600 dark:text-slate-400 dark:hover:bg-white/10"
+                  >
+                    <Command className="h-3 w-3" aria-hidden="true" />K
+                  </button>
                 )}
               </div>
             </div>
 
-            {/* Quick Actions & Apple Theme Switcher */}
-            <div className="flex items-center space-x-2">
-              <div className="hidden lg:flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-emerald-500/10 dark:bg-emerald-400/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-300 text-xs font-medium">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                <span className="font-semibold">22 Authorities Active</span>
-              </div>
+            <div className="flex items-center gap-2">
+              <a
+                href="/UP_Building_Byelaws_2025.pdf"
+                download="UP_Building_Construction_and_Development_Byelaws_2025.pdf"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-emerald-500/25 bg-emerald-500/10 px-3 py-1.5 text-xs font-semibold text-emerald-700 transition-all hover:bg-emerald-500/20 active:scale-95 dark:bg-emerald-400/10 dark:text-emerald-300"
+                title="Download Official Gazetted UP Building Byelaws 2025 PDF (TMPR8)"
+              >
+                <Download className="h-3.5 w-3.5" aria-hidden="true" />
+                <span>Gazette PDF</span>
+              </a>
 
-              {onToggleTheme && (
-                <button
-                  onClick={onToggleTheme}
-                  title={isDark ? "Switch to Apple Light Theme" : "Switch to Apple Dark Theme"}
-                  className="w-9 h-9 rounded-full flex items-center justify-center bg-slate-100 hover:bg-slate-200 dark:bg-white/[0.08] dark:hover:bg-white/[0.14] text-slate-600 dark:text-slate-300 border border-black/[0.06] dark:border-white/[0.08] transition-all active:scale-95"
-                  aria-label="Toggle theme"
-                >
-                  {isDark ? (
-                    <Sun className="w-4 h-4 text-amber-400 transition-transform rotate-0 hover:rotate-90 duration-300" />
-                  ) : (
-                    <Moon className="w-4 h-4 text-slate-600 transition-transform rotate-0 hover:-rotate-12 duration-300" />
-                  )}
-                </button>
-              )}
+              {/* Live project chip: the site being assessed, visible from every tab. */}
+              <button
+                type="button"
+                onClick={() => handleNavigate('audit')}
+                className="hidden items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1.5 text-xs font-medium text-emerald-700 transition-colors hover:bg-emerald-500/15 lg:flex dark:bg-emerald-400/10 dark:text-emerald-300"
+                title="The project every tab is working from"
+              >
+                <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
+                <span className="font-semibold tabular-nums">{project.plotArea} m²</span>
+                <span className="text-emerald-700 dark:text-emerald-400/70">
+                  {OCCUPANCY_LABELS[project.occupancy]}
+                </span>
+              </button>
+
+              <button
+                type="button"
+                onClick={onOpenPalette}
+                aria-label="Search and jump to a tool"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-black/[0.06] bg-slate-100 text-slate-600 transition-all active:scale-95 hover:bg-slate-200 md:hidden dark:border-white/[0.08] dark:bg-white/[0.08] dark:text-slate-300"
+              >
+                <Search className="h-4 w-4" aria-hidden="true" />
+              </button>
+
+              <button
+                type="button"
+                onClick={cycle}
+                title={themeLabel}
+                aria-label={themeLabel}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-black/[0.06] bg-slate-100 text-slate-600 transition-all active:scale-95 hover:bg-slate-200 dark:border-white/[0.08] dark:bg-white/[0.08] dark:text-slate-300 dark:hover:bg-white/[0.14]"
+              >
+                <ThemeIcon className="h-4 w-4" aria-hidden="true" />
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen((open) => !open)}
+                aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-nav"
+                aria-label={mobileMenuOpen ? 'Close navigation' : 'Open navigation'}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-black/[0.06] bg-slate-100 text-slate-600 transition-all active:scale-95 lg:hidden dark:border-white/[0.08] dark:bg-white/[0.08] dark:text-slate-300"
+              >
+                {mobileMenuOpen ? <X className="h-4 w-4" aria-hidden="true" /> : <Menu className="h-4 w-4" aria-hidden="true" />}
+              </button>
             </div>
           </div>
         </div>
 
-        {/* Apple Segmented Navigation Pills Bar */}
-        <div className="border-t border-black/[0.04] dark:border-white/[0.06] bg-white/60 dark:bg-black/40 backdrop-blur-md relative">
-          <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <nav className="flex space-x-1.5 py-2 overflow-x-auto scrollbar-none items-center px-2 scroll-smooth">
-              {navItems.map((item) => {
-                const Icon = item.icon;
-                const isActive = activeTab === item.id;
+        {/* Desktop tabs */}
+        <div className="relative hidden border-t border-black/[0.04] bg-white/60 backdrop-blur-md lg:block dark:border-white/[0.06] dark:bg-black/40">
+          <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <nav role="tablist" aria-label="Portal sections" className="flex items-center gap-1.5 overflow-x-auto px-2 py-2">
+              {TABS.map((tab) => {
+                const Icon = tab.icon;
+                const isActive = activeTab === tab.id;
                 return (
                   <button
-                    key={item.id}
-                    onClick={() => setActiveTab(item.id)}
-                    className={`relative flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all duration-200 active:scale-95 ${
+                    key={tab.id}
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-current={isActive ? 'page' : undefined}
+                    onClick={() => handleNavigate(tab.id)}
+                    title={tab.description}
+                    className={`relative flex items-center gap-2 whitespace-nowrap rounded-full px-3.5 py-1.5 text-xs font-medium transition-all active:scale-95 ${
                       isActive
-                        ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-semibold shadow-[0_2px_8px_rgba(0,0,0,0.12)]'
-                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-white/[0.06]'
+                        ? 'bg-slate-900 font-semibold text-white shadow-[0_2px_8px_rgba(0,0,0,0.12)] dark:bg-white dark:text-slate-950'
+                        : 'text-slate-600 hover:bg-slate-100/80 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-white/[0.06] dark:hover:text-white'
                     }`}
                   >
-                    <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-white dark:text-slate-950' : 'text-slate-400 dark:text-slate-500'}`} />
-                    <span>{item.label}</span>
-                    {item.badge && (
+                    <Icon className={`h-3.5 w-3.5 ${isActive ? '' : 'text-slate-600 dark:text-slate-400'}`} aria-hidden="true" />
+                    {tab.label}
+                    {tab.badge && (
                       <span
-                        className={`text-[9px] px-1.5 py-0.5 rounded-full font-bold uppercase tracking-wider ${
+                        className={`rounded-full px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider ${
                           isActive
-                            ? 'bg-white/20 dark:bg-slate-950/20 text-white dark:text-slate-900'
-                            : item.highlight
-                            ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 font-semibold'
-                            : 'bg-slate-200 dark:bg-white/10 text-slate-600 dark:text-slate-400'
+                            ? 'bg-white/20 text-white dark:bg-slate-950/20 dark:text-slate-900'
+                            : tab.highlight
+                              ? 'bg-emerald-500/15 font-semibold text-emerald-700 dark:text-emerald-300'
+                              : 'bg-slate-200 text-slate-600 dark:bg-white/10 dark:text-slate-400'
                         }`}
                       >
-                        {item.badge}
+                        {tab.badge}
                       </span>
                     )}
                   </button>
@@ -214,6 +190,54 @@ export const Header: React.FC<HeaderProps> = ({
               })}
             </nav>
           </div>
+        </div>
+
+        {/* Mobile menu: a real list with descriptions, not a strip of pills to swipe. */}
+        {mobileMenuOpen && (
+          <div id="mobile-nav" className="border-t border-black/[0.04] bg-white/95 backdrop-blur-xl lg:hidden dark:border-white/[0.06] dark:bg-black/95">
+            <nav aria-label="Portal sections" className="mx-auto grid max-w-7xl gap-1 px-4 py-3 sm:grid-cols-2">
+              {TABS.map((tab) => {
+                const Icon = tab.icon;
+                const isActive = activeTab === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => handleNavigate(tab.id)}
+                    aria-current={isActive ? 'page' : undefined}
+                    className={`flex items-start gap-3 rounded-xl p-3 text-left transition-colors ${
+                      isActive ? 'bg-emerald-500/10' : 'hover:bg-slate-100 dark:hover:bg-white/[0.06]'
+                    }`}
+                  >
+                    <Icon
+                      className={`mt-0.5 h-4 w-4 flex-shrink-0 ${isActive ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-600 dark:text-slate-400'}`}
+                      aria-hidden="true"
+                    />
+                    <span className="min-w-0">
+                      <span className={`block text-xs font-semibold ${isActive ? 'text-emerald-800 dark:text-emerald-200' : 'text-slate-800 dark:text-slate-200'}`}>
+                        {tab.label}
+                      </span>
+                      <span className="mt-0.5 block text-[11px] leading-snug text-slate-600 dark:text-slate-400">
+                        {tab.description}
+                      </span>
+                    </span>
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
+        )}
+      </div>
+
+      <div className="border-b border-black/[0.04] bg-white/60 backdrop-blur-md dark:border-white/[0.06] dark:bg-[#161617]/60">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-1 px-4 py-2 text-[11px] sm:flex-row sm:px-6 lg:px-8">
+          <p className="flex items-center gap-2 text-slate-600 dark:text-slate-400">
+            <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
+            <span className="font-medium text-slate-800 dark:text-slate-200">Gazette enacted:</span>
+            UP Building Construction &amp; Development Byelaws 2025
+          </p>
+          <p className="text-slate-600 dark:text-slate-400">
+            Decision-support tool — verify against the gazette before submission
+          </p>
         </div>
       </div>
     </header>

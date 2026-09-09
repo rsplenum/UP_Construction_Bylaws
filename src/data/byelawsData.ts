@@ -17,6 +17,11 @@ import {
   PermissibilityStatus,
   ActivityPermissibilityRule,
 } from '../types';
+import {
+  PURCHASABLE_FAR_MIN_ROAD_WIDTH,
+  RESIDENTIAL_TELESCOPIC_SLABS,
+  resolveBaseFar,
+} from '../domain/far';
 
 export const DOCUMENT_METADATA = {
   title: "Uttar Pradesh Building Construction and Development Byelaws 2025",
@@ -1402,72 +1407,59 @@ export interface TelescopicSlabDefinition {
   baseFAR: number;
 }
 
-export const RESIDENTIAL_PLOTTED_FAR_SLABS: TelescopicSlabDefinition[] = [
-  { slabIndex: 1, slabRange: "Up to 150 sqm", minArea: 0, maxArea: 150, slabCapacity: 150, baseFAR: 2.00 },
-  { slabIndex: 2, slabRange: ">150 to 300 sqm", minArea: 150, maxArea: 300, slabCapacity: 150, baseFAR: 1.80 },
-  { slabIndex: 3, slabRange: ">300 to 500 sqm", minArea: 300, maxArea: 500, slabCapacity: 200, baseFAR: 1.75 },
-  { slabIndex: 4, slabRange: ">500 to 1200 sqm", minArea: 500, maxArea: 1200, slabCapacity: 700, baseFAR: 1.50 },
-  { slabIndex: 5, slabRange: ">1200 sqm", minArea: 1200, maxArea: Infinity, slabCapacity: Infinity, baseFAR: 1.25 },
-];
+/**
+ * Presentation view of the telescopic ladder.
+ *
+ * The numbers live in src/domain/far.ts — this array is derived from them so the table
+ * shown in the UI cannot drift from the ladder the compliance engine actually applies.
+ */
+export const RESIDENTIAL_PLOTTED_FAR_SLABS: TelescopicSlabDefinition[] = RESIDENTIAL_TELESCOPIC_SLABS.map(
+  (slab) => ({
+    slabIndex: slab.index,
+    slabRange: slab.label,
+    minArea: slab.overMoreThan,
+    maxArea: slab.upToAndIncluding,
+    slabCapacity: slab.capacity,
+    baseFAR: slab.far,
+  }),
+);
 
 /**
- * Pure TypeScript implementation of Section 3.2.2 & 3.2.2.1 telescopic FAR calculation
- * for plotted residential land.
+ * Section 3.2.2 / 3.2.2.1 telescopic FAR, delegating to the shared resolver.
+ *
+ * This function used to hold a second implementation of the ladder. It is kept as a thin
+ * adapter so existing call sites continue to work, but it no longer owns any figures.
  */
 export function calculateTelescopicResidentialFAR(plotArea: number): TelescopicFarResult {
-  const sanitizedPlotArea = Math.max(0, Number(plotArea) || 0);
+  // Road width is irrelevant to the base ladder; pass the purchasable-FAR threshold so
+  // the ceiling reported here is the unrestricted one this view has always shown.
+  const resolved = resolveBaseFar({
+    occupancy: 'single_unit',
+    plotArea,
+    roadWidth: PURCHASABLE_FAR_MIN_ROAD_WIDTH,
+  });
 
-  if (sanitizedPlotArea === 0) {
-    return {
-      plotArea: 0,
-      slabs: [],
-      totalBaseBuiltUpArea: 0,
-      effectiveBaseFAR: 0,
-      maxPermissibleFAR: 2.00,
-      maxPermissibleBuiltUpArea: 0,
-      purchasableFARCap: 0,
-      purchasableAreaAvailable: 0,
-    };
-  }
-
-  const slabs: TelescopicSlab[] = [];
-  let remainingArea = sanitizedPlotArea;
-  let totalBaseBuiltUpArea = 0;
-
-  for (const slabDef of RESIDENTIAL_PLOTTED_FAR_SLABS) {
-    if (remainingArea <= 0) break;
-
-    const areaInThisSlab = Math.min(remainingArea, slabDef.slabCapacity);
-    const builtUpInThisSlab = Number((areaInThisSlab * slabDef.baseFAR).toFixed(3));
-
-    slabs.push({
-      slabIndex: slabDef.slabIndex,
-      slabRange: slabDef.slabRange,
-      slabPlotArea: Number(areaInThisSlab.toFixed(2)),
-      slabBaseFAR: slabDef.baseFAR,
-      slabBuiltUpArea: builtUpInThisSlab,
-    });
-
-    totalBaseBuiltUpArea += builtUpInThisSlab;
-    remainingArea -= areaInThisSlab;
-  }
-
-  const roundedTotalBuiltUp = Number(totalBaseBuiltUpArea.toFixed(2));
-  const effectiveBaseFAR = Number((roundedTotalBuiltUp / sanitizedPlotArea).toFixed(3));
-  const maxPermissibleFAR = 2.00;
-  const maxPermissibleBuiltUpArea = Number((sanitizedPlotArea * maxPermissibleFAR).toFixed(2));
-  const purchasableAreaAvailable = Math.max(0, Number((maxPermissibleBuiltUpArea - roundedTotalBuiltUp).toFixed(2)));
-  const purchasableFARCap = Math.max(0, Number((maxPermissibleFAR - effectiveBaseFAR).toFixed(3)));
+  const maxPermissibleFAR = 2.0;
+  const maxPermissibleBuiltUpArea = Number((resolved.plotArea * maxPermissibleFAR).toFixed(2));
 
   return {
-    plotArea: Number(sanitizedPlotArea.toFixed(2)),
-    slabs,
-    totalBaseBuiltUpArea: roundedTotalBuiltUp,
-    effectiveBaseFAR,
+    plotArea: resolved.plotArea,
+    slabs: resolved.slabs.map((slab) => ({
+      slabIndex: slab.index,
+      slabRange: slab.label,
+      slabPlotArea: slab.plotAreaInSlab,
+      slabBaseFAR: slab.far,
+      slabBuiltUpArea: slab.builtUpArea,
+    })),
+    totalBaseBuiltUpArea: resolved.baseBuiltUpArea,
+    effectiveBaseFAR: resolved.baseFar,
     maxPermissibleFAR,
     maxPermissibleBuiltUpArea,
-    purchasableFARCap,
-    purchasableAreaAvailable,
+    purchasableFARCap: Math.max(0, Number((maxPermissibleFAR - resolved.baseFar).toFixed(3))),
+    purchasableAreaAvailable: Math.max(
+      0,
+      Number((maxPermissibleBuiltUpArea - resolved.baseBuiltUpArea).toFixed(2)),
+    ),
   };
 }
 

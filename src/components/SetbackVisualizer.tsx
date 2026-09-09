@@ -22,9 +22,8 @@ import {
   Printer,
   FileText
 } from 'lucide-react';
-import { HIGH_RISE_SETBACKS } from '../data/byelawsData';
+import { COMPOUNDABLE_SETBACK_LIMITS, resolveRequiredSetbacks } from '../domain';
 import { useToast } from '../context/ToastContext';
-import { generateSetbackBlueprintPdfReport } from '../utils/pdfGenerator';
 import { RoadFrontagePreset, SiteRoadsConfig } from '../types';
 
 interface CircleRatePreset {
@@ -86,135 +85,42 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
 
   const plotArea = plotWidth * plotDepth;
 
-  // Derive setbacks from the ingested Byelaws Chapter 3.2.4
+  // Setbacks come from the shared resolver. This screen used to carry its own fourth copy
+  // of the ladders, which disagreed with the audit engine on both plot bands and
+  // high-rise heights.
   const setbackInfo = useMemo(() => {
-    let front = 3.0;
-    let rear = 1.5;
-    let side1 = 0.0;
-    let side2 = 0.0;
-    let maxHeight = 15.0;
-    let maxFloors = "3 floors + stilt";
-    let ruleRef = "Chapter 3.2.4.1";
+    const required = resolveRequiredSetbacks({
+      occupancy,
+      plotArea,
+      buildingHeight,
+      isCornerPlot: isCornerPlot || hasSide2Road,
+    });
 
-    if (occupancy === 'single_unit' || occupancy === 'multi_unit') {
-      if (plotArea <= 150) {
-        front = 1.0;
-        rear = 0.0;
-        side1 = 0.0;
-        side2 = 0.0;
-      } else if (plotArea <= 300) {
-        front = 3.0;
-        rear = 1.5;
-        side1 = 0.0;
-        side2 = 0.0;
-      } else if (plotArea <= 500) {
-        front = 3.0;
-        rear = 3.0;
-        side1 = 0.0;
-        side2 = 0.0;
-      } else if (plotArea <= 1200) {
-        front = 4.5;
-        rear = 4.5;
-        side1 = 1.5;
-        side2 = 0.0;
-      } else {
-        front = 6.0;
-        rear = 6.0;
-        side1 = 1.5;
-        side2 = 1.5;
-      }
+    // Table 3.2.1 Note 2 generalised: every road-facing edge carries the front setback.
+    const effectiveSide2 = hasSide2Road || isCornerPlot ? Math.max(required.side2, required.front) : required.side2;
+    const effectiveSide1 = hasSide1Road ? Math.max(required.side1, required.front) : required.side1;
+    const effectiveRear = hasRearRoad ? Math.max(required.rear, required.front) : required.rear;
 
-      if (occupancy === 'multi_unit') {
-        maxHeight = 17.5;
-        maxFloors = "4 storeys + mandatory stilt";
-      } else {
-        maxHeight = 15.0;
-        maxFloors = "3 storeys + optional stilt";
-      }
-    } else if (occupancy === 'group_housing') {
-      ruleRef = "Chapter 3.2.4.2 & 3.2.4.9";
-      if (buildingHeight <= 15) {
-        front = 5.0;
-        rear = 5.0;
-        side1 = 5.0;
-        side2 = 5.0;
-      } else {
-        const hr = HIGH_RISE_SETBACKS.find(
-          (h) => buildingHeight >= h.minHeight && buildingHeight <= h.maxHeight
-        ) || HIGH_RISE_SETBACKS[HIGH_RISE_SETBACKS.length - 1];
-        front = hr.front;
-        rear = hr.rear;
-        side1 = hr.side1;
-        side2 = hr.side2;
-      }
-      maxHeight = 999;
-      maxFloors = "Unrestricted (Subject to airport funnel NOC)";
-    } else if (occupancy === 'commercial') {
-      ruleRef = "Chapter 3.2.4.3";
-      if (plotArea <= 100) {
-        front = 1.5;
-        rear = 0;
-        side1 = 0;
-        side2 = 0;
-      } else if (plotArea <= 300) {
-        front = 3.0;
-        rear = 0;
-        side1 = 0;
-        side2 = 0;
-      } else if (plotArea <= 1000) {
-        front = 4.5;
-        rear = 3.0;
-        side1 = 1.5;
-        side2 = 1.5;
-      } else if (plotArea <= 3000) {
-        front = 6.0;
-        rear = 3.0;
-        side1 = 3.0;
-        side2 = 3.0;
-      } else {
-        front = 12.0;
-        rear = 6.0;
-        side1 = 6.0;
-        side2 = 6.0;
-      }
-      maxHeight = 999;
-      maxFloors = "Unrestricted (Commercial)";
-    }
-
-    // Corner plot & Multi-road setback modifications (Chapter 3.2.4.1 Note-2)
-    // Note-2: For corner plots or plots abutting more than one road, the setback towards each road shall not be less than the prescribed front setback.
-    let effectiveRear = rear;
-    let effectiveSide1 = side1;
-    let effectiveSide2 = side2;
-
-    if (hasSide2Road || isCornerPlot) {
-      effectiveSide2 = Math.max(side2, front);
-    }
-    if (hasSide1Road) {
-      effectiveSide1 = Math.max(side1, front);
-    }
-    if (hasRearRoad) {
-      effectiveRear = Math.max(rear, front);
-    }
-
-    // Standard envelope calculations
     const envelopeWidth = Math.max(0, plotWidth - effectiveSide1 - effectiveSide2);
-    const envelopeDepth = Math.max(0, plotDepth - front - effectiveRear);
+    const envelopeDepth = Math.max(0, plotDepth - required.front - effectiveRear);
     const envelopeArea = envelopeWidth * envelopeDepth;
-    const groundCoveragePercent = plotArea > 0 ? (envelopeArea / plotArea) * 100 : 0;
 
     return {
-      front,
+      front: required.front,
       rear: effectiveRear,
       side1: effectiveSide1,
       side2: effectiveSide2,
-      maxHeight,
-      maxFloors,
-      ruleRef,
+      maxHeight: required.maxHeight,
+      maxFloors: required.maxFloors,
+      ruleRef: required.clauseRef,
+      bandLabel: required.bandLabel,
+      typology: required.typology,
+      isHighRise: required.isHighRise,
+      note: required.note,
       envelopeWidth,
       envelopeDepth,
       envelopeArea,
-      groundCoveragePercent,
+      groundCoveragePercent: plotArea > 0 ? (envelopeArea / plotArea) * 100 : 0,
     };
   }, [plotArea, plotWidth, plotDepth, buildingHeight, isCornerPlot, hasSide2Road, hasSide1Road, hasRearRoad, occupancy]);
 
@@ -224,9 +130,12 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
     // Front setback deviation max 10% (strict due to road ROW and front vista)
     // Rear setback deviation max 15% (subject to retaining light court)
     // Side setback deviation max 15%
-    const STATUTORY_MAX_FRONT_PERCENT = 10;
-    const STATUTORY_MAX_REAR_PERCENT = 15;
-    const STATUTORY_MAX_SIDE_PERCENT = 15;
+    // Chapter 16.3 ceilings, shared with the audit engine and the fee calculator.
+    // A high-rise fire setback is never compoundable, so the ceiling collapses to zero.
+    const highRiseBar = setbackInfo.isHighRise;
+    const STATUTORY_MAX_FRONT_PERCENT = highRiseBar ? 0 : COMPOUNDABLE_SETBACK_LIMITS.front * 100;
+    const STATUTORY_MAX_REAR_PERCENT = highRiseBar ? 0 : COMPOUNDABLE_SETBACK_LIMITS.rear * 100;
+    const STATUTORY_MAX_SIDE_PERCENT = highRiseBar ? 0 : COMPOUNDABLE_SETBACK_LIMITS.side1 * 100;
 
     // Encroached meters
     const frontEncroachMeters = setbackInfo.front * (frontDevPercent / 100);
@@ -349,9 +258,10 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
     side2Width: side2RoadWidth,
   }), [roadPreset, frontRoadWidth, hasNorthRoad, rearRoadWidth, hasWestRoad, side1RoadWidth, hasEastRoad, side2RoadWidth]);
 
-  const handleDownloadPdf = () => {
+  const handleDownloadPdf = async () => {
     setIsGeneratingPdf(true);
     try {
+      const { generateSetbackBlueprintPdfReport } = await import('../utils/pdfGenerator');
       generateSetbackBlueprintPdfReport({
         plotWidth,
         plotDepth,
@@ -498,7 +408,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
   return (
     <div className="space-y-6 animate-in fade-in duration-300">
       {/* Top Banner & Compounding Toggle */}
-      <div className="apple-card p-5 sm:p-6 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white shadow-md">
+      <div className="rounded-[1.25rem] border border-white/10 bg-slate-900 bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 p-5 text-white shadow-md sm:p-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <div className="space-y-1.5">
             <div className="flex items-center space-x-2">
@@ -506,14 +416,14 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                 <Compass className="w-3.5 h-3.5" />
                 <span>2D Spatial Geometry & Envelope Solver</span>
               </span>
-              <span className="text-[11px] text-slate-400 font-mono">
+              <span className="text-[11px] text-slate-600 dark:text-slate-400 font-mono">
                 UP Byelaws 2025 • Chapter 3.2.4
               </span>
             </div>
             <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
               Site Layout, Setbacks & Regularization Engine
             </h2>
-            <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+            <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed dark:text-slate-400">
               Verify statutory setback clearance corridors and simulate compoundable deviations under Section 32 of the UP Urban Planning and Development Act, 1973.
             </p>
           </div>
@@ -522,22 +432,22 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
             {onOpenRationale && (
               <button
                 onClick={onOpenRationale}
-                className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/15 text-white border border-white/15 transition-all active:scale-95"
+                className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white/10 hover:bg-white/15 text-white border border-white/15 transition-all active:scale-95 dark:bg-white/10"
               >
                 <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
                 <span>Planning Rationale Guide</span>
-                <ArrowRight className="w-3 h-3 text-slate-400" />
+                <ArrowRight className="w-3 h-3 text-slate-600 dark:text-slate-400" />
               </button>
             )}
 
             {/* Apple-Style Compounding Mode Toggle */}
-            <div className="flex items-center gap-3 bg-white/10 px-3.5 py-2 rounded-xl border border-white/15 backdrop-blur-md">
+            <div className="flex items-center gap-3 bg-white/10 px-3.5 py-2 rounded-xl border border-white/15 backdrop-blur-md dark:bg-white/10">
               <div>
                 <div className="text-xs font-bold text-white flex items-center gap-1.5">
                   <Scale className="w-3.5 h-3.5 text-amber-400" />
                   <span>Compoundable Deviations</span>
                 </div>
-                <div className="text-[10px] text-slate-300">
+                <div className="text-[10px] text-slate-600 dark:text-slate-400">
                   Section 32 Post-Facto Regularization
                 </div>
               </div>
@@ -569,7 +479,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
           <div className="apple-card p-5 space-y-4">
             <div className="flex items-center justify-between border-b border-black/[0.06] dark:border-white/[0.08] pb-3">
               <div className="flex items-center space-x-2">
-                <Sliders className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <Sliders className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
                 <h3 className="text-sm font-bold text-slate-900 dark:text-white">
                   Plot & Occupancy Configuration
                 </h3>
@@ -580,10 +490,10 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+              <label htmlFor="setback-visualizer-occupancy-building-typology" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                 Occupancy & Building Typology
               </label>
-              <select
+              <select id="setback-visualizer-occupancy-building-typology"
                 value={occupancy}
                 onChange={(e) => setOccupancy(e.target.value as any)}
                 className="w-full bg-slate-50 dark:bg-white/[0.05] border border-black/[0.1] dark:border-white/[0.1] rounded-xl p-2.5 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
@@ -627,11 +537,11 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
 
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="block text-[11px] font-semibold text-slate-600 dark:text-slate-400 mb-1">
+                <label htmlFor="setback-visualizer-plot-width-frontage" className="block text-[11px] font-semibold text-slate-600 dark:text-slate-400 mb-1">
                   Plot Width (Frontage)
                 </label>
                 <div className="flex items-center space-x-1.5">
-                  <input
+                  <input id="setback-visualizer-plot-width-frontage"
                     type="text"
                     inputMode="decimal"
                     value={widthInput}
@@ -639,15 +549,15 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                     placeholder="e.g. 13.5"
                     className="w-full bg-slate-50 dark:bg-white/[0.05] border border-black/[0.1] dark:border-white/[0.1] rounded-xl p-2 text-xs font-mono font-bold text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
                   />
-                  <span className="text-xs text-slate-400">m</span>
+                  <span className="text-xs text-slate-600 dark:text-slate-400">m</span>
                 </div>
               </div>
               <div>
-                <label className="block text-[11px] font-semibold text-slate-600 dark:text-slate-400 mb-1">
+                <label htmlFor="setback-visualizer-plot-depth" className="block text-[11px] font-semibold text-slate-600 dark:text-slate-400 mb-1">
                   Plot Depth
                 </label>
                 <div className="flex items-center space-x-1.5">
-                  <input
+                  <input id="setback-visualizer-plot-depth"
                     type="text"
                     inputMode="decimal"
                     value={depthInput}
@@ -655,18 +565,18 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                     placeholder="e.g. 22.2"
                     className="w-full bg-slate-50 dark:bg-white/[0.05] border border-black/[0.1] dark:border-white/[0.1] rounded-xl p-2 text-xs font-mono font-bold text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500"
                   />
-                  <span className="text-xs text-slate-400">m</span>
+                  <span className="text-xs text-slate-600 dark:text-slate-400">m</span>
                 </div>
               </div>
             </div>
 
             {occupancy === 'group_housing' && (
               <div>
-                <label className="block text-[11px] font-semibold text-slate-600 dark:text-slate-400 mb-1">
+                <label htmlFor="setback-visualizer-proposed-building-height" className="block text-[11px] font-semibold text-slate-600 dark:text-slate-400 mb-1">
                   Proposed Building Height
                 </label>
                 <div className="flex items-center space-x-1.5">
-                  <input
+                  <input id="setback-visualizer-proposed-building-height"
                     type="number"
                     min="5"
                     max="150"
@@ -674,9 +584,9 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                     onChange={(e) => setBuildingHeight(Number(e.target.value))}
                     className="w-full bg-slate-50 dark:bg-white/[0.05] border border-black/[0.1] dark:border-white/[0.1] rounded-xl p-2 text-xs font-mono font-bold text-slate-900 dark:text-white"
                   />
-                  <span className="text-xs text-slate-400">m</span>
+                  <span className="text-xs text-slate-600 dark:text-slate-400">m</span>
                 </div>
-                <span className="text-[10px] text-slate-400 mt-1 block">
+                <span className="text-[10px] text-slate-600 mt-1 block dark:text-slate-400">
                   Scales +1.0m peripheral setback for every 3m height above 15m (Chapter 3.2.4.9)
                 </span>
               </div>
@@ -686,7 +596,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
             <div className="space-y-3 pt-3 border-t border-black/[0.06] dark:border-white/[0.08]">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-1.5">
-                  <Building className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                  <Building className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
                   <span className="text-xs font-bold text-slate-900 dark:text-white">
                     Abutting Roads & Right-of-Way (ROW)
                   </span>
@@ -759,7 +669,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                       <span className="font-semibold text-slate-800 dark:text-slate-200 text-xs block">
                         Front Road (South)
                       </span>
-                      <span className="text-[10px] text-slate-400">Primary access frontage</span>
+                      <span className="text-[10px] text-slate-600 dark:text-slate-400">Primary access frontage</span>
                     </div>
                   </div>
                   <div className="flex items-center space-x-1.5">
@@ -768,11 +678,12 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                       step="0.5"
                       min="3"
                       max="60"
-                      value={frontRoadWidth}
+                      aria-label="Front road width in metres"
+              value={frontRoadWidth}
                       onChange={(e) => setFrontRoadWidth(Math.max(3, parseFloat(e.target.value) || 3))}
                       className="w-16 bg-white dark:bg-[#1e2430] border border-black/[0.1] dark:border-white/[0.15] rounded-lg px-2 py-1 text-xs font-mono font-bold text-slate-900 dark:text-white text-right"
                     />
-                    <span className="text-slate-400 text-xs font-mono">m</span>
+                    <span className="text-slate-600 text-xs font-mono dark:text-slate-400">m</span>
                   </div>
                 </div>
 
@@ -780,7 +691,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                 <div className={`flex items-center justify-between p-2 rounded-xl border transition-all ${
                   hasRearRoad
                     ? 'bg-slate-50 dark:bg-white/[0.03] border-emerald-500/30'
-                    : 'bg-transparent border-black/[0.04] dark:border-white/[0.04] opacity-75'
+                    : 'bg-transparent border-black/[0.04] dark:border-white/[0.04]'
                 }`}>
                   <label className="flex items-center space-x-2 cursor-pointer select-none">
                     <input
@@ -790,13 +701,13 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                         setHasRearRoad(e.target.checked);
                         setRoadPreset('1_side');
                       }}
-                      className="rounded text-emerald-600 focus:ring-emerald-500"
+                      className="rounded text-emerald-700 focus:ring-emerald-500 dark:text-emerald-300"
                     />
                     <div>
                       <span className="font-medium text-slate-700 dark:text-slate-300 text-xs block">
                         Rear Road (North)
                       </span>
-                      <span className="text-[10px] text-slate-400">
+                      <span className="text-[10px] text-slate-600 dark:text-slate-400">
                         {hasRearRoad ? 'Through / Double frontage' : 'Adjacent private plot'}
                       </span>
                     </div>
@@ -808,14 +719,15 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                         step="0.5"
                         min="3"
                         max="60"
-                        value={rearRoadWidth}
+                        aria-label="Rear road width in metres"
+              value={rearRoadWidth}
                         onChange={(e) => setRearRoadWidth(Math.max(3, parseFloat(e.target.value) || 3))}
                         className="w-16 bg-white dark:bg-[#1e2430] border border-black/[0.1] dark:border-white/[0.15] rounded-lg px-2 py-1 text-xs font-mono font-bold text-slate-900 dark:text-white text-right"
                       />
-                      <span className="text-slate-400 text-xs font-mono">m</span>
+                      <span className="text-slate-600 text-xs font-mono dark:text-slate-400">m</span>
                     </div>
                   ) : (
-                    <span className="text-[11px] text-slate-400 italic">No road</span>
+                    <span className="text-[11px] text-slate-700 italic dark:text-slate-300">No road</span>
                   )}
                 </div>
 
@@ -823,7 +735,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                 <div className={`flex items-center justify-between p-2 rounded-xl border transition-all ${
                   hasSide1Road
                     ? 'bg-slate-50 dark:bg-white/[0.03] border-emerald-500/30'
-                    : 'bg-transparent border-black/[0.04] dark:border-white/[0.04] opacity-75'
+                    : 'bg-transparent border-black/[0.04] dark:border-white/[0.04]'
                 }`}>
                   <label className="flex items-center space-x-2 cursor-pointer select-none">
                     <input
@@ -833,13 +745,13 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                         setHasSide1Road(e.target.checked);
                         setRoadPreset('1_side');
                       }}
-                      className="rounded text-emerald-600 focus:ring-emerald-500"
+                      className="rounded text-emerald-700 focus:ring-emerald-500 dark:text-emerald-300"
                     />
                     <div>
                       <span className="font-medium text-slate-700 dark:text-slate-300 text-xs block">
                         Side-1 Road (West)
                       </span>
-                      <span className="text-[10px] text-slate-400">
+                      <span className="text-[10px] text-slate-600 dark:text-slate-400">
                         {hasSide1Road ? 'Flanking western road' : 'Adjacent private plot'}
                       </span>
                     </div>
@@ -851,14 +763,15 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                         step="0.5"
                         min="3"
                         max="60"
-                        value={side1RoadWidth}
+                        aria-label="Side-1 road width in metres"
+              value={side1RoadWidth}
                         onChange={(e) => setSide1RoadWidth(Math.max(3, parseFloat(e.target.value) || 3))}
                         className="w-16 bg-white dark:bg-[#1e2430] border border-black/[0.1] dark:border-white/[0.15] rounded-lg px-2 py-1 text-xs font-mono font-bold text-slate-900 dark:text-white text-right"
                       />
-                      <span className="text-slate-400 text-xs font-mono">m</span>
+                      <span className="text-slate-600 text-xs font-mono dark:text-slate-400">m</span>
                     </div>
                   ) : (
-                    <span className="text-[11px] text-slate-400 italic">No road</span>
+                    <span className="text-[11px] text-slate-700 italic dark:text-slate-300">No road</span>
                   )}
                 </div>
 
@@ -866,7 +779,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                 <div className={`flex items-center justify-between p-2 rounded-xl border transition-all ${
                   hasEastRoad
                     ? 'bg-amber-500/[0.06] border-amber-500/40'
-                    : 'bg-transparent border-black/[0.04] dark:border-white/[0.04] opacity-75'
+                    : 'bg-transparent border-black/[0.04] dark:border-white/[0.04]'
                 }`}>
                   <label className="flex items-center space-x-2 cursor-pointer select-none">
                     <input
@@ -878,13 +791,13 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                         setIsCornerPlot(val);
                         setRoadPreset('1_side');
                       }}
-                      className="rounded text-amber-600 focus:ring-amber-500"
+                      className="rounded text-amber-700 focus:ring-amber-500 dark:text-amber-300"
                     />
                     <div>
                       <span className="font-medium text-slate-700 dark:text-slate-300 text-xs block">
                         Side-2 Road (East / Corner)
                       </span>
-                      <span className="text-[10px] text-slate-400">
+                      <span className="text-[10px] text-slate-600 dark:text-slate-400">
                         {hasEastRoad ? 'Flanking corner road (Note-2 applies)' : 'Adjacent private plot'}
                       </span>
                     </div>
@@ -896,14 +809,15 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                         step="0.5"
                         min="3"
                         max="60"
-                        value={side2RoadWidth}
+                        aria-label="Side-2 road width in metres"
+              value={side2RoadWidth}
                         onChange={(e) => setSide2RoadWidth(Math.max(3, parseFloat(e.target.value) || 3))}
                         className="w-16 bg-white dark:bg-[#1e2430] border border-black/[0.1] dark:border-white/[0.15] rounded-lg px-2 py-1 text-xs font-mono font-bold text-slate-900 dark:text-white text-right"
                       />
-                      <span className="text-slate-400 text-xs font-mono">m</span>
+                      <span className="text-slate-600 text-xs font-mono dark:text-slate-400">m</span>
                     </div>
                   ) : (
-                    <span className="text-[11px] text-slate-400 italic">No road</span>
+                    <span className="text-[11px] text-slate-700 italic dark:text-slate-300">No road</span>
                   )}
                 </div>
               </div>
@@ -915,7 +829,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                   type="checkbox"
                   checked={hasStilt}
                   onChange={(e) => setHasStilt(e.target.checked)}
-                  className="rounded text-emerald-600 focus:ring-emerald-500"
+                  className="rounded text-emerald-700 focus:ring-emerald-500 dark:text-emerald-300"
                 />
                 <span className="text-slate-700 dark:text-slate-300">
                   Stilt Floor Proposed (2.4m ht clearance; exempt from FAR)
@@ -929,7 +843,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
             <div className="apple-card p-5 space-y-4 border-amber-500/30 bg-amber-500/[0.02] dark:bg-amber-500/[0.03]">
               <div className="flex items-center justify-between border-b border-amber-500/20 pb-3">
                 <div className="flex items-center space-x-2">
-                  <Scale className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                  <Scale className="w-4 h-4 text-amber-700 dark:text-amber-400" />
                   <h3 className="text-sm font-bold text-slate-900 dark:text-white">
                     Section 32 Deviation Simulator
                   </h3>
@@ -958,7 +872,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                       <span>Zero Deviation</span>
                       <Shield className="w-3 h-3 text-emerald-500" />
                     </div>
-                    <span className="text-[10px] text-slate-400 font-normal">Sanctioned plan baseline</span>
+                    <span className="text-[10px] text-slate-600 font-normal dark:text-slate-400">Sanctioned plan baseline</span>
                   </button>
 
                   <button
@@ -972,9 +886,9 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                   >
                     <div className="flex items-center justify-between">
                       <span>Minor Tolerance (5%)</span>
-                      <span className="text-[10px] font-mono font-bold text-amber-600">Safe</span>
+                      <span className="text-[10px] font-mono font-bold text-amber-700 dark:text-amber-300">Safe</span>
                     </div>
-                    <span className="text-[10px] text-slate-400 font-normal">Construction tolerance</span>
+                    <span className="text-[10px] text-slate-600 font-normal dark:text-slate-400">Construction tolerance</span>
                   </button>
 
                   <button
@@ -988,9 +902,9 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                   >
                     <div className="flex items-center justify-between">
                       <span>Max Legal Cap (Sec 32)</span>
-                      <Check className="w-3 h-3 text-amber-600" />
+                      <Check className="w-3 h-3 text-amber-700 dark:text-amber-300" />
                     </div>
-                    <span className="text-[10px] text-slate-400 font-normal">10% front, 15% rear/sides</span>
+                    <span className="text-[10px] text-slate-600 font-normal dark:text-slate-400">10% front, 15% rear/sides</span>
                   </button>
 
                   <button
@@ -1004,9 +918,9 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                   >
                     <div className="flex items-center justify-between">
                       <span>Violation Demo (&gt;15%)</span>
-                      <AlertTriangle className="w-3 h-3 text-red-500" />
+                      <AlertTriangle className="w-3 h-3 text-red-600 dark:text-red-400" />
                     </div>
-                    <span className="text-[10px] text-slate-400 font-normal">Mandatory demolition</span>
+                    <span className="text-[10px] text-slate-600 font-normal dark:text-slate-400">Mandatory demolition</span>
                   </button>
                 </div>
               </div>
@@ -1015,7 +929,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
               <div className="pt-3 border-t border-amber-500/15 space-y-2">
                 <div className="flex items-center justify-between">
                   <label className="text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                    <Coins className="w-3.5 h-3.5 text-amber-600" />
+                    <Coins className="w-3.5 h-3.5 text-amber-700 dark:text-amber-300" />
                     <span>DM Circle Rate for Shaman Shulk:</span>
                   </label>
                   <span className="text-xs font-mono font-bold text-slate-900 dark:text-white">
@@ -1031,7 +945,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                       onClick={() => setCircleRate(p.rate)}
                       className={`text-[10px] px-2 py-1 rounded-lg border transition-all ${
                         circleRate === p.rate
-                          ? 'bg-amber-500 text-white font-bold border-amber-600 shadow-xs'
+                          ? 'bg-amber-700 text-white font-bold border-amber-600 shadow-xs'
                           : 'bg-white dark:bg-white/[0.05] border-black/[0.08] text-slate-700 dark:text-slate-300 hover:bg-slate-100'
                       }`}
                     >
@@ -1056,14 +970,15 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                   min="0"
                   max="20"
                   step="1"
-                  value={frontDevPercent}
+                  aria-label="Front setback deviation, percent"
+              value={frontDevPercent}
                   onChange={(e) => setFrontDevPercent(Number(e.target.value))}
                   className="w-full accent-amber-500 h-2 bg-slate-200 dark:bg-white/10 rounded-lg cursor-pointer"
                 />
-                <div className="flex justify-between text-[10px] text-slate-400">
+                <div className="flex justify-between text-[10px] text-slate-600 dark:text-slate-400">
                   <span>0%</span>
-                  <span className="font-bold text-amber-600">Statutory Cap: 10%</span>
-                  <span className="text-red-500">&gt;10% Non-Compoundable</span>
+                  <span className="font-bold text-amber-700 dark:text-amber-300">Statutory Cap: 10%</span>
+                  <span className="text-red-600 dark:text-red-400">&gt;10% Non-Compoundable</span>
                 </div>
                 {compoundingAnalysis.isFrontViolation && (
                   <div className="text-[10px] text-red-600 dark:text-red-400 font-bold flex items-center gap-1 mt-0.5">
@@ -1088,14 +1003,15 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                   min="0"
                   max="25"
                   step="1"
-                  value={rearDevPercent}
+                  aria-label="Rear setback deviation, percent"
+              value={rearDevPercent}
                   onChange={(e) => setRearDevPercent(Number(e.target.value))}
                   className="w-full accent-amber-500 h-2 bg-slate-200 dark:bg-white/10 rounded-lg cursor-pointer"
                 />
-                <div className="flex justify-between text-[10px] text-slate-400">
+                <div className="flex justify-between text-[10px] text-slate-600 dark:text-slate-400">
                   <span>0%</span>
-                  <span className="font-bold text-amber-600">Statutory Cap: 15%</span>
-                  <span className="text-red-500 font-semibold">&gt;15% Non-Compoundable</span>
+                  <span className="font-bold text-amber-700 dark:text-amber-300">Statutory Cap: 15%</span>
+                  <span className="text-red-600 font-semibold dark:text-red-400">&gt;15% Non-Compoundable</span>
                 </div>
                 {compoundingAnalysis.isRearViolation && (
                   <div className="text-[10px] text-red-600 dark:text-red-400 font-bold flex items-center gap-1 mt-0.5">
@@ -1121,14 +1037,15 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                     min="0"
                     max="25"
                     step="1"
-                    value={side1DevPercent}
+                    aria-label="Side-1 setback deviation, percent"
+              value={side1DevPercent}
                     onChange={(e) => setSide1DevPercent(Number(e.target.value))}
                     className="w-full accent-amber-500 h-2 bg-slate-200 dark:bg-white/10 rounded-lg cursor-pointer"
                   />
-                  <div className="flex justify-between text-[10px] text-slate-400">
+                  <div className="flex justify-between text-[10px] text-slate-600 dark:text-slate-400">
                     <span>0%</span>
-                    <span className="font-bold text-amber-600">Cap: 15%</span>
-                    <span className="text-red-500">&gt;15% Violation</span>
+                    <span className="font-bold text-amber-700 dark:text-amber-300">Cap: 15%</span>
+                    <span className="text-red-600 dark:text-red-400">&gt;15% Violation</span>
                   </div>
                 </div>
               )}
@@ -1148,14 +1065,15 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                     min="0"
                     max="25"
                     step="1"
-                    value={side2DevPercent}
+                    aria-label="Side-2 setback deviation, percent"
+              value={side2DevPercent}
                     onChange={(e) => setSide2DevPercent(Number(e.target.value))}
                     className="w-full accent-amber-500 h-2 bg-slate-200 dark:bg-white/10 rounded-lg cursor-pointer"
                   />
-                  <div className="flex justify-between text-[10px] text-slate-400">
+                  <div className="flex justify-between text-[10px] text-slate-600 dark:text-slate-400">
                     <span>0%</span>
-                    <span className="font-bold text-amber-600">Cap: 15%</span>
-                    <span className="text-red-500">&gt;15% Violation</span>
+                    <span className="font-bold text-amber-700 dark:text-amber-300">Cap: 15%</span>
+                    <span className="text-red-600 dark:text-red-400">&gt;15% Violation</span>
                   </div>
                 </div>
               )}
@@ -1164,7 +1082,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
             /* Standard Baseline Guidance Card */
             <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 text-xs space-y-2 text-emerald-950 dark:text-emerald-200">
               <span className="font-bold flex items-center gap-1.5 text-emerald-800 dark:text-emerald-300">
-                <Shield className="w-4 h-4 text-emerald-600" />
+                <Shield className="w-4 h-4 text-emerald-700 dark:text-emerald-300" />
                 <span>Statutory Clearances Applied:</span>
               </span>
               <p className="leading-relaxed text-slate-700 dark:text-slate-300">
@@ -1176,7 +1094,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
               <p className="leading-relaxed text-slate-700 dark:text-slate-300">
                 Permissible Storeys: <strong>{setbackInfo.maxFloors}</strong>
               </p>
-              <p className="text-[11px] text-slate-500 dark:text-slate-400 pt-1 border-t border-emerald-500/15">
+              <p className="text-[11px] text-slate-600 dark:text-slate-400 pt-1 border-t border-emerald-500/15">
                 Toggle <strong>Compoundable Deviations</strong> above to simulate post-facto regularization tolerances and fee schedules under Section 32 of UP Act, 1973.
               </p>
             </div>
@@ -1190,10 +1108,10 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
             <div className="flex items-center justify-between flex-wrap gap-2 border-b border-black/[0.06] dark:border-white/[0.08] pb-3">
               <div>
                 <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                  <Compass className="w-4 h-4 text-emerald-600" />
+                  <Compass className="w-4 h-4 text-emerald-700 dark:text-emerald-300" />
                   <span>Architectural Site Blueprint & Setback Envelope</span>
                 </h3>
-                <span className="text-xs text-slate-500 dark:text-slate-400 font-mono">
+                <span className="text-xs text-slate-600 dark:text-slate-400 font-mono">
                   {plotWidth}m Frontage × {plotDepth}m Depth ({plotArea.toFixed(1)} sqm Plot Area)
                 </span>
               </div>
@@ -1204,7 +1122,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                   id="btn-download-blueprint-pdf"
                   onClick={handleDownloadPdf}
                   disabled={isGeneratingPdf}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-700 hover:bg-emerald-800 text-white shadow-xs transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
                   title="Download Official 2D Setback Blueprint & Byelaw Schedule (PDF)"
                 >
                   <Download className="w-3.5 h-3.5" />
@@ -1247,11 +1165,11 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
               <div className={`p-2 rounded-xl border ${
                 enableCompounding && frontDevPercent > 0
                   ? compoundingAnalysis.isFrontViolation
-                    ? 'bg-red-50 border-red-200 dark:bg-red-950/40 text-red-900 dark:text-red-300'
-                    : 'bg-amber-50 border-amber-200 dark:bg-amber-950/40 text-amber-900 dark:text-amber-300'
+                    ? 'bg-red-50 border-red-200 dark:bg-red-950/40 text-red-900 dark:text-red-300 dark:border-red-500/30'
+                    : 'bg-amber-50 border-amber-200 dark:bg-amber-950/40 text-amber-900 dark:text-amber-300 dark:border-amber-500/30'
                   : 'bg-slate-50 dark:bg-white/[0.04] border-black/[0.06] dark:border-white/[0.08]'
               }`}>
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 block font-medium">Front Setback</span>
+                <span className="text-[10px] text-slate-600 dark:text-slate-400 block font-medium">Front Setback</span>
                 <span className="font-bold font-mono text-sm">
                   {enableCompounding
                     ? `${compoundingAnalysis.devFront.toFixed(2)}m`
@@ -1267,11 +1185,11 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
               <div className={`p-2 rounded-xl border ${
                 enableCompounding && rearDevPercent > 0
                   ? compoundingAnalysis.isRearViolation
-                    ? 'bg-red-50 border-red-200 dark:bg-red-950/40 text-red-900 dark:text-red-300'
-                    : 'bg-amber-50 border-amber-200 dark:bg-amber-950/40 text-amber-900 dark:text-amber-300'
+                    ? 'bg-red-50 border-red-200 dark:bg-red-950/40 text-red-900 dark:text-red-300 dark:border-red-500/30'
+                    : 'bg-amber-50 border-amber-200 dark:bg-amber-950/40 text-amber-900 dark:text-amber-300 dark:border-amber-500/30'
                   : 'bg-slate-50 dark:bg-white/[0.04] border-black/[0.06] dark:border-white/[0.08]'
               }`}>
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 block font-medium">Rear Setback</span>
+                <span className="text-[10px] text-slate-600 dark:text-slate-400 block font-medium">Rear Setback</span>
                 <span className="font-bold font-mono text-sm">
                   {enableCompounding
                     ? `${compoundingAnalysis.devRear.toFixed(2)}m`
@@ -1285,11 +1203,11 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
               </div>
 
               <div className="p-2 rounded-xl bg-slate-50 dark:bg-white/[0.04] border border-black/[0.06] dark:border-white/[0.08]">
-                <span className="text-[10px] text-slate-500 dark:text-slate-400 block font-medium">Side Setbacks</span>
+                <span className="text-[10px] text-slate-600 dark:text-slate-400 block font-medium">Side Setbacks</span>
                 <span className="font-bold font-mono text-sm">
                   {setbackInfo.side1 > 0 ? `${setbackInfo.side1}m` : '0m'} / {setbackInfo.side2 > 0 ? `${setbackInfo.side2}m` : '0m'}
                 </span>
-                <span className="text-[9px] text-slate-400 block font-mono">
+                <span className="text-[9px] text-slate-600 dark:text-slate-400 block font-mono">
                   {isCornerPlot ? 'Side-2 is Road' : 'Internal plot'}
                 </span>
               </div>
@@ -1322,7 +1240,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                       d="M 20 0 L 0 0 0 20"
                       fill="none"
                       stroke="currentColor"
-                      className="text-slate-300 dark:text-slate-700/60"
+                      className="text-slate-600 dark:text-slate-700/60"
                       strokeWidth="0.5"
                     />
                   </pattern>
@@ -1966,7 +1884,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
             {/* Clean Architectural Legend */}
             <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 text-[11px] text-slate-600 dark:text-slate-400 pt-1 border-t border-black/[0.04] dark:border-white/[0.06]">
               <div className="flex items-center space-x-1.5">
-                <span className="w-3 h-3 rounded-xs border-2 border-slate-700 bg-white" />
+                <span className="w-3 h-3 rounded-xs border-2 border-slate-700 bg-white dark:bg-white/10" />
                 <span>Property Boundary</span>
               </div>
               <div className="flex items-center space-x-1.5">
@@ -1993,7 +1911,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
             <div className="apple-card p-5 sm:p-6 space-y-4 border-amber-500/30 bg-white dark:bg-[#1c1c1e] shadow-sm">
               <div className="flex items-center justify-between flex-wrap gap-2 border-b border-black/[0.06] dark:border-white/[0.08] pb-3">
                 <div className="flex items-center space-x-2">
-                  <Coins className="w-5 h-5 text-amber-600" />
+                  <Coins className="w-5 h-5 text-amber-700 dark:text-amber-300" />
                   <h4 className="text-sm font-bold text-slate-900 dark:text-white">
                     Compounding Fee Breakdown (शमन शुल्क विवरण)
                   </h4>
@@ -2006,7 +1924,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                     id="btn-download-fee-pdf"
                     onClick={handleDownloadPdf}
                     disabled={isGeneratingPdf}
-                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-amber-600 hover:bg-amber-700 text-white shadow-2xs transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold bg-amber-700 hover:bg-amber-800 text-white shadow-2xs transition-all active:scale-95 disabled:opacity-50 cursor-pointer"
                     title="Export Compounding & Setback Schedule as PDF"
                   >
                     <Download className="w-3 h-3" />
@@ -2018,25 +1936,25 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
               {/* High-Level Fee Metrics Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.04] border border-black/[0.06] dark:border-white/[0.08]">
-                  <span className="text-[11px] text-slate-500 dark:text-slate-400 block font-medium">
+                  <span className="text-[11px] text-slate-600 dark:text-slate-400 block font-medium">
                     Deviated Ground Area
                   </span>
                   <span className="text-base font-bold font-mono text-slate-900 dark:text-white">
                     +{compoundingAnalysis.encroachedFootprintArea.toFixed(1)} sqm
                   </span>
-                  <span className="text-[10px] text-slate-400 block font-mono">
+                  <span className="text-[10px] text-slate-600 block font-mono dark:text-slate-400">
                     ({compoundingAnalysis.encroachedFootprintPercent.toFixed(1)}% above plan)
                   </span>
                 </div>
 
                 <div className="p-3 rounded-xl bg-slate-50 dark:bg-white/[0.04] border border-black/[0.06] dark:border-white/[0.08]">
-                  <span className="text-[11px] text-slate-500 dark:text-slate-400 block font-medium">
+                  <span className="text-[11px] text-slate-600 dark:text-slate-400 block font-medium">
                     Effective Compounding Rate
                   </span>
                   <span className="text-base font-bold font-mono text-slate-900 dark:text-white">
                     ₹{compoundingAnalysis.effectiveRatePerSqm.toLocaleString()} / sqm
                   </span>
-                  <span className="text-[10px] text-slate-400 block font-mono">
+                  <span className="text-[10px] text-slate-600 block font-mono dark:text-slate-400">
                     {occupancy === 'commercial' ? '100% Circle Rate' : '50% Circle Rate (Res)'}
                   </span>
                 </div>
@@ -2057,7 +1975,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
               {/* Fee Line-Item Calculation Table */}
               <div className="rounded-xl border border-black/[0.06] dark:border-white/[0.08] overflow-hidden text-xs">
                 <table className="w-full text-left divide-y divide-black/[0.06] dark:divide-white/[0.08]">
-                  <thead className="bg-slate-50 dark:bg-white/[0.03] text-slate-500 dark:text-slate-400 text-[11px]">
+                  <thead className="bg-slate-50 dark:bg-white/[0.03] text-slate-600 dark:text-slate-400 text-[11px]">
                     <tr>
                       <th className="p-2.5 font-semibold">Statutory Charge Item</th>
                       <th className="p-2.5 font-semibold">Computation Formula</th>
@@ -2111,12 +2029,12 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                 <div className="flex items-center gap-2 font-bold text-sm">
                   {compoundingAnalysis.hasStatutoryViolation ? (
                     <>
-                      <AlertTriangle className="w-4 h-4 text-red-600" />
+                      <AlertTriangle className="w-4 h-4 text-red-600 dark:text-red-400" />
                       <span>Ineligible for Compounding: Demolition Mandate</span>
                     </>
                   ) : (
                     <>
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <CheckCircle2 className="w-4 h-4 text-emerald-700 dark:text-emerald-300" />
                       <span>Legally Regularizable by Vice-Chairman (V.C.)</span>
                     </>
                   )}
@@ -2137,15 +2055,15 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
               className="w-full flex items-center justify-between text-left focus:outline-none"
             >
               <div className="flex items-center space-x-2">
-                <Sparkles className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <Sparkles className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
                 <h4 className="text-sm font-bold text-slate-900 dark:text-white">
                   Regulatory Rationale: Why Setbacks & Deviation Caps Exist
                 </h4>
               </div>
               {showRationaleDrawer ? (
-                <ChevronUp className="w-4 h-4 text-slate-400" />
+                <ChevronUp className="w-4 h-4 text-slate-600 dark:text-slate-400" />
               ) : (
-                <ChevronDown className="w-4 h-4 text-slate-400" />
+                <ChevronDown className="w-4 h-4 text-slate-600 dark:text-slate-400" />
               )}
             </button>
 
@@ -2191,7 +2109,7 @@ export const SetbackVisualizer: React.FC<SetbackVisualizerProps> = ({ onOpenRati
                   <div className="pt-2 flex justify-end">
                     <button
                       onClick={onOpenRationale}
-                      className="inline-flex items-center space-x-1.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
+                      className="inline-flex items-center space-x-1.5 text-xs font-semibold text-emerald-700 dark:text-emerald-400 hover:underline"
                     >
                       <span>Read full literature & engineering standards citations</span>
                       <ArrowRight className="w-3.5 h-3.5" />

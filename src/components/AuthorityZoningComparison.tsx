@@ -431,28 +431,28 @@ export const AuthorityZoningComparison: React.FC = () => {
       <div className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 rounded-lg bg-emerald-600 flex items-center justify-center text-white font-bold">
+            <div className="w-8 h-8 rounded-lg bg-emerald-700 flex items-center justify-center text-white font-bold">
               <ArrowLeftRight className="w-4 h-4" />
             </div>
             <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
               Development Authority Zoning Comparison Matrix
             </h2>
           </div>
-          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 max-w-3xl">
+          <p className="text-xs text-slate-600 dark:text-slate-400 mt-1 max-w-3xl">
             Side-by-side comparative analysis of zoning rules, riverfront prohibitions, environmental controls, and FAR caps across all 22 Development Authorities of Uttar Pradesh.
           </p>
         </div>
 
         <div className="flex items-center space-x-2">
           <span className="text-xs bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 px-3 py-1.5 rounded-lg font-medium flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
             <span>Appendix-15 Concordance</span>
           </span>
         </div>
       </div>
 
       {/* Preset Comparisons */}
-      <div className="bg-slate-50 dark:bg-slate-850 p-3 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-2 text-xs">
         <span className="font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1">
           <Sparkles className="w-3.5 h-3.5 text-amber-500" />
           <span>Quick Comparative Presets:</span>
@@ -462,7 +462,7 @@ export const AuthorityZoningComparison: React.FC = () => {
             onClick={() => loadPresetComparison('ayodhya', 'varanasi')}
             className={`px-2.5 py-1 rounded font-medium border transition-colors ${
               authAId === 'ayodhya' && authBId === 'varanasi'
-                ? 'bg-emerald-600 text-white border-emerald-600'
+                ? 'bg-emerald-700 text-white border-emerald-600'
                 : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-emerald-500'
             }`}
           >
@@ -472,7 +472,7 @@ export const AuthorityZoningComparison: React.FC = () => {
             onClick={() => loadPresetComparison('noida_yeida', 'meerut')}
             className={`px-2.5 py-1 rounded font-medium border transition-colors ${
               authAId === 'noida_yeida' && authBId === 'meerut'
-                ? 'bg-emerald-600 text-white border-emerald-600'
+                ? 'bg-emerald-700 text-white border-emerald-600'
                 : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-emerald-500'
             }`}
           >
@@ -482,7 +482,7 @@ export const AuthorityZoningComparison: React.FC = () => {
             onClick={() => loadPresetComparison('agra', 'kanpur')}
             className={`px-2.5 py-1 rounded font-medium border transition-colors ${
               authAId === 'agra' && authBId === 'kanpur'
-                ? 'bg-emerald-600 text-white border-emerald-600'
+                ? 'bg-emerald-700 text-white border-emerald-600'
                 : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-emerald-500'
             }`}
           >
@@ -492,7 +492,7 @@ export const AuthorityZoningComparison: React.FC = () => {
             onClick={() => loadPresetComparison('lucknow', 'gorakhpur')}
             className={`px-2.5 py-1 rounded font-medium border transition-colors ${
               authAId === 'lucknow' && authBId === 'gorakhpur'
-                ? 'bg-emerald-600 text-white border-emerald-600'
+                ? 'bg-emerald-700 text-white border-emerald-600'
                 : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-emerald-500'
             }`}
           >
@@ -502,7 +502,7 @@ export const AuthorityZoningComparison: React.FC = () => {
             onClick={() => loadPresetComparison('mathura_vrindavan', 'prayagraj')}
             className={`px-2.5 py-1 rounded font-medium border transition-colors ${
               authAId === 'mathura_vrindavan' && authBId === 'prayagraj'
-                ? 'bg-emerald-600 text-white border-emerald-600'
+                ? 'bg-emerald-700 text-white border-emerald-600'
                 : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:border-emerald-500'
             }`}
           >
@@ -515,10 +515,10 @@ export const AuthorityZoningComparison: React.FC = () => {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-3 items-center bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
         {/* Authority A Dropdown */}
         <div className="md:col-span-5 space-y-1">
-          <label className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block">
+          <label htmlFor="authority-zoning-comparison-select-authority-a" className="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block">
             Select Authority A
           </label>
-          <select
+          <select id="authority-zoning-comparison-select-authority-a"
             value={authAId}
             onChange={(e) => setAuthAId(e.target.value)}
             className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-lg px-3 py-2 text-xs font-semibold focus:outline-none focus:border-emerald-500"
@@ -544,10 +544,10 @@ export const AuthorityZoningComparison: React.FC = () => {
 
         {/* Authority B Dropdown */}
         <div className="md:col-span-5 space-y-1">
-          <label className="text-[11px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider block">
+          <label htmlFor="authority-zoning-comparison-select-authority-b" className="text-[11px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider block">
             Select Authority B
           </label>
-          <select
+          <select id="authority-zoning-comparison-select-authority-b"
             value={authBId}
             onChange={(e) => setAuthBId(e.target.value)}
             className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white rounded-lg px-3 py-2 text-xs font-semibold focus:outline-none focus:border-emerald-500"
@@ -573,7 +573,7 @@ export const AuthorityZoningComparison: React.FC = () => {
               href={authA.gisPortalUrl}
               target="_blank"
               rel="noreferrer"
-              className="text-[11px] text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1 hover:underline"
+              className="text-[11px] text-emerald-700 dark:text-emerald-400 font-semibold flex items-center gap-1 hover:underline"
             >
               <span>Launch Geoportal</span>
               <ExternalLink className="w-3 h-3" />
@@ -582,7 +582,7 @@ export const AuthorityZoningComparison: React.FC = () => {
           <h3 className="text-base font-bold text-slate-900 dark:text-white">
             {authA.name}
           </h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <p className="text-xs text-slate-600 dark:text-slate-400">
             {authA.region} • <strong className="text-emerald-700 dark:text-emerald-400">{authA.masterPlanHorizon}</strong>
           </p>
           <div className="p-2.5 bg-slate-50 dark:bg-slate-800/80 rounded-lg text-xs text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/80">
@@ -609,7 +609,7 @@ export const AuthorityZoningComparison: React.FC = () => {
           <h3 className="text-base font-bold text-slate-900 dark:text-white">
             {authB.name}
           </h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
+          <p className="text-xs text-slate-600 dark:text-slate-400">
             {authB.region} • <strong className="text-blue-700 dark:text-blue-400">{authB.masterPlanHorizon}</strong>
           </p>
           <div className="p-2.5 bg-slate-50 dark:bg-slate-800/80 rounded-lg text-xs text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/80">
@@ -645,10 +645,11 @@ export const AuthorityZoningComparison: React.FC = () => {
         </div>
 
         <div className="relative sm:w-64">
-          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
+          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-600 dark:text-slate-400" />
           <input
             type="text"
-            value={searchFilter}
+            aria-label="Filter zones"
+              value={searchFilter}
             onChange={(e) => setSearchFilter(e.target.value)}
             placeholder="Search comparison points..."
             className="w-full bg-slate-50 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-lg pl-8 pr-3 py-1 text-xs text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500"
@@ -674,7 +675,7 @@ export const AuthorityZoningComparison: React.FC = () => {
                 </div>
 
                 <div className="inline-flex items-center text-[11px] font-semibold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/50 px-2 py-0.5 rounded border border-emerald-200 dark:border-emerald-800">
-                  <Info className="w-3 h-3 mr-1 text-emerald-600 dark:text-emerald-400" />
+                  <Info className="w-3 h-3 mr-1 text-emerald-700 dark:text-emerald-400" />
                   <span>Divergence: {divergence}</span>
                 </div>
               </div>
@@ -737,7 +738,7 @@ export const AuthorityZoningComparison: React.FC = () => {
       {/* Appendix 15 Zoning Concordance Matrix */}
       <div className="bg-white dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-4">
         <div className="flex items-center space-x-2 border-b border-slate-100 dark:border-slate-800 pb-3">
-          <Layers className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+          <Layers className="w-4 h-4 text-emerald-700 dark:text-emerald-400" />
           <h3 className="text-sm font-bold text-slate-900 dark:text-white">
             Appendix-15 Local Master Plan Land-Use Concordance
           </h3>

@@ -94,66 +94,153 @@ Key Rules & Thresholds:
 Always provide exact citations to Chapter and Paragraph numbers, concise explanations, and structured tables or calculations where helpful.
 `;
 
+/** Longest question accepted, in characters. */
+const MAX_MESSAGE_CHARS = 4_000;
+/** Conversation turns forwarded as context. */
+const MAX_HISTORY_TURNS = 6;
+/** Characters kept from each historical turn. */
+const MAX_HISTORY_TURN_CHARS = 2_000;
+/** Requests allowed per client per window. */
+const RATE_LIMIT_MAX = 20;
+const RATE_LIMIT_WINDOW_MS = 60_000;
+/** Upstream model call timeout. */
+const MODEL_TIMEOUT_MS = 30_000;
+
+const MODEL_ID = process.env.GEMINI_MODEL || "gemini-3.8-flash";
+
+/**
+ * Fixed-window rate limiter, in memory.
+ *
+ * The chat route proxies a metered upstream model with no auth in front of it. This is
+ * per-process, so it does not survive a restart or coordinate across replicas — put a
+ * shared limiter in the ingress for a real deployment — but it stops a single client
+ * from draining the key.
+ */
+const rateBuckets = new Map<string, { count: number; resetAt: number }>();
+
+function checkRateLimit(key: string): { allowed: boolean; retryAfterSec: number } {
+  const now = Date.now();
+  const bucket = rateBuckets.get(key);
+
+  if (!bucket || now >= bucket.resetAt) {
+    rateBuckets.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true, retryAfterSec: 0 };
+  }
+  if (bucket.count >= RATE_LIMIT_MAX) {
+    return { allowed: false, retryAfterSec: Math.ceil((bucket.resetAt - now) / 1000) };
+  }
+  bucket.count += 1;
+  return { allowed: true, retryAfterSec: 0 };
+}
+
+// Drop expired buckets so the map cannot grow without bound.
+setInterval(() => {
+  const now = Date.now();
+  for (const [key, bucket] of rateBuckets) {
+    if (now >= bucket.resetAt) rateBuckets.delete(key);
+  }
+}, RATE_LIMIT_WINDOW_MS).unref();
+
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT) || 3000;
 
-  app.use(express.json({ limit: "10mb" }));
+  app.disable("x-powered-by");
+  app.set("trust proxy", 1);
+
+  // A chat endpoint has no use for a 10 MB body.
+  app.use(express.json({ limit: "64kb" }));
+
+  app.use((req, res, next) => {
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+    res.setHeader("X-Frame-Options", "SAMEORIGIN");
+    res.setHeader("Permissions-Policy", "geolocation=(self), camera=(), microphone=()");
+    next();
+  });
 
   // API Routes
   app.get("/api/health", (req, res) => {
-    res.json({ status: "ok", document: "UP Building Byelaws 2025 (TMPR8)" });
+    res.json({
+      status: "ok",
+      document: "UP Building Byelaws 2025 (TMPR8)",
+      aiConfigured: Boolean(process.env.GEMINI_API_KEY),
+      model: MODEL_ID,
+    });
   });
 
   app.post("/api/chat", async (req, res) => {
+    const clientKey = req.ip || req.socket.remoteAddress || "unknown";
+    const limit = checkRateLimit(clientKey);
+    if (!limit.allowed) {
+      res.setHeader("Retry-After", String(limit.retryAfterSec));
+      return res.status(429).json({
+        error: "Too many questions in a short period.",
+        retryAfterSeconds: limit.retryAfterSec,
+      });
+    }
+
     try {
-      const { message, conversationHistory = [] } = req.body;
-      if (!message || typeof message !== "string") {
-        return res.status(400).json({ error: "Message is required" });
+      const { message, conversationHistory = [] } = req.body ?? {};
+
+      if (typeof message !== "string" || message.trim().length === 0) {
+        return res.status(400).json({ error: "A question is required." });
+      }
+      if (message.length > MAX_MESSAGE_CHARS) {
+        return res.status(413).json({
+          error: `Question is too long (${message.length} characters). The limit is ${MAX_MESSAGE_CHARS}.`,
+        });
       }
 
       const client = getGeminiClient();
       if (!client) {
         return res.status(200).json({
           reply:
-            "The Gemini API key is currently not configured or injected in the environment. However, you can explore the entire Uttar Pradesh Building Construction and Development Byelaws 2025 using the interactive tabs: Byelaws Navigator, Compliance Calculators, Setback Visualizer, Zoning Matrix, and Official Forms!",
+            "The AI copilot is not configured on this deployment (no GEMINI_API_KEY). Every rule, table and calculation is still available offline in the Byelaws Code, FAR & Fees, 2D Setbacks and Zoning Matrix tabs.",
           source: "offline_fallback",
         });
       }
 
-      // Format contents for generateContent
-      const contents = [];
+      const contents: { role: string; parts: { text: string }[] }[] = [];
+      const history = Array.isArray(conversationHistory) ? conversationHistory : [];
 
-      for (const turn of conversationHistory.slice(-6)) {
-        if (turn.role === "user" || turn.role === "model") {
-          contents.push({
-            role: turn.role,
-            parts: [{ text: turn.text }],
-          });
-        }
+      for (const turn of history.slice(-MAX_HISTORY_TURNS)) {
+        if (!turn || (turn.role !== "user" && turn.role !== "model")) continue;
+        if (typeof turn.text !== "string") continue;
+        contents.push({
+          role: turn.role,
+          parts: [{ text: turn.text.slice(0, MAX_HISTORY_TURN_CHARS) }],
+        });
       }
 
-      contents.push({
-        role: "user",
-        parts: [{ text: message }],
-      });
+      contents.push({ role: "user", parts: [{ text: message }] });
 
-      const response = await client.models.generateContent({
-        model: "gemini-3.8-flash",
-        contents,
-        config: {
-          systemInstruction: BYELAWS_KNOWLEDGE_SUMMARY,
-          temperature: 0.2,
-        },
-      });
+      // Bound the upstream call so a hung model does not hold the socket open.
+      const response = await Promise.race([
+        client.models.generateContent({
+          model: MODEL_ID,
+          contents,
+          config: { systemInstruction: BYELAWS_KNOWLEDGE_SUMMARY, temperature: 0.2 },
+        }),
+        new Promise<never>((_, reject) =>
+          setTimeout(() => reject(new Error("The model did not respond in time.")), MODEL_TIMEOUT_MS),
+        ),
+      ]);
 
-      const replyText = response.text || "I was unable to formulate a response from the byelaws.";
-      res.json({ reply: replyText, source: "gemini-3.8-flash" });
-    } catch (err: any) {
-      console.error("Error in /api/chat:", err);
-      res.status(500).json({
-        error: "Failed to generate answer",
-        details: err?.message || String(err),
+      const replyText = response.text?.trim();
+      if (!replyText) {
+        return res.status(502).json({ error: "The model returned an empty answer. Try rephrasing the question." });
+      }
+
+      res.json({ reply: replyText, source: MODEL_ID });
+    } catch (err) {
+      // Log the detail; return a message that leaks neither the key nor the stack.
+      console.error("[/api/chat]", err);
+      const timedOut = err instanceof Error && err.message.includes("did not respond in time");
+      res.status(timedOut ? 504 : 502).json({
+        error: timedOut
+          ? "The AI service timed out. Please try again."
+          : "The AI service is unavailable right now. All rules and calculators still work offline.",
       });
     }
   });
@@ -170,6 +257,7 @@ async function startServer() {
     const distPath = path.join(process.cwd(), "dist");
     app.use(express.static(distPath));
     app.get("*", (req, res) => {
+      if (req.path.startsWith("/api/")) return res.status(404).json({ error: "Unknown API route." });
       res.sendFile(path.join(distPath, "index.html"));
     });
   }
@@ -179,4 +267,7 @@ async function startServer() {
   });
 }
 
-startServer();
+startServer().catch((err) => {
+  console.error("Failed to start server:", err);
+  process.exit(1);
+});

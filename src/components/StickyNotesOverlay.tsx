@@ -286,7 +286,7 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
             setIsOpen((prev) => !prev);
             if (!isOpen) setIsComposing(false);
           }}
-          className="flex items-center space-x-2 px-3.5 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-full shadow-lg hover:shadow-xl transition-all border-2 border-amber-300 text-xs sm:text-sm group"
+          className="flex items-center space-x-2 px-3.5 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold rounded-full shadow-lg hover:shadow-xl transition-all border-2 border-amber-300 text-xs sm:text-sm group dark:border-amber-500/40"
           title="Toggle session sticky notes overlay"
         >
           <StickyNote className="w-4 h-4 text-slate-950 group-hover:rotate-12 transition-transform" />
@@ -313,7 +313,7 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
                     {notes.length} Active
                   </span>
                 </h3>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400">
+                <p className="text-[10px] text-slate-600 dark:text-slate-400">
                   Temporary notes & highlights for current audit session
                 </p>
               </div>
@@ -329,7 +329,7 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
               </button>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-800 transition-colors"
+                className="p-1.5 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 hover:text-slate-800 transition-colors dark:text-slate-400"
                 title="Close overlay"
               >
                 <X className="w-4 h-4" />
@@ -338,7 +338,7 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
           </div>
 
           {/* Color Filter Tabs & Actions */}
-          <div className="px-4 py-2 bg-slate-50 dark:bg-slate-850 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs">
+          <div className="px-4 py-2 bg-slate-50 dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs">
             <div className="flex items-center space-x-1">
               <button
                 onClick={() => setActiveFilterColor('all')}
@@ -378,7 +378,7 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
                   </button>
                   <button
                     onClick={handleClearAll}
-                    className="text-[11px] text-slate-400 hover:text-rose-500 transition-colors"
+                    className="text-[11px] text-slate-600 dark:text-slate-400 hover:text-rose-600 dark:hover:text-rose-400 transition-colors"
                     title="Delete all notes"
                   >
                     Clear
@@ -398,7 +398,7 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
                 </span>
                 <button
                   onClick={() => setIsComposing(false)}
-                  className="text-slate-400 hover:text-slate-700 text-xs font-medium"
+                  className="text-slate-600 hover:text-slate-700 text-xs font-medium dark:text-slate-400"
                 >
                   Cancel
                 </button>
@@ -416,7 +416,8 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
               <input
                 type="text"
                 placeholder="Clause reference (e.g., Section 3.2.2 Telescopic FAR)"
-                value={clauseRef}
+                aria-label="Clause reference for this note"
+              value={clauseRef}
                 onChange={(e) => setClauseRef(e.target.value)}
                 className="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md p-1.5 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-amber-500"
               />
@@ -424,14 +425,15 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
               <textarea
                 placeholder="Write your note, compliance query, or site observation..."
                 rows={3}
-                value={noteContent}
+                aria-label="Note text"
+              value={noteContent}
                 onChange={(e) => setNoteContent(e.target.value)}
                 className="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-md p-2 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-1 focus:ring-amber-500 resize-none"
               />
 
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-1.5">
-                  <Palette className="w-3 h-3 text-slate-400" />
+                  <Palette className="w-3 h-3 text-slate-600 dark:text-slate-400" />
                   {(['yellow', 'mint', 'sky', 'rose', 'lavender'] as const).map((color) => (
                     <button
                       key={color}
@@ -465,7 +467,7 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
                 <h4 className="text-xs font-bold text-slate-800 dark:text-slate-200">
                   No Sticky Notes in Session
                 </h4>
-                <p className="text-[11px] text-slate-500 dark:text-slate-400 max-w-xs mx-auto">
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 max-w-xs mx-auto">
                   Select any byelaw text with your cursor to highlight and pin a note, or click below to write a note.
                 </p>
                 <button
@@ -487,7 +489,7 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
                     {/* Pin tab */}
                     <div className="flex items-start justify-between gap-2">
                       <div className="flex items-center space-x-1.5 flex-wrap">
-                        <Pin className="w-3 h-3 text-amber-600 flex-shrink-0" />
+                        <Pin className="w-3 h-3 text-amber-700 flex-shrink-0 dark:text-amber-300" />
                         {item.clauseRef ? (
                           <span
                             onClick={() => onJumpToClause?.(item.clauseRef!)}
@@ -501,7 +503,7 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
                             General Note
                           </span>
                         )}
-                        <span className="text-[10px] text-slate-400 flex items-center gap-0.5">
+                        <span className="text-[10px] text-slate-600 flex items-center gap-0.5 dark:text-slate-400">
                           <Clock className="w-2.5 h-2.5" />
                           <span>{item.createdAt}</span>
                         </span>
@@ -510,18 +512,18 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
                       <div className="flex items-center space-x-1 opacity-80 group-hover:opacity-100 transition-opacity">
                         <button
                           onClick={() => handleCopyNote(item)}
-                          className="text-slate-400 hover:text-slate-700 p-0.5 rounded"
+                          className="text-slate-600 hover:text-slate-700 p-0.5 rounded dark:text-slate-400"
                           title="Copy note"
                         >
                           {copiedNoteId === item.id ? (
-                            <Check className="w-3 h-3 text-emerald-600" />
+                            <Check className="w-3 h-3 text-emerald-700 dark:text-emerald-300" />
                           ) : (
                             <Copy className="w-3 h-3" />
                           )}
                         </button>
                         <button
                           onClick={() => handleDeleteNote(item.id)}
-                          className="text-slate-400 hover:text-rose-600 p-0.5 rounded"
+                          className="text-slate-600 hover:text-rose-600 p-0.5 rounded dark:text-slate-400"
                           title="Delete note"
                         >
                           <Trash2 className="w-3 h-3" />
@@ -549,7 +551,7 @@ export const StickyNotesOverlay: React.FC<StickyNotesOverlayProps> = ({
           </div>
 
           {/* Footer */}
-          <div className="p-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-850 flex items-center justify-between text-[11px] text-slate-500">
+          <div className="p-3 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-400">
             <span>Tip: Select text with mouse to annotate</span>
             <button
               onClick={() => handleStartAnnotating()}
