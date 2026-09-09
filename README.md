@@ -117,6 +117,28 @@ exception is the AI Copilot: a question you send, plus a summary of the loaded p
 goes to the configured model provider through `/api/chat`. The copilot is optional and
 the portal is fully usable with it disabled.
 
+## Accessibility
+
+The portal is checked with axe-core against WCAG 2.1 A/AA plus best-practice rules, across
+every tab and the sub-views that are only reachable by clicking, in both light and dark
+themes. It currently reports **zero violations** in both.
+
+What that rests on, and what to preserve when editing:
+
+- Every form control resolves an accessible name — `htmlFor`/`id` where a visible label
+  exists, `aria-label` where the layout supplies the context visually.
+- Colour tokens are paired. A light text token without a `dark:` counterpart will fail in
+  one theme or the other; `text-slate-500` is deliberately not used as a body token
+  because it measures 4.3:1 on grey chips.
+- Translucent light panels (`bg-slate-50/50` and similar) need a `dark:` counterpart, or
+  they composite to a mid-grey over the dark ground and take the text down with them.
+- Headings step by one. The page-level `h1` is rendered in `App.tsx` from the active tab.
+- `:focus-visible` opts out of transitions, because `outline-width` is animatable and
+  several controls carry `transition-all`.
+
+Re-check after any visual change; the source alone will not tell you what a colour
+resolves to once Tailwind's `oklch()` values and opacity modifiers composite.
+
 ## Contributing
 
 - `bun run lint` must pass (typecheck plus tests).
