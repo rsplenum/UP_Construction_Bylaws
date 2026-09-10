@@ -33,6 +33,12 @@ interface CitationBase {
   readonly clause: string;
   /** What in `src/domain` rests on this, and what is still missing from it. */
   readonly supports: string;
+  /**
+   * The gazette's own printed page, where a chapter PDF has established it. The flattened
+   * text carries no pagination at all, so this is the only number a reader can look up in
+   * a printed copy. Informational — the line number is what the test checks.
+   */
+  readonly gazettePage?: number;
 }
 
 export interface ProseCitation extends CitationBase {
@@ -434,6 +440,96 @@ export const CITATIONS: readonly Citation[] = [
       '2.5',
       'Unrestricted',
     ],
+  },
+  {
+    id: 'social.ews-lig.reservation',
+    rule: 'social.ews-lig',
+    clause: 'Clause 4.3.1',
+    supports: 'assessSocialHousing() — the trigger is "more than one unit", the exemption is an affordable housing scheme, and the shelter fee exists only below 4 Ha.',
+    gazettePage: 79,
+    kind: 'prose',
+    line: 5890,
+    text: 'For all housing projects (except affordable housing schemes) having more than one unit, a 10% each of the total units shall be mandatorily reserved for Economically Weaker Section (EWS) and Lower Income Group (LIG) housing respectively. For plots less than 4 Ha, provision to deposit shelter fee shall be applicable.',
+  },
+  {
+    id: 'social.ews-lig.fee-formula',
+    rule: 'social.ews-lig',
+    clause: 'Clause 4.3.11',
+    supports: 'SHELTER_FEE_SQM_PER_UNIT. The unit count factors out, giving 6.5 × circle rate per dwelling unit.',
+    gazettePage: 81,
+    kind: 'prose',
+    line: 5953,
+    text: '10% of [(total number of dwelling units) X (minimum EWS dwelling unit carpet area + minimum LIG dwelling unit carpet area) X Circle Rate]',
+  },
+  {
+    id: 'social.ews-lig.affordable-exemption',
+    rule: 'social.ews-lig',
+    clause: 'Clause 4.4 Note-2',
+    supports: 'The affordable-housing exemption, which the engine did not model at all.',
+    gazettePage: 81,
+    kind: 'prose',
+    line: 5976,
+    text: 'Note-2: In such affordable housing schemes, the provisions of paragraph 4.3.1 shall not be applicable,',
+  },
+  {
+    id: 'occupancy.res-single.plot',
+    rule: 'occupancy.thresholds',
+    clause: 'Clause 4.1.2(i)',
+    supports: 'res_single.minPlotAreaSqm — 40 m² in a new layout, unrestricted in a built-up area.',
+    gazettePage: 76,
+    kind: 'prose',
+    line: 5660,
+    text: 'The minimum plot size for single units shall be 40 square meters for non-built-up area and there shall be no restriction on plot size for built-up area.',
+  },
+  {
+    id: 'occupancy.res-multi.plot',
+    rule: 'occupancy.thresholds',
+    clause: 'Clause 4.1.2(ii)',
+    supports: 'res_multi.minPlotAreaSqm. Each unit must also have ≥60 m² carpet, which is not yet modelled.',
+    gazettePage: 76,
+    kind: 'prose',
+    line: 5661,
+    text: 'The minimum plot size for multi units shall be 150 square meters.',
+  },
+  {
+    id: 'occupancy.res.height',
+    rule: 'occupancy.thresholds',
+    clause: 'Clause 4.1.4',
+    supports: 'res_single.maxHeightM 15 m and res_multi 17.5 m. Conflicts with Clause 3.2.4.1, which keys the same ceiling on plot size — see V-010.',
+    gazettePage: 76,
+    kind: 'prose',
+    line: 5667,
+    text: 'The maximum height of the building shall be 15-m including stilt for single unit and 17.5 meters including mandatory stilt floor for multi-unit.',
+  },
+  {
+    id: 'occupancy.group-housing.plot',
+    rule: 'occupancy.thresholds',
+    clause: 'Clause 4.2.2',
+    supports: 'res_group_housing.minPlotAreaSqm — 1000 m² built-up, 1500 m² in a new layout.',
+    gazettePage: 77,
+    kind: 'prose',
+    line: 5717,
+    text: 'The minimum area of the plot for group housing schemes in built-up area shall be 1000 square meters and 1500 square meters in non-built-up areas.',
+  },
+  {
+    id: 'occupancy.group-housing.road',
+    rule: 'occupancy.thresholds',
+    clause: 'Clause 4.2.3',
+    supports: 'res_group_housing.minRoadWidthM — 9 m built-up, 12 m in a new layout.',
+    gazettePage: 77,
+    kind: 'prose',
+    line: 5719,
+    text: 'The proposed plot for group housing shall be located on road of minimum 12-meter width in non-built-up areas and the minimum road width for group housing plots in built-up area shall be 9-meters. The specifications for internal roads and pathways shall be as per paragraph 3.1.3 of these byelaws.',
+  },
+  {
+    id: 'occupancy.group-housing.height',
+    rule: 'occupancy.thresholds',
+    clause: 'Clause 4.2.4',
+    supports: 'res_group_housing.maxHeightM = Infinity, governed instead by monument, airport funnel and other statutory limits.',
+    gazettePage: 77,
+    kind: 'prose',
+    line: 5721,
+    text: 'There shall be no restriction on the maximum permissible building height for group housing schemes. The height of the building in group housing project shall be governed by its distance from the protected monument/heritage site, airport funnel zone and other statutory restrictions if any.',
   },
 ];
 

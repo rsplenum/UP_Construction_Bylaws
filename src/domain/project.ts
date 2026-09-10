@@ -6,6 +6,7 @@
  * verdicts. This is the one description of the site; screens read it and patch it.
  */
 
+import type { AreaType } from './far';
 import { OccupancyId, OCCUPANCIES } from './occupancy';
 
 export type GreenRating = 'none' | 'silver' | 'gold' | 'platinum';
@@ -50,6 +51,20 @@ export interface ProjectState {
 
   isCornerPlot: boolean;
   hasStilt: boolean;
+
+  /**
+   * Whether the site sits inside an already built-up area or a new layout. It changes
+   * the FAR ceiling (B-013), the minimum road width and the minimum plot size — a single
+   * dwelling needs 4 m of road in a built-up area and 9 m in a new layout (Clause 4.1.3).
+   *
+   * Built-up is the default because it is the commoner case, but note that it is NOT
+   * uniformly the conservative one: it gives the lower FAR ceiling but the laxer access
+   * and plot-size thresholds.
+   */
+  areaType: AreaType;
+
+  /** Clause 4.4 Note-2 exempts a qualifying affordable-housing scheme from EWS/LIG. */
+  isAffordableHousingScheme: boolean;
 
   frontSetbackProvided: number;
   rearSetbackProvided: number;
@@ -100,6 +115,8 @@ export const DEFAULT_PROJECT: ProjectState = {
 
   isCornerPlot: false,
   hasStilt: true,
+  areaType: 'built_up',
+  isAffordableHousingScheme: false,
 
   frontSetbackProvided: 3.5,
   rearSetbackProvided: 3.0,

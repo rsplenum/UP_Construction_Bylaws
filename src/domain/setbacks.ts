@@ -204,7 +204,13 @@ export function resolveRequiredSetbacks(input: {
       // size, three floors with stilts up to 15 meter is allowed and on plots above 300
       // square meters, four storeys with stilts up to 17.5-meter height is allowed."
       // The height ceiling follows the plot, not the single/multi distinction.
-      maxHeight = plotted.maxHeight;
+      // Two chapters give this ceiling and they disagree (V-010). Clause 3.2.4.1 keys it
+      // on plot size — under 300 m² three floors to 15 m, above it four to 17.5 m —
+      // while Clause 4.1.4 keys it on unit count: "15-m including stilt for single unit
+      // and 17.5 meters including mandatory stilt floor for multi-unit". A single
+      // dwelling on a 400 m² plot is 17.5 m by one and 15 m by the other. Neither
+      // reading is obviously the drafter's intent, so the stricter one governs.
+      maxHeight = Math.min(definition.maxHeightM, plotted.maxHeight);
       maxFloors = plotted.maxFloors;
       note = plotted.note;
     } else {

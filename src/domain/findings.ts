@@ -17,7 +17,8 @@
 import { assessSetbackFaces, resolveRequiredSetbacks, HIGH_RISE_THRESHOLD_M, SetbackFace } from './setbacks';
 import { PURCHASABLE_FAR_MIN_ROAD_WIDTH, resolveBaseFar } from './far';
 import { assessCompounding, compoundableLimits } from './compounding';
-import { getOccupancy } from './occupancy';
+import { assessSocialHousing } from './social-housing';
+import { forArea, getOccupancy } from './occupancy';
 import { ProjectState, derivePlotDepth } from './project';
 import { RULES } from './rules/registry';
 import { CONFIDENCE_LABEL, Confidence, isContested } from './rules/schema';
@@ -151,18 +152,25 @@ export function assessProject(project: ProjectState): Assessment {
   const depth = derivePlotDepth(project);
 
   // ---- 1. Is this use allowed here at all? -------------------------------------
-  if (roadWidth < occupancy.minRoadWidthM) {
+  // Clause 4.1.3 and 4.2.3: these thresholds differ between a built-up area and a new
+  // layout, and the built-up figure is the laxer one.
+  const areaType = project.areaType ?? 'built_up';
+  const minRoadWidth = forArea(occupancy.minRoadWidthM, areaType);
+  const minPlotArea = forArea(occupancy.minPlotAreaSqm, areaType);
+  const areaLabel = areaType === 'built_up' ? 'built-up area' : 'new layout';
+
+  if (roadWidth < minRoadWidth) {
     findings.push(sourced({
       id: 'use-road-width',
       topic: 'permissibility',
       status: 'blocked',
-      headline: `A ${noun(occupancy.plain)} needs a road at least ${occupancy.minRoadWidthM} m wide. Yours is ${roadWidth} m.`,
-      detail: `${occupancy.label} requires a minimum abutting right of way of ${occupancy.minRoadWidthM} m. The declared road is ${roadWidth} m.`,
-      required: `≥ ${occupancy.minRoadWidthM} m right of way`,
+      headline: `A ${noun(occupancy.plain)} needs a road at least ${minRoadWidth} m wide. Yours is ${roadWidth} m.`,
+      detail: `${occupancy.label} requires a minimum abutting right of way of ${minRoadWidth} m in a ${areaLabel}. The declared road is ${roadWidth} m.`,
+      required: `≥ ${minRoadWidth} m right of way`,
       proposed: `${roadWidth} m`,
       clause: 'Chapter 3.1 (Means of Access) & Chapter 15.3.2',
       nonNegotiable: true,
-      fix: { label: `Set the road width to ${occupancy.minRoadWidthM} m`, patch: { roadWidth: occupancy.minRoadWidthM } },
+      fix: { label: `Set the road width to ${minRoadWidth} m`, patch: { roadWidth: minRoadWidth } },
     }, 'occupancy.thresholds'));
   } else {
     findings.push(sourced({
@@ -170,21 +178,21 @@ export function assessProject(project: ProjectState): Assessment {
       topic: 'permissibility',
       status: 'ok',
       headline: `The ${roadWidth} m road is wide enough for a ${noun(occupancy.plain)}.`,
-      detail: `${occupancy.label} requires ≥ ${occupancy.minRoadWidthM} m; the abutting road is ${roadWidth} m.`,
-      required: `≥ ${occupancy.minRoadWidthM} m`,
+      detail: `${occupancy.label} requires ≥ ${minRoadWidth} m; the abutting road is ${roadWidth} m.`,
+      required: `≥ ${minRoadWidth} m`,
       proposed: `${roadWidth} m`,
       clause: 'Chapter 3.1 (Means of Access)',
     }, 'occupancy.thresholds'));
   }
 
-  if (occupancy.minPlotAreaSqm > 0 && plotArea < occupancy.minPlotAreaSqm) {
+  if (minPlotArea > 0 && plotArea < minPlotArea) {
     findings.push(sourced({
       id: 'use-plot-size',
       topic: 'permissibility',
       status: 'blocked',
-      headline: `This plot is too small for a ${noun(occupancy.plain)} — the minimum is ${sqm(occupancy.minPlotAreaSqm)}.`,
-      detail: `${occupancy.label} requires a minimum plot area of ${sqm(occupancy.minPlotAreaSqm)}. This plot is ${sqm(plotArea)}.`,
-      required: `≥ ${sqm(occupancy.minPlotAreaSqm)}`,
+      headline: `This plot is too small for a ${noun(occupancy.plain)} — the minimum is ${sqm(minPlotArea)}.`,
+      detail: `${occupancy.label} requires a minimum plot area of ${sqm(minPlotArea)} in a ${areaLabel}. This plot is ${sqm(plotArea)}.`,
+      required: `≥ ${sqm(minPlotArea)}`,
       proposed: sqm(plotArea),
       clause: 'Chapter 15.3.2 (Activity Permissibility)',
       nonNegotiable: true,
@@ -197,6 +205,7 @@ export function assessProject(project: ProjectState): Assessment {
     plotArea,
     roadWidth,
     greenRating: project.greenRating,
+    areaType,
   });
 
   const proposedFar = plotArea > 0 ? proposedArea / plotArea : 0;
@@ -472,16 +481,40 @@ export function assessProject(project: ProjectState): Assessment {
   }
 
   // ---- 8. Affordable housing -----------------------------------------------------
-  if (occupancy.triggersEwsLig) {
+  const social = assessSocialHousing({
+    multiUnitHousing: occupancy.multiUnitHousing,
+    plotAreaSqm: plotArea,
+    circleRate: project.circleRate,
+    isAffordableHousingScheme: project.isAffordableHousingScheme,
+  });
+
+  if (social.applies) {
     findings.push(sourced({
       id: 'ews-lig',
       topic: 'social',
       status: 'attention',
-      headline: '10% of the homes must be for lower-income buyers, or a shelter fee is payable.',
-      detail: '10% EWS and 10% LIG dwelling units are reserved. In lieu, a shelter fee of 10% of [total DUs × (min EWS carpet + min LIG carpet) × circle rate] is payable to the Development Authority.',
-      required: '10% EWS + 10% LIG units, or shelter fee',
-      clause: 'Chapter 4.1.2 (Social Housing)',
-    }, 'occupancy.thresholds'));
+      headline: social.shelterFeeAvailable
+        ? '20% of the homes must go to lower-income buyers, or a shelter fee is payable.'
+        : '20% of the homes must go to lower-income buyers. There is no fee alternative at this size.',
+      detail: social.shelterFeeAvailable
+        ? `10% of the dwelling units are reserved for EWS and another 10% for LIG. Below 4 hectares these may instead be bought out: ${inr(social.shelterFeePerUnit)} per dwelling unit in the scheme.`
+        : `10% of the dwelling units are reserved for EWS and another 10% for LIG. ${social.reason} This plot is ${sqm(plotArea)}.`,
+      required: '10% EWS + 10% LIG units',
+      working: social.shelterFeeAvailable
+        ? `Clause 4.3.11: 10% × (30 m² minimum EWS carpet + 35 m² minimum LIG carpet) × ₹${project.circleRate.toLocaleString('en-IN')}/m² = ${inr(social.shelterFeePerUnit)} per unit`
+        : social.reason,
+      clause: social.clause,
+      nonNegotiable: !social.shelterFeeAvailable,
+    }, 'social.ews-lig'));
+  } else if (occupancy.multiUnitHousing && project.isAffordableHousingScheme) {
+    findings.push(sourced({
+      id: 'ews-lig',
+      topic: 'social',
+      status: 'ok',
+      headline: 'No EWS or LIG reservation applies to an affordable housing scheme.',
+      detail: social.reason,
+      clause: 'Chapter 4.4 Note-2',
+    }, 'social.ews-lig'));
   }
 
   // ---- 9. How it gets sanctioned --------------------------------------------------

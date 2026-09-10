@@ -1,0 +1,361 @@
+=== chapter 04 · gazette page 76 · pdf page 1 ===
+4 Residential Buildings
+4.1 Plotted Development - Single/ Multi-units.
+4.1.1 General Requirements
+(i) Permission for residential plotted development (single/ multi-units) shall be given:
+a. On all plots in residential areas proposed in the master plan/ zonal development plan.
+b. In all layouts approved or developed by the Authority.
+(ii) Single-unit refers to residential building having one independent residential unit on each floor or
+combination of floors with three or less storeys and height not exceeding 15-meters.
+(iii) Multi-unit refers to residential building having one or more independent residential units on each
+floor with four or less storeys and height not exceeding 17.5-meters (including mandatory stilt).
+4.1.2 Minimum Plot Size
+(i) The minimum plot size for single units shall be 40 square meters for non-built-up area and there
+shall be no restriction on plot size for built-up area.
+(ii) The minimum plot size for multi units shall be 150 square meters.
+(iii) In case of a multi unit, the minimum carpet area of each independent residential unit shall be 60
+square meters.
+4.1.3 Means of Access
+(i) For single units, the minimum width of the road shall be 4.0 meters in built-up areas and 9-meters
+in in non-built-up areas. However, for non-built-up area, 7.5-meter-wide access road is
+permissible in case plots are located only on one side of the road.
+(ii) For multi-units, the minimum width of road shall be 9-meters.
+4.1.4 Maximum height of building
+The maximum height of the building shall be 15-m including stilt for single unit and 17.5 meters
+including mandatory stilt floor for multi-unit.
+4.1.5 Minimum Setback
+Minimum setbacks for residential buildings in plotted development for single/multi-units shall be as
+per paragraph 3.2.4 of the building byelaws.
+4.1.6 Ground Coverage and FAR
+The ground coverage and FAR of the buildings shall be as follows:
+76
+
+--- table 0 (7 rows × 6 cols) ---
+Plot Area (sqm) | Ground Coverage (%) | Base FAR | [#D9E2F3] | Max. Permissible | [#D9E2F3]
+ |  |  |  | FAR | 
+≥40 to 150 | Max. coverage after ensuring setbacks | 2.00 | 2.0 |  | 
+>150 to 300 | Max. coverage after ensuring setbacks | 1.80 | 2.0 |  | 
+>300 to 500 | Max. coverage after ensuring setbacks | 1.75 | 2.0 |  | 
+>500 to1200 | Max. coverage after ensuring setbacks | 1.50 | 2.0 |  | 
+>1200 | Max. coverage after ensuring setbacks | 1.25 | 2.0 |  | 
+
+=== chapter 04 · gazette page 77 · pdf page 2 ===
+Note-1: For all housing projects having more than one unit, a 10% each of the total units shall be
+mandatorily reserved for Economically Weaker Section (EWS) and Lower Income Group (LIG)
+housing respectively. For plots less than 4 Ha, provision to deposit shelter fee shall be applicable. The
+mandatory EWS/LIG plots/units to be built as per the government policy shall be treated free of FAR
+and the corresponding incentive FAR (as calculated on carpet area of EWS/LIG units) shall also be
+permissible. For plots less than 4 Ha, in case EWS/LIG plots/units are not constructed and shelter fee
+is deposited, then in lieu of the same, the proportionate incentive FAR shall be allowed.
+4.1.7 Parking Requirements
+Parking requirements for residential plotted development shall be as per paragraph 3.3.4 of the
+building byelaws.
+4.1.8 Other requirements
+(i) Before multi- units are allowed on the above mentioned plots, development fee shall be deposited
+by the applicant as per the provisions of Uttar Pradesh Urban Planning and Development
+(Determination, Levy and Collection of Development Fee) Rules, 2014 as amended time to time.
+(ii) The provisions of Uttar Pradesh Apartment (Promotion of Construction, Ownership and
+Maintenance) Act, 2010 and the rules and bye-laws made thereunder shall be effective in case of
+multi-units.
+4.2 Group Housing
+4.2.1 General Requirements
+(i) The development of group housing shall be done as per the provisions of the master plan, zonal
+development plan and layout plan.
+(ii) In group housing schemes of four hectares and more area, it shall be mandatory to get the layout
+approved, wherein the layout plan and building plan can be submitted together for approval.
+(iii) In group housing schemes less than four hectares, only building plan approval shall be required
+with provision of proper circulation area.
+4.2.2 Minimum Plot Size
+The minimum area of the plot for group housing schemes in built-up area shall be 1000 square meters
+and 1500 square meters in non-built-up areas.
+4.2.3 Means of access
+The proposed plot for group housing shall be located on road of minimum 12-meter width in non-built-
+up areas and the minimum road width for group housing plots in built-up area shall be 9-meters. The
+specifications for internal roads and pathways shall be as per paragraph 3.1.3 of these byelaws.
+4.2.4 Maximum Building Height
+There shall be no restriction on the maximum permissible building height for group housing schemes.
+The height of the building in group housing project shall be governed by its distance from the protected
+monument/heritage site, airport funnel zone and other statutory restrictions if any.
+4.2.5 Parking Requirements
+(i) Stilt Floor - Stilt floors shall be permissible for parking purposes in group housing buildings.
+Provisions for stilt parking shall be provided as per paragraph 3.3.4.8 of the byelaws.
+(ii) Podium Parking - Podium parking shall be permissible for parking purposes in group housing
+buildings. Provisions for podium parking shall be provided as per paragraph 3.3.4.9 of the
+byelaws.
+77
+
+=== chapter 04 · gazette page 78 · pdf page 3 ===
+4.2.6 Parks and open areas and landscaping
+In the plots of area of 3000 square meters or more which are part of zonal development plan, provision
+for parks and open areas shall be made at the rate of 10% of the total plot area. The plots where zonal
+development plan is not effective, provision of parks and open spaces shall be made at the rate of 15%
+of the net plot area. The provisions shall be as per paragraph 3.1.2.2.
+4.2.7 Minimum Setback
+Minimum setbacks for residential buildings in plotted development for group housing shall be as per
+paragraph 3.2.4 of the building byelaw.
+4.2.8 Ground Coverage and FAR
+After ensuring minimum setback and mandatory open space requirements, maximum ground coverage
+shall be permissible on group housing plots.
+Maximum permissible FAR for group housing project in built-up and in non-built-up areas based on
+the road width shall be as per paragraph 3.2.2.2, as follows:
+Note-1: BFAR – Base FAR, PFAR – Purchasable FAR, PPFAR – Premium Purchasable FAR, MFAR
+– Maximum Permissible FAR including Base FAR, UR – Unrestricted
+Note-2: In green building, additional FAR over and above maximum permissible FAR shall be provided
+as per Chapter 9.3 of the building byelaws.
+Note-3: A maximum of 5 percent of the availed FAR (which includes Purchasable and Premium
+Purchasable FAR) will be allowed for commercial purposes within a group housing project. If the
+commercial use is situated in the same building as residential, the commercial use shall be limited to
+ground floor only. Commercial space developed as a separated building within group housing project,
+shall have a separate entry and exit.
+Note-4: A maximum of 5 percent of the permissible FAR shall be availed for various types of services
+like air-conditioned plants, in front of the lift (except corridor outside the lift), up to 10 square meters
+shall be allowed for lobby, machine room for lift, mumty, almirahs and bay-windows (maximum 0.60
+m depth and 1.80 m length), refuse area (as per NBC), service duct and community centre.
+Note-5: Provision of community facilities shall be made as per the standards prescribed in paragraph
+3.1.4 of the byelaws.
+Note-6: Security room measuring 7.5 square meters shall be allowed at the entrance, but in any case,
+construction within the minimum setback required for firefighting shall not be allowed.
+Note-7: Balconies up to 2-meter width shall not be included in FAR. Wherever the distance between
+two buildings is less than 9-meters, a balcony more than 2.0 meters wide shall not be allowed up to a
+height of 6-meters. Fire norms shall not be violated in this regard.
+78
+
+--- table 0 (20 rows × 14 cols) ---
+FAR | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  | 
+ | [#DBE5F1] | Road Width (Upto 12m) |  |  | Road Width (>12 -24m) |  |  | Road Width (>24 - 45m) |  |  | Road Width (>45m) |  | 
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  | 
+ | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1]
+ | BFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR
+G. Housing |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1]
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Built-up Area |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Group Housing | [#FFF2CC] | 0.3 | 0.3 | [#DEEAF6] | 0.75 | 0.75 | [#DEEAF6] | 1.5 | 2.25 | [#DEEAF6] | 1.5 | UR | [#DEEAF6]
+ | 1.5 |  |  | 2.1 |  |  | 3 |  |  | 5.25 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+Non-Built-up |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Area |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Group Housing | [#FFF2CC] | 0.5 | 0.5 | [#DEEAF6] | 1.25 | 1.25 | [#DEEAF6] | 2.5 | 3.75 | [#DEEAF6] | 2.5 | UR | [#DEEAF6]
+ | 2.5 |  |  | 3.5 |  |  | 5 |  |  | 8.75 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+
+=== chapter 04 · gazette page 79 · pdf page 4 ===
+Note-8: For all housing projects (except affordable housing schemes) having more than one unit, a 10%
+each of the total units shall be mandatorily reserved for Economically Weaker Section (EWS) and
+Lower Income Group (LIG) housing respectively. For plots less than 4 Ha, provision to deposit shelter
+fee shall be applicable. The mandatory EWS/LIG plots/units to be built as per the government policy
+shall be treated free of FAR and the corresponding incentive FAR (as calculated on carpet area of
+EWS/LIG units) shall also be permissible. For plots less than 4 Ha, in case EWS/LIG plots/units are
+not constructed and shelter fee is deposited, then in lieu of the same, the proportionate incentive FAR
+shall be allowed.
+4.2.9 Parking Requirements
+Parking standards in group housing plots shall be as per paragraph 3.3.4 of these byelaws.
+Note: For plots above 4000 sqm in area, a separate block for parking is permissible. Within the parking
+block, 10% of Ground Floor shall be utilized for ancillary purposes (free from FAR) incidental to the
+principal use.
+4.2.10 Basement
+The permissibility of basement in group housing project shall be as per paragraph 3.3.3 of the building
+byelaws.
+4.2.11 Other requirements
+(i) Telecom wiring arrangement in group housing, hotel and multi-storey commercial/office
+buildings as per the standards prescribed by the Department of Telecommunications.
+(ii) Provision of duct for optical fibre as per the standards in all categories of newly constructed
+building complexes.
+(iii) Provision of piped natural gas, wherever required.
+(iv) Provisions for electrical vehicle charging stations shall be as per Chapter-17.
+4.3 EWS and LIG housing requirements
+4.3.1 Requirements
+For all housing projects (except affordable housing schemes) having more than one unit, a 10% each of
+the total units shall be mandatorily reserved for Economically Weaker Section (EWS) and Lower
+Income Group (LIG) housing respectively. For plots less than 4 Ha, provision to deposit shelter fee
+shall be applicable.
+4.3.2 Eligibility of EWS and LIG
+Eligibility of EWS and LIG shall be determined based on annual income limit. For being eligible under
+EWS, the current limit is an annual income of rupees 3 lakhs and for being eligible under LIG, the
+current limit is an annual income of rupees 3-6 lakhs or as amended by State Government as per the
+guidelines issued from time to time.
+4.3.3 Minimum Plot Size
+The minimum plot size for EWS and LIG housing (in plotted development) and minimum carpet area
+(in group housing) shall be as follows.
+79
+
+--- table 0 (5 rows × 7 cols) ---
+[#D9E2F3] | [#D9E2F3] |  |  | [#D9E2F3] |  | 
+ |  | EWS |  |  | LIG | «band #D9E2F3»
+[#D9E2F3] | [#D9E2F3] |  |  | [#D9E2F3] |  | 
+Plotted (Plot size in sqm) | =>35 – 40 |  |  | >40 – 50 |  | 
+Group Housing (Carpet area in sqm) | =>30 – 35 |  |  | >35 – 45 |  | 
+
+=== chapter 04 · gazette page 80 · pdf page 5 ===
+4.3.4 Means of Access
+For EWS and LIG housing in plotted development, the minimum width of the access road shall be 4.0
+meters in built-up areas and 6-meters in in non-built-up areas. For EWS and LIG housing in group
+housing, the minimum width of the access road shall be 9.0 meters.
+4.3.5 Ground Coverage and FAR
+(i) After ensuring minimum setback and mandatory open space requirements, maximum ground
+coverage shall be permissible on plotted development and group housing.
+(ii) The maximum permissible FAR for EWS and LIG housing in plotted development shall be 2.0.
+(iii) The maximum permissible FAR for EWS and LIG housing in group housing shall be the same
+as in paragraph 4.2.8. The FAR consumed in mandatory EWS/LIG units in group housing shall
+not be counted in the overall FAR which can be consumed in the rest of the scheme.
+(iv) For plots less than 4 Ha, in case EWS/LIG plots/units are not constructed and shelter fee is
+deposited, then in lieu of the same, equivalent FAR in proportion to the number of units
+corresponding to which the shelter fee has been deposited can be consumed in the rest of the
+scheme.
+4.3.6 Minimum Setback
+The minimum setbacks for EWS and LIG housing in plotted development and group housing shall be
+as per paragraph 3.2.4 of the building byelaws.
+4.3.7 Maximum Building Height
+(i) For plotted development, the maximum height of the building shall be 17.5 meters including stilt
+floor for multi-unit. Construction of stilts and three floors shall be permissible. Further, the height of a
+residential building in plotted development shall be governed by its distance from the protected
+monument/ heritage site, airport funnel zone and other statutory restrictions, if any.
+(ii) For EWS and LIG in group housing scheme, there shall be no restriction on building height in non-
+built-up area, however, in built-up area the maximum building height shall be 17.5 meters. However,
+the height of the building in group housing project shall be governed by its distance from the protected
+monument/heritage site, airport funnel zone and other statutory restrictions if any.
+4.3.8 Parking Requirements
+(i) The parking requirements for EWS and LIG housing shall be as follows.
+(ii) In both group housing and plotted development projects, stilts shall be permissible for parking
+arrangements as per paragraph 3.3.4 of the building byelaws, which shall not be counted in FAR.
+Only open parking shall be allowed on stilts, if covered parking is made (covered on more than
+two sides), it shall be counted in FAR.
+(iii) For plots of area above 4000 sqm, a separate block for parking is permissible, within the plot.
+Within the parking block, 10% of ground floor may be utilized for ancillary purposes (free from
+FAR) incidental to the principal use.
+(iv) If separate parking block is built above the ground level, then the distance between the main
+building and seperate parking block shall be the minimum setback required as per the height of
+80
+
+--- table 0 (6 rows × 6 cols) ---
+[#D9E2F3] |  |  | [#D9E2F3] |  | 
+[#D9E2F3] | EWS | [#D9E2F3] | LIG |  | 
+[#D9E2F3] |  |  | [#D9E2F3] |  | 
+ |  |  |  |  | 
+ | 2.0 sqm / DU |  |  | 4.0 sqm / DU | 
+ |  |  |  |  | 
+
+=== chapter 04 · gazette page 81 · pdf page 6 ===
+the highest block or 6-meters whichever is higher.
+4.3.9 Basement
+The permissibility of basement for EWS and LIG in plotted development and group housing scheme
+shall be as per paragraph 3.3.3 of the building byelaws.
+4.3.10 Cost Ceiling of Buildings
+The ceiling cost of EWS and LIG units shall be as below:
+For cities with more than 10 lakh population, the ceiling cost may be enhanced by 20 percent.
+The above ceiling cost as amended by the state government from to time shall prevail.
+4.3.11 Calculation of Shelter Fee
+The shelter fee payable shall be calculated according to the following formula.
+Shelter Fees =
+10% of [(total number of dwelling units) X (minimum EWS dwelling unit carpet area + minimum LIG
+dwelling unit carpet area) X Circle Rate]
+4.4 Affordable Housing standards
+4.4.1 Minimum Scheme Area and Plot Size
+(i) Minimum area of the scheme shall be 3000 square meters in case of plotted development. In
+case of Group Housing, the minimum area of the scheme in built-up area shall be 1000 square
+meters and 1500 square meters in non-built-up area.
+(ii) The minimum plot size within the scheme (in plotted development) and minimum carpet area (in
+group housing) shall be as follows.
+Note-1: For any scheme to qualify as affordable housing, (a) in plotted development at least 50 percent
+of the total plots shall have plot area less than 90 square meters, and (b) in Group Housing, at least 50
+percent of the total units shall have carpet area less than 60 square meters.
+Note-2: In such affordable housing schemes, the provisions of paragraph 4.3.1 shall not be applicable,
+i.e. mandatory EWS and LIG requirements or shelter fee requirements shall not be applicable.
+Note-3: Any private developer may under this scheme, submit a report as per Note-2 above, if EWS
+and LIG houses are constructed as per the scheme, then the FAR of EWS and LIG houses shall not be
+included in the calculation of FAR of that scheme.
+Note-4: Construction of multi-units shall be permitted as per the building byelaws.
+81
+
+--- table 0 (5 rows × 6 cols) ---
+[#D9E2F3] |  |  | [#D9E2F3] |  | 
+[#D9E2F3] | Category | [#D9E2F3] | [#D9E2F3] | Ceiling Cost | [#D9E2F3]
+[#D9E2F3] |  |  | [#D9E2F3] |  | 
+EWS |  |  | Rs. 4,50,000/- |  | 
+LIG |  |  | Rs. 9,00,000/- |  | 
+
+--- table 1 (5 rows × 10 cols) ---
+[#D9E2F3] | [#D9E2F3] |  |  | [#D9E2F3] |  |  | [#D9E2F3] |  | 
+[#D9E2F3] | [#D9E2F3] | EWS | [#D9E2F3] | [#D9E2F3] | LIG | [#D9E2F3] | [#D9E2F3] | Others income groups | [#D9E2F3]
+[#D9E2F3] | [#D9E2F3] |  |  | [#D9E2F3] |  |  | [#D9E2F3] |  | 
+Plotted (Plot size in sqm) | =>35 – 40 |  |  | >40 – 50 |  |  | >50 - 150 |  | 
+Group Housing (Carpet area in sqm) | =>30 – 35 |  |  | >35 – 45 |  |  | >45 - 90 |  | 
+
+=== chapter 04 · gazette page 82 · pdf page 7 ===
+4.4.2 Means of Access
+For affordable housing, the minimum width of the access road shall be 9.0 meters in built-up areas and
+12-meters in in non-built-up areas.
+4.4.3 Ground Coverage and FAR
+(i) After ensuring minimum setback and mandatory open space requirements, maximum ground
+coverage shall be permissible on group housing plots.
+(ii) The maximum permissible FAR for Affordable housing in plotted development shall be 2.0
+(iii) Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter
+9 of the building byelaws. Basis approach road width, the maximum permissible FAR (including Base
+FAR) for Affordable housing in group housing schemes in built-up and the non-built-up areas shall be
+as follows:
+Note-1: BFAR – Base FAR, PFAR – Purchasable FAR, PPFAR – Premium Purchasable FAR, MFAR
+– Maximum Permissible FAR which includes Base FAR, UR – Unrestricted FAR.
+(iv) In green building, additional FAR over and above maximum permissible FAR shall be provided as
+per paragraph 9.3 of the building byelaws.
+4.4.4 Minimum Setback
+The minimum setbacks for Affordable housing in plotted development and affordable group housing
+shall be as per paragraph 3.2.4 of the building byelaws.
+4.4.5 Maximum Building Height
+(i) For plotted development, the maximum height of the building shall be 17.5 meters including stilt
+floor for multi-unit. Construction of stilts and three floors shall be permissible. Further, the height of a
+residential building in plotted development shall be governed by its distance from the protected
+monument/ heritage site, airport funnel zone and other statutory restrictions, if any.
+(ii) For affordable housing in group housing scheme, there shall be no restriction on building height in
+non-built-up area, however, in built-up area the maximum building height shall be 17.5 meters.
+However, the height of the building in group housing project shall be governed by its distance from the
+protected monument/heritage site, airport funnel zone and other statutory restrictions if any.
+4.4.6 Parking Requirements
+(i) The parking requirements for affordable group housing shall be as follows.
+82
+
+--- table 0 (9 rows × 14 cols) ---
+FAR | [#DBE5F1] | Road Width (< 18m) |  |  | Road Width (≥18 -24m) |  |  | Road Width (>24 - 45m) |  |  | Road Width (>45m) |  | 
+ | BFAR |  |  |  |  |  |  |  |  |  |  |  | «band #DBE5F1»
+Affordable |  | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR
+ | [#DBE5F1] |  |  |  |  |  |  |  |  |  |  |  | 
+Group Housing |  | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1]
+ |  |  |  |  |  |  |  |  |  |  |  |  | «band #DCDDDF»
+Group Housing (Built-up Area) | 2.00 (<18m) | 0.20 | 0.20 | 2.40 | 1.00 | 1.00 | 2.00 | 2.00 | 3.00 | 7.00 | 2.00 | UR | UR
+Group Housing (Built-up Area) | 2.25 (≥18m) | 0.23 | 0.23 | 2.71 | 1.125 | 1.125 | 4.50 | 2.25 | 3.38 | 7.88 | 2.25 | UR | UR
+Group Housing (Non-Built-up Area) | 3.00 | 0.30 | 0.30 | 3.60 | 1.50 | 1.50 | 6.00 | 3.00 | UR | UR | 3.00 | UR | UR
+
+--- table 1 (8 rows × 5 cols) ---
+[#D9E2F3] |  |  | [#D9E2F3] | [#D9E2F3]
+[#D9E2F3] | EWS | [#D9E2F3] | LIG | Other income groups
+ |  |  |  | [#D9E2F3]
+[#D9E2F3] |  |  | [#D9E2F3] | [#D9E2F3]
+ |  |  |  | 
+2.0 sqm / DU |  |  | 4.0 sqm / DU | 1 ECS / DU
+ |  |  |  | +10% Visitor Parking for DU > 60 sqm
+ |  |  |  | 
+
+=== chapter 04 · gazette page 83 · pdf page 8 ===
+(ii) In both group housing and plotted development projects, stilts shall be permissible for parking
+arrangements as per paragraph 3.3.4 of the building byelaws, which shall not be counted in FAR.
+Only open parking shall be allowed on stilts, if covered parking is made (covered on more than
+two sides), it shall be counted in FAR.
+(iii) For plots of area above 4000 sqm, a separate block for parking is permissible, within the plot.
+Within the parking block, 10% of ground floor may be utilized for ancillary purposes (free from
+FAR) incidental to the principal use.
+(iv) If seperate parking block is built above the ground level, then the distance between the main
+building and seperate parking block shall be the minimum setback required as per the height of
+the highest block or 6-meters whichever is higher.
+4.4.7 Basement
+The permissibility of basement for affordable housing in plotted development and group housing
+scheme shall be as per paragraph 3.3.3 of the building byelaws.
+4.4.8 Cost of Buildings
+The provisions of paragraph 4.3.10 shall not be applicable in affordable housing projects.
+4.4.9 Calculation of Development Fee
+The development fee shall be calculated as per the provisions of Uttar Pradesh Urban Planning and
+Development (Assessment, Levy and Collection of Development Permit Fee, Building Permit Fee and
+Inspection Fee) Rules, 2024. There shall be exemption from density-based development fee calculation
+as provided in the said rules.
+83

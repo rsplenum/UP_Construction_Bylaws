@@ -118,3 +118,26 @@ describe('assessSetbackFaces', () => {
     expect(face.status).toBe('violation');
   });
 });
+
+/**
+ * V-010. Two chapters give the plotted-residential height ceiling and they disagree.
+ * Clause 3.2.4.1 keys it on plot size — under 300 m², three floors to 15 m; above it,
+ * four to 17.5 m. Clause 4.1.4 keys it on unit count: "15-m including stilt for single
+ * unit and 17.5 meters including mandatory stilt floor for multi-unit". A single dwelling
+ * on a 400 m² plot is 17.5 m by the first and 15 m by the second.
+ */
+describe('the plotted height ceiling, where chapters 3 and 4 disagree', () => {
+  const ceiling = (occupancy: 'res_single' | 'res_multi', plotArea: number) =>
+    resolveRequiredSetbacks({ ...base, occupancy, plotArea }).maxHeight;
+
+  it('caps a single dwelling at 15 m even on a large plot', () => {
+    expect(ceiling('res_single', 250)).toBe(15);    // both chapters agree
+    expect(ceiling('res_single', 400)).toBe(15);    // Ch 3 says 17.5, Ch 4 says 15
+    expect(ceiling('res_single', 2_000)).toBe(15);
+  });
+
+  it('caps a multi-unit at 15 m below 300 m² and 17.5 m above it', () => {
+    expect(ceiling('res_multi', 250)).toBe(15);     // Ch 3 binds
+    expect(ceiling('res_multi', 400)).toBe(17.5);   // both agree
+  });
+});

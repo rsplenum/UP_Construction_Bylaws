@@ -100,6 +100,22 @@ export const RULES: RuleSet = {
     },
   },
 
+  'social.ews-lig': {
+    id: 'social.ews-lig',
+    question: 'Must some of the homes be reserved for lower-income buyers, and can that be bought out?',
+    clause: 'Chapter 4.3.1 (reservation), 4.3.3 (minimum sizes), 4.3.11 (fee), 4.4 Note-2 (exemption)',
+    confidence: 'gazette',
+    derivedFrom: ['occupancy', 'plotArea'],
+    checked: '2026-09-10',
+    quote:
+      '4.3.1: "For all housing projects (except affordable housing schemes) having more than one unit, a 10% each of the total units shall be mandatorily reserved for Economically Weaker Section (EWS) and Lower Income Group (LIG) housing respectively. For plots less than 4 Ha, provision to deposit shelter fee shall be applicable." ' +
+      '4.3.11: "Shelter Fees = 10% of [(total number of dwelling units) X (minimum EWS dwelling unit carpet area + minimum LIG dwelling unit carpet area) X Circle Rate]". ' +
+      '4.3.3 minimum group-housing carpet areas: EWS =>30 – 35 sqm, LIG >35 – 45 sqm. ' +
+      '4.4 Note-2: "In such affordable housing schemes, the provisions of paragraph 4.3.1 shall not be applicable, i.e. mandatory EWS and LIG requirements or shelter fee requirements shall not be applicable."',
+    ifWrong:
+      'A scheme of four hectares or more would be told it can buy its way out of an obligation the gazette gives it no way to buy out of, and multi-unit plotted development would be exempted from the reservation altogether.',
+  },
+
   'occupancy.thresholds': {
     id: 'occupancy.thresholds',
     question: 'What road width, plot size and height does each use require?',

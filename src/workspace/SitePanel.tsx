@@ -5,7 +5,7 @@ import { NumberField } from '../components/ui/NumberField';
 import {
   OCCUPANCY_GROUPS,
   OccupancyId,
-  getOccupancy,
+  forArea, getOccupancy,
   occupanciesInGroup,
 } from '../domain/occupancy';
 import { derivePlotDepth } from '../domain/project';
@@ -21,6 +21,9 @@ export const SitePanel: React.FC = () => {
   const { project, patch } = useProject();
   const simple = project.mode === 'simple';
   const occupancy = getOccupancy(project.occupancy);
+  // Clause 4.1.3 / 4.2.3: the minimum road width differs between a built-up area
+  // and a new layout.
+  const minRoadWidth = forArea(occupancy.minRoadWidthM, project.areaType ?? 'built_up');
   const depth = derivePlotDepth(project);
 
   return (
@@ -68,7 +71,7 @@ export const SitePanel: React.FC = () => {
         <NumberField
           label="Road width" unit="m" value={project.roadWidth}
           onChange={(v) => patch({ roadWidth: v })} min={3} step={1}
-          warning={project.roadWidth < occupancy.minRoadWidthM ? `Needs ${occupancy.minRoadWidthM} m` : undefined}
+          warning={project.roadWidth < minRoadWidth ? `Needs ${minRoadWidth} m` : undefined}
         />
       </div>
 

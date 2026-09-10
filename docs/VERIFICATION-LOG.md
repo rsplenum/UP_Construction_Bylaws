@@ -4,8 +4,8 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: three transcriptions were verified exactly right, and thirteen real bugs were
-found — nine of which made the engine permit or charge more than the byelaws allow.**
+**Headline: eight transcriptions verified exactly right, and seventeen real bugs found —
+twelve of which made the engine permit, charge or oblige less than the byelaws do.**
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -189,9 +189,75 @@ This one is also why `RuleInput` gained `areaType`. Nothing anywhere declared ar
 as an input that drives the answer, so the omission was invisible outside the numbers —
 the same failure mode as V-001.
 
+### B-014 — Multi-unit plotted development was exempt from the EWS/LIG reservation
+Clause 4.3.1 applies to *"all housing projects (except affordable housing schemes) having
+**more than one unit**"*. The engine's `triggersEwsLig` was true only for group housing and
+mixed use, and **false for multi-unit plotted development** — a building of several flats
+on one plot, which plainly has more than one unit. It was silently exempted from a
+mandatory 20% social-housing obligation.
+*Fixed: the flag is now `multiUnitHousing`, named after the gazette's own trigger, and
+true for `res_multi`.*
+
+### B-015 — The shelter fee was offered at any scheme size (over-permission)
+The engine presented the shelter fee as an unconditional alternative to building the
+units. Clause 4.3.1 allows it only *"For plots less than 4 Ha"*. **At four hectares and
+above the gazette offers no buy-out at all** — the units have to be built. The engine was
+telling the largest schemes, exactly the ones the reservation exists for, that they could
+pay their way out.
+*Fixed: `SHELTER_FEE_MAX_PLOT_SQM = 40,000`, and above it the finding is marked
+non-negotiable.*
+
+### B-016 — Wrong clause, and a missing exemption
+The finding cited *Chapter 4.1.2 (Social Housing)*. Clause 4.1.2 is **Minimum Plot Size**;
+the rule is 4.3.1, the minimum carpet areas 4.3.3, and the fee formula 4.3.11. Clause 4.4
+Note-2's exemption for affordable-housing schemes was not modelled at all.
+
+The one thing that was right: the fee formula. *"Shelter Fees = 10% of [(total number of
+dwelling units) X (minimum EWS dwelling unit carpet area + minimum LIG dwelling unit carpet
+area) X Circle Rate]"* matches what the engine had. The unit count factors out, so the fee
+now has an exact per-unit form — 6.5 × circle rate — that can be quoted without knowing how
+many units a scheme will hold.
+
+### B-017 — Four thresholds held only their built-up value
+Chapter 4 states several thresholds separately for a built-up area and a new layout, and
+**the built-up figure is the laxer one**. The engine held only that figure:
+
+| | Engine had | Built-up | New layout |
+|---|---|---|---|
+| Single dwelling, min road (4.1.3) | 4 m | 4 m | **9 m** |
+| Single dwelling, min plot (4.1.2) | 30 m² | no restriction | **40 m²** |
+| Group housing, min road (4.2.3) | 9 m | 9 m | **12 m** |
+| Group housing, min plot (4.2.2) | 1000 m² | 1000 m² | **1500 m²** |
+
+The single-dwelling minimum plot of 30 m² matched neither column. This is the same shape as
+B-013 — a rule that varies by area type, flattened to one value — and it is why
+`ProjectState` now carries `areaType` and the FAR engine finally receives it instead of
+defaulting to built-up on every project.
+*Fixed: thresholds are `number | Record<AreaType, number>`, resolved through `forArea()`.*
+
 ---
 
 ## Still open
+
+### V-010 — Chapters 3 and 4 give different height ceilings — UNRESOLVED, stricter applied
+Clause 3.2.4.1 keys the plotted-residential ceiling on **plot size**: *"for all
+single/multi-units less than 300 square meters plot size, three floors with stilts up to
+15 meter is allowed and on plots above 300 square meters, four storeys with stilts up to
+17.5-meter height is allowed."*
+
+Clause 4.1.4 keys the same ceiling on **unit count**: *"The maximum height of the building
+shall be 15-m including stilt for single unit and 17.5 meters including mandatory stilt
+floor for multi-unit."*
+
+A single dwelling on a 400 m² plot is 17.5 m by the first and 15 m by the second. Neither
+is obviously the drafter's intent, and nothing in either chapter subordinates one to the
+other. Under standing rule 4 the engine applies **the stricter of the two**:
+`Math.min(occupancy ceiling, plot-band ceiling)`.
+
+This partly walks back **B-006**, which set `res_single.maxHeightM` to 17.5 on the strength
+of Chapter 3 alone. B-006's mechanism was right — the ceiling does follow the plot — but
+it is a floor on the answer, not the whole of it. Settling this needs an authority's
+practice, not another reading.
 
 ### V-009 — Chapter 3 confirmed against a second source, and its FAR matrix extracted
 The Chapter 3 PDF (gazette p.37–75) is a reading of the byelaws entirely independent of
