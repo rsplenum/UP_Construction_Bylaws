@@ -193,6 +193,45 @@ the same failure mode as V-001.
 
 ## Still open
 
+### V-008 — Clause 15.3 states permissibility in colour, and the text pipeline lost all of it
+The permissibility matrix — the table that answers the app's *first* question, may this
+use go on this plot at all — encodes its answers as cell fill, not text. The legend on
+gazette page 149 is explicit: green is *Permitted*, red is *Prohibited*, and a digit laid
+over the fill is *Permitted with conditions*, the digit being a footnote reference.
+
+`gazette-tmpr8.txt` renders every one of those cells as blank. Fifty-three activities
+against sixteen zones read as an empty table, and nothing noticed until the colours were
+looked for directly. The stray digits scattered through that region of the flattened text
+— `7 7 7 7 7 7 7`, `2 2` — are the condition references, cut loose from the zones they
+qualify.
+
+Two sources, two answers. The docx gives **280** verdicts from `w:shd/@w:fill`, and they
+are not trustworthy on their own: only 29 of ~53 activity rows survive as real tables,
+averaging 9.7 verdicts per row against 16 zones, because merged header cells collapsed the
+columns. The rest of the matrix is a pasted raster (`word/media/image2.png`), where no
+markup exists to read.
+
+The Chapter 15 PDF resolves it. There the matrix is **vector, not raster**: the fills are
+drawing operations and the condition digits are positioned text. `tools/extract-zoning-matrix.py`
+pairs each filled rectangle against its column header's x and its row's y band and recovers
+**847 verdicts across 53 activities, 52 of them complete across all sixteen zones** —
+activity codes running 1.1(a) to 9.3 with no gaps. Output in
+`docs/source/derived/zoning-matrix.json`.
+
+Where the two disagree, prefer the PDF for this table and say why: its column alignment is
+verifiable — sixteen headers, sixteen cells, each matched by position — while the docx's is
+visibly broken by merges before any reading begins.
+
+**Three things follow.**
+
+1. **The L0 extractor must capture fill colour**, not only text and borders. This is the
+   third distinct channel the gazette uses to carry meaning, after cell text and cell
+   merges, and the first two were already nearly missed.
+2. **Never conclude a cell is empty from the flattened text.** It is a text-only view of a
+   document that says things in colour.
+3. **Single-path extraction is not safe.** One pipeline lost an entire table in silence.
+   Two independent paths — docx XML and chapter PDF — disagree loudly, which is the point.
+
 ### V-003 — Ten occupancies still read a table written for shops
 Rows 3(a) and 3(b) — shops, convenience shopping, commercial units — are now read from
 the gazette. Offices, hotels, malls, cinemas, petrol stations, hospitals, schools,
