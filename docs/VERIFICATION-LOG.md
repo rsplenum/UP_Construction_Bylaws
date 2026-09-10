@@ -193,6 +193,49 @@ the same failure mode as V-001.
 
 ## Still open
 
+### V-009 — Chapter 3 confirmed against a second source, and its FAR matrix extracted
+The Chapter 3 PDF (gazette p.37–75) is a reading of the byelaws entirely independent of
+the `.docx` every figure in the engine came from. **Everything the engine had for Chapter 3
+was confirmed exactly**, including the B-013 correction that was made only hours earlier:
+
+| | Confirmed |
+|---|---|
+| Plotted residential setbacks | 1/0/0/0 · 3/1.5/0/0 · 3/3/0/0 · 4.5/4.5/1.5/0 · 6/6/1.5/1.5 |
+| Telescopic FAR | 2.0 / 1.8 / 1.75 / 1.5 / 1.25, Max FAR 2.0 in every band |
+| Group housing, built-up | base 1.5; 2.0 / 3.0 / 3.0 / 5.25 / unrestricted |
+| Group housing, non-built-up | base 2.5; 5.0 / 5.0 / 8.75 / unrestricted, **and no band below 12 m** |
+| Shops, built-up / non-built-up | 2.1 / 3.0 / 5.0 and 2.45 / 3.5 / 6.0 |
+
+`src/domain/__tests__/far-matrix-source.test.ts` now asserts this agreement on every run,
+so the two readings cannot drift apart silently.
+
+**The matrix itself is extracted**: `docs/source/derived/far-matrix.json`, **161 band rows
+across 63 occupancies and seven clauses (3.2.2.1 to 3.2.2.7)**, nothing unparsed. This is
+what V-003 was waiting for, and it supplies most of V-005 as a by-product — an occupancy's
+first band *is* its minimum road width, so a shopping mall's `=>18 – 24m` says 18 m, read
+rather than reasoned.
+
+Three layout traps in this table, each of which corrupts the result in silence:
+
+1. **The Sl. numbering restarts seven times.** Keying a row on its Sl. alone merges the
+   plotted-residential ladder with non-bedded medical establishments, industrial buildings,
+   farmhouses and open spaces — all numbered "1". The key is (clause, sub-table, Sl.).
+2. **A table spilling across a page break belongs to the heading on the *previous* page.**
+   Clause 3.2.2.6's last table runs onto page 52 above the `3.2.2.7 Other Uses` heading;
+   assigning by page rather than by vertical position files Guest House and Utilities under
+   Other Uses. This is why L0 now records prose with its y coordinate.
+3. **A bare FAR value looks like a band.** `"2.0"` starts with a digit, and matching bands
+   on that shifted every column of clause 3.2.2.6 Sl. 5 one place to the left.
+
+And two defects in the gazette itself, recorded rather than smoothed over:
+
+- **Clause 3.2.2.6 Sl. 2(b)** has no use type printed. Its name — *Auditorium / Convention
+  Centre (Non-built-up area)* — appears only on the continuation page, while the row above
+  it reads *(Built-up)*. Inheriting the name would have labelled the non-built-up row
+  built-up. It also has no `=>18–24m` band, where its 1(b) counterpart does.
+- **Clause 3.2.2.3 Sl. 11, Cold Storage**, is printed with a road width of 18 m and nothing
+  else: no ground coverage, no base FAR, no max FAR.
+
 ### V-008 — Clause 15.3 states permissibility in colour, and the text pipeline lost all of it
 The permissibility matrix — the table that answers the app's *first* question, may this
 use go on this plot at all — encodes its answers as cell fill, not text. The legend on
@@ -233,15 +276,14 @@ visibly broken by merges before any reading begins.
    Two independent paths — docx XML and chapter PDF — disagree loudly, which is the point.
 
 ### V-003 — Ten occupancies still read a table written for shops
-Rows 3(a) and 3(b) — shops, convenience shopping, commercial units — are now read from
-the gazette. Offices, hotels, malls, cinemas, petrol stations, hospitals, schools,
-assembly, industry and warehousing still borrow those two ladders.
+Rows 3(a) and 3(b) — shops, convenience shopping, commercial units — are read from the
+gazette. Offices, hotels, malls, cinemas, petrol stations, hospitals, schools, assembly,
+industry and warehousing still borrow those two ladders **in the engine**.
 
-The gazette does carry what they need: a per-occupancy, per-area-type FAR matrix running
-from line 2306 to roughly 3718, about forty rows, each split built-up / non-built-up. It
-also fixes much of V-005 as a side effect — a commercial complex's first band starts at
-12 m and a mall's at 18 m, which *is* the minimum road width for each. Phase 1 of
-`docs/VERIFICATION-STRATEGY.md`.
+**The data they need now exists.** `docs/source/derived/far-matrix.json` holds all 63
+occupancies with their bands, base FAR and max FAR (V-009). What remains is wiring: the
+engine's `farBasis` routes eleven occupancies to one of two ladders, and it needs to route
+each to its own row instead. That is an engine change, not a reading task.
 
 ### V-004b — Item 10's quantity is ambiguous in the gazette
 "@Rs. 6132/- per running meter of height (measured as per periphery of existing

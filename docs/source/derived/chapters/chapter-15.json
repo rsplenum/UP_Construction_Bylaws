@@ -27,6 +27,48 @@
    "pdfPage": 1,
    "gazettePage": 138,
    "prose": "15 Zoning Regulations\n15.1 Objectives of Zoning\nIn general, only major land uses like residential, commercial, industrial, offices, public and semi-public\nfacilities, parks and open spaces, agriculture, etc. are shown in the master plan. Permissible activities\nunder major land uses, which are not possible to be shown separately on the master plan map, are\npermitted based on zoning regulations. The competent authority is expected to make provision for\nvarious ancillary activities/uses in the new plans as per the zoning regulations and effective building\nconstruction and development byelaws so that public health, welfare, and safety can be ensured.\n15.1.1 Use Zone Definitions (16)\n138",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "15 Zoning Regulations"
+    },
+    {
+     "y": 99,
+     "text": "15.1 Objectives of Zoning"
+    },
+    {
+     "y": 120,
+     "text": "In general, only major land uses like residential, commercial, industrial, offices, public and semi-public"
+    },
+    {
+     "y": 133,
+     "text": "facilities, parks and open spaces, agriculture, etc. are shown in the master plan. Permissible activities"
+    },
+    {
+     "y": 146,
+     "text": "under major land uses, which are not possible to be shown separately on the master plan map, are"
+    },
+    {
+     "y": 159,
+     "text": "permitted based on zoning regulations. The competent authority is expected to make provision for"
+    },
+    {
+     "y": 171,
+     "text": "various ancillary activities/uses in the new plans as per the zoning regulations and effective building"
+    },
+    {
+     "y": 184,
+     "text": "construction and development byelaws so that public health, welfare, and safety can be ensured."
+    },
+    {
+     "y": 205,
+     "text": "15.1.1 Use Zone Definitions (16)"
+    },
+    {
+     "y": 775,
+     "text": "138"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -699,6 +741,160 @@
    "pdfPage": 2,
    "gazettePage": 139,
    "prose": "15.1.2 Permission categories of various activities/appliances\nThere shall be the following permission categories for various activities under the major land use zones\nproposed in the master plan:\n(i) Permissible Activities: Those activities which are incidental to the respective major land uses and\nare generally permissible.\n(ii) Prohibited Activities: Those activities which are not permitted in the respective major land use\nzone.\nFor activities which are similar to those mentioned as part of paragraph 15.2 of the byelaws, the board\nof the authority may allow their permissibility accordingly. In case of any further clarification, the\nmatter may be recommended to the committee constituted as part of paragraph 1.4 of the byelaws.\nPermissibility of activities in the entire development area shall be governed by these zoning regulations\nincluding layouts approved/ developed by the authority.\n15.1.3 Impact Fee\n(i) Under the schemes approved/developed by the Authority or elsewhere in the development area,\napplications may be received for permission for other activities. Such applications shall be considered\nsubject to the provisions contained in paragraph 15.3. For allowing higher use activities in lower land\nuse zones, \u201cimpact fee\u201d shall be payable by the applicant at the time of such permission as per paragraph\n15.4.\n(ii) The impact fee shall be collected as per the provisions contained in the Uttar Pradesh Urban Planning\nand Development (Impact Fee) Rules, 2025.\n(iii) Impact fee shall not be payable in the following circumstances:\na) For generally permitted activities/uses in the built-up area,\nb) For public and semi-public facilities/activities to be developed by government and semi-\ngovernment agencies in mixed land use zones,\nc) For activities/uses to be permitted temporarily (maximum time limit one week) in various major\nland use zones,\nd) Impact fee shall not be payable for the activities/uses which have been permitted in certain land\nuse zones as per government orders under various policies declared by the State Government -\nTourism Policy, Information Technology Policy, Film Policy, etc.\ne) Impact fee shall also not be payable for permission of hotels in all other land uses except parks\nand open spaces, gardens, green areas, forest areas, hazardous industries, flood affected areas,\nand for permission of information technology units/information technology parks up to five\nKVA capacity in residential areas.\nf) Impact fee shall not be payable for permission of hotel for use other than hotel or commercial\nuse.\n(iv) Activities other than the master plan land use or land use as defined in the approved layouts, shall\nbe permitted after inviting objections/suggestions from the public as per prescribed procedure.\n139",
+   "proseLines": [
+    {
+     "y": 190,
+     "text": "15.1.2 Permission categories of various activities/appliances"
+    },
+    {
+     "y": 209,
+     "text": "There shall be the following permission categories for various activities under the major land use zones"
+    },
+    {
+     "y": 222,
+     "text": "proposed in the master plan:"
+    },
+    {
+     "y": 241,
+     "text": "(i) Permissible Activities: Those activities which are incidental to the respective major land uses and"
+    },
+    {
+     "y": 254,
+     "text": "are generally permissible."
+    },
+    {
+     "y": 267,
+     "text": "(ii) Prohibited Activities: Those activities which are not permitted in the respective major land use"
+    },
+    {
+     "y": 280,
+     "text": "zone."
+    },
+    {
+     "y": 299,
+     "text": "For activities which are similar to those mentioned as part of paragraph 15.2 of the byelaws, the board"
+    },
+    {
+     "y": 312,
+     "text": "of the authority may allow their permissibility accordingly. In case of any further clarification, the"
+    },
+    {
+     "y": 325,
+     "text": "matter may be recommended to the committee constituted as part of paragraph 1.4 of the byelaws."
+    },
+    {
+     "y": 344,
+     "text": "Permissibility of activities in the entire development area shall be governed by these zoning regulations"
+    },
+    {
+     "y": 357,
+     "text": "including layouts approved/ developed by the authority."
+    },
+    {
+     "y": 377,
+     "text": "15.1.3 Impact Fee"
+    },
+    {
+     "y": 396,
+     "text": "(i) Under the schemes approved/developed by the Authority or elsewhere in the development area,"
+    },
+    {
+     "y": 409,
+     "text": "applications may be received for permission for other activities. Such applications shall be considered"
+    },
+    {
+     "y": 422,
+     "text": "subject to the provisions contained in paragraph 15.3. For allowing higher use activities in lower land"
+    },
+    {
+     "y": 435,
+     "text": "use zones, \u201cimpact fee\u201d shall be payable by the applicant at the time of such permission as per paragraph"
+    },
+    {
+     "y": 448,
+     "text": "15.4."
+    },
+    {
+     "y": 467,
+     "text": "(ii) The impact fee shall be collected as per the provisions contained in the Uttar Pradesh Urban Planning"
+    },
+    {
+     "y": 480,
+     "text": "and Development (Impact Fee) Rules, 2025."
+    },
+    {
+     "y": 499,
+     "text": "(iii) Impact fee shall not be payable in the following circumstances:"
+    },
+    {
+     "y": 518,
+     "text": "a) For generally permitted activities/uses in the built-up area,"
+    },
+    {
+     "y": 531,
+     "text": "b) For public and semi-public facilities/activities to be developed by government and semi-"
+    },
+    {
+     "y": 544,
+     "text": "government agencies in mixed land use zones,"
+    },
+    {
+     "y": 556,
+     "text": "c) For activities/uses to be permitted temporarily (maximum time limit one week) in various major"
+    },
+    {
+     "y": 569,
+     "text": "land use zones,"
+    },
+    {
+     "y": 582,
+     "text": "d) Impact fee shall not be payable for the activities/uses which have been permitted in certain land"
+    },
+    {
+     "y": 595,
+     "text": "use zones as per government orders under various policies declared by the State Government -"
+    },
+    {
+     "y": 608,
+     "text": "Tourism Policy, Information Technology Policy, Film Policy, etc."
+    },
+    {
+     "y": 621,
+     "text": "e) Impact fee shall also not be payable for permission of hotels in all other land uses except parks"
+    },
+    {
+     "y": 634,
+     "text": "and open spaces, gardens, green areas, forest areas, hazardous industries, flood affected areas,"
+    },
+    {
+     "y": 647,
+     "text": "and for permission of information technology units/information technology parks up to five"
+    },
+    {
+     "y": 660,
+     "text": "KVA capacity in residential areas."
+    },
+    {
+     "y": 673,
+     "text": "f) Impact fee shall not be payable for permission of hotel for use other than hotel or commercial"
+    },
+    {
+     "y": 686,
+     "text": "use."
+    },
+    {
+     "y": 705,
+     "text": "(iv) Activities other than the master plan land use or land use as defined in the approved layouts, shall"
+    },
+    {
+     "y": 718,
+     "text": "be permitted after inviting objections/suggestions from the public as per prescribed procedure."
+    },
+    {
+     "y": 775,
+     "text": "139"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -917,6 +1113,24 @@
    "pdfPage": 3,
    "gazettePage": 140,
    "prose": "15.2 Definitions of land use activities\n15.2.1 Residential\n15.2.2 Commercial\n140",
+   "proseLines": [
+    {
+     "y": 74,
+     "text": "15.2 Definitions of land use activities"
+    },
+    {
+     "y": 97,
+     "text": "15.2.1 Residential"
+    },
+    {
+     "y": 357,
+     "text": "15.2.2 Commercial"
+    },
+    {
+     "y": 775,
+     "text": "140"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -1382,6 +1596,16 @@
    "pdfPage": 4,
    "gazettePage": 141,
    "prose": "15.2.3 Industrial\n141",
+   "proseLines": [
+    {
+     "y": 649,
+     "text": "15.2.3 Industrial"
+    },
+    {
+     "y": 775,
+     "text": "141"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -1876,6 +2100,16 @@
    "pdfPage": 5,
    "gazettePage": 142,
    "prose": "15.2.4 Offices\n142",
+   "proseLines": [
+    {
+     "y": 423,
+     "text": "15.2.4 Offices"
+    },
+    {
+     "y": 775,
+     "text": "142"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -2370,6 +2604,16 @@
    "pdfPage": 6,
    "gazettePage": 143,
    "prose": "15.2.5 Community Facilities, Uses and Services\n143",
+   "proseLines": [
+    {
+     "y": 255,
+     "text": "15.2.5 Community Facilities, Uses and Services"
+    },
+    {
+     "y": 775,
+     "text": "143"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -2864,6 +3108,12 @@
    "pdfPage": 7,
    "gazettePage": 144,
    "prose": "144",
+   "proseLines": [
+    {
+     "y": 775,
+     "text": "144"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -3405,6 +3655,12 @@
    "pdfPage": 8,
    "gazettePage": 145,
    "prose": "145",
+   "proseLines": [
+    {
+     "y": 775,
+     "text": "145"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -3975,6 +4231,16 @@
    "pdfPage": 9,
    "gazettePage": 146,
    "prose": "15.2.6 Traffic and Transport\n146",
+   "proseLines": [
+    {
+     "y": 675,
+     "text": "15.2.6 Traffic and Transport"
+    },
+    {
+     "y": 775,
+     "text": "146"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -4527,6 +4793,16 @@
    "pdfPage": 10,
    "gazettePage": 147,
    "prose": "15.2.7 Parks, Play-grounds/ Open-spaces, Recreational.\n147",
+   "proseLines": [
+    {
+     "y": 429,
+     "text": "15.2.7 Parks, Play-grounds/ Open-spaces, Recreational."
+    },
+    {
+     "y": 775,
+     "text": "147"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -5050,6 +5326,16 @@
    "pdfPage": 11,
    "gazettePage": 148,
    "prose": "15.2.8 Agricultural\n148",
+   "proseLines": [
+    {
+     "y": 274,
+     "text": "15.2.8 Agricultural"
+    },
+    {
+     "y": 775,
+     "text": "148"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -5486,6 +5772,48 @@
    "pdfPage": 12,
    "gazettePage": 149,
    "prose": "15.3 Permissibility of various activities in major land use zones\n15.3.1 Major Land use Zones and Notations\nStandard Use Zones\nThe use zones of master plans have been standardized as below:\nProvisions relating to proposed land uses in master plans of development authorities:\nSince the prevailing master plans of different development authorities have use zones other than the above list, for the sake of convenience such use zones are\ngrouped under standardized use zones as given in Appendix-15. It is clarified that the zoning regulations pertaining to the standardized use zones shall be\napplicable to those use zones grouped under respective category.\n15.3.2 Matrix for permissibility of Activities in major Land use Zones\n149",
+   "proseLines": [
+    {
+     "y": 53,
+     "text": "15.3 Permissibility of various activities in major land use zones"
+    },
+    {
+     "y": 69,
+     "text": "15.3.1 Major Land use Zones and Notations"
+    },
+    {
+     "y": 82,
+     "text": "Standard Use Zones"
+    },
+    {
+     "y": 96,
+     "text": "The use zones of master plans have been standardized as below:"
+    },
+    {
+     "y": 237,
+     "text": "Provisions relating to proposed land uses in master plans of development authorities:"
+    },
+    {
+     "y": 250,
+     "text": "Since the prevailing master plans of different development authorities have use zones other than the above list, for the sake of convenience such use zones are"
+    },
+    {
+     "y": 260,
+     "text": "grouped under standardized use zones as given in Appendix-15. It is clarified that the zoning regulations pertaining to the standardized use zones shall be"
+    },
+    {
+     "y": 269,
+     "text": "applicable to those use zones grouped under respective category."
+    },
+    {
+     "y": 283,
+     "text": "15.3.2 Matrix for permissibility of Activities in major Land use Zones"
+    },
+    {
+     "y": 374,
+     "text": "149"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -8103,6 +8431,12 @@
    "pdfPage": 13,
    "gazettePage": 150,
    "prose": "150",
+   "proseLines": [
+    {
+     "y": 374,
+     "text": "150"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -14754,6 +15088,12 @@
    "pdfPage": 14,
    "gazettePage": 151,
    "prose": "151",
+   "proseLines": [
+    {
+     "y": 374,
+     "text": "151"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -20011,6 +20351,12 @@
    "pdfPage": 15,
    "gazettePage": 152,
    "prose": "152",
+   "proseLines": [
+    {
+     "y": 374,
+     "text": "152"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -26906,6 +27252,12 @@
    "pdfPage": 16,
    "gazettePage": 153,
    "prose": "153",
+   "proseLines": [
+    {
+     "y": 374,
+     "text": "153"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -33424,6 +33776,20 @@
    "pdfPage": 17,
    "gazettePage": 154,
    "prose": "Note1: RW: Road Width, NA: Not Defined, PA: Plot Area, #: As per Principal Use, # #: As per Site Condition, (x) \u2013 as per paragraph 15.3.3 of this byelaws.\nNote2: More than one activities which are permissible in a particular land use zone may be permitted.\n154",
+   "proseLines": [
+    {
+     "y": 109,
+     "text": "Note1: RW: Road Width, NA: Not Defined, PA: Plot Area, #: As per Principal Use, # #: As per Site Condition, (x) \u2013 as per paragraph 15.3.3 of this byelaws."
+    },
+    {
+     "y": 123,
+     "text": "Note2: More than one activities which are permissible in a particular land use zone may be permitted."
+    },
+    {
+     "y": 374,
+     "text": "154"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -34786,6 +35152,32 @@
    "pdfPage": 18,
    "gazettePage": 155,
    "prose": "15.3.3 Conditional permissibility for activities within Land Use Zones\n15.4 Order of land use zones from lowest to highest order and determination\nof Impact fee\nLand Use Zones (from lowest to highest) \u2192\nNote:\n155",
+   "proseLines": [
+    {
+     "y": 74,
+     "text": "15.3.3 Conditional permissibility for activities within Land Use Zones"
+    },
+    {
+     "y": 380,
+     "text": "15.4 Order of land use zones from lowest to highest order and determination"
+    },
+    {
+     "y": 397,
+     "text": "of Impact fee"
+    },
+    {
+     "y": 505,
+     "text": "Land Use Zones (from lowest to highest) \u2192"
+    },
+    {
+     "y": 735,
+     "text": "Note:"
+    },
+    {
+     "y": 788,
+     "text": "155"
+    }
+   ],
    "tables": [
     {
      "index": 0,
@@ -37823,6 +38215,60 @@
    "pdfPage": 19,
    "gazettePage": 156,
    "prose": "(i) The value of \u201cImpact Fee Coefficient\u201d determined for permitted activities/uses in different land use\nzones is given in the cells where impact fee is payable.\n(ii) Impact fee shall be assessed based on the current circle rate. The current rate of land refers to the\ncircle rate determined by the District Magistrate, where such rate is not available, the current residential\nrate determined by the Authority/Awas Vikas Parishad whichever is higher.\nExample for calculating impact fee:\nFor permission of nursing home in Residential area:\nArea of the Plot 350 square meters\nThe current residential rate of the authority is Rs 2000 per square meter.\nImpact Fee payable: - (Area of the plot) x (Circle rate) x (Coefficient X 0.25)\nThat means 350 x 2000 x 0.25 x 0.25 = Rs 43,750/-\n-End of Chapter-\n156",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "(i) The value of \u201cImpact Fee Coefficient\u201d determined for permitted activities/uses in different land use"
+    },
+    {
+     "y": 85,
+     "text": "zones is given in the cells where impact fee is payable."
+    },
+    {
+     "y": 104,
+     "text": "(ii) Impact fee shall be assessed based on the current circle rate. The current rate of land refers to the"
+    },
+    {
+     "y": 117,
+     "text": "circle rate determined by the District Magistrate, where such rate is not available, the current residential"
+    },
+    {
+     "y": 130,
+     "text": "rate determined by the Authority/Awas Vikas Parishad whichever is higher."
+    },
+    {
+     "y": 149,
+     "text": "Example for calculating impact fee:"
+    },
+    {
+     "y": 168,
+     "text": "For permission of nursing home in Residential area:"
+    },
+    {
+     "y": 181,
+     "text": "Area of the Plot 350 square meters"
+    },
+    {
+     "y": 194,
+     "text": "The current residential rate of the authority is Rs 2000 per square meter."
+    },
+    {
+     "y": 206,
+     "text": "Impact Fee payable: - (Area of the plot) x (Circle rate) x (Coefficient X 0.25)"
+    },
+    {
+     "y": 219,
+     "text": "That means 350 x 2000 x 0.25 x 0.25 = Rs 43,750/-"
+    },
+    {
+     "y": 245,
+     "text": "-End of Chapter-"
+    },
+    {
+     "y": 788,
+     "text": "156"
+    }
+   ],
    "tables": [],
    "warnings": []
   }

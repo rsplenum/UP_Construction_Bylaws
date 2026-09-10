@@ -163,8 +163,9 @@ def extract_page(page, pdf_index):
         if any(b.contains(centre) for b in table_bboxes):
             continue
         prose_lines[round(y0)].append((x0, word))
-    prose = '\n'.join(' '.join(w for _, w in sorted(ws))
-                      for _, ws in sorted(prose_lines.items()))
+    prose_ordered = [{'y': y, 'text': ' '.join(w for _, w in sorted(ws))}
+                     for y, ws in sorted(prose_lines.items())]
+    prose = '\n'.join(l['text'] for l in prose_ordered)
 
     warnings = []
     rasters = page.get_images()
@@ -177,6 +178,11 @@ def extract_page(page, pdf_index):
         'pdfPage': pdf_index + 1,
         'gazettePage': gazette_page_number(page),
         'prose': prose,
+        # Prose with its vertical position, so a consumer can interleave headings with
+        # tables in document order. Clause 3.2.2's FAR matrix needs this: seven sub-tables
+        # each restart their Sl. numbering at 1, and only the heading above a table says
+        # which section a row belongs to.
+        'proseLines': prose_ordered,
         'tables': tables,
         'warnings': warnings,
     }
