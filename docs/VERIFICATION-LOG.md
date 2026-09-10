@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: nine transcriptions verified exactly right, and twenty-two real bugs found.**
+**Headline: ten transcriptions verified exactly right, and twenty-two real bugs found.**
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -399,6 +399,54 @@ Rows 3(a) and 3(b) print their first band as "Up to 12m" with nothing under it. 
 engine refuses FAR below 9 m. That may well be right — a minimum access width is likely
 stated elsewhere in Chapter 3 — but it is not stated *there*, and it is currently an
 inference sitting inside a table marked verified.
+
+### V-014 — Chapters 3 and 5 print different maximum FARs for the same commercial units
+Clause 5.2.5 (gazette p.86) gives commercial FAR as a four-column breakdown per road band
+— **BFAR + PFAR + PPFAR = MFAR**, base plus purchasable plus premium purchasable — where
+Chapter 3's matrix gives only a base and a maximum. Three cells disagree:
+
+| | Chapter 3 | Chapter 5 |
+|---|---|---|
+| Commercial units, built-up, >24–45 m | **5.0** | **5.25** |
+| Commercial units, new layout, >12–24 m | **3.5** | **3.6** |
+| Commercial units, new layout, >24–45 m | **6.0** | **6.1** |
+
+Shopping malls agree exactly in both chapters.
+
+Chapter 5's figures are the internally consistent ones: 1.5 + 1.5 + 2.25 = 5.25 and
+1.75 + 1.75 + 2.6 = 6.1 exactly, while Chapter 3's 5.0 and 6.0 decompose into no published
+components. That suggests Chapter 3 is a rounded summary — an argument, not a resolution,
+since nothing subordinates either chapter. Standing rule 4 applies and **the engine keeps
+Chapter 3's lower ceiling**, so no project is told it may build more than the most
+restrictive reading allows.
+
+The split itself is now modelled (`src/domain/purchasable-far.ts`), because Chapter 9
+prices purchasable and premium purchasable differently and the engine currently treats
+everything above base as one lump. Wiring it into `resolveBaseFar` waits for Chapter 9,
+which governs purchasable FAR generally.
+
+**How the column mapping was proved.** The table has fourteen columns and only its header
+row says which is which — one shared BFAR column, then four road bands of PFAR/PPFAR/MFAR
+— and each data row wraps across two physical rows. Cells are matched to columns by x
+coordinate, and the identity MFAR = BFAR + PFAR + PPFAR then closes on **all 72 band
+checks across all seven such tables** in the chapters read so far. Three cells round:
+1.75 + 0.9 + 0.9 = 3.55, printed as 3.6.
+
+### V-015 — The same table exists for residential, and is not yet in the engine
+`tools/extract-purchasable-far.py` finds **seven** BFAR/PFAR/PPFAR/MFAR tables in chapters
+4 and 5 alone — group housing, affordable housing, bazaar street, commercial units,
+hotels, cinemas. Only the commercial one is transcribed into the domain so far. Two
+structural features found while extracting them:
+
+- Clause 4.4's affordable-housing table bands on **18 m**, not the 12 m every other table
+  uses, and prints **two base FARs for one use** — 2.00 below an 18 m road and 2.25 at or
+  above it — against one shared set of band columns. Pairing the wrong base with a band
+  makes the identity fail by exactly 2.0, which is how this was noticed rather than
+  assumed.
+- Clause 4's group housing gives a built-up maximum of **2.1** on the narrowest band where
+  Chapter 3 gives **2.0**, and gives non-built-up group housing an **up-to-12 m band at
+  3.5** where Chapter 3 prints no band below 12 m at all. Both need reconciling against
+  Clause 4.2.3's 12 m minimum road before the engine changes. Not acted on yet.
 
 ### V-011 — Hotel thresholds turn on room count, which the engine cannot see
 Clause 5.3.2 and 5.3.3 key the hotel minimums on the **number of rooms**, not the plot:

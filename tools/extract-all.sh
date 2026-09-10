@@ -6,6 +6,12 @@ cd "$(dirname "$0")/.."
 
 python3 tools/extract-chapter.py --all
 
+if [ -f docs/source/gazette/pdf/chapter-03.pdf ]; then
+  python3 tools/extract-far-matrix.py > docs/source/derived/far-matrix.json
+fi
+
+python3 tools/extract-purchasable-far.py > docs/source/derived/purchasable-far.json
+
 if [ -f docs/source/gazette/pdf/chapter-15.pdf ]; then
   python3 tools/extract-zoning-matrix.py docs/source/gazette/pdf/chapter-15.pdf \
     > docs/source/derived/zoning-matrix.json

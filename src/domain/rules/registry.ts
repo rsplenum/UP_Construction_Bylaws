@@ -137,6 +137,25 @@ export const RULES: RuleSet = {
     },
   },
 
+  'far.purchasable-commercial': {
+    id: 'far.purchasable-commercial',
+    question: 'How much of a commercial building’s floor area is base, how much is purchasable, and how much is premium?',
+    clause: 'Clause 5.2.5 (gazette page 86)',
+    confidence: 'gazette',
+    derivedFrom: ['occupancy', 'roadWidth', 'areaType', 'plotArea'],
+    checked: '2026-09-10',
+    quote:
+      'One BFAR column shared across four road bands, each band carrying its own PFAR, PPFAR and MFAR. Built-up: commercial units up to 100 sqm BFAR 1.5, MFAR 2.1 / 3.0 / 5.25 / UR; units above 100 sqm same base, MFAR 1.5 / 3.0 / 5.25 / UR; shopping malls BFAR 2.0, MFAR 2.0 / 4.0 / 7.0 / UR. Non-built-up: units up to 100 sqm BFAR 1.75, MFAR 2.45 / 3.6 / 6.1 / UR; units above 100 sqm MFAR 1.75 / 3.6 / 6.1 / UR; malls BFAR 3.0, MFAR 3.0 / 6.0 / 10.5 / UR. MFAR = BFAR + PFAR + PPFAR on all 24 band checks.',
+    ifWrong:
+      'The engine treats everything above base FAR as one purchasable lump. Chapter 9 prices purchasable and premium purchasable differently, so the split decides the charge.',
+    challenge: {
+      id: 'V-014',
+      summary:
+        'Chapters 3 and 5 print different maximums for the same commercial units: 5.0 against 5.25 built-up above 24 m, and 3.5/6.0 against 3.6/6.1 in a new layout. Chapter 5 decomposes exactly into its own components and Chapter 3 does not, which suggests Chapter 3 is a rounded summary — but nothing subordinates either chapter, so the engine keeps Chapter 3\'s lower ceiling.',
+      maxDivergence: '0.25 FAR',
+    },
+  },
+
   'occupancy.thresholds': {
     id: 'occupancy.thresholds',
     question: 'What road width, plot size and height does each use require?',
