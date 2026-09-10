@@ -81,11 +81,11 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     id: 'res_single', group: 'Residential',
     label: 'Plotted residential — single dwelling',
     plain: 'A house for one family',
-    note: 'Telescopic FAR: the larger the plot, the lower the ratio on each additional slab.',
+    note: 'Telescopic FAR: the larger the plot, the lower the ratio on each additional slab. Three floors plus stilt to 15 m up to a 300 m² plot; four plus stilt to 17.5 m above it.',
     farBasis: 'telescopic_plotted', setbackTable: 'plotted_residential',
     activityId: 'act-single-unit', purchasableFarCategory: 'Residential (Plotted)',
     compoundingUse: 'residential',
-    parkingEcsPer100Sqm: 0.5, minRoadWidthM: 4, minPlotAreaSqm: 30, maxHeightM: 15,
+    parkingEcsPer100Sqm: 0.5, minRoadWidthM: 4, minPlotAreaSqm: 30, maxHeightM: 17.5,
     triggersEwsLig: false, fireNocAbove500Sqm: false,
   },
   res_multi: {

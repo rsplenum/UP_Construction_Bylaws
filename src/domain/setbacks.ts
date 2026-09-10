@@ -79,17 +79,28 @@ export interface CommercialSetbackBand extends Band, SetbackSet {
 }
 
 /** Chapter 5 — commercial plots below the high-rise threshold. */
+/**
+ * Gazette, "Commercial – Shops/commercial units, Mixed use buildings up to 15-meter
+ * height". VERIFIED 2026-09-10. The >3000 sqm band was previously missing, so a large
+ * commercial plot was given 6/3/3/3 where the gazette requires 12/6/6/6 — half the
+ * required front setback.
+ */
 export const COMMERCIAL_LADDER: readonly CommercialSetbackBand[] = [
-  { label: 'Up to 100 sqm',    overMoreThan: 0,    upToAndIncluding: 100,      front: 1.5, rear: 0,   side1: 0,   side2: 0 },
-  { label: '>100 to 300 sqm',  overMoreThan: 100,  upToAndIncluding: 300,      front: 3.0, rear: 0,   side1: 0,   side2: 0 },
-  { label: '>300 to 1000 sqm', overMoreThan: 300,  upToAndIncluding: 1000,     front: 4.5, rear: 3.0, side1: 1.5, side2: 1.5 },
-  { label: '>1000 sqm',        overMoreThan: 1000, upToAndIncluding: Infinity, front: 6.0, rear: 3.0, side1: 3.0, side2: 3.0 },
+  { label: 'Up to 100 sqm',     overMoreThan: 0,    upToAndIncluding: 100,      front: 1.5,  rear: 0,   side1: 0,   side2: 0 },
+  { label: '>100 to 300 sqm',   overMoreThan: 100,  upToAndIncluding: 300,      front: 3.0,  rear: 0,   side1: 0,   side2: 0 },
+  { label: '>300 to 1000 sqm',  overMoreThan: 300,  upToAndIncluding: 1000,     front: 4.5,  rear: 3.0, side1: 1.5, side2: 1.5 },
+  { label: '>1000 to 3000 sqm', overMoreThan: 1000, upToAndIncluding: 3000,     front: 6.0,  rear: 3.0, side1: 3.0, side2: 3.0 },
+  { label: '>3000 sqm',         overMoreThan: 3000, upToAndIncluding: Infinity, front: 12.0, rear: 6.0, side1: 6.0, side2: 6.0 },
 ];
 
-/** Chapter 6 — hospitals and nursing homes. */
+/**
+ * Gazette, "Community Facilities – Healthcare buildings height up to 15-meters".
+ * VERIFIED 2026-09-10.
+ */
 export const HEALTHCARE_LADDER: readonly CommercialSetbackBand[] = [
-  { label: 'Up to 500 sqm',     overMoreThan: 0,    upToAndIncluding: 500,      front: 4.5, rear: 3.0, side1: 3.0, side2: 3.0 },
-  { label: '>500 to 2000 sqm',  overMoreThan: 500,  upToAndIncluding: 2000,     front: 6.0, rear: 4.5, side1: 4.5, side2: 4.5 },
+  { label: '100 to 300 sqm',    overMoreThan: 0,    upToAndIncluding: 300,      front: 3.0, rear: 1.5, side1: 0,   side2: 0 },
+  { label: '>300 to 1000 sqm',  overMoreThan: 300,  upToAndIncluding: 1000,     front: 4.5, rear: 3.0, side1: 3.0, side2: 0 },
+  { label: '>1000 to 2000 sqm', overMoreThan: 1000, upToAndIncluding: 2000,     front: 6.0, rear: 3.0, side1: 3.0, side2: 3.0 },
   { label: '>2000 sqm',         overMoreThan: 2000, upToAndIncluding: Infinity, front: 9.0, rear: 6.0, side1: 6.0, side2: 6.0 },
 ];
 
@@ -189,7 +200,11 @@ export function resolveRequiredSetbacks(input: {
       const plotted = band as PlottedSetbackBand;
       clauseRef = 'Table 3.2.1 (Plotted Residential Setbacks)';
       typology = plotted.typology;
-      maxHeight = Math.min(definition.maxHeightM, plotted.maxHeight);
+      // Gazette 3.2.4.1: "for all single/multi-units less than 300 square meters plot
+      // size, three floors with stilts up to 15 meter is allowed and on plots above 300
+      // square meters, four storeys with stilts up to 17.5-meter height is allowed."
+      // The height ceiling follows the plot, not the single/multi distinction.
+      maxHeight = plotted.maxHeight;
       maxFloors = plotted.maxFloors;
       note = plotted.note;
     } else {

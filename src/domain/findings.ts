@@ -19,6 +19,8 @@ import { PURCHASABLE_FAR_MIN_ROAD_WIDTH, resolveBaseFar } from './far';
 import { assessCompounding } from './compounding';
 import { getOccupancy } from './occupancy';
 import { ProjectState, derivePlotDepth } from './project';
+import { RULES } from './rules/registry';
+import { CONFIDENCE_LABEL, Confidence, isContested } from './rules/schema';
 
 export type FindingStatus = 'ok' | 'attention' | 'blocked' | 'info';
 
@@ -67,6 +69,19 @@ export interface Finding {
   money?: { label: string; amount: number };
   /** True when no fee or redesign can regularise it. */
   nonNegotiable?: boolean;
+
+  /**
+   * ANGLE E — how much this answer can be trusted.
+   *
+   * A compliance engine that presents a transcribed number and a gazette-verified number
+   * in the same typeface is lying by omission. Every finding carries the id of the rule
+   * it applied, so the interface can say how well sourced the answer is, and can show
+   * both readings where a rule is disputed.
+   */
+  rule?: string;
+  confidence?: Confidence;
+  /** Present when the rule behind this finding is under active challenge. */
+  dispute?: { id: string; summary: string; divergence?: string };
 }
 
 export interface Assessment {
@@ -84,6 +99,8 @@ export interface Assessment {
   /** Buildable floor area at the current inputs, in sqm. */
   permissibleArea: number;
   proposedArea: number;
+  /** How many findings rest on a disputed or unverified rule. */
+  disputedCount: number;
 }
 
 const round = (n: number, dp = 1): number => Number(n.toFixed(dp));
@@ -104,6 +121,25 @@ const noun = (plain: string): string => plain.replace(/^(a|an|the)\s+/i, '').toL
 /** Capitalise the first letter of a clause that follows a full stop. */
 const sentence = (text: string): string => text.charAt(0).toUpperCase() + text.slice(1);
 
+/**
+ * Attach the provenance of the rule a finding applied. Anything without a registered
+ * rule is, by construction, unreviewed — and says so.
+ */
+function sourced(finding: Finding, ruleId: string): Finding {
+  const meta = RULES[ruleId];
+  if (!meta) return { ...finding, rule: ruleId, confidence: 'inferred' };
+  return {
+    ...finding,
+    rule: ruleId,
+    confidence: meta.confidence,
+    dispute: meta.challenge && {
+      id: meta.challenge.id,
+      summary: meta.challenge.summary,
+      divergence: meta.challenge.maxDivergence,
+    },
+  };
+}
+
 export function assessProject(project: ProjectState): Assessment {
   const occupancy = getOccupancy(project.occupancy);
   const findings: Finding[] = [];
@@ -116,7 +152,7 @@ export function assessProject(project: ProjectState): Assessment {
 
   // ---- 1. Is this use allowed here at all? -------------------------------------
   if (roadWidth < occupancy.minRoadWidthM) {
-    findings.push({
+    findings.push(sourced({
       id: 'use-road-width',
       topic: 'permissibility',
       status: 'blocked',
@@ -127,9 +163,9 @@ export function assessProject(project: ProjectState): Assessment {
       clause: 'Chapter 3.1 (Means of Access) & Chapter 15.3.2',
       nonNegotiable: true,
       fix: { label: `Set the road width to ${occupancy.minRoadWidthM} m`, patch: { roadWidth: occupancy.minRoadWidthM } },
-    });
+    }, 'occupancy.thresholds'));
   } else {
-    findings.push({
+    findings.push(sourced({
       id: 'use-road-width',
       topic: 'permissibility',
       status: 'ok',
@@ -138,11 +174,11 @@ export function assessProject(project: ProjectState): Assessment {
       required: `≥ ${occupancy.minRoadWidthM} m`,
       proposed: `${roadWidth} m`,
       clause: 'Chapter 3.1 (Means of Access)',
-    });
+    }, 'occupancy.thresholds'));
   }
 
   if (occupancy.minPlotAreaSqm > 0 && plotArea < occupancy.minPlotAreaSqm) {
-    findings.push({
+    findings.push(sourced({
       id: 'use-plot-size',
       topic: 'permissibility',
       status: 'blocked',
@@ -152,7 +188,7 @@ export function assessProject(project: ProjectState): Assessment {
       proposed: sqm(plotArea),
       clause: 'Chapter 15.3.2 (Activity Permissibility)',
       nonNegotiable: true,
-    });
+    }, 'occupancy.thresholds'));
   }
 
   // ---- 2. How much floor area? --------------------------------------------------
@@ -167,7 +203,7 @@ export function assessProject(project: ProjectState): Assessment {
   const headroom = far.effectiveBuiltUpArea - proposedArea;
 
   if (far.baseFar === 0) {
-    findings.push({
+    findings.push(sourced({
       id: 'far',
       topic: 'bulk',
       status: 'blocked',
@@ -175,9 +211,9 @@ export function assessProject(project: ProjectState): Assessment {
       detail: far.caveats.join(' ') || 'The road width falls below every FAR band for this occupancy.',
       clause: far.clauseRef,
       nonNegotiable: true,
-    });
+    }, 'far.telescopic-residential'));
   } else if (proposedArea <= far.effectiveBuiltUpArea + 0.01) {
-    findings.push({
+    findings.push(sourced({
       id: 'far',
       topic: 'bulk',
       status: 'ok',
@@ -187,11 +223,11 @@ export function assessProject(project: ProjectState): Assessment {
       proposed: `${sqm(proposedArea)} (FAR ${round(proposedFar, 2)})`,
       working: far.workings,
       clause: far.clauseRef,
-    });
+    }, 'far.telescopic-residential'));
   } else if (proposedArea <= far.maxPermissibleBuiltUpArea + 0.01) {
     const extra = proposedArea - far.effectiveBuiltUpArea;
     const charge = extra * project.circleRate * 0.4;
-    findings.push({
+    findings.push(sourced({
       id: 'far',
       topic: 'bulk',
       status: 'attention',
@@ -203,9 +239,9 @@ export function assessProject(project: ProjectState): Assessment {
       clause: 'Chapter 9.2 (Purchasable FAR)',
       money: { label: 'Purchasable FAR charge', amount: charge },
       fix: { label: `Reduce to the free ${sqm(far.effectiveBuiltUpArea)}`, patch: { proposedBuiltUpArea: Math.floor(far.effectiveBuiltUpArea) } },
-    });
+    }, 'far.telescopic-residential'));
   } else {
-    findings.push({
+    findings.push(sourced({
       id: 'far',
       topic: 'bulk',
       status: 'blocked',
@@ -217,18 +253,18 @@ export function assessProject(project: ProjectState): Assessment {
       clause: 'Chapter 9.2.3 (Ceiling on Aggregate FAR)',
       nonNegotiable: true,
       fix: { label: `Clamp to the ${sqm(far.maxPermissibleBuiltUpArea)} ceiling`, patch: { proposedBuiltUpArea: Math.floor(far.maxPermissibleBuiltUpArea) } },
-    });
+    }, 'far.telescopic-residential'));
   }
 
   if (far.purchasableFar === 0 && roadWidth < PURCHASABLE_FAR_MIN_ROAD_WIDTH && far.baseFar > 0) {
-    findings.push({
+    findings.push(sourced({
       id: 'far-purchasable-barred',
       topic: 'bulk',
       status: 'info',
       headline: `You can't buy extra floor area here — that needs a ${PURCHASABLE_FAR_MIN_ROAD_WIDTH} m road.`,
       detail: `Purchasable FAR is barred below a ${PURCHASABLE_FAR_MIN_ROAD_WIDTH} m right of way; the abutting road is ${roadWidth} m.`,
       clause: 'Chapter 9.2.1',
-    });
+    }, 'far.telescopic-residential'));
   }
 
   // ---- 3. Where can it sit? -----------------------------------------------------
@@ -249,7 +285,7 @@ export function assessProject(project: ProjectState): Assessment {
   const compoundable = faces.filter((f) => f.status === 'compoundable');
 
   if (violations.length === 0 && compoundable.length === 0) {
-    findings.push({
+    findings.push(sourced({
       id: 'setbacks',
       topic: 'envelope',
       status: 'ok',
@@ -258,11 +294,11 @@ export function assessProject(project: ProjectState): Assessment {
       required: `F ${required.front} · R ${required.rear} · S ${required.side1}/${required.side2} m`,
       proposed: `F ${project.frontSetbackProvided} · R ${project.rearSetbackProvided} · S ${project.side1Provided}/${project.side2Provided} m`,
       clause: required.clauseRef,
-    });
+    }, 'setback.plotted-residential'));
   } else {
     const worst = violations.length > 0 ? violations : compoundable;
     const names = worst.map((f) => `${FACE_LABEL[f.face]} short by ${f.deficitM} m`).join(', ');
-    findings.push({
+    findings.push(sourced({
       id: 'setbacks',
       topic: 'envelope',
       status: violations.length > 0 ? 'blocked' : 'attention',
@@ -285,14 +321,14 @@ export function assessProject(project: ProjectState): Assessment {
           side2Provided: required.side2,
         },
       },
-    });
+    }, 'setback.plotted-residential'));
   }
 
   // Does anything actually fit inside the setbacks?
   const buildableWidth = project.plotFrontage - required.side1 - required.side2;
   const buildableDepth = depth - required.front - required.rear;
   if (buildableWidth <= 2.4 || buildableDepth <= 2.4) {
-    findings.push({
+    findings.push(sourced({
       id: 'envelope-viability',
       topic: 'envelope',
       status: 'blocked',
@@ -302,13 +338,13 @@ export function assessProject(project: ProjectState): Assessment {
       proposed: `${round(Math.max(0, buildableWidth))} m × ${round(Math.max(0, buildableDepth))} m`,
       clause: 'Chapter 3.3 (Room Dimensions)',
       nonNegotiable: true,
-    });
+    }, 'setback.plotted-residential'));
   }
 
   // ---- 4. How tall? -------------------------------------------------------------
   const isHighRise = height > HIGH_RISE_THRESHOLD_M;
   if (Number.isFinite(occupancy.maxHeightM) && height > occupancy.maxHeightM) {
-    findings.push({
+    findings.push(sourced({
       id: 'height',
       topic: 'height',
       status: 'blocked',
@@ -318,9 +354,9 @@ export function assessProject(project: ProjectState): Assessment {
       proposed: `${height} m`,
       clause: 'Chapter 3.2.4',
       fix: { label: `Cap the height at ${occupancy.maxHeightM} m`, patch: { buildingHeight: occupancy.maxHeightM } },
-    });
+    }, 'occupancy.thresholds'));
   } else {
-    findings.push({
+    findings.push(sourced({
       id: 'height',
       topic: 'height',
       status: 'ok',
@@ -333,11 +369,11 @@ export function assessProject(project: ProjectState): Assessment {
       required: Number.isFinite(occupancy.maxHeightM) ? `≤ ${occupancy.maxHeightM} m` : 'Governed by road width and fire clearance',
       proposed: `${height} m`,
       clause: 'Chapter 3.2.4',
-    });
+    }, 'occupancy.thresholds'));
   }
 
   if (isHighRise && roadWidth < 12) {
-    findings.push({
+    findings.push(sourced({
       id: 'high-rise-road',
       topic: 'safety',
       status: 'blocked',
@@ -348,14 +384,14 @@ export function assessProject(project: ProjectState): Assessment {
       clause: 'Chapter 8.1.2 (Fire Egress and Access)',
       nonNegotiable: true,
       fix: { label: 'Cap the height at 15 m', patch: { buildingHeight: 15 } },
-    });
+    }, 'setback.high-rise'));
   }
 
   // ---- 5. Parking ---------------------------------------------------------------
   const requiredEcs = Math.ceil((proposedArea / 100) * occupancy.parkingEcsPer100Sqm);
   const evBays = Math.ceil(requiredEcs * 0.2);
   const parkingOk = project.parkingBaysProvided >= requiredEcs;
-  findings.push({
+  findings.push(sourced({
     id: 'parking',
     topic: 'parking',
     status: parkingOk ? 'ok' : 'attention',
@@ -368,12 +404,12 @@ export function assessProject(project: ProjectState): Assessment {
     working: `${sqm(proposedArea)} ÷ 100 × ${occupancy.parkingEcsPer100Sqm} = ${requiredEcs} ECS`,
     clause: 'Chapter 10 (Parking) & Chapter 17 (EV Charging)',
     fix: parkingOk ? undefined : { label: `Provide ${requiredEcs} spaces`, patch: { parkingBaysProvided: requiredEcs } },
-  });
+  }, 'parking.ecs-ratios'));
 
   // ---- 6. Fire ------------------------------------------------------------------
   const needsFireNoc = isHighRise || (occupancy.fireNocAbove500Sqm && proposedArea > 500);
   if (needsFireNoc) {
-    findings.push({
+    findings.push(sourced({
       id: 'fire-noc',
       topic: 'safety',
       status: 'attention',
@@ -384,12 +420,12 @@ export function assessProject(project: ProjectState): Assessment {
       required: 'CFO provisional and final NOC',
       proposed: `${height} m, ${sqm(proposedArea)}`,
       clause: 'Chapter 8 (Fire Safety)',
-    });
+    }, 'setback.high-rise'));
   }
 
   // ---- 7. Water, energy, waste ---------------------------------------------------
   if (plotArea > 300 && !project.hasRWH) {
-    findings.push({
+    findings.push(sourced({
       id: 'rwh',
       topic: 'services',
       status: 'blocked',
@@ -399,18 +435,18 @@ export function assessProject(project: ProjectState): Assessment {
       proposed: 'Not provided',
       clause: 'Chapter 13.1',
       fix: { label: 'Add rainwater harvesting', patch: { hasRWH: true } },
-    });
+    }, 'services.rwh-threshold'));
   } else if (plotArea > 300) {
-    findings.push({
+    findings.push(sourced({
       id: 'rwh', topic: 'services', status: 'ok',
       headline: 'Rainwater harvesting is provided, as required on this plot size.',
       detail: `Mandatory above 300 m²; plot is ${sqm(plotArea)}.`,
       clause: 'Chapter 13.1',
-    });
+    }, 'services.rwh-threshold'));
   }
 
   if (plotArea > 500 && !project.hasSolarHeating) {
-    findings.push({
+    findings.push(sourced({
       id: 'solar',
       topic: 'services',
       status: 'attention',
@@ -420,12 +456,12 @@ export function assessProject(project: ProjectState): Assessment {
       proposed: 'Not provided',
       clause: 'Chapter 13.2',
       fix: { label: 'Add solar water heating', patch: { hasSolarHeating: true } },
-    });
+    }, 'services.rwh-threshold'));
   }
 
   // ---- 8. Affordable housing -----------------------------------------------------
   if (occupancy.triggersEwsLig) {
-    findings.push({
+    findings.push(sourced({
       id: 'ews-lig',
       topic: 'social',
       status: 'attention',
@@ -433,31 +469,31 @@ export function assessProject(project: ProjectState): Assessment {
       detail: '10% EWS and 10% LIG dwelling units are reserved. In lieu, a shelter fee of 10% of [total DUs × (min EWS carpet + min LIG carpet) × circle rate] is payable to the Development Authority.',
       required: '10% EWS + 10% LIG units, or shelter fee',
       clause: 'Chapter 4.1.2 (Social Housing)',
-    });
+    }, 'occupancy.thresholds'));
   }
 
   // ---- 9. How it gets sanctioned --------------------------------------------------
   if (occupancy.id === 'res_single' && plotArea <= 100) {
-    findings.push({
+    findings.push(sourced({
       id: 'route', topic: 'procedure', status: 'ok',
       headline: 'No building permit needed — you can self-certify online for ₹1.',
       detail: 'Residential plots up to 100 m² are exempt from building permit and completion certificate; a token ₹1 online self-certification with affidavit applies.',
       clause: 'Chapter 2.1.2',
-    });
+    }, 'occupancy.thresholds'));
   } else if (plotArea <= 500 && occupancy.group === 'Residential' && occupancy.id !== 'res_group_housing') {
-    findings.push({
+    findings.push(sourced({
       id: 'route', topic: 'procedure', status: 'ok',
       headline: 'This qualifies for instant online approval through a licensed technical person.',
       detail: 'Plots up to 500 m² in approved layouts receive instant sanction on an LTP certificate, with a 15-day deemed-sanction limit.',
       clause: 'Chapter 2.1.2 (OBPAS)',
-    });
+    }, 'occupancy.thresholds'));
   } else {
-    findings.push({
+    findings.push(sourced({
       id: 'route', topic: 'procedure', status: 'info',
       headline: 'This goes through full scrutiny with clearances from other departments.',
       detail: 'A unified online application with inter-departmental NOCs. Deemed approval is triggered on the 30th day where a department has not responded.',
       clause: 'Chapter 2.1.2 & Chapter 2.3 (Deemed NOC)',
-    });
+    }, 'occupancy.thresholds'));
   }
 
   // ---- 10. What the deviations cost -----------------------------------------------
@@ -492,7 +528,7 @@ export function assessProject(project: ProjectState): Assessment {
   });
 
   if (compounding.lineItems.length > 0) {
-    findings.push({
+    findings.push(sourced({
       id: 'compounding',
       topic: 'procedure',
       status: compounding.isCompoundable ? 'attention' : 'blocked',
@@ -508,7 +544,7 @@ export function assessProject(project: ProjectState): Assessment {
       clause: compounding.clauseRef,
       money: compounding.isCompoundable ? { label: 'Compounding fee', amount: compounding.totalPayable } : undefined,
       nonNegotiable: !compounding.isCompoundable,
-    });
+    }, 'compounding.schedule'));
   }
 
   // ---- Roll up -------------------------------------------------------------------
@@ -540,5 +576,6 @@ export function assessProject(project: ProjectState): Assessment {
     totalFees,
     permissibleArea: far.effectiveBuiltUpArea,
     proposedArea,
+    disputedCount: findings.filter((f) => f.dispute).length,
   };
 }

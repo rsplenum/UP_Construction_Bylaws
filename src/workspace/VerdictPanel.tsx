@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { AlertTriangle, Check, ChevronRight, Info, Wand2, XCircle } from 'lucide-react';
+import { AlertTriangle, Check, ChevronRight, Info, ShieldQuestion, Wand2, XCircle } from 'lucide-react';
 import { Assessment, Finding, FindingStatus, FindingTopic, TOPIC_LABELS } from '../domain/findings';
+import { CONFIDENCE_LABEL } from '../domain/rules/schema';
 import { useProject } from '../context/ProjectContext';
 
 const STATUS: Record<FindingStatus, { icon: typeof Check; ring: string; text: string; order: number }> = {
@@ -68,6 +69,16 @@ export const VerdictPanel: React.FC<VerdictPanelProps> = ({ assessment, onHoverF
         </p>
         <p className="mt-1 text-[12px] leading-relaxed text-slate-700 dark:text-slate-300">{assessment.subhead}</p>
 
+        {assessment.disputedCount > 0 && (
+          <p className="mt-2.5 flex items-start gap-1.5 rounded-lg bg-white/70 px-2.5 py-1.5 text-[11px] leading-snug text-violet-900 dark:bg-black/25 dark:text-violet-200">
+            <ShieldQuestion className="mt-px h-3 w-3 flex-shrink-0" aria-hidden="true" />
+            <span>
+              {assessment.disputedCount} of these answers rest on a rule that is disputed or
+              unverified against the gazette. Treat this as a working estimate, not a determination.
+            </span>
+          </p>
+        )}
+
         <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[11px] font-medium">
           {assessment.blocked > 0 && <span className="text-rose-700 dark:text-rose-300">{assessment.blocked} blocking</span>}
           {assessment.attention > 0 && <span className="text-amber-800 dark:text-amber-300">{assessment.attention} to settle</span>}
@@ -122,6 +133,12 @@ export const VerdictPanel: React.FC<VerdictPanelProps> = ({ assessment, onHoverF
                             cannot be bought off
                           </span>
                         )}
+                        {finding.dispute && (
+                          <span className="ml-1.5 mt-1 inline-flex items-center gap-1 rounded bg-violet-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-violet-800 dark:bg-violet-500/20 dark:text-violet-300">
+                            <ShieldQuestion className="h-2.5 w-2.5" aria-hidden="true" />
+                            rule disputed
+                          </span>
+                        )}
                       </span>
                       <ChevronRight
                         className={`mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-slate-400 transition-transform ${isOpen ? 'rotate-90' : ''}`}
@@ -155,6 +172,30 @@ export const VerdictPanel: React.FC<VerdictPanelProps> = ({ assessment, onHoverF
                             {finding.working}
                           </p>
                         )}
+                        {finding.dispute && (
+                          <div className="rounded-lg border border-violet-300 bg-violet-50 p-2.5 dark:border-violet-500/30 dark:bg-violet-950/30">
+                            <p className="flex items-center gap-1.5 text-[11px] font-bold text-violet-900 dark:text-violet-200">
+                              <ShieldQuestion className="h-3 w-3" aria-hidden="true" />
+                              This rule is disputed ({finding.dispute.id})
+                            </p>
+                            <p className="mt-1 text-[11px] leading-relaxed text-violet-900/85 dark:text-violet-200/85">
+                              {finding.dispute.summary}
+                            </p>
+                            {finding.dispute.divergence && (
+                              <p className="mt-1 text-[11px] font-semibold text-violet-900 dark:text-violet-200">
+                                The two readings differ by {finding.dispute.divergence}.
+                              </p>
+                            )}
+                          </div>
+                        )}
+
+                        {finding.confidence && (
+                          <p className="text-[10.5px] text-slate-600 dark:text-slate-400">
+                            Source: {CONFIDENCE_LABEL[finding.confidence]}
+                            {finding.rule ? ` · ${finding.rule}` : ''}
+                          </p>
+                        )}
+
                         <div className="flex flex-wrap items-center gap-2 pt-0.5">
                           {finding.fix && (
                             <button

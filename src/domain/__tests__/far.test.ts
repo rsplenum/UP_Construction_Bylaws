@@ -62,11 +62,25 @@ describe('resolveBaseFar — purchasable FAR gate', () => {
 });
 
 describe('resolveBaseFar — road-width matrices', () => {
-  it('resolves group housing without falling through at a band edge', () => {
-    // The old matrix had a hole between 12.0 and 12.01 that dropped to the widest band.
-    expect(resolveBaseFar({ occupancy: 'res_group_housing', plotArea: 5000, roadWidth: 12.005 }).baseFar).toBe(2.0);
-    expect(resolveBaseFar({ occupancy: 'res_group_housing', plotArea: 5000, roadWidth: 18.005 }).baseFar).toBe(2.25);
-    expect(resolveBaseFar({ occupancy: 'res_group_housing', plotArea: 5000, roadWidth: 24.005 }).baseFar).toBe(2.5);
+  it('holds group housing Base FAR flat and lets road width set the ceiling', () => {
+    // Gazette: Base FAR is 1.5 for built-up group housing at every road width; the road
+    // determines Max FAR (9-12m 2.0, >12-18m 3.0, >18-24m 3.0, >24-45m 5.25).
+    const at = (roadWidth: number) => resolveBaseFar({ occupancy: 'res_group_housing', plotArea: 5000, roadWidth });
+    for (const w of [12.005, 18.005, 24.005, 40]) expect(at(w).baseFar).toBe(1.5);
+    // A 10 m road clears the 9 m minimum, so the base is available — but Chapter 9.2.1
+    // bars buying the headroom up to the 2.0 ceiling.
+    expect(at(10).baseFar).toBe(1.5);
+    expect(at(10).purchasableFar).toBe(0);
+    expect(at(10).maxPermissibleFar).toBe(1.5);
+    expect(at(15).maxPermissibleFar).toBe(3.0);
+    expect(at(30).maxPermissibleFar).toBe(5.25);
+  });
+
+  it('never permits plotted residential above the gazette ceiling of 2.0', () => {
+    for (const area of [100, 150, 280, 400, 900, 2000]) {
+      const r = resolveBaseFar({ occupancy: 'res_single', plotArea: area, roadWidth: 12 });
+      expect(r.maxPermissibleFar, `${area} m²`).toBeLessThanOrEqual(2.0 + 1e-9);
+    }
   });
 
   it('reports nil FAR on a road below the minimum right-of-way', () => {
@@ -77,11 +91,17 @@ describe('resolveBaseFar — road-width matrices', () => {
 });
 
 describe('resolveBaseFar — green incentive', () => {
-  it('uplifts base FAR by the rated fraction and nothing else', () => {
+  it('grants the green incentive above the ceiling, not inside it', () => {
+    // Gazette 9.3: "additional FAR on availed FAR ... over and above the MFAR".
     const plain = resolveBaseFar({ occupancy: 'res_single', plotArea: 400, roadWidth: 12 });
     const platinum = resolveBaseFar({ occupancy: 'res_single', plotArea: 400, roadWidth: 12, greenRating: 'platinum' });
-    expect(platinum.effectiveBaseFar).toBeCloseTo(plain.baseFar * 1.07, 3);
+
+    // It must not alter the base, and must not consume purchasable headroom.
+    expect(platinum.effectiveBaseFar).toBe(plain.effectiveBaseFar);
     expect(platinum.purchasableFar).toBe(plain.purchasableFar);
+    // It lifts the absolute ceiling by 7% of what was availed.
+    expect(platinum.maxPermissibleFar).toBeCloseTo(plain.maxPermissibleFar * 1.07, 2);
+    expect(platinum.maxPermissibleFar).toBeGreaterThan(2.0);
   });
 });
 
