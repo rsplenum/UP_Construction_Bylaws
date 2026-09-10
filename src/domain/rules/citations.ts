@@ -1,0 +1,441 @@
+/**
+ * Citations — the link between a figure in `src/domain` and the gazette line it came from.
+ *
+ * Chapter 16 taught the lesson this file exists to institutionalise. Six errors survived
+ * in the compounding engine for as long as they did because nothing connected a constant
+ * to a sentence. A comment saying "Chapter 16.3" is not a citation: it cannot be checked,
+ * it does not notice when the source is re-extracted, and it does not distinguish a rule
+ * someone read from a rule someone assumed.
+ *
+ * Two kinds, because the gazette states rules two ways.
+ *
+ *   `prose` — a sentence, checked as a verbatim line of the source.
+ *   `cells` — a table, checked as the exact sequence of non-empty cell values across a
+ *             span of lines. Numeric tables flatten to one value per line, so a sentence
+ *             quote cannot capture them; the cell sequence is a fingerprint of the whole
+ *             table and drifts the moment any figure in it changes.
+ *
+ * `src/domain/rules/__tests__/citations.test.ts` checks every entry against
+ * `docs/source/gazette-tmpr8.txt` on every run, and refuses to let a rule be marked
+ * `confidence: 'gazette'` without one. Generated from the source by line number rather
+ * than typed, so the quotes cannot be mistyped into agreement with the code.
+ */
+
+/** Path is relative to the repository root. */
+export const GAZETTE_SOURCE = 'docs/source/gazette-tmpr8.txt';
+
+interface CitationBase {
+  /** Unique id for this citation. */
+  readonly id: string;
+  /** The rule in `registry.ts` this supports. */
+  readonly rule: string;
+  /** Clause reference as the gazette numbers it. */
+  readonly clause: string;
+  /** What in `src/domain` rests on this, and what is still missing from it. */
+  readonly supports: string;
+}
+
+export interface ProseCitation extends CitationBase {
+  readonly kind: 'prose';
+  /** 1-based line in the source file. */
+  readonly line: number;
+  /** The line, verbatim. Whitespace is normalised when checked. */
+  readonly text: string;
+}
+
+export interface CellsCitation extends CitationBase {
+  readonly kind: 'cells';
+  /** Inclusive 1-based line span the table occupies. */
+  readonly lines: readonly [number, number];
+  /** Every non-empty cell in that span, in order. */
+  readonly cells: readonly string[];
+}
+
+export type Citation = ProseCitation | CellsCitation;
+
+export const CITATIONS: readonly Citation[] = [
+  {
+    id: 'setback.plotted-residential.scope',
+    rule: 'setback.plotted-residential',
+    clause: 'Para 3.2.4.1',
+    supports: 'Plot-size bands, and the 15 m / 17.5 m height ceiling that follows the plot rather than the occupancy.',
+    kind: 'prose',
+    line: 4429,
+    text: 'Under plotted development, for all single/multi-units less than 300 square meters plot size, three floors with stilts up to 15 meter is allowed and on plots above 300 square meters, four storeys with stilts up to 17.5-meter height is allowed. The set-back shall be as follows:',
+  },
+  {
+    id: 'setback.plotted-residential.table',
+    rule: 'setback.plotted-residential',
+    clause: 'Para 3.2.4.1 Table',
+    supports: 'PLOTTED_RESIDENTIAL_LADDER — front, rear, side-1, side-2 by plot area.',
+    kind: 'cells',
+    lines: [4446, 4487],
+    cells: [
+      'Up to 150',
+      '1',
+      '0',
+      '0',
+      '0',
+      '>150 to 300',
+      '3',
+      '1.5',
+      '0',
+      '0',
+      '>300 to 500',
+      '3',
+      '3',
+      '0',
+      '0',
+      '(b) Semi-detached',
+      '>500 to 1200',
+      '4.5',
+      '4.5',
+      '1.5',
+      '0',
+      '(c) Detached',
+      '>1200',
+      '6',
+      '6',
+      '1.5',
+      '1.5',
+    ],
+  },
+  {
+    id: 'setback.plotted-residential.note1',
+    rule: 'setback.plotted-residential',
+    clause: 'Para 3.2.4.1 Note-1',
+    supports: 'The 40% rear-setback allowance the compounding table at 16.2 refers to. Not yet modelled.',
+    kind: 'prose',
+    line: 4489,
+    text: 'Note-1: Construction shall be permitted on 40 percent of the rear setback up to 7 meter height, in semi-detached buildings. But in corner plots the said covering shall be permissible only after leaving the side set back. In case of stilt floor, construction on 40 percent area of the rear setback shall not be allowed.',
+  },
+  {
+    id: 'setback.plotted-residential.note2',
+    rule: 'setback.plotted-residential',
+    clause: 'Para 3.2.4.1 Note-2',
+    supports: 'Corner plots: new layouts take the front setback on the side; approved layouts take 1.5 m up to 500 sqm.',
+    kind: 'prose',
+    line: 4490,
+    text: 'Note-2: The side setback in a corner plot in the new layouts shall be the same as the front setback of the concerned plot. In already approved layouts, if setback is not prescribed in the layout plan, the minimum side set-back in corner plots up to 500 square meters shall be 1.5 meters and in corner plots having area more than 500 square meters, the side set-back shall be as per the above table.',
+  },
+  {
+    id: 'setback.high-rise.scope',
+    rule: 'setback.high-rise',
+    clause: 'Para 3.2.4.9',
+    supports: 'The scope qualifier: this table governs occupancies OTHER THAN single/multi units.',
+    kind: 'prose',
+    line: 4802,
+    text: 'For use occupancies with building height more than 15m (other than single/multi units), the minimum setback requirement shall be as follows.',
+  },
+  {
+    id: 'setback.high-rise.table',
+    rule: 'setback.high-rise',
+    clause: 'Para 3.2.4.9 Table',
+    supports: 'HIGH_RISE_LADDER — eight height bands from >15 m to >51 m.',
+    kind: 'cells',
+    lines: [4803, 4857],
+    cells: [
+      'Building Height (in meters)',
+      'Front (m)',
+      'Rear (m)',
+      'Side-1 (m)',
+      'Side-2 (m)',
+      '>15 – 17.5',
+      '5',
+      '5',
+      '5',
+      '5',
+      '>17.5 - 21',
+      '6',
+      '6',
+      '6',
+      '6',
+      '>21 - 27',
+      '7',
+      '7',
+      '7',
+      '7',
+      '>27 - 33',
+      '8',
+      '8',
+      '8',
+      '8',
+      '>33 - 39',
+      '9',
+      '9',
+      '9',
+      '9',
+      '>39 - 45',
+      '10',
+      '10',
+      '10',
+      '10',
+      '>45 - 51',
+      '11',
+      '11',
+      '11',
+      '11',
+      '>51',
+      '15',
+      '12',
+      '12',
+      '12',
+    ],
+  },
+  {
+    id: 'setback.high-rise.note1',
+    rule: 'setback.high-rise',
+    clause: 'Para 3.2.4.9 Note-1',
+    supports: 'On a plot facing two roads, the side towards the wider road is the front. Not yet modelled.',
+    kind: 'prose',
+    line: 4859,
+    text: 'Note-1: For buildings situated on two or more roads of different road widths, then the side of the building towards the wider road shall be considered as the front.',
+  },
+  {
+    id: 'setback.high-rise.note2',
+    rule: 'setback.high-rise',
+    clause: 'Para 3.2.4.9 Note-2',
+    supports: 'An alternative setback path exists. Not yet modelled.',
+    kind: 'prose',
+    line: 4860,
+    text: 'Note-2: In alternative to the above-mentioned table of paragraph 3.2.4.9, following setbacks shall be allowed.',
+  },
+  {
+    id: 'far.telescopic-residential.method',
+    rule: 'far.telescopic-residential',
+    clause: 'Para 3.2.5',
+    supports: 'Floor area is computed telescopically, band by band, not on a single rate for the whole plot.',
+    kind: 'prose',
+    line: 2296,
+    text: 'The calculation of floor area shall be conducted telescopically, beginning from one level below the area of the proposed plot.',
+  },
+  {
+    id: 'far.telescopic-residential.table',
+    rule: 'far.telescopic-residential',
+    clause: 'Para 3.2.5 Table',
+    supports: 'RESIDENTIAL_TELESCOPIC_SLABS and PLOTTED_RESIDENTIAL_MAX_FAR — base FAR per band, Max FAR 2.0 throughout.',
+    kind: 'cells',
+    lines: [2318, 2353],
+    cells: [
+      'Plotted Development – Single Unit/Multi-Unit (Built-up/Non-Built-up)',
+      'Max. coverage after ensuring setbacks',
+      'Up to 150',
+      '2.0',
+      '2.0',
+      '>150 to 300',
+      '1.8',
+      '2.0',
+      '>300 to 500',
+      '1.75',
+      '2.0',
+      '>500 to 1200',
+      '1.5',
+      '2.0',
+      '>1200',
+      '1.25',
+      '2.0',
+    ],
+  },
+  {
+    id: 'compounding.non-compoundable',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.1.3',
+    supports: 'NonCompoundableFlags — the thirteen offences, in the gazette’s order.',
+    kind: 'cells',
+    lines: [11094, 11108],
+    cells: [
+      'Following offences shall not be compoundable.',
+      'Construction done on the land reserved for or related to public and semi-public amenities, services and utilities such as road, railway line, park, green verge/belt etc.',
+      'Construction done in contravention of land-use prescribed in Master Plan or Zonal Development Plan or Lay-out plan or lease.',
+      'Construction done on plots in illegal colonies.',
+      'Construction done on government or public land without permission of the concerned department.',
+      'Construction done on disputed land.',
+      'Construction in the buildings where earthquake resistance measures are mandatory as per chapter 11.8.',
+      'Construction of buildings where firefighting requirements are mandatory or where No Objection Certificate (NOC) for construction/addition/alteration has not been obtained from fire authority (wherever mandatory), as per chapter 10.1.3.',
+      'Construction in violation of building height in heritage zones, protected monuments, and civil aviation areas or in restricted height areas.',
+      'Construction carried out where required parking arrangement is not feasible.',
+      'Construction carried out on areas reserved for ‘common areas and facilities’ in group housing and other multi-storey buildings.',
+      'Construction done on land covered by ponds/reservoirs, river, drain, etc, identified in Master Plan/Zonal Plan/ Lay-out Plan or recorded in the revenue records.',
+      'Construction in the buildings where measures for access to differently abled persons are mandatory as per chapter 12.',
+      'Construction undertaken in mixed use development, which violates the criteria of pre-dominant land use.',
+    ],
+  },
+  {
+    id: 'compounding.limits',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.2 Table',
+    supports: 'compoundableLimits() — both columns, every parameter. The column-B setback cell is printed once and spans the front, rear and side rows.',
+    kind: 'cells',
+    lines: [11113, 11165],
+    cells: [
+      'Parameter',
+      'All Buildings <=15-meter and multi-units upto 17.5 meter height except Group Housing',
+      'Buildings >15-meter height and Group Housing except multi-units.',
+      'Front Setback',
+      '25% of front setback area up to a maximum of',
+      '1.0 meter',
+      '10 percent of setback area (maximum up to a width of 1-meter), subject to Fire NOC.',
+      'Rear Setback',
+      'Residential:',
+      '(a) Plot Size up to 500 sqm- 100% compoundable in cases where proper provisions have been made for light and ventilation.',
+      '(b) Plot Size > 500 sqm - construction up to maximum 10% of the area in rear setback (in addition to permissible 40%)',
+      'Others:',
+      '10 percent of rear setback area',
+      'Side Setback',
+      'Construction up to a maximum of 25% of width of side setback',
+      'Ground Coverage & FAR',
+      'Construction up to a maximum of 10% of total permissible FAR, in addition to permissible ground coverage.',
+      'Construction up to a maximum of 10% of total permissible FAR, in addition to permissible ground coverage.',
+      'Note: Construction in front, rear and side setbacks shall be counted while calculating the maximum permissible compoundable area.',
+      'Note: Construction in front, rear and side setbacks shall be counted while calculating the maximum permissible compoundable area.',
+      'Building Height',
+      'Construction up to a maximum of 10% height from permissible limit without changing the number of floors',
+      '-',
+      'Maximum compoundable units',
+      'Maximum one unit in plotted development beyond permissible limit',
+      'In Group Housing: Proportionate units relative to percentage of compoundable additional FAR/Purchasable FAR',
+      'Others',
+      'Up to 10 percent of any dimension and area of the items indicated in 16.3.8',
+      'Up to 10 percent of any dimension and area of the items indicated in 16.3.8',
+    ],
+  },
+  {
+    id: 'compounding.item1',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.3.8 Item 1 A',
+    supports: 'ITEM1_UNAUTHORISED_WITHIN_ENVELOPE — the first of four plot-size bands.',
+    kind: 'prose',
+    line: 11202,
+    text: '| Rs. 25 per sqm for construction of all nature on plots up to 150 sq meter.',
+  },
+  {
+    id: 'compounding.item1f',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.3.8 Item 1 F',
+    supports: 'ITEM1F_RATE_PER_EXTRA_UNIT.',
+    kind: 'prose',
+    line: 11233,
+    text: '| On Compoundable units in addition to permissible units- Rs. 122640 per unit.',
+  },
+  {
+    id: 'compounding.item3',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.3.8 Item 3',
+    supports: 'ITEM3_BEYOND_FAR — the head that charges a per-m² rate AND a share of the land price.',
+    kind: 'prose',
+    line: 11304,
+    text: '| In construction of plotted development and Group Housing-Rs. 491 per sqm. and 50% of required land price for additional floor area.',
+  },
+  {
+    id: 'compounding.item9',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.3.8 Item 9',
+    supports: 'ITEM9_COMPOUND_WALL — note the minimum, which binds below ~41 running metres.',
+    kind: 'prose',
+    line: 11419,
+    text: '| Rs. 123 per running meter but a minimum of Rs. 5000/-',
+  },
+  {
+    id: 'compounding.item10',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.3.8 Item 10',
+    supports: 'ITEM10_EXCESS_HEIGHT_RESIDENTIAL_RATE. The quantity this rate multiplies is ambiguous — see V-004b.',
+    kind: 'prose',
+    line: 11440,
+    text: '| @Rs. 6132/- per running meter of height (measured as per',
+  },
+  {
+    id: 'compounding.item12',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.3.8 Item 12',
+    supports: 'ITEM12_AMENITY_SHORTFALL_MULTIPLE.',
+    kind: 'prose',
+    line: 11475,
+    text: '| Compounding fee at the rate of two times of price of land equivalent to decrease in the area required, as per byelaws, for roads, parks and open spaces and other community amenities.',
+  },
+  {
+    id: 'compounding.note1',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.3.8 Note-1',
+    supports: 'NOTE1_OTHER_CONTRAVENTION_RATE and USE_MULTIPLIER.',
+    kind: 'prose',
+    line: 11491,
+    text: 'For any construction in contravention of the byelaws (other than those listed in the above schedule) such as – porch, balcony/chhajja etc., but are compoundable; a compounding fee @Rs. 491/- per square meter shall be charged. The rate of compounding fee for commercial shall be two times, for office 1.5 times, for industrial 0.40 times, for facilities and other usages 0.50 times.',
+  },
+  {
+    id: 'compounding.land-rate',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.3.6.1',
+    supports: 'The land rate is the residential rate whatever the building’s use. The multipliers carry the use, not the rate.',
+    kind: 'prose',
+    line: 11181,
+    text: 'The cost of land shall be assessed at the prevailing residential rate of the Authority, or the non-agriculture circle rate fixed by the District Collector, whichever is higher. For calculation of Compounding fee for all kinds of constructions only the residential rate of the land shall be taken into consideration.',
+  },
+  {
+    id: 'compounding.purchasable-far',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.3.7.2',
+    supports: 'Purchasable FAR charges are payable on top, except on the first 10%.',
+    kind: 'prose',
+    line: 11183,
+    text: 'In addition to charges payable as per rules for purchasable FAR, Compounding fee shall also be payable at the rates prescribed under Serial No.-2 of the Schedule. However, purchasable FAR charges for first 10% purchasable FAR shall not be payable.',
+  },
+  {
+    id: 'far.group-housing.built-up',
+    rule: 'far.road-width-group-housing',
+    clause: 'Para 3.2.5 Table row 2(a)',
+    supports: 'GROUP_HOUSING_MAX_FAR.built_up and BASE_FAR.group_housing.built_up.',
+    kind: 'cells',
+    lines: [2364, 2403],
+    cells: [
+      '2(a)',
+      'Group Housing',
+      '(Built up)',
+      'Max. coverage after ensuring setbacks',
+      '9 – 12m',
+      '1.5',
+      '2.0',
+      '>12 – 18m',
+      '1.5',
+      '3.0',
+      '>18 – 24m',
+      '1.5',
+      '3.0',
+      '>24 – 45m',
+      '1.5',
+      '5.25',
+      '> 45m',
+      '1.5',
+      'Unrestricted',
+    ],
+  },
+  {
+    id: 'far.group-housing.non-built-up',
+    rule: 'far.road-width-group-housing',
+    clause: 'Para 3.2.5 Table row 2(b)',
+    supports: 'GROUP_HOUSING_MAX_FAR.non_built_up. Note the first band is >12 m: the gazette prints no 9-12 m row for a new layout.',
+    kind: 'cells',
+    lines: [2405, 2435],
+    cells: [
+      '2(b)',
+      'Group Housing',
+      '(Non-Built up)',
+      'Max. coverage after ensuring setbacks',
+      '>12 – 18m',
+      '2.5',
+      '5.0',
+      '>18 – 24m',
+      '2.5',
+      '5.0',
+      '>24 – 45m',
+      '2.5',
+      '8.75',
+      '> 45m',
+      '2.5',
+      'Unrestricted',
+    ],
+  },
+];
+
+/** Every rule id that has at least one citation. */
+export const CITED_RULES: ReadonlySet<string> = new Set(CITATIONS.map((c) => c.rule));

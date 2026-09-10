@@ -51,34 +51,72 @@ assertContiguousLadder('RESIDENTIAL_TELESCOPIC_SLABS', RESIDENTIAL_TELESCOPIC_SL
  *   Built-up      base 1.50   max: ≤12m 2.1 | >12–24m 3.0 | >24–45m 5.0 | >45m unrestricted
  *   Non-built-up  base 1.75   max: ≤12m 2.45 | >12–24m 3.5 | …
  */
+/** Whether the site sits inside an already built-up area or a new layout. */
+export type AreaType = 'built_up' | 'non_built_up';
+
 export interface RoadFarBand extends Band {
   readonly label: string;
   /** Ceiling on total FAR at this road width. Infinity where the gazette says unrestricted. */
   readonly maxFar: number;
 }
 
-/** Whether the site sits inside an already built-up area or a new layout. */
-export type AreaType = 'built_up' | 'non_built_up';
+/**
+ * Max FAR is keyed on road width AND area type. The gazette prints a separate row for
+ * every occupancy in each of "(Built up)" and "(Non-Built up)", and they do not carry
+ * the same ceilings — non-built-up group housing on a 30 m road tops out at 8.75, not
+ * 5.25. The engine held one ladder per occupancy and applied the built-up ceilings to
+ * both, understating a new layout's entitlement by up to 3.5 FAR (B-013).
+ *
+ * Non-built-up group housing has no band below 12 m: the gazette's first row is
+ * ">12 - 18m". A 9 m road carries group housing in a built-up area and not in a new
+ * layout, so the zero band here is the gazette's silence, not a rounding.
+ */
+export const GROUP_HOUSING_MAX_FAR: Readonly<Record<AreaType, readonly RoadFarBand[]>> = {
+  built_up: [
+    { label: 'Below 9m',    overMoreThan: 0,  upToAndIncluding: 9,        maxFar: 0 },
+    { label: '9 to 12m',    overMoreThan: 9,  upToAndIncluding: 12,       maxFar: 2.0 },
+    { label: '>12 to 18m',  overMoreThan: 12, upToAndIncluding: 18,       maxFar: 3.0 },
+    { label: '>18 to 24m',  overMoreThan: 18, upToAndIncluding: 24,       maxFar: 3.0 },
+    { label: '>24 to 45m',  overMoreThan: 24, upToAndIncluding: 45,       maxFar: 5.25 },
+    { label: '>45m',        overMoreThan: 45, upToAndIncluding: Infinity, maxFar: Infinity },
+  ],
+  non_built_up: [
+    { label: 'Up to 12m',   overMoreThan: 0,  upToAndIncluding: 12,       maxFar: 0 },
+    { label: '>12 to 18m',  overMoreThan: 12, upToAndIncluding: 18,       maxFar: 5.0 },
+    { label: '>18 to 24m',  overMoreThan: 18, upToAndIncluding: 24,       maxFar: 5.0 },
+    { label: '>24 to 45m',  overMoreThan: 24, upToAndIncluding: 45,       maxFar: 8.75 },
+    { label: '>45m',        overMoreThan: 45, upToAndIncluding: Infinity, maxFar: Infinity },
+  ],
+};
 
-export const GROUP_HOUSING_MAX_FAR: readonly RoadFarBand[] = [
-  { label: 'Below 9m',    overMoreThan: 0,  upToAndIncluding: 9,        maxFar: 0 },
-  { label: '9 to 12m',    overMoreThan: 9,  upToAndIncluding: 12,       maxFar: 2.0 },
-  { label: '>12 to 18m',  overMoreThan: 12, upToAndIncluding: 18,       maxFar: 3.0 },
-  { label: '>18 to 24m',  overMoreThan: 18, upToAndIncluding: 24,       maxFar: 3.0 },
-  { label: '>24 to 45m',  overMoreThan: 24, upToAndIncluding: 45,       maxFar: 5.25 },
-  { label: '>45m',        overMoreThan: 45, upToAndIncluding: Infinity, maxFar: Infinity },
-];
+/**
+ * Gazette row 3(a)/3(b), "Shops / Convenience Shopping / Commercial Units".
+ *
+ * The gazette's first band is "Up to 12m" with no floor under it. The 9 m floor below is
+ * the engine's, not the byelaw's — a road narrower than 9 m is unlikely to carry a
+ * commercial frontage, but the gazette does not say so here. Logged as V-007.
+ */
+export const COMMERCIAL_MAX_FAR: Readonly<Record<AreaType, readonly RoadFarBand[]>> = {
+  built_up: [
+    { label: 'Below 9m',    overMoreThan: 0,  upToAndIncluding: 9,        maxFar: 0 },
+    { label: 'Up to 12m',   overMoreThan: 9,  upToAndIncluding: 12,       maxFar: 2.1 },
+    { label: '>12 to 24m',  overMoreThan: 12, upToAndIncluding: 24,       maxFar: 3.0 },
+    { label: '>24 to 45m',  overMoreThan: 24, upToAndIncluding: 45,       maxFar: 5.0 },
+    { label: '>45m',        overMoreThan: 45, upToAndIncluding: Infinity, maxFar: Infinity },
+  ],
+  non_built_up: [
+    { label: 'Below 9m',    overMoreThan: 0,  upToAndIncluding: 9,        maxFar: 0 },
+    { label: 'Up to 12m',   overMoreThan: 9,  upToAndIncluding: 12,       maxFar: 2.45 },
+    { label: '>12 to 24m',  overMoreThan: 12, upToAndIncluding: 24,       maxFar: 3.5 },
+    { label: '>24 to 45m',  overMoreThan: 24, upToAndIncluding: 45,       maxFar: 6.0 },
+    { label: '>45m',        overMoreThan: 45, upToAndIncluding: Infinity, maxFar: Infinity },
+  ],
+};
 
-export const COMMERCIAL_MAX_FAR: readonly RoadFarBand[] = [
-  { label: 'Below 9m',    overMoreThan: 0,  upToAndIncluding: 9,        maxFar: 0 },
-  { label: 'Up to 12m',   overMoreThan: 9,  upToAndIncluding: 12,       maxFar: 2.1 },
-  { label: '>12 to 24m',  overMoreThan: 12, upToAndIncluding: 24,       maxFar: 3.0 },
-  { label: '>24 to 45m',  overMoreThan: 24, upToAndIncluding: 45,       maxFar: 5.0 },
-  { label: '>45m',        overMoreThan: 45, upToAndIncluding: Infinity, maxFar: Infinity },
-];
-
-assertContiguousLadder('GROUP_HOUSING_MAX_FAR', GROUP_HOUSING_MAX_FAR);
-assertContiguousLadder('COMMERCIAL_MAX_FAR', COMMERCIAL_MAX_FAR);
+for (const areaType of ['built_up', 'non_built_up'] as const) {
+  assertContiguousLadder(`GROUP_HOUSING_MAX_FAR.${areaType}`, GROUP_HOUSING_MAX_FAR[areaType]);
+  assertContiguousLadder(`COMMERCIAL_MAX_FAR.${areaType}`, COMMERCIAL_MAX_FAR[areaType]);
+}
 
 /** Base FAR is a property of the occupancy and the area type, not of the road. */
 export const BASE_FAR: Readonly<Record<'group_housing' | 'commercial', Record<AreaType, number>>> = {
@@ -125,6 +163,13 @@ export interface BaseFarResult {
   readonly effectiveBaseFar: number;
   readonly effectiveBuiltUpArea: number;
   readonly greenBonusFraction: number;
+  /**
+   * The Max FAR the gazette prints for this occupancy, area type and road width, before
+   * Chapter 9.2.1's bar on purchasing below a 12 m road. Exposed so the ladder can be
+   * checked against the table it came from: `maxPermissibleFar` folds in that bar and so
+   * reads lower than the gazette's own figure on a narrow road.
+   */
+  readonly ceilingFar: number;
   /** Extra FAR the project may purchase at this road width (0 when barred). */
   readonly purchasableFar: number;
   /** Absolute ceiling: effective base + purchasable. Nothing may be sanctioned beyond this. */
@@ -168,7 +213,7 @@ export function resolveBaseFar(input: {
   if (plotArea === 0) {
     return {
       plotArea: 0, baseFar: 0, baseBuiltUpArea: 0, effectiveBaseFar: 0, effectiveBuiltUpArea: 0,
-      greenBonusFraction, purchasableFar: 0, maxPermissibleFar: 0, maxPermissibleBuiltUpArea: 0,
+      greenBonusFraction, ceilingFar: 0, purchasableFar: 0, maxPermissibleFar: 0, maxPermissibleBuiltUpArea: 0,
       slabs: [], workings: 'Plot area is zero — no FAR can be derived.',
       clauseRef: 'Chapter 3.2.2', caveats: ['Enter a plot area to compute FAR.'],
     };
@@ -197,7 +242,7 @@ export function resolveBaseFar(input: {
       + ` = ${round(totalBuiltUp, 2)} sqm ÷ ${plotArea} sqm = FAR ${baseFar}`;
   } else {
     const isGroupHousing = definition.farBasis === 'road_width_group_housing';
-    const table = isGroupHousing ? GROUP_HOUSING_MAX_FAR : COMMERCIAL_MAX_FAR;
+    const table = (isGroupHousing ? GROUP_HOUSING_MAX_FAR : COMMERCIAL_MAX_FAR)[areaType];
     const key = isGroupHousing ? 'group_housing' : 'commercial';
     clauseRef = isGroupHousing
       ? 'Section 3.2.2.2 & 4.2.8 (Group Housing), verified against the gazette'
@@ -213,10 +258,10 @@ export function resolveBaseFar(input: {
     } else {
       ceilingFar = resolved.band.maxFar;
       const ceilingText = Number.isFinite(ceilingFar) ? String(ceilingFar) : 'unrestricted';
-      workings = `Base FAR ${baseFar} (${areaType.replace('_', '-')}), ceiling for a ${roadWidth}m road (${resolved.band.label}) is ${ceilingText}`;
+      workings = `Base FAR ${baseFar} (${areaType.replace(/_/g, '-')}), ceiling for a ${roadWidth}m road (${resolved.band.label}) is ${ceilingText}`;
       if (ceilingFar === 0) {
         caveats.push(
-          `A ${roadWidth}m road is below the minimum right-of-way for ${definition.label.toLowerCase()}; no FAR is sanctionable.`,
+          `A ${roadWidth}m road is below the minimum right-of-way for ${definition.label.toLowerCase()} in a ${areaType.replace(/_/g, '-')} area; no FAR is sanctionable.`,
         );
         baseFar = 0;
       }
@@ -257,6 +302,7 @@ export function resolveBaseFar(input: {
     effectiveBaseFar,
     effectiveBuiltUpArea: round(plotArea * effectiveBaseFar, 2),
     greenBonusFraction,
+    ceilingFar,
     purchasableFar,
     maxPermissibleFar,
     maxPermissibleBuiltUpArea: round(plotArea * maxPermissibleFar, 2),

@@ -4,8 +4,10 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: three transcriptions were verified exactly right, and twelve real bugs were
+**Headline: three transcriptions were verified exactly right, and thirteen real bugs were
 found — nine of which made the engine permit or charge more than the byelaws allow.**
+
+The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
 That ratio matters. The engine was not uniformly wrong, and the two secondary web
 sources consulted before the document arrived were *both wrong* about the one rule they
@@ -169,14 +171,38 @@ building's use; the *multipliers* carry the use, not the rate. And the note unde
 calculating the maximum permissible compoundable area" — means the setback allowance and
 the 10%-of-FAR allowance are **one allowance**, not two. The engine now says so.
 
+### B-013 — Max FAR ignored area type
+The gazette prints a separate FAR row for every occupancy in each of "(Built up)" and
+"(Non-Built up)", and the ceilings differ. Group housing 2(a) built-up runs
+2.0 / 3.0 / 3.0 / 5.25; 2(b) non-built-up runs 5.0 / 5.0 / 8.75 — and has **no band below
+12 m**, so a new layout carries no group housing on a 9 m road where a built-up area does.
+Shops 3(a) run 2.1 / 3.0 / 5.0 against 3(b) 2.45 / 3.5 / 6.0.
+
+The engine held one ladder per occupancy and applied the built-up ceilings to both,
+understating a new layout's entitlement by up to 3.5 FAR. The Base FAR split
+(1.5 / 2.5 and 1.5 / 1.75) was already correct — only the ceilings were missed, and the
+doc comment above the ladder had *recorded* the non-built-up figures without wiring them
+in. *Fixed: both ladders are keyed on area type, and `ceilingFar` is now on the result so
+the ladder can be tested against the table it came from.*
+
+This one is also why `RuleInput` gained `areaType`. Nothing anywhere declared area type
+as an input that drives the answer, so the omission was invisible outside the numbers —
+the same failure mode as V-001.
+
 ---
 
 ## Still open
 
-### V-003 — Non-commercial occupancies routed to the commercial FAR matrix
-Offices, hospitals, schools, assembly and industrial uses still read the commercial
-road-width table because no separate matrix has been extracted yet. The gazette has
-per-occupancy tables; they have not been transcribed.
+### V-003 — Ten occupancies still read a table written for shops
+Rows 3(a) and 3(b) — shops, convenience shopping, commercial units — are now read from
+the gazette. Offices, hotels, malls, cinemas, petrol stations, hospitals, schools,
+assembly, industry and warehousing still borrow those two ladders.
+
+The gazette does carry what they need: a per-occupancy, per-area-type FAR matrix running
+from line 2306 to roughly 3718, about forty rows, each split built-up / non-built-up. It
+also fixes much of V-005 as a side effect — a commercial complex's first band starts at
+12 m and a mall's at 18 m, which *is* the minimum road width for each. Phase 1 of
+`docs/VERIFICATION-STRATEGY.md`.
 
 ### V-004b — Item 10's quantity is ambiguous in the gazette
 "@Rs. 6132/- per running meter of height (measured as per periphery of existing
@@ -191,6 +217,12 @@ NOC was obtained, whether the land is a filled pond are facts about the site and
 clearances, not about the drawing. Advanced mode has to ask. Until it does, the fee is
 quoted on the assumption that none of the thirteen applies, and that assumption is
 stated in the caveats.
+
+### V-007 — The 9 m floor under the commercial FAR ladder is the engine's, not the gazette's
+Rows 3(a) and 3(b) print their first band as "Up to 12m" with nothing under it. The
+engine refuses FAR below 9 m. That may well be right — a minimum access width is likely
+stated elsewhere in Chapter 3 — but it is not stated *there*, and it is currently an
+inference sitting inside a table marked verified.
 
 ### V-005 — Occupancy thresholds are inferred
 Minimum road widths, plot sizes and parking ratios for the sixteen occupancies were

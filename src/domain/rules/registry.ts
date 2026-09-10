@@ -53,26 +53,31 @@ export const RULES: RuleSet = {
   'far.road-width-group-housing': {
     id: 'far.road-width-group-housing',
     question: 'How much floor area may a group housing scheme have?',
-    clause: 'Section 3.2.2.2 & 4.2.8',
+    clause: 'Para 3.2.5 Table rows 2(a) and 2(b)',
     confidence: 'gazette',
-    derivedFrom: ['roadWidth'],
+    derivedFrom: ['roadWidth', 'areaType'],
     checked: '2026-09-10',
-    quote: 'Base FAR 1.5 built-up / 2.5 non-built-up at every road width. Max FAR: 9–12m 2.0, >12–18m 3.0, >18–24m 3.0, >24–45m 5.25, >45m unrestricted.',
+    quote:
+      'Built-up 2(a): base 1.5 throughout; Max FAR 9–12m 2.0, >12–18m 3.0, >18–24m 3.0, >24–45m 5.25, >45m Unrestricted. ' +
+      'Non-built-up 2(b): base 2.5 throughout; Max FAR >12–18m 5.0, >18–24m 5.0, >24–45m 8.75, >45m Unrestricted — ' +
+      'and no band below 12 m, so a new layout carries no group housing on a 9 m road.',
     ifWrong: 'Scheme viability would be misstated on every group housing project.',
   },
 
   'far.road-width-commercial': {
     id: 'far.road-width-commercial',
     question: 'How much floor area may a commercial or institutional building have?',
-    clause: 'Section 5.2.5',
+    clause: 'Para 3.2.5 Table rows 3(a) and 3(b)',
     confidence: 'inferred',
-    derivedFrom: ['roadWidth'],
+    derivedFrom: ['roadWidth', 'areaType'],
+    checked: '2026-09-10',
     ifWrong:
-      'Applied to eleven occupancies from shops to warehouses. The commercial matrix was extended to all of them by analogy, without a source for any occupancy other than commercial.',
+      'Rows 3(a) and 3(b) — shops, convenience shopping and commercial units — are now read from the gazette. The same two ladders are still applied by analogy to ten other occupancies, from hotels to warehouses, each of which the gazette gives its own row.',
     challenge: {
       id: 'V-003',
       summary:
-        'Offices, hospitals, schools, assembly and industrial uses were routed to the commercial road-width FAR matrix because no separate matrix was available. The byelaws are likely to set these separately.',
+        'The gazette carries a per-occupancy, per-area-type FAR matrix running roughly 1,400 lines and forty-odd rows: commercial complexes and malls start at 12 m and 18 m roads rather than 9 m, hotels, cinemas, petrol stations, hospitals, schools, auditoria, guest houses, industry, flatted factories and data centres each have their own ceilings. Only rows 3(a) and 3(b) have been transcribed. Every other occupancy currently reads a table written for shops.',
+      derivedFromInstead: ['occupancy', 'roadWidth', 'areaType'],
     },
   },
 

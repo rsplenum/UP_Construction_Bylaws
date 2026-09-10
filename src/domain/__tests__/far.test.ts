@@ -117,3 +117,48 @@ describe('the presentation adapter agrees with the resolver', () => {
     }
   });
 });
+
+/**
+ * B-013. The gazette prints a separate FAR row for every occupancy in each of
+ * "(Built up)" and "(Non-Built up)", and the ceilings differ. The engine applied the
+ * built-up ceilings to both.
+ */
+describe('Max FAR is keyed on area type as well as road width', () => {
+  const gh = (roadWidth: number, areaType: 'built_up' | 'non_built_up') =>
+    resolveBaseFar({ occupancy: 'res_group_housing', plotArea: 5_000, roadWidth, areaType });
+
+  // Gazette row 2(a): base 1.5, max 2.0 / 3.0 / 3.0 / 5.25 / unrestricted.
+  it.each([[10, 2.0], [15, 3.0], [20, 3.0], [30, 5.25]])(
+    'built-up group housing on a %s m road tops out at %s',
+    (road, ceiling) => expect(gh(road, 'built_up').ceilingFar).toBe(ceiling),
+  );
+
+  // Gazette row 2(b): base 2.5, max 5.0 / 5.0 / 8.75 / unrestricted.
+  it.each([[15, 5.0], [20, 5.0], [30, 8.75]])(
+    'non-built-up group housing on a %s m road tops out at %s',
+    (road, ceiling) => expect(gh(road, 'non_built_up').ceilingFar).toBe(ceiling),
+  );
+
+  it('carries the higher base FAR in a new layout', () => {
+    expect(gh(30, 'built_up').baseFar).toBe(1.5);
+    expect(gh(30, 'non_built_up').baseFar).toBe(2.5);
+  });
+
+  it('does not permit group housing below a 12 m road in a new layout', () => {
+    // Row 2(b) starts at ">12 - 18m". Row 2(a) has a 9-12 m band; row 2(b) does not.
+    expect(gh(10, 'built_up').baseFar).toBe(1.5);
+    expect(gh(10, 'non_built_up').baseFar).toBe(0);
+    expect(gh(10, 'non_built_up').caveats.join(' ')).toMatch(/non-built-up/);
+  });
+
+  // Gazette rows 3(a)/3(b): shops, built-up 2.1 / 3.0 / 5.0, non-built-up 2.45 / 3.5 / 6.0.
+  it.each([[12, 2.1, 2.45], [20, 3.0, 3.5], [30, 5.0, 6.0]])(
+    'shops on a %s m road top out at %s built-up and %s in a new layout',
+    (road, builtUp, newLayout) => {
+      const at = (areaType: 'built_up' | 'non_built_up') =>
+        resolveBaseFar({ occupancy: 'com_shop', plotArea: 800, roadWidth: road, areaType }).ceilingFar;
+      expect(at('built_up')).toBe(builtUp);
+      expect(at('non_built_up')).toBe(newLayout);
+    },
+  );
+});

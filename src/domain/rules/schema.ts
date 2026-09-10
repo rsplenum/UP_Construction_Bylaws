@@ -37,7 +37,14 @@ export const CONFIDENCE_LABEL: Readonly<Record<Confidence, string>> = {
 /** An input a rule can key off. Naming these makes the derivation reviewable. */
 export type RuleInput =
   | 'plotArea' | 'roadWidth' | 'buildingHeight' | 'occupancy'
-  | 'plotFrontage' | 'greenRating' | 'zone';
+  | 'plotFrontage' | 'greenRating' | 'zone'
+  /**
+   * Built-up area versus new layout. Added after B-013: the gazette prints a separate
+   * FAR row for each, the ceilings differ by as much as 3.5 FAR, and the engine applied
+   * the built-up figures to both. Nothing declared area type as a driving input, so the
+   * omission was not visible anywhere except in the numbers.
+   */
+  | 'areaType';
 
 export interface Challenge {
   /** Entry in docs/VERIFICATION-LOG.md. */
