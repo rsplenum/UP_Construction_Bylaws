@@ -250,19 +250,15 @@ export interface FaceVerdict {
 }
 
 /**
- * Chapter 16.3 compoundable deviation ceilings, as a fraction of the required setback.
- * Fire-tender setbacks on a high-rise are never compoundable (Clause 16.3.2 ii).
+ * Chapter 16 decides whether a shortfall can be compounded, not Chapter 3. The limits
+ * are computed by `compoundableLimits()` in ./compounding and passed in, so that this
+ * module stays a pure transcription of the setback tables and the two chapters cannot
+ * drift apart. Passing nothing means "tell me the shortfall, don't judge it".
  */
-export const COMPOUNDABLE_SETBACK_LIMITS: Readonly<Record<SetbackFace, number>> = {
-  front: 0.25,
-  rear: 1.0,
-  side1: 0.25,
-  side2: 0.25,
-};
-
 export function assessSetbackFaces(
   required: RequiredSetbacks,
   provided: SetbackSet,
+  compoundable?: Readonly<Record<SetbackFace, { fraction: number; maxDepthM: number }>>,
 ): readonly FaceVerdict[] {
   const faces: SetbackFace[] = ['front', 'rear', 'side1', 'side2'];
   return faces.map((face) => {
@@ -273,8 +269,12 @@ export function assessSetbackFaces(
 
     let status: FaceVerdict['status'] = 'compliant';
     if (deficitM > 1e-9) {
-      const limit = required.isHighRise ? 0 : COMPOUNDABLE_SETBACK_LIMITS[face];
-      status = deficitPct <= limit * 100 + 1e-9 ? 'compoundable' : 'violation';
+      const limit = compoundable?.[face];
+      status = limit
+        && deficitPct <= limit.fraction * 100 + 1e-9
+        && deficitM <= limit.maxDepthM + 1e-9
+        ? 'compoundable'
+        : 'violation';
     }
 
     return {

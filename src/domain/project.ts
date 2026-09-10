@@ -61,7 +61,14 @@ export interface ProjectState {
   hasSolarHeating: boolean;
   greenRating: GreenRating;
 
-  /** ₹ per sqm — district circle rate, drives every fee figure in the app. */
+  /**
+   * ₹ per sqm, and the basis of every fee figure in the app. Clause 16.3.6.1: "The cost
+   * of land shall be assessed at the prevailing residential rate of the Authority, or
+   * the non-agriculture circle rate fixed by the District Collector, whichever is
+   * higher. For calculation of Compounding fee for all kinds of constructions only the
+   * residential rate of the land shall be taken into consideration." So this is the
+   * RESIDENTIAL rate — the higher of the two sources — whatever the building's use.
+   */
   circleRate: number;
 
   /** Which depth of the app the person is working in. */

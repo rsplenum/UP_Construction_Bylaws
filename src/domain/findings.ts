@@ -16,7 +16,7 @@
 
 import { assessSetbackFaces, resolveRequiredSetbacks, HIGH_RISE_THRESHOLD_M, SetbackFace } from './setbacks';
 import { PURCHASABLE_FAR_MIN_ROAD_WIDTH, resolveBaseFar } from './far';
-import { assessCompounding } from './compounding';
+import { assessCompounding, compoundableLimits } from './compounding';
 import { getOccupancy } from './occupancy';
 import { ProjectState, derivePlotDepth } from './project';
 import { RULES } from './rules/registry';
@@ -274,12 +274,24 @@ export function assessProject(project: ProjectState): Assessment {
     buildingHeight: height,
     isCornerPlot: project.isCornerPlot,
   });
+  // Chapter 16 decides what a shortfall means. Resolve its limits once, and use the
+  // same object for the setback verdicts and for the fee, so the two cannot disagree.
+  const isGroupHousing = occupancy.id === 'res_group_housing';
+  const isMultiUnit = occupancy.id === 'res_multi';
+  const limits = compoundableLimits({
+    heightM: height,
+    isGroupHousing,
+    isMultiUnit,
+    plotAreaSqm: plotArea,
+    use: occupancy.compoundingUse,
+  });
+
   const faces = assessSetbackFaces(required, {
     front: project.frontSetbackProvided,
     rear: project.rearSetbackProvided,
     side1: project.side1Provided,
     side2: project.side2Provided,
-  });
+  }, limits.setback);
 
   const violations = faces.filter((f) => f.status === 'violation');
   const compoundable = faces.filter((f) => f.status === 'compoundable');
@@ -505,8 +517,17 @@ export function assessProject(project: ProjectState): Assessment {
 
   const compounding = assessCompounding({
     use: occupancy.compoundingUse,
-    circleRate: project.circleRate,
-    flags: { highRiseFireSetbackDeficit: required.isHighRise && violations.length > 0 },
+    residentialLandRate: project.circleRate,
+    plotAreaSqm: plotArea,
+    heightM: height,
+    isGroupHousing,
+    isMultiUnit,
+    // The thirteen Clause 16.1.3 bars turn on facts about the land and the clearances —
+    // whether the plot is disputed, whether the Fire NOC was obtained — that the app has
+    // no way to know. Advanced mode will collect them; asserting them from the drawing
+    // would be inventing evidence. Until then the assessment reports the fee and names
+    // the bars in its caveats rather than applying them.
+    flags: {},
     setbackEncroachmentSqm: {
       front: encroachment('front', frontage),
       rear: encroachment('rear', frontage),
@@ -516,6 +537,9 @@ export function assessProject(project: ProjectState): Assessment {
     setbackDeficitFraction: Object.fromEntries(
       faces.map((f) => [f.face, f.deficitPct / 100]),
     ) as Partial<Record<SetbackFace, number>>,
+    setbackDeficitM: Object.fromEntries(
+      faces.map((f) => [f.face, f.deficitM]),
+    ) as Partial<Record<SetbackFace, number>>,
     excessFarSqm: Math.max(0, proposedArea - far.effectiveBuiltUpArea),
     excessFarFraction: far.maxPermissibleBuiltUpArea > 0
       ? Math.max(0, proposedArea - far.effectiveBuiltUpArea) / far.maxPermissibleBuiltUpArea
@@ -524,7 +548,10 @@ export function assessProject(project: ProjectState): Assessment {
     heightDeviationFraction: Number.isFinite(occupancy.maxHeightM) && occupancy.maxHeightM > 0
       ? Math.max(0, height - occupancy.maxHeightM) / occupancy.maxHeightM
       : 0,
-    heightDeviationFootprintSqm: plotArea * 0.5,
+    // Item 10 measures on the periphery of the existing building. Without a footprint
+    // outline the best available proxy is the plot perimeter.
+    buildingPerimeterM: 2 * (frontage + depth),
+    floors: Math.max(1, Math.ceil(height / 3)),
   });
 
   if (compounding.lineItems.length > 0) {
@@ -539,7 +566,10 @@ export function assessProject(project: ProjectState): Assessment {
         ? compounding.lineItems.map((i) => `${i.label}: ${i.quantity} ${i.unit} → ${inr(i.amount)}`).join('; ')
         : compounding.blockingReasons.join(' '),
       working: compounding.isCompoundable
-        ? `Assessed ${inr(compounding.assessedFee)} plus 10% administrative surcharge = ${inr(compounding.totalPayable)}`
+        ? compounding.lineItems
+            .map((i) => `${i.scheduleItem}: ${i.quantity.toFixed(1)} ${i.unit} × ${inr(i.ratePerUnit)} — ${i.basis}`)
+            .concat(compounding.caveats)
+            .join('\n')
         : undefined,
       clause: compounding.clauseRef,
       money: compounding.isCompoundable ? { label: 'Compounding fee', amount: compounding.totalPayable } : undefined,

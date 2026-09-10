@@ -78,17 +78,20 @@ export const RULES: RuleSet = {
 
   'compounding.schedule': {
     id: 'compounding.schedule',
-    question: 'What does it cost to regularise a deviation?',
-    clause: 'Chapter 16.3',
-    confidence: 'inferred',
-    derivedFrom: ['occupancy'],
+    question: 'What does it cost to regularise a deviation, and can it be regularised at all?',
+    clause: 'Chapter 16 — 16.1.3, 16.2, 16.3.6, 16.3.7 and the Schedule at 16.3.8 (Rule No 4)',
+    confidence: 'gazette',
+    derivedFrom: ['occupancy', 'plotArea', 'buildingHeight'],
+    checked: '2026-09-10',
+    quote:
+      'Compoundable limits (16.2), column A (<=15 m, and multi-units up to 17.5 m, except group housing): front "25% of front setback area up to a maximum of 1.0 meter"; rear, residential "(a) Plot Size up to 500 sqm- 100% compoundable in cases where proper provisions have been made for light and ventilation. (b) Plot Size > 500 sqm - construction up to maximum 10% of the area in rear setback (in addition to permissible 40%)", others "10 percent of rear setback area"; side "Construction up to a maximum of 25% of width of side setback"; FAR "Construction up to a maximum of 10% of total permissible FAR"; height "Construction up to a maximum of 10% height from permissible limit without changing the number of floors"; units "Maximum one unit in plotted development beyond permissible limit". Column B (>15 m, and group housing, except multi-units): setbacks "10 percent of setback area (maximum up to a width of 1-meter), subject to Fire NOC" (printed as one cell spanning the front, rear and side rows); FAR the same 10%; height "-"; units "In Group Housing: Proportionate units relative to percentage of compoundable additional FAR/Purchasable FAR". Fee schedule (16.3.8): Item 1 Rs. 25/38/50/62 per sqm by plot size, x2.0 commercial, x1.5 office, x0.4 industrial, x0.5 facilities, and Item 1F "Rs. 122640 per unit"; Item 2, percent of the price of land, column A front 100/200/150/40/50, side 75/150/100/40/50, rear 50/100/75/20/25, column B all sides 100/200/150/40/50; Item 3 "Rs. 491 per sqm. and 50% of required land price for additional floor area" (982/100%, 736/75%, 196/40%, 246/50%); Item 4 basement 50/100/75/20/25 percent; Items 5-8 room dimensions Rs. 246 and Rs. 123 residential; Item 9 compound wall Rs. 123 per running metre, minimum Rs. 5000; Item 10 height "@Rs. 6132/- per running meter of height (measured as per periphery of existing building) per floor"; Item 11 layout 1.0 percent of land price on saleable area; Item 12 "two times of price of land equivalent to decrease in the area required". Land basis (16.3.6.1): "only the residential rate of the land shall be taken into consideration".',
     ifWrong:
-      'Every rupee figure the app shows is wrong. The multipliers are a reconstruction: the codebase previously held three mutually inconsistent fee models and none matched the schedule in its own data layer.',
+      'Every rupee figure the app shows would be wrong, and a deviation the byelaws bar outright could be presented as purchasable.',
     challenge: {
-      id: 'V-004',
+      id: 'V-004b',
       summary:
-        'The retained model prices deviations as a multiple of the circle rate. A schedule in the data layer instead used flat per-square-metre rates (₹25–62/m² for residential). These are not reconcilable; one of them is not the byelaw.',
-      maxDivergence: 'orders of magnitude',
+        'One quantity in the schedule remains ambiguous. Item 10 charges "per running meter of height (measured as per periphery of existing building) per floor". Read as the building perimeter over its floors, or as the metres of excess height? The readings differ by orders of magnitude. The engine charges the larger and says so on the line item.',
+      maxDivergence: 'orders of magnitude on the height head only',
     },
   },
 
