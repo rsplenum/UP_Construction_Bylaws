@@ -288,6 +288,48 @@
      "value": 2000.0
     }
    ]
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "measure": "minRoadWidthM",
+   "keyedOn": "facility",
+   "header": [
+    "Industries",
+    "Minimum Road Width (m)"
+   ],
+   "rows": [
+    {
+     "subject": "Industrial Buildings",
+     "value": {
+      "byUseZone": {
+       "agriculture": 7.0,
+       "industrial": 9.0
+      }
+     }
+    },
+    {
+     "subject": "Flatted Factories",
+     "value": {
+      "byUseZone": {
+       "industrial": 12.0
+      }
+     }
+    },
+    {
+     "subject": "Data Centers",
+     "value": 12.0
+    },
+    {
+     "subject": "MSME units",
+     "value": {
+      "byUseZone": {
+       "industrial": 9.0,
+       "agriculture": 7.0
+      }
+     }
+    }
+   ]
   }
  ]
 }

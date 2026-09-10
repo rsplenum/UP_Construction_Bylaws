@@ -288,12 +288,55 @@
      "value": 2000.0
     }
    ]
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "measure": "minRoadWidthM",
+   "keyedOn": "facility",
+   "header": [
+    "Industries",
+    "Minimum Road Width (m)"
+   ],
+   "rows": [
+    {
+     "subject": "Industrial Buildings",
+     "value": {
+      "byUseZone": {
+       "agriculture": 7.0,
+       "industrial": 9.0
+      }
+     }
+    },
+    {
+     "subject": "Flatted Factories",
+     "value": {
+      "byUseZone": {
+       "industrial": 12.0
+      }
+     }
+    },
+    {
+     "subject": "Data Centers",
+     "value": 12.0
+    },
+    {
+     "subject": "MSME units",
+     "value": {
+      "byUseZone": {
+       "industrial": 9.0,
+       "agriculture": 7.0
+      }
+     }
+    }
+   ]
   }
  ],
  "warnings": [
-  "chapter 03 p.39: internal-layout road widths keyed on road length, not a facility access table",
+  "chapter 03 p.39: measure column is first, so this table is keyed on 'Length of internal' \u2014 not a facility access table",
   "ch03 p.41: skipped a multi-level list, not a flat facility table",
   "ch03 p.42: skipped a multi-level list, not a flat facility table",
+  "chapter 07 p.103: measure column is first, so this table is keyed on 'Setbacks on all sides (m)' \u2014 not a facility access table",
   "ch06 p.94 minPlotAreaSqm: 'Medical College' defers to 'As per NMC / MCI norms'"
  ]
 }

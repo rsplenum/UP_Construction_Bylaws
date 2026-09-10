@@ -455,6 +455,56 @@ Three structural features, each of which corrupts the reading if missed:
 - Everywhere else the narrowest band offers **base FAR and nothing to buy** — `MFAR = BFAR`
   with PFAR and PPFAR marked NA.
 
+### V-021 — A road minimum split by USE ZONE, a third dimension the engine has no field for
+Clause 7.1.3 states the industrial road minimum by **use zone**, not by facility or area
+type:
+
+| Facility | Agriculture use zone | Industrial use zone |
+|---|---|---|
+| Industrial buildings | 7 m | 9 m |
+| MSME units | 7 m | 9 m |
+| Flatted factories | — | 12 m |
+| Data centres | — | 12 m |
+
+The engine has `built_up` / `non_built_up` and nothing for use zone, so `ind_light` and
+`ind_general` hold the industrial-zone figure of 9 m — the commoner case and the stricter
+of the two. `tools/extract-thresholds.py` captures the split as `{ byUseZone: … }` so the
+data is there when the engine can carry it.
+
+### V-022 — Farmhouses and dairy farms are fully specified and not modelled at all
+Clauses 7.2 and 7.3 give both a complete rule set, and the engine has no occupancy for
+either:
+
+| | Farmhouse (7.2) | Dairy farm / gaushala (7.3) |
+|---|---|---|
+| Minimum plot | 4,000 m² | 1,000 m² |
+| Access road | 7 m | 7 m |
+| Ground coverage | after setbacks; non-farm activity ≤20% of plot | 20% of plot |
+| FAR | 0.20 | 0.20 |
+| Height | no restriction | no restriction |
+| Setbacks | 9 m all sides for the non-farm building, guard room excepted | by plot area: ≥1000–4000 → 6 m, >4000–7000 → 9 m, >7000 → 10 m |
+
+The dairy setback ladder is a **fourth** way the byelaws key a setback — after plot area,
+building height and road width, now plot area again but for a use the engine does not
+have. `tools/extract-thresholds.py` declines it with an accurate reason rather than
+reading it as a road-access table.
+
+### V-023 — Clause 7.1.5 prints a maximum FAR below its own base FAR
+The worse of the two arithmetic defects. Flatted factories and data centres are given
+**BFAR 3.00** with maxima of **NA / 2.00 / 3.50 / UR** — two of which are below the base,
+which cannot be right whatever was intended.
+
+The purchasable columns (0.50 / 0.50, then 1.00 / 1.50) are coherent only with a base of
+**1.00**, and they are character for character the same as the secondary-school row in
+Clause 6.2.4, which does carry 1.00. That looks like a copy from the education table.
+
+Chapter 3 Sl. 2 and Sl. 3 give flatted factories and data centres base 3.0 with maxima of
+3.0 / 6.0 / 9.0 / unrestricted, which is internally coherent and matches the shape of
+Chapter 7's own MSME row. **The engine uses Chapter 3 and ignores this row.**
+
+Chapter 7's MSME row also conflicts with Chapter 3 in the ordinary way — 10.50 against
+9.0 above a 24 m road — which standing rule 4 resolves to Chapter 3's 9.0.
+
 ### V-018 — The gazette's own arithmetic fails in one place
 The identity MFAR = BFAR + PFAR + PPFAR holds on **129 of 130** band checks across the
 twelve printed tables. The exception is a drafting slip in Clause 6.2.4, and the pattern

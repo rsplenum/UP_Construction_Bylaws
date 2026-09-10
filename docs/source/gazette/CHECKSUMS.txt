@@ -9,4 +9,5 @@ e56e50774783a925a1c0693db6edb82a  pdf/chapter-02.pdf
 c846df42d919f46f1d09eee28b5e0794  pdf/chapter-04.pdf
 4ae5a0edc42625188d65b82c034c73b7  pdf/chapter-05.pdf
 9c633d13fe909405ffd4e49740f13edd  pdf/chapter-06.pdf
+0def0da7e82602caad0d52801b1b321e  pdf/chapter-07.pdf
 de2f1e41005e9a317c6dc5702d863f91  pdf/chapter-15.pdf

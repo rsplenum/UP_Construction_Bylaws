@@ -97,7 +97,10 @@ def band_bounds(label):
 
 
 def slug(text):
-    return re.sub(r'[^a-z0-9]+', '-', (text or '').lower()).strip('-')
+    # Comparison signs carry meaning here: "<=12m" and ">12m" both reduce to "12m" if the
+    # sign is stripped, which collides the two rows Clause 7.1.5 prints for one use.
+    t = (text or '').lower().replace('≤', 'le').replace('≥', 'ge').replace('<', 'lt').replace('>', 'gt')
+    return re.sub(r'[^a-z0-9]+', '-', t).strip('-')
 
 
 def domain_rows(rows):
@@ -233,6 +236,9 @@ def extract_table(table, chapter, gazette_page):
     def band_of(index):
         return bands[min((index - 1) // 3, len(bands) - 1)]
 
+    # Chapter 7's industry tables state no area type at all — industry sits in an
+    # industrial use zone, not a built-up/new-layout split — so a missing area type is
+    # recorded as null rather than used to reject every row, which is what it did before.
     rows, area_type, current, pending = [], None, None, ''
     for row in table['rows']:
         cells = [(round(c['bbox'][0]), c['text'].replace('\n', ' ').strip())
@@ -257,13 +263,11 @@ def extract_table(table, chapter, gazette_page):
                 pending = label
                 continue
             pending = ''
-            if area_type is None or label in ('FAR', 'Commercial Buildings'):
+            if label in ('FAR', 'Commercial Buildings', 'Industries'):
                 continue
         else:
             pending = ''
 
-        if area_type is None:
-            continue
         if label:
             current = {'chapter': chapter, 'gazettePage': gazette_page,
                        'useType': label, 'areaType': area_type, 'values': {}}
@@ -279,7 +283,13 @@ def extract_table(table, chapter, gazette_page):
             key = 'BFAR' if index == 0 else f'{band_of(index)}|{match[1]}'
             q = QUALIFIED.match(text)
             if q and index == 0:
-                # "2.00 (<18m)" — a base FAR that applies only on part of the road range.
+                # "2.00 (<18m)" — a base FAR that applies only over part of the road
+                # range. Clause 4.4 prints a use's two base FARs on two labelled rows;
+                # Clause 7.1.5 prints both inside ONE row, so a second qualified value
+                # arriving for the same row means a second row, not an overwrite.
+                if current.get('baseFarQualifier') not in (None, q.group(2)):
+                    current = {**current, 'values': dict(current['values'])}
+                    rows.append(current)
                 current['values'][key] = float(q.group(1))
                 current['baseFarQualifier'] = q.group(2)
             else:
@@ -287,7 +297,11 @@ def extract_table(table, chapter, gazette_page):
 
     for r in rows:
         r['roadBands'] = bands
-    return rows, []
+
+    # A row that carries a label but no figures is a caption — "FAR", "Healthcare
+    # Facilities", the table's own title. Gating on the area-type heading used to filter
+    # these out by accident; gating on whether the row has any data does it on purpose.
+    return [r for r in rows if any(isinstance(v, float) for v in r['values'].values())], []
 
 
 BOUND = re.compile(r'(\d+(?:\.\d+)?)')
@@ -302,12 +316,15 @@ def qualifier_covers(qualifier, band):
     the identity fail, which is how this was noticed rather than assumed.
     """
     q = re.sub(r'\s+', '', qualifier or '')
-    b = re.sub(r'\s+', '', band or '')
-    qn, bn = BOUND.search(q), BOUND.search(b)
-    if not qn or not bn:
+    qn = BOUND.search(q)
+    if not qn:
         return True
-    threshold, lower = float(qn.group(1)), float(bn.group(1))
-    if q.startswith('<'):
+    threshold = float(qn.group(1))
+    # The band's LOWER bound, parsed properly. Reading the first number out of the label
+    # gets "Upto 12m" wrong — that 12 is its upper bound, and treating it as the lower one
+    # made a base FAR qualified ">12m" appear to cover the band below 12 m.
+    lower = band_bounds(band)[0]
+    if q.startswith(('<', '≤', '<=')):
         return lower < threshold
     if q.startswith(('≥', '>=', '>')):
         return lower >= threshold

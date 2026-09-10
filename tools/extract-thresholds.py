@@ -38,6 +38,9 @@ PLOT_KEY = re.compile(r'^plot\s*size', re.I)
 ROAD_KEY = re.compile(r'^road\s*width', re.I)
 SERIAL = re.compile(r'^\d{1,2}$')
 
+# "7-meters (Agriculture Use Zone) 9-meters (Industrial Use Zones)"
+BY_USE_ZONE = re.compile(r'([\d.]+)\s*-?\s*met(?:er|re)s?\s*\(([^)]*?)\s*Use\s*Zones?\)', re.I)
+
 # "9 – Built-up area 12 – Non-Built-up area" and "6 (built up) 9 (non-built up)"
 SPLIT_BY_AREA = re.compile(
     r'([\d.]+)\s*(?:[–-]\s*)?\(?\s*Built-?\s?up\s*(?:area)?\)?\s*'
@@ -69,6 +72,13 @@ def parse_value(text):
     t = (text or '').strip()
     if not t:
         return None
+
+    zones = BY_USE_ZONE.findall(t)
+    if zones:
+        # Clause 7.1.3 splits the road minimum by USE ZONE — 7 m in an agriculture zone,
+        # 9 m in an industrial one — a third dimension after the facility and the area
+        # type, and one the occupancy list has no field for. See V-021.
+        return {'byUseZone': {z.strip().lower().replace(' ', '_'): float(v) for v, z in zones}}
 
     m = SPLIT_BY_AREA.search(t)
     if m:
@@ -112,11 +122,14 @@ def extract(table, chapter, gazette_page):
         return None
 
     if value_index == 0:
-        # Clause 3.1.3's table puts the minimum widths FIRST and the road length last: it
-        # sizes the internal roads of a layout by their length, not a plot's access by its
-        # use. A different rule with similar words — see V-020.
-        return {'skip': f'chapter {chapter} p.{gazette_page}: internal-layout road widths '
-                        f'keyed on road length, not a facility access table'}
+        # The measure is in the FIRST column, so this table is keyed the other way round
+        # and its subject is something other than a facility. Two of these exist and they
+        # are different rules that happen to share vocabulary — Clause 3.1.3 sizes a
+        # layout's own internal roads by their length, and Clause 7.3.6 sets dairy-farm
+        # setbacks by plot area. Neither is a plot's access requirement. See V-020.
+        return {'skip': f'chapter {chapter} p.{gazette_page}: measure column is first, so '
+                        f'this table is keyed on {header[-1]!r} — not a facility access '
+                        f'table'}
 
     keyed_on = ('plotAreaSqm' if PLOT_KEY.match(header[0])
                 else 'roadWidthM' if ROAD_KEY.match(header[0])

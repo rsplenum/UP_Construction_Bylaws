@@ -284,7 +284,15 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     farBasis: 'road_width_commercial', setbackTable: 'industrial',
     activityId: 'act-cottage-industry', purchasableFarCategory: 'Community Facilities & Infrastructure',
     compoundingUse: 'industrial',
-    parkingEcsPer100Sqm: 0.75, minRoadWidthM: 9, minPlotAreaSqm: 200, maxHeightM: Infinity,
+    parkingEcsPer100Sqm: 0.75,
+    // Clause 7.1.3, "MSME units": 9 m in an industrial use zone, 7 m in an agriculture
+    // use zone. The occupancy list has no field for use zone, so this holds the
+    // industrial-zone figure — the commoner case, and the stricter of the two. V-021.
+    minRoadWidthM: 9,
+    // Clause 7.1.2: "There is no restriction on the minimum plot size for industrial
+    // buildings, flatted factories, data centres and MSME units."
+    minPlotAreaSqm: 0,
+    maxHeightM: Infinity,                // Clause 7.1.4: no ceiling
     multiUnitHousing: false, fireNocAbove500Sqm: true,
   },
   ind_general: {
@@ -295,7 +303,12 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     farBasis: 'road_width_commercial', setbackTable: 'industrial',
     activityId: 'act-cottage-industry', purchasableFarCategory: 'Community Facilities & Infrastructure',
     compoundingUse: 'industrial',
-    parkingEcsPer100Sqm: 0.75, minRoadWidthM: 18, minPlotAreaSqm: 1000, maxHeightM: Infinity,
+    parkingEcsPer100Sqm: 0.75,
+    // Clause 7.1.3, "Industrial Buildings": 9 m in an industrial use zone, 7 m in an
+    // agriculture use zone. Holds the industrial-zone figure — see V-021.
+    minRoadWidthM: 9,
+    minPlotAreaSqm: 0,                   // Clause 7.1.2: no restriction on plot size
+    maxHeightM: Infinity,                // Clause 7.1.4: no ceiling
     multiUnitHousing: false, fireNocAbove500Sqm: true,
   },
   ind_warehouse: {

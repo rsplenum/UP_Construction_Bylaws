@@ -1,0 +1,3548 @@
+{
+ "chapter": "07",
+ "source": "docs/source/gazette/pdf/chapter-07.pdf",
+ "sourceMd5": "0def0da7e82602caad0d52801b1b321e",
+ "gazettePages": [
+  100,
+  103
+ ],
+ "pageCount": 4,
+ "tableCount": 5,
+ "fillCounts": {
+  "#DBE5F1": 100,
+  "#DDEBF7": 28,
+  "#DCDDDF": 14,
+  "#FFF2CC": 9,
+  "#DEEAF6": 9
+ },
+ "colourOnlyCells": 56,
+ "colourCodedTableRows": 0,
+ "warnings": [],
+ "pages": [
+  {
+   "pdfPage": 1,
+   "gazettePage": 100,
+   "prose": "Note-1:\nBFAR \u2013 Base FAR, PFAR \u2013 Purchasable FAR, PPFAR \u2013 Premium Purchasable FAR, MFAR \u2013\nMaximum Permissible FAR including Base FAR, UR \u2013 Unrestricted\nNote-2: Other ancillary uses such as commercial, hotel, office, entertainment, training centre,\ncommunity facilities, etc., are permissible.\nIn green building, additional FAR over and above maximum permissible FAR shall be provided\nNote-3:\nas per paragraph 9.3 of the building byelaws.\n6.4.5 Minimum Setback\nMinimum setbacks for auditorium or a convention centre shall be as per paragraph 3.2.4 of the building\nbyelaws.\n6.4.6 Parking Requirements\n(i) Parking requirements for auditorium or a convention centre shall be as per paragraph 3.3.4 of the\nbuilding byelaws.\n(ii) The parking requirement for auditorium or convention centre shall be 1 ECS / 10 seat for the\nauditorium space and additional parking requirement for attached ancillary commercial activities shall\nbe 2 ECS / 100 sqm of utilized floor area.\nFor plots of area above 4000 sqm, a separate block for parking is permissible, within the campus. Within\nthe parking block, 10% of ground floor may be utilized for commercial purposes (free from FAR)\nincidental to principal use.\n6.4.7 Basement\nThe permissibility of basement in auditorium or convention centre shall be as per paragraph 3.3.3 of\nthe building byelaws.\n100",
+   "proseLines": [
+    {
+     "y": 178,
+     "text": "Note-1:"
+    },
+    {
+     "y": 179,
+     "text": "BFAR \u2013 Base FAR, PFAR \u2013 Purchasable FAR, PPFAR \u2013 Premium Purchasable FAR, MFAR \u2013"
+    },
+    {
+     "y": 191,
+     "text": "Maximum Permissible FAR including Base FAR, UR \u2013 Unrestricted"
+    },
+    {
+     "y": 208,
+     "text": "Note-2: Other ancillary uses such as commercial, hotel, office, entertainment, training centre,"
+    },
+    {
+     "y": 221,
+     "text": "community facilities, etc., are permissible."
+    },
+    {
+     "y": 240,
+     "text": "In green building, additional FAR over and above maximum permissible FAR shall be provided"
+    },
+    {
+     "y": 241,
+     "text": "Note-3:"
+    },
+    {
+     "y": 253,
+     "text": "as per paragraph 9.3 of the building byelaws."
+    },
+    {
+     "y": 274,
+     "text": "6.4.5 Minimum Setback"
+    },
+    {
+     "y": 293,
+     "text": "Minimum setbacks for auditorium or a convention centre shall be as per paragraph 3.2.4 of the building"
+    },
+    {
+     "y": 306,
+     "text": "byelaws."
+    },
+    {
+     "y": 340,
+     "text": "6.4.6 Parking Requirements"
+    },
+    {
+     "y": 359,
+     "text": "(i) Parking requirements for auditorium or a convention centre shall be as per paragraph 3.3.4 of the"
+    },
+    {
+     "y": 371,
+     "text": "building byelaws."
+    },
+    {
+     "y": 390,
+     "text": "(ii) The parking requirement for auditorium or convention centre shall be 1 ECS / 10 seat for the"
+    },
+    {
+     "y": 403,
+     "text": "auditorium space and additional parking requirement for attached ancillary commercial activities shall"
+    },
+    {
+     "y": 416,
+     "text": "be 2 ECS / 100 sqm of utilized floor area."
+    },
+    {
+     "y": 435,
+     "text": "For plots of area above 4000 sqm, a separate block for parking is permissible, within the campus. Within"
+    },
+    {
+     "y": 448,
+     "text": "the parking block, 10% of ground floor may be utilized for commercial purposes (free from FAR)"
+    },
+    {
+     "y": 461,
+     "text": "incidental to principal use."
+    },
+    {
+     "y": 482,
+     "text": "6.4.7 Basement"
+    },
+    {
+     "y": 501,
+     "text": "The permissibility of basement in auditorium or convention centre shall be as per paragraph 3.3.3 of"
+    },
+    {
+     "y": 514,
+     "text": "the building byelaws."
+    },
+    {
+     "y": 775,
+     "text": "100"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      73.0,
+      71.4,
+      522.3,
+      170.9
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         73.0,
+         71.4,
+         186.3,
+         76.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.3,
+         71.4,
+         220.4,
+         76.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         71.4,
+         323.4,
+         76.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.4,
+         71.4,
+         426.5,
+         76.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.5,
+         71.4,
+         522.3,
+         76.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         73.0,
+         76.7,
+         186.3,
+         87.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.3,
+         76.7,
+         220.4,
+         87.3
+        ]
+       },
+       {
+        "text": "Road Width (=>18 -24m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         76.7,
+         323.4,
+         87.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>24 - 45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.4,
+         76.7,
+         426.5,
+         87.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.5,
+         76.7,
+         522.3,
+         87.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         73.0,
+         87.3,
+         186.3,
+         93.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.3,
+         87.3,
+         220.4,
+         93.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         87.3,
+         323.4,
+         93.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.4,
+         87.3,
+         426.5,
+         93.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.5,
+         87.3,
+         522.3,
+         93.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Auditorium/",
+        "fill": "#DBE5F1",
+        "bbox": [
+         73.0,
+         93.5,
+         186.3,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.3,
+         93.5,
+         220.4,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         93.5,
+         254.8,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         254.8,
+         93.5,
+         289.2,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         289.2,
+         93.5,
+         323.4,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.4,
+         93.5,
+         357.9,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         357.9,
+         93.5,
+         392.3,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         392.3,
+         93.5,
+         426.5,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.5,
+         93.5,
+         460.9,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         460.9,
+         93.5,
+         495.4,
+         100.3
+        ]
+       },
+       {
+        "text": "MFA",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.4,
+         93.5,
+         522.3,
+         100.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Convention Centre",
+        "fill": "#DBE5F1",
+        "bbox": [
+         73.0,
+         100.3,
+         186.3,
+         114.1
+        ]
+       },
+       {
+        "text": "BFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.3,
+         100.3,
+         220.4,
+         114.1
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         100.3,
+         254.8,
+         114.1
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         254.8,
+         100.3,
+         289.2,
+         114.1
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         289.2,
+         100.3,
+         323.4,
+         114.1
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.4,
+         100.3,
+         357.9,
+         114.1
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         357.9,
+         100.3,
+         392.3,
+         114.1
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         392.3,
+         100.3,
+         426.5,
+         114.1
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.5,
+         100.3,
+         460.9,
+         114.1
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         460.9,
+         100.3,
+         495.4,
+         114.1
+        ]
+       },
+       {
+        "text": "R",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.4,
+         100.3,
+         522.3,
+         114.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         73.0,
+         114.1,
+         186.3,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.3,
+         114.1,
+         220.4,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         114.1,
+         254.8,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         114.1,
+         289.2,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.2,
+         114.1,
+         323.4,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.4,
+         114.1,
+         357.9,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         357.9,
+         114.1,
+         392.3,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         114.1,
+         426.5,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.5,
+         114.1,
+         460.9,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         114.1,
+         495.4,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         114.1,
+         522.3,
+         120.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         73.0,
+         120.4,
+         186.3,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.3,
+         120.4,
+         220.4,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         120.4,
+         254.8,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         120.4,
+         289.2,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.2,
+         120.4,
+         323.4,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.4,
+         120.4,
+         357.9,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         357.9,
+         120.4,
+         392.3,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         120.4,
+         426.5,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.5,
+         120.4,
+         460.9,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         120.4,
+         495.4,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         120.4,
+         522.3,
+         130.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         73.0,
+         130.0,
+         186.3,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.3,
+         130.0,
+         220.4,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         130.0,
+         254.8,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         130.0,
+         289.2,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.2,
+         130.0,
+         323.4,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.4,
+         130.0,
+         357.9,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         357.9,
+         130.0,
+         392.3,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         130.0,
+         426.5,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.5,
+         130.0,
+         460.9,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         130.0,
+         495.4,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         130.0,
+         522.3,
+         135.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Auditorium or a\nConvention Centre\n(Non-built-up area)",
+        "bbox": [
+         73.0,
+         135.1,
+         186.3,
+         170.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.3,
+         135.1,
+         220.4,
+         147.8
+        ]
+       },
+       {
+        "text": "1.5",
+        "bbox": [
+         220.4,
+         135.1,
+         254.8,
+         170.9
+        ]
+       },
+       {
+        "text": "1.5",
+        "bbox": [
+         254.8,
+         135.1,
+         289.2,
+         170.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.2,
+         135.1,
+         323.4,
+         147.8
+        ]
+       },
+       {
+        "text": "3.0",
+        "bbox": [
+         323.4,
+         135.1,
+         357.9,
+         170.9
+        ]
+       },
+       {
+        "text": "4.5",
+        "bbox": [
+         357.9,
+         135.1,
+         392.3,
+         170.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         135.1,
+         426.5,
+         147.8
+        ]
+       },
+       {
+        "text": "3.0",
+        "bbox": [
+         426.5,
+         135.1,
+         460.9,
+         170.9
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         460.9,
+         135.1,
+         495.4,
+         170.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         135.1,
+         522.3,
+         147.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "3.0",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.3,
+         147.8,
+         220.4,
+         158.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "6.0",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.2,
+         147.8,
+         323.4,
+         158.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "10.5",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         147.8,
+         426.5,
+         158.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         147.8,
+         522.3,
+         158.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.3,
+         158.3,
+         220.4,
+         170.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.2,
+         158.3,
+         323.4,
+         170.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         158.3,
+         426.5,
+         170.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         158.3,
+         522.3,
+         170.9
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 2,
+   "gazettePage": 101,
+   "prose": "7 Industrial and Agricultural Use Buildings\n7.1 Industries\n7.1.1 Permissibility\nThe permission for construction of industrial buildings, flatted factories, data centres and MSME units\nshall be as per paragraph 15.3.2 of Chapter 15 Zoning Regulations.\n7.1.2 Minimum Plot Size\nThere is no restriction on the minimum plot size for industrial buildings, flatted factories, data centres\nand MSME units as per paragraph 3.2.1 of the building byelaws.\n7.1.3 Means of Access\nThe minimum width of the access road for industrial buildings, flatted factories, data centres and MSME\nunits shall be as follows:\n7.1.4 Maximum Building Height\nindustrial buildings, flatted factories, data\nThere shall be no restriction on building height for\ncentres and MSME units.\nHowever, the maximum height of the building shall be governed by\ndistance from the protected monument/ heritage site, airport funnel zone and other statutory\nrestrictions.\n7.1.5 Ground Coverage and FAR\nMaximum ground coverage after ensuring minimum setbacks and open space requirements, if any,\nfor industrial buildings, flatted factories, data centres and MSME\nshall be permissible on plots\nunits.\nTo reduce the distance between work and home, address safety concerns (particularly for\nwomen) and help workers to increase their productivity, both in-situ and private development of\nhostels and dormitories in industrial areas shall be permitted, max. up to 20% of FAR.\nPurchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter 9.\nBasis approach road width, the maximum permissible FAR (including Base FAR) for industrial\nbuildings, flatted factories in built-up areas and the non-built-up areas shall be as follows:\n101",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "7 Industrial and Agricultural Use Buildings"
+    },
+    {
+     "y": 99,
+     "text": "7.1 Industries"
+    },
+    {
+     "y": 122,
+     "text": "7.1.1 Permissibility"
+    },
+    {
+     "y": 141,
+     "text": "The permission for construction of industrial buildings, flatted factories, data centres and MSME units"
+    },
+    {
+     "y": 154,
+     "text": "shall be as per paragraph 15.3.2 of Chapter 15 Zoning Regulations."
+    },
+    {
+     "y": 175,
+     "text": "7.1.2 Minimum Plot Size"
+    },
+    {
+     "y": 195,
+     "text": "There is no restriction on the minimum plot size for industrial buildings, flatted factories, data centres"
+    },
+    {
+     "y": 209,
+     "text": "and MSME units as per paragraph 3.2.1 of the building byelaws."
+    },
+    {
+     "y": 230,
+     "text": "7.1.3 Means of Access"
+    },
+    {
+     "y": 250,
+     "text": "The minimum width of the access road for industrial buildings, flatted factories, data centres and MSME"
+    },
+    {
+     "y": 264,
+     "text": "units shall be as follows:"
+    },
+    {
+     "y": 434,
+     "text": "7.1.4 Maximum Building Height"
+    },
+    {
+     "y": 453,
+     "text": "industrial buildings, flatted factories, data"
+    },
+    {
+     "y": 454,
+     "text": "There shall be no restriction on building height for"
+    },
+    {
+     "y": 467,
+     "text": "centres and MSME units."
+    },
+    {
+     "y": 468,
+     "text": "However, the maximum height of the building shall be governed by"
+    },
+    {
+     "y": 481,
+     "text": "distance from the protected monument/ heritage site, airport funnel zone and other statutory"
+    },
+    {
+     "y": 494,
+     "text": "restrictions."
+    },
+    {
+     "y": 515,
+     "text": "7.1.5 Ground Coverage and FAR"
+    },
+    {
+     "y": 534,
+     "text": "Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any,"
+    },
+    {
+     "y": 546,
+     "text": "for industrial buildings, flatted factories, data centres and MSME"
+    },
+    {
+     "y": 547,
+     "text": "shall be permissible on plots"
+    },
+    {
+     "y": 560,
+     "text": "units."
+    },
+    {
+     "y": 561,
+     "text": "To reduce the distance between work and home, address safety concerns (particularly for"
+    },
+    {
+     "y": 574,
+     "text": "women) and help workers to increase their productivity, both in-situ and private development of"
+    },
+    {
+     "y": 587,
+     "text": "hostels and dormitories in industrial areas shall be permitted, max. up to 20% of FAR."
+    },
+    {
+     "y": 607,
+     "text": "Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter 9."
+    },
+    {
+     "y": 621,
+     "text": "Basis approach road width, the maximum permissible FAR (including Base FAR) for industrial"
+    },
+    {
+     "y": 635,
+     "text": "buildings, flatted factories in built-up areas and the non-built-up areas shall be as follows:"
+    },
+    {
+     "y": 775,
+     "text": "101"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.7,
+      291.4,
+      522.7,
+      411.3
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         291.4,
+         92.8,
+         309.3
+        ]
+       },
+       {
+        "text": "Industries",
+        "fill": "#DBE5F1",
+        "bbox": [
+         92.8,
+         291.4,
+         237.0,
+         309.3
+        ]
+       },
+       {
+        "text": "Minimum Road Width (m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         237.0,
+         291.4,
+         522.7,
+         309.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "1",
+        "bbox": [
+         72.7,
+         309.3,
+         92.8,
+         342.0
+        ]
+       },
+       {
+        "text": "Industrial Buildings",
+        "bbox": [
+         92.8,
+         309.3,
+         237.0,
+         342.0
+        ]
+       },
+       {
+        "text": "7-meters (Agriculture Use Zone)\n9-meters (Industrial Use Zones)",
+        "bbox": [
+         237.0,
+         309.3,
+         522.7,
+         342.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": "2",
+        "bbox": [
+         72.7,
+         342.0,
+         92.8,
+         360.8
+        ]
+       },
+       {
+        "text": "Flatted Factories",
+        "bbox": [
+         92.8,
+         342.0,
+         237.0,
+         360.8
+        ]
+       },
+       {
+        "text": "12-meters (Industrial Use Zone)",
+        "bbox": [
+         237.0,
+         342.0,
+         522.7,
+         360.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "3",
+        "bbox": [
+         72.7,
+         360.8,
+         92.8,
+         379.7
+        ]
+       },
+       {
+        "text": "Data Centers",
+        "bbox": [
+         92.8,
+         360.8,
+         237.0,
+         379.7
+        ]
+       },
+       {
+        "text": "12",
+        "bbox": [
+         237.0,
+         360.8,
+         522.7,
+         379.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "4",
+        "bbox": [
+         72.7,
+         379.7,
+         92.8,
+         411.3
+        ]
+       },
+       {
+        "text": "MSME units",
+        "bbox": [
+         92.8,
+         379.7,
+         237.0,
+         411.3
+        ]
+       },
+       {
+        "text": "9-meters (Industrial Use Zone)\n7-meters (Agriculture Use Zones)",
+        "bbox": [
+         237.0,
+         379.7,
+         522.7,
+         411.3
+        ]
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      72.7,
+      661.7,
+      522.7,
+      765.6
+     ],
+     "rows": [
+      [
+       {
+        "text": "FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         661.7,
+         146.8,
+         676.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         146.8,
+         661.7,
+         193.1,
+         676.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         193.1,
+         661.7,
+         275.7,
+         666.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         275.7,
+         661.7,
+         358.1,
+         666.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>24 -",
+        "fill": "#DBE5F1",
+        "bbox": [
+         358.1,
+         661.7,
+         440.2,
+         676.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         440.2,
+         661.7,
+         522.7,
+         666.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (Upto 12m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         193.1,
+         666.5,
+         275.7,
+         681.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>12 -24m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         275.7,
+         666.5,
+         358.1,
+         681.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         440.2,
+         666.5,
+         522.7,
+         681.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         676.6,
+         146.8,
+         687.2
+        ]
+       },
+       {
+        "text": "BFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         146.8,
+         676.6,
+         193.1,
+         687.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         358.1,
+         676.6,
+         440.2,
+         687.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         193.1,
+         681.7,
+         275.7,
+         687.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         275.7,
+         681.7,
+         358.1,
+         687.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         440.2,
+         681.7,
+         522.7,
+         687.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Industries",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         687.2,
+         146.8,
+         701.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         146.8,
+         687.2,
+         193.1,
+         701.8
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         193.1,
+         687.2,
+         221.0,
+         701.8
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         221.0,
+         687.2,
+         248.7,
+         701.8
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         248.7,
+         687.2,
+         275.7,
+         701.8
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         275.7,
+         687.2,
+         303.4,
+         701.8
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         303.4,
+         687.2,
+         331.0,
+         701.8
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         331.0,
+         687.2,
+         358.1,
+         701.8
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         358.1,
+         687.2,
+         385.7,
+         701.8
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         385.7,
+         687.2,
+         413.3,
+         701.8
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         413.3,
+         687.2,
+         440.2,
+         701.8
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         440.2,
+         687.2,
+         468.1,
+         701.8
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         468.1,
+         687.2,
+         495.6,
+         701.8
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.6,
+         687.2,
+         522.7,
+         701.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         72.7,
+         701.8,
+         146.8,
+         717.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         146.8,
+         701.8,
+         193.1,
+         717.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         193.1,
+         701.8,
+         221.0,
+         717.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         221.0,
+         701.8,
+         248.7,
+         717.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         248.7,
+         701.8,
+         275.7,
+         717.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         275.7,
+         701.8,
+         303.4,
+         717.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         303.4,
+         701.8,
+         331.0,
+         717.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         331.0,
+         701.8,
+         358.1,
+         717.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         358.1,
+         701.8,
+         385.7,
+         717.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         385.7,
+         701.8,
+         413.3,
+         717.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         413.3,
+         701.8,
+         440.2,
+         717.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         440.2,
+         701.8,
+         468.1,
+         717.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         468.1,
+         701.8,
+         495.6,
+         717.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         495.6,
+         701.8,
+         522.7,
+         717.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Industrial Buildings",
+        "bbox": [
+         72.7,
+         717.4,
+         146.8,
+         748.6
+        ]
+       },
+       {
+        "text": "1.50 (\u226412m)",
+        "fill": "#FFF2CC",
+        "bbox": [
+         146.8,
+         717.4,
+         193.1,
+         733.0
+        ]
+       },
+       {
+        "text": "NA",
+        "bbox": [
+         193.1,
+         717.4,
+         221.0,
+         748.6
+        ]
+       },
+       {
+        "text": "NA",
+        "bbox": [
+         221.0,
+         717.4,
+         248.7,
+         748.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         717.4,
+         275.7,
+         725.3
+        ]
+       },
+       {
+        "text": "1.25",
+        "bbox": [
+         275.7,
+         717.4,
+         303.4,
+         748.6
+        ]
+       },
+       {
+        "text": "1.25",
+        "bbox": [
+         303.4,
+         717.4,
+         331.0,
+         748.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         717.4,
+         358.1,
+         725.3
+        ]
+       },
+       {
+        "text": "2.50",
+        "bbox": [
+         358.1,
+         717.4,
+         385.7,
+         748.6
+        ]
+       },
+       {
+        "text": "3.75",
+        "bbox": [
+         385.7,
+         717.4,
+         413.3,
+         748.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.3,
+         717.4,
+         440.2,
+         725.3
+        ]
+       },
+       {
+        "text": "2.50",
+        "bbox": [
+         440.2,
+         717.4,
+         468.1,
+         748.6
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         468.1,
+         717.4,
+         495.6,
+         748.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         717.4,
+         522.7,
+         725.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.50",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         725.3,
+         275.7,
+         740.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "5.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         725.3,
+         358.1,
+         740.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "8.75",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.3,
+         725.3,
+         440.2,
+         740.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         725.3,
+         522.7,
+         740.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "2.50 (>12m)",
+        "fill": "#FFF2CC",
+        "bbox": [
+         146.8,
+         733.0,
+         193.1,
+         748.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         740.6,
+         275.7,
+         748.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         740.6,
+         358.1,
+         748.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.3,
+         740.6,
+         440.2,
+         748.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         740.6,
+         522.7,
+         748.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "MSME units",
+        "bbox": [
+         72.7,
+         748.6,
+         146.8,
+         765.6
+        ]
+       },
+       {
+        "text": "3.00",
+        "fill": "#FFF2CC",
+        "bbox": [
+         146.8,
+         748.6,
+         193.1,
+         765.6
+        ]
+       },
+       {
+        "text": "NA",
+        "bbox": [
+         193.1,
+         748.6,
+         221.0,
+         765.6
+        ]
+       },
+       {
+        "text": "NA",
+        "bbox": [
+         221.0,
+         748.6,
+         248.7,
+         765.6
+        ]
+       },
+       {
+        "text": "3.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         748.6,
+         275.7,
+         765.6
+        ]
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         275.7,
+         748.6,
+         303.4,
+         765.6
+        ]
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         303.4,
+         748.6,
+         331.0,
+         765.6
+        ]
+       },
+       {
+        "text": "6.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         748.6,
+         358.1,
+         765.6
+        ]
+       },
+       {
+        "text": "3.00",
+        "bbox": [
+         358.1,
+         748.6,
+         385.7,
+         765.6
+        ]
+       },
+       {
+        "text": "4.50",
+        "bbox": [
+         385.7,
+         748.6,
+         413.3,
+         765.6
+        ]
+       },
+       {
+        "text": "10.50",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.3,
+         748.6,
+         440.2,
+         765.6
+        ]
+       },
+       {
+        "text": "3.00",
+        "bbox": [
+         440.2,
+         748.6,
+         468.1,
+         765.6
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         468.1,
+         748.6,
+         495.6,
+         765.6
+        ]
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         748.6,
+         522.7,
+         765.6
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 3,
+   "gazettePage": 102,
+   "prose": "Note-1: BFAR \u2013 Base FAR, PFAR \u2013 Purchasable FAR, PPFAR \u2013 Premium Purchasable FAR, MFAR \u2013 Maximum\nPermissible FAR which includes Base FAR, UR \u2013 Unrestricted FAR.\nNote-2: In green building, additional FAR over and above maximum permissible FAR shall be provided as per paragraph 9.3\nof the building byelaws.\n7.1.6 Minimum Setback\nMinimum setbacks for industrial buildings, flatted factories, data centres and MSME units up to 15-\nmeter height shall be per paragraph 3.2.4.8 of the building byelaws. Minimum setbacks for industrial\nbuildings, flatted factories, data centres and MSME units above 15-meter height shall be as per\nparagraph 3.2.4.9 of the building byelaws.\n7.1.7 Parking Requirements\nParking requirements shall be as per paragraph 3.3.4 of the building byelaws.\n7.2 Farmhouse\n7.2.1 Permissibility\nThe permission of the farmhouse shall be as per the master plan zoning regulations, constructed for the\npurpose of agriculture and horticulture, pig farming, fish farming, poultry, other animal husbandry etc.\n7.2.2 Minimum Plot Size\nThe minimum plot area for the construction of farmhouse shall be 4000 sq.m.\n7.2.3 Means of Access\nThe access to the farmhouse shall be from at least 7.0 m wide road.\n7.2.4 Ground Coverage and FAR\nThe maximum permissible ground coverage shall be permissible after ensuring minimum setbacks,\nhowever non-farm activities shall be restricted to 20 percent of plot area. The maximum permissible\nFAR shall be 0.20.\n7.2.5 Maximum Building Height\nThere shall be no height restriction.\n7.2.6 Minimum Set back\nI) The distance of the non-farm building from the boundary line of the plot shall be at least 9 meters on\nall sides except the guard room.\n7.2.7 Tree plantation\nTree plantation shall be done on 50 percent of the plot in which at least 100 trees planted per hectare.\n7.2.8 Electricity and other services\nArrangements for electricity, water supply and drainage shall be made by the landowner himself.\n102",
+   "proseLines": [
+    {
+     "y": 143,
+     "text": "Note-1: BFAR \u2013 Base FAR, PFAR \u2013 Purchasable FAR, PPFAR \u2013 Premium Purchasable FAR, MFAR \u2013 Maximum"
+    },
+    {
+     "y": 154,
+     "text": "Permissible FAR which includes Base FAR, UR \u2013 Unrestricted FAR."
+    },
+    {
+     "y": 171,
+     "text": "Note-2: In green building, additional FAR over and above maximum permissible FAR shall be provided as per paragraph 9.3"
+    },
+    {
+     "y": 181,
+     "text": "of the building byelaws."
+    },
+    {
+     "y": 200,
+     "text": "7.1.6 Minimum Setback"
+    },
+    {
+     "y": 219,
+     "text": "Minimum setbacks for industrial buildings, flatted factories, data centres and MSME units up to 15-"
+    },
+    {
+     "y": 231,
+     "text": "meter height shall be per paragraph 3.2.4.8 of the building byelaws. Minimum setbacks for industrial"
+    },
+    {
+     "y": 244,
+     "text": "buildings, flatted factories, data centres and MSME units above 15-meter height shall be as per"
+    },
+    {
+     "y": 257,
+     "text": "paragraph 3.2.4.9 of the building byelaws."
+    },
+    {
+     "y": 277,
+     "text": "7.1.7 Parking Requirements"
+    },
+    {
+     "y": 296,
+     "text": "Parking requirements shall be as per paragraph 3.3.4 of the building byelaws."
+    },
+    {
+     "y": 336,
+     "text": "7.2 Farmhouse"
+    },
+    {
+     "y": 360,
+     "text": "7.2.1 Permissibility"
+    },
+    {
+     "y": 379,
+     "text": "The permission of the farmhouse shall be as per the master plan zoning regulations, constructed for the"
+    },
+    {
+     "y": 392,
+     "text": "purpose of agriculture and horticulture, pig farming, fish farming, poultry, other animal husbandry etc."
+    },
+    {
+     "y": 412,
+     "text": "7.2.2 Minimum Plot Size"
+    },
+    {
+     "y": 433,
+     "text": "The minimum plot area for the construction of farmhouse shall be 4000 sq.m."
+    },
+    {
+     "y": 453,
+     "text": "7.2.3 Means of Access"
+    },
+    {
+     "y": 474,
+     "text": "The access to the farmhouse shall be from at least 7.0 m wide road."
+    },
+    {
+     "y": 494,
+     "text": "7.2.4 Ground Coverage and FAR"
+    },
+    {
+     "y": 515,
+     "text": "The maximum permissible ground coverage shall be permissible after ensuring minimum setbacks,"
+    },
+    {
+     "y": 529,
+     "text": "however non-farm activities shall be restricted to 20 percent of plot area. The maximum permissible"
+    },
+    {
+     "y": 543,
+     "text": "FAR shall be 0.20."
+    },
+    {
+     "y": 563,
+     "text": "7.2.5 Maximum Building Height"
+    },
+    {
+     "y": 584,
+     "text": "There shall be no height restriction."
+    },
+    {
+     "y": 604,
+     "text": "7.2.6 Minimum Set back"
+    },
+    {
+     "y": 625,
+     "text": "I) The distance of the non-farm building from the boundary line of the plot shall be at least 9 meters on"
+    },
+    {
+     "y": 639,
+     "text": "all sides except the guard room."
+    },
+    {
+     "y": 659,
+     "text": "7.2.7 Tree plantation"
+    },
+    {
+     "y": 678,
+     "text": "Tree plantation shall be done on 50 percent of the plot in which at least 100 trees planted per hectare."
+    },
+    {
+     "y": 699,
+     "text": "7.2.8 Electricity and other services"
+    },
+    {
+     "y": 718,
+     "text": "Arrangements for electricity, water supply and drainage shall be made by the landowner himself."
+    },
+    {
+     "y": 775,
+     "text": "102"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.7,
+      71.8,
+      522.5,
+      136.8
+     ],
+     "rows": [
+      [
+       {
+        "text": "FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         71.8,
+         146.6,
+         86.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         146.6,
+         71.8,
+         193.5,
+         86.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         193.5,
+         71.8,
+         275.8,
+         76.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         275.8,
+         71.8,
+         358.1,
+         76.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>24 -",
+        "fill": "#DBE5F1",
+        "bbox": [
+         358.1,
+         71.8,
+         440.2,
+         86.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         440.2,
+         71.8,
+         522.5,
+         76.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (Upto 12m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         193.5,
+         76.7,
+         275.8,
+         91.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>12 -24m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         275.8,
+         76.7,
+         358.1,
+         91.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         440.2,
+         76.7,
+         522.5,
+         91.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         86.7,
+         146.6,
+         97.5
+        ]
+       },
+       {
+        "text": "BFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         146.6,
+         86.7,
+         193.5,
+         97.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         358.1,
+         86.7,
+         440.2,
+         97.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         193.5,
+         91.9,
+         275.8,
+         97.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         275.8,
+         91.9,
+         358.1,
+         97.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         440.2,
+         91.9,
+         522.5,
+         97.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Industries",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         97.5,
+         146.6,
+         111.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         146.6,
+         97.5,
+         193.5,
+         111.8
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         193.5,
+         97.5,
+         221.0,
+         111.8
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         221.0,
+         97.5,
+         248.7,
+         111.8
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         248.7,
+         97.5,
+         275.8,
+         111.8
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         275.8,
+         97.5,
+         303.4,
+         111.8
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         303.4,
+         97.5,
+         331.0,
+         111.8
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         331.0,
+         97.5,
+         358.1,
+         111.8
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         358.1,
+         97.5,
+         385.7,
+         111.8
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         385.7,
+         97.5,
+         413.3,
+         111.8
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         413.3,
+         97.5,
+         440.2,
+         111.8
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         440.2,
+         97.5,
+         468.1,
+         111.8
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         468.1,
+         97.5,
+         495.6,
+         111.8
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.6,
+         97.5,
+         522.5,
+         111.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Flatted Factories,\nData Centres",
+        "bbox": [
+         72.7,
+         111.8,
+         146.6,
+         136.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         146.6,
+         111.8,
+         193.5,
+         116.8
+        ]
+       },
+       {
+        "text": "NA",
+        "bbox": [
+         193.5,
+         111.8,
+         221.0,
+         136.8
+        ]
+       },
+       {
+        "text": "NA",
+        "bbox": [
+         221.0,
+         111.8,
+         248.7,
+         136.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         111.8,
+         275.8,
+         116.8
+        ]
+       },
+       {
+        "text": "0.50",
+        "bbox": [
+         275.8,
+         111.8,
+         303.4,
+         136.8
+        ]
+       },
+       {
+        "text": "0.50",
+        "bbox": [
+         303.4,
+         111.8,
+         331.0,
+         136.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         111.8,
+         358.1,
+         116.8
+        ]
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         358.1,
+         111.8,
+         385.7,
+         136.8
+        ]
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         385.7,
+         111.8,
+         413.3,
+         136.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.3,
+         111.8,
+         440.2,
+         116.8
+        ]
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         440.2,
+         111.8,
+         468.1,
+         136.8
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         468.1,
+         111.8,
+         495.6,
+         136.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         111.8,
+         522.5,
+         116.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "3.00",
+        "fill": "#FFF2CC",
+        "bbox": [
+         146.6,
+         116.8,
+         193.5,
+         131.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "NA",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         116.8,
+         275.8,
+         131.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "2.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         116.8,
+         358.1,
+         131.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "3.50",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.3,
+         116.8,
+         440.2,
+         131.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         116.8,
+         522.5,
+         131.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         146.6,
+         131.9,
+         193.5,
+         136.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         131.9,
+         275.8,
+         136.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         131.9,
+         358.1,
+         136.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.3,
+         131.9,
+         440.2,
+         136.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         131.9,
+         522.5,
+         136.8
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 4,
+   "gazettePage": 103,
+   "prose": "7.3 Dairy Farm\n7.3.1 Permissibility\nDairy farm/ Gaushala will be permitted as per master plan zoning regulations.\n7.3.2 Minimum Plot Size\nThe minimum plot size for dairy farm/ gaushala shall be 1000 square meters.\n7.3.3 Means of Access\nThe minimum width of access road to the dairy farm/ gaushala shall be at least 7 meters wide.\n7.3.4 Ground Coverage and FAR\nThe maximum permissible ground coverage for dairy farm/ gaushala shall be 20 percent of the total\nplot area and the maximum permissible FAR shall be 0.20.\nNote: Within the covered area, construction of cattle shed, storage of animal fodder and straw, milk\ncollection and preservation, milk selling centre, watch-post, and residential facility for essential\nemployees for maintenance of animals, veterinary and breeding facilities and other ancillary activities\nshall be permissible.\n7.3.5 Building height\nThere shall be no restriction on building height.\n7.3.6 Minimum Setback\nThe minimum setback requirement for dairy farm/ gaushala in relation to the plot area shall be as follow.\n7.3.7 Tree plantation\nTree plantation shall be done on 50 percent of the plot in which at least 100 trees will be planted per\nhectare.\n7.3.8 Drainage and dung and garbage disposal\nProper arrangement of drainage will be made from the dairy farm/ gaushala to the disposal site and the\ndung and effluent will be discharged after treatment through cow dung gas plant, septic tank, compost\npit or other suitable technology.\n7.3.9 Other requirements\nOther requirements for dairy farms/ gaushalas, the size of cattle shed, fodder collection, milk\ncollection/ preservation/ storage arrangements, management office, veterinary and breeding facilities,\nstaff accommodation arrangements, pond, cow dung gas plant, etc. will be provisioned as per the\nstandards of National Dairy Research Institute or State Government for Gaushalas.\n103",
+   "proseLines": [
+    {
+     "y": 74,
+     "text": "7.3 Dairy Farm"
+    },
+    {
+     "y": 97,
+     "text": "7.3.1 Permissibility"
+    },
+    {
+     "y": 116,
+     "text": "Dairy farm/ Gaushala will be permitted as per master plan zoning regulations."
+    },
+    {
+     "y": 137,
+     "text": "7.3.2 Minimum Plot Size"
+    },
+    {
+     "y": 157,
+     "text": "The minimum plot size for dairy farm/ gaushala shall be 1000 square meters."
+    },
+    {
+     "y": 178,
+     "text": "7.3.3 Means of Access"
+    },
+    {
+     "y": 197,
+     "text": "The minimum width of access road to the dairy farm/ gaushala shall be at least 7 meters wide."
+    },
+    {
+     "y": 218,
+     "text": "7.3.4 Ground Coverage and FAR"
+    },
+    {
+     "y": 238,
+     "text": "The maximum permissible ground coverage for dairy farm/ gaushala shall be 20 percent of the total"
+    },
+    {
+     "y": 252,
+     "text": "plot area and the maximum permissible FAR shall be 0.20."
+    },
+    {
+     "y": 266,
+     "text": "Note: Within the covered area, construction of cattle shed, storage of animal fodder and straw, milk"
+    },
+    {
+     "y": 280,
+     "text": "collection and preservation, milk selling centre, watch-post, and residential facility for essential"
+    },
+    {
+     "y": 294,
+     "text": "employees for maintenance of animals, veterinary and breeding facilities and other ancillary activities"
+    },
+    {
+     "y": 308,
+     "text": "shall be permissible."
+    },
+    {
+     "y": 329,
+     "text": "7.3.5 Building height"
+    },
+    {
+     "y": 348,
+     "text": "There shall be no restriction on building height."
+    },
+    {
+     "y": 368,
+     "text": "7.3.6 Minimum Setback"
+    },
+    {
+     "y": 389,
+     "text": "The minimum setback requirement for dairy farm/ gaushala in relation to the plot area shall be as follow."
+    },
+    {
+     "y": 524,
+     "text": "7.3.7 Tree plantation"
+    },
+    {
+     "y": 543,
+     "text": "Tree plantation shall be done on 50 percent of the plot in which at least 100 trees will be planted per"
+    },
+    {
+     "y": 556,
+     "text": "hectare."
+    },
+    {
+     "y": 577,
+     "text": "7.3.8 Drainage and dung and garbage disposal"
+    },
+    {
+     "y": 596,
+     "text": "Proper arrangement of drainage will be made from the dairy farm/ gaushala to the disposal site and the"
+    },
+    {
+     "y": 609,
+     "text": "dung and effluent will be discharged after treatment through cow dung gas plant, septic tank, compost"
+    },
+    {
+     "y": 622,
+     "text": "pit or other suitable technology."
+    },
+    {
+     "y": 642,
+     "text": "7.3.9 Other requirements"
+    },
+    {
+     "y": 661,
+     "text": "Other requirements for dairy farms/ gaushalas, the size of cattle shed, fodder collection, milk"
+    },
+    {
+     "y": 674,
+     "text": "collection/ preservation/ storage arrangements, management office, veterinary and breeding facilities,"
+    },
+    {
+     "y": 687,
+     "text": "staff accommodation arrangements, pond, cow dung gas plant, etc. will be provisioned as per the"
+    },
+    {
+     "y": 700,
+     "text": "standards of National Dairy Research Institute or State Government for Gaushalas."
+    },
+    {
+     "y": 775,
+     "text": "103"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.5,
+      402.4,
+      522.8,
+      502.4
+     ],
+     "rows": [
+      [
+       {
+        "text": "Min. Plot Size (sqm)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.5,
+         402.4,
+         287.1,
+         420.3
+        ]
+       },
+       {
+        "text": "Setbacks on all sides (m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         287.1,
+         402.4,
+         522.8,
+         420.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "\u2265 1000 \u2013 4000",
+        "bbox": [
+         72.5,
+         420.3,
+         287.1,
+         441.7
+        ]
+       },
+       {
+        "text": "6",
+        "bbox": [
+         287.1,
+         420.3,
+         522.8,
+         441.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "> 4000 up to 7000",
+        "bbox": [
+         72.5,
+         441.7,
+         287.1,
+         461.9
+        ]
+       },
+       {
+        "text": "9",
+        "bbox": [
+         287.1,
+         441.7,
+         522.8,
+         461.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "> 7000 up to 15000",
+        "bbox": [
+         72.5,
+         461.9,
+         287.1,
+         482.2
+        ]
+       },
+       {
+        "text": "10",
+        "bbox": [
+         287.1,
+         461.9,
+         522.8,
+         482.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Above 15000",
+        "bbox": [
+         72.5,
+         482.2,
+         287.1,
+         502.4
+        ]
+       },
+       {
+        "text": "10",
+        "bbox": [
+         287.1,
+         482.2,
+         522.8,
+         502.4
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  }
+ ]
+}

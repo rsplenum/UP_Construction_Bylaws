@@ -6,7 +6,7 @@
   ">24 \u2013 45m",
   ">45m"
  ],
- "tableCount": 12,
+ "tableCount": 15,
  "checks": [
   {
    "chapter": "04",
@@ -87,8 +87,8 @@
    "areaType": "built_up",
    "band": "< 18m",
    "holds": true,
-   "baseFarQualifier": "<18m",
-   "working": "base FAR 2.0 applies only <18m; this band is covered by the other base FAR row"
+   "working": "2.0 + 0.4 = 2.4 vs MFAR 2.4",
+   "baseFarQualifier": "<18m"
   },
   {
    "chapter": "04",
@@ -127,8 +127,8 @@
    "areaType": "built_up",
    "band": "< 18m",
    "holds": true,
-   "working": "2.25 + 0.46 = 2.71 vs MFAR 2.71",
-   "baseFarQualifier": "\u226518m"
+   "baseFarQualifier": "\u226518m",
+   "working": "base FAR 2.25 applies only \u226518m; this band is covered by the other base FAR row"
   },
   {
    "chapter": "04",
@@ -1185,6 +1185,185 @@
    "band": ">45m",
    "holds": true,
    "working": "unrestricted"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 100,
+   "useType": "Auditorium or a Convention Centre (Non-built-up area)",
+   "areaType": "non_built_up",
+   "band": "=>18 -24m",
+   "holds": true,
+   "working": "3.0 + 3.0 = 6.0 vs MFAR 6.0"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 100,
+   "useType": "Auditorium or a Convention Centre (Non-built-up area)",
+   "areaType": "non_built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "3.0 + 7.5 = 10.5 vs MFAR 10.5"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 100,
+   "useType": "Auditorium or a Convention Centre (Non-built-up area)",
+   "areaType": "non_built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "Industrial Buildings",
+   "areaType": null,
+   "band": "Upto 12m",
+   "holds": true,
+   "working": "1.5 + 0 = 1.5 vs MFAR 1.5",
+   "baseFarQualifier": "\u226412m"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "Industrial Buildings",
+   "areaType": null,
+   "band": ">12 -24m",
+   "holds": true,
+   "baseFarQualifier": "\u226412m",
+   "working": "base FAR 1.5 applies only \u226412m; this band is covered by the other base FAR row"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "Industrial Buildings",
+   "areaType": null,
+   "band": ">24 - 45m",
+   "holds": true,
+   "baseFarQualifier": "\u226412m",
+   "working": "base FAR 1.5 applies only \u226412m; this band is covered by the other base FAR row"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "Industrial Buildings",
+   "areaType": null,
+   "band": ">45m",
+   "holds": true,
+   "baseFarQualifier": "\u226412m",
+   "working": "base FAR 1.5 applies only \u226412m; this band is covered by the other base FAR row"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "Industrial Buildings",
+   "areaType": null,
+   "band": "Upto 12m",
+   "holds": true,
+   "baseFarQualifier": ">12m",
+   "working": "base FAR 2.5 applies only >12m; this band is covered by the other base FAR row"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "Industrial Buildings",
+   "areaType": null,
+   "band": ">12 -24m",
+   "holds": true,
+   "working": "2.5 + 2.5 = 5.0 vs MFAR 5.0",
+   "baseFarQualifier": ">12m"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "Industrial Buildings",
+   "areaType": null,
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "2.5 + 6.25 = 8.75 vs MFAR 8.75",
+   "baseFarQualifier": ">12m"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "Industrial Buildings",
+   "areaType": null,
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted",
+   "baseFarQualifier": ">12m"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "MSME units",
+   "areaType": null,
+   "band": "Upto 12m",
+   "holds": true,
+   "working": "3.0 + 0 = 3.0 vs MFAR 3.0"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "MSME units",
+   "areaType": null,
+   "band": ">12 -24m",
+   "holds": true,
+   "working": "3.0 + 3.0 = 6.0 vs MFAR 6.0"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "MSME units",
+   "areaType": null,
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "3.0 + 7.5 = 10.5 vs MFAR 10.5"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "MSME units",
+   "areaType": null,
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 102,
+   "useType": "Flatted Factories, Data Centres",
+   "areaType": null,
+   "band": "Upto 12m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 102,
+   "useType": "Flatted Factories, Data Centres",
+   "areaType": null,
+   "band": ">12 -24m",
+   "holds": false,
+   "working": "3.0 + 1.0 = 4.0 vs MFAR 2.0"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 102,
+   "useType": "Flatted Factories, Data Centres",
+   "areaType": null,
+   "band": ">24 - 45m",
+   "holds": false,
+   "working": "3.0 + 2.5 = 5.5 vs MFAR 3.5"
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 102,
+   "useType": "Flatted Factories, Data Centres",
+   "areaType": null,
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
   }
  ],
  "warnings": [],
@@ -2103,6 +2282,139 @@
    },
    "roadBands": [
     "=>18 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 100,
+   "useType": "Auditorium or a Convention Centre (Non-built-up area)",
+   "areaType": "non_built_up",
+   "values": {
+    "=>18 -24m|PFAR": 1.5,
+    "=>18 -24m|PPFAR": 1.5,
+    ">24 - 45m|PFAR": 3.0,
+    ">24 - 45m|PPFAR": 4.5,
+    ">45m|PFAR": 3.0,
+    ">45m|PPFAR": "unrestricted",
+    "BFAR": 3.0,
+    "=>18 -24m|MFAR": 6.0,
+    ">24 - 45m|MFAR": 10.5,
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    "=>18 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "Industrial Buildings",
+   "areaType": null,
+   "values": {
+    "BFAR": 1.5,
+    "Upto 12m|PFAR": "not available",
+    "Upto 12m|PPFAR": "not available",
+    ">12 -24m|PFAR": 1.25,
+    ">12 -24m|PPFAR": 1.25,
+    ">24 - 45m|PFAR": 2.5,
+    ">24 - 45m|PPFAR": 3.75,
+    ">45m|PFAR": 2.5,
+    ">45m|PPFAR": "unrestricted",
+    "Upto 12m|MFAR": 1.5,
+    ">12 -24m|MFAR": 5.0,
+    ">24 - 45m|MFAR": 8.75,
+    ">45m|MFAR": "unrestricted"
+   },
+   "baseFarQualifier": "\u226412m",
+   "roadBands": [
+    "Upto 12m",
+    ">12 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "Industrial Buildings",
+   "areaType": null,
+   "values": {
+    "BFAR": 2.5,
+    "Upto 12m|PFAR": "not available",
+    "Upto 12m|PPFAR": "not available",
+    ">12 -24m|PFAR": 1.25,
+    ">12 -24m|PPFAR": 1.25,
+    ">24 - 45m|PFAR": 2.5,
+    ">24 - 45m|PPFAR": 3.75,
+    ">45m|PFAR": 2.5,
+    ">45m|PPFAR": "unrestricted",
+    "Upto 12m|MFAR": 1.5,
+    ">12 -24m|MFAR": 5.0,
+    ">24 - 45m|MFAR": 8.75,
+    ">45m|MFAR": "unrestricted"
+   },
+   "baseFarQualifier": ">12m",
+   "roadBands": [
+    "Upto 12m",
+    ">12 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "MSME units",
+   "areaType": null,
+   "values": {
+    "BFAR": 3.0,
+    "Upto 12m|PFAR": "not available",
+    "Upto 12m|PPFAR": "not available",
+    "Upto 12m|MFAR": 3.0,
+    ">12 -24m|PFAR": 1.5,
+    ">12 -24m|PPFAR": 1.5,
+    ">12 -24m|MFAR": 6.0,
+    ">24 - 45m|PFAR": 3.0,
+    ">24 - 45m|PPFAR": 4.5,
+    ">24 - 45m|MFAR": 10.5,
+    ">45m|PFAR": 3.0,
+    ">45m|PPFAR": "unrestricted",
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    "Upto 12m",
+    ">12 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 102,
+   "useType": "Flatted Factories, Data Centres",
+   "areaType": null,
+   "values": {
+    "Upto 12m|PFAR": "not available",
+    "Upto 12m|PPFAR": "not available",
+    ">12 -24m|PFAR": 0.5,
+    ">12 -24m|PPFAR": 0.5,
+    ">24 - 45m|PFAR": 1.0,
+    ">24 - 45m|PPFAR": 1.5,
+    ">45m|PFAR": 1.0,
+    ">45m|PPFAR": "unrestricted",
+    "BFAR": 3.0,
+    "Upto 12m|MFAR": "not available",
+    ">12 -24m|MFAR": 2.0,
+    ">24 - 45m|MFAR": 3.5,
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    "Upto 12m",
+    ">12 -24m",
     ">24 - 45m",
     ">45m"
    ]

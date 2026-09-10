@@ -38,7 +38,8 @@ export interface PurchasableRow {
   readonly chapter: string;
   readonly gazettePage: number;
   readonly useType: string;
-  readonly areaType: AreaType;
+  /** Null where the gazette states none — Clause 7.1.5's industry tables. */
+  readonly areaType: AreaType | null;
   readonly baseFar: number | null;
   /**
    * Clause 4.4 prints TWO base FARs for one use — 2.00 below an 18 m road and 2.25 at or
@@ -73,7 +74,9 @@ export function baseFarApplies(row: PurchasableRow, band: PurchasableBand): bool
   if (!q) return true;
   const threshold = Number(/\d+(?:\.\d+)?/.exec(q)?.[0]);
   if (!Number.isFinite(threshold)) return true;
-  return q.trimStart().startsWith('<')
+  // The gazette uses both "<18m" and "≤12m" for an upper-bounded qualifier.
+  const upperBounded = /^[<≤]/.test(q.trimStart());
+  return upperBounded
     ? band.overMoreThan < threshold
     : band.overMoreThan >= threshold;
 }
@@ -151,12 +154,27 @@ export function purchasableRowFor(input: {
 export const GAZETTE_ARITHMETIC_DEFECTS: readonly {
   readonly gazettePage: number;
   readonly useType: string;
-  readonly areaType: AreaType;
+  readonly areaType: AreaType | null;
   readonly band: string;
   readonly componentsImply: number;
   readonly printed: number;
   readonly note: string;
 }[] = [
+  {
+    gazettePage: 102,
+    useType: 'Flatted Factories, Data Centres',
+    areaType: null,
+    band: '>12 -24m and >24 - 45m',
+    componentsImply: 4.0,
+    printed: 2.0,
+    note: 'Clause 7.1.5. The printed maximum is BELOW the printed base FAR, which cannot '
+      + 'be right: base 3.00 against maxima of 2.00 and 3.50. The purchasable columns '
+      + '(0.50 / 0.50, 1.00 / 1.50) are coherent only with a base of 1.00, and are '
+      + 'character for character the same as the secondary-school row in Clause 6.2.4, '
+      + 'which does carry 1.00. Chapter 3 Sl. 2 and 3 give flatted factories and data '
+      + 'centres base 3.0 with maxima of 3.0 / 6.0 / 9.0, which is internally coherent. '
+      + 'The engine uses Chapter 3 and ignores this row.',
+  },
   {
     gazettePage: 97,
     useType: 'Schools (primary / nursery)',

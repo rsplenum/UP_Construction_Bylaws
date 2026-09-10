@@ -1,0 +1,175 @@
+=== chapter 07 · gazette page 100 · pdf page 1 ===
+Note-1:
+BFAR – Base FAR, PFAR – Purchasable FAR, PPFAR – Premium Purchasable FAR, MFAR –
+Maximum Permissible FAR including Base FAR, UR – Unrestricted
+Note-2: Other ancillary uses such as commercial, hotel, office, entertainment, training centre,
+community facilities, etc., are permissible.
+In green building, additional FAR over and above maximum permissible FAR shall be provided
+Note-3:
+as per paragraph 9.3 of the building byelaws.
+6.4.5 Minimum Setback
+Minimum setbacks for auditorium or a convention centre shall be as per paragraph 3.2.4 of the building
+byelaws.
+6.4.6 Parking Requirements
+(i) Parking requirements for auditorium or a convention centre shall be as per paragraph 3.3.4 of the
+building byelaws.
+(ii) The parking requirement for auditorium or convention centre shall be 1 ECS / 10 seat for the
+auditorium space and additional parking requirement for attached ancillary commercial activities shall
+be 2 ECS / 100 sqm of utilized floor area.
+For plots of area above 4000 sqm, a separate block for parking is permissible, within the campus. Within
+the parking block, 10% of ground floor may be utilized for commercial purposes (free from FAR)
+incidental to principal use.
+6.4.7 Basement
+The permissibility of basement in auditorium or convention centre shall be as per paragraph 3.3.3 of
+the building byelaws.
+100
+
+--- table 0 (11 rows × 11 cols) ---
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  | 
+FAR | [#DBE5F1] | Road Width (=>18 -24m) |  |  | Road Width (>24 - 45m) |  |  | Road Width (>45m) |  | 
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  | 
+Auditorium/ |  |  |  |  |  |  |  |  |  | MFA«band #DBE5F1»
+Convention Centre | BFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | R
+ |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  | 
+Auditorium or a Convention Centre (Non-built-up area) | [#FFF2CC] | 1.5 | 1.5 | [#DEEAF6] | 3.0 | 4.5 | [#DEEAF6] | 3.0 | UR | [#DEEAF6]
+ | 3.0 |  |  | 6.0 |  |  | 10.5 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+
+=== chapter 07 · gazette page 101 · pdf page 2 ===
+7 Industrial and Agricultural Use Buildings
+7.1 Industries
+7.1.1 Permissibility
+The permission for construction of industrial buildings, flatted factories, data centres and MSME units
+shall be as per paragraph 15.3.2 of Chapter 15 Zoning Regulations.
+7.1.2 Minimum Plot Size
+There is no restriction on the minimum plot size for industrial buildings, flatted factories, data centres
+and MSME units as per paragraph 3.2.1 of the building byelaws.
+7.1.3 Means of Access
+The minimum width of the access road for industrial buildings, flatted factories, data centres and MSME
+units shall be as follows:
+7.1.4 Maximum Building Height
+industrial buildings, flatted factories, data
+There shall be no restriction on building height for
+centres and MSME units.
+However, the maximum height of the building shall be governed by
+distance from the protected monument/ heritage site, airport funnel zone and other statutory
+restrictions.
+7.1.5 Ground Coverage and FAR
+Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any,
+for industrial buildings, flatted factories, data centres and MSME
+shall be permissible on plots
+units.
+To reduce the distance between work and home, address safety concerns (particularly for
+women) and help workers to increase their productivity, both in-situ and private development of
+hostels and dormitories in industrial areas shall be permitted, max. up to 20% of FAR.
+Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter 9.
+Basis approach road width, the maximum permissible FAR (including Base FAR) for industrial
+buildings, flatted factories in built-up areas and the non-built-up areas shall be as follows:
+101
+
+--- table 0 (5 rows × 3 cols) ---
+[#DBE5F1] | Industries | Minimum Road Width (m)
+1 | Industrial Buildings | 7-meters (Agriculture Use Zone) 9-meters (Industrial Use Zones)
+2 | Flatted Factories | 12-meters (Industrial Use Zone)
+3 | Data Centers | 12
+4 | MSME units | 9-meters (Industrial Use Zone) 7-meters (Agriculture Use Zones)
+
+--- table 1 (11 rows × 14 cols) ---
+FAR | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | Road Width (>24 - |  |  | [#DBE5F1] |  | 
+ |  | Road Width (Upto 12m) |  |  | Road Width (>12 -24m) |  |  |  |  |  | Road Width (>45m) |  | 
+[#DBE5F1] | BFAR |  |  |  |  |  |  | 45m) |  |  |  |  | 
+ |  | [#DBE5F1] |  |  | [#DBE5F1] |  |  |  |  |  | [#DBE5F1] |  | 
+Industries | [#DBE5F1] | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR
+ |  |  |  |  |  |  |  |  |  |  |  |  | «band #DCDDDF»
+Industrial Buildings | 1.50 (≤12m) | NA | NA | [#DDEBF7] | 1.25 | 1.25 | [#DDEBF7] | 2.50 | 3.75 | [#DDEBF7] | 2.50 | UR | [#DDEBF7]
+ |  |  |  | 1.50 |  |  | 5.00 |  |  | 8.75 |  |  | UR
+ | 2.50 (>12m) |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  | [#DDEBF7] |  |  | [#DDEBF7] |  |  | [#DDEBF7] |  |  | [#DDEBF7]
+MSME units | 3.00 | NA | NA | 3.00 | 1.50 | 1.50 | 6.00 | 3.00 | 4.50 | 10.50 | 3.00 | UR | UR
+
+=== chapter 07 · gazette page 102 · pdf page 3 ===
+Note-1: BFAR – Base FAR, PFAR – Purchasable FAR, PPFAR – Premium Purchasable FAR, MFAR – Maximum
+Permissible FAR which includes Base FAR, UR – Unrestricted FAR.
+Note-2: In green building, additional FAR over and above maximum permissible FAR shall be provided as per paragraph 9.3
+of the building byelaws.
+7.1.6 Minimum Setback
+Minimum setbacks for industrial buildings, flatted factories, data centres and MSME units up to 15-
+meter height shall be per paragraph 3.2.4.8 of the building byelaws. Minimum setbacks for industrial
+buildings, flatted factories, data centres and MSME units above 15-meter height shall be as per
+paragraph 3.2.4.9 of the building byelaws.
+7.1.7 Parking Requirements
+Parking requirements shall be as per paragraph 3.3.4 of the building byelaws.
+7.2 Farmhouse
+7.2.1 Permissibility
+The permission of the farmhouse shall be as per the master plan zoning regulations, constructed for the
+purpose of agriculture and horticulture, pig farming, fish farming, poultry, other animal husbandry etc.
+7.2.2 Minimum Plot Size
+The minimum plot area for the construction of farmhouse shall be 4000 sq.m.
+7.2.3 Means of Access
+The access to the farmhouse shall be from at least 7.0 m wide road.
+7.2.4 Ground Coverage and FAR
+The maximum permissible ground coverage shall be permissible after ensuring minimum setbacks,
+however non-farm activities shall be restricted to 20 percent of plot area. The maximum permissible
+FAR shall be 0.20.
+7.2.5 Maximum Building Height
+There shall be no height restriction.
+7.2.6 Minimum Set back
+I) The distance of the non-farm building from the boundary line of the plot shall be at least 9 meters on
+all sides except the guard room.
+7.2.7 Tree plantation
+Tree plantation shall be done on 50 percent of the plot in which at least 100 trees planted per hectare.
+7.2.8 Electricity and other services
+Arrangements for electricity, water supply and drainage shall be made by the landowner himself.
+102
+
+--- table 0 (8 rows × 14 cols) ---
+FAR | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | Road Width (>24 - |  |  | [#DBE5F1] |  | 
+ |  | Road Width (Upto 12m) |  |  | Road Width (>12 -24m) |  |  |  |  |  | Road Width (>45m) |  | 
+[#DBE5F1] | BFAR |  |  |  |  |  |  | 45m) |  |  |  |  | 
+ |  | [#DBE5F1] |  |  | [#DBE5F1] |  |  |  |  |  | [#DBE5F1] |  | 
+Industries | [#DBE5F1] | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR
+Flatted Factories, Data Centres | [#FFF2CC] | NA | NA | [#DDEBF7] | 0.50 | 0.50 | [#DDEBF7] | 1.00 | 1.50 | [#DDEBF7] | 1.00 | UR | [#DDEBF7]
+ | 3.00 |  |  | NA |  |  | 2.00 |  |  | 3.50 |  |  | UR
+ | [#FFF2CC] |  |  | [#DDEBF7] |  |  | [#DDEBF7] |  |  | [#DDEBF7] |  |  | [#DDEBF7]
+
+=== chapter 07 · gazette page 103 · pdf page 4 ===
+7.3 Dairy Farm
+7.3.1 Permissibility
+Dairy farm/ Gaushala will be permitted as per master plan zoning regulations.
+7.3.2 Minimum Plot Size
+The minimum plot size for dairy farm/ gaushala shall be 1000 square meters.
+7.3.3 Means of Access
+The minimum width of access road to the dairy farm/ gaushala shall be at least 7 meters wide.
+7.3.4 Ground Coverage and FAR
+The maximum permissible ground coverage for dairy farm/ gaushala shall be 20 percent of the total
+plot area and the maximum permissible FAR shall be 0.20.
+Note: Within the covered area, construction of cattle shed, storage of animal fodder and straw, milk
+collection and preservation, milk selling centre, watch-post, and residential facility for essential
+employees for maintenance of animals, veterinary and breeding facilities and other ancillary activities
+shall be permissible.
+7.3.5 Building height
+There shall be no restriction on building height.
+7.3.6 Minimum Setback
+The minimum setback requirement for dairy farm/ gaushala in relation to the plot area shall be as follow.
+7.3.7 Tree plantation
+Tree plantation shall be done on 50 percent of the plot in which at least 100 trees will be planted per
+hectare.
+7.3.8 Drainage and dung and garbage disposal
+Proper arrangement of drainage will be made from the dairy farm/ gaushala to the disposal site and the
+dung and effluent will be discharged after treatment through cow dung gas plant, septic tank, compost
+pit or other suitable technology.
+7.3.9 Other requirements
+Other requirements for dairy farms/ gaushalas, the size of cattle shed, fodder collection, milk
+collection/ preservation/ storage arrangements, management office, veterinary and breeding facilities,
+staff accommodation arrangements, pond, cow dung gas plant, etc. will be provisioned as per the
+standards of National Dairy Research Institute or State Government for Gaushalas.
+103
+
+--- table 0 (5 rows × 2 cols) ---
+Min. Plot Size (sqm) | Setbacks on all sides (m)
+≥ 1000 – 4000 | 6
+> 4000 up to 7000 | 9
+> 7000 up to 15000 | 10
+Above 15000 | 10

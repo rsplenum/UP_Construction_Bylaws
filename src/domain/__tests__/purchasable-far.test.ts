@@ -18,9 +18,25 @@ const n = (v: unknown): number | null => (typeof v === 'number' ? v : null);
 
 describe('every printed BFAR/PFAR/PPFAR/MFAR table is loaded', () => {
   it('has every row from every printed table', () => {
-    expect(PURCHASABLE_FAR_ROWS).toHaveLength(36);
+    expect(PURCHASABLE_FAR_ROWS).toHaveLength(41);
     const pages = [...new Set(PURCHASABLE_FAR_ROWS.map((r) => r.gazettePage))].sort((a, b) => a - b);
-    expect(pages).toEqual([78, 82, 84, 86, 87, 88, 90, 95, 97, 98, 99, 100]);
+    expect(pages).toEqual([78, 82, 84, 86, 87, 88, 90, 95, 97, 98, 99, 100, 101, 102]);
+  });
+
+  it('splits a use that carries two base FARs into two rows with distinct ids', () => {
+    const industrial = PURCHASABLE_FAR_ROWS.filter(
+      (r) => r.gazettePage === 101 && r.useType === 'Industrial Buildings');
+    expect(industrial).toHaveLength(2);
+    expect(industrial.map((r) => r.baseFar).sort()).toEqual([1.5, 2.5]);
+    expect(new Set(industrial.map((r) => r.id)).size).toBe(2);
+  });
+
+  it('carries a null area type where the gazette states none', () => {
+    // Clause 7.1.5's industry tables have no built-up / new-layout split: industry sits
+    // in a use zone instead. Rejecting rows without an area type dropped all of them.
+    const industry = PURCHASABLE_FAR_ROWS.filter((r) => r.gazettePage >= 101);
+    expect(industry).toHaveLength(4);
+    expect(industry.every((r) => r.areaType === null)).toBe(true);
   });
 
   it('gives every row three or four road bands', () => {
@@ -77,9 +93,10 @@ describe('every printed BFAR/PFAR/PPFAR/MFAR table is loaded', () => {
         // Clause 4.4's rows each cover only part of the road range; the other row's base
         // FAR governs the rest, so summing across the whole row is not what it states.
         if (max === null || !baseFarApplies(r, b)) continue;
+        // Matched on the row, not the band: Clause 7.1.5's defect spans two bands.
         const known = GAZETTE_ARITHMETIC_DEFECTS.some(
           (d) => d.gazettePage === r.gazettePage && d.useType === r.useType
-            && d.areaType === r.areaType && d.band === b.label);
+            && d.areaType === r.areaType);
         if (known) continue;
         const sum = r.baseFar + (n(b.purchasable) ?? 0) + (n(b.premiumPurchasable) ?? 0);
         expect(Math.abs(sum - max), `${r.id} ${b.label}: ${sum} vs ${max}`)
@@ -90,10 +107,26 @@ describe('every printed BFAR/PFAR/PPFAR/MFAR table is loaded', () => {
 });
 
 describe('the one place the gazette’s own arithmetic does not close', () => {
-  it('is the schools row in Clause 6.2.4, and only that', () => {
-    expect(GAZETTE_ARITHMETIC_DEFECTS).toHaveLength(1);
-    const [d] = GAZETTE_ARITHMETIC_DEFECTS;
-    expect(d.printed).toBeLessThan(d.componentsImply);   // so the printed figure is safe
+  it('is two rows, and the printed figure is the lower one in both', () => {
+    expect(GAZETTE_ARITHMETIC_DEFECTS).toHaveLength(2);
+    for (const d of GAZETTE_ARITHMETIC_DEFECTS) {
+      expect(d.printed, `p.${d.gazettePage}`).toBeLessThan(d.componentsImply);
+    }
+  });
+
+  /**
+   * Clause 7.1.5 is the worse of the two: it prints a maximum BELOW the base FAR, which
+   * cannot be right whatever the intent.
+   */
+  it('includes a row whose maximum is below its own base FAR', () => {
+    const row = PURCHASABLE_FAR_ROWS.find(
+      (r) => r.gazettePage === 102 && r.useType.startsWith('Flatted'))!;
+    expect(row.baseFar).toBe(3.0);
+    expect(row.bands[1].maxFar).toBe(2.0);              // below the base
+    expect(row.bands[2].maxFar).toBe(3.5);
+    // Its purchasable columns are coherent only with a base of 1.00.
+    expect(row.bands[1].purchasable).toBe(0.5);
+    expect(row.bands[1].premiumPurchasable).toBe(0.5);
   });
 
   it('uses the printed figure, which is the lower one', () => {
@@ -120,7 +153,11 @@ describe('the rows the gazette prints but a project cannot always reach', () => 
 
   // Everywhere else the narrowest band offers base FAR and nothing to buy.
   it('offers nothing purchasable on the narrowest band for larger uses', () => {
-    const noBuy = PURCHASABLE_FAR_ROWS.filter((r) => r.bands[0].purchasable === 'not available');
+    const noBuy = PURCHASABLE_FAR_ROWS.filter(
+      (r) => r.bands[0].purchasable === 'not available'
+        // Where a use has two base FARs, only the one covering the narrowest band can be
+        // compared against it — Clause 7.1.5 prints 1.50 for ≤12 m and 2.50 above.
+        && baseFarApplies(r, r.bands[0]));
     expect(noBuy.length).toBeGreaterThanOrEqual(7);
     for (const r of noBuy) {
       if (r.bands[0].maxFar === 'not available') continue;
@@ -249,12 +286,14 @@ describe.skipIf(!existsSync(DERIVED))('the loaded rows match the full extraction
 
   it('extracted cleanly, with only the known gazette defect failing', () => {
     expect(extracted.warnings).toHaveLength(0);
+    // One defect can span several bands, so failures are matched to defects rather than
+    // counted against them.
     const failed = extracted.checks.filter((c: { holds: boolean }) => !c.holds);
-    expect(failed).toHaveLength(GAZETTE_ARITHMETIC_DEFECTS.length);
+    expect(failed.length).toBeGreaterThanOrEqual(GAZETTE_ARITHMETIC_DEFECTS.length);
     for (const f of failed) {
       expect(GAZETTE_ARITHMETIC_DEFECTS.some(
         (d) => d.gazettePage === f.gazettePage && d.useType === f.useType),
-        `unexplained arithmetic failure: ${f.gazettePage} ${f.useType} ${f.band}`).toBe(true);
+        `unexplained arithmetic failure: p.${f.gazettePage} ${f.useType} ${f.band}`).toBe(true);
     }
   });
 

@@ -90,7 +90,7 @@
    ]
   },
   {
-   "id": "ch04-p82-group-housing-built-up-area-built_up-18m",
+   "id": "ch04-p82-group-housing-built-up-area-built_up-lt18m",
    "chapter": "04",
    "gazettePage": 82,
    "useType": "Group Housing (Built-up Area)",
@@ -133,7 +133,7 @@
    ]
   },
   {
-   "id": "ch04-p82-group-housing-built-up-area-built_up-18m",
+   "id": "ch04-p82-group-housing-built-up-area-built_up-ge18m",
    "chapter": "04",
    "gazettePage": 82,
    "useType": "Group Housing (Built-up Area)",
@@ -348,7 +348,7 @@
    ]
   },
   {
-   "id": "ch05-p86-comm-units-100-sqm-built_up",
+   "id": "ch05-p86-comm-units-gt100-sqm-built_up",
    "chapter": "05",
    "gazettePage": 86,
    "useType": "Comm. Units >100 sqm",
@@ -477,7 +477,7 @@
    ]
   },
   {
-   "id": "ch05-p86-commercial-units-100-sqm-non_built_up",
+   "id": "ch05-p86-commercial-units-gt100-sqm-non_built_up",
    "chapter": "05",
    "gazettePage": 86,
    "useType": "Commercial Units* >100 sqm",
@@ -848,7 +848,7 @@
    ]
   },
   {
-   "id": "ch06-p95-hospitals-50-beds-built_up",
+   "id": "ch06-p95-hospitals-gt-50-beds-built_up",
    "chapter": "06",
    "gazettePage": 95,
    "useType": "Hospitals > 50 beds",
@@ -1023,7 +1023,7 @@
    ]
   },
   {
-   "id": "ch06-p95-hospitals-50-beds-non_built_up",
+   "id": "ch06-p95-hospitals-gt-50-beds-non_built_up",
    "chapter": "06",
    "gazettePage": 95,
    "useType": "Hospitals > 50 beds",
@@ -1434,6 +1434,213 @@
      "overMoreThan": 45.0,
      "upToAndIncluding": null,
      "purchasable": 3.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch07-p100-auditorium-or-a-convention-centre-non-built-up-area-non_built_up",
+   "chapter": "07",
+   "gazettePage": 100,
+   "useType": "Auditorium or a Convention Centre (Non-built-up area)",
+   "areaType": "non_built_up",
+   "baseFar": 3.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "=>18 -24m",
+     "overMoreThan": 18.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 1.5,
+     "maxFar": 6.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 3.0,
+     "premiumPurchasable": 4.5,
+     "maxFar": 10.5
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 3.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch07-p101-industrial-buildings-None-le12m",
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "Industrial Buildings",
+   "areaType": null,
+   "baseFar": 1.5,
+   "baseFarAppliesWhen": "\u226412m",
+   "bands": [
+    {
+     "label": "Upto 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 1.5
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.25,
+     "premiumPurchasable": 1.25,
+     "maxFar": 5.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.5,
+     "premiumPurchasable": 3.75,
+     "maxFar": 8.75
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch07-p101-industrial-buildings-None-gt12m",
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "Industrial Buildings",
+   "areaType": null,
+   "baseFar": 2.5,
+   "baseFarAppliesWhen": ">12m",
+   "bands": [
+    {
+     "label": "Upto 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 1.5
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.25,
+     "premiumPurchasable": 1.25,
+     "maxFar": 5.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.5,
+     "premiumPurchasable": 3.75,
+     "maxFar": 8.75
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch07-p101-msme-units-None",
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "MSME units",
+   "areaType": null,
+   "baseFar": 3.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 3.0
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 1.5,
+     "maxFar": 6.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 3.0,
+     "premiumPurchasable": 4.5,
+     "maxFar": 10.5
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 3.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch07-p102-flatted-factories-data-centres-None",
+   "chapter": "07",
+   "gazettePage": 102,
+   "useType": "Flatted Factories, Data Centres",
+   "areaType": null,
+   "baseFar": 3.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": "not available"
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.5,
+     "premiumPurchasable": 0.5,
+     "maxFar": 2.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.5,
+     "maxFar": 3.5
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.0,
      "premiumPurchasable": "unrestricted",
      "maxFar": "unrestricted"
     }
