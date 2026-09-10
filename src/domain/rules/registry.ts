@@ -139,8 +139,8 @@ export const RULES: RuleSet = {
 
   'far.purchasable-commercial': {
     id: 'far.purchasable-commercial',
-    question: 'How much of a commercial building’s floor area is base, how much is purchasable, and how much is premium?',
-    clause: 'Clause 5.2.5 (gazette page 86)',
+    question: 'How much of a building’s floor area is base, how much is purchasable, and how much is premium?',
+    clause: 'Clauses 4.2.8, 4.4, 5.1.4, 5.2.5, 5.3.5 and 5.4.4 — seven printed tables',
     confidence: 'gazette',
     derivedFrom: ['occupancy', 'roadWidth', 'areaType', 'plotArea'],
     checked: '2026-09-10',
@@ -151,8 +151,8 @@ export const RULES: RuleSet = {
     challenge: {
       id: 'V-014',
       summary:
-        'Chapters 3 and 5 print different maximums for the same commercial units: 5.0 against 5.25 built-up above 24 m, and 3.5/6.0 against 3.6/6.1 in a new layout. Chapter 5 decomposes exactly into its own components and Chapter 3 does not, which suggests Chapter 3 is a rounded summary — but nothing subordinates either chapter, so the engine keeps Chapter 3\'s lower ceiling.',
-      maxDivergence: '0.25 FAR',
+        'Six cells disagree between Chapter 3 and the per-occupancy breakdowns, across group housing, commercial units, shopping malls and multiplexes. The breakdown figure decomposes exactly into its own published components in every case and Chapter 3\'s does not, which suggests Chapter 3 is a rounded summary — but nothing subordinates either chapter, so the engine keeps Chapter 3\'s lower ceiling. A further five bands are printed in the breakdowns and absent from Chapter 3.',
+      maxDivergence: '1.5 FAR, on a non-built-up shopping mall or multiplex above a 24 m road',
     },
   },
 

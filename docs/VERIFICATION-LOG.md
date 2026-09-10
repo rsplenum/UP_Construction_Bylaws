@@ -432,7 +432,61 @@ coordinate, and the identity MFAR = BFAR + PFAR + PPFAR then closes on **all 72 
 checks across all seven such tables** in the chapters read so far. Three cells round:
 1.75 + 0.9 + 0.9 = 3.55, printed as 3.6.
 
-### V-015 — The same table exists for residential, and is not yet in the engine
+### V-015 — All seven printed BFAR/PFAR/PPFAR/MFAR tables are now loaded — RESOLVED
+Eighteen rows across seven tables: group housing (4.2.8), affordable housing (4.4),
+bazaar street (5.1.4), commercial units and malls (5.2.5), hotels in both area types
+(5.3.5) and cinemas (5.4.4). The identity **MFAR = BFAR + PFAR + PPFAR** holds on all
+**72 band checks**, which is what establishes that each table's fourteen columns were
+mapped correctly.
+
+The rows are **imported, not transcribed**: `tools/extract-purchasable-far.py` writes
+`src/domain/data/purchasable-far.json` and the domain reads it, so a typo cannot disagree
+with the gazette quietly. Eleven such tables exist in the full document; the remaining
+four are in chapters 6 to 9.
+
+Three structural features, each of which corrupts the reading if missed:
+
+- **Clause 4.4 bands on 18 m**, not the 12 m every other table uses, and prints **two base
+  FARs for one use** — 2.00 below an 18 m road, 2.25 at or above — against one shared set
+  of band columns. Pairing the wrong base with a band fails the identity by exactly 2.0,
+  which is how it was noticed rather than assumed. `baseFarApplies()` holds that rule.
+- **Clause 5.4.4 prints no maximum at all** on the narrowest band for cinemas. That is a
+  prohibition, not a gap: a cinema is not permitted below a 12 m road.
+- Everywhere else the narrowest band offers **base FAR and nothing to buy** — `MFAR = BFAR`
+  with PFAR and PPFAR marked NA.
+
+### V-016 — Six cells conflict between Chapter 3 and the per-occupancy breakdowns
+| Use | Area | Band | Chapter 3 | Breakdown |
+|---|---|---|---|---|
+| Group housing | built-up | 9–12 m | 2.0 | **2.1** (4.2.8) |
+| Commercial units ≤100 m² | built-up | >24–45 m | 5.0 | **5.25** (5.2.5) |
+| Commercial units ≤100 m² | new layout | >12–24 m | 3.5 | **3.6** (5.2.5) |
+| Commercial units ≤100 m² | new layout | >24–45 m | 6.0 | **6.1** (5.2.5) |
+| Shopping malls | new layout | >24–45 m | 9.0 | **10.5** (5.2.5) |
+| Multiplex | new layout | >24–45 m | 9.0 | **10.5** (5.4.4) |
+
+This **corrects an earlier claim in V-014** that shopping malls agreed in both chapters.
+They agree in a built-up area (7.0 both ways) and disagree by 1.5 FAR in a new layout.
+
+In every case the breakdown figure decomposes exactly into its own published components —
+3.0 + 3.0 + 4.5 = 10.5 — and Chapter 3's does not, which suggests Chapter 3 is a rounded
+summary. That is an argument, not a resolution. Standing rule 4 applies and the engine
+keeps **Chapter 3's lower ceiling**.
+
+Two apparent conflicts turned out not to be. Chapter 5 splits commercial units at 100 m²
+where Chapter 3 has a single row; the ≤100 m² row matches Chapter 3 exactly and the
+>100 m² row is a distinction Chapter 3 simply does not draw.
+
+### V-017 — Five bands the breakdowns state and Chapter 3 omits
+Silence is not prohibition where another clause makes the band reachable. Clause 4.2.3
+permits group housing on a 12 m road in a new layout and Clause 5.3.3 permits a hotel of
+up to 20 rooms on a 9 m road, so Chapter 3 having no row there is a gap, not a bar —
+refusing those would reject a lawful project. Recorded in `CHAPTER_3_GAPS`, each with the
+clause that makes it reachable. Two of the five (shopping malls below 12 m) are
+unreachable in practice because Clause 5.2.3 sets a mall's minimum road at 18 m, and are
+marked as such.
+
+### (superseded by V-015 above)
 `tools/extract-purchasable-far.py` finds **seven** BFAR/PFAR/PPFAR/MFAR tables in chapters
 4 and 5 alone — group housing, affordable housing, bazaar street, commercial units,
 hotels, cinemas. Only the commercial one is transcribed into the domain so far. Two

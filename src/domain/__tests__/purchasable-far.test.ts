@@ -1,185 +1,227 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { COMMERCIAL_MAX_FAR } from '../far';
+import { COMMERCIAL_MAX_FAR, GROUP_HOUSING_MAX_FAR } from '../far';
 import {
-  CHAPTER_3_5_MAX_FAR_CONFLICTS,
-  COMMERCIAL_FAR_BREAKDOWN,
+  CHAPTER_3_GAPS,
+  baseFarApplies,
+  CROSS_CHAPTER_MAX_FAR_CONFLICTS,
+  PURCHASABLE_FAR_ROWS,
+  asCeiling,
   bandForRoad,
-  commercialFarRow,
-  type FarValue,
+  purchasableRowFor,
+  type PurchasableRow,
 } from '../purchasable-far';
 
-const num = (v: FarValue): number | null => (typeof v === 'number' ? v : null);
+const n = (v: unknown): number | null => (typeof v === 'number' ? v : null);
 
-describe('Clause 5.2.5 — MFAR = BFAR + PFAR + PPFAR', () => {
+describe('every printed BFAR/PFAR/PPFAR/MFAR table is loaded', () => {
+  it('has all eighteen rows from all seven tables', () => {
+    expect(PURCHASABLE_FAR_ROWS).toHaveLength(18);
+    const pages = [...new Set(PURCHASABLE_FAR_ROWS.map((r) => r.gazettePage))].sort((a, b) => a - b);
+    expect(pages).toEqual([78, 82, 84, 86, 87, 88, 90]);
+  });
+
+  it('gives every row four road bands', () => {
+    for (const r of PURCHASABLE_FAR_ROWS) {
+      expect(r.bands, r.id).toHaveLength(4);
+    }
+  });
+
+  it('keeps the bands contiguous and ascending', () => {
+    for (const r of PURCHASABLE_FAR_ROWS) {
+      let previous = 0;
+      for (const b of r.bands) {
+        expect(b.overMoreThan, `${r.id} ${b.label}`).toBe(previous);
+        previous = b.upToAndIncluding ?? Infinity;
+      }
+      expect(r.bands.at(-1)!.upToAndIncluding, r.id).toBeNull();
+    }
+  });
+
   /**
-   * The table has fourteen columns and only its header row says which is which, so this
-   * identity is what proves the columns were read correctly rather than merely plausibly.
-   * It holds on every band of every row. Two cells round: 1.75 + 0.9 + 0.9 = 3.55,
-   * printed as 3.6.
+   * MFAR = BFAR + PFAR + PPFAR. Checked at extraction time across all 72 bands; repeated
+   * here so a hand edit to the generated data cannot slip past. Three cells round —
+   * 1.75 + 0.9 + 0.9 = 3.55, printed 3.6 — so the tolerance is that rounding step plus
+   * room for binary floating point.
    */
-  it.each(COMMERCIAL_FAR_BREAKDOWN.map((r) => [`${r.areaType} · ${r.useType}`, r] as const))(
-    '%s', (_label, r) => {
-      for (const band of r.bands) {
-        const max = num(band.maxFarChapter5);
-        if (max === null) {
-          // An unrestricted maximum needs an unrestricted component to get there.
-          expect(band.premiumPurchasable).toBe('unrestricted');
-          continue;
-        }
-        const p = num(band.purchasable) ?? 0;
-        const pp = num(band.premiumPurchasable) ?? 0;
-        const sum = r.baseFar + p + pp;
-        // The gazette rounds in exactly two cells: 1.75 + 0.9 + 0.9 = 3.55, printed 3.6.
-        // The tolerance is that rounding step, plus room for binary floating point —
-        // 3.6 - 3.55 evaluates to 0.050000000000000266. Naming it keeps the gazette's
-        // rounding visible rather than hiding it behind a loose precision argument.
-        expect(Math.abs(sum - max), `${r.useType} ${r.areaType} ${band.label}: ${sum} vs ${max}`)
+  it('satisfies MFAR = BFAR + PFAR + PPFAR on every band', () => {
+    for (const r of PURCHASABLE_FAR_ROWS) {
+      if (r.baseFar === null) continue;
+      for (const b of r.bands) {
+        const max = n(b.maxFar);
+        // Clause 4.4's rows each cover only part of the road range; the other row's base
+        // FAR governs the rest, so summing across the whole row is not what it states.
+        if (max === null || !baseFarApplies(r, b)) continue;
+        const sum = r.baseFar + (n(b.purchasable) ?? 0) + (n(b.premiumPurchasable) ?? 0);
+        expect(Math.abs(sum - max), `${r.id} ${b.label}: ${sum} vs ${max}`)
           .toBeLessThanOrEqual(0.05 + 1e-9);
       }
-    },
-  );
-
-  it('rounds in exactly two cells, both of them 3.55 printed as 3.6', () => {
-    const rounded = COMMERCIAL_FAR_BREAKDOWN.flatMap((r) =>
-      r.bands
-        .filter((b) => {
-          const max = num(b.maxFarChapter5);
-          if (max === null) return false;
-          const sum = r.baseFar + (num(b.purchasable) ?? 0) + (num(b.premiumPurchasable) ?? 0);
-          return Math.abs(sum - max) > 1e-9;
-        })
-        .map((b) => `${r.areaType} ${r.useType} ${b.label}`));
-    expect(rounded).toHaveLength(2);
-    expect(rounded.every((s) => s.includes('>12 – 24m'))).toBe(true);
-  });
-
-  it('offers nothing to buy on the narrowest band except for the smallest units', () => {
-    // "NA" on the Up to 12m band for everything above 100 m² and for malls.
-    const big = COMMERCIAL_FAR_BREAKDOWN.filter((r) => r.useType !== 'Commercial units up to 100 m²');
-    for (const r of big) {
-      expect(r.bands[0].purchasable).toBe('not available');
-      expect(r.bands[0].maxFarChapter5).toBe(r.baseFar);
     }
   });
 });
 
-describe('picking the right row and band', () => {
-  it('routes by plot size across the 100 m² line', () => {
-    const small = commercialFarRow({ occupancy: 'com_shop', areaType: 'built_up', plotAreaSqm: 80 });
-    const large = commercialFarRow({ occupancy: 'com_shop', areaType: 'built_up', plotAreaSqm: 250 });
-    expect(small?.useType).toBe('Commercial units up to 100 m²');
-    expect(large?.useType).toBe('Commercial units above 100 m²');
-    // The difference bites only on the narrowest road: 2.1 against 1.5.
-    expect(small?.bands[0].maxFarChapter5).toBe(2.1);
-    expect(large?.bands[0].maxFarChapter5).toBe(1.5);
+describe('the rows the gazette prints but a project cannot always reach', () => {
+  // Clause 5.4.4: a cinema has NO maximum on the narrowest band — not permitted at all.
+  it('gives cinemas no FAR below a 12 m road', () => {
+    const cinemas = PURCHASABLE_FAR_ROWS.filter((r) => r.gazettePage === 90);
+    expect(cinemas).toHaveLength(3);
+    for (const r of cinemas) {
+      expect(r.bands[0].maxFar, r.id).toBe('not available');
+    }
   });
 
-  it('routes malls to their own row whatever the plot size', () => {
-    const r = commercialFarRow({ occupancy: 'com_mall', areaType: 'non_built_up', plotAreaSqm: 5_000 });
-    expect(r?.useType).toBe('Shopping malls');
-    expect(r?.baseFar).toBe(3.0);
+  // Everywhere else the narrowest band offers base FAR and nothing to buy.
+  it('offers nothing purchasable on the narrowest band for larger uses', () => {
+    const noBuy = PURCHASABLE_FAR_ROWS.filter((r) => r.bands[0].purchasable === 'not available');
+    expect(noBuy.length).toBeGreaterThanOrEqual(7);
+    for (const r of noBuy) {
+      if (r.bands[0].maxFar === 'not available') continue;
+      expect(r.bands[0].maxFar, r.id).toBe(r.baseFar);
+    }
+  });
+});
+
+describe('Clause 4.4 — two base FARs for one use', () => {
+  const affordable = PURCHASABLE_FAR_ROWS.filter((r) => r.gazettePage === 82);
+
+  it('prints 2.00 below an 18 m road and 2.25 at or above it', () => {
+    const builtUp = affordable.filter((r) => r.areaType === 'built_up');
+    expect(builtUp).toHaveLength(2);
+    expect(builtUp.map((r) => r.baseFar).sort()).toEqual([2.0, 2.25]);
+    expect(builtUp.every((r) => r.baseFarAppliesWhen)).toBe(true);
   });
 
-  it('has no row for a use this chapter does not cover', () => {
-    expect(commercialFarRow({ occupancy: 'inst_health', areaType: 'built_up', plotAreaSqm: 900 }))
-      .toBeUndefined();
+  it('picks the base FAR that matches the road', () => {
+    const narrow = purchasableRowFor({
+      occupancy: 'res_group_housing', areaType: 'built_up', plotAreaSqm: 5_000,
+      isAffordableHousingScheme: true, roadWidthM: 12,
+    });
+    const wide = purchasableRowFor({
+      occupancy: 'res_group_housing', areaType: 'built_up', plotAreaSqm: 5_000,
+      isAffordableHousingScheme: true, roadWidthM: 24,
+    });
+    expect(narrow?.baseFar).toBe(2.0);
+    expect(wide?.baseFar).toBe(2.25);
   });
 
-  it.each([[10, 'Up to 12m'], [12, 'Up to 12m'], [12.1, '>12 – 24m'], [45, '>24 – 45m'], [60, '>45m']])(
-    'a %s m road falls in %s', (road, label) => {
-      const r = commercialFarRow({ occupancy: 'com_shop', areaType: 'built_up', plotAreaSqm: 80 })!;
-      expect(bandForRoad(r, road as number)?.label).toBe(label);
+  it('applies each base FAR only over its own part of the road range', () => {
+    const [low, high] = affordable
+      .filter((r) => r.areaType === 'built_up')
+      .sort((a, b) => (a.baseFar ?? 0) - (b.baseFar ?? 0));
+    expect(baseFarApplies(low, low.bands[0])).toBe(true);    // 2.00 governs below 18 m
+    expect(baseFarApplies(low, low.bands[1])).toBe(false);
+    expect(baseFarApplies(high, high.bands[0])).toBe(false); // 2.25 governs from 18 m up
+    expect(baseFarApplies(high, high.bands[1])).toBe(true);
+  });
+
+  it('bands on 18 m, where every other table bands on 12 m', () => {
+    expect(affordable[0].bands[0].upToAndIncluding).toBe(18);
+    const ordinary = PURCHASABLE_FAR_ROWS.find((r) => r.gazettePage === 78)!;
+    expect(ordinary.bands[0].upToAndIncluding).toBe(12);
+  });
+});
+
+describe('routing an occupancy to its printed row', () => {
+  const at = (occupancy: string, plotAreaSqm = 500, areaType: 'built_up' | 'non_built_up' = 'built_up') =>
+    purchasableRowFor({ occupancy, areaType, plotAreaSqm });
+
+  it.each([
+    ['res_group_housing', 78, 'Group Housing'],
+    ['com_bazaar', 84, 'Bazaar Street'],
+    ['com_hotel', 87, 'Hotels'],
+    ['com_mall', 86, 'Shopping malls'],
+  ])('%s reads gazette page %s', (occupancy, page, useType) => {
+    const r = at(occupancy);
+    expect(r?.gazettePage).toBe(page);
+    expect(r?.useType).toContain(useType);
+  });
+
+  it('splits commercial units at 100 m², which Chapter 3 does not', () => {
+    expect(at('com_shop', 80)?.useType).toContain('up to100');
+    expect(at('com_shop', 250)?.useType).toContain('>100');
+    // The split only bites on the narrowest road: 2.1 against 1.5.
+    expect(at('com_shop', 80)?.bands[0].maxFar).toBe(2.1);
+    expect(at('com_shop', 250)?.bands[0].maxFar).toBe(1.5);
+  });
+
+  it('finds the non-built-up hotel row on its own page', () => {
+    expect(at('com_hotel', 800, 'non_built_up')?.gazettePage).toBe(88);
+    expect(at('com_hotel', 800, 'non_built_up')?.baseFar).toBe(2.5);
+  });
+
+  it('has no row for a use these chapters do not cover', () => {
+    expect(at('inst_health')).toBeUndefined();
+    expect(at('res_single')).toBeUndefined();
+  });
+
+  it.each([[10, 0], [12, 0], [12.1, 1], [45, 2], [60, 3]])(
+    'a %s m road falls in band %s', (road, index) => {
+      const r = at('com_shop', 80)!;
+      expect(bandForRoad(r, road as number)).toBe(r.bands[index as number]);
     },
   );
 });
 
-describe('V-014 — chapters 3 and 5 disagree, and the engine keeps the lower ceiling', () => {
-  it('records all three conflicting cells', () => {
-    expect(CHAPTER_3_5_MAX_FAR_CONFLICTS).toHaveLength(3);
-    for (const c of CHAPTER_3_5_MAX_FAR_CONFLICTS) {
-      expect(c.chapter5).toBeGreaterThan(c.chapter3);
+describe('where the chapters disagree, the engine keeps the lower ceiling', () => {
+  it('records all six conflicting cells', () => {
+    expect(CROSS_CHAPTER_MAX_FAR_CONFLICTS).toHaveLength(6);
+    for (const c of CROSS_CHAPTER_MAX_FAR_CONFLICTS) {
+      expect(c.breakdown, `${c.useType} ${c.band}`).toBeGreaterThan(c.chapter3);
     }
   });
 
-  it('keeps Chapter 3’s figure, which is the stricter of the two', () => {
-    const ceilings = (t: readonly { maxFar: number }[]) => t.map((b) => b.maxFar).filter((f) => f !== 0);
-    // built-up >24–45 m: 5.0, not 5.25
+  it('keeps Chapter 3’s commercial ceilings, not Chapter 5’s', () => {
+    const ceilings = (t: readonly { maxFar: number }[]) =>
+      t.map((b) => b.maxFar).filter((f) => f !== 0);
     expect(ceilings(COMMERCIAL_MAX_FAR.built_up)).toContain(5.0);
     expect(ceilings(COMMERCIAL_MAX_FAR.built_up)).not.toContain(5.25);
-    // non-built-up: 3.5 and 6.0, not 3.6 and 6.1
     expect(ceilings(COMMERCIAL_MAX_FAR.non_built_up)).toEqual([2.45, 3.5, 6.0, Infinity]);
   });
 
-  it('shopping malls agree between the two chapters', () => {
-    const mall = COMMERCIAL_FAR_BREAKDOWN.find(
-      (r) => r.useType === 'Shopping malls' && r.areaType === 'built_up')!;
-    expect(mall.bands[2].maxFarChapter5).toBe(7.0);   // Chapter 3 row 5(a) also says 7.0
+  it('keeps Chapter 3’s group-housing ceiling of 2.0 on a 9–12 m road', () => {
+    const band = GROUP_HOUSING_MAX_FAR.built_up.find((b) => b.upToAndIncluding === 12)!;
+    expect(band.maxFar).toBe(2.0);
+    const printed = PURCHASABLE_FAR_ROWS.find(
+      (r) => r.gazettePage === 78 && r.areaType === 'built_up')!;
+    expect(printed.bands[0].maxFar).toBe(2.1);   // Clause 4.2.8 says 2.1
+  });
+
+  it('names a clause for every gap Chapter 3 leaves', () => {
+    expect(CHAPTER_3_GAPS.length).toBeGreaterThanOrEqual(5);
+    for (const g of CHAPTER_3_GAPS) {
+      expect(g.reachableBecause, `${g.useType} ${g.band}`).toMatch(/Clause \d/);
+    }
   });
 });
 
 const DERIVED = resolve(process.cwd(), 'docs/source/derived/purchasable-far.json');
 
-describe.skipIf(!existsSync(DERIVED))('the transcription matches the extraction', () => {
+describe.skipIf(!existsSync(DERIVED))('the loaded rows match the full extraction', () => {
   const extracted = JSON.parse(readFileSync(DERIVED, 'utf-8'));
 
-  /**
-   * Bands are compared by POSITION, not by label. The extractor takes each label from the
-   * gazette's own heading, which wraps in places, so the text varies cosmetically between
-   * tables (">12 – 24m" against ">12 -24m"). What the extraction guarantees is the order
-   * and the count, because each band is anchored to the x of its own PFAR column.
-   */
-  const bandKeysOf = (values: Record<string, unknown>) =>
-    Object.keys(values).filter((k) => k.endsWith('|MFAR')).map((k) => k.replace('|MFAR', ''));
-
-  it('passed every arithmetic check across all seven tables', () => {
+  it('passed every arithmetic check with no warnings', () => {
     expect(extracted.checks.filter((c: { holds: boolean }) => !c.holds)).toHaveLength(0);
     expect(extracted.warnings).toHaveLength(0);
-    expect(extracted.tableCount).toBeGreaterThanOrEqual(7);
-    // Four bands for every row, so nothing was dropped on the way through.
     expect(extracted.checks).toHaveLength(extracted.rows.length * 4);
   });
 
-  const page86 = () => extracted.rows.filter(
-    (r: { gazettePage: number }) => r.gazettePage === 86);
-
-  it('has the same six commercial rows', () => {
-    expect(page86()).toHaveLength(COMMERCIAL_FAR_BREAKDOWN.length);
-  });
-
-  it('agrees cell for cell with what is hand-typed above', () => {
-    for (const src of page86()) {
-      const useType = src.useType.includes('malls')
-        ? 'Shopping malls'
-        : src.useType.includes('>100')
-          ? 'Commercial units above 100 m²'
-          : 'Commercial units up to 100 m²';
-      const mine = COMMERCIAL_FAR_BREAKDOWN.find(
-        (r) => r.useType === useType && r.areaType === src.areaType)!;
-      expect(mine, `${src.areaType} ${useType}`).toBeDefined();
-      expect(mine.baseFar).toBe(src.values.BFAR);
-
-      const bandKeys = bandKeysOf(src.values);
-      expect(bandKeys, `${useType}: band count`).toHaveLength(mine.bands.length);
-
-      mine.bands.forEach((band, i) => {
-        const prefix = bandKeys[i];
-        expect(src.values[`${prefix}|MFAR`], `${useType} ${band.label} MFAR`)
-          .toEqual(band.maxFarChapter5);
-        expect(src.values[`${prefix}|PFAR`], `${useType} ${band.label} PFAR`)
-          .toEqual(band.purchasable);
-        expect(src.values[`${prefix}|PPFAR`], `${useType} ${band.label} PPFAR`)
-          .toEqual(band.premiumPurchasable);
-      });
+  it('carries the same base FAR for every row', () => {
+    for (const src of extracted.rows) {
+      const mine = PURCHASABLE_FAR_ROWS.filter(
+        (r: PurchasableRow) => r.gazettePage === src.gazettePage
+          && r.areaType === src.areaType && r.useType === src.useType);
+      expect(mine.length, `${src.gazettePage} ${src.useType}`).toBeGreaterThan(0);
+      expect(mine.map((r) => r.baseFar)).toContain(src.values.BFAR);
     }
   });
+});
 
-  it('found the same table in chapter 4 for group housing and affordable housing', () => {
-    const ch4 = extracted.rows.filter((r: { chapter: string }) => r.chapter === '04');
-    expect(ch4.length).toBeGreaterThan(0);
-    // Clause 4.4 prints two base FARs for one use, split at an 18 m road.
-    const qualified = ch4.filter((r: { baseFarQualifier?: string }) => r.baseFarQualifier);
-    expect(qualified.length).toBeGreaterThan(0);
+describe('asCeiling', () => {
+  it('maps the gazette’s three kinds of cell', () => {
+    expect(asCeiling(5.25)).toBe(5.25);
+    expect(asCeiling('unrestricted')).toBe(Infinity);
+    expect(asCeiling('not available')).toBeNull();
+    expect(asCeiling(null)).toBeNull();
   });
 });

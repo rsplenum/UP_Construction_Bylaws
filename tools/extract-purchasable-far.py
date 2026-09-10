@@ -37,6 +37,7 @@ Usage:
 """
 
 import glob
+import os
 import json
 import re
 import sys
@@ -70,6 +71,62 @@ ROAD_HEADER = re.compile(r'^Road\s*Width\s*\(?\s*(.*)$', re.I)
 # "2.00 (<18m)" -> 2.00, qualified by "<18m"
 QUALIFIED = re.compile(r'^([\d.]+)\s*\((.+)\)$')
 FAR_NAMES = ('BFAR', 'PFAR', 'PPFAR', 'MFAR')
+
+# Where the slim, typed copy the engine imports is written. The full extraction stays in
+# docs/source/derived for the record; the engine reads only what it needs, and reads it
+# rather than having it re-typed, so the two cannot drift.
+DOMAIN_JSON = 'src/domain/data/purchasable-far.json'
+
+BOUNDS = re.compile(r'\d+(?:\.\d+)?')
+
+
+def band_bounds(label):
+    """Numeric metres for a band label: '>12 -24m' -> (12, 24), 'Upto 12m' -> (0, 12)."""
+    flat = re.sub(r'\s+', '', label or '')
+    nums = [float(x) for x in BOUNDS.findall(flat)]
+    if not nums:
+        return 0.0, None
+    low = flat.lower()
+    if low.startswith(('upto', '<')):
+        return 0.0, nums[0]
+    if len(nums) >= 2:
+        return nums[0], nums[1]
+    if flat[0] in '>≥=':
+        return nums[0], None
+    return 0.0, nums[0]
+
+
+def slug(text):
+    return re.sub(r'[^a-z0-9]+', '-', (text or '').lower()).strip('-')
+
+
+def domain_rows(rows):
+    """The engine's view: numeric band bounds, stable ids, nothing else."""
+    out = []
+    for r in rows:
+        bands = []
+        for label in r['roadBands']:
+            lo, hi = band_bounds(label)
+            bands.append({
+                'label': label,
+                'overMoreThan': lo,
+                'upToAndIncluding': hi,
+                'purchasable': r['values'].get(f'{label}|PFAR'),
+                'premiumPurchasable': r['values'].get(f'{label}|PPFAR'),
+                'maxFar': r['values'].get(f'{label}|MFAR'),
+            })
+        out.append({
+            'id': f"ch{r['chapter']}-p{r['gazettePage']}-{slug(r['useType'])}-{r['areaType']}"
+                  + (f"-{slug(r['baseFarQualifier'])}" if r.get('baseFarQualifier') else ''),
+            'chapter': r['chapter'],
+            'gazettePage': r['gazettePage'],
+            'useType': r['useType'],
+            'areaType': r['areaType'],
+            'baseFar': r['values'].get('BFAR'),
+            'baseFarAppliesWhen': r.get('baseFarQualifier'),
+            'bands': bands,
+        })
+    return out
 
 
 def area_from_label(label):
@@ -311,6 +368,16 @@ def main():
               f"{c['useType']} {c['band']}: {c['working']}", file=sys.stderr)
     for w in warnings:
         print(f'   WARNING {w}', file=sys.stderr)
+
+    slim = domain_rows(all_rows)
+    os.makedirs(os.path.dirname(DOMAIN_JSON), exist_ok=True)
+    with open(DOMAIN_JSON, 'w') as f:
+        json.dump({'identity': 'MFAR = BFAR + PFAR + PPFAR',
+                   'clauses': '4.2.8, 4.4, 5.1.4, 5.2.5, 5.3.5, 5.4.4',
+                   'generatedBy': 'tools/extract-purchasable-far.py',
+                   'rows': slim}, f, indent=1)
+        f.write('\n')
+    print(f'wrote {DOMAIN_JSON} ({len(slim)} rows)', file=sys.stderr)
 
     json.dump({'identity': 'MFAR = BFAR + PFAR + PPFAR',
                'roadBands': ROAD_BANDS, 'tableCount': tables,

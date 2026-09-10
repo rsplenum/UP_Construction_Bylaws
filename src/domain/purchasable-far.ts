@@ -1,25 +1,24 @@
 /**
- * Purchasable and premium purchasable FAR for commercial buildings — Clause 5.2.5,
- * gazette page 86.
- *
- * Chapter 3's matrix gives a base FAR and a maximum FAR, and the engine derives what a
- * project may buy as the gap between them: one lump. Clause 5.2.5 splits that gap the way
- * the byelaws actually price it —
+ * Base, purchasable and premium purchasable FAR — every BFAR/PFAR/PPFAR/MFAR table the
+ * byelaws print, read from the chapter PDFs.
  *
  *     MFAR  =  BFAR  +  PFAR  +  PPFAR
  *              base     purchasable   premium purchasable
  *
- * — and PFAR and PPFAR are bought on different terms under Chapter 9. Collapsing them
- * loses the distinction the charge turns on.
+ * Chapter 3's matrix gives only a base and a maximum, and the engine derives what a
+ * project may buy as the gap between them — one lump. Chapter 9 prices purchasable and
+ * premium purchasable on different terms, so that lump hides the distinction the charge
+ * turns on. These tables give the split.
  *
- * The identity above holds on all 24 band-checks in the table, which is what establishes
- * the column mapping: the table's header row is the only thing that says which of its
- * fourteen columns is which, and the arithmetic closing on every row is the proof that it
- * was read correctly. Two cells round: 1.75 + 0.9 + 0.9 = 3.55, printed as 3.6.
- *
- * Extracted by tools/extract-commercial-far.py into docs/source/derived/commercial-far.json.
+ * The rows are IMPORTED, not transcribed. tools/extract-purchasable-far.py reads them
+ * from the chapter extractions and writes ./data/purchasable-far.json, so there is one
+ * source and no opportunity for a typo to disagree with the gazette quietly. The identity
+ * above is checked on every band of every row at extraction time — 72 checks across
+ * 7 tables, all passing — which is what establishes that the fourteen columns were mapped
+ * correctly in the first place.
  */
 
+import raw from './data/purchasable-far.json';
 import type { AreaType } from './far';
 
 export type FarValue = number | 'unrestricted' | 'not available';
@@ -27,120 +26,174 @@ export type FarValue = number | 'unrestricted' | 'not available';
 export interface PurchasableBand {
   readonly label: string;
   readonly overMoreThan: number;
-  readonly upToAndIncluding: number;
-  readonly purchasable: FarValue;
-  readonly premiumPurchasable: FarValue;
-  /** The maximum this chapter prints. Note V-014: Chapter 3 prints a lower figure. */
-  readonly maxFarChapter5: FarValue;
+  /** null where the band is open-ended. */
+  readonly upToAndIncluding: number | null;
+  readonly purchasable: FarValue | null;
+  readonly premiumPurchasable: FarValue | null;
+  readonly maxFar: FarValue | null;
 }
 
-export interface CommercialFarRow {
+export interface PurchasableRow {
+  readonly id: string;
+  readonly chapter: string;
+  readonly gazettePage: number;
   readonly useType: string;
   readonly areaType: AreaType;
-  readonly baseFar: number;
+  readonly baseFar: number | null;
+  /**
+   * Clause 4.4 prints TWO base FARs for one use — 2.00 below an 18 m road and 2.25 at or
+   * above it — against one shared set of band columns. Where this is set, the row's base
+   * FAR applies only over that part of the road range.
+   */
+  readonly baseFarAppliesWhen: string | null;
   readonly bands: readonly PurchasableBand[];
 }
 
-const BANDS = [
-  { label: 'Up to 12m',  overMoreThan: 0,  upToAndIncluding: 12 },
-  { label: '>12 – 24m',  overMoreThan: 12, upToAndIncluding: 24 },
-  { label: '>24 – 45m',  overMoreThan: 24, upToAndIncluding: 45 },
-  { label: '>45m',       overMoreThan: 45, upToAndIncluding: Infinity },
-] as const;
+export const PURCHASABLE_FAR_ROWS = raw.rows as readonly PurchasableRow[];
 
-const row = (
-  useType: string,
-  areaType: AreaType,
-  baseFar: number,
-  cells: readonly (readonly [FarValue, FarValue, FarValue])[],
-): CommercialFarRow => ({
-  useType,
-  areaType,
-  baseFar,
-  bands: BANDS.map((b, i) => ({
-    ...b,
-    purchasable: cells[i][0],
-    premiumPurchasable: cells[i][1],
-    maxFarChapter5: cells[i][2],
-  })),
-});
+export const isFinite = (v: FarValue | null): v is number => typeof v === 'number';
 
-const UR = 'unrestricted';
-const NA = 'not available';
-
-/** Clause 5.2.5, transcribed row by row. */
-export const COMMERCIAL_FAR_BREAKDOWN: readonly CommercialFarRow[] = [
-  row('Commercial units up to 100 m²', 'built_up', 1.5, [
-    [0.3, 0.3, 2.1], [0.75, 0.75, 3.0], [1.5, 2.25, 5.25], [1.5, UR, UR],
-  ]),
-  row('Commercial units above 100 m²', 'built_up', 1.5, [
-    [NA, NA, 1.5], [0.75, 0.75, 3.0], [1.5, 2.25, 5.25], [1.5, UR, UR],
-  ]),
-  row('Shopping malls', 'built_up', 2.0, [
-    [NA, NA, 2.0], [1.0, 1.0, 4.0], [2.0, 3.0, 7.0], [2.0, UR, UR],
-  ]),
-  row('Commercial units up to 100 m²', 'non_built_up', 1.75, [
-    [0.35, 0.35, 2.45], [0.9, 0.9, 3.6], [1.75, 2.6, 6.1], [1.75, UR, UR],
-  ]),
-  row('Commercial units above 100 m²', 'non_built_up', 1.75, [
-    [NA, NA, 1.75], [0.9, 0.9, 3.6], [1.75, 2.6, 6.1], [1.75, UR, UR],
-  ]),
-  row('Shopping malls', 'non_built_up', 3.0, [
-    [NA, NA, 3.0], [1.5, 1.5, 6.0], [3.0, 4.5, 10.5], [3.0, UR, UR],
-  ]),
-];
+/** Infinity for "unrestricted", null for "not available" or absent. */
+export function asCeiling(v: FarValue | null): number | null {
+  if (v === 'unrestricted') return Infinity;
+  return typeof v === 'number' ? v : null;
+}
 
 /**
- * Which row of Clause 5.2.5 an occupancy reads, where one applies. Only the commercial
- * uses this chapter covers are here; every other occupancy has no published split and
- * keeps a single purchasable figure until Chapter 9 is read.
+ * Does this row's base FAR apply over this band?
+ *
+ * Only Clause 4.4 makes this a real question: it prints two base FARs for one use, 2.00
+ * below an 18 m road and 2.25 at or above it, against one shared set of band columns. So
+ * each row covers only part of the road range, and pairing a base FAR with a band outside
+ * its range gives a number the gazette never states — which is exactly how the split was
+ * noticed, the identity failing by 2.0 until the pairing was corrected.
  */
-export function commercialFarRow(input: {
-  occupancy: string;
-  areaType: AreaType;
-  plotAreaSqm: number;
-}): CommercialFarRow | undefined {
-  const mall = input.occupancy === 'com_mall';
-  const useType = mall
-    ? 'Shopping malls'
-    : input.plotAreaSqm <= 100
-      ? 'Commercial units up to 100 m²'
-      : 'Commercial units above 100 m²';
+export function baseFarApplies(row: PurchasableRow, band: PurchasableBand): boolean {
+  const q = row.baseFarAppliesWhen;
+  if (!q) return true;
+  const threshold = Number(/\d+(?:\.\d+)?/.exec(q)?.[0]);
+  if (!Number.isFinite(threshold)) return true;
+  return q.trimStart().startsWith('<')
+    ? band.overMoreThan < threshold
+    : band.overMoreThan >= threshold;
+}
 
-  if (!mall && !['com_shop', 'com_complex'].includes(input.occupancy)) return undefined;
-
-  return COMMERCIAL_FAR_BREAKDOWN.find(
-    (r) => r.useType === useType && r.areaType === input.areaType,
+export function bandForRoad(row: PurchasableRow, roadWidthM: number): PurchasableBand | undefined {
+  return row.bands.find(
+    (b) => roadWidthM > b.overMoreThan
+      && (b.upToAndIncluding === null || roadWidthM <= b.upToAndIncluding),
   );
 }
 
-export function bandForRoad(row: CommercialFarRow, roadWidthM: number): PurchasableBand | undefined {
-  return row.bands.find((b) => roadWidthM > b.overMoreThan && roadWidthM <= b.upToAndIncluding);
+/**
+ * Which printed row an occupancy reads.
+ *
+ * Several of these are finer-grained than the occupancy list: Clause 5.2.5 splits
+ * commercial units at 100 m² where Chapter 3 has one row, and Clause 5.4.4 separates a
+ * multiplex from a single-screen cinema. Where the gazette makes a distinction the
+ * occupancy list does not, the plot area decides.
+ */
+export function purchasableRowFor(input: {
+  occupancy: string;
+  areaType: AreaType;
+  plotAreaSqm: number;
+  /** Clause 4.4 schemes read a different table from ordinary group housing. */
+  isAffordableHousingScheme?: boolean;
+  roadWidthM?: number;
+}): PurchasableRow | undefined {
+  const { occupancy, areaType, plotAreaSqm } = input;
+
+  const find = (page: number, match: (useType: string) => boolean) =>
+    PURCHASABLE_FAR_ROWS.find(
+      (r) => r.gazettePage === page && r.areaType === areaType && match(r.useType));
+
+  if (occupancy === 'res_group_housing') {
+    if (!input.isAffordableHousingScheme) return find(78, (u) => u.includes('Group Housing'));
+    // Clause 4.4 prints two base FARs split at an 18 m road; pick the one that applies.
+    const candidates = PURCHASABLE_FAR_ROWS.filter(
+      (r) => r.gazettePage === 82 && r.areaType === areaType);
+    if (candidates.length <= 1) return candidates[0];
+    const wide = (input.roadWidthM ?? 0) >= 18;
+    return candidates.find((r) => (r.baseFarAppliesWhen ?? '').includes(wide ? '≥' : '<'))
+      ?? candidates[0];
+  }
+
+  if (occupancy === 'com_bazaar') return find(84, (u) => u.includes('Bazaar'));
+  if (occupancy === 'com_hotel') return find(87, (u) => u.includes('Hotels'))
+    ?? find(88, (u) => u.includes('Hotels'));
+
+  if (occupancy === 'com_mall') {
+    // Clause 5.4.4 splits the cinema table into multiplex and the smaller formats; a mall
+    // reads Clause 5.2.5's own mall row.
+    return find(86, (u) => u.includes('Shopping malls'));
+  }
+
+  if (occupancy === 'com_shop' || occupancy === 'com_complex') {
+    const small = plotAreaSqm <= 100;
+    return find(86, (u) => u.includes('Units') && (small ? !u.includes('>100') : u.includes('>100')));
+  }
+
+  return undefined;
 }
 
 /**
- * V-014 — Chapters 3 and 5 print different maximums for the same commercial units.
+ * Where two chapters print a different maximum for the same use, area type and road.
  *
- *   built-up, >24–45 m       Chapter 3: 5.0    Chapter 5: 5.25
- *   non-built-up, >12–24 m   Chapter 3: 3.5    Chapter 5: 3.6
- *   non-built-up, >24–45 m   Chapter 3: 6.0    Chapter 5: 6.1
+ * Every one of these was found by comparing the Chapter 3 matrix against the Chapter 4
+ * and 5 breakdowns band by band, and in every case the breakdown's figure is the one that
+ * decomposes exactly into its own published components while Chapter 3's does not — which
+ * suggests Chapter 3 is a rounded summary. That is an argument, not a resolution: nothing
+ * in either chapter subordinates the other.
  *
- * Shopping malls agree in both chapters. The Chapter 5 figures are the internally
- * consistent ones — 1.5 + 1.5 + 2.25 = 5.25 and 1.75 + 1.75 + 2.6 = 6.1 exactly, while
- * Chapter 3's 5.0 and 6.0 do not decompose into any published components — which suggests
- * Chapter 3 is a rounded summary. That is an argument, not a resolution, and nothing in
- * either chapter subordinates the other.
- *
- * Standing rule 4 applies and the engine keeps the LOWER ceiling, which is Chapter 3's.
- * A project is never told it may build more than the most restrictive reading allows.
+ * Standing rule 4 applies. The engine keeps the LOWER ceiling, so no project is told it
+ * may build more than the most restrictive reading allows.
  */
-export const CHAPTER_3_5_MAX_FAR_CONFLICTS: readonly {
+export const CROSS_CHAPTER_MAX_FAR_CONFLICTS: readonly {
+  readonly useType: string;
   readonly areaType: AreaType;
   readonly band: string;
   readonly chapter3: number;
-  readonly chapter5: number;
+  readonly breakdown: number;
+  readonly breakdownClause: string;
 }[] = [
-  { areaType: 'built_up',     band: '>24 – 45m', chapter3: 5.0, chapter5: 5.25 },
-  { areaType: 'non_built_up', band: '>12 – 24m', chapter3: 3.5, chapter5: 3.6 },
-  { areaType: 'non_built_up', band: '>24 – 45m', chapter3: 6.0, chapter5: 6.1 },
+  { useType: 'Group housing', areaType: 'built_up', band: '9–12 m',
+    chapter3: 2.0, breakdown: 2.1, breakdownClause: '4.2.8' },
+  { useType: 'Commercial units up to 100 m²', areaType: 'built_up', band: '>24–45 m',
+    chapter3: 5.0, breakdown: 5.25, breakdownClause: '5.2.5' },
+  { useType: 'Commercial units up to 100 m²', areaType: 'non_built_up', band: '>12–24 m',
+    chapter3: 3.5, breakdown: 3.6, breakdownClause: '5.2.5' },
+  { useType: 'Commercial units up to 100 m²', areaType: 'non_built_up', band: '>24–45 m',
+    chapter3: 6.0, breakdown: 6.1, breakdownClause: '5.2.5' },
+  { useType: 'Shopping malls', areaType: 'non_built_up', band: '>24–45 m',
+    chapter3: 9.0, breakdown: 10.5, breakdownClause: '5.2.5' },
+  { useType: 'Multiplex', areaType: 'non_built_up', band: '>24–45 m',
+    chapter3: 9.0, breakdown: 10.5, breakdownClause: '5.4.4' },
+];
+
+/**
+ * Bands the breakdowns state and Chapter 3 leaves out entirely.
+ *
+ * Silence is not prohibition where another clause makes the band reachable: Clause 4.2.3
+ * permits group housing on a 12 m road in a new layout and Clause 5.3.3 permits a hotel of
+ * up to 20 rooms on a 9 m road, so refusing those would reject a lawful project. Where the
+ * breakdown itself prints "not available" — a cinema below 12 m — that IS a prohibition
+ * and is honoured.
+ */
+export const CHAPTER_3_GAPS: readonly {
+  readonly useType: string;
+  readonly areaType: AreaType;
+  readonly band: string;
+  readonly maxFar: FarValue;
+  readonly reachableBecause: string;
+}[] = [
+  { useType: 'Group housing', areaType: 'non_built_up', band: 'up to 12 m', maxFar: 3.5,
+    reachableBecause: 'Clause 4.2.3 sets the minimum road for group housing in a new layout at 12 m, which this band includes.' },
+  { useType: 'Hotels', areaType: 'built_up', band: 'up to 12 m', maxFar: 2.0,
+    reachableBecause: 'Clause 5.3.3 allows a hotel of up to 20 rooms on a 9 m road.' },
+  { useType: 'Hotels', areaType: 'non_built_up', band: 'up to 12 m', maxFar: 2.5,
+    reachableBecause: 'Clause 5.3.3 allows a hotel of up to 20 rooms on a 9 m road.' },
+  { useType: 'Shopping malls', areaType: 'built_up', band: 'up to 12 m', maxFar: 2.0,
+    reachableBecause: 'Unreachable in practice — Clause 5.2.3 sets the minimum road for a mall at 18 m — but the gazette prints the row.' },
+  { useType: 'Shopping malls', areaType: 'non_built_up', band: 'up to 12 m', maxFar: 3.0,
+    reachableBecause: 'Unreachable in practice — Clause 5.2.3 sets the minimum road for a mall at 18 m — but the gazette prints the row.' },
 ];
