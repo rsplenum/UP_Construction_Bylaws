@@ -137,6 +137,40 @@ export function purchasableRowFor(input: {
 }
 
 /**
+ * Places where the gazette's own arithmetic does not close.
+ *
+ * The identity MFAR = BFAR + PFAR + PPFAR holds on 129 of the 130 band checks across the
+ * twelve printed tables. The exception is a drafting slip, and the pattern makes it plain:
+ * in Clause 6.2.4 every cell of the schools row scales by 1.2 from the built-up area to a
+ * new layout — 0.50 to 0.60, 1.00 to 1.20, 2.00 to 2.40 — except the narrowest band, where
+ * 0.20 / 0.20 / 1.40 is repeated verbatim instead of becoming 0.24 / 0.24 / 1.68.
+ *
+ * The engine honours the MFAR as printed. It is lower than either the components or the
+ * pattern imply, so standing rule 4 is satisfied by taking the gazette at its word here.
+ */
+export const GAZETTE_ARITHMETIC_DEFECTS: readonly {
+  readonly gazettePage: number;
+  readonly useType: string;
+  readonly areaType: AreaType;
+  readonly band: string;
+  readonly componentsImply: number;
+  readonly printed: number;
+  readonly note: string;
+}[] = [
+  {
+    gazettePage: 97,
+    useType: 'Schools (primary / nursery)',
+    areaType: 'non_built_up',
+    band: 'Upto 12m',
+    componentsImply: 1.6,
+    printed: 1.4,
+    note: 'Clause 6.2.4. The narrowest band repeats the built-up figures unscaled where '
+      + 'every other band in the row scales by 1.2. The printed 1.40 is the lower figure '
+      + 'and is what the engine uses.',
+  },
+];
+
+/**
  * Where two chapters print a different maximum for the same use, area type and road.
  *
  * Every one of these was found by comparing the Chapter 3 matrix against the Chapter 4

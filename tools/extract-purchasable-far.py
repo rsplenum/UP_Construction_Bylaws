@@ -151,14 +151,25 @@ def far_columns_of(table):
     """
     The FAR columns, gathered from the whole table rather than from one header row.
 
-    Clause 4.4's table prints BFAR on its own line and PFAR/PPFAR/MFAR on the next, so
-    reading a single row finds one column out of thirteen — and produced a table that
-    parsed to nothing without complaining.
+    Two things break a simpler reading. Clause 4.4 prints BFAR on its own line and
+    PFAR/PPFAR/MFAR on the next, so reading a single row finds one column out of thirteen.
+    And Clause 6.3's tables wrap a column name mid-WORD — "MFA" on one row and "R" on the
+    next — so the last column vanishes unless fragments at the same x are joined back up.
     """
-    seen = {}
+    by_x = {}
     for x, text in positioned(table):
-        if text in FAR_NAMES:
-            seen[x] = text
+        by_x.setdefault(x, []).append(text)
+
+    seen = {}
+    for x, texts in by_x.items():
+        for i in range(len(texts)):
+            for size in (1, 2, 3):
+                joined = ''.join(texts[i:i + size])
+                if joined in FAR_NAMES:
+                    seen[x] = joined
+                    break
+            if x in seen:
+                break
     return [(x, seen[x]) for x in sorted(seen)]
 
 

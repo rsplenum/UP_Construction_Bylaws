@@ -11,6 +11,7 @@ if [ -f docs/source/gazette/pdf/chapter-03.pdf ]; then
 fi
 
 python3 tools/extract-purchasable-far.py > docs/source/derived/purchasable-far.json
+python3 tools/extract-thresholds.py > docs/source/derived/thresholds.json
 
 if [ -f docs/source/gazette/pdf/chapter-15.pdf ]; then
   python3 tools/extract-zoning-matrix.py docs/source/gazette/pdf/chapter-15.pdf \

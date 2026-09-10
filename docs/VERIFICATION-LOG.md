@@ -455,6 +455,42 @@ Three structural features, each of which corrupts the reading if missed:
 - Everywhere else the narrowest band offers **base FAR and nothing to buy** — `MFAR = BFAR`
   with PFAR and PPFAR marked NA.
 
+### V-018 — The gazette's own arithmetic fails in one place
+The identity MFAR = BFAR + PFAR + PPFAR holds on **129 of 130** band checks across the
+twelve printed tables. The exception is a drafting slip in Clause 6.2.4, and the pattern
+makes it plain — every cell of the schools row scales by 1.2 from the built-up area to a
+new layout:
+
+| Band | Built-up (base 1.00) | New layout (base 1.20) | |
+|---|---|---|---|
+| Up to 12 m | 0.20 + 0.20 = 1.40 | 0.20 + 0.20 = **1.40** | not scaled; 0.24 / 0.24 / 1.68 expected |
+| >12–24 m | 0.50 + 0.50 = 2.00 | 0.60 + 0.60 = 2.40 | scaled |
+| >24–45 m | 1.00 + 1.00 = 3.00 | 1.20 + 1.20 = 3.60 | scaled |
+| >45 m | 1.00 + 1.00 = 3.00 | 1.20 + 1.20 = 3.60 | scaled |
+
+The narrowest band repeats the built-up figures verbatim. The engine honours **the printed
+1.40**, which is lower than either the components (1.60) or the pattern (1.68) imply, so
+standing rule 4 is satisfied by taking the gazette at its word. Recorded in
+`GAZETTE_ARITHMETIC_DEFECTS`, and the test suite asserts that this is the **only**
+unexplained arithmetic failure — a new one fails the build.
+
+### V-019 — A road minimum that depends on plot size, which the engine cannot express
+Clause 6.3.3 sets the marriage-hall road minimum at **18 m up to a 3000 m² plot and 24 m
+above it**, and Clause 6.4.2 inverts the same idea — plot minimum keyed on road width,
+1500 m² at 18 m and 2000 m² at 24 m. An occupancy carries one road figure, so
+`inst_assembly` holds the lower 18 m. A 4000 m² marriage hall on a 20 m road would be
+passed where the gazette asks for 24 m.
+
+### V-020 — Two Chapter 3 tables need their own reading
+`tools/extract-thresholds.py` skips both, loudly, rather than mangling them:
+
+- **Clause 3.1.2's community-facility list** (p.41–42) is a two-level structure — numbered
+  categories with lettered sub-items — covering education, medical, fire stations, sports,
+  public toilets, bus stops, vending zones and landfill sites, in square metres, hectares
+  and acres. Read as a flat table it produces subjects like "(a)".
+- **Clause 3.1.3's internal-road table** (p.39) sizes the roads *inside* a layout by their
+  length, not a plot's access by its use. Similar words, different rule.
+
 ### V-016 — Six cells conflict between Chapter 3 and the per-occupancy breakdowns
 | Use | Area | Band | Chapter 3 | Breakdown |
 |---|---|---|---|---|
@@ -521,7 +557,37 @@ categories with different thresholds. The engine has one occupancy, "Retail shop
 convenience shopping", carrying the retail-shop figures — so a 200 m² convenience unit is
 told it needs 6 m of road where the gazette asks for 12.
 
-### V-005 — Occupancy thresholds are inferred
+### V-005 — Occupancy thresholds are inferred — NOW MEASURED
+The gazette states minimum plot size and road width **per facility**; the engine carries
+one of each **per occupancy**. `tools/extract-thresholds.py` now extracts 36 rows across
+10 tables into `docs/source/derived/thresholds.json`, so the gap is measured rather than
+suspected.
+
+Clause 6.1.2 and 6.1.3 are the clearest case:
+
+| Facility | Min plot | Min road |
+|---|---|---|
+| Non-bedded medical establishment | 100 m² | 9 m |
+| Nursing home, up to 50 beds | 300 m² | 12 m |
+| Nursing institute | 2,000 m² | 18 m |
+| Hospital over 50 beds | 3,000 m² | 18 m |
+| Medical college | As per NMC / MCI norms | 24 m |
+
+`inst_health` holds **500 m² and 12 m — a pair that matches none of the five**, and is not
+even between the same two rows: 500 m² sits between the 300 and 2,000 m² facilities while
+12 m is the figure for the 300 m² one. Education is the same shape, five facilities from
+500 m² to 20,000 m² against one occupancy holding 1,000 m².
+
+Closing this needs **sub-occupancies**, which is a change to the shape of the engine rather
+than to a number, so the data is exposed and the gap stated rather than one figure being
+quietly declared right. The test suite asserts the mismatch, so it cannot be forgotten.
+
+Two smaller things the extraction settled. The two tables on a page name the same facility
+differently — "Primary" against "Primary School" — so they are paired by prefix within one
+page and both printed names are kept. And Clause 6.2.3 splits the **primary school** road
+minimum by area type: 9 m built-up, 12 m in a new layout.
+
+### (superseded by V-005 above)
 Minimum road widths, plot sizes and parking ratios for the sixteen occupancies were
 reasoned from the four that existed, not read from the gazette.
 

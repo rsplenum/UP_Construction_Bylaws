@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { COMMERCIAL_MAX_FAR, GROUP_HOUSING_MAX_FAR } from '../far';
 import {
   CHAPTER_3_GAPS,
+  GAZETTE_ARITHMETIC_DEFECTS,
   baseFarApplies,
   CROSS_CHAPTER_MAX_FAR_CONFLICTS,
   PURCHASABLE_FAR_ROWS,
@@ -16,27 +17,50 @@ import {
 const n = (v: unknown): number | null => (typeof v === 'number' ? v : null);
 
 describe('every printed BFAR/PFAR/PPFAR/MFAR table is loaded', () => {
-  it('has all eighteen rows from all seven tables', () => {
-    expect(PURCHASABLE_FAR_ROWS).toHaveLength(18);
+  it('has every row from every printed table', () => {
+    expect(PURCHASABLE_FAR_ROWS).toHaveLength(36);
     const pages = [...new Set(PURCHASABLE_FAR_ROWS.map((r) => r.gazettePage))].sort((a, b) => a - b);
-    expect(pages).toEqual([78, 82, 84, 86, 87, 88, 90]);
+    expect(pages).toEqual([78, 82, 84, 86, 87, 88, 90, 95, 97, 98, 99, 100]);
   });
 
-  it('gives every row four road bands', () => {
+  it('gives every row three or four road bands', () => {
+    // Clause 6.3.4's marriage-hall table starts at 18 m and so has three, not four.
     for (const r of PURCHASABLE_FAR_ROWS) {
-      expect(r.bands, r.id).toHaveLength(4);
+      expect(r.bands.length, r.id).toBeGreaterThanOrEqual(3);
+      expect(r.bands.length, r.id).toBeLessThanOrEqual(4);
     }
   });
 
-  it('keeps the bands contiguous and ascending', () => {
+  it('keeps the bands contiguous and ascending, and open-ended at the top', () => {
     for (const r of PURCHASABLE_FAR_ROWS) {
-      let previous = 0;
+      let previous: number | null = null;
       for (const b of r.bands) {
-        expect(b.overMoreThan, `${r.id} ${b.label}`).toBe(previous);
+        if (previous !== null) {
+          expect(b.overMoreThan, `${r.id} ${b.label} follows a gap`).toBe(previous);
+        }
         previous = b.upToAndIncluding ?? Infinity;
       }
       expect(r.bands.at(-1)!.upToAndIncluding, r.id).toBeNull();
     }
+  });
+
+  /**
+   * Not every table starts at a zero-width road. Clause 6.1.4 begins at >12 m and
+   * Clauses 6.3.4 and 6.4.3 at 18 m, because below that the use has no published FAR at
+   * all — which is a floor on the road width, expressed as the absence of a row.
+   */
+  it('starts some tables above a zero-width road', () => {
+    const floors = new Map<number, number>();
+    for (const r of PURCHASABLE_FAR_ROWS) {
+      const start = r.bands[0].overMoreThan;
+      if (start > 0) floors.set(r.gazettePage, start);
+    }
+    expect(floors.get(95)).toBe(12);    // healthcare
+    expect(floors.get(98)).toBe(18);    // marriage hall
+    expect(floors.get(99)).toBe(18);    // auditorium, built-up
+    expect(floors.get(100)).toBe(18);   // auditorium, new layout
+    // Everything read before chapter 6 starts at zero.
+    expect([...floors.keys()].every((p) => p >= 95)).toBe(true);
   });
 
   /**
@@ -53,11 +77,34 @@ describe('every printed BFAR/PFAR/PPFAR/MFAR table is loaded', () => {
         // Clause 4.4's rows each cover only part of the road range; the other row's base
         // FAR governs the rest, so summing across the whole row is not what it states.
         if (max === null || !baseFarApplies(r, b)) continue;
+        const known = GAZETTE_ARITHMETIC_DEFECTS.some(
+          (d) => d.gazettePage === r.gazettePage && d.useType === r.useType
+            && d.areaType === r.areaType && d.band === b.label);
+        if (known) continue;
         const sum = r.baseFar + (n(b.purchasable) ?? 0) + (n(b.premiumPurchasable) ?? 0);
         expect(Math.abs(sum - max), `${r.id} ${b.label}: ${sum} vs ${max}`)
           .toBeLessThanOrEqual(0.05 + 1e-9);
       }
     }
+  });
+});
+
+describe('the one place the gazette’s own arithmetic does not close', () => {
+  it('is the schools row in Clause 6.2.4, and only that', () => {
+    expect(GAZETTE_ARITHMETIC_DEFECTS).toHaveLength(1);
+    const [d] = GAZETTE_ARITHMETIC_DEFECTS;
+    expect(d.printed).toBeLessThan(d.componentsImply);   // so the printed figure is safe
+  });
+
+  it('uses the printed figure, which is the lower one', () => {
+    const row = PURCHASABLE_FAR_ROWS.find(
+      (r) => r.gazettePage === 97 && r.areaType === 'non_built_up'
+        && r.useType.startsWith('Schools'))!;
+    expect(row.baseFar).toBe(1.2);
+    expect(row.bands[0].maxFar).toBe(1.4);               // not the 1.6 the components imply
+    // Every other band in the row scales by 1.2 from its built-up twin.
+    expect(row.bands[1].maxFar).toBe(2.4);
+    expect(row.bands[2].maxFar).toBe(3.6);
   });
 });
 
@@ -200,10 +247,15 @@ const DERIVED = resolve(process.cwd(), 'docs/source/derived/purchasable-far.json
 describe.skipIf(!existsSync(DERIVED))('the loaded rows match the full extraction', () => {
   const extracted = JSON.parse(readFileSync(DERIVED, 'utf-8'));
 
-  it('passed every arithmetic check with no warnings', () => {
-    expect(extracted.checks.filter((c: { holds: boolean }) => !c.holds)).toHaveLength(0);
+  it('extracted cleanly, with only the known gazette defect failing', () => {
     expect(extracted.warnings).toHaveLength(0);
-    expect(extracted.checks).toHaveLength(extracted.rows.length * 4);
+    const failed = extracted.checks.filter((c: { holds: boolean }) => !c.holds);
+    expect(failed).toHaveLength(GAZETTE_ARITHMETIC_DEFECTS.length);
+    for (const f of failed) {
+      expect(GAZETTE_ARITHMETIC_DEFECTS.some(
+        (d) => d.gazettePage === f.gazettePage && d.useType === f.useType),
+        `unexplained arithmetic failure: ${f.gazettePage} ${f.useType} ${f.band}`).toBe(true);
+    }
   });
 
   it('carries the same base FAR for every row', () => {

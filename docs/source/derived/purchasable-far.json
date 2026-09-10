@@ -6,7 +6,7 @@
   ">24 \u2013 45m",
   ">45m"
  ],
- "tableCount": 7,
+ "tableCount": 12,
  "checks": [
   {
    "chapter": "04",
@@ -663,6 +663,528 @@
    "band": ">45m",
    "holds": true,
    "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Non-Bedded Medical Establishments",
+   "areaType": "built_up",
+   "band": ">12 -24m",
+   "holds": true,
+   "working": "1.5 + 1.5 = 3.0 vs MFAR 3.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Non-Bedded Medical Establishments",
+   "areaType": "built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "1.5 + 3.75 = 5.25 vs MFAR 5.25"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Non-Bedded Medical Establishments",
+   "areaType": "built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing Homes /Hospitals (Up to 50 beds)",
+   "areaType": "built_up",
+   "band": ">12 -24m",
+   "holds": true,
+   "working": "1.5 + 1.5 = 3.0 vs MFAR 3.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing Homes /Hospitals (Up to 50 beds)",
+   "areaType": "built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "1.5 + 3.75 = 5.25 vs MFAR 5.25"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing Homes /Hospitals (Up to 50 beds)",
+   "areaType": "built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Hospitals > 50 beds",
+   "areaType": "built_up",
+   "band": ">12 -24m",
+   "holds": true,
+   "working": "1.5 + 1.5 = 3.0 vs MFAR 3.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Hospitals > 50 beds",
+   "areaType": "built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "1.5 + 3.75 = 5.25 vs MFAR 5.25"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Hospitals > 50 beds",
+   "areaType": "built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing college",
+   "areaType": "built_up",
+   "band": ">12 -24m",
+   "holds": true,
+   "working": "1.5 + 1.5 = 3.0 vs MFAR 3.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing college",
+   "areaType": "built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "1.5 + 3.75 = 5.25 vs MFAR 5.25"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing college",
+   "areaType": "built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Medical College",
+   "areaType": "built_up",
+   "band": ">12 -24m",
+   "holds": true,
+   "working": "1.5 + 1.5 = 3.0 vs MFAR 3.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Medical College",
+   "areaType": "built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "1.5 + 3.75 = 5.25 vs MFAR 5.25"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Medical College",
+   "areaType": "built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Non-Bedded Medical Establishments",
+   "areaType": "non_built_up",
+   "band": ">12 -24m",
+   "holds": true,
+   "working": "1.5 + 1.5 = 3.0 vs MFAR 3.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Non-Bedded Medical Establishments",
+   "areaType": "non_built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "1.5 + 3.75 = 5.25 vs MFAR 5.25"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Non-Bedded Medical Establishments",
+   "areaType": "non_built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing Homes /Hospitals (Up to 50 beds)",
+   "areaType": "non_built_up",
+   "band": ">12 -24m",
+   "holds": true,
+   "working": "2.0 + 2.0 = 4.0 vs MFAR 4.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing Homes /Hospitals (Up to 50 beds)",
+   "areaType": "non_built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "2.0 + 5.0 = 7.0 vs MFAR 7.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing Homes /Hospitals (Up to 50 beds)",
+   "areaType": "non_built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Hospitals > 50 beds",
+   "areaType": "non_built_up",
+   "band": ">12 -24m",
+   "holds": true,
+   "working": "2.5 + 2.5 = 5.0 vs MFAR 5.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Hospitals > 50 beds",
+   "areaType": "non_built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "2.5 + 6.25 = 8.75 vs MFAR 8.75"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Hospitals > 50 beds",
+   "areaType": "non_built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing college",
+   "areaType": "non_built_up",
+   "band": ">12 -24m",
+   "holds": true,
+   "working": "2.0 + 2.0 = 4.0 vs MFAR 4.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing college",
+   "areaType": "non_built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "2.0 + 5.0 = 7.0 vs MFAR 7.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing college",
+   "areaType": "non_built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Medical College",
+   "areaType": "non_built_up",
+   "band": ">12 -24m",
+   "holds": true,
+   "working": "2.5 + 2.5 = 5.0 vs MFAR 5.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Medical College",
+   "areaType": "non_built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "2.5 + 6.25 = 8.75 vs MFAR 8.75"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Medical College",
+   "areaType": "non_built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Schools (primary / nursery)",
+   "areaType": "built_up",
+   "band": "Upto 12m",
+   "holds": true,
+   "working": "1.0 + 0.4 = 1.4 vs MFAR 1.4"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Schools (primary / nursery)",
+   "areaType": "built_up",
+   "band": "12 -24m",
+   "holds": true,
+   "working": "1.0 + 1.0 = 2.0 vs MFAR 2.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Schools (primary / nursery)",
+   "areaType": "built_up",
+   "band": "24 - 45m",
+   "holds": true,
+   "working": "1.0 + 2.0 = 3.0 vs MFAR 3.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Schools (primary / nursery)",
+   "areaType": "built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "1.0 + 2.0 = 3.0 vs MFAR 3.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Secondary / High School/ Intercollege/ Technical Institutes/ Degree Colleges / Universities",
+   "areaType": "built_up",
+   "band": "Upto 12m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Secondary / High School/ Intercollege/ Technical Institutes/ Degree Colleges / Universities",
+   "areaType": "built_up",
+   "band": "12 -24m",
+   "holds": true,
+   "working": "1.0 + 1.0 = 2.0 vs MFAR 2.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Secondary / High School/ Intercollege/ Technical Institutes/ Degree Colleges / Universities",
+   "areaType": "built_up",
+   "band": "24 - 45m",
+   "holds": true,
+   "working": "1.0 + 2.5 = 3.5 vs MFAR 3.5"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Secondary / High School/ Intercollege/ Technical Institutes/ Degree Colleges / Universities",
+   "areaType": "built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Schools (primary / nursery)",
+   "areaType": "non_built_up",
+   "band": "Upto 12m",
+   "holds": false,
+   "working": "1.2 + 0.4 = 1.6 vs MFAR 1.4"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Schools (primary / nursery)",
+   "areaType": "non_built_up",
+   "band": "12 -24m",
+   "holds": true,
+   "working": "1.2 + 1.2 = 2.4 vs MFAR 2.4"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Schools (primary / nursery)",
+   "areaType": "non_built_up",
+   "band": "24 - 45m",
+   "holds": true,
+   "working": "1.2 + 2.4 = 3.6 vs MFAR 3.6"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Schools (primary / nursery)",
+   "areaType": "non_built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "1.2 + 2.4 = 3.6 vs MFAR 3.6"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Secondary / High School/ Intercollege/ Technical Institutes/ Degree Colleges / Universities",
+   "areaType": "non_built_up",
+   "band": "Upto 12m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Secondary / High School/ Intercollege/ Technical Institutes/ Degree Colleges / Universities",
+   "areaType": "non_built_up",
+   "band": "12 -24m",
+   "holds": true,
+   "working": "2.0 + 2.0 = 4.0 vs MFAR 4.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Secondary / High School/ Intercollege/ Technical Institutes/ Degree Colleges / Universities",
+   "areaType": "non_built_up",
+   "band": "24 - 45m",
+   "holds": true,
+   "working": "2.0 + 5.0 = 7.0 vs MFAR 7.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Secondary / High School/ Intercollege/ Technical Institutes/ Degree Colleges / Universities",
+   "areaType": "non_built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 98,
+   "useType": "Marriage hall/ Banquet Hall/ Multipurpose Hall",
+   "areaType": "built_up",
+   "band": "=>18 - 24m",
+   "holds": true,
+   "working": "2.0 + 2.0 = 4.0 vs MFAR 4.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 98,
+   "useType": "Marriage hall/ Banquet Hall/ Multipurpose Hall",
+   "areaType": "built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "2.0 + 5.0 = 7.0 vs MFAR 7.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 98,
+   "useType": "Marriage hall/ Banquet Hall/ Multipurpose Hall",
+   "areaType": "built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 98,
+   "useType": "Marriage hall/ Banquet Hall/ Multipurpose Hall",
+   "areaType": "non_built_up",
+   "band": "=>18 - 24m",
+   "holds": true,
+   "working": "3.0 + 3.0 = 6.0 vs MFAR 6.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 98,
+   "useType": "Marriage hall/ Banquet Hall/ Multipurpose Hall",
+   "areaType": "non_built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "3.0 + 7.5 = 10.5 vs MFAR 10.5"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 98,
+   "useType": "Marriage hall/ Banquet Hall/ Multipurpose Hall",
+   "areaType": "non_built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 99,
+   "useType": "Auditorium or a Convention Centre (Built-up area)",
+   "areaType": "built_up",
+   "band": "=>18 -24m",
+   "holds": true,
+   "working": "2.0 + 2.0 = 4.0 vs MFAR 4.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 99,
+   "useType": "Auditorium or a Convention Centre (Built-up area)",
+   "areaType": "built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "2.0 + 5.0 = 7.0 vs MFAR 7.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 99,
+   "useType": "Auditorium or a Convention Centre (Built-up area)",
+   "areaType": "built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 100,
+   "useType": "Auditorium or a Convention Centre (Non-built-up area)",
+   "areaType": "non_built_up",
+   "band": "=>18 -24m",
+   "holds": true,
+   "working": "3.0 + 3.0 = 6.0 vs MFAR 6.0"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 100,
+   "useType": "Auditorium or a Convention Centre (Non-built-up area)",
+   "areaType": "non_built_up",
+   "band": ">24 - 45m",
+   "holds": true,
+   "working": "3.0 + 7.5 = 10.5 vs MFAR 10.5"
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 100,
+   "useType": "Auditorium or a Convention Centre (Non-built-up area)",
+   "areaType": "non_built_up",
+   "band": ">45m",
+   "holds": true,
+   "working": "unrestricted"
   }
  ],
  "warnings": [],
@@ -1151,6 +1673,436 @@
    "roadBands": [
     "Upto12m",
     ">12 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Non-Bedded Medical Establishments",
+   "areaType": "built_up",
+   "values": {
+    "BFAR": 1.5,
+    ">12 -24m|PFAR": 0.75,
+    ">12 -24m|PPFAR": 0.75,
+    ">12 -24m|MFAR": 3.0,
+    ">24 - 45m|PFAR": 1.5,
+    ">24 - 45m|PPFAR": 2.25,
+    ">24 - 45m|MFAR": 5.25,
+    ">45m|PFAR": 1.5,
+    ">45m|PPFAR": "unrestricted",
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    ">12 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing Homes /Hospitals (Up to 50 beds)",
+   "areaType": "built_up",
+   "values": {
+    "BFAR": 1.5,
+    ">12 -24m|PFAR": 0.75,
+    ">12 -24m|PPFAR": 0.75,
+    ">12 -24m|MFAR": 3.0,
+    ">24 - 45m|PFAR": 1.5,
+    ">24 - 45m|PPFAR": 2.25,
+    ">24 - 45m|MFAR": 5.25,
+    ">45m|PFAR": 1.5,
+    ">45m|PPFAR": "unrestricted",
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    ">12 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Hospitals > 50 beds",
+   "areaType": "built_up",
+   "values": {
+    "BFAR": 1.5,
+    ">12 -24m|PFAR": 0.75,
+    ">12 -24m|PPFAR": 0.75,
+    ">12 -24m|MFAR": 3.0,
+    ">24 - 45m|PFAR": 1.5,
+    ">24 - 45m|PPFAR": 2.25,
+    ">24 - 45m|MFAR": 5.25,
+    ">45m|PFAR": 1.5,
+    ">45m|PPFAR": "unrestricted",
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    ">12 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing college",
+   "areaType": "built_up",
+   "values": {
+    "BFAR": 1.5,
+    ">12 -24m|PFAR": 0.75,
+    ">12 -24m|PPFAR": 0.75,
+    ">12 -24m|MFAR": 3.0,
+    ">24 - 45m|PFAR": 1.5,
+    ">24 - 45m|PPFAR": 2.25,
+    ">24 - 45m|MFAR": 5.25,
+    ">45m|PFAR": 1.5,
+    ">45m|PPFAR": "unrestricted",
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    ">12 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Medical College",
+   "areaType": "built_up",
+   "values": {
+    "BFAR": 1.5,
+    ">12 -24m|PFAR": 0.75,
+    ">12 -24m|PPFAR": 0.75,
+    ">12 -24m|MFAR": 3.0,
+    ">24 - 45m|PFAR": 1.5,
+    ">24 - 45m|PPFAR": 2.25,
+    ">24 - 45m|MFAR": 5.25,
+    ">45m|PFAR": 1.5,
+    ">45m|PPFAR": "unrestricted",
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    ">12 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Non-Bedded Medical Establishments",
+   "areaType": "non_built_up",
+   "values": {
+    "BFAR": 1.5,
+    ">12 -24m|PFAR": 0.75,
+    ">12 -24m|PPFAR": 0.75,
+    ">12 -24m|MFAR": 3.0,
+    ">24 - 45m|PFAR": 1.5,
+    ">24 - 45m|PPFAR": 2.25,
+    ">24 - 45m|MFAR": 5.25,
+    ">45m|PFAR": 1.5,
+    ">45m|PPFAR": "unrestricted",
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    ">12 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing Homes /Hospitals (Up to 50 beds)",
+   "areaType": "non_built_up",
+   "values": {
+    "BFAR": 2.0,
+    ">12 -24m|PFAR": 1.0,
+    ">12 -24m|PPFAR": 1.0,
+    ">12 -24m|MFAR": 4.0,
+    ">24 - 45m|PFAR": 2.0,
+    ">24 - 45m|PPFAR": 3.0,
+    ">24 - 45m|MFAR": 7.0,
+    ">45m|PFAR": 2.0,
+    ">45m|PPFAR": "unrestricted",
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    ">12 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Hospitals > 50 beds",
+   "areaType": "non_built_up",
+   "values": {
+    "BFAR": 2.5,
+    ">12 -24m|PFAR": 1.25,
+    ">12 -24m|PPFAR": 1.25,
+    ">12 -24m|MFAR": 5.0,
+    ">24 - 45m|PFAR": 2.5,
+    ">24 - 45m|PPFAR": 3.75,
+    ">24 - 45m|MFAR": 8.75,
+    ">45m|PFAR": 2.5,
+    ">45m|PPFAR": "unrestricted",
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    ">12 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing college",
+   "areaType": "non_built_up",
+   "values": {
+    "BFAR": 2.0,
+    ">12 -24m|PFAR": 1.0,
+    ">12 -24m|PPFAR": 1.0,
+    ">12 -24m|MFAR": 4.0,
+    ">24 - 45m|PFAR": 2.0,
+    ">24 - 45m|PPFAR": 3.0,
+    ">24 - 45m|MFAR": 7.0,
+    ">45m|PFAR": 2.0,
+    ">45m|PPFAR": "unrestricted",
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    ">12 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Medical College",
+   "areaType": "non_built_up",
+   "values": {
+    "BFAR": 2.5,
+    ">12 -24m|PFAR": 1.25,
+    ">12 -24m|PPFAR": 1.25,
+    ">12 -24m|MFAR": 5.0,
+    ">24 - 45m|PFAR": 2.5,
+    ">24 - 45m|PPFAR": 3.75,
+    ">24 - 45m|MFAR": 8.75,
+    ">45m|PFAR": 2.5,
+    ">45m|PPFAR": "unrestricted",
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    ">12 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Schools (primary / nursery)",
+   "areaType": "built_up",
+   "values": {
+    "BFAR": 1.0,
+    "Upto 12m|PFAR": 0.2,
+    "Upto 12m|PPFAR": 0.2,
+    "Upto 12m|MFAR": 1.4,
+    "12 -24m|PFAR": 0.5,
+    "12 -24m|PPFAR": 0.5,
+    "12 -24m|MFAR": 2.0,
+    "24 - 45m|PFAR": 1.0,
+    "24 - 45m|PPFAR": 1.0,
+    "24 - 45m|MFAR": 3.0,
+    ">45m|PFAR": 1.0,
+    ">45m|PPFAR": 1.0,
+    ">45m|MFAR": 3.0
+   },
+   "roadBands": [
+    "Upto 12m",
+    "12 -24m",
+    "24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Secondary / High School/ Intercollege/ Technical Institutes/ Degree Colleges / Universities",
+   "areaType": "built_up",
+   "values": {
+    "Upto 12m|PFAR": "not available",
+    "Upto 12m|PPFAR": "not available",
+    "12 -24m|PFAR": 0.5,
+    "12 -24m|PPFAR": 0.5,
+    "24 - 45m|PFAR": 1.0,
+    "24 - 45m|PPFAR": 1.5,
+    ">45m|PFAR": 1.0,
+    ">45m|PPFAR": "unrestricted",
+    "BFAR": 1.0,
+    "Upto 12m|MFAR": "not available",
+    "12 -24m|MFAR": 2.0,
+    "24 - 45m|MFAR": 3.5,
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    "Upto 12m",
+    "12 -24m",
+    "24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Schools (primary / nursery)",
+   "areaType": "non_built_up",
+   "values": {
+    "BFAR": 1.2,
+    "Upto 12m|PFAR": 0.2,
+    "Upto 12m|PPFAR": 0.2,
+    "Upto 12m|MFAR": 1.4,
+    "12 -24m|PFAR": 0.6,
+    "12 -24m|PPFAR": 0.6,
+    "12 -24m|MFAR": 2.4,
+    "24 - 45m|PFAR": 1.2,
+    "24 - 45m|PPFAR": 1.2,
+    "24 - 45m|MFAR": 3.6,
+    ">45m|PFAR": 1.2,
+    ">45m|PPFAR": 1.2,
+    ">45m|MFAR": 3.6
+   },
+   "roadBands": [
+    "Upto 12m",
+    "12 -24m",
+    "24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Secondary / High School/ Intercollege/ Technical Institutes/ Degree Colleges / Universities",
+   "areaType": "non_built_up",
+   "values": {
+    "Upto 12m|PFAR": "not available",
+    "Upto 12m|PPFAR": "not available",
+    "12 -24m|PFAR": 1.0,
+    "12 -24m|PPFAR": 1.0,
+    "24 - 45m|PFAR": 2.0,
+    "24 - 45m|PPFAR": 3.0,
+    ">45m|PFAR": 2.0,
+    ">45m|PPFAR": "unrestricted",
+    "BFAR": 2.0,
+    "Upto 12m|MFAR": "not available",
+    "12 -24m|MFAR": 4.0,
+    "24 - 45m|MFAR": 7.0,
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    "Upto 12m",
+    "12 -24m",
+    "24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 98,
+   "useType": "Marriage hall/ Banquet Hall/ Multipurpose Hall",
+   "areaType": "built_up",
+   "values": {
+    "=>18 - 24m|PFAR": 1.0,
+    "=>18 - 24m|PPFAR": 1.0,
+    ">24 - 45m|PFAR": 2.0,
+    ">24 - 45m|PPFAR": 3.0,
+    ">45m|PFAR": 2.0,
+    ">45m|PPFAR": "unrestricted",
+    "BFAR": 2.0,
+    "=>18 - 24m|MFAR": 4.0,
+    ">24 - 45m|MFAR": 7.0,
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    "=>18 - 24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 98,
+   "useType": "Marriage hall/ Banquet Hall/ Multipurpose Hall",
+   "areaType": "non_built_up",
+   "values": {
+    "=>18 - 24m|PFAR": 1.5,
+    "=>18 - 24m|PPFAR": 1.5,
+    ">24 - 45m|PFAR": 3.0,
+    ">24 - 45m|PPFAR": 4.5,
+    ">45m|PFAR": 3.0,
+    ">45m|PPFAR": "unrestricted",
+    "BFAR": 3.0,
+    "=>18 - 24m|MFAR": 6.0,
+    ">24 - 45m|MFAR": 10.5,
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    "=>18 - 24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 99,
+   "useType": "Auditorium or a Convention Centre (Built-up area)",
+   "areaType": "built_up",
+   "values": {
+    "=>18 -24m|PFAR": 1.0,
+    "=>18 -24m|PPFAR": 1.0,
+    ">24 - 45m|PFAR": 2.0,
+    ">24 - 45m|PPFAR": 3.0,
+    ">45m|PFAR": 2.0,
+    ">45m|PPFAR": "unrestricted",
+    "BFAR": 2.0,
+    "=>18 -24m|MFAR": 4.0,
+    ">24 - 45m|MFAR": 7.0,
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    "=>18 -24m",
+    ">24 - 45m",
+    ">45m"
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 100,
+   "useType": "Auditorium or a Convention Centre (Non-built-up area)",
+   "areaType": "non_built_up",
+   "values": {
+    "=>18 -24m|PFAR": 1.5,
+    "=>18 -24m|PPFAR": 1.5,
+    ">24 - 45m|PFAR": 3.0,
+    ">24 - 45m|PPFAR": 4.5,
+    ">45m|PFAR": 3.0,
+    ">45m|PPFAR": "unrestricted",
+    "BFAR": 3.0,
+    "=>18 -24m|MFAR": 6.0,
+    ">24 - 45m|MFAR": 10.5,
+    ">45m|MFAR": "unrestricted"
+   },
+   "roadBands": [
+    "=>18 -24m",
     ">24 - 45m",
     ">45m"
    ]

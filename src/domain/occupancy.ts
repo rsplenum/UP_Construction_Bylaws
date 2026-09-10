@@ -266,7 +266,13 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     farBasis: 'road_width_commercial', setbackTable: 'commercial',
     activityId: 'act-marriage-hall', purchasableFarCategory: 'Community Facilities & Infrastructure',
     compoundingUse: 'facilities',
-    parkingEcsPer100Sqm: 3.0, minRoadWidthM: 18, minPlotAreaSqm: 1000, maxHeightM: Infinity,
+    parkingEcsPer100Sqm: 3.0,
+    // Clause 6.3.3: 18 m up to a 3000 m² plot, 24 m above it. The engine has no way to
+    // express a road minimum that depends on plot size, so it holds the lower figure and
+    // the finding names the larger — see V-019.
+    minRoadWidthM: 18,
+    minPlotAreaSqm: { built_up: 750, non_built_up: 1000 },   // Clause 6.3.2
+    maxHeightM: Infinity,                                     // Clause 6.3.5: no ceiling
     multiUnitHousing: false, fireNocAbove500Sqm: true,
   },
 
