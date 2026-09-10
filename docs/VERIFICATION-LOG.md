@@ -4,8 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: eight transcriptions verified exactly right, and seventeen real bugs found —
-twelve of which made the engine permit, charge or oblige less than the byelaws do.**
+**Headline: nine transcriptions verified exactly right, and twenty-two real bugs found.**
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -235,6 +234,36 @@ B-013 — a rule that varies by area type, flattened to one value — and it is 
 defaulting to built-up on every project.
 *Fixed: thresholds are `number | Record<AreaType, number>`, resolved through `forArea()`.*
 
+### B-018 to B-021 — Chapter 5 thresholds
+| | Engine had | Gazette |
+|---|---|---|
+| `com_shop.maxHeightM` | 15 m | **No restriction** (5.2.4: *"There shall be no restriction on building height for commercial buildings i.e. shops, commercial complex, shopping malls"*) |
+| `com_bazaar.maxHeightM` | 15 m | **No restriction** (5.1.3(i)) |
+| `com_shop.minRoadWidthM` | 6 m | **6 m built-up, 9 m new layout** (5.2.3) |
+| `com_shop.minPlotAreaSqm` | 0 | **10 m²** — retail shops are *">10 to 100"* (5.2.2) |
+
+The two height ceilings were over-restrictive rather than over-permissive, which is the
+rarer direction, but they still told people to cut a building that the byelaws do not cap.
+The road width is the same area-type flattening as B-017.
+
+### B-022 — Bazaar street was assessed against the wrong setback table entirely
+Clause 5.1.5 gives bazaar street its own front setback ladder keyed on **road width**:
+
+| Road (m) | 12 | 18 | 24 | 30 | 36 | 45 | 76 |
+|---|---|---|---|---|---|---|---|
+| Front open space (m) | 3.0 | 4.5 | 6.0 | 6.0 | 7.5 | 7.5 | 9.0 |
+
+Every other setback table in the byelaws is keyed on plot area or building height, and the
+engine routed `com_bazaar` to the commercial plot-area ladder — which answers a different
+question and therefore gave an unrelated number on every bazaar-street plot.
+
+The gazette prints this table **twice**, at 5.1.5 and again at Clause 3.2.4.3 Note-3
+(*"also defined in Chapter-5"*). Both printings were compared cell by cell and are
+identical.
+*Fixed: a `bazaar_street` setback table, and `resolveRequiredSetbacks` now takes road
+width. The other three faces still fall back to Clause 3.2.4, and a building over 15 m
+still goes to the fire-tender ladder.*
+
 ---
 
 ## Still open
@@ -370,6 +399,25 @@ Rows 3(a) and 3(b) print their first band as "Up to 12m" with nothing under it. 
 engine refuses FAR below 9 m. That may well be right — a minimum access width is likely
 stated elsewhere in Chapter 3 — but it is not stated *there*, and it is currently an
 inference sitting inside a table marked verified.
+
+### V-011 — Hotel thresholds turn on room count, which the engine cannot see
+Clause 5.3.2 and 5.3.3 key the hotel minimums on the **number of rooms**, not the plot:
+a minimum of six rooms; up to 20 rooms no minimum plot area and a 9 m road; above 20
+rooms, 500 m² and a 12 m road. The engine holds only the above-20 figures, so it
+over-states both for a small hotel. Fixing it needs a room count in `ProjectState`.
+
+### V-012 — The bazaar-street ladder lists road widths, not bands
+Clause 5.1.5 gives figures for roads of exactly 12, 18, 24, 30, 36, 45 and 76 m and says
+nothing about anything between. The engine rounds up to the next listed width — the
+stricter reading — and says so in the finding. Taking the largest listed width at or below
+the actual road would give up to 1.5 m less front setback.
+
+### V-013 — `com_shop` conflates two rows of the gazette
+Clause 5.2.2 and 5.2.3 treat *Retail Shops* (>10–100 m², 6 m road built-up) and
+*Convenient Shopping / Commercial Units* (≥100–300 m², **12 m** road) as separate
+categories with different thresholds. The engine has one occupancy, "Retail shop /
+convenience shopping", carrying the retail-shop figures — so a 200 m² convenience unit is
+told it needs 6 m of road where the gazette asks for 12.
 
 ### V-005 — Occupancy thresholds are inferred
 Minimum road widths, plot sizes and parking ratios for the sixteen occupancies were

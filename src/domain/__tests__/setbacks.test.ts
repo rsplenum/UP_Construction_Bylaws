@@ -141,3 +141,44 @@ describe('the plotted height ceiling, where chapters 3 and 4 disagree', () => {
     expect(ceiling('res_multi', 400)).toBe(17.5);   // both agree
   });
 });
+
+/**
+ * Clause 5.1.5 — the one setback table in the byelaws keyed on road width rather than
+ * plot area. The engine routed bazaar street to the commercial (plot-area) ladder, which
+ * gave an unrelated answer on every bazaar-street plot (B-022).
+ *
+ * Proposed road width → minimum open space in front:
+ *   12 → 3.0 · 18 → 4.5 · 24 → 6.0 · 30 → 6.0 · 36 → 7.5 · 45 → 7.5 · 76 → 9.0
+ */
+describe('bazaar street front setback', () => {
+  const front = (roadWidth: number, plotArea = 200) =>
+    resolveRequiredSetbacks({ ...base, occupancy: 'com_bazaar', plotArea, roadWidth }).front;
+
+  it.each([[12, 3.0], [18, 4.5], [24, 6.0], [30, 6.0], [36, 7.5], [45, 7.5], [76, 9.0]])(
+    'a %s m road requires %s m of front open space',
+    (road, expected) => expect(front(road)).toBe(expected),
+  );
+
+  it('rounds a width between two listed roads up to the stricter one (V-012)', () => {
+    expect(front(15)).toBe(4.5);   // between 12 and 18: the 18 m figure, not the 12 m one
+    expect(front(100)).toBe(9.0);  // past the last listed width
+  });
+
+  it('does not vary with plot area, unlike every other setback table', () => {
+    expect(front(18, 100)).toBe(front(18, 5_000));
+  });
+
+  it('says which clause it came from', () => {
+    const r = resolveRequiredSetbacks({ ...base, occupancy: 'com_bazaar', plotArea: 200, roadWidth: 18 });
+    expect(r.clauseRef).toMatch(/5\.1\.5/);
+    expect(r.caveats.join(' ')).toMatch(/V-012/);
+  });
+
+  it('still hands a building over 15 m to the fire-tender ladder', () => {
+    const r = resolveRequiredSetbacks({
+      ...base, occupancy: 'com_bazaar', plotArea: 200, roadWidth: 18, buildingHeight: 20,
+    });
+    expect(r.isHighRise).toBe(true);
+    expect(r.front).toBe(6); // Clause 3.2.4.9, >17.5–21 m band
+  });
+});

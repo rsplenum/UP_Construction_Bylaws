@@ -40,7 +40,11 @@ export type OccupancyGroup = 'Residential' | 'Commercial' | 'Workplace' | 'Insti
 export type FarBasis = 'telescopic_plotted' | 'road_width_group_housing' | 'road_width_commercial';
 
 /** Which setback ladder applies below the high-rise threshold. */
-export type SetbackTable = 'plotted_residential' | 'group_housing' | 'commercial' | 'healthcare' | 'educational' | 'industrial';
+export type SetbackTable =
+  | 'plotted_residential' | 'group_housing' | 'commercial'
+  | 'healthcare' | 'educational' | 'industrial'
+  /** Clause 5.1.5 — the one setback table keyed on road width rather than plot area. */
+  | 'bazaar_street';
 
 /** A threshold that is either flat, or different in a built-up area and a new layout. */
 export type AreaTypeValue = number | Readonly<Record<AreaType, number>>;
@@ -159,7 +163,15 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     farBasis: 'road_width_commercial', setbackTable: 'commercial',
     activityId: 'act-retail-shops', purchasableFarCategory: 'Commercial',
     compoundingUse: 'commercial',
-    parkingEcsPer100Sqm: 2.0, minRoadWidthM: 6, minPlotAreaSqm: 0, maxHeightM: 15,
+    parkingEcsPer100Sqm: 2.0,
+    // Clause 5.2.3: retail shops need 6 m in a built-up area and 9 m in a new layout.
+    // (Convenience shopping and commercial units need 12 m — see V-013, they share this
+    // occupancy but not this threshold.)
+    minRoadWidthM: { built_up: 6, non_built_up: 9 },
+    minPlotAreaSqm: 10,                  // Clause 5.2.2: retail shops ">10 to 100" sqm
+    // Clause 5.2.4: "There shall be no restriction on building height for commercial
+    // buildings i.e. shops, commercial complex, shopping malls."
+    maxHeightM: Infinity,
     multiUnitHousing: false, fireNocAbove500Sqm: true,
   },
   com_complex: {
@@ -200,10 +212,15 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     label: 'Bazaar street frontage',
     plain: 'A shop on the ground floor with a home above',
     note: 'Commercial on ground and first floor only, on a road of at least 12 m.',
-    farBasis: 'road_width_commercial', setbackTable: 'commercial',
+    farBasis: 'road_width_commercial', setbackTable: 'bazaar_street',
     activityId: 'act-retail-shops', purchasableFarCategory: 'Mixed Use',
     compoundingUse: 'commercial',
-    parkingEcsPer100Sqm: 1.5, minRoadWidthM: 12, minPlotAreaSqm: 0, maxHeightM: 15,
+    parkingEcsPer100Sqm: 1.5,
+    minRoadWidthM: 12,
+    minPlotAreaSqm: 0,
+    // Clause 5.1.3(i): "There shall be no restriction on building height for bazaar
+    // streets", subject to monument, airport funnel and other statutory limits.
+    maxHeightM: Infinity,
     multiUnitHousing: false, fireNocAbove500Sqm: true,
   },
 

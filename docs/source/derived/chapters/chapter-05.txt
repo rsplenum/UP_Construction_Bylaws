@@ -1,0 +1,469 @@
+=== chapter 05 · gazette page 84 · pdf page 1 ===
+5 Commercial Buildings
+5.1 Bazaar Street
+5.1.1 Permissibility
+Following provisions shall be applicable for the bazaar streets proposed in the master plan. In case a
+bazaar street notified in master plan falls within the layouts approved or developed by the Authority the
+provisions of this chapter shall automatically apply on payment of prescribed fee. No separate change
+of layout shall be required and only the relevant corrections in the lease/sale deed shall be done.
+5.1.2 Means of Access
+(i) The right-of-way of the bazaar street shall be minimum 12-meters, or the width proposed in the
+master plan.
+(ii) Commercial use on a bazaar street will be allowed on the entire depth of the plot.
+5.1.3 Maximum Building Height
+(i) There shall be no restriction on building height for bazaar streets. However, the maximum height
+of the building shall be governed by distance from the protected monument/ heritage site, airport
+funnel zone and other statutory restrictions.
+(ii) Commercial use shall be permitted on the ground and first floors only, while residential use shall
+be allowed on the subsequent floors. Residential use on ground and first floor may be permitted on the
+request of the plot owner.
+5.1.4 Ground Coverage and FAR
+(i) Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any,
+shall be permissible on plots in the bazaar street.
+(ii) Purchasable and premium purchasable FAR shall be applicable as per the requirements of
+Chapter-9. Basis approach road width, the maximum permissible FAR (including Base FAR) for
+bazaar streets in built-up areas and the non-built-up areas shall be as follows:
+Note-1: BFAR – Base FAR, PFAR – Purchasable FAR, PPFAR – Premium Purchasable FAR, MFAR – Maximum Permissible
+FAR which includes Base FAR, UR – Unrestricted FAR.
+Note-2: green building, additional FAR over and above maximum permissible FAR shall be
+In
+provided as per Chapter 9.3 of the building byelaws.
+84
+
+--- table 0 (21 rows × 14 cols) ---
+FAR | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  | 
+ |  | Road Width |  |  | Road Width |  |  | Road Width |  |  |  |  | 
+[#DBE5F1] | [#DBE5F1] |  |  |  |  |  |  |  |  |  | Road Width (>45m) |  | 
+ |  | (Upto12m) |  |  | (>12 -24m) |  |  | (>24 - 45m) |  |  |  |  | 
+[#DBE5F1] | [#DBE5F1] |  |  |  |  |  |  |  |  |  | [#DBE5F1] |  | 
+ |  | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | «band #DBE5F1»
+Commercial Buildings | BFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR
+ |  |  |  |  |  |  |  |  |  |  |  |  | «band #DBE5F1»
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Built-up Area |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Bazaar Street | [#FFF2CC] | NA | NA | [#DEEAF6] | 0.75 | 0.75 | [#DEEAF6] | 1.5 | 2.25 | [#DEEAF6] | 1.5 | UR | [#DEEAF6]
+ | 1.5 |  |  | 1.5 |  |  | 3.0 |  |  | 5.25 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Non-Built-up Area |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Bazaar Street | [#FFF2CC] | NA | NA | [#DEEAF6] | 0.9 | 0.9 | [#DEEAF6] | 1.75 | 2.6 | [#DEEAF6] | 1.75 | UR | [#DEEAF6]
+ | 1.75 |  |  | 1.75 |  |  | 3.6 |  |  | 6.1 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+
+=== chapter 05 · gazette page 85 · pdf page 2 ===
+5.1.5 Minimum Setback
+Based on the proposed road width, the minimum front setback for plots on the bazaar street shall be as
+follows:
+5.1.6 Parking Requirement
+Parking requirements for bazaar street shall be as per paragraph 3.3.4 of the building byelaws.
+5.1.7 Basement
+The permissibility of basement in bazaar street plots shall be as per paragraph 3.3.3 of the building
+byelaws.
+5.2 Shops, Commercial Complex and Shopping Malls
+5.2.1 Permission
+The construction of commercial establishments viz., shops, commercial complexes and shopping malls
+shall be permitted according to the masterplan/zoning regulations.
+5.2.2 Minimum Plot Size
+The minimum area of the plot for construction of commercial establishments viz., shops, commercial
+complexes and shopping malls shall be as follows.
+5.2.3 Minimum Road Width
+The minimum width of existing approach road to plots for construction of commercial establishments
+viz., shops, commercial complexes and shopping malls shall be as follows.
+85
+
+--- table 0 (8 rows × 2 cols) ---
+Proposed width of road (metres) | Minimum open space in front (metres)
+12 | 3.0
+18 | 4.5
+24 | 6.0
+30 | 6.0
+36 | 7.5
+45 | 7.5
+76 | 9.0
+
+--- table 1 (5 rows × 7 cols) ---
+ |  | Commercial Establishments |  |  | Min. Plot Area (sqm) | «band #D9E2F3»
+1 | Retails Shops |  |  | >10 to 100 |  | 
+2 | Convenient Shopping / Commercial Units |  |  | =>100 to 300 |  | 
+2 | Commercial Complex (including other commercial) |  |  | More than 300 - 3000 |  | 
+3 | Shopping malls |  |  | More than 3000 |  | 
+
+--- table 2 (3 rows × 7 cols) ---
+ |  | Commercial Facilities |  |  | Min. Road Width (m) | «band #D9E2F3»
+1 | Retail Shops |  |  | 6 (built up) 9 (non-built up) |  | 
+2 | Convenience Shopping /Commercial Units |  |  | 12 |  | 
+
+=== chapter 05 · gazette page 86 · pdf page 3 ===
+5.2.4 Maximum Building Height
+There shall be no restriction on building height for commercial buildings i.e. shops, commercial
+complex, shopping malls. However, the maximum height of the building shall be governed by distance
+from the protected monument/ heritage site, airport funnel zone and other statutory restrictions.
+5.2.5 Ground Coverage and FAR
+(i) Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any,
+shall be permissible on plots for commercial establishments i.e. shops, commercial complex, shopping
+malls.
+(ii) Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter
+9. Basis approach road width, the maximum permissible FAR (including Base FAR) for bazaar streets
+in built-up areas and the non-built-up areas shall be as follows:
+*Commercial Units include Shops / Convenience Shopping / other commercial complexes etc.
+Note-1: BFAR – Base FAR, PFAR – Purchasable FAR, PPFAR – Premium Purchasable FAR, MFAR – Maximum
+Permissible FAR which includes Base FAR, UR – Unrestricted FAR.
+Note-2: In green building, additional FAR over and above maximum permissible FAR shall be provided as per paragraph 9.3
+of the building byelaws.
+(iii) Construction of skylighted Atrium shall be allowed in the shopping malls. Such atriums shall not
+be counted in FAR calculations. No permanent construction shall be allowed within the atrium space
+rather it shall be used for circulation. Temporary kiosks shall be permitted in maximum 20% of the
+86
+
+--- table 0 (3 rows × 3 cols) ---
+3 | Commercial Complex | 12
+4 | Shopping malls | 18
+5 | Other Commercial (plot size >300 sqm) | 12
+
+--- table 1 (30 rows × 14 cols) ---
+FAR | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | Road Width (>24 - |  |  | [#DBE5F1] |  | 
+ | [#DBE5F1] | Road Width (Upto12m) |  |  | Road Width (>12 -24m) |  |  |  |  |  | Road Width (>45m) |  | 
+[#DBE5F1] |  |  |  |  |  |  |  | 45m) |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | «band #DBE5F1»
+Commercial Buildings | BFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR
+ | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1]
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Built-up Area |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Comm. Units up to100 sqm | [#FFF2CC] | 0.3 | 0.3 | [#DEEAF6] | 0.75 | 0.75 | [#DEEAF6] | 1.5 | 2.25 | [#DEEAF6] | 1.5 | UR | [#DEEAF6]
+ | 1.5 |  |  | 2.1 |  |  | 3.0 |  |  | 5.25 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+Comm. Units >100 sqm | [#FFF2CC] | NA | NA | [#DEEAF6] | 0.75 | 0.75 | [#DEEAF6] | 1.5 | 2.25 | [#DEEAF6] | 1.5 | UR | [#DEEAF6]
+ | 1.5 |  |  | 1.5 |  |  | 3.0 |  |  | 5.25 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+Shopping malls | [#FFF2CC] | NA | NA | [#DEEAF6] | 1.0 | 1.0 | [#DEEAF6] | 2.0 | 3.0 | [#DEEAF6] | 2.0 | UR | [#DEEAF6]
+ | 2.0 |  |  | 2.0 |  |  | 4.0 |  |  | 7.0 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Non-Built-up Area |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Commercial Units* up to100 sqm | [#FFF2CC] | 0.35 | 0.35 | [#DEEAF6] | 0.9 | 0.9 | [#DEEAF6] | 1.75 | 2.6 | [#DEEAF6] | 1.75 | UR | [#DEEAF6]
+ | 1.75 |  |  | 2.45 |  |  | 3.6 |  |  | 6.1 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+Commercial Units* >100 sqm | [#FFF2CC] | NA | NA | [#DEEAF6] | 0.9 | 0.9 | [#DEEAF6] | 1.75 | 2.6 | [#DEEAF6] | 1.75 | UR | [#DEEAF6]
+ | 1.75 |  |  | 1.75 |  |  | 3.6 |  |  | 6.1 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+Shopping malls | [#FFF2CC] | NA | NA | [#DEEAF6] | 1.5 | 1.5 | [#DEEAF6] | 3.0 | 4.5 | [#DEEAF6] | 3.0 | UR | [#DEEAF6]
+ | 3.0 |  |  | 3.0 |  |  | 6 |  |  | 10.5 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+
+=== chapter 05 · gazette page 87 · pdf page 4 ===
+atrium area such that they do not hinder circulation area below atrium. area. The entry/ exits, passage
+areas within the shopping mall shall be free from any obstructions.
+5.2.6 Minimum Setback
+Minimum setbacks for commercial establishments viz., shops, commercial complexes, and shopping
+malls shall be per paragraph 3.2.4 of the building byelaws.
+5.2.7 Parking Requirements
+Parking requirements for commercial establishments viz., shops, commercial complexes and shopping
+malls shall be as per paragraph 3.3.4 of the building byelaws.
+5.2.8 Basement
+The permissibility of basement in commercial establishments viz., shops, commercial complexes and
+shopping malls shall be as per paragraph 3.3.3 of the building byelaws.
+5.3 Hotels
+5.3.1 Permissibility
+Permission for construction of hotels shall be as per the provisions of Master Plan/ Zoning Regulations.
+5.3.2 Minimum Plot Size
+The minimum number of rooms in hotel building shall be six (6). Up to 20 rooms there shall be no
+restriction on the minimum plot area for construction of hotels. For construction of hotels with more
+than 20 rooms, the minimum plot area shall be 500 sqm.
+5.3.3 Means of Access
+In residential areas, the minimum width of the approach road for construction of hotels up to 20 rooms
+shall be 9 m. For hotels more than 20 rooms, the width of approach road shall be 12 m.
+5.3.4 Maximum Building Height
+There is no restriction on the maximum building height. However, the maximum height of the building
+shall be governed by distance from the protected monument/heritage site, airport funnel zone and other
+statutory restrictions.
+5.3.5 Ground coverage and FAR.
+(i) Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any,
+shall be permissible.
+(ii) Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter
+9. Basis approach road width, the maximum permissible FAR (including Base FAR) for hotels in built-
+up areas and the non-built-up areas shall be as follows:
+87
+
+--- table 0 (15 rows × 14 cols) ---
+FAR | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  | 
+ |  |  |  |  |  |  |  | Road Width (>24 - |  |  |  |  | 
+[#DBE5F1] | [#DBE5F1] | Road Width (Upto12m) |  |  | Road Width (>12 -24m) |  |  |  |  |  | Road Width (>45m) |  | 
+[#DBE5F1] |  |  |  |  |  |  |  | 45m) |  |  |  |  | 
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  |  |  |  | [#DBE5F1] |  | 
+ |  |  |  |  |  |  |  | [#DBE5F1] |  |  |  |  | 
+Hotels |  |  |  |  |  |  |  |  |  |  |  |  | «band #DBE5F1»
+[#DBE5F1] | BFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR
+ | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1]
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Built-up Area |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Hotels | [#FFF2CC] | NA | NA | [#DEEAF6] | 1.0 | 1.0 | [#DEEAF6] | 2.0 | 3.0 | [#DEEAF6] | 2.0 | UR | [#DEEAF6]
+ | 2.0 |  |  | 2.0 |  |  | 4.0 |  |  | 7.0 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+
+=== chapter 05 · gazette page 88 · pdf page 5 ===
+Note-1: BFAR – Base FAR, PFAR – Purchasable FAR, PPFAR – Premium Purchasable FAR, MFAR – Maximum Permissible
+FAR which includes Base FAR, UR – Unrestricted FAR.
+Note-2: In green building, additional FAR over and above maximum permissible FAR shall be provided as per Chapter 9.3 of
+the building byelaws.
+5.3.6 Minimum Setback
+The minimum setback requirement for hotel buildings shall be as per paragraph 3.2.4 of the building
+byelaw.
+5.3.7 Parking Requirements
+Parking requirements for hotel buildings shall be as per paragraph 3.3.4 of the building byelaws.
+5.3.8 Basement
+The permissibility of basement in hotel buildings shall be as per paragraph 3.3.3 of the building
+byelaws.
+5.3.9 Provisions for Hotels in Heritage Buildings
+(i) As per UP Tourism Policy 2022, Heritage hotels will be defined as per the Ministry of Tourism,
+Government of India guidelines according to which the heritage value old buildings/
+forts/havelis/kothis/castles constructed prior to 1950, on being operated as hotels will be included
+in the category of heritage hotels. Heritage hotels can be of any size and dimension. Heritage
+Homestay refers to those units wherein the tourist resides with the owner or any of his/her family
+member in the usual place of residence which must be a heritage building.
+(ii) In buildings declared as heritage buildings by Toursim Department, adaptive reuse of existing
+residential/ non-residential buildings as hotels shall be permitted by the Authority. The provisions
+related to means of access, ground coverage, FAR, setbacks, means of access, parking etc. may
+be relaxed by the Authority on the recommendation of the Heritage Conservation Committee.
+(iii) FAR incentive – Subject to the approval of competent authority, FAR incentives may be provided
+for heritage building owners who undertake restoration and conservation work, promoting
+preservation of historic structures. Higher FAR for heritage buildings being adaptively reused
+for compatible purposes, such as hotels, restaurants, or museums, to encourage their economic
+viability. Heritage features such as ornate facades, balconies, or courtyards, may be exempt from
+FAR calculations, allowing owners to preserve these essential elements. Heritage building
+owners incorporating green building features such as solar panels, rainwater harvesting, or energy
+efficient systems shall be offered FAR bonus of 0.25 or 0.50 over and above base FAR.
+(iv) Road Width - Heritage buildings, proposed to be used as heritage hotels, shall be permissible on
+existing road width of atleast 5 meters in areas which have traditionally considered to be religious
+and spriritual hotspots wherein most of the roads are narrow. In case of non-heritage areas,
+minimum width of existing approach road shall be 7.5 meters.
+(v) Parking - Heritage buildings proposed to be used as heritage hotels, situated on narrow roads in
+88
+
+--- table 0 (15 rows × 14 cols) ---
+FAR | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  | 
+ |  |  |  |  |  |  |  | Road Width (>24 - |  |  |  |  | 
+[#DBE5F1] | [#DBE5F1] | Road Width (Upto12m) |  |  | Road Width (>12 -24m) |  |  |  |  |  | Road Width (>45m) |  | 
+[#DBE5F1] |  |  |  |  |  |  |  | 45m) |  |  |  |  | 
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  |  |  |  | [#DBE5F1] |  | 
+ |  |  |  |  |  |  |  | [#DBE5F1] |  |  |  |  | 
+Hotels |  |  |  |  |  |  |  |  |  |  |  |  | «band #DBE5F1»
+[#DBE5F1] | BFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR
+ | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1]
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Non-Built-up Area |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Hotels | [#FFF2CC] | NA | NA | [#DEEAF6] | 1.25 | 1.25 | [#DEEAF6] | 2.5 | 3.75 | [#DEEAF6] | 2.5 | UR | [#DEEAF6]
+ | 2.5 |  |  | 2.5 |  |  | 5.0 |  |  | 8.75 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+
+=== chapter 05 · gazette page 89 · pdf page 6 ===
+urban areas which arrange for dedicated alternative parking on wider roads (more than 12-m) and
+provide for park and ride system from Hotel to parking place shall be permitted.
+(vi) Commercial Use -. All heritage buildings, those are residential/institutional, heritage tourism
+units can commercially convert a maximum 1000 square meters or 10 percent of plinth area of
+the existing heritage building, whichever is less for purposes such as retail shops or souvinier
+shops.
+(vii) Setback relaxations - The development authority may consider relaxation in the norms related to
+setbacks in high density areas. Towards facilitating the restoration and reuse of heritage
+buildings, the development authority may provide relaxations in setback and parking
+requirements for heritage buildings on case to case basis, acknowledging the unique challenges
+posed by their location and design.
+(viii) The composition of the Heritage Conservation Committee shall be as follows:
+a. Chairman, Vice-Chairman, Development Authority
+b. Member – Commissioner, Municipal Corporation
+c. Member – District level officer, Tourism Department
+d. Member – District level officer of Culture Department
+e. Member – Representative, Fire Department
+f. Member – Representative, O/o Chief Town and Country Planner
+g. Member Secretary – Chief Town Planner/ In-charge, Planning, Dev. Authority.
+h. Any other subject matter expert nominated by the Chairman.
+5.4 Single Screen Cinema, Miniplex and Multiplex
+5.4.1 Permissibility
+Permissions for construction of Single Screen Cinema, Miniplex and Multiplex shall be permitted as
+per master plan zoning regulations. Under multiplex, cinema halls, commercial theatres and other
+entertainment facilities shall be allowed.
+5.4.2 Minimum Plot Size
+Minimum plot size for single screen cinema, miniplex, and multiplex shall be as follows.
+The above-mentioned plot size for multiplex shall not apply if multiplexes are proposed on the same
+land after demolishing existing cinema halls or in the sites identified for multiplexes in the sector
+plan/lay-out plan which is approved by the competent level, i.e., the existing area of the plot shall be
+valid.
+5.4.3 Means of Access
+The minimum road width for proposed site/plot for construction of single screen cinema, miniplex and
+multiplex shall be as follows.
+89
+
+--- table 0 (4 rows × 6 cols) ---
+[#D9E2F3] | Type of Building | [#D9E2F3] | [#D9E2F3] | Minimum Plot Size (sqm) | [#D9E2F3]
+Single Screen Cinema |  |  | 500 |  | 
+Miniplex (2 screens) |  |  | 700 |  | 
+Multiplex |  |  | 3000 |  | 
+
+--- table 1 (4 rows × 6 cols) ---
+[#D9E2F3] | Type of Building | [#D9E2F3] | [#D9E2F3] | Minimum Road width (m) | [#D9E2F3]
+Single Screen Cinema |  |  | 12 |  | 
+Miniplex (2 screens) |  |  | 12 |  | 
+Multiplex |  |  | 18 |  | 
+
+=== chapter 05 · gazette page 90 · pdf page 7 ===
+The above restriction shall not apply if a multiplex is proposed on the same land after demolishing their
+place by demolishing existing cinema halls or in place of the sites marked for multiplex in the master
+plan/zonal plan/sector plan/lay-out plan which is approved by the competent authority.
+5.4.4 Ground Coverage and FAR
+The maximum ground coverage after ensuring the minimum setbacks may be utilized. The maximum
+permissible FAR (including additional FAR available on purchasable basis) for multiplexes in
+commercial areas shall be permissible as follows:
+Note-1: BFAR – Base FAR, PFAR – Purchasable FAR, PPFAR – Premium Purchasable FAR, MFAR
+– Maximum Permissible FAR which includes Base FAR, UR – Unrestricted FAR.
+Note-2: In green building, additional FAR over and above maximum permissible FAR shall be provided
+as per Chapter 9.3 of the building byelaws.
+5.4.5 Ratio of activities
+(i) Provision for minimum two cinema screens under miniplex and multiplex shall be mandatory.
+(ii) In case of construction of cinema and miniplex in non-commercial areas, 20 percent floor area shall
+be utilized for commercial and other entertainment facilities.
+(iii) In case of construction of multiplex in non-commercial areas, construction of cinema hall shall be
+permitted on minimum of 30 percent of the total floor area and the remaining 70 percent shall be utilized
+for commercial and other entertainment facilities.
+(iv) In case of construction of multiplex in commercial areas, then the above restriction shall not apply.
+5.4.6 Minimum Setback
+(i) Minimum setbacks for cinema, miniplex and multiplex shall be per paragraph 3.2.4 of the building
+byelaws.
+(ii) For multiplex buildings, provision of adequate "circulation space" for the vehicles to move from
+parking lot towards the 18-meters-and-wider access road shall be mandatory.
+5.4.7 Parking Requirements
+Parking requirements for cinema, miniplex and multiplex shall be as per paragraph 3.3.4 of the building
+byelaws.
+5.4.8 Basement
+(i) The provisions for basement for cinema, miniplex and multiplex shall be as per paragraph 3.3.3 of
+the building byelaws.
+90
+
+--- table 0 (21 rows × 14 cols) ---
+FAR | [#DBE5F1] | Road Width (Upto12m) |  |  | Road Width (>12 -24m) |  |  | Road Width (>24 - 45m) |  |  | Road Width (>45m) |  | 
+[#DBE5F1] |  |  |  |  |  |  |  |  |  |  |  |  | 
+Cinema, Miniplex, |  |  |  |  |  |  |  |  |  |  |  |  | «band #DBE5F1»
+ | BFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR
+Multiplex |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1]
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Built-up Area |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Cinema, Miniplex, Multiplex | [#FFF2CC] | NA | NA | [#DEEAF6] | 1.0 | 1.0 | [#DEEAF6] | 2.0 | 3.0 | [#DEEAF6] | 2.0 | UR | [#DEEAF6]
+ | 2.0 |  |  | NA |  |  | 4.0 |  |  | 7.0 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Non-Built-up Area |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  | 
+Cinema, Miniplex | [#FFF2CC] | NA | NA | [#DEEAF6] | 1.0 | 1.0 | [#DEEAF6] | 2.0 | 3.0 | [#DEEAF6] | 2.0 | UR | [#DEEAF6]
+ | 2.0 |  |  | NA |  |  | 4.0 |  |  | 7.0 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+Multiplex | [#FFF2CC] | NA | NA | [#DEEAF6] | 1.5 | 1.5 | [#DEEAF6] | 3.0 | 4.5 | [#DEEAF6] | 3.0 | UR | [#DEEAF6]
+ | 3.0 |  |  | NA |  |  | 6.0 |  |  | 10.5 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+
+=== chapter 05 · gazette page 91 · pdf page 8 ===
+(ii) Construction of a screen in the basement shall not be permitted.
+5.4.9 Other requirements
+Planning, designing and firefighting arrangements of the cinema hall shall be ensured as per the relevant
+provisions of Uttar Pradesh Cinematograph Rules, 1951 and National Building Code. In a multiplex,
+essential services like drinking water system, toilets, canteen, etc. can be provisioned in common as per
+the prescribed standards.
+5.4.10 Redevelopment of existing cinema halls
+5.4.10.1. The land use of the cinema plot or existing cinema hall planned before the creation of the
+authority, which is part of the layout plan approved at the competent level, shall be considered as cinema
+hall (commercial), even if their land use is shown otherwise in the master plan.
+5.4.10.2. In case the land use level of the plots/picture halls planned for the purpose of the cinema hall
+is not determined under the master plan, it shall be considered as commercial.
+5.4.10.3. Under the layout plan approved by the competent authority, since the land use of the plot
+planned for the cinema hall/existing cinema hall is commercial, the action of land use change shall not
+be necessary, hence land use change fee shall not be payable.
+.
+5.4.10.4. The ground coverage and FAR allowed for cinema hall/multiplex shall be as per the terms and
+conditions of allotment/lease. If there is no above provision in the lease, then as per the provisions of
+Multiplex as per these byelaws shall be permissible. Purchasable FAR shall be allowed as per rules over
+and above the permissible FAR as per the terms of allotment/lease or the permissible FAR as per
+building construction and development byelaws, as the case may be.
+5.5 Petrol Pump/Filling Station (CNG/PNG/EV)
+5.5.1 Permissibility
+Petrol pump/filling station shall be permitted as per master plan zoning regulations.
+5.5.2 Minimum Plot Size
+The minimum size of the plot for petrol pump/filling station (covering CNG/PNG/EV) is 16m x 14m if
+it is exclusively for 2-wheelers and 3-wheeler vehicles and 30m x 17m for all vehicles. The minimum
+size of plot for petrol pump/filling station-cum-service station is 36m X 30 m.
+Note: Any other plot size prescribed by the oil companies (in the letter of intent) shall prevail over the
+above provision.
+5.5.3 Means of Access
+Petrol pump/ filling station will be located on a minimum 12-meter-wide road in the built-up area and
+a minimum 18-meter-wide road in the non-built-up area. In case the petrol pump/filling station
+exclusively for 2-wheeler/ 3-wheeler vehicles, the approach shall be on a minimum of 9-meter-wide
+roads.
+5.5.4 Maximum Building Height
+The maximum permissible building height for petrol pump / filling station shall be 6 meters.
+5.5.5 Ground Coverage, FAR and Setbacks
+The maximum ground coverage and maximum permissible FAR shall be as follows:
+91
+
+=== chapter 05 · gazette page 92 · pdf page 9 ===
+5.5.6 Parking Requirements
+Parking provision to the extent of 80 square meters shall be provided.
+5.5.7 Kisan Seva Kendra
+Depending upon the demand and preference of the local customers, Kisan Seva Kendras (KSKs)
+provide allied facilities like Micro ATM, Convenience Store, Fertilizers/Pesticides, farm equipment’s
+etc., while also providing services of petrol filling stations.
+Minimum plot size for retail outlet for the purpose of KSKs shall be 20m x 20m or plot size as prescribed
+by the related companies.
+5.5.8 Other requirements
+(i). The width of the entry and exit routes of each petrol filling station / petrol filling station-cum-service
+station shall be minimum 9 meters.
+(ii). Provision of buffer strip is necessary between the main road and the petrol filling station/petrol
+filling station-cum-service station, which shall be at least 12 meters long and 3 meters wide and shall
+be in addition to the setback.
+(iii). Firefighting provisions shall have to be ensured as per rules.
+(iv). Other provisions of Petroleum and Explosives Act shall be applicable.
+(v). Petrol pump/filling station shall be permissible at a distance of 30m from road intersection/ traffic
+junction after ensuring efficient movement of vehicles by obtaining requisite No-objection Certificate.
+5.6 LPG Gas Godown
+5.6.1 Permissibility
+LPG gas godown shall be permitted as per the master plan zoning regulations. The final approval shall
+be given as per requirements of Petroleum and Explosives Safety Organization (PESO).
+5.6.2 Minimum Plot Size
+The minimum plot size for LPG storage / Gas Godown shall be 26mx20m (520 sqm).
+Note: Any other plot size prescribed by the concerned PSUs shall prevail over the above provision.
+5.6.3 Means of Access
+Minimum width of existing access road to the LPG Gas Godown site shall be 18 meters.
+5.6.4 Building height
+Minimum height of the gas godown shall be 6-meters and no construction shall be allowed above the
+gas godown.
+92
+
+--- table 0 (5 rows × 4 cols) ---
+Petrol Pump | Ground Coverage | FAR | Front setback
+(a) Petrol Pump/ Filling Station (CNG/PNG/EV) | Built-up area: 10% | Built-up area: 0.1 | 3-m
+ | Non-Built-up area: 10% | Non-Built-up area: 0.15 | 
+(b) Filling Station cum service station (CNG/PNG/EV) | Built-up area: 20% | Built-up area: 0.2 | 6-m
+ | Non-Built-up area: 10% | Non-Built-up area: 0.15 | 
+
+=== chapter 05 · gazette page 93 · pdf page 10 ===
+5.6.5 Ground Coverage and FAR
+The maximum permissible FAR shall be 0.30, which can include construction of office for use of gas
+godown and a guard room of maximum area of square meters.
+1.6
+5.6.6 Minimum Setback
+Minimum front setback of 6-meter and 3-meter on other sides of the building shall be ensured for the
+gas godown building.
+5.6.7 Parking Requirements
+Parking requirement for LPG storage and Gas Godown shall be 1 ECS / 100 sqm of Built-up Area.
+5.6.8 Ventilation
+Minimum 10 percent of the floor area shall be in the form of windows and ventilators, etc., for
+ventilation.
+5.6.9 Other requirements
+(i) Gas godowns shall be constructed of non-inflammable materials.
+(ii) For the construction of a gas godown, no objection certificate shall be obtained from the fire
+department and the Chief Controller of Explosives.
+93

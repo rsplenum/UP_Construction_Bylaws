@@ -282,6 +282,7 @@ export function assessProject(project: ProjectState): Assessment {
     plotArea,
     buildingHeight: height,
     isCornerPlot: project.isCornerPlot,
+    roadWidth,
   });
   // Chapter 16 decides what a shortfall means. Resolve its limits once, and use the
   // same object for the setback verdicts and for the fee, so the two cannot disagree.

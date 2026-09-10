@@ -116,6 +116,27 @@ export const RULES: RuleSet = {
       'A scheme of four hectares or more would be told it can buy its way out of an obligation the gazette gives it no way to buy out of, and multi-unit plotted development would be exempted from the reservation altogether.',
   },
 
+  'setback.bazaar-street': {
+    id: 'setback.bazaar-street',
+    question: 'How far back must a shop on a bazaar street sit from the road?',
+    clause: 'Clause 5.1.5, printed again at Clause 3.2.4.3 Note-3',
+    confidence: 'gazette',
+    derivedFrom: ['roadWidth'],
+    checked: '2026-09-10',
+    quote:
+      'Note-3: "The permissible front setbacks for buildings on bazaar street shall be as follows (also defined in Chapter-5)." ' +
+      'Proposed width of road (metres) / Minimum open space in front (metres): 12 → 3.0, 18 → 4.5, 24 → 6.0, 30 → 6.0, 36 → 7.5, 45 → 7.5, 76 → 9.0. ' +
+      'Both printings of the table are identical.',
+    ifWrong:
+      'Every bazaar-street plot would be assessed against a table written for ordinary commercial plots, which is keyed on plot area and gives an unrelated answer.',
+    challenge: {
+      id: 'V-012',
+      summary:
+        'The gazette lists discrete road widths, not bands, and says nothing about a road between two of them. The engine rounds up to the next listed width, which is the stricter reading; taking the largest listed width at or below the actual road would give a smaller setback.',
+      maxDivergence: '1.5 m of front setback',
+    },
+  },
+
   'occupancy.thresholds': {
     id: 'occupancy.thresholds',
     question: 'What road width, plot size and height does each use require?',

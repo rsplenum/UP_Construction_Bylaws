@@ -146,9 +146,12 @@ export function resolveRequiredSetbacks(input: {
   plotArea: number;
   buildingHeight: number;
   isCornerPlot: boolean;
+  /** Needed only by the bazaar-street ladder (Clause 5.1.5), which is keyed on it. */
+  roadWidth?: number;
 }): RequiredSetbacks {
   const definition = getOccupancy(input.occupancy);
   const plotArea = Math.max(0, Number(input.plotArea) || 0);
+  const roadWidth = Math.max(0, Number(input.roadWidth) || 0);
   const buildingHeight = Math.max(0, Number(input.buildingHeight) || 0);
   const caveats: string[] = [];
   const isHighRise = buildingHeight > HIGH_RISE_THRESHOLD_M;
@@ -169,7 +172,25 @@ export function resolveRequiredSetbacks(input: {
     industrial: INDUSTRIAL_LADDER,
   };
 
-  if (isHighRise) {
+  if (definition.setbackTable === 'bazaar_street' && !isHighRise) {
+    // Clause 5.1.5 gives a front open space only, keyed on the road. The other three
+    // faces fall back to the commercial ladder at Clause 3.2.4.
+    const resolved = resolveBand(BAZAAR_STREET_FRONT_LADDER, roadWidth);
+    const band = resolved.ok ? resolved.band : BAZAAR_STREET_FRONT_LADDER[0];
+    const commercial = resolveBand(COMMERCIAL_LADDER, plotArea);
+    const rest = commercial.ok ? commercial.band : COMMERCIAL_LADDER[0];
+    set = { front: band.front, rear: rest.rear, side1: rest.side1, side2: rest.side2 };
+    bandLabel = band.label;
+    clauseRef = 'Clause 5.1.5 (bazaar street front open space), with Clause 3.2.4 for the other faces';
+    typology = 'Bazaar street';
+    if (!resolved.ok) {
+      caveats.push(`Road width ${roadWidth} m could not be matched to a bazaar-street band.`);
+    }
+    caveats.push(
+      'Clause 5.1.5 lists discrete road widths rather than bands. A road between two listed '
+      + 'widths is taken here at the next width up, which is the stricter reading (V-012).',
+    );
+  } else if (isHighRise) {
     // Progressive fire-tender setbacks override every area-based ladder above 15 m.
     const resolved = resolveBand(HIGH_RISE_LADDER, buildingHeight);
     const band = resolved.ok ? resolved.band : HIGH_RISE_LADDER[0];
@@ -243,6 +264,32 @@ export function resolveRequiredSetbacks(input: {
     caveats,
   };
 }
+
+/**
+ * Clause 5.1.5 — bazaar street front setback, keyed on **road width**, not plot area.
+ *
+ * Every other setback table in the byelaws is keyed on plot area or building height, and
+ * routing bazaar street to the commercial (plot-area) ladder gave the wrong answer on
+ * every bazaar-street plot (B-022).
+ *
+ * The gazette lists discrete road widths — 12, 18, 24, 30, 36, 45, 76 — rather than
+ * bands, and says nothing about a road of, say, 15 m. Two readings are possible: take the
+ * largest listed width at or below the actual road (3.0 m here), or round up to the next
+ * listed width (4.5 m). Standing rule 4 applies and the bands below take the stricter,
+ * rounding up. Logged as V-012.
+ */
+export const BAZAAR_STREET_FRONT_LADDER: readonly (Band & { label: string; front: number })[] = [
+  { label: 'Up to 12 m road',  overMoreThan: 0,  upToAndIncluding: 12,       front: 3.0 },
+  { label: '>12 to 18 m road', overMoreThan: 12, upToAndIncluding: 18,       front: 4.5 },
+  { label: '>18 to 24 m road', overMoreThan: 18, upToAndIncluding: 24,       front: 6.0 },
+  { label: '>24 to 30 m road', overMoreThan: 24, upToAndIncluding: 30,       front: 6.0 },
+  { label: '>30 to 36 m road', overMoreThan: 30, upToAndIncluding: 36,       front: 7.5 },
+  { label: '>36 to 45 m road', overMoreThan: 36, upToAndIncluding: 45,       front: 7.5 },
+  { label: '>45 to 76 m road', overMoreThan: 45, upToAndIncluding: 76,       front: 9.0 },
+  { label: '>76 m road',       overMoreThan: 76, upToAndIncluding: Infinity, front: 9.0 },
+];
+
+assertContiguousLadder('BAZAAR_STREET_FRONT_LADDER', BAZAAR_STREET_FRONT_LADDER);
 
 export type SetbackFace = 'front' | 'rear' | 'side1' | 'side2';
 
