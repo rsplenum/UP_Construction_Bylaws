@@ -1,0 +1,775 @@
+=== chapter 02 · gazette page 19 · pdf page 1 ===
+2 Permission for Land Development and Building Construction
+2.1 Land Development and Building Construction Permission
+2.1.1 Development Permission
+No person shall carry out any development or redevelopment on any plot or land (including sub-
+division) or cause to be done without obtaining a prior Development Permission of the Authority. No
+such permission shall be in contravention of the Master Plan/ Zonal Development Plan.
+2.1.2 Building Permission
+No person shall erect, re-erect or make addition/ alterations/ revisions in any plot/building or cause the
+same to be done without obtaining a prior building permission from the Authority.
+(i) No piece of land shall be used as a site for the construction of a building, and no building shall
+be constructed or reconstructed, and no addition or alteration shall be made to an existing building
+without the self certification based declarations or the required approval in the manner specified
+herein, relating to the use of building sites or the construction or reconstruction of buildings.
+(ii) For plots of size upto 100 square meters for residential purpose and plots of size up to 30 square
+meters for commercial purpose will not require any permission, except in the mela area declared
+under the Uttar Pradesh Melas Act, 1938 and plots in unauthoritized layouts/ colonies.
+Provided the restriction shall be that all provisions of master plan, zonal plan and building
+byelaws, have been followed. The applicant however needs to register online with a token amount
+of Rs.1/- and duly self certifying his title, the size of the plot and floors, it shall also not require
+a completion certificate. Any plot bigger than 100 square meters cannot be split for this purpose
+or this provision cannot be misused for taking up constructions in government or prohibited or
+disputed land. An online mechanism shall be developed for submission of a self-declaration in a
+prescribed format and an affidavit. A certificate of acceptance shall be generated automatically
+on submission, which shall serve as a certification from the Authority. The onus to ensure
+authenticity of self-certification and compliance with the self-certification lies with the applicant,
+who shall be held personally accountable and liable in case of false declaration and action shall
+be initiated against the said person, as specified.
+(iii) For Plots in layouts approved or developed by the Authority: For plots of size upto 500 square
+meters for residential purpose (except multi-unit) and plots of size up to 200 square meters for
+commercial purpose, where the plans are prepared by a licensed technical person and certified
+that the proposed construction/ reconstruction is as per the master plan and building bye-laws,
+the applicant upon furnishing all required information/details and payment of fees, shall get
+instant online approval. The onus to ensure authenticity of self-declaration and compliance with
+the Self-Certification lies on the Owner, Applicant and Licensed Technical Personnel, who shall
+all be held personally responsible and accountable in case of false declaration, and the Owner,
+Applicant and the Licensed Technical Personnel, will be liable for action as per law.
+(iv) For categories of plots other than (ii) and (iii): For residential plots of size more than 100 square
+meters and commercial plots of size more than 30 square meters which are not part of approved
+layouts, residential plots of size over 500 square meters and commercial plots of size over 200
+square meters which are part of approved layouts, all types of High Rise Buildings, Group
+Housing, Multiplexes, Community Facilties, Industrial buildings, and all other categories, etc.,
+one common application form shall be submitted through web based online system as prescribed.
+(v) The permission issued under (ii) and (iii) can be revoked by the Authority within 30 days from
+the date of approval if it is found that approval has been obtained by mis-representation of the
+facts or false statements, and/or against the building byelaws and Master Plan land use provisions.
+(vi) Other exemptions from taking building permit are specified in paragraph 2.5.1. Provided that the
+Government may exempt certain buildings from taking building permission under this section,
+19
+
+=== chapter 02 · gazette page 20 · pdf page 2 ===
+as per section 53 of Uttar Pradesh Urban Planning and Development Act, 1973.
+2.1.3 Pre-issued Permissions and provisions for plots allotted by Authority.
+2.1.3.1 Where any development/building permit has been issued by the Authority prior to the
+commencement of these byelaws
+(i) If land development/building construction is in progress and the work has not been completed
+within the validity or extended validity period of such permit, the said development/construction
+shall be governed by sanctioned map.
+(ii) If the validity of the permit has expired and development/construction has not commenced, fresh
+permit shall be obtained as per the provisions of these building byelaws.
+2.1.3.2 Where the plot/land has been allotted through allotment/ public auction with specific
+restrictions on ground coverage, FAR, setbacks, building height, lease/sale conditions, etc.
+(i) In such plots where construction has not been done, any benefit accruing to the owner/developer
+due to relaxation in development/ construction parameters (which were restricted during
+auctioning) on application of these byelaws, shall be chargeable.
+(ii) In such plots (except group housing) where construction has been done, but the owner/developer
+intends to take benefits accruing out of these byelaws, due to relaxation in development/
+construction parameters (which were restricted during auctioning) on application of these
+byelaws, shall also be chargeable.
+(iii) The benefit accruing out of the application of these byelaws shall not be applicable to those group
+housing projects where completion/ occupancy certificate has been issued. However, if any legal
+entity competent under the Uttar Pradesh Apartment Ownership Act, 2010, intends to take such
+benefits on chargeable basis, the Board of the Authority is competent to take a decision keeping
+in mind the adequacy of infrastructure provisions, subject to the compliance of relevant statutory
+provisions.
+(iv) For calculation of charges, the allotment/auction price shall be enhanced in proportion to the
+increase in FAR and also enhanced according to the cost index basis, and differential amount
+shall be charged to the allottee.
+(v) In plots where construction has been done beyond the permissible limits of previous byelaws, but
+is within permissible limits as per these byelaws, the variation of extra ground coverage, FAR or
+any other parameter, shall be charged as per compounding provisions in chatper-16. This shall
+be in addtion to the amount payable as per paragraph (iv) above.
+(vi) On deposit of such charges by the owner/developer, consequential changes shall be made in the
+lease/sale deed by the authority.
+Illustrative Example:
+For example, for a plot size of 500 sqm (20m width x 25m depth), with reserved price Rs. 100/-
+auctioned in the year 2000 with ground coverage 45 percent and base FAR 1.25, at a price of Rs. 125/-
+the current byelaws permit a base FAR of 1.75 and maximum ground coverage after ensuring minimum
+setbacks. Supposing that the plot owner wants to construct up to the entire permissible ground coverage
+(i.e. 76 percent for the given plot dimensions), the calculation shall be as below:
+(A) Differential amount due to increase in FAR = 125*(1.75 /1.25)*C
+Where, CLI = Cost of Living Index; C = increased CLI from 2000 to 2025
+(B) Differential amount due to increase in Ground Coverage = (76-45)*500*Current Residential Land
+Rate.
+20
+
+=== chapter 02 · gazette page 21 · pdf page 3 ===
+2.2 Procedure for obtaining Development and/or Building Permission
+2.2.1 Application/Notice
+(i) Every person who intends to carry out any development or redevelopment including sub-division
+on any plot or land or to erect, re-erect or make alternation in any place in a building or demolish
+any building shall give application/notice in writing to the Authority of his intention in the
+prescribed form (See Appendix-2 of these bye-laws for development permission and See
+Appendix-5 for building permission) as stipulated under section 15 of the Uttar Pradesh Urban
+Planning and Development Act, 1973 and other relevant Acts.
+(ii) Such application/notice shall be submitted online through a portal that the Government of Uttar
+Pradesh may notify from time to time for this purpose, accompanied by relevant plans and
+statements. The formats for submission of such plans may be revised from time to time.
+2.2.2 Details/Information Accompanying Application/Notice
+(i) In case of development permission, the application/notice shall be accompanied by the key plan,
+location plan, site plan, layout/sub-division plan, indicating setback lines, and services plan/
+infrastructure plan, landscape plan and specifications and other documents as prescribed by the
+Authority.
+(ii) In case of building construction, the application/notice shall be accompanied by the location plan,
+site plan, subdivision / layout plan, building plan, services plan, specifications and certificate of
+supervision, ownership title and other documents as prescribed by the Authority.
+2.2.3 Documents
+(i) Application for development permit or building permit shall be accompanied by the following
+documents:
+a. Ownership Documents-lease-deed/sale-deed etc. duly accompanied by a declaration
+along with the site plan; giving the details of the plot/property,
+b. Copy of possession letter and deed, in case of land development in the schemes of
+Authority, and
+c. No objection certificate from the Authority/lessor, in such cases where lease deed has
+not been executed.
+d. Free-hold deed or no-objection certificate from the concerned department, in case the
+land belongs to Nazul or Improvement Trust,
+e. An affidavit/ undertaking for handing over of the land required for road widening as in
+Appendix-X, in case land requirement for implementation of master plan roads.
+f. In non-built-up area, approval of building plan shall also be considered if the approach
+road is of the required width and is built and maintained by any government
+department/ agency/ authority/ corporation, even if not marked in the master plan.
+Concerned department/ agency/ authority/ corporation shall certify such road-width.
+(ii) In case of any deviation from the terms and conditions stipulated in the lease deed/ownership
+document, necessary clearance from the Authority/ competent Officer shall be obtained and
+submitted.
+(iii) No objection certificates (NOCs) required to be attached:
+The following departments from which NOCs are sought for, for the purpose of obtaining building plan
+permit, shall provide the NOC within the number of days mentioned against each of them in the table
+below, from the date of application of such NOC.
+21
+
+=== chapter 02 · gazette page 22 · pdf page 4 ===
+(iv) Wherever feasible, system level validation based on GIS layering and PM Gati Shakti may be
+ensured by relevant departments concerned with issuance of NOC.
+(v) If the application is in order with all the requisite particulars and if the concerned department has
+neither called for any additional details nor rejected it by an explicit order on substantial grounds
+with the reasons recorded in writing for such rejection, the NOC shall be deemed to have been
+given on the 30th day (or on expiry of days specified in the table above whichever is earlier) from
+the date of such application. The following procedures may be further stipulated for the
+22
+
+--- table 0 (13 rows × 12 cols) ---
+[#D9E2F3] | Sl. | [#D9E2F3] | [#D9E2F3] | Department | [#D9E2F3] | [#D9E2F3] | Applicability | [#D9E2F3] | [#D9E2F3] | Time (days) | [#D9E2F3]
+1 |  |  | Acquisition Section, Nazul, Improvement Trust, Property Section, Urban Ceiling, Tehsil - Development Authority |  |  | Acquisition (All buildings), Nazul - Only for notified villages listed under Nazul Registers (1862, 1886, 1907), Improvement Trust – Only for notified schemes/area, Property section – normally only for leasehold buildings, Urban Ceiling - only for notified villages, Tehsil - all buildings |  |  | 10 |  | 
+5 |  |  | Airport, Defence Authority |  |  | As per Colour-Coded Zoning Maps: (i) Buildings in Red Zone, and (ii) buildings with a desired height above the Permissible Top Elevation of relevant zone |  |  | 10 |  | 
+6 |  |  | Army |  |  | As per Ministry of Defence letter No.F.11026/2/2011/ D (Lands) dated 21.10.2016: (i) Any construction or repair activity within 10 metres of stations listed in Part A of letter’s annexure; (ii) Any construction or repair activity within 100 metres of stations listed in Part B of letter’s annexure |  |  | 10 |  | 
+7 |  |  | Fire Department |  |  | As per UP Fire & Emergency Services Act, 2022: (i) Multi-storied buildings above 15 meters height; (ii) special buildings like educational, institutional, assembly, business, mercantile, industrial, storage and hazardous buildings as defined in National Building Code; (iii) Mixed occupancies with any of the aforesaid occupancies having more than 500 square meter covered area |  |  | Conditional (15) |  | 
+8 |  |  | Irrigation / Ground Water Department |  |  | "Non-Notified Areas" under UP Ground Water Act 2019, OR 50 meters |  |  | 15 |  | 
+9 |  |  | Metro |  |  | For complete corridors: (i) Any building within 11m of either side from edge of underground structure, (ii) Any building within 5m of either side from edge of at-grade/elevated structure For under-implementation corridors: Any building within 50m of either side of centre line of Metro alignment |  |  | 15 |  | 
+10 |  |  | Forest Department |  |  | All buildings requiring tree felling |  |  | 15 |  | 
+11 |  |  | Railways |  |  | Buildings within 30m from railway track boundary |  |  | 15 |  | 
+12 |  |  | Power / Electricity |  |  | Only in respect of Electrical load |  |  | 5 |  | 
+13 |  |  | NHAI |  |  | Only buildings/ layouts proposing direct access from NHAI |  |  | 10 |  | 
+14 |  |  | PWD |  |  | Where applicable |  |  | 10 |  | 
+15 |  |  | ASI, NMA |  |  | 300m from the precinct of the listed buildings (protected buildings) as per Act |  |  | 10 |  | 
+
+=== chapter 02 · gazette page 23 · pdf page 5 ===
+implementation of the deemed NOC system:
+a. The first scrutiny of the application shall be done by the competent authority of the
+concerned department within 7 days from the date of receipt of the application and such
+status shall be updated online.
+b. All the required additional particulars from the applicant shall be called for within 10
+days from the date of receipt of application.
+c. The applicant shall be given a time of 10 days to furnish the additional particulars called
+for.
+d. If the particulars are not received within the stipulated time, the application shall be
+summarily rejected on the 30th day (or on the day specified in the table, whichever is
+earlier)
+e. On the day of considering it as deemed NOC, the concerned Head of Department
+(HOD) shall be alerted by the system in his login and via SMS about the deemed NOC.
+f. In all cases of deemed NOCs, accountability is to be fixed on the respective official
+responsible for issuing such NOC. The concerned HOD shall conduct periodical
+reviews with the officials to ensure timely processing of NOCs.
+g. The competent authority of the department concerned shall cause inspection for such
+developments where Its risk assessment deems it fit for Inspection if need be within 7
+days from the date of deemed NOC and raise objections, if any, to the planning
+authority concerned.
+h. If no objection is raised by the concerned Departments within 7 days of deemed NOC,
+the deemed NOC shall be construed as confirmed, under intimation to the concerned
+department.
+i. The Authority shall ensure that the intimation of deemed NOCs are sent to the
+respective departments on the date of granting planning permission based on this
+deemed NOC. This process shall be automated and such intimation should reach the
+login of the HOD concerned.
+j. The permit shall include a clause to specifically mention that the Planning Permission
+is being granted based on the deemed NOC.
+(vi) Further instructions with regard to certain departments are as follows:
+a. The permit which involve the NOC of Defence, Indian Air Force, Airport Authority of
+India, shall be issued only after the NOC is received.
+b. HT/LT Lines (lines on a pole) passing through the site shall be ascertained by
+Development Authority through inspection. Hence there is no need for a separate NOC
+from the UP-Power Transmission Corporation Limited.
+(vii) If any authority wishes to take NOC from departments listed above, the same may be done in
+consultation with the committee constituted in paragraph 1.4 of these byelaws.
+(viii) The NOC applications shall be made online on the relevant portal and the entire applications
+shall be shared with the departments to enable them to give NOC within prescribed time limits.
+(ix) In case NOCs are received from the department, the authority shall approve/ reject the building
+plan according to the conditions laid down in the NOCs and these building byelaws. In case
+NOCs are not received from the departments within the prescribed time, the authority shall
+approve/ reject the building plan according to these building byelaws.
+(x) After the plan is approved/rejected, the same shall be shared with the concerned departments for
+their comments through the online portal and the concerned department shall respond with their
+comments agreeing or disagreeing with the approved/rejected plan within a timeframe of 15 days
+23
+
+=== chapter 02 · gazette page 24 · pdf page 6 ===
+on the portal. In case such comments are not received in the prescribed time period, the building
+plan shall be considered to be approved with the NOCs of such department.
+2.2.4 Colouring and Notations
+The plans shall be coloured as specified in the table below. Further, prints of the plans shall be on
+one-side of paper only.
+Note:
+(1) For entirely new construction this need not be done; for extension of an existing work this shall apply.
+(2) For land development, sub-division, layout, suitable colouring notations shall be used which shall be indexed.
+(3) The colouring and notation of plans shall be based on formats adopted in online portal, which may be revised
+from time to time.
+2.3 All Plans
+2.3.1 Key Plan
+A ‘Key Plan’ drawn to a scale of not less than 1: 10,000 shall be submitted along with application/
+notice for development permission or building permission, showing boundary and location of the site
+(along with north point indicator and scale) with respect of neighbourhood landmarks in areas where
+there are no approved layout plans.
+2.3.2 Site Plan for Development Permission
+(i) Plot number along with details of neighbouring land shall be given in the Site Plan.
+(ii) If proposed land is contiguous with neighbouring land owned by same applicant, and whose
+subdivision is already approved, the details of public amenities provided in such land and all
+streets within it opening out in the site for which permission is being sought, shall include:
+(iii) The means of access from existing street, distance from it, mentioning name and width of the
+street to the site proposed for development.
+(iv) The position of all existing structures and features like high-tension lines, telegraph and electrical
+poles, underground pipe lines, trees, buildings and railway lines etc. within a distance of 30
+meters from the boundary of the site.
+(v) All major physical characteristics of the land proposed to be developed which include the
+approximate location and size of any water body, flood affected areas, and contours at an interval
+24
+
+--- table 0 (15 rows × 16 cols) ---
+[#D9E2F3] | Sl. | [#D9E2F3] | [#D9E2F3] | Item | [#D9E2F3] | [#D9E2F3] | Site Plan |  |  | [#D9E2F3] | [#D9E2F3] | Building Plan |  |  | [#D9E2F3]
+[#D9E2F3] | [#D9E2F3] |  | Document type | Document type |  | White Plan | White Plan | [#D9E2F3] | Blueprint / | [#D9E2F3] | White Plan | White Plan | [#D9E2F3] | Blueprint / | [#D9E2F3]
+ |  |  |  |  |  |  |  |  | Ammonia Print |  |  |  |  | Ammonia Print | 
+1 |  |  | 2 |  |  | 3 |  | 4 |  |  | 5 |  | 6 |  | 
+1 |  |  | Boundaries Of Plot |  |  | Thick Black |  | Thick Black |  |  | Thick Black |  | Thick Black |  | 
+2 |  |  | Current Route |  |  | Green |  | Green |  |  |  |  |  |  | 
+3 |  |  | Proposed Route If Any |  |  | Dotted Green |  | Dotted Green |  |  |  |  |  |  | 
+4 |  |  | Permissible Building Lines |  |  | Thick Dotted Black |  | Thick Dotted Black |  |  |  |  |  |  | 
+5 |  |  | Open Spaces |  |  | No Colour |  | No Colour |  |  | No Colour |  | No Colour |  | 
+6 |  |  | Existing work |  |  | Black (Outline) |  | Black (Outline) |  |  | Black (Outline) |  | Black (Outline) |  | 
+7 |  |  | Proposed compoundable work |  |  | Hatched Yellow |  | Hatched Yellow |  |  | Hatched Yellow |  | Hatched Yellow |  | 
+8 |  |  | Proposed demolition |  |  | Hatched Red |  | Hatched Red |  |  | Hatched Red |  | Hatched Red |  | 
+9 |  |  | Proposed work (see Note-1) |  |  | Red (Filled) |  | Red |  |  | Red |  | Red |  | 
+10 |  |  | Drainage and Sewerage |  |  | Dotted Red |  | Dotted Red |  |  | Dotted Red |  | Dotted Red |  | 
+11 |  |  | Water Supply works |  |  | Thin Black Dotted |  | Thin Black Dotted |  |  | Thin Black Dotted |  | Thin Black Dotted |  | 
+
+=== chapter 02 · gazette page 25 · pdf page 7 ===
+of 0.3 meters in case of a site having a slope of more than 1:20.
+(vi) Location of the site in Master Plan / Sector Plan.
+(vii) North point and scale used.
+2.3.3 Layout/ Sub-division Plan for Development Permission
+The layout/sub-division plan to be submitted along with the application for development permit shall
+be drawn to a scale of 1:500 for plots up to 10 hectares, on a scale of 1:1000 for plots above 10 hectares
+but less than 50 hectares, and on a scale of 1:2000 for plots more than 50 hectares. The layout plan shall
+show the following details:
+2.3.4 Specifications for Sub-division of land
+The following specifications and details shall be enclosed to obtain permission for the sub-division of
+land:
+(i) Details of general specification for development works in the proposed area viz., general
+specification of roads drains (side drains) and streets along with their slope, and paving provision
+for water supply, management and disposal of sewerage and garbage, street lighting, playground
+park and community facilities.
+(ii) Existing external infrastructure facilities near the site such as sewerage disposal site, drainage
+(Nallah etc.) main road, electric supply system, source of water supply etc.
+(iii) In case of industrial units, type and quantities of effluents.
+2.3.5 Site Plan for Building Permission
+The site plan to be sent along with the application for building permit shall be drawn to a scale of 1:100
+for plots up to 500 sqm in size, on a scale of 1:500 for plots above 500 sqm in size and on a scale of
+1:1000 for plots above 10,000 sqm. The plan shall show the following details:
+25
+
+--- table 0 (9 rows × 2 cols) ---
+1 | North Point and scale used.
+2 | The location of all proposed and existing roads with their width.
+3 | Plan showing dimension within plots/premises along with setback and method of plotted development like row-housing, semi-detached or detached. In case of group housing/ clustered development, the distance between blocks and corresponding height of blocks.
+4 | Services plan showing the location of drains, water supply and sewer networks, electric lines, solid waste disposal, and other public facilities and services along with their linkage with existing/proposed facilities.
+5 | Analysis indicating size, area and use of all the plots and different premises/uses proposed in the layout/sub-division plan.
+6 | A statement indicating the total area of the site, area utilized under roads, open spaces, residential, commercial, community facilities and other public uses, proposed in the layout/ sub-division plan along with their percentage with references to the total area of the site.
+7 | In case of proposed sub-division for plots situated in built-up area, in addition to the details mentioned above (1) to (6), the means of access to the proposed sub-division from existing street shall also be shown.
+8 | Landscape plan (with plantation).
+9 | Sustainability provisions outlined in Chapter-13 shall be ensured by competent authority for conservation and recharging of ground water.
+
+=== chapter 02 · gazette page 26 · pdf page 8 ===
+2.3.6 Building Plan
+The plans of the building, elevations and sections accompanying the application/notice with dimensions
+shall be drawn to a scale of 1:50 for plots measuring up to 250 sq.m., for plots measuring above 250
+sq.m. to a scale of 1:100, and for plots measuring 2000 sq.m. and above to a scale of 1:200 with
+following details:
+26
+
+--- table 0 (17 rows × 2 cols) ---
+1. | The boundaries of the site and any contiguous land belonging to the owner thereof.
+2. | The names of the streets on which the building is proposed to be situated, if any.
+3. | All existing buildings standing on, over or under the site.
+4. | The position of the site in relation to neighbouring street.
+5. | The position of the building and of all other buildings, if any, which the applicant intends to erect upon his contiguous land referred to in (1) in relation to. a) The boundaries of the site and in case where the site has been partitioned, the boundaries of the portion; owned by the applicant and also of the portions owned by others. b) All adjacent streets / buildings and premises within a distance of 12 meters of the site and of the contiguous land, if any, referred to in (1); and c) If there is no street within a distance of 12 meters of the site, the nearest existing street.
+6. | The means of access from the street to the building, and to all other buildings, if any which the applicant intends to erect upon his contiguous land, referred to in (1).
+7. | Space to be left around the building to secure un-interrupted ventilation, admission of light and access, through setbacks (front, rear and sides of the building) and parking spaces.
+8. | The width of the street, if any, in front, at the sides or rear of building.
+9. | Any existing physical features such as well, drains, trees, overhead electric supply lines etc.
+10. | Water supply lines, taps up to discharge point, drainage lines and roof top rainwater harvesting system.
+11. | The direction of north point relative to the plan of the buildings.
+12. | The ground area of the whole property and the breakup of covered area on each floor with the calculation for percentage covered in each floor in terms of the total area of the plot as required under the Byelaws governing the coverage of the area.
+13. | Parking plans indicating the parking spaces wherever required.
+14. | Building number or plot number of the property on which the building is intended to be erected.
+15. | Landscape plan showing plantation of trees while keeping the circulation area free from obstructions as outlined in Chapter-13 of the byelaws.
+16. | A copy of approved sub-division plan (if any) of the planning area, and
+17. | Such other particulars as may be prescribed by the Authority
+
+--- table 1 (4 rows × 2 cols) ---
+a. | Include floor plans of all floors together with the covered area clearly indicating the size and spacing of all frame members and sizes of rooms and the position and width of staircases, ramps and other exit ways, lift ways, lift machine room and lift pit details.
+b. | Show the use or occupancy of all parts of the building.
+c. | Show exact location of essential services, for example toilet, water closet, sink, bath, water supply, drainage and connection to soak pit/septic tank or sewer line for sewage disposal.
+d. | Include sectional drawing clearly showing the sizes of the footings, thickness of basement wall, wall construction, size and spacing of framing members, floor slabs and roof slabs with their materials. The section shall indicate the heights of building and rooms and also the heights of the parapet and drainage
+
+=== chapter 02 · gazette page 27 · pdf page 9 ===
+2.3.7 Building Plans for Multi-storeyed/ Special Buildings
+(i) For multi-storeyed buildings, which are above 4 storeyed and buildings above 15 meters in height
+and for special buildings like assembly, institutional, industrial storage and hazardous
+occupancies as defined under paragraph 1.2. 16 (a to k) the following additional information
+shall be furnished/ indicated in the building plans in addition to the item (a) to (l) of Building
+Bye-Laws paragraph 2.3.6.
+(ii) In addition to those buildings specified in (i), for construction approval of buildings such as
+waterworks and overhead tanks, bridges and culverts, power generation centres and power sub-
+stations, power towers, photo galleries, auditorium, meeting hall, educational institutions, bus
+27
+
+--- table 0 (10 rows × 2 cols) ---
+ | and the slope of the roof. At least one section shall be taken through the staircase, kitchen and toilet, bath and water closet.
+e. | Show all elevations for abutting roads.
+f. | Indicate details of service privy (running water toilets), if any.
+g. | Give dimensions of the projected portions beyond the permissible building line.
+h. | Include terrace plan indicating the drainage and the slope of the roof.
+i. | Give indications of the north point relative to the plan.
+j. | Details of parking spaces provided.
+k. | Give indication of all doors, windows and other openings including ventilators
+l. | Maps shall show the provisions for rainwater harvesting, solar water heating, wastewater recycling, and waste management as outlined in Chapter-13 of the byelaws.
+m. | Such other particulars as may be required to explain the proposal clearly and as prescribed by the Authority.
+
+--- table 1 (18 rows × 2 cols) ---
+a. | Access to fire appliances/ vehicles with details of vehicular turning circle/ and clear motorable access way around the building.
+b. | Size (width) of main and alternate staircase along with balcony approach, corridor, ventilated lobby approach.
+c. | Location and details of lift enclosures.
+d. | Location and size of fire lift.
+e. | Smoke-stop lobby/ door where provided.
+f. | Refuse chutes & chamber, services duct (sanitation, electric & telecommunication), if required.
+g. | Vehicular parking spaces.
+h. | Refuge area if any.
+i. | Details of building services-air conditioning system with position of dampers, mechanical ventilation system, electrical services, boilers, gas pipes etc.
+j. | Details of exits including provision of ramps, etc. for hospitals and special risks.
+k. | Location of generator, transformer, and switchgear room.
+l. | Smoke exhaust system if any.
+m. | Details of fire alarm system network.
+n. | Location of centralized control, connecting all fire alarm systems, built-in fire protection arrangements and public address system, etc.
+o. | Location and dimension of static water storage tank and pump room.
+p. | Location and details of fixed fire protection installations such as sprinklers, wet risers, hose reels, drenchers, CO2 installation etc.
+q. | Location and details of first aid firefighting equipment/installation.
+r. | The proper signs/symbols and abbreviation of all fire-fighting systems shall be shown as per the relevant BIS Codes.
+
+=== chapter 02 · gazette page 28 · pdf page 10 ===
+terminal whose ground coverage is more than 500 square meters (even if their height is less than
+15 meters), the presented building plans shall have the full name, signature along with seal of the
+landowner/ builder, the registered/licensed technical personnel as well as the structural engineer
+who prepared the structural design, along with a certificate of earthquake resistant design as per
+format given in Appendix-10. Also, the relevant part of the details mentioned in Appendix-8
+“Building Information Schedule” (relating to this drawing) shall be marked on the map in the
+form of a table which shall be certified by the Structural Engineer.
+2.3.8 Services Plan and Water Supply Provisions
+(i) Plans, elevations and sections of private water supply, sewage disposal system and details of
+building services, where required by the Authority, shall be made available to a scale not less
+than 1: 100.
+(ii) Besides the normal drawings, which are submitted for the sanction of any building, a proper
+landscape plan, a circulation plan indicating vehicular and pedestrian movement and parking and
+an urban design scheme where necessary, shall be submitted for sanction by the Authority.
+(iii) Specifications: General specification of the proposed construction giving type and grade of
+material proposed to be used in the form given in paragraph 11.1 duly signed by the engaged
+Competent Professional for building plan design (as per Chapter-14 of the byelaws) may be
+shown accompanying the application/notice as the case may be.
+2.4 Signing of Plans
+2.4.1 Signing of Layout Plans
+All layout plans before submission to the Authority shall be signed by the owner(s) and the Licensed
+Technical Person.
+2.4.2 Signing of Building Plans
+(i) All building plans before submission to the Authority shall be signed by the owner(s) and the
+Licensed Technical Person (except as given in paragraph 2.5.1 of these byelaws).
+(ii) This shall not apply in case of standard designs/ building plans as described in paragraph 2.7.2.1.
+2.5 Application/Notice for alteration
+When the application/notice is only for an alteration of the building only such plans and statement as
+may be necessary, shall accompany the application/notice.
+2.5.1 Exemption from Building Permit
+(i) No application/application and building permit, is necessary for the following alterations, which
+do not otherwise violate any provisions regarding general building requirements, structural
+stability and fire safety requirements (as part of National Building Code, 2016) of these Bye-
+Laws.
+28
+
+--- table 0 (6 rows × 2 cols) ---
+a. | Plastering and patch repairs;
+b. | Re-roofing, or renewals of roof including roof of intermediate floors at the same height; construction of roof on previously approved covering;
+c. | Flooring and re-flooring;
+d. | Opening and closing of windows, ventilators and doors not opening towards other's properties and / or public road/property;
+e. | Replacing fallen bricks, stones, pillars, beams etc.
+f. | Construction or re-construction of sunshade not more than 75cms. in width within one's land and not overhanging over a public street; construction of portico/porch as per standards prescribed in building byelaws,
+
+=== chapter 02 · gazette page 29 · pdf page 11 ===
+(ii) No approval shall be required for the construction/ reconstruction and renovation of residential
+buildings on plots up to 100 square meters for residential purposes and on plots up to 30 square
+meters for commercial purposes as specified in paragraph 2.1.2.
+(iii) An online mechanism shall be developed on online portal developed for this purpose for
+submission of a self-declaration in a prescribed format and an affidavit. A certificate of
+acceptance shall be generated automatically on submission, which shall serve as a certification
+from the Authority after payment of a token amount of Re. 1/-.
+(iv) No separate permission is required for Use of residential buildings (even in plots allotted by
+Development Authority) by service professionals up to 25 percent FAR such as architects,
+chartered accountants, doctors, lawyers, etc, provided that adequate parking requirements are
+provisioned.
+(v) No separate permission is required for use of residential buildings (even in plots allotted by
+Development Authority) as home-stays, paying guest accomodation, provided that adequate
+parking requirements are provisioned.
+2.6 Permit Fees
+Fees for sanction of development/ building permit shall include plan submission fees, scrutiny fees,
+inspection fees, betterment charges, external development fees and other charges as determined by the
+Authority time to time. Details related to calculation of permit fees as amended from time to time shall
+be made available to the applicants of development/ building permit.
+2.7 Permit Process
+2.7.1 Sanction of development permit
+2.7.1.1 Development Permit
+Development permit shall be issued to the applicant as per formats given in the online portal.
+2.7.1.2 Approval
+The process for approval of building permit through online portal shall be notified by the Government
+from time to time.
+29
+
+--- table 0 (12 rows × 2 cols) ---
+g. | Construction or re-construction of parapet or boundary wall as permissible under these Byelaws.
+h. | White-washing, painting, etc. including erection of false ceiling in any floor at the permissible clear height provided the false ceiling in no way can be put to use as a loft etc;
+i. | Reconstruction of portions of buildings damaged due to natural disaster, such as storm, rains, fire, earthquake or any other natural calamity to the same extent and specification as existing prior to the damage provided the use conforms to provisions of Master Plan/ Zonal Plan;
+j. | Erection or re-erection of internal partitions provided the same are within the purview of the Byelaws.
+k. | Construction work for the purpose of inspection or renovation and repair of sewers, main streets, pipes, cables or other plant for the implementation of any services by any Central/State Government or any local body.
+l. | Construction of septic tank/soak pit.
+m. | Installing hand pump
+n. | Construction of temporary water tank for construction work.
+o. | Construction of necessary structures (including underground water tanks) for collection, conservation and harvesting of rainwater, gardening
+p. | Construction of necessary structures on rooftop to encourage alternative solar energy.
+q. | Construction of temporary tents or tent cities for ceremonial/ religious purposes for a period of less than three months, provided that necessary statutory permissions have been obtained.
+r. | Gardening
+
+=== chapter 02 · gazette page 30 · pdf page 12 ===
+2.7.2 Sanction of building permit
+2.7.2.1 Residential Buildings
+(i) The Authority shall endeavour to prepare standard building designs for all plot sizes and if the
+said building plan conforms to these standard designs provided by the authority (made available
+on authorized website, downloadable) the Authority shall automatically approve the plans on
+payment of fees. For residential buildings on plots up to 300 square meter can be built as per the
+standard designs provided by the Authority under the schemes/approved layout plans of the
+Authority and no separate building map approval shall be required for this. The applicant shall
+be able to make internal changes as per his convenience, however, no change shall be allowed in
+the set-back and open space.
+(ii) The maps for the construction, reconstruction and renovation of all the residential buildings up
+to 500 square meters under the plotted development in the schemes of development authority and
+the plans/ layout plans approved by the Authority on payment of fees, shall be automatically
+considered approved when filed, in case the plans are prepared by a licensed technical person and
+a certificate is printed on it that the proposed construction/ reconstruction is as per the master
+plan/ zonal plan and building bye-laws.
+(iii) If the submitted plan is not finalized within a period of 30 days, the same shall be considered
+automatically accepted, provided that a certificate is given by the licensed technical person that
+the map is as per the master plan/zonal plan and building byelaws and no objection certificate
+has been obtained from all the concerned departments as necessary like fire department, pollution
+control board, ASI etc.
+2.7.2.2 Industrial Buildings
+Building drawings of industrial areas/industrial sites, except highly polluting industries, certified by a
+licensed technical person shall be considered automatically approved if it is submitted along with all
+the necessary documents and prescribed fees to the development authority. Only the receipt for
+submitting such building map shall be considered as acceptance. These provisions shall be applicable
+subject to the following conditions and restrictions:
+(i) This system shall be applicable only for plotted development.
+(ii) The plot of the proposed unit/building should be located under industrial landuse and it should
+be permitted at the said site as per the master plan/zoning regulations.
+(iii) The layout plan of the industrial area/location has been approved by the competent authority.
+(iv) The proposed construction should be safe from structural safety, anti-seismic system, fire safety,
+pollution control and other hazardous aspects and all no-objection certificates in relation to the
+above should be attached with the map.
+(v) In case the plot of the proposed industrial unit is located outside the industrial estate, industrial
+area, arrangements for water supply, drainage, roads, electricity supply, etc. should be available
+at the site as per the requirement of the proposed industrial unit.
+2.7.2.3 Other Buildings
+(i) The maps for the construction, reconstruction and renovation of commercial buildings up to 200
+square meters in the schemes of development authority and the plans/ layout plans approved by
+the Authority on payment of fees, shall be automatically considered approved when filed, in case
+the plans are prepared by a licensed technical person and a certificate is printed on it that the
+proposed construction/ reconstruction is as per the master plan/ zonal plan and building bye-laws
+(ii) Maps of business, office, group housing and others shall be submitted for construction
+permission, however, if the application is not disposed of within a period of 30 days, or if the
+applicant himself does not provide consent on extension of timeline, then the building map shall
+be considered automatically approved on the condition that the licensed technical person certifies
+30
+
+=== chapter 02 · gazette page 31 · pdf page 13 ===
+that the submitted map is as per the master plan/zonal plan and building bye-laws.
+(iii) Even if no objection certificate is not received within the stipulated period, it shall be approved
+within 30 days with this condition that the builder can start construction after 10 days by giving
+written notice to the development authority and such departments from which no objection has
+not been received, but he shall have to obtain no objection certificate from the remaining
+departments. It shall be the responsibility of the builder to obtain the No Objection Certificate
+and carry out the construction work as per the conditions imposed in it.
+(iv) Completion certificates shall be issued to such buildings only when no objection from all these
+departments has been obtained by the builder.
+2.7.3 Grant of permit/ refusal
+2.7.3.1 Auto-Rejection
+(i) After issuance of any shortfall (related to map/ document), the applicant/ licensed technical
+personnel shall resolve the shortfall/correct the map and submit the revised map/document within
+15 days. If the shortfall is not resolved within 15 days, the map will be automatically rejected.
+(ii) After the fee demand is issued, all the fees shall be deposited by the applicant within 30 days, if
+the above is not complied with within 30 days, the map will be auto-rejected.
+(iii) In respect of maps which have been auto-rejected as per sub-paragraph (ii), if the applicant
+applies within a period of 06 months from the date of cancellation, the auto-rejected application
+will be revived. The map will be issued after the fee applicable at the time of revival of the
+application is paid within a period of 30 days and if the above is not complied within 30 days,
+the map will be auto-rejected. The above facility of revival will be available only once.
+(iv) After rejection of the application submitted for development/ building permit, if the applicant
+applies again within six months, then development/ building permit fee shall not be payable
+again. 20 percent of the amount of fee shall be payable on applying within a period of six months
+to one year and 50 percent fee shall be payable on applying after one year and 100 percent after
+two years.
+2.7.3.2 Grant/refusal by Authority
+(i) The Authority shall either sanction or refuse sanction to the plans and specifications or may
+sanction them with such modification or directions as it may deem necessary and thereupon shall
+communicate its decision to the person giving the application/notice in the prescribed format as
+given in the online portal, which may be revised from time to time.
+(ii) The building plans for buildings identified in paragraph 2.3.7 shall be subject to the scrutiny of
+the Fire Department and building permit shall be released by the Authority only after the
+clearance from the Fire Department is obtained.
+(iii) If, within 15 days of the receipt of application/notice under paragraph 2.2.1 of the Bye-Laws,
+the Authority fails to intimate in writing to the person who has given the application/notice, of
+its refusal or sanction to the application/notice with its plans and statements, the same shall be
+deemed to have been sanctioned provided the fact is immediately brought to the notice of the
+Authority in writing by the person who has given application/notice and having not received any
+intimation from the Authority within 15 days of giving such application/notice subject to the
+conditions mentioned in these Bye-Laws, nothing shall be construed to authorize any person to
+do anything in contravention or against the terms of the lease or title of the land or against any
+regulations, Bye-Laws or laws operating at the time of execution of the work at site.
+(iv) Once the plan has been scrutinized and objections have been pointed out, the Owner who has
+given the application/notice under paragraph 2.2.1 shall modify the plan to comply with the
+objections raised and resubmit the modified plans. The Authority shall scrutinize the resubmitted
+31
+
+=== chapter 02 · gazette page 32 · pdf page 14 ===
+plans and if, there are still some objections that shall be intimated to the applicant for compliance.
+Only thereafter the plans shall be sanctioned. It is further clarified that:
+(v) The above provision of deemed sanction shall be applicable only in those cases where
+construction is to be carried on plot forming part of an approved layout plan of the Authority.
+(vi) No application/notice under paragraph 2.2.1 shall be valid unless the information required by
+the Authority under these Bye-Laws or any further information which may be required has been
+furnished to the satisfaction of the Authority.
+(vii) The Owner/ LTP for building plan design (as per Chapter-14) and others shall be fully
+responsible for any violation of Master Plan/Zonal Plan/ Building Bye-Laws, architectural
+controls, lease deed conditions etc. In case of any default they shall be liable for action. Any
+construction so raised shall be deemed to be unauthorized and shall be liable for action.
+2.7.4 Validity of permit
+2.7.4.1 Validity of Development Permit
+The development permit, once granted, shall be valid for a maximum of five years. During the said
+period, completion certificate shall be obtained by the applicant from the authority as per paragraph
+2.9 of the byelaws. After the said period, on the application of applicant, extension of time can be given
+for a maximum of three years by charging the renewal/plan fee specified by the authority.
+2.7.4.2 Validity of Building Permit
+Once a building permit is sanctioned, it shall remain valid for five years from the date of sanction.
+Additional time shall be allowed on proportionate basis for the proposed additional construction as per
+purchasable FAR. In normal cases, the building permit shall be got revalidated, on application by
+landowner, in the prescribed format as given in the online portal, before the expiry of this period for a
+maximum of 3 years by charging the renewal fee specified by the Authority. However, in case
+application is made after the expiry of validity, revalidation shall be given for the remainder of the
+period of 3 years. Revalidation shall be as per terms and conditions of the Authority and subject to the
+Master Plan/Zonal Plan and building Byelaws, as in force, for the area where construction has not
+started..
+2.7.5 Revocation of permit
+The Authority shall revoke any building permit issued under the provisions of the Byelaws, wherever
+there has been any false statement, mis-representation of material facts in the application on which the
+building permit was based. Or if during construction it is found that the Owner has violated any of the
+provisions of the building Byelaws or sanctioned plan or compoundable limits.
+2.8 Procedures during Development and Construction Work
+2.8.1 Notice of commencement
+2.8.1.1 Commencement of Land Development
+On starting of development as per Permit, the applicant shall furnish such information in the prescribed
+form (Appendix-3).
+2.8.1.2 Commencement of Building Construction
+On starting construction under the permit, its information shall be given in the prescribed form
+(Appendix-6).
+Inspection of construction work
+32
+
+=== chapter 02 · gazette page 33 · pdf page 15 ===
+Towards ensuring construction work on site as per the map approved at the time of construction of the
+building, upon completion of construction work of all categories of buildings up to the plinth level
+(except all the residential plots under the plot development as per the plans of the development authority
+and the plans/layout plans approved by the Authority), the building owner/builder shall upload GPS
+coordinates of the site, digital photographs with date and time and submit them to the government
+agency.
+Along with the above, an affidavit (Appendix-12) shall also have to be submitted to the effect that the
+construction has been done at existing site as per the photographs. If it is found that the building
+owner/builder has undertaken any construction other than construction work covered and permissible
+as per paragraph 2.5.1 of the building construction and development byelaws and the construction work
+covered and permissible as per section-52 of the Uttar Pradesh Urban Planning and Development Act,
+1973, then he shall not have any objection for the building to be sealed by government agency and he
+shall not claim compensation for any work done for the same.
+On receiving the photographs, the Engineer-in-Charge shall immediately give notice to the building
+owner/builder if any deviation/error is found from the details submitted by the building owner/builder
+after site inspection within 48 office hours (Appendix-13). Along with this, the Engineer-in-Charge shall
+present his report before the Vice Chairman, Development Authority. The deviation/error at the site
+relative to the above report shall be determined by the Vice Chairman, Development Authority and if
+any deviation is found, the construction work shall be sealed. Such action shall be taken within
+maximum 07 working days.
+2.8.2 Deviations during development and construction
+2.8.2.1 Deviations during land development
+During development, if there is any deviation from the approved plan or it is intended to be done,
+permission
+shall be obtained from the authority before executing the proposed deviation.
+2.8.2.2 Deviation during building construction
+During the construction work, if there is any deviation from the approved plan or it is intended to be
+deviated from, which is not under paragraph 2.5.1 of the building byelaws, then before executing the
+proposed deviation, permission shall be obtained by submitting the revised map which is certified by a
+licensed technical person to the authority. In case of changes/deviations made at the time of construction
+of the building which are covered by paragraph 2.5.1 of the byelaws, it shall not be necessary to submit
+the revised building map at the time of construction or to obtain construction permission for such
+changes. But in cases of group housing, commercial and other multi-storey buildings, it shall be
+mandatory to submit revised maps.
+2.9 Notice of Completion
+2.9.1 Completion Certificate for land development
+After completion of the development work, the applicant and Licensed Technical Person shall give the
+information in the prescribed format (Appendix-4) and along with it shall submit a copy of the
+map/computerized drawing (in .dwg or equivalent format) in electronic format, on the basis of which,
+the completion certificate shall be issued by the authority. The entire process of completion certificate
+shall be as per detailed in paragraph 2.9.3.
+2.9.2 Completion Certificate for Building Construction
+(i) Every Owner shall submit a notice of completion of the building (prescribed in Appendix- ‘6’)
+to the Authority regarding completion of the work described in the building permit. The notice
+of completion shall be submitted by the Owner through the engaged licensed technical person for
+33
+
+=== chapter 02 · gazette page 34 · pdf page 16 ===
+the building plan design (as per chapter-14 of the byelaws as the case may be, who has supervised
+the construction) except residential buildings constructed on plots up to 100 square meters. The
+notice of completion in Appendix-7 shall be accompanied by three copies of completion plan in
+a computerized drawing in .dwg or equivalent format (as in case of sanctioned plan) and the
+following documents along with the prescribed fee. Completion certificate shall be issued by the
+authority on the basis of these documents, and the entire process of completion certificate shall
+be as detailed in paragraph 2.9.3.
+(ii) On completion of construction of buildings having more than three storeys or height of more than
+15 meters including ground-floor and buildings related to important infrastructure facilities, the
+notice of completion shall be jointly signed by the concerned LTP, site engineer, and land
+owner/builder on Appendix-11 of the bye-laws along with the application submitted by the land
+owner/builder to the competent authority for obtaining the completion certificate that the building
+has been constructed with the specifications, quality and structural design approved by the
+structural engineer based on the BIS code, National Building Code and relevant guidelines
+mentioned in Chapter-11.1 of the byelaws as per the approved map and with all anti-earthquake
+provisions and the building is completely safe for use and the work of rain water harvesting and
+tree plantation has been completed.
+2.9.3 Process for obtaining completion certificate under Section 15A of UPUPD Act, 1973
+2.9.3.1 Classification of buildings
+‘Form-A’ for Residential Building. Note: It shall not be necessary to obtain completion certificate for
+residential buildings on plots of area less than 500 square meters.
+‘Form-B’ for group housing, commercial and multi-storey buildings.
+‘Form-C’ for all types of buildings except residential buildings, group housing, commercial and multi-
+storey buildings.
+‘Form-D’ for “Lay-out Plan”.
+2.9.3.2 Deposit of records
+The authority shall be given the notice of completion in the prescribed form through a licensed technical
+person along with three copies of the completion map and the following records in duplicate:
+(i) No-objection certificate from the competent authority from the point of view of fire safety for
+buildings more than four floors or 15-meters and more high and special buildings like
+educational, assembly, institutional, industrial, storage and buildings with hazardous use and
+buildings with mixed occupancies of the above mentioned uses whose ground coverage is more
+than 500 square meters,
+(ii) Certificate from a person registered by the authority regarding structural stability and safety of
+buildings higher than three floors including the ground floor.
+This process shall take place on any online portal defined by the Government in the prescribed format.
+2.9.3.3 Testing and inspection
+On receipt of application for completion certificate, Vice Chairman or an officer authorized by him
+shall, within a maximum of 07 working days, examine selected notices on "random basis" as per the
+procedure prescribed time to time for different categories of buildings, however, notices of all
+commercial, multi-storey and group housing buildings shall be checked/examined. Buildings other than
+commercial and group housing shall not be tested/inspected until the percentage determination and
+random selection process is determined by the authority.
+34
+
+=== chapter 02 · gazette page 35 · pdf page 17 ===
+2.9.3.4 Completion Certificate
+If the development work is found as per the approved plan/map based on the report or investigation of
+the licensed technical person/architect, the completion certificate shall be issued by the Vice Chairman,
+or the officer authorized by him online within 01 working day at the place specified in the form.
+2.9.3.5 Rejection of completion certificate
+After checking/testing within a maximum of seven working days of receiving the application for
+completion certificate, in case the development/construction on the spot is not found as per the approved
+or compounded map, Vice Chairman or the officer authorized by him while rejecting the application
+for completion certificate online, shall inform the same to applicant online within 08 working days of
+receiving the application along with required amendments. In case of not doing so, the completion
+certificate shall be deemed approved by the authority.
+2.9.3.6 Review of Rejection
+In case the applicant is dissatisfied with the reasons for rejection, he can apply for revision along with
+the grounds and reasons for revision before the Vice Chairman or the officer authorized by him within
+6 weeks from the date of notice of rejection. An online facility for this purpose shall be made available
+on online portal or any other portal defined by the Government.
+2.9.3.7 Re-application for completion certificate
+In case of rejection of the completion certificate, a new application form can be submitted again after
+resolving the reasons for rejection.
+2.9.3.8 Appeal
+The affected person can appeal before the Chairman within 30 days from the date of issue of the order
+of rejection on which, after giving adequate opportunity of hearing to the Appellant and if necessary,
+the representative of the Vice Chairman, can direct to cancel the appeal or issue a completion certificate
+with necessary amendments or restrictions.
+2.10 Permission near protected monuments/heritage sites
+(i) Development/Building permission shall not be granted inside the prohibited area of protected
+monuments/heritage sites declared by the Archaeological Survey of India (ASI). Further,
+permission for any construction in the regulated area shall be given on the basis of no-objection
+given by the Archaeology Department under the provisions of The Ancient Monuments and
+Archaeological Sites and Remains Act 1958 (as amended).
+(ii) Apart from the protected monuments, the authority can set appropriate conditions and restrictions
+for granting permission for development/construction around important sites/buildings from the
+point of view of conservation of cultural, historical and architectural design heritage.
+2.11 Permission along the riverbanks
+(i) For development/building construction within 200-meters along the banks of river Ganga: In the
+cities situated on the banks of river Ganga, only repair and renovation of existing buildings and
+conservation work in relation to detritus buildings shall be permitted in the area 200 meters from
+the riverbank, the remaining activities shall be prohibited. However, construction of monastery,
+ashram and temple within the area of 200 meters from the riverbank at the major pilgrimage sites
+situated on the banks of river Ganga shall be permissible subject to the following conditions:
+a. Ground coverage shall be 35% and FAR 1.5 shall be permissible.
+b. A plan shall be submitted along with the proposed construction ensuring that there shall
+be no pollution of the river. If the plan is accepted by Jal Nigam/Jal Sansthan or
+35
+
+=== chapter 02 · gazette page 36 · pdf page 18 ===
+Development Authority, the map shall be approved as per rules.
+c. Drainage shall not be released directly into the river, but arrangements shall be made
+to take it to other drains, etc.
+d. If there is no sewerage system in the area, then residence/dharamshala etc., shall not be
+permitted.
+(ii) Note: Riverbank means the bank mentioned in the records of concerned department
+(Revenue/Irrigation).
+(iii) For construction along the banks of other rivers, in case any city/development authority has
+received NGT or other Court orders, relevant provisions of the same order shall be followed.
+2.12 Architectural control
+The architectural facade/elevation of buildings in a particular area or the architectural features of that
+identified area shall be in accordance with the conditions and restrictions prescribed for construction
+permission by the Development Authority. In architectural control, as per the circumstances, provision
+of all or any one of the following conditions/restrictions can be ensured:
+For this, the concerned authority can formulate a draft scheme and notify it after approval of its board.
+After inviting objections/suggestions from stakeholders. Once a scheme is notified, deviation from the
+approved façade guidelines shall be considered as violation of Urban Planning and Development Act.
+36
+
+--- table 0 (6 rows × 2 cols) ---
+(a) | Mandatory height of the building side facing the front or the street/road, up to which the building can be constructed,
+(b) | Mandatory height of floors.
+(c) | Mandatory height and design of cornice sill, sunshades on upper part of windows and projections on first and subsequent floors,
+(d) | Mandatory building line along the building construction,
+(e) | Mandatory type design of balcony,
+(f) | Colour scheme.

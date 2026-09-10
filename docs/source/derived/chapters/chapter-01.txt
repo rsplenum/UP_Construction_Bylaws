@@ -1,0 +1,650 @@
+=== chapter 01 · gazette page 7 · pdf page 1 ===
+1 Short Title and Definitions
+1.1 Short Title and extent
+(i) These bye-laws will be called… (Name of Authority)… Development Authority Building
+Construction and Development Byelaws 2025.
+(ii) These bye-laws will be applicable to the entire …(Name of development area)… development
+area.
+1.2 Definitions
+7
+
+--- table 0 (41 rows × 5 cols) ---
+Sl. | Item | Definition |  | 
+1 | Access |  | “Access” or “Means of Access” or “Approach Road” means a clear | 
+ |  |  | approach to a plot or a building from a road/street. (This refers to any | 
+ |  |  | road, street, lane, passage giving access to the plot being a right of way, | 
+ |  |  | and includes such features as drain, median strip, shoulder or berm, bridge, | 
+ |  |  | culvert, burrow pit etc. between the two boundary walls of the premises on | 
+ |  |  | either sides of such right of way or, where a street alignment has been | 
+ |  |  | fixed and the area within such alignment has been acquired by authority or | 
+ |  |  | other agency/ institution and the alignment has been demarcated or is | 
+ |  |  | capable of being demarcated up to such alignment.) | 
+2 | Act |  | “Act” unless specified otherwise, means the Uttar Pradesh Urban Planning | 
+ |  |  | and Development Act, 1973. | 
+3 | Affordable Housing Scheme |  | “Affordable Housing Scheme” refers to government initiatives or | 
+ |  |  | programs designed to make housing accessible and affordable for low to | 
+ |  |  | middle-income individuals and families, often through subsidized housing, | 
+ |  |  | interest rate reductions, or other financial incentives. E.g. Pradhan Mantri | 
+ |  |  | Awas Yojana (PMAY) and similar programs. | 
+4 | Ancillary Use |  | “Ancillary Use” means any use of the premises subordinate to the | 
+ |  |  | principal use and incidental to the principal/ main use. | 
+5 | Addition, Revision and/or Alteration |  | “Addition, Revision and/or Alteration” means a change from one | 
+ |  |  | occupancy to another, or a structural change including an addition to the | 
+ |  |  | area or change in height or the removal of part of building, or any change | 
+ |  |  | to the structure, such as the construction or removal or cutting into of any | 
+ |  |  | wall or part of a wall, partition, column, beam, joist, floor including a | 
+ |  |  | mezzanine floor or other support, or a change to or closing of any required | 
+ |  |  | means of access ingress or egress as provided in these Bye-Laws. | 
+6 | Air-conditioning |  | “Air-conditioning” means the process of treating air so as to control | 
+ |  |  | simultaneously its temperature, humidity, purity, distribution and air | 
+ |  |  | movement and pressure to meet the requirements of the conditioned space. | 
+7 | Amenity |  | “Amenity” includes roads, water supply, street lighting, drainage, | 
+ |  |  | sewerage, development of public parks and open spaces, solid waste | 
+ |  |  | management and disposal, sewage treatment plant and other public works | 
+ |  |  | including utilities, services, and such other conveniences as the State | 
+ |  |  | Government may, by notification in the Gazette, specify to be an amenity | 
+ |  |  | for the purposes of UP Urban Planning and Development Act, 1973. | 
+8 | Application |  | “Application” means an application made in such form as may be | 
+ |  |  | prescribed by the Authority from time to time. | 
+9 | Approved | “Approved” means as approved/sanctioned by the Authority. | “Approved” means as approved/sanctioned by the Authority. | 
+10 | Area |  | “Area” in relation to a building means the superficies of a horizontal | 
+ |  |  | section thereof made at the plinth level inclusive of the external walls and | 
+ |  |  | of such portions of the party walls as belong to the building. | 
+
+=== chapter 01 · gazette page 8 · pdf page 2 ===
+8
+
+--- table 0 (54 rows × 5 cols) ---
+Sl. | Item | Definition |  | 
+11 | Atrium |  | “Atrium” means the internal court/ entrance hall of a building, which is | 
+ |  |  | sky lighted or covered with a transparent permanent structure on the | 
+ |  |  | terrace floor. | 
+12 | Authority |  | “Authority” means the Urban Development Authority which has been | 
+ |  |  | created under the provisions of Uttar Pradesh Urban Planning and | 
+ |  |  | Development Act, 1973 or the Uttar Pradesh Housing and Development | 
+ |  |  | Board established under the Uttar Pradesh Awas Evam Vikas Parishad | 
+ |  |  | Act, 1965. | 
+13 | Balcony |  | “Balcony” means a horizontal projection, cantilevered or otherwise | 
+ |  |  | including a parapet handrail, balustrade, to serve as a passage or sit out | 
+ |  |  | place. | 
+14 | Basement or Cellar |  | “Basement or Cellar” means the lower storey of a building, below or | 
+ |  |  | partly below ground level, with one or more than one levels. The | 
+ |  |  | maximum height of the building above ground level shall not be more than | 
+ |  |  | 1.20 meters. | 
+15 | Bazaar Street |  | “Bazaar Street” means a linear mixed-use construction along the road | 
+ |  |  | which is identified in the Master Plan/Zonal Plan. | 
+16 | Building |  | “Building” means a structure constructed with any materials whatsoever | 
+ |  |  | for any purpose, whether used for human habitation or not, and includes: | 
+ |  |  | (i) foundation, plinth, walls, floors, roofs, chimneys, plumbing and | 
+ |  |  | building services, fixed platforms etc., (ii) verandahs, balconies, cornices, | 
+ |  |  | projections etc., (iii) parts of a building or anything affixed thereto; (iv) | 
+ |  |  | any wall enclosing or intended to enclose any land or space, sign and | 
+ |  |  | outdoor display structures; etc., (v) tanks constructed or fixed for storage | 
+ |  |  | of chemicals or chemicals in liquid form and for storage of water, effluent, | 
+ |  |  | swimming pool, ponds etc., (vi) all types of buildings as defined under the | 
+ |  |  | ‘use group or occupancy’ or based on ‘design, height or other features’, | 
+ |  |  | except tents, shamianas and tarpaulin shelters erected temporarily for | 
+ |  |  | temporary purposes (for less than three months) and ceremonial occasions, | 
+ |  |  | shall be considered to be "buildings". | 
+ | [#FFF2CC] |  | Types of buildings based on use of premises or activity (Use group or | 
+ |  |  | Occupancy): | 
+ | [#FFF2CC] |  | (a) “Residential building” includes a building in which sleeping and | 
+ |  |  | living accommodation is provided for normal residential purposes, with | 
+ |  |  | cooking facilities and includes one or more family dwellings, apartment | 
+ |  |  | houses, boarding houses, flats, and private garages of such buildings. | 
+ | [#FFF2CC] |  | (b) “Educational buildings” includes a building exclusively used for a | 
+ |  |  | school or college or training institution recognized by appropriate board or | 
+ |  |  | university or any other competent authority, involving assembly for | 
+ |  |  | instruction, education or recreation incidental to educational use, and | 
+ |  |  | including a building for such other uses as research institution. It shall | 
+ |  |  | also include quarters for essential staff required to reside in the premises, | 
+ |  |  | and building used as a hostel captive to an educational institution whether | 
+ |  |  | situated in its campus or outside. | 
+ | [#FFF2CC] |  | (c) “Institutional buildings” includes a building used for such purposes | 
+ |  |  | as hospital, nursing home, health center or other treatment or care of | 
+ |  |  | persons suffering from physical or mental illness, handicap, disease or | 
+ |  |  | infirmity, care of orphans, abandoned women, children and infants, | 
+ |  |  | convalescents, destitute or aged persons and for penal or correctional | 
+ |  |  | detention with restricted liberty of inmates ordinarily providing sleeping | 
+ |  |  | accommodation and includes dharmshalas, hospitals, sanatoria, custodial | 
+ |  |  | and penal institutions such as jails, prisons, mental hospitals, reform | 
+ |  |  | homes, etc. | 
+
+=== chapter 01 · gazette page 9 · pdf page 3 ===
+9
+
+--- table 0 (54 rows × 5 cols) ---
+Sl. | Item | Definition |  | 
+ | [#FFF2CC] |  | (d) “Assembly Building” includes a building or part thereof, where | 
+ |  |  | groups of people (not less than 50) congregate or gather for amusement, | 
+ |  |  | recreation, social, religious, patriotic, civil, travel and related purposes, and | 
+ |  |  | this includes buildings such as theatre, cinema hall, community hall, | 
+ |  |  | auditorium, exhibition hall, museum, skating rink, gymnasium, , eating or | 
+ |  |  | boarding houses, place of worship, dance hall, clubs, gymkhanas and | 
+ |  |  | passenger station/ terminals of air, land or other public transportation | 
+ |  |  | services, amusement park, etc. | 
+ | [#FFF2CC] |  | (e) “Mercantile/Commercial Building” includes a building or part | 
+ |  |  | thereof used for shops, stores, restaurants, markets for display and sale of | 
+ |  |  | wholesale or retail goods or merchandise including office, storage and | 
+ |  |  | service facilities incidental thereto and located in the same building. | 
+ | [#FFF2CC] |  | (f) “Office/business building” includes a building or part thereof used | 
+ |  |  | principally for transaction of business and/or keeping of accounts and | 
+ |  |  | records including offices, banks, professional establishments, court houses, | 
+ |  |  | etc., if their principal function is transaction of business and/or keeping of | 
+ |  |  | books and records. | 
+ | [#FFF2CC] |  | (g) “Industrial building” includes a building or part thereof wherein | 
+ |  |  | products or material are fabricated, assembled or processed, such as | 
+ |  |  | assembly plants, laboratories, power plants, refineries, gas plants, mills, | 
+ |  |  | dairies and factories, etc. | 
+ | [#FFF2CC] |  | (h) “Storage building” includes a building or part thereof used primarily | 
+ |  |  | for storage or shelter of goods, wares, merchandise and includes a building | 
+ |  |  | used as a warehouse, cold storage, freight depot, transit shed, store house, | 
+ |  |  | public garage, hanger, truck terminal, grain elevator, silos, barn and | 
+ |  |  | stables. | 
+ | [#FFF2CC] |  | (i) “Hazardous building” includes a building or part thereof used for –(a) | 
+ |  |  | storage, handling, manufacture or processing of radioactive substances or | 
+ |  |  | highly combustible or explosive materials or products which are liable to | 
+ |  |  | burn with extreme rapidity and/or producing poisonous fumes or explosive | 
+ |  |  | emanations, or (b) storage, handling, manufacture or processing of which | 
+ |  |  | involves highly corrosive, toxic or noxious alkalis, acids, or other liquids, | 
+ |  |  | gases or chemicals producing flame, fumes, and explosive mixtures, etc., | 
+ |  |  | or which result in division of matter into fine particles capable of | 
+ |  |  | spontaneous ignition. | 
+ | [#FFF2CC] |  | (j) “Mixed Use Building” means a building partly used for non-residential | 
+ |  |  | activities and partly for residential purpose or a mix of two non-residential | 
+ |  |  | activities. | 
+ | [#FFF2CC] |  | (k) “Wholesale Establishment” means an establishment wholly or partly | 
+ |  |  | engaged in wholesale trade and manufacture, wholesale outlets, including | 
+ |  |  | related storage facilities, warehouses and establishments engaged in truck | 
+ |  |  | transport, including truck transport booking agencies. | 
+ | [#FFF2CC] | Types of buildings based on design, height and other features: | Types of buildings based on design, height and other features: | 
+ | [#FFF2CC] |  | (l) “Detached Building” includes a building with walls and roofs | 
+ |  |  | independent of any other building and with open spaces (defined as per | 
+ |  |  | these byelaws) on all sides within the same plot. | 
+ | [#FFF2CC] |  | (m) “Multi-Storeyed Building or High-rise Building” means building | 
+ |  |  | above four storeys, and/or a building exceeding 15 meters or more in | 
+ |  |  | height (without stilt) and 17.5 meters (including stilt). | 
+ | [#FFF2CC] |  | (n) “Semi-detached Building” means building detached on three sides | 
+ |  |  | with open space as specified in these regulations. | 
+ | [#FFF2CC] |  | (o) "Group Housing" include group of residential buildings or multi- | 
+ |  |  | storey buildings having one or more independent residential units on each | 
+
+=== chapter 01 · gazette page 10 · pdf page 4 ===
+10
+
+--- table 0 (54 rows × 7 cols) ---
+Sl. | Item |  |  | Definition |  | 
+ | [#FFF2CC] |  |  |  | floor and in which there is sharing and co-ownership of land and services, | 
+ |  |  |  |  | open space and transportation routes. | 
+ | [#FFF2CC] |  |  |  | (p) “Multiplex” means a building complex intended for the purpose of | 
+ |  |  |  |  | commercial, cultural and recreational activities with a minimum of two | 
+ |  |  |  |  | cinema halls. | 
+ | [#FFF2CC] |  |  |  | (q) “Special Building” includes all buildings like assembly, industrial, | 
+ |  |  |  |  | buildings used for wholesale establishments, hotels, hostels, hazardous, | 
+ |  |  |  |  | mixed occupancies with any of the aforesaid occupancies and centrally air- | 
+ |  |  |  |  | conditioned buildings having total built up area exceeding 500 sq m. | 
+ | [#FFF2CC] |  |  |  | (r) “Multi Level Car parking” means a building partly below ground | 
+ |  |  |  |  | level having two or more basements or above ground level, primarily to be | 
+ |  |  |  |  | used for parking of cars, scooters, or any other type of light motorized | 
+ |  |  |  |  | vehicle. | 
+ | [#FFF2CC] |  |  |  | (s) “Stand-alone factory” refers to a manufacturing unit that operates | 
+ |  |  |  |  | independently, with its own facilities and processes, rather than being part | 
+ |  |  |  |  | of a larger industrial complex or park. As per the Factories Act, 1948, | 
+ |  |  |  |  | means any premises where ten or more workers are working, or were | 
+ |  |  |  |  | working on any day of the preceding twelve months, and in any part of | 
+ |  |  |  |  | which a manufacturing process is being carried on with the aid of power. | 
+ | [#FFF2CC] |  |  |  | (t) “Flatted factory” means a multi-story industrial building (non- | 
+ |  |  |  |  | polluting in nature) designed to accommodate several businesses, each | 
+ |  |  |  |  | occupying a separate unit, for activities like manufacturing, assembly, and | 
+ |  |  |  |  | storage. Flatted factories are developed to encourage industrial growth and | 
+ |  |  |  |  | make land usage more efficient. | 
+ | [#FFF2CC] |  |  |  | (u) “Single-Unit” refers to residential building having one independent | 
+ |  |  |  |  | residential unit on each floor or combination of floors with three or less | 
+ |  |  |  |  | storeys and height not exceeding 15-meters. | 
+ | [#FFF2CC] |  |  |  | (v) “Multi-Unit” refers to residential building having one or more | 
+ |  |  |  |  | independent residential units on each floor with four or less storeys and | 
+ |  |  |  |  | height not exceeding 17.5-meters (including mandatory stilts). | 
+ | [#FFF2CC] |  |  |  | (w) “Other Buildings” means any other building which is not covered in | 
+ |  |  |  |  | the above. | 
+17 | Building Height |  |  |  | “Building Height” or “Height of building” means the vertical distance | 
+ |  |  |  |  | measured (i) In the case of flat roofs above average level of the front road | 
+ |  |  |  |  | and continuance to the highest point of the building, (ii) In case of pitched | 
+ |  |  |  |  | roofs up to the point where the external surface of the outer wall intersects | 
+ |  |  |  |  | the finished surface of the sloping roof and (iii) In the case of gables facing | 
+ |  |  |  |  | the road midpoint between the eaves level and the ridge. Architectural | 
+ |  |  |  |  | features serving no other function except that of decoration shall be | 
+ |  |  |  |  | excluded for the purpose of measuring heights. The height of the building | 
+ |  |  |  |  | shall be taken up to the terrace level for the purpose of fire safety | 
+ |  |  |  |  | requirement. | 
+18 | Building Envelope |  |  |  | “Building Envelope” means the horizontal spatial limits up to which a | 
+ |  |  |  |  | building may be permitted to be constructed on a plot. It is the residual | 
+ |  |  |  |  | area after leaving the setbacks prescribed for a plot, within which | 
+ |  |  |  |  | construction is permissible as per rules. | 
+19 | Building Line |  |  |  | “Building Line” means the line up to which the plinth of building | 
+ |  |  |  |  | adjoining a street or an extension of a street or on a future street may | 
+ |  |  |  |  | lawfully extend and includes the lines prescribed, if any, in any scheme | 
+ |  |  |  |  | and/or layout plan. The building line may change from time-to-time as | 
+ |  |  |  |  | decided by the Authority. | 
+20 | [#FFF2CC] | Built-up area | [#FFF2CC] |  | “Built up area (Master Plan)” in the context of Master Plan means such | 
+ |  | (Master Plan) |  |  | densely populated area situated within the development area, most of | 
+
+=== chapter 01 · gazette page 11 · pdf page 5 ===
+11
+
+--- table 0 (54 rows × 5 cols) ---
+Sl. | Item | Definition |  | 
+ | [#FFF2CC] |  | which has been developed as commercial, industrial, residential, or other | 
+ |  |  | areas. Here, all the necessary facilities like roads, water supply, sewerage, | 
+ |  |  | electricity supply etc. are available and have been demarcated as built-up | 
+ |  |  | area by the authority under its master plan. | 
+21 | Built-up area (Building) |  | “Built-up area (Building)” in the context of building construction refers | 
+ |  |  | to the total covered area on all floors of an immovable property or | 
+ |  |  | building. | 
+22 | Canopy |  | “Canopy” shall mean a cantilevered projection from the face of the wall | 
+ |  |  | over an entry to the building at the lintel or slab level provided that: (i) It | 
+ |  |  | shall not project beyond the plot line, (ii) It shall not be lower than 2.3 | 
+ |  |  | meters when measured from the ground, and (iii) There shall be no | 
+ |  |  | structure on it and the top shall remain open to sky. | 
+23 | Carpet Area |  | “Carpet Area” means the net usable floor area of an apartment, excluding | 
+ |  |  | the area covered by the external walls, areas under services shafts, | 
+ |  |  | exclusive balcony or verandah area and exclusive open terrace area, but | 
+ |  |  | includes the area covered by the internal partition walls of the apartment. | 
+24 | Construction |  | "Construction" means any erection of a structure or a building, including | 
+ |  |  | any addition or extension thereto either vertically or horizontally, but does | 
+ |  |  | not include, any reconstruction, repair and renovation of an existing | 
+ |  |  | structure or building, or, construction, maintenance and cleansing of drains | 
+ |  |  | and drainage works and of public latrines, urinals and similar | 
+ |  |  | conveniences, or, the construction and maintenance of works meant for | 
+ |  |  | providing supply of water for public, or, the construction or maintenance, | 
+ |  |  | extension, management for supply and distribution of electricity to the | 
+ |  |  | public; or provision for similar facilities for publicity. | 
+25 | Covered Area |  | “Covered area” means the covered floor area above the plinth level over | 
+ |  |  | which a building is constructed. The following structures shall not be | 
+ |  |  | included under the covered area: (a) Garden, rockery, well and any | 
+ |  |  | structure related to a well, plant nursery, water pool, uncovered swimming | 
+ |  |  | pool, platform around a tree, tank, fountain, bench, open platform. (b) | 
+ |  |  | Drainage culvert, catch-pit, gully pit, chamber, gutter, etc. (c) Compound | 
+ |  |  | wall, entrance gate, floorless porch and portico canopy, slide, swing, | 
+ |  |  | uncovered stairs, uncovered ramp etc. (d) Watchman booth, pump-house, | 
+ |  |  | garbage shaft, electrical cabin/sub-station and such other utilities structures | 
+ |  |  | related to various services. | 
+26 | Development |  | “Development” - ‘Development’ with grammatical variations means the | 
+ |  |  | carrying out of building, engineering, mining or other operations, in, or | 
+ |  |  | over, or under land or water, on the making of any material change, in any | 
+ |  |  | building or land, or in the use of any building, land, and includes re- | 
+ |  |  | development and layout and subdivision of any land and ‘to develop’ shall | 
+ |  |  | be construed accordingly. | 
+27 | Drain |  | “Drain”- A conduit or channel for the carriage of storm water, sewage, | 
+ |  |  | wastewater or other waterborne wastes in a building drainage system. | 
+28 | Drainage System |  | “Drainage system” - A system or a line of pipes, with their fittings and | 
+ |  |  | accessories, such as manholes, inspection chambers, traps, gullies, floor | 
+ |  |  | traps used for drainage of building or yards appurtenant to the buildings | 
+ |  |  | within the same cartilage; and includes an open channel for conveying | 
+ |  |  | surface water or a system for the removal of any wastewater. | 
+29 | Dwelling |  | “Dwelling”- A building or a portion thereof which is designed or used | 
+ |  |  | wholly or principally for residential purposes for one family. | 
+30 | Encroachment |  | “Encroachment”- means an act to enter into the possession or rights | 
+ |  |  | either of permanent or temporary nature on a land or built-up property of | 
+ |  |  | local body/authority or state/ central Government. | 
+
+=== chapter 01 · gazette page 12 · pdf page 6 ===
+12
+
+--- table 0 (53 rows × 5 cols) ---
+Sl. | Item | Definition |  | 
+31 | Enclosed Staircase |  | “Enclosed Staircase”- means a staircase separated by fire resistant walls | 
+ |  |  | and doors from the rest of the building. | 
+32 | Existing Building |  | “Existing Building”- A building or structure existing in authorized | 
+ |  |  | manner with the approval of the Authority before the commencement of | 
+ |  |  | these Byelaws. | 
+33 | Existing Use |  | “Existing Use”- Use of a building or structure existing in authorized | 
+ |  |  | manner with the approval of the Authority before the commencement of | 
+ |  |  | these Byelaws. | 
+34 | Exit |  | “Exit”- A passage channel or means of egress from the building, its storey | 
+ |  |  | or floor to a street or, other open space of safety; whether horizontal, | 
+ |  |  | outside and vertical exits meaning as under:- (i) Horizontal exit means an | 
+ |  |  | exit, which is a protected opening through or around a fire well or bridge | 
+ |  |  | connecting two or more buildings. (ii) Outside exit mean an exit from | 
+ |  |  | building to a public way to an open area leading to a public way or to an | 
+ |  |  | enclosed fire-resistant passage leading to a public way. (iii) Vertical exit | 
+ |  |  | means an exit used for ascending or descending between two or more | 
+ |  |  | levels including stairway, fire towers, ramps and fire escapes. | 
+35 | External Wall |  | “External Wall” means an outer wall of a building not being a party wall | 
+ |  |  | even though adjoining to a wall of another building and also means a wall | 
+ |  |  | abutting on an interior open space of any building. | 
+36 | Floor |  | “Floor” means the lower surface in a storey on which one normally walks | 
+ |  |  | in a building and does not include a mezzanine floor. The floor at ground | 
+ |  |  | level with direct access to a street or open space shall be called the ground | 
+ |  |  | floor; the floor above it shall be termed as floor-1, with the next higher | 
+ |  |  | floor being termed as floor- 2, and so on upwards. | 
+37 | Floor Area | “Floor area” means the area covered on any floor of a building. | “Floor area” means the area covered on any floor of a building. | 
+38 | Floor Area Ratio |  | “Floor Area Ratio (FAR)” means the quotient obtained by dividing the | 
+ |  |  | combined covered area (plinth area) of all floors, excepting areas | 
+ |  |  | specifically exempted under these regulations, by the total area of the plot, | 
+ |  |  | viz.: - Floor Area Ratio (FAR) = Total covered area on all floors/ Plot | 
+ |  |  | Area. | 
+ | [#FFF2CC] |  | (a) “Compensatory FAR” means the additional FAR allowed on the plot | 
+ |  |  | up to the specified limit to compensate for the land being transferred free | 
+ |  |  | of cost by the landowner from the private plot to the Authority for right-of- | 
+ |  |  | way/road expansion or public facilities. or The FAR received by the owner | 
+ |  |  | from the Authority as a compensation for surrender of land to the | 
+ |  |  | government body without any monetary compensation and free from | 
+ |  |  | encumbrances. | 
+ | [#FFF2CC] |  | (b) “Purchasable FAR” means the additional FAR permissible to the | 
+ |  |  | extent specified over the permissible FAR in the Master Plan / Regional | 
+ |  |  | Plan / Building Construction and Development Byelaws, which can be | 
+ |  |  | purchased by the applicant on payment of prescribed fee as per Chapter-9 | 
+ |  |  | of the byelaws. | 
+ | [#FFF2CC] |  | (c) “Premium purchasable FAR” means the additional FAR permissible | 
+ |  |  | to the extent specified over the purchasable FAR in the Master Plan/ | 
+ |  |  | Regional Plan/ Building Construction and Development Byelaws, as per | 
+ |  |  | Chapter-9 of the byelaws. | 
+39 | Fire Lift |  | “Fire Lift”- Means a special lift designed for the use of fire service | 
+ |  |  | personnel in the event of fire or other emergency. | 
+40 | Footing |  | “Footing”- A foundation unit constructed in brickwork, stone masonry or | 
+ |  |  | concrete under the base of a wall or column for the purpose of distributing | 
+ |  |  | the load over a larger area. | 
+
+=== chapter 01 · gazette page 13 · pdf page 7 ===
+13
+
+--- table 0 (52 rows × 5 cols) ---
+Sl. | Item | Definition |  | 
+41 | Foundation |  | “Foundation”- A substructure supporting an arrangement of columns or | 
+ |  |  | walls in a row or rows transmitting the loads to the soil | 
+42 | Gallery |  | “Gal1ery"- An intermediate floor or platform projecting from a wall of an | 
+ |  |  | auditorium or a hall providing extra floor area, and/additional seating | 
+ |  |  | accommodation and includes the structures provided for seating in stadia. | 
+43 | Green Building |  | “Green building” means a building which has less water usage, proper | 
+ |  |  | energy efficiency, conservation of natural resources, minimum generation | 
+ |  |  | of waste and provides healthy environment to the occupants as compared | 
+ |  |  | to conventional building. | 
+44 | Ground Floor |  | “Ground Floor”- shall mean storey, which has its floor surface nearest to | 
+ |  |  | the ground around the building. A building may have more than one | 
+ |  |  | ground floor: | 
+ | [#FFF2CC] |  | “Upper Ground Floor” refers to a floor that is situated above the ground | 
+ |  |  | level but is not considered a full first floor or higher. It can be slightly | 
+ |  |  | elevated compared to the standard ground floor and is usually used in | 
+ |  |  | buildings where the terrain or design requires a split-level approach. | 
+ |  |  | “Lower Ground Floor” refers to a floor which has more than half of its | 
+ |  |  | height above the mean ground level and rest of the height below the mean | 
+ |  |  | ground level. | 
+45 | Habitable Room |  | “Habitable Room” means a room occupied or designed for occupancy by | 
+ |  |  | one or more persons for study, living, sleeping, eating, kitchen if it is used | 
+ |  |  | as a living room, but not including bathrooms, water-closet compartments, | 
+ |  |  | laundries, serving and store pantries, corridors, cellars, attics, and spaces | 
+ |  |  | that are not used frequently or during extended periods. | 
+46 | Layout plan/ Sub- division plan |  | “Lay-out plan/sub-division plan” means sub-dividing of any land or part | 
+ |  |  | thereof into more than one plot for sale or otherwise, in which the | 
+ |  |  | configuration of roads, measurement of plots along with set-back lines and | 
+ |  |  | method of development (e.g. row-housing, semi-detached detached group | 
+ |  |  | housing) should be shown and details of size, use, area of all the plots | 
+ |  |  | should be given." | 
+47 | Licensed Technical Professional |  | “Licensed Technical Person (LTP)” means a qualified professional | 
+ |  |  | (Architect/ Town Planner/ Engineer/ Supervisor) who is registered under | 
+ |  |  | the building construction and development byelaws or registered under any | 
+ |  |  | body constituted under any Act under which the said profession is | 
+ |  |  | governed. The qualifications and competence requirements for registration | 
+ |  |  | of professionals as ‘Licensed Technical Person’ or LTP, shall be as per | 
+ |  |  | Chapter-14 of the byelaws. | 
+48 | Lift |  | “Lift”- An appliance designed to transport persons or materials between | 
+ |  |  | two or more levels in a vertical or substantially vertical direction by means | 
+ |  |  | of a guided car or platform. The word ‘elevator’ is also synonymously | 
+ |  |  | used for ‘lift’. | 
+49 | Lobby | “Lobby”- means a covered space in which all the adjoining rooms open. | “Lobby”- means a covered space in which all the adjoining rooms open. | 
+50 | Loft |  | “Loft” means an intermediate floor between two floors or a residual space | 
+ |  |  | in a pitched roof above normal level constructed for storage with | 
+ |  |  | maximum clear height of 1.5 meters. | 
+51 | Master Plan |  | “Master Plan” means a Master Plan formulated under the UP Urban | 
+ |  |  | Planning and Development Act, 1973 or the Uttar Pradesh Special Area | 
+ |  |  | Development Authorities Act, 1986 for any town, approved and notified | 
+ |  |  | by the State Government. | 
+52 | Means of Escape |  | “Means of Escape”- An escape route provided in a building for safe | 
+ |  |  | evacuation of occupants. | 
+
+=== chapter 01 · gazette page 14 · pdf page 8 ===
+14
+
+--- table 0 (51 rows × 5 cols) ---
+Sl. | Item | Definition |  | 
+53 | MCLR |  | “MCLR, or Marginal Cost of Funds-Based Lending Rate”, is the | 
+ |  |  | minimum interest rate below which banks cannot lend, determined by the | 
+ |  |  | Reserve Bank of India (RBI) based on the bank's cost of funds and other | 
+ |  |  | factors. | 
+54 | Mezzanine Floor |  | “Mezzanine Floor” means an intermediate floor between two floors of | 
+ |  |  | any storey forming an integral part of floor below. | 
+55 | Mumty or stair cover |  | “Mumty or Stair Cover”- A structure with a covering roof over a | 
+ |  |  | staircase and its landing built to enclose only the stairs for the purpose of | 
+ |  |  | providing protection from weather and not used for human habitation. | 
+56 | Non-Built-up area |  | "Non-Built-up area" is the area other than Built-up area (Master Plan) | 
+ |  |  | defined above. | 
+57 | Occupancy |  | “Occupancy or use”- The principal occupancy/ use for which a building | 
+ |  |  | or a part of a building is intended to be used. For the purposes of | 
+ |  |  | classification of a building according to occupancy, an occupancy shall be | 
+ |  |  | deemed to include the subsidiary occupancies which are contingent upon | 
+ |  |  | it. “Mixed occupancy” buildings being those in which more than one | 
+ |  |  | occupancy is present in different portions of the buildings. | 
+58 | Open to sky (OTS) |  | “Open to sky” means an area forming an integral part of a building left | 
+ |  |  | open to the sky. | 
+59 | Owner |  | “Owner” means a person who has legal rights over any land or building or | 
+ |  |  | receives rent or is entitled to receive rent in case the premises are on rent | 
+ |  |  | and will also include the following: (1) Any agent or person who receives | 
+ |  |  | rent on behalf of the owner, (2) Any agent or person who receives rent or | 
+ |  |  | is entrusted with the management of any land or building for religious or | 
+ |  |  | charitable purposes, (3) Any receiver or manager appointed by a court of | 
+ |  |  | competent authority who has been given the charge/authority of exercising | 
+ |  |  | the rights of the owner in the premises. | 
+60 | Parapet | “Parapet”- A low wall or railing built along the edge of a roof or a floor. | “Parapet”- A low wall or railing built along the edge of a roof or a floor. | 
+61 | Park and Open space |  | “Park and open space” means a space which is open and un-built or | 
+ |  |  | which has been laid out and developed as a public park or garden.” | 
+62 | Parking Space |  | “Parking space”- An enclosed or unenclosed covered or open area | 
+ |  |  | sufficient in size to park vehicles. Parking spaces shall be served by a | 
+ |  |  | driveway connecting them with a street or alley and permitting ingress and | 
+ |  |  | egress of vehicles. | 
+63 | Partition Wall |  | “Partition Wall” includes (i) A wall forming part of a building and being | 
+ |  |  | used or constructed to be used in any part of the height or length of such | 
+ |  |  | wall for separation of adjoining buildings belonging to different owners or | 
+ |  |  | constructed or adopted to be occupied by different persons; or (ii) A wall | 
+ |  |  | forming part of a building and standing in any part of the length of such | 
+ |  |  | wall, to a greater extent than the projection of the footing on one side or | 
+ |  |  | ground of different owners. | 
+64 | Permission or Permit |  | “Permission or Permit”- A valid permission or authorization in writing | 
+ |  |  | by the competent Authority to carryout development or a work regulated | 
+ |  |  | by the Byelaws. | 
+65 | Plinth |  | “Plinth” means the portion of a structure between the surface of the | 
+ |  |  | surrounding ground surface of the floor immediately above the ground. | 
+66 | Plinth Area |  | “Plinth Area” means the built-up covered area measured at the floor level | 
+ |  |  | of the basement or of any storey. | 
+67 | Plot/ Site |  | “Plot/ Site” means a parcel or piece of land enclosed by definite | 
+ |  |  | boundaries. | 
+
+=== chapter 01 · gazette page 15 · pdf page 9 ===
+15
+
+--- table 0 (52 rows × 5 cols) ---
+Sl. | Item | Definition |  | 
+68 | Corner Plot |  | “Corner plot” means a plot which is situated on two or more intersecting/ | 
+ |  |  | meeting roads. | 
+69 | Island Plot | “Island Plot” means plot surrounded by roads on all four sides. | “Island Plot” means plot surrounded by roads on all four sides. | 
+70 | Plotted Development |  | “Plotted Development” – Type of layout wherein a stretch of developed | 
+ |  |  | land is divided into regular sized plots for uniform controlled building | 
+ |  |  | volumes. | 
+71 | Podium Parking |  | “Podium Parking” means the floor/floors from the floor above the | 
+ |  |  | ground level to the bottom surface of the beam for parking purposes under | 
+ |  |  | the building envelope line in which there should be provision of ramp for | 
+ |  |  | entry and exit of vehicles and in case of mechanized parking, there should | 
+ |  |  | be provision of entry and exit as per the actual design. | 
+72 | Porch |  | “Porch”- A covered surface supported on pillars or otherwise for the | 
+ |  |  | purpose of a pedestrian or vehicular approach to a building. | 
+73 | Prohibited Area |  | “Prohibited area” means any area specified or declared to be a prohibited | 
+ |  |  | area under section 20A of the Ancient Monuments and Archaeological | 
+ |  |  | Sites and Remains Act, 2010 (AMASR Act, 2010), and as defined under | 
+ |  |  | other relevant acts | 
+74 | Protected Monument |  | “Protected monument” means an ancient monument which is declared to | 
+ |  |  | be of national importance by or under the AMASR Act, 2010. | 
+75 | Redevelopment |  | “Redevelopment” refers to rehabilitating or constructing new | 
+ |  |  | infrastructure on a site by renovating or replacing existing uses with new | 
+ |  |  | development or construction, following an approved layout plan | 
+76 | Regulated Area |  | “Regulated area” means any area specified or declared under section 20B | 
+ |  |  | under the AMASR Act, 2010. | 
+77 | Refuge Area |  | “Refuge Area” means an unenclosed area within the building for a | 
+ |  |  | temporary use during egress. It generally serves as a staging area which is | 
+ |  |  | protected from the effect of fire and smoke. | 
+78 | Road/ Street |  | “Road/Street”- Any highway, street, lane, pathway, alley, stairway, | 
+ |  |  | passageway carriageway, footway, square, place or bridge whether a | 
+ |  |  | thorough-fare or over which the public have a right of passage or access or | 
+ |  |  | have passed and have access uninterruptedly for specified period, whether | 
+ |  |  | existing or proposed in any scheme and includes all bends, channels, | 
+ |  |  | ditches, storm water drains, culverts sidewalks, traffic islands, roadside | 
+ |  |  | trees and hedges, retaining walls fences, barriers and railing, street | 
+ |  |  | furniture within the street lines, which shall be a part of Right of Way | 
+79 | Road/ Street Level or Grade |  | “Road/Street Level or Grade” means the officially established elevation | 
+ |  |  | or grade of the centerline of street upon which a plot fronts, and if there is | 
+ |  |  | no officially established grade, the existing grade of street at its mid-point. | 
+80 | Road/ Street Line |  | “Road/Street Line” means the line defining the side limits of a road/ | 
+ |  |  | street. | 
+81 | Road Width |  | “Road Width or Width of Road/Street” means the overall width of the | 
+ |  |  | road or right-of-way or the whole extent of space within the boundaries of | 
+ |  |  | a road when applied to a new road/street as laid down in the city survey or | 
+ |  |  | development plan or prescribed road lines by any act of law and measured | 
+ |  |  | at right angles to the course or intended course of direction of such road. | 
+82 | Row Housing |  | “Row Housing” -A row of houses with only front, rear and interior open | 
+ |  |  | spaces. | 
+83 | Room Height |  | “Room Height”- The vertical distance measured from the finished floor | 
+ |  |  | surface to the finished ceiling surface. Where a finished ceiling is not | 
+ |  |  | provided, the underside of the joists or beams or tie beams shall determine | 
+ |  |  | the upper point of measurement for determining the head room. | 
+
+=== chapter 01 · gazette page 16 · pdf page 10 ===
+16
+
+--- table 0 (52 rows × 7 cols) ---
+Sl. | Item |  |  | Definition |  | 
+84 | Service Road/Lane |  |  |  | “Service Road/Lane” means a road that runs parallel to a main road, | 
+ |  |  |  |  | providing access for local traffic to properties along the main road, | 
+ |  |  |  |  | minimizing disruption to through traffic. | 
+85 | Service Floor |  |  |  | “Service floor” means a floor up to a maximum height of 2.10 meters | 
+ |  |  |  |  | from floor to beam between any two floors which is used only for pipes, | 
+ |  |  |  |  | service ducts etc. related to the building. | 
+86 | Service Apartment |  |  |  | “Service Apartment” means a fully furnished & self-contained apartment | 
+ |  |  |  |  | having cooking facilities (cooking/kitchen) and used for short-term stay. | 
+87 | Setback Line |  |  |  | “Set-back Line” means a line usually parallel to the plot boundaries or | 
+ |  |  |  |  | center line of a road (as specified in building construction & development | 
+ |  |  |  |  | byelaws) and laid down in each case by the Authority or as per | 
+ |  |  |  |  | recommendations of Master/Zonal Plan, beyond which nothing can be | 
+ |  |  |  |  | constructed towards the plot boundaries excepting with the permission of | 
+ |  |  |  |  | the Authority. | 
+88 | Shelter Fee |  |  |  | “Shelter Fee” refers to charges levied on private developers for the | 
+ |  |  |  |  | construction of housing projects, particularly those undertaken by | 
+ |  |  |  |  | Development Authority, Uttar Pradesh Housing and Development Board | 
+ |  |  |  |  | or other government agencies. | 
+89 | Special Amenity |  |  |  | “Special Amenity” includes projects of vital importance such as mass | 
+ |  |  |  |  | rapid transit system (metro rail, light rail, regional rapid rail, bus rapid | 
+ |  |  |  |  | transit system, ropeway, etc.), freeways (elevated roads, etc.), urban | 
+ |  |  |  |  | revitalization projects (river front development, etc.) or any other major | 
+ |  |  |  |  | infrastructure project which may be notified to be as such by the State | 
+ |  |  |  |  | Government. | 
+90 | Plot Depth |  |  |  | “Site Depth” or “Plot Depth” means the mean horizontal distance between | 
+ |  |  |  |  | the front and rear site boundaries. | 
+91 | Site Plan |  |  |  | “Site Plan” – A detailed Plan showing the proposed placement of | 
+ |  |  |  |  | structures, parking areas, open space, landscaping, and other development | 
+ |  |  |  |  | features, on a parcel of land, as required by specific sections of the | 
+ |  |  |  |  | development code. | 
+92 | Spiral Staircase |  |  |  | “Spiral Staircase”- A staircase forming continuous winding curve round a | 
+ |  |  |  |  | central point or axis provided in an open space having tread without risers. | 
+93 | Stilt Floor |  |  |  | “Stilt Floor” means a structure built on a plinth on pillars which is | 
+ |  |  |  |  | intended for the purpose of parking. | 
+94 | Storey |  |  |  | “Storey”- The portion of a building included between the surface of any | 
+ |  |  |  |  | floor and the surface of the floor next above it, or if there be no floor above | 
+ |  |  |  |  | it, then the space between any floor and the ceiling next above it. | 
+95 | Tot-lot |  |  |  | “Tot-lot” means a park or playground situated in a residential area and | 
+ |  |  |  |  | planned for the use of small children. | 
+96 | Unauthorised Construction |  |  |  | “Un-authorized Construction” means erection or re-erection, addition or | 
+ |  |  |  |  | alternations which is not approved or sanctioned by the Authority or in | 
+ |  |  |  |  | violation of Uttar Pradesh Urban Planning and Development Act, 1973. | 
+97 | [#FFF2CC] | Underground/ | [#FFF2CC] |  | “Underground/Overhead Tank”- An installation constructed or placed | 
+ |  | Overhead Tank |  |  | for storage of water. | 
+98 | Ventilation | Ventilation |  |  | “Ventilation”- Supply of outside air into, or the removal of inside air from | 
+ |  |  |  |  | an enclosed space. (a). Natural Ventilation - Supply of outside air into a | 
+ |  |  |  |  | building through window or other openings due to wind outside and | 
+ |  |  |  |  | convection effects arising from temperature or vapour pressure differences (or | 
+ |  |  |  |  | both) between inside and outside of the building. (b). Positive Ventilation - | 
+ |  |  |  |  | the supply of outside air by means of a mechanical device, such as a fan. (c). | 
+ |  |  |  |  | Mechanical Ventilation - Supply of outside air either by positive ventilation | 
+
+=== chapter 01 · gazette page 17 · pdf page 11 ===
+Note: Words or expressions used but not defined in these byelaws shall have the same meaning as
+assigned to them in the Master Plan/Zoning Regulations/Byelaws/Act/National Building Code.
+1.3 Applicability of byelaws
+(i) These building byelaws shall be applicable to all building activities and read in conjunction with
+the master plan/development plan/regional plan/any other statutory plan in force, if any, and
+notifications, if any, with regard to the same and as amended from time to time. Till such time
+the revised byelaws are notified, these building byelaws will continue to be in force.
+(ii) These byelaws shall be applicable to the entire plot/building or the self-contained part, as the case
+may be, in case of development, redevelopment, sub-division or construction, reconstruction of
+building or alteration of a plot of land, to the remaining part after demolition and in case of land
+use change, to the entire part of the affected plot/building.
+(iii) Regarding such requirements/provisions related to development and construction which are not
+contained herein, the provisions of National Building Code and IS/BIS Code, as applicable, may
+be followed.
+1.4 Difficulty Removal
+In case of any clarification regarding any term or omission or contradiction and difficulty removal, a
+committee shall be constituted under the chairmanship of Principal Secretary, Housing and Urban
+Planning Department, whose decision shall be final. The Committee shall include Housing
+Commissioner, Director, Awas Bandhu, Vice Chairmen of any two Development Authorities
+nominated by the Chairman, and Chief Town and Country Planner (CTCP), who shall be the Member
+Convenor.
+In case of any discrepancy in interpretation of the Hindi and English versions of these byelaws, the
+provisions of the latter shall prevail.
+1.5 Effect on relevant Government Orders, Policies
+From the date of coming into force of these byelaws, relevant clauses of the government orders, policies,
+rules, byelaws, etc., listed in Appendix-1 shall be considered to have been amended to that extent as per
+the provisions of these byelaws. In case of any discrepancy between the provisions of the government
+orders, policies, rules, byelaws, etc., listed in Appendix-1 and these byelaws, the provisions of the latter
+shall prevail.
+17
+
+--- table 0 (17 rows × 5 cols) ---
+Sl. | Item | Definition |  | 
+ | [#FFF2CC] |  | or by infiltration by reduction of pressure inside due to exhaust of air, or by a | 
+ |  |  | combination of positive ventilation and exhaust of air. | 
+99 | Verandah |  | “Verandah” — A covered area with at least one side open to the outside | 
+ |  |  | with the exception of one-meter-high parapet on the upper floors to be | 
+ |  |  | provided on the open side. | 
+100 | Water Closet |  | “Water Closet (W.C)”- A water flushed plumbing fixture designed to | 
+ |  |  | receive human excrement directly from the user of the fixture. The term is | 
+ |  |  | used sometimes to designate the room or compartment in which the fixture | 
+ |  |  | is placed. | 
+101 | Window |  | “Window”- An opening to the outside other than a door, which provides | 
+ |  |  | all or part of the required natural light or ventilation or both to an interior | 
+ |  |  | space and not used as a means of egress/ingress. | 
+102 | Zonal Development Plan |  | “Zonal Development Plan” means a Plan formulated under Section 9 of | 
+ |  |  | the UP Urban Planning and Development Act, 1973 for development of | 
+ |  |  | zones which are part of the development area under the jurisdiction of | 
+ |  |  | Authority. | 
+
+=== chapter 01 · gazette page 18 · pdf page 12 ===
+1.6 Sectoral Policies
+Provisions of various sectoral policies notified by the State Government from time to time which are at
+variance with these Byelaws shall prevail. Specific provisions in sectoral policies in relation to
+parameters like FAR, building height, Ancillary/ Mixed uses, if prescribed beyond the permissible
+limits of these byelaws, shall be valid. An indicative list of these policies is given below:
+•
+Uttar Pradesh Warehousing & Logistics Policy 2022
+•
+IT & ITeS Policy of Uttar Pradesh, 2022
+•
+Uttar Pradesh Data centre Policy 2021
+•
+Uttar Pradesh Tourism Policy 2022 (incl. Homestay/ Heritage Hotels)
+•
+Uttar Pradesh Micro Small and Medium Enterprises Policy 2022 & Pledge Park
+•
+Uttar Pradesh State Bio-Energy Policy 2022
+•
+Uttar Pradesh Solar Energy Policy 2022
+•
+Uttar Pradesh Textile and Garmenting Policy 2022
+•
+The Indian Telegraph Right-of-way (Amendment) Rules, 2022
+18

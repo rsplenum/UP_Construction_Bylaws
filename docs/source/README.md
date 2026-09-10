@@ -9,10 +9,14 @@ docs/source/
 │  ├─ UP-Building-Byelaws-2025-TMPR8.docx   the original, as supplied
 │  ├─ pdf/chapter-NN.pdf                    per-chapter PDFs
 │  └─ CHECKSUMS.txt                         md5 of every original
-├─ gazette-tmpr8.txt                        flattened text of the docx
-└─ derived/                                 machine-extracted, regenerable
-   └─ zoning-matrix.json
+├─ gazette-tmpr8.txt                        flattened text of the docx (no page numbers)
+└─ derived/                                 machine-extracted, regenerable — never edit
+   ├─ chapters/chapter-NN.txt               per chapter, WITH gazette page numbers
+   ├─ chapters/chapter-NN.json              the same, structured: cells, fills, bboxes
+   └─ zoning-matrix.json                    Clause 15.3, deduplicated to logical rows
 ```
+
+Regenerate everything with `./tools/extract-all.sh`.
 
 ## The originals
 
@@ -67,13 +71,31 @@ is blank from this file alone.
 
 ## Derived data
 
-`derived/` is machine-extracted and regenerable — never hand-edit it. Each file names the
-tool that produces it.
+`derived/` is machine-extracted and regenerable — never hand-edit it. Rebuild it all:
 
 ```bash
-python3 tools/extract-zoning-matrix.py docs/source/gazette/pdf/chapter-15.pdf \
-  > docs/source/derived/zoning-matrix.json
+./tools/extract-all.sh
 ```
+
+Two tools, doing deliberately different jobs.
+
+**`tools/extract-chapter.py` — L0, faithful.** Records what is on the page and interprets
+nothing. Its `chapter-NN.txt` output is the one to grep, because unlike `gazette-tmpr8.txt`
+**it carries the gazette's own page numbers**, so a citation can say *page 149* — something
+an architect or an authority reviewer can look up. Colour is preserved inline:
+
+```
+1.2(b) | Group Housing (Non-Built-up area) | 12 | [GREEN] | [GREEN] | 8[GREEN] | … | [RED]
+2      | COMMERCIAL                        |    |         |         |          |     «band #9BC2E6»
+```
+
+Where an activity's name wraps, the PDF's own table structure splits it into several rows
+and each inherits its cell's fill. L0 keeps that, because it is what the page says.
+Joining them is interpretation.
+
+**`tools/extract-zoning-matrix.py` — one table, interpreted.** Pairs each coloured
+rectangle with its column header and row band to produce the logical Clause 15.3 matrix:
+53 activities, 847 verdicts, 52 rows complete across all 16 zones.
 
 ## When you verify a rule
 

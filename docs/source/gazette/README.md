@@ -10,33 +10,37 @@ be modified: the whole verification chain assumes these bytes are the ones that 
 | File | |
 |---|---|
 | `UP-Building-Byelaws-2025-TMPR8.docx` | The complete byelaws, as supplied 2026-09-10 |
-| `pdf/chapter-15.pdf` | Chapter 15, Zoning Regulations — gazette pages 138–156 |
+| `pdf/chapter-NN.pdf` | One PDF per chapter, numbered by **chapter**, not by page |
 
-Per-chapter PDFs land in `pdf/` as `chapter-NN.pdf`, numbered by chapter, not by page.
+### Chapters held so far
+
+| Ch | Gazette pages | Pages | Tables | Notes |
+|---:|---|---:|---:|---|
+| 01 | 7–18 | 12 | 11 | Definitions |
+| 02 | 19–36 | 18 | 10 | Permission for development and construction |
+| 15 | 138–156 | 19 | 31 | Zoning. **States permitted/prohibited in colour** — see V-008 |
 
 ## Adding a chapter PDF
 
+Two commands. Never hand-edit anything under `docs/source/derived/`.
+
 ```bash
 cp <file> docs/source/gazette/pdf/chapter-03.pdf
-cd docs/source/gazette && md5sum pdf/chapter-03.pdf >> CHECKSUMS.txt
+./tools/extract-all.sh
 ```
 
-Then check what the docx lost for that chapter before reading it — colour-coded cells,
-merged cells and rasterised tables are all invisible in the flattened text:
+`extract-all.sh` regenerates every extraction and rewrites `CHECKSUMS.txt`, so the derived
+files and the originals cannot drift apart. `src/domain/rules/__tests__/sources.test.ts`
+fails if they do — each extraction records the md5 of the PDF it came from, and the test
+re-checks it on every run. A stale extraction is otherwise indistinguishable from a fresh
+one, and would quietly become a second, wrong source of truth.
 
-```bash
-python3 - <<'EOF'
-import pymupdf, collections
-d = pymupdf.open('docs/source/gazette/pdf/chapter-03.pdf')
-fills = collections.Counter()
-for p in d:
-    for dr in p.get_drawings():
-        if dr.get('fill'):
-            fills['#%02X%02X%02X' % tuple(int(round(c*255)) for c in dr['fill'])] += 1
-print('pages', d.page_count, '| rasters', sum(len(p.get_images()) for p in d))
-print(fills.most_common(12))
-EOF
-```
+## What to look at first in a new chapter
 
-Saturated green (`#00B050`) or red (`#FF0000`) means that chapter states some rule as a
-colour, and the flattened text does not have it.
+The extractor prints a one-line summary per chapter. Two figures matter:
+
+- **`colour-coded rows`** — the chapter states some rule as a colour. Chapter 15 does this
+  for the whole permissibility matrix, and the flattened docx text lost every one of them
+  (V-008). Read `chapter-NN.txt`, where such cells render as `[GREEN]` / `[RED]`.
+- **`WARNINGS`** — rasterised content. No extractor can read a picture of a table. Anything
+  listed has to be read from the PDF by eye and transcribed by hand.
