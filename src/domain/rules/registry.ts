@@ -233,14 +233,16 @@ export const RULES: RuleSet = {
       + 'gazette prints its own worked example, which the engine reproduces to the rupee, so the '
       + 'arithmetic is checked against the drafter rather than against a reading of the drafter.',
     challenge: {
-      id: 'V-030',
+      id: 'V-014',
       summary:
-        'The formula and the coefficients are read from the gazette and the app reproduces its '
-        + 'worked example to the rupee. What is approximated is the boundary between the two '
-        + 'tranches: splitPurchasedFar uses Clause 9.2.3 columns (3) and (4), the general ladder, '
-        + 'where Note-2 makes the per-chapter PFAR and PPFAR columns prevail. Those columns are '
-        + 'loaded in purchasable-far.json and far.ts does not yet read them.',
+        'The formula, the coefficients and the tranche split are all read from the gazette, and '
+        + 'the app reproduces Clause 9.2.5\'s worked example to the rupee. What is unresolved is '
+        + 'inherited: on malls and hotels the split comes from a Chapter 5 row whose base FAR is '
+        + 'higher than the Chapter 3 base the ceiling uses. Note-2 subordinates chapter 9 to the '
+        + 'chapters but nothing subordinates chapter 5 to chapter 3, so both readings stand and '
+        + 'the finding names the divergence rather than hiding it.',
       derivedFromInstead: ['roadWidth', 'occupancy', 'areaType'],
+      maxDivergence: '1.5 FAR of base, on a non-built-up mall',
     },
   },
 

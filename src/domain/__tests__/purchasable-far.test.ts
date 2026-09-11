@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { resolveBaseFar } from '../far';
 import { BASE_FAR, COMMERCIAL_MAX_FAR, GROUP_HOUSING_MAX_FAR, MIXED_USE_MAX_FAR } from '../far';
 import {
   CHAPTER_3_GAPS,
@@ -442,5 +443,59 @@ describe('asCeiling', () => {
     expect(asCeiling('unrestricted')).toBe(Infinity);
     expect(asCeiling('not available')).toBeNull();
     expect(asCeiling(null)).toBeNull();
+  });
+});
+
+describe('resolveBaseFar reads the printed split, not a general ladder', () => {
+  it('gives group housing the permissible columns the gazette example itself prints', () => {
+    // Clause 9.2.5's worked example is a non-built-up group housing scheme on a 30 m road.
+    // Its own table states Purchasable FAR *permissible* 2.5 and Premium permissible 3.75.
+    // That is the capacity, independent of what the example then avails.
+    const r = resolveBaseFar({
+      occupancy: 'res_group_housing', plotArea: 2_000, roadWidth: 30, areaType: 'non_built_up',
+    });
+    expect(r.baseFar).toBe(2.5);
+    expect(r.purchasableTranche?.source).toBe('chapter-table');
+    expect(r.purchasableTranche?.purchasableCapacity).toBe(2.5);
+    expect(r.purchasableTranche?.premiumPurchasableCapacity).toBe(3.75);
+  });
+
+  it('falls back to Clause 9.2.3 for the uses no chapter table covers, and says so', () => {
+    for (const occupancy of ['office', 'inst_health', 'ind_general'] as const) {
+      const r = resolveBaseFar({ occupancy, plotArea: 2_000, roadWidth: 30 });
+      expect(r.purchasableTranche?.source, occupancy).toBe('clause-9.2.3');
+      expect(r.purchasableTranche?.clause, occupancy).toMatch(/9\.2\.3/);
+    }
+  });
+
+  it('never lets the split exceed the headroom the ceiling allows', () => {
+    for (const occupancy of ['res_group_housing', 'com_mall', 'com_hotel', 'mixed_use'] as const) {
+      for (const areaType of ['built_up', 'non_built_up'] as const) {
+        for (const roadWidth of [9, 12, 18, 24, 30, 45, 60]) {
+          const r = resolveBaseFar({ occupancy, plotArea: 2_000, roadWidth, areaType });
+          const t = r.purchasableTranche;
+          if (!t || !Number.isFinite(r.ceilingFar)) continue;
+          const total = t.purchasableCapacity + t.premiumPurchasableCapacity;
+          expect(total, `${occupancy}/${areaType}/${roadWidth}m`).toBeLessThanOrEqual(r.purchasableFar + 0.01);
+        }
+      }
+    }
+  });
+
+  it('flags where the split and the ceiling come from different chapters (V-014)', () => {
+    // Malls and hotels are the four cells where Chapter 5's base FAR exceeds Chapter 3's.
+    const mall = resolveBaseFar({ occupancy: 'com_mall', plotArea: 2_000, roadWidth: 30 });
+    expect(mall.purchasableTranche?.baseFarDivergence).toEqual({ chapterBaseFar: 2, applied: 1.5 });
+    expect(mall.caveats.join(' ')).toMatch(/V-014/);
+
+    // Group housing agrees between the two chapters, so nothing is flagged.
+    const gh = resolveBaseFar({ occupancy: 'res_group_housing', plotArea: 2_000, roadWidth: 30 });
+    expect(gh.purchasableTranche?.baseFarDivergence).toBeUndefined();
+  });
+
+  it('offers no tranche where no purchase is possible', () => {
+    const narrow = resolveBaseFar({ occupancy: 'res_group_housing', plotArea: 2_000, roadWidth: 6 });
+    expect(narrow.purchasableFar).toBe(0);
+    expect(narrow.purchasableTranche).toBeNull();
   });
 });

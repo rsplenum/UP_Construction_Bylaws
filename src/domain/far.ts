@@ -9,6 +9,11 @@
 
 import { Band, assertContiguousLadder, resolveBand } from './bands';
 import type { GreenRating } from './project';
+import {
+  asCeiling, bandForRoad, purchasableRowFor,
+  type PurchasableBand, type PurchasableRow,
+} from './purchasable-far';
+import { PURCHASABLE_SHARE_BY_ROAD } from './purchasable-fee';
 import { OccupancyId, getOccupancy } from './occupancy';
 
 export interface FarSlab extends Band {
@@ -200,6 +205,97 @@ export interface SlabContribution {
   readonly builtUpArea: number;
 }
 
+export interface PurchasableTranche {
+  /** PFAR — FAR points available at the ordinary purchasable coefficient. */
+  readonly purchasableCapacity: number;
+  /** PPFAR — FAR points available at the premium coefficient, above the ordinary tranche. */
+  readonly premiumPurchasableCapacity: number;
+  readonly band: string;
+  /**
+   * `chapter-table` — read from the printed BFAR/PFAR/PPFAR row for this occupancy.
+   * `clause-9.2.3` — the general ladder, used where no chapter row covers the use.
+   */
+  readonly source: 'chapter-table' | 'clause-9.2.3';
+  readonly rowId?: string;
+  readonly clause: string;
+  /**
+   * Set where the printed row this split came from states a different base FAR than the
+   * one the engine applied — V-014's Chapter 3 / Chapter 5 conflict, surfaced at the
+   * point it actually affects a number instead of only in the log.
+   */
+  readonly baseFarDivergence?: { readonly chapterBaseFar: number; readonly applied: number };
+}
+
+/**
+ * Divide the headroom into the two priced tranches.
+ *
+ * A chapter row states both columns outright. Where none covers the occupancy, Clause
+ * 9.2.3 column (3) gives the ordinary tranche as a percentage of base FAR and everything
+ * above it is premium. Either way the result is clamped to the headroom the engine has
+ * actually allowed, so a stricter Chapter 3 ceiling still governs the total.
+ */
+function resolveTranche(input: {
+  occupancy: OccupancyId;
+  areaType: AreaType;
+  plotArea: number;
+  roadWidth: number;
+  baseFar: number;
+  headroom: number;
+  isAffordableHousingScheme?: boolean;
+}): PurchasableTranche | null {
+  if (!(input.headroom > 0)) return null;
+
+  const row: PurchasableRow | undefined = purchasableRowFor({
+    occupancy: input.occupancy,
+    areaType: input.areaType,
+    plotAreaSqm: input.plotArea,
+    isAffordableHousingScheme: input.isAffordableHousingScheme,
+    roadWidthM: input.roadWidth,
+  });
+  const band: PurchasableBand | undefined = row ? bandForRoad(row, input.roadWidth) : undefined;
+
+  if (row && band) {
+    const printedPurchasable = asCeiling(band.purchasable);
+    const printedPremium = asCeiling(band.premiumPurchasable);
+    if (printedPurchasable !== null) {
+      // An unrestricted premium column leaves the whole remainder at the premium rate.
+      const purchasable = Math.min(input.headroom, printedPurchasable);
+      const remainder = Math.max(0, input.headroom - purchasable);
+      const premium = printedPremium === null ? 0 : Math.min(remainder, printedPremium);
+      return {
+        purchasableCapacity: round(purchasable, 2),
+        premiumPurchasableCapacity: round(premium, 2),
+        band: band.label,
+        source: 'chapter-table',
+        rowId: row.id,
+        clause: `${row.chapter} (gazette p.${row.gazettePage}), ${row.useType}`,
+        // V-014: where the chapter row's own base differs from the Chapter 3 base the
+        // engine applies, the split and the ceiling come from different readings. The
+        // columns are absolute FAR figures rather than percentages, so pairing them is
+        // sound arithmetic — but it is still two chapters in one answer, and saying so
+        // is the difference between a resolved conflict and a hidden one.
+        baseFarDivergence: row.baseFar !== null && Math.abs(row.baseFar - input.baseFar) > 0.001
+          ? { chapterBaseFar: row.baseFar, applied: input.baseFar }
+          : undefined,
+      };
+    }
+  }
+
+  const ladder = PURCHASABLE_SHARE_BY_ROAD.find(
+    (b) => input.roadWidth > b.overMoreThan
+      && (b.upToAndIncluding === null || input.roadWidth <= b.upToAndIncluding),
+  ) ?? PURCHASABLE_SHARE_BY_ROAD[0];
+  const capacity = round(input.baseFar * ladder.purchasable, 2);
+  const purchasable = Math.min(input.headroom, capacity);
+  return {
+    purchasableCapacity: round(purchasable, 2),
+    premiumPurchasableCapacity: round(Math.max(0, input.headroom - purchasable), 2),
+    band: ladder.label,
+    source: 'clause-9.2.3',
+    clause: 'Clause 9.2.3 columns (3) and (4) — the general ladder',
+  };
+}
+
 export interface BaseFarResult {
   readonly plotArea: number;
   readonly baseFar: number;
@@ -217,6 +313,18 @@ export interface BaseFarResult {
   readonly ceilingFar: number;
   /** Extra FAR the project may purchase at this road width (0 when barred). */
   readonly purchasableFar: number;
+  /**
+   * How that headroom divides into the two tranches Chapter 9.2.5 prices differently —
+   * capacity, not what a project has taken. Null where no purchase is possible.
+   *
+   * Chapter 3 states a base and a maximum and never the split, so this is the one figure
+   * the per-occupancy tables supply that Chapter 3 cannot contradict. That is why the
+   * source here is the printed chapter row wherever one exists, while `ceilingFar` above
+   * still comes from the Chapter 3 ladder: Clause 9.2.3 Note-2 subordinates the chapter-9
+   * master table to chapters 3–7, but nothing subordinates chapter 5 to chapter 3, so
+   * V-014's conflict is left exactly as it was.
+   */
+  readonly purchasableTranche: PurchasableTranche | null;
   /** Absolute ceiling: effective base + purchasable. Nothing may be sanctioned beyond this. */
   readonly maxPermissibleFar: number;
   readonly maxPermissibleBuiltUpArea: number;
@@ -285,6 +393,8 @@ export function resolveBaseFar(input: {
   greenRating?: GreenRating;
   /** Defaults to built-up, the more restrictive of the two. */
   areaType?: AreaType;
+  /** Clause 4.4 schemes read their own printed table — see purchasableRowFor. */
+  isAffordableHousingScheme?: boolean;
 }): BaseFarResult {
   const definition = getOccupancy(input.occupancy);
   const plotArea = Math.max(0, Number(input.plotArea) || 0);
@@ -302,7 +412,7 @@ export function resolveBaseFar(input: {
   if (plotArea === 0) {
     return {
       plotArea: 0, baseFar: 0, baseBuiltUpArea: 0, effectiveBaseFar: 0, effectiveBuiltUpArea: 0,
-      greenBonusFraction, ceilingFar: 0, purchasableFar: 0, maxPermissibleFar: 0, maxPermissibleBuiltUpArea: 0,
+      greenBonusFraction, ceilingFar: 0, purchasableFar: 0, purchasableTranche: null, maxPermissibleFar: 0, maxPermissibleBuiltUpArea: 0,
       slabs: [], workings: 'Plot area is zero — no FAR can be derived.',
       clauseRef: 'Chapter 3.2.2', caveats: ['Enter a plot area to compute FAR.'],
     };
@@ -375,6 +485,17 @@ export function resolveBaseFar(input: {
   const canPurchase = purchaseGate.allowed;
   const headroom = Number.isFinite(ceilingFar) ? Math.max(0, round(ceilingFar - baseFar)) : Infinity;
   const purchasableFar = canPurchase ? headroom : 0;
+  const purchasableTranche = canPurchase
+    ? resolveTranche({
+      occupancy: input.occupancy,
+      areaType,
+      plotArea,
+      roadWidth,
+      baseFar,
+      headroom: Number.isFinite(headroom) ? headroom : Infinity,
+      isAffordableHousingScheme: input.isAffordableHousingScheme,
+    })
+    : null;
   if (!canPurchase && headroom > 0) {
     caveats.push(
       `Purchasable FAR is barred: the abutting road is ${roadWidth}m, below the `
@@ -395,9 +516,25 @@ export function resolveBaseFar(input: {
     workings += ` · Chapter 9.3 green incentive +${(greenBonusFraction * 100).toFixed(0)}% above the ceiling → ${maxPermissibleFar}`;
   }
 
+  if (purchasableTranche?.baseFarDivergence) {
+    const d = purchasableTranche.baseFarDivergence;
+    caveats.push(
+      `The purchasable/premium split is read from ${purchasableTranche.clause}, which states a `
+      + `base FAR of ${d.chapterBaseFar}. The engine applies Chapter 3's ${d.applied}, the lower `
+      + 'of the two, so the ceiling and the split come from different chapters (V-014).',
+    );
+  }
+
+  if (purchasableTranche && Number.isFinite(headroom)) {
+    workings += ` · purchasable ${purchasableTranche.purchasableCapacity}`
+      + ` + premium ${purchasableTranche.premiumPurchasableCapacity}`
+      + ` (${purchasableTranche.source === 'chapter-table' ? purchasableTranche.clause : 'Clause 9.2.3 ladder'})`;
+  }
+
   return {
     plotArea,
     baseFar,
+    purchasableTranche,
     baseBuiltUpArea: round(plotArea * baseFar, 2),
     effectiveBaseFar,
     effectiveBuiltUpArea: round(plotArea * effectiveBaseFar, 2),

@@ -208,6 +208,7 @@ export function assessProject(project: ProjectState): Assessment {
     roadWidth,
     greenRating: project.greenRating,
     areaType,
+    isAffordableHousingScheme: project.isAffordableHousingScheme,
   });
 
   const proposedFar = plotArea > 0 ? proposedArea / plotArea : 0;
@@ -242,11 +243,20 @@ export function assessProject(project: ProjectState): Assessment {
     // coefficient is not 0.40 for every use: it runs from 0.20 to 1.0 across the seven
     // categories. Both now come from `purchasable-fee.ts`, which reproduces the gazette's
     // own worked example exactly.
-    const tranches = splitPurchasedFar({
-      farAboveBase: extra / Math.max(1e-9, plotArea),
-      baseFar: far.effectiveBaseFar,
-      roadWidth: project.roadWidth,
-    });
+    // The split comes from the printed chapter row where one covers this use, and from
+    // Clause 9.2.3's general ladder where none does — resolveBaseFar has already decided
+    // which, and says so on the tranche.
+    const farTaken = extra / Math.max(1e-9, plotArea);
+    const tranches = far.purchasableTranche
+      ? {
+        purchasable: Math.min(farTaken, far.purchasableTranche.purchasableCapacity),
+        premiumPurchasable: Math.max(0, farTaken - far.purchasableTranche.purchasableCapacity),
+      }
+      : splitPurchasedFar({
+        farAboveBase: farTaken,
+        baseFar: far.effectiveBaseFar,
+        roadWidth: project.roadWidth,
+      });
     const fee = assessPurchaseFee({
       category: getOccupancy(project.occupancy).purchasableFarCategory,
       baseFar: far.effectiveBaseFar,
@@ -267,7 +277,10 @@ export function assessProject(project: ProjectState): Assessment {
       working: [
         ...fee.lines.map((l) => `${l.kind === 'premiumPurchasable' ? 'Premium purchasable' : 'Purchasable'}: ${l.working} = ${inr(l.charge)}`),
         ...fee.caveats,
-      ].join(' · ') || `${sqm(extra)} within the base entitlement`,
+        far.purchasableTranche
+          ? `Split from ${far.purchasableTranche.source === 'chapter-table' ? far.purchasableTranche.clause : 'Clause 9.2.3 (no chapter table covers this use)'}`
+          : '',
+      ].filter(Boolean).join(' · ') || `${sqm(extra)} within the base entitlement`,
       clause: fee.clauseRef,
       money: { label: 'Purchasable FAR charge', amount: charge },
       fix: { label: `Reduce to the free ${sqm(far.effectiveBuiltUpArea)}`, patch: { proposedBuiltUpArea: Math.floor(far.effectiveBuiltUpArea) } },

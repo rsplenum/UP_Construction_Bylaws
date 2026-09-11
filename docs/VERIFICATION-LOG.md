@@ -662,7 +662,7 @@ engine reads the per-chapter tables, so it never evaluates the master ladder and
 cannot reach a number. Recorded because the ladder is the one an authority reviewer is most
 likely to quote from memory.
 
-### V-030 — The tranche split is the general ladder, not the per-chapter one — NARROWED
+### V-030 — The tranche split now reads the printed chapter tables — CLOSED, V-014 surfaced
 `assessPurchaseFee` reproduces the gazette's own worked example to the rupee — ₹2,80,00,000
 for the purchasable tranche, ₹6,72,00,000 for the premium, ₹9,52,00,000 in total — which is
 the strongest check available anywhere in this codebase, because it is the drafter's
@@ -686,11 +686,26 @@ arithmetic rather than a reading of it. Two things stop it reaching a user:
    its ceiling from those rows instead of the hardcoded ladders, the split is right in the
    general case and unverified against the specific one.
 
-**What remains.** The fee is now computed, called and checked end to end against the
-gazette's worked example. What is open is narrower than this entry originally claimed:
-wiring `far.ts` onto `purchasable-far.json` so the tranche boundary comes from the same
-table as the ceiling. That is the same work V-003 and V-015 are waiting on, not a separate
-task.
+**Now done.** `resolveBaseFar` reads `purchasable-far.json` and returns a
+`purchasableTranche` carrying the printed PFAR and PPFAR columns for the road band, clamped
+to the headroom the ceiling allows. **Fourteen of the thirty-two occupancy/area-type pairs
+now split from the printed chapter row**; the remaining eighteen are the ten uses V-003
+names plus plotted residential, and they fall back to Clause 9.2.3's general ladder and say
+so on the finding.
+
+The check that matters: Clause 9.2.5's worked example prints its own *permissible* columns —
+purchasable 2.5, premium 3.75 — and the tranche resolved from Chapter 4's table for that
+scheme is 2.5 and 3.75. The split and the example agree without either being fitted to the
+other.
+
+**What remains is V-014's, not this entry's.** The ceiling is still Chapter 3's, because
+Clause 9.2.3 Note-2 subordinates the chapter-9 master table to chapters 3–7 and says nothing
+about chapter 3 against chapter 5. So on four cells — malls and hotels, both area types —
+the split now comes from a row whose own base FAR is higher than the base the engine
+applies. That is sound arithmetic, because the columns are absolute FAR figures rather than
+percentages, but it is two chapters in one answer. `baseFarDivergence` marks those four and
+a caveat names them on the finding, which is the first time V-014 has been visible anywhere
+except in this log.
 
 ### V-031 — The green incentive is awarded unconditionally and cannot be taken back
 Clause 9.3 gives 3% / 5% / 7% additional FAR on the FAR availed, and the engine applies it
@@ -957,7 +972,12 @@ visibly broken by merges before any reading begins.
 3. **Single-path extraction is not safe.** One pipeline lost an entire table in silence.
    Two independent paths — docx XML and chapter PDF — disagree loudly, which is the point.
 
-### V-003 — Ten occupancies still read a table written for shops
+### V-003 — Ten occupancies still read a table written for shops — NOW VISIBLE AT RUNTIME
+**Update.** These ten are exactly the occupancies for which `purchasableRowFor` returns
+nothing, so `resolveBaseFar` now marks their tranche `source: 'clause-9.2.3'` and the
+finding says the split came from the general ladder because no chapter table covers the use.
+The gap is unchanged; it is no longer silent.
+
 Rows 3(a) and 3(b) — shops, convenience shopping, commercial units — are read from the
 gazette. Offices, hotels, malls, cinemas, petrol stations, hospitals, schools, assembly,
 industry and warehousing still borrow those two ladders **in the engine**.
