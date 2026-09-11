@@ -31,6 +31,7 @@ Requires pymupdf.
 
 import collections
 import json
+import pathlib
 import re
 import sys
 
@@ -39,6 +40,8 @@ import pymupdf
 # The sixteen standard notations, in the order the header prints them (Clause 15.3.1).
 ZONES = ['BU', 'R', 'MU', 'C-1', 'C-2', 'SI', 'LI', 'OB', 'PSP',
          'TT', 'F', 'RC', 'GB', 'RA', 'A', 'HF']
+
+DOMAIN_JSON = 'src/domain/data/zoning-matrix.json'
 
 FILL_MEANING = {'#00B050': 'permitted', '#FF0000': 'prohibited'}
 
@@ -177,9 +180,17 @@ def main(path):
         print(f'WARNING duplicate activity codes (row alignment suspect): {duplicates}',
               file=sys.stderr)
 
-    json.dump({'source': path, 'zones': ZONES, 'clause': '15.3', 'rows': rows},
-              sys.stdout, indent=1)
+    payload = {'source': path, 'zones': ZONES, 'clause': '15.3', 'rows': rows}
+    json.dump(payload, sys.stdout, indent=1)
     print()
+
+    # The engine reads from src/domain/data, the same arrangement purchasable-far.json
+    # uses: one generated file, no transcription step, and nothing for a typo to enter.
+    pathlib.Path(DOMAIN_JSON).parent.mkdir(parents=True, exist_ok=True)
+    with open(DOMAIN_JSON, 'w', encoding='utf-8') as fh:
+        json.dump(payload, fh, indent=1)
+        fh.write('\n')
+    print(f'wrote {DOMAIN_JSON} ({len(rows)} activity rows)', file=sys.stderr)
 
 
 if __name__ == '__main__':

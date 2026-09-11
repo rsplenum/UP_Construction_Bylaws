@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: fourteen transcriptions verified exactly right, and forty-seven real bugs found.**
+**Headline: fourteen transcriptions verified exactly right, and forty-eight real bugs found.**
 
 **All eighteen chapters have now been read against the gazette.** What remains unread is the
 appendices — and Appendices 8, 9, 10, 11 and 14 are already named by the structural and
@@ -1018,7 +1018,76 @@ and the route reported with its conditions attached rather than asserted.*
 
 ---
 
+### B-048 — 847 verdicts, loaded and unread, behind a mapping that matched nothing
+Clause 15.3 answers the app's **first** question — may this use go on this plot at all — with
+53 activities against 16 land-use zones. It was extracted from the chapter PDF by cell fill
+in the chapter-15 pass, because the flattened text carries none of it (V-008), and 847
+verdicts have sat in `docs/source/derived/zoning-matrix.json` ever since. Nothing in
+`src/domain` read one of them.
+
+Two separate faults kept it unreachable, and the first is the instructive one.
+
+**The mapping matched nothing.** `OccupancyDefinition.activityId` held `act-single-unit`,
+`act-retail-shops`, `act-cottage-industry` — values from a scheme that was retired before the
+matrix existed. The matrix is keyed on the gazette's own activity numbers: `1.1(a)`, `2.1`,
+`3.5`. **Not one of the sixteen occupancies resolved to a row.** The field's own comment
+pointed at a `CHAPTER_15_ACTIVITY_PERMISSIBILITY` that does not exist anywhere in the
+codebase.
+
+**And there was nowhere to look it up from.** `ProjectState` carried no land-use zone, so
+even a correct mapping had no column to read. The app's first question had never had an
+input.
+
+This is the third instance of the pattern that produced B-031 and B-046 — data extracted,
+validated, cited, and then never read — and it is the most consequential of the three,
+because the others changed a number and this one changed nothing at all: **the land-use
+question was simply not being asked.** A project prohibited in its zone was told its road was
+wide enough and sent on to design.
+
+*Fixed: `src/domain/zoning.ts` resolves the row through `activityFor()` rather than a stored
+id, because five occupancies read a different row depending on area type or plot size and one
+id cannot express that. `masterPlanZone` added to `ProjectState`, defaulting to `'unknown'` —
+which produces a finding saying the question is unanswered rather than a verdict from a guess.
+`tools/extract-zoning-matrix.py` now writes `src/domain/data/zoning-matrix.json` as well, so
+the engine reads a generated file with no transcription step, the same arrangement
+`purchasable-far.json` uses.*
+
+Fifteen of the sixteen occupancies now resolve. The sixteenth is `mixed_use`, correctly:
+mixed use is a **zone** in this table, column MU, and Clause 15.3 prints no activity row for
+it.
+
+---
+
 ## Still open
+
+### V-054 — Five occupancies read the stricter of two rows, and 47 cells carry a condition
+The Clause 15.3 mapping is deliberately partial in two ways, both surfaced on the finding
+rather than hidden in it.
+
+**Five occupancies span more than one printed row, and the row turns on a fact the project
+model does not carry:**
+
+| Occupancy | Row applied | Other row | Turns on |
+|---|---|---|---|
+| `com_hotel` | 2.6 above 20 rooms | 2.5 up to 20 | a room count (V-011) |
+| `inst_health` | 5.8 above 50 beds | 5.7 up to 50 | a bed count |
+| `inst_education` | 5.3 college | 5.1 primary | the level of institution |
+| `inst_assembly` | 5.10 marriage hall | 5.11 auditorium | which kind of hall |
+| `office` | 4.2 private office | 4.1 government office | who occupies it |
+
+The stricter row is applied and the alternative is named whenever the two verdicts differ, so
+a user whose hotel has twelve rooms is told that a different row would apply and what it says.
+
+**Forty-seven of the 847 cells are green carrying a number** — permitted subject to that
+numbered condition from Clause 15.3.3's note list. The engine reports the condition number and
+does not hold the conditions themselves: that note list has not been extracted. A conditional
+cell is therefore reported as *attention*, not as permission and not as a bar.
+
+Reporting it as attention rather than blocked is deliberate and has a source. Clause 3.3
+provides that applications for other activities "shall be considered subject to the provisions
+contained in paragraph 15.3", and that "for allowing higher use activities in lower land use
+zones, impact fee shall be payable" — so a use outside its zone is a permission decision with
+a price, not an absolute bar, and the engine should not present a conditional cell as a refusal.
 
 ### V-053 — Both lighter sanction routes turn on facts no drawing shows
 Clause 2.1.2 grants its two concessions conditionally, and every condition is a fact about
@@ -1894,7 +1963,9 @@ And two defects in the gazette itself, recorded rather than smoothed over:
 - **Clause 3.2.2.3 Sl. 11, Cold Storage**, is printed with a road width of 18 m and nothing
   else: no ground coverage, no base FAR, no max FAR.
 
-### V-008 — Clause 15.3 states permissibility in colour, and the text pipeline lost all of it
+### V-008 — Clause 15.3 states permissibility in colour — RECOVERED, AND NOW READ
+**Closed by B-048.** The colour extraction recovered all 847 verdicts in the chapter-15 pass; what remained was that nothing consumed them. `zoning.ts` now does, and the land-use question is asked on every assessment.
+
 The permissibility matrix — the table that answers the app's *first* question, may this
 use go on this plot at all — encodes its answers as cell fill, not text. The legend on
 gazette page 149 is explicit: green is *Permitted*, red is *Prohibited*, and a digit laid

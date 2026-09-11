@@ -2198,6 +2198,26 @@ export const CITATIONS: readonly Citation[] = [
     line: 893,
     text: 'If the application is in order with all the requisite particulars and if the concerned department has neither called for any additional details nor rejected it by an explicit order on substantial grounds with the reasons recorded in writing for such rejection, the NOC shall be deemed to have been given on the 30th day (or on expiry of days specified in the table above whichever is earlier) from the date of such application. The following procedures may be further stipulated for the',
   },
+  {
+    id: 'zoning.higher-use-impact-fee',
+    rule: 'zoning.permissibility',
+    clause: 'Clause 15.3, via Clause 3.3',
+    supports:
+      'That Clause 15.3 governs permissibility and that a higher use in a lower zone is a permission decision carrying an impact fee, not an outright bar — which is why a conditional cell is reported as attention rather than blocked.',
+    kind: 'prose',
+    line: 9354,
+    text: 'Under the schemes approved/developed by the Authority or elsewhere in the development area, applications may be received for permission for other activities. Such applications shall be considered subject to the provisions contained in paragraph 15.3. For allowing higher use activities in lower land use zones, “impact fee” shall be payable by the applicant at the time of such permission as per paragraph 15.4.',
+  },
+  {
+    id: 'zoning.matrix-legend',
+    rule: 'zoning.permissibility',
+    clause: 'Clause 15.3 table note 1',
+    supports:
+      'The matrix legend. Its "(x) – as per paragraph 15.3.3" is the numbered condition attached to a green-with-a-number cell, which the engine reports and does not yet hold.',
+    kind: 'prose',
+    line: 10874,
+    text: 'Note1: RW: Road Width, NA: Not Defined, PA: Plot Area, #: As per Principal Use, # #: As per Site Condition, (x) – as per paragraph 15.3.3 of this byelaws.',
+  },
 ];
 
 /** Every rule id that has at least one citation. */

@@ -615,6 +615,35 @@ export const RULES: RuleSet = {
     },
   },
 
+  'zoning.permissibility': {
+    id: 'zoning.permissibility',
+    question: 'May this use go on this plot at all?',
+    clause: 'Clause 15.3 (gazette pp. 149–156)',
+    confidence: 'gazette',
+    derivedFrom: ['occupancy', 'zone', 'areaType', 'plotArea'],
+    checked: '2026-09-11',
+    quote:
+      '53 activities against 16 land-use zones — 847 verdicts, stated as cell fill: green '
+      + 'permitted, red prohibited, green carrying a number permitted subject to that condition. '
+      + 'Read from the chapter PDF by fill colour, because the flattened text carries none of it.',
+    consumes: ['occupancy', 'zone', 'areaType', 'plotArea'],
+    produces: ['useAllowed'],
+    ifWrong:
+      'This is the first question and it is prior to every dimensional one: a use prohibited in '
+      + 'the zone is not made lawful by a wider road or a smaller building. Answering it wrongly '
+      + 'in the permissive direction sends a project to design on a plot it can never be built on.',
+    challenge: {
+      id: 'V-054',
+      summary:
+        'Fifteen of the sixteen occupancies resolve to a row, and five of those resolve to the '
+        + 'stricter of two rows because the row turns on a fact the project model does not carry — '
+        + 'a hotel\'s room count, a hospital\'s beds, a school\'s level, whether an office is '
+        + 'government. The alternative is named on the finding. The 47 conditional cells carry a '
+        + 'numbered condition from Clause 15.3.3 that the engine reports but does not hold.',
+      derivedFromInstead: ['hotelRooms'],
+    },
+  },
+
   'occupancy.thresholds': {
     id: 'occupancy.thresholds',
     question: 'What road width, plot size and height does each use require?',

@@ -7,6 +7,7 @@
  */
 
 import type { AreaType } from './far';
+import type { ZoneCode } from './zoning';
 import { OccupancyId, OCCUPANCIES } from './occupancy';
 
 export type GreenRating = 'none' | 'silver' | 'gold' | 'platinum';
@@ -62,6 +63,18 @@ export interface ProjectState {
    * and plot-size thresholds.
    */
   areaType: AreaType;
+
+  /**
+   * The land-use zone the master plan or zonal development plan puts this plot in.
+   *
+   * Clause 15.3 answers the app's first question — may this use go here at all — from a
+   * table of 53 activities against these 16 zones, and until this field existed the engine
+   * could not read a single cell of it. `'unknown'` is the honest default: an applicant who
+   * has not looked the zone up gets the road-width and plot-size checks and is told plainly
+   * that the land-use question is unanswered, rather than being given a verdict derived from
+   * a guess.
+   */
+  masterPlanZone: ZoneCode | 'unknown';
 
   /** Clause 4.4 Note-2 exempts a qualifying affordable-housing scheme from EWS/LIG. */
   isAffordableHousingScheme: boolean;
@@ -130,6 +143,7 @@ export const DEFAULT_PROJECT: ProjectState = {
   isCornerPlot: false,
   hasStilt: true,
   areaType: 'built_up',
+  masterPlanZone: 'unknown',
   isAffordableHousingScheme: false,
 
   frontSetbackProvided: 3.5,

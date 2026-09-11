@@ -86,7 +86,12 @@ export interface OccupancyDefinition {
   farBasis: FarBasis;
   setbackTable: SetbackTable;
 
-  /** Row in CHAPTER_15_ACTIVITY_PERMISSIBILITY, when one exists. */
+  /**
+   * Retired. The Clause 15.3 row an occupancy reads is resolved by `activityFor()` in
+   * `zoning.ts`, because several occupancies read a different row depending on area type or
+   * plot size and a single id cannot express that. These values named a scheme that never
+   * existed in the matrix (B-048); they are kept only so a saved project still opens.
+   */
   activityId?: string;
   /** Category in PURCHASABLE_FAR_FACTORS, for the Chapter 9 charge. */
   purchasableFarCategory: PurchasableFarCategory;

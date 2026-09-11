@@ -25,6 +25,7 @@ import { assessLicensing, LICENSED_ROLE_LABEL, SITE_ENGINEER_PER_SQM } from './l
 import { assessEvCharging, EV_SHARE_OF_PARKING } from './ev-charging';
 import { assessTelecom, TERM_CELL_STAGES, TSP_SPACE_PER_PROVIDER_M } from './telecom';
 import { assessSanctionRoute, SELF_CERTIFICATION_FEE_RUPEES } from './permission';
+import { assessZoning, ZONE_LABEL, activityFor } from './zoning';
 import { assessSocialHousing } from './social-housing';
 import {
   assessSustainability, RECHARGE_BORE_PER_BUILT_UP_SQM, RWH_PLOT_AREA_SQM,
@@ -170,6 +171,57 @@ export function assessProject(project: ProjectState): Assessment {
   const minRoadWidth = forArea(occupancy.minRoadWidthM, areaType);
   const minPlotArea = forArea(occupancy.minPlotAreaSqm, areaType);
   const areaLabel = areaType === 'built_up' ? 'built-up area' : 'new layout';
+
+  // ---- 0. May this use go in this zone at all? ----------------------------------
+  // Clause 15.3 is the first question, and it is prior to every dimensional one: a use
+  // prohibited in the zone is not made lawful by a wider road.
+  if (project.masterPlanZone !== 'unknown') {
+    const zoning = assessZoning({
+      occupancy: project.occupancy,
+      areaType,
+      plotAreaSqm: plotArea,
+      zone: project.masterPlanZone,
+    });
+    if (zoning) {
+      const blocked = zoning.verdict === 'prohibited';
+      findings.push(sourced({
+        id: 'use-zone',
+        topic: 'permissibility',
+        status: blocked ? 'blocked' : zoning.verdict === 'conditional' ? 'attention' : 'ok',
+        headline: blocked
+          ? `${sentence(noun(occupancy.plain))} is prohibited in a ${zoning.zoneLabel} zone.`
+          : zoning.verdict === 'conditional'
+            ? `${sentence(noun(occupancy.plain))} is allowed in a ${zoning.zoneLabel} zone, subject to a condition.`
+            : `${sentence(noun(occupancy.plain))} is permitted in a ${zoning.zoneLabel} zone.`,
+        detail:
+          `Clause 15.3 row ${zoning.activity} — "${zoning.activityLabel}" — against column `
+          + `${zoning.zone} (${zoning.zoneLabel}), gazette page ${zoning.gazettePage}: `
+          + `${zoning.verdict}.`
+          + (blocked ? ' No fee, setback or design change makes a prohibited use lawful in this zone.' : '')
+          + (zoning.caveats.length ? ` ${zoning.caveats.join(' ')}` : ''),
+        required: `${occupancy.label} permitted in ${zoning.zone}`,
+        proposed: `${zoning.zoneLabel} zone`,
+        clause: `Clause 15.3 (gazette p.${zoning.gazettePage})`,
+        nonNegotiable: blocked,
+      }, 'zoning.permissibility'));
+    }
+  } else if (activityFor({ occupancy: project.occupancy, areaType, plotAreaSqm: plotArea })) {
+    findings.push(sourced({
+      id: 'use-zone',
+      topic: 'permissibility',
+      status: 'attention',
+      headline: 'The land-use question is unanswered — set the master plan zone to settle it.',
+      detail:
+        'Clause 15.3 decides whether this use may go on this plot at all, from a table of 53 '
+        + `activities against 16 land-use zones. Without the zone the engine can check the road `
+        + 'width and the plot size but not the use itself, and a use prohibited in the zone is '
+        + 'not made lawful by satisfying either. The zone is shown on the master plan or zonal '
+        + `development plan: ${Object.entries(ZONE_LABEL).map(([c, l]) => `${c} ${l}`).join(', ')}.`,
+      required: 'The plot\'s land-use zone',
+      proposed: 'Not set',
+      clause: 'Clause 15.3',
+    }, 'zoning.permissibility'));
+  }
 
   if (roadWidth < minRoadWidth) {
     findings.push(sourced({
