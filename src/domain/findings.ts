@@ -17,6 +17,7 @@
 import { assessSetbackFaces, resolveRequiredSetbacks, HIGH_RISE_THRESHOLD_M, SetbackFace } from './setbacks';
 import { PURCHASABLE_FAR_MIN_ROAD_WIDTH, resolveBaseFar } from './far';
 import { assessCompounding, compoundableLimits } from './compounding';
+import { assessFireSafety, OCCUPANCY_CERTIFICATE_GATE } from './fire';
 import { assessSocialHousing } from './social-housing';
 import { forArea, getOccupancy } from './occupancy';
 import { ProjectState, derivePlotDepth } from './project';
@@ -394,19 +395,28 @@ export function assessProject(project: ProjectState): Assessment {
     }, 'occupancy.thresholds'));
   }
 
+  // Chapter 10 is where a fire-access width would be stated, and it states none. Its only
+  // definition of access is "means of approach to each floor of the building or to nearest
+  // point of the building ... at least from one side like-road or permanent open space"
+  // (Clause 10.2.1) — no width at all. The 12 m figure this finding used to block on could
+  // not be found anywhere in the gazette; the one 12 m road minimum that exists is a
+  // condition on podium parking (Para 3.3.4.9), not on height. Demoted from a non-negotiable
+  // block to the requirement the gazette does state: 6 m kept motorable all round. V-033.
   if (isHighRise && roadWidth < 12) {
     findings.push(sourced({
       id: 'high-rise-road',
       topic: 'safety',
-      status: 'blocked',
-      headline: `A building over 15 m needs a 12 m road for fire engines. Yours is ${roadWidth} m.`,
-      detail: `Height ${height} m places this above the high-rise threshold, which requires a minimum 12 m right of way for turntable ladder access.`,
-      required: '≥ 12 m road',
-      proposed: `${roadWidth} m`,
-      clause: 'Chapter 8.1.2 (Fire Egress and Access)',
-      nonNegotiable: true,
-      fix: { label: 'Cap the height at 15 m', patch: { buildingHeight: 15 } },
-    }, 'setback.high-rise'));
+      status: 'attention',
+      headline: `At ${height} m, fire-tender access off a ${roadWidth} m road needs the fire officer's agreement.`,
+      detail:
+        `The byelaws set no minimum road width for fire access. Clause 10.2.1 requires only a means of approach ` +
+        `"at least from one side", and Para 3.3.4.7 requires 6.0 m around the building kept motorable and clear of ` +
+        `obstruction for firefighting. What a turntable ladder needs on a ${roadWidth} m right of way is settled by ` +
+        `the Fire and Emergency Services under the 2024 Rules, not by these byelaws.`,
+      required: '6.0 m motorable all round (Para 3.3.4.7); approach from at least one side (Clause 10.2.1)',
+      proposed: `${roadWidth} m road`,
+      clause: 'Clause 10.2.1 & Para 3.3.4.7',
+    }, 'fire.access'));
   }
 
   // ---- 5. Parking ---------------------------------------------------------------
@@ -424,25 +434,51 @@ export function assessProject(project: ProjectState): Assessment {
     required: `${requiredEcs} ECS (incl. ${evBays} EV)`,
     proposed: `${project.parkingBaysProvided} ECS`,
     working: `${sqm(proposedArea)} ÷ 100 × ${occupancy.parkingEcsPer100Sqm} = ${requiredEcs} ECS`,
-    clause: 'Chapter 10 (Parking) & Chapter 17 (EV Charging)',
+    clause: 'Para 3.3.4.3 (Parking Standards) & Chapter 17 (EV Charging)',
     fix: parkingOk ? undefined : { label: `Provide ${requiredEcs} spaces`, patch: { parkingBaysProvided: requiredEcs } },
   }, 'parking.ecs-ratios'));
 
   // ---- 6. Fire ------------------------------------------------------------------
-  const needsFireNoc = isHighRise || (occupancy.fireNocAbove500Sqm && proposedArea > 500);
-  if (needsFireNoc) {
+  const fire = assessFireSafety({ occupancy, buildingHeight: height, builtUpArea: proposedArea });
+  if (fire.certificateRequired) {
+    const limbs = fire.triggers.map((t) => `${t.clause} — ${t.because}`).join(' ');
+    const isSpecial = fire.triggers.some(
+      (t) => t.limb === 'special_occupancy' || t.limb === 'special_definition',
+    );
     findings.push(sourced({
       id: 'fire-noc',
       topic: 'safety',
       status: 'attention',
-      headline: 'You will need a fire safety clearance before this can be sanctioned.',
-      detail: isHighRise
-        ? `Above 15 m: Chief Fire Officer NOC, two staircases of at least 1.5 m, a 6 m motorable path all round, and pressurised shafts.`
-        : `${occupancy.label} over 500 m² is a special building requiring a Chief Fire Officer NOC.`,
-      required: 'CFO provisional and final NOC',
-      proposed: `${height} m, ${sqm(proposedArea)}`,
-      clause: 'Chapter 8 (Fire Safety)',
-    }, 'setback.high-rise'));
+      headline: 'This building must hold a Fire Safety Certificate before it can be occupied.',
+      detail:
+        `${limbs} ${OCCUPANCY_CERTIFICATE_GATE}` +
+        (isSpecial
+          ? ' As a special building it must also have two staircases, one of them an external fire escape ' +
+            '(Para 3.3.1.16): internal stairs at least 1.5 m wide (Para 3.3.1.15), the fire escape at least 1.25 m.'
+          : '') +
+        ' Clause 16.1.3(vii) makes a deviation non-compoundable at any price where firefighting ' +
+        'requirements are mandatory or the Fire NOC was not obtained where it is — so on this ' +
+        'building a fee cannot regularise a breach later.' +
+        (fire.caveats.length ? ` ${fire.caveats.join(' ')}` : ''),
+      required: 'Fire Safety Certificate from UP Fire and Emergency Services',
+      proposed: `${height} m, ${sqm(proposedArea)}, ${occupancy.label}`,
+      clause: fire.triggers.map((t) => t.clause).join(', '),
+    }, 'fire.safety-certificate'));
+  } else if (fire.completionStage.dependsOnFloorCount) {
+    findings.push(sourced({
+      id: 'fire-noc',
+      topic: 'safety',
+      status: 'info',
+      headline: 'No Fire Safety Certificate is triggered — unless this runs to more than four floors.',
+      detail:
+        `Clause 10.1.3 catches buildings over 15 m, NBC group B–J special buildings, and mixed occupancies ` +
+        `over 500 m². At ${height} m, ${occupancy.label} meets none of them. But the records deposited with ` +
+        `the notice of completion require a fire NOC for "buildings more than four floors or 15-meters and more ` +
+        `high", and the floor count is not part of this description. ${OCCUPANCY_CERTIFICATE_GATE}`,
+      required: 'None triggered at this height and occupancy',
+      proposed: `${height} m, ${occupancy.label}`,
+      clause: 'Clause 10.1.3 & Clause 2.9.3.2',
+    }, 'fire.safety-certificate'));
   }
 
   // ---- 7. Water, energy, waste ---------------------------------------------------

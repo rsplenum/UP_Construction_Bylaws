@@ -14,6 +14,7 @@
  */
 
 import type { CompoundingUse } from './compounding';
+import type { NbcGroup } from './fire';
 import type { AreaType } from './far';
 
 export type OccupancyId =
@@ -92,7 +93,7 @@ export interface OccupancyDefinition {
   /** Schedule used when pricing a deviation under Chapter 16. */
   compoundingUse: CompoundingUse;
 
-  /** Equivalent car spaces required per 100 sqm of built-up area (Chapter 10). */
+  /** Equivalent car spaces required per 100 sqm of built-up area (Para 3.3.4). */
   parkingEcsPer100Sqm: number;
   /** Minimum abutting right of way, in metres, below which the use is not sanctionable. */
   /**
@@ -119,8 +120,19 @@ export interface OccupancyDefinition {
    * unit (B-014).
    */
   multiUnitHousing: boolean;
-  /** Requires a Chief Fire Officer NOC once the built-up area passes 500 sqm. */
-  fireNocAbove500Sqm: boolean;
+  /**
+   * NBC 2016 occupancy group, which is what Clause 10.1.3(b) keys the Fire Safety
+   * Certificate off: "special buildings like educational, institutional, assembly,
+   * business, mercantile, industrial, storage and hazardous buildings as defined in
+   * National Building Code" — groups B to J, in the Code's own order, with residential
+   * (group A) the one it does not name.
+   *
+   * This replaced `fireNocAbove500Sqm`, a boolean that applied a 500 m² threshold to
+   * every non-residential use. The gazette attaches that threshold to mixed occupancies
+   * only, so the flag under-required the certificate on every special building below
+   * 500 m² and over-required it on residential above it (B-028).
+   */
+  nbcGroup: NbcGroup;
 }
 
 export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
@@ -143,7 +155,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     // the 15/17.5 split on plot size. The two disagree; see V-010. The stricter of the
     // two applies, so a single unit is capped at 15 m whatever its plot.
     maxHeightM: 15,
-    multiUnitHousing: false, fireNocAbove500Sqm: false,
+    multiUnitHousing: false, nbcGroup: 'A',
   },
   res_multi: {
     id: 'res_multi', group: 'Residential',
@@ -157,7 +169,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     minRoadWidthM: 9,                    // Clause 4.1.3(ii)
     minPlotAreaSqm: 150,                 // Clause 4.1.2(ii); each unit ≥60 sqm carpet
     maxHeightM: 17.5,                    // Clause 4.1.4, with mandatory stilt
-    multiUnitHousing: true, fireNocAbove500Sqm: true,
+    multiUnitHousing: true, nbcGroup: 'A',
   },
   res_group_housing: {
     id: 'res_group_housing', group: 'Residential',
@@ -171,7 +183,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     minRoadWidthM: { built_up: 9, non_built_up: 12 },        // Clause 4.2.3
     minPlotAreaSqm: { built_up: 1000, non_built_up: 1500 },  // Clause 4.2.2
     maxHeightM: Infinity,                                    // Clause 4.2.4: no ceiling
-    multiUnitHousing: true, fireNocAbove500Sqm: true,
+    multiUnitHousing: true, nbcGroup: 'A',
   },
 
   com_shop: {
@@ -191,7 +203,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     // Clause 5.2.4: "There shall be no restriction on building height for commercial
     // buildings i.e. shops, commercial complex, shopping malls."
     maxHeightM: Infinity,
-    multiUnitHousing: false, fireNocAbove500Sqm: true,
+    multiUnitHousing: false, nbcGroup: 'F',
   },
   com_complex: {
     id: 'com_complex', group: 'Commercial',
@@ -202,7 +214,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     activityId: 'act-commercial-complex', purchasableFarCategory: 'Commercial',
     compoundingUse: 'commercial',
     parkingEcsPer100Sqm: 2.0, minRoadWidthM: 12, minPlotAreaSqm: 300, maxHeightM: Infinity,
-    multiUnitHousing: false, fireNocAbove500Sqm: true,
+    multiUnitHousing: false, nbcGroup: 'F',
   },
   com_mall: {
     id: 'com_mall', group: 'Commercial',
@@ -213,7 +225,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     activityId: 'act-shopping-mall', purchasableFarCategory: 'Commercial',
     compoundingUse: 'commercial',
     parkingEcsPer100Sqm: 3.0, minRoadWidthM: 18, minPlotAreaSqm: 3000, maxHeightM: Infinity,
-    multiUnitHousing: false, fireNocAbove500Sqm: true,
+    multiUnitHousing: false, nbcGroup: 'F',
   },
   com_hotel: {
     id: 'com_hotel', group: 'Commercial',
@@ -224,7 +236,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     activityId: 'act-hotels-large', purchasableFarCategory: 'Hotels',
     compoundingUse: 'commercial',
     parkingEcsPer100Sqm: 2.0, minRoadWidthM: 12, minPlotAreaSqm: 500, maxHeightM: Infinity,
-    multiUnitHousing: false, fireNocAbove500Sqm: true,
+    multiUnitHousing: false, nbcGroup: 'A',
   },
   com_bazaar: {
     id: 'com_bazaar', group: 'Commercial',
@@ -240,7 +252,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     // Clause 5.1.3(i): "There shall be no restriction on building height for bazaar
     // streets", subject to monument, airport funnel and other statutory limits.
     maxHeightM: Infinity,
-    multiUnitHousing: false, fireNocAbove500Sqm: true,
+    multiUnitHousing: false, nbcGroup: 'F',
   },
 
   office: {
@@ -252,7 +264,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     activityId: 'act-it-park', purchasableFarCategory: 'Office Buildings / Institutional',
     compoundingUse: 'office',
     parkingEcsPer100Sqm: 2.0, minRoadWidthM: 12, minPlotAreaSqm: 300, maxHeightM: Infinity,
-    multiUnitHousing: false, fireNocAbove500Sqm: true,
+    multiUnitHousing: false, nbcGroup: 'E',
   },
 
   inst_health: {
@@ -264,7 +276,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     activityId: 'act-hospital-large', purchasableFarCategory: 'Office Buildings / Institutional',
     compoundingUse: 'facilities',
     parkingEcsPer100Sqm: 1.2, minRoadWidthM: 12, minPlotAreaSqm: 500, maxHeightM: Infinity,
-    multiUnitHousing: false, fireNocAbove500Sqm: true,
+    multiUnitHousing: false, nbcGroup: 'C',
   },
   inst_education: {
     id: 'inst_education', group: 'Institutional',
@@ -275,7 +287,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     activityId: 'act-school', purchasableFarCategory: 'Office Buildings / Institutional',
     compoundingUse: 'facilities',
     parkingEcsPer100Sqm: 0.8, minRoadWidthM: 12, minPlotAreaSqm: 1000, maxHeightM: Infinity,
-    multiUnitHousing: false, fireNocAbove500Sqm: true,
+    multiUnitHousing: false, nbcGroup: 'B',
   },
   inst_assembly: {
     id: 'inst_assembly', group: 'Institutional',
@@ -292,7 +304,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     minRoadWidthM: 18,
     minPlotAreaSqm: { built_up: 750, non_built_up: 1000 },   // Clause 6.3.2
     maxHeightM: Infinity,                                     // Clause 6.3.5: no ceiling
-    multiUnitHousing: false, fireNocAbove500Sqm: true,
+    multiUnitHousing: false, nbcGroup: 'D',
   },
 
   ind_light: {
@@ -312,7 +324,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     // buildings, flatted factories, data centres and MSME units."
     minPlotAreaSqm: 0,
     maxHeightM: Infinity,                // Clause 7.1.4: no ceiling
-    multiUnitHousing: false, fireNocAbove500Sqm: true,
+    multiUnitHousing: false, nbcGroup: 'G',
   },
   ind_general: {
     id: 'ind_general', group: 'Industrial',
@@ -328,7 +340,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     minRoadWidthM: 9,
     minPlotAreaSqm: 0,                   // Clause 7.1.2: no restriction on plot size
     maxHeightM: Infinity,                // Clause 7.1.4: no ceiling
-    multiUnitHousing: false, fireNocAbove500Sqm: true,
+    multiUnitHousing: false, nbcGroup: 'G',
   },
   ind_warehouse: {
     id: 'ind_warehouse', group: 'Industrial',
@@ -339,7 +351,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     activityId: 'act-cottage-industry', purchasableFarCategory: 'Community Facilities & Infrastructure',
     compoundingUse: 'industrial',
     parkingEcsPer100Sqm: 0.5, minRoadWidthM: 18, minPlotAreaSqm: 1000, maxHeightM: Infinity,
-    multiUnitHousing: false, fireNocAbove500Sqm: true,
+    multiUnitHousing: false, nbcGroup: 'H',
   },
 
   mixed_use: {
@@ -363,7 +375,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     minRoadWidthM: 12,
     minPlotAreaSqm: 0,                   // Clause 8.1.3: "No restriction", all five locations
     maxHeightM: Infinity,                // Clause 8.1.3: "Not restricted", subject to Note-3
-    multiUnitHousing: true, fireNocAbove500Sqm: true,
+    multiUnitHousing: true, nbcGroup: 'F',
   },
 };
 

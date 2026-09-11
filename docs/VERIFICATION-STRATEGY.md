@@ -109,8 +109,8 @@ is a rule table rather than prose.
 | 6 | Institutional Buildings & Community Facilities | 817 | 472 | 331 | Three occupancies |
 | 7 | Industrial and Agricultural Use Buildings | 242 | 121 | 97 | Three occupancies |
 | 8 | Mixed-Use and Transit-Oriented Development | 251 | 156 | 110 | One occupancy; TOD not modelled |
-| 9 | Additional Floor Area Ratio | 263 | 127 | 131 | Purchasable FAR, green bonus |
-| 10 | Fire Prevention and Life Safety | 57 | 0 | 22 | Fire NOC threshold |
+| 9 | Additional Floor Area Ratio | 263 | 127 | 131 | **Done — level 3** |
+| 10 | Fire Prevention and Life Safety | 57 | 0 | 22 | **Done — level 3** |
 | 11 | Structural Safety and Quality Control | 170 | 15 | 138 | Nothing yet |
 | 12 | Provisions for differently abled, elderly and children | 92 | 0 | 59 | Nothing yet |
 | 13 | Environmental Sustainability | 248 | 74 | 113 | RWH, solar |
@@ -213,7 +213,7 @@ already, since B-001 and B-004 came out of it.
 
 ### Phase 4 — the hard blockers
 
-*Chapters 10, 11, 12, 13.*
+*Chapters 10 (done), 11, 12, 13.*
 
 Small in lines, disproportionate in effect: each of these makes a project
 **non-compoundable** under Clause 16.1.3. A building that needed a Fire NOC and did not
@@ -222,6 +222,20 @@ Phase 4 is where V-006 closes — the thirteen bars are modelled but nothing col
 
 Expect much of this phase to end in "the byelaws defer to the NBC here", which is a
 legitimate and useful answer as long as it is recorded rather than filled in.
+
+**Chapter 10 bore that prediction out, and also disproved the assumption underneath it.**
+It delegates its numbers to the NBC and the UP Fire and Emergency Services Rules 2024
+exactly as expected, and V-033 records the one place the engine had filled a delegated
+number in for itself. But it was not a cheap chapter: 57 lines with no tables produced
+three bugs and six open items, because the *trigger* for the one clearance that can end a
+project is stated four times in the gazette, in four different forms, and nothing
+reconciles them (V-034). Half of bar (vii) at 16.1.3 now computes — whether a fire
+clearance is mandatory is a fact about the drawing, even though whether it was obtained is
+not.
+
+The lesson for chapters 11 and 12, which look equally thin: line count predicts reading
+time, not defect count. What predicts defect count is how many places the same rule is
+stated.
 
 ### Phase 5 — the long tail
 

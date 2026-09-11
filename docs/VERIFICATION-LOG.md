@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: ten transcriptions verified exactly right, and twenty-seven real bugs found.**
+**Headline: twelve transcriptions verified exactly right, and thirty real bugs found.**
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -40,6 +40,23 @@ matches the gazette exactly: 150 @ 2.0, >150–300 @ 1.8, >300–500 @ 1.75, >50
 Para 3.2.4.9 matches the engine at every band, including the >51 m row (15/12/12/12).
 Note the scope qualifier: the table applies to occupancies *other than* single/multi
 units. **Closed.**
+
+### Chapter 10's two figures that were already right — ENGINE CORRECT
+Against Clause 10.1.3, two things the engine had carried without a source came back exact.
+
+**The 15 m threshold, and its exclusivity.** `HIGH_RISE_THRESHOLD_M = 15` applied as
+`height > 15` matches "Multi-storied buildings having more than 15 meters height" precisely,
+including the strict inequality — a building standing at exactly 15.0 m is outside limb (a).
+Worth noting because the Chapter 2 completion clause states the same threshold **inclusively**
+("15-meters and more high"), so the two are genuinely different tests and the engine happened
+to hold the right one for Chapter 10 (V-037).
+
+**The twenty-one minimum standards.** `byelawsData.ts` listed all twenty-one items of Clause
+10.2.1 in the gazette's own order, correctly. What it lacked was the Note that follows them,
+which is the operative part: they are *not* a universal checklist, and which apply is assessed
+on covered area, height and occupancy. Added.
+
+**Closed. No change required to either figure.**
 
 ---
 
@@ -346,9 +363,237 @@ the failure mode the architecture research names.
 *Fixed: `canPurchaseFarAt()` in `far.ts`, called by `resolveBaseFar`. The caveat it emits
 now names the threshold that actually applied rather than a constant.*
 
+### B-028 — The 500 m² gate was attached to the wrong limb of Clause 10.1.3
+`fireNocAbove500Sqm` was a boolean on every occupancy, true for all fifteen
+non-single-dwelling uses, and the engine required a fire clearance when
+`isHighRise || (fireNocAbove500Sqm && area > 500)`. Clause 10.1.3 has three limbs and the
+area belongs to exactly one of them:
+
+> (a) Multi-storied buildings having more than 15 meters height.
+> (b) Special buildings like educational, institutional, assembly, business, mercantile,
+> industrial, storage and hazardous buildings as defined in National Building Code as
+> amended from time to time.
+> (c) Mixed occupancies with any of the aforesaid occupancies having more than 500 square
+> meter covered area.
+
+Limb (b) carries **no threshold at all**. A school, a clinic, a shop, an office, a
+workshop or a godown needs a Fire Safety Certificate at any size. The 500 m² qualifies
+limb (c) only, and the Chapter 2 NOC schedule (Para 2.2.3, row 7, Fire Department) restates all three
+limbs in the same words — two independent statements in the gazette, agreeing.
+
+The engine applied (c)'s threshold to (b)'s occupancies and (b)'s occupancy list to
+residential. Measured across the taxonomy at 10 m height:
+
+| | 100 m² | 300 m² | 500 m² | 900 m² |
+|---|---|---|---|---|
+| Twelve NBC group B–J uses | not required → **required** | → **required** | → **required** | unchanged |
+| `res_multi`, `res_group_housing` | unchanged | unchanged | unchanged | required → **not required** |
+
+The first row is the one that matters. A 300 m² nursery school or neighbourhood clinic was
+told it needed no fire clearance, and Clause 16.1.3(vii) makes a missing Fire NOC one of
+the thirteen offences that **cannot be compounded at any price** — so the engine was
+routing people toward a building that could never afterwards be regularised. The second
+row is the mirror error and costs only time.
+
+*Fixed: `fireNocAbove500Sqm` is replaced by `nbcGroup` on every occupancy, and
+`assessFireSafety` in `src/domain/fire.ts` evaluates the three limbs separately and names
+which one fired. Thirty-nine tests in `fire.test.ts`.*
+
+### B-029 — A non-negotiable block on a rule that is not in the gazette
+The engine blocked any building over 15 m on a road narrower than 12 m, with
+`nonNegotiable: true`, headlined *"A building over 15 m needs a 12 m road for fire
+engines"* and cited to **"Chapter 8.1.2 (Fire Egress and Access)"**. Chapter 8 is Mixed-Use
+and Transit-Oriented Development. It has no clause 8.1.2 about fire.
+
+Chapter 10 is where such a rule would live, and reading it is what settles the question:
+it does not state one. Its only definition of access, at Clause 10.2.1, carries no width —
+
+> Access to the building shall mean the availability of means of approach to each floor of
+> the building or to nearest point of the building in case of emergency-situation for
+> firefighting and/or rescue operations **at least from one side** like-road or permanent
+> open space etc.
+
+Searching the whole gazette for the figure finds one 12 m road minimum, and it is a
+condition on **podium parking** (Para 3.3.4.9: minimum plot 1500 m², minimum road 12 m) — not
+on height, and not about fire. The width the byelaws actually do state for firefighting is
+6.0 m, kept motorable and clear all round (Para 3.3.4.7).
+
+A fabricated non-negotiable block is worse than a missing rule: it tells someone their
+project cannot be sanctioned when the byelaws do not say so, and `nonNegotiable` means the
+app offers them no way out.
+*Fixed: demoted to `attention`, restated against Clause 10.2.1 and the 6 m motorable
+surround, and cited to both. The open question of whether a minimum exists elsewhere —
+in the UP Fire and Emergency Services Rules 2024, which are not in this repository — is
+V-033.*
+
+### B-030 — Three clause references pointing at the wrong chapters
+Reading Chapter 10 turned up three attributions that were not merely imprecise but pointed
+somewhere else entirely. None changes a number; all three would send a reviewer to the
+wrong page.
+
+| Where | Cited | Actually |
+|---|---|---|
+| `findings.ts` fire finding | Chapter 8 (Fire Safety) | Clause 10.1.3 |
+| `findings.ts` parking finding | Chapter 10 (Parking) | Para 3.3.4.3 |
+| `registry.ts` `parking.ecs-ratios` | Chapter 10 (Table 10.1) | Para 3.3.4.3 |
+
+Chapter 10 contains **no tables at all** — the extractor reports zero for all three pages —
+so "Table 10.1" cannot be a transcription slip from a real table. `byelawsData.ts` carried
+the same misreading of 10.1.3 in its chapter summary and in row 7 of the NOC schedule, and
+gave the chapter's page range as 113–116 where the gazette prints 113–115.
+*Fixed: all corrected, and the parking rule now carries V-032 as a challenge.*
+
+
 ---
 
 ## Still open
+
+### V-032 — The parking rule cites a chapter that has no tables, and the real table disagrees
+`parking.ecs-ratios` cited "Chapter 10 (Table 10.1)". Chapter 10 is Fire Prevention and
+Life Safety, three pages, zero tables. The parking standards are at **Para 3.3.4.3**, and
+opening it to correct the pointer showed the engine reading it wrongly in two ways.
+
+**The residential basis is wrong, not just the figure.** Para 3.3.4.3 states residential
+parking **per dwelling unit, keyed on the area of the unit** — plotted development 1.00 ECS
+up to 100 m², 1.25 for >100–150, 1.50 above; group housing the same ladder from >50 m²;
+EWS 2.0 m²/DU, LIG 4.0 m²/DU; affordable 1 per DU plus 10% visitor above 60 m². The engine
+computes ECS per 100 m² of total built-up area. It has neither a dwelling-unit count nor a
+unit-area field, so it cannot express this rule at all.
+
+**Three commercial figures are wrong.** Measured against the Para 3.3.4.3 table:
+
+| | Engine | Gazette |
+|---|---|---|
+| Shops / convenience shopping / commercial units | 2.0 / 100 m² | **1.0 / 100 m²** |
+| Hotels | 2.0 / 100 m² | **1.5 / 100 m²** |
+| Bazaar street | 1.5 / 100 m² | **1.25 (metros), 1.00 (other)** |
+| Commercial complex | 2.0 | 2.0 ✓ |
+| Shopping mall | 3.0 | 3.0 ✓ |
+
+All three err toward over-requiring, which is the safe direction but still wrong: shops are
+required to provide double the parking the byelaws ask for.
+
+**Deliberately not fixed here.** Para 3.3.4.3 is a Chapter 3 table with its own ECS-size
+schedule, a visitor-parking note, and setback and stilt provisions around it, and half of
+it needs a project field that does not exist. Patching four numbers out of it without
+reading the rest is the shallow pass the strategy document warns against. The clause
+pointer is corrected and the divergence is recorded on the rule as a challenge so the
+figures no longer present as settled.
+
+### V-033 — Is there a minimum road width for fire access? Not in the byelaws
+B-029 removed a 12 m block that no clause supports. What replaces it is honest but
+incomplete: Clause 10.2.1 requires approach "at least from one side", Para 3.3.4.7 requires
+6.0 m motorable all round, and neither says anything about the right of way a turntable
+ladder needs.
+
+The byelaws delegate this. Clause 10.1.1(i) requires "minimum firefighting and life safety
+installations as required by the fire-safety regulations or norms or guidelines made under
+NBC 2016, these building byelaws, Oil Industry Safety Directorate guidelines, Petroleum Act
+and Rules, Explosive Act and Rules", and Clause 10.3.2 requires new buildings to be built
+"as per requirements of National Building Code of India-2016". **The binding numbers are in
+the NBC and in the UP Fire and Emergency Services Rules 2024, and this repository has
+neither.** That is the Phase 4 outcome the strategy document predicted: a legitimate answer
+that has to be recorded rather than filled in.
+
+What would settle it: NBC 2016 Part 4, and the 2024 Rules as notified.
+
+### V-034 — Two definitions of "Special Building", and they are not the same list
+The gazette defines the term at Clause 1.2(q) and then uses a different list at Clause
+10.1.3(b). Both are gazette text; nothing reconciles them.
+
+| Occupancy | 1.2(q) definition | 10.1.3(b) | Ch. 2 completion record | Ch. 2 plan requirements |
+|---|---|---|---|---|
+| Educational | — | ✓ | ✓ | — |
+| Institutional | — | ✓ | ✓ | ✓ |
+| Assembly | ✓ | ✓ | ✓ | ✓ |
+| Business (offices) | — | ✓ | — | — |
+| Mercantile (retail) | wholesale only | ✓ | — | — |
+| Industrial | ✓ | ✓ | ✓ | ✓ |
+| Storage | wholesale only | ✓ | ✓ | ✓ |
+| Hazardous | ✓ | ✓ | ✓ | ✓ |
+| Hotels, hostels | ✓ | — | — | — |
+| Centrally air-conditioned | ✓ | — | — | — |
+| Area threshold | >500 m² built-up | none (on this limb) | >500 m² ground coverage | none |
+
+Four statements of the same concept, four different lists, three different area bases. The
+engine takes the **union** — a building is caught if any of them catches it — which is the
+stricter reading, and `assessFireSafety` names which limb fired so the basis is visible on
+the finding. Where the two readings disagree the narrower one is printed as a caveat rather
+than discarded.
+
+The divergence is not academic: a 400 m² school needs a certificate under Clause 10.1.3(b)
+and does not under Clause 1.2(q). A hotel is the mirror case — NBC puts hotels in group
+A-4, so Clause 10.1.3(b) never reaches one, and it is caught here only because Clause
+1.2(q) names hotels expressly.
+
+What would settle it: an authority circular, or the 2024 Rules' own scope clause.
+
+### V-035 — The height limb reads 15 m or 17.5 m depending on which clause you start from
+Clause 10.1.3(a) says "Multi-storied buildings having more than 15 meters height". Clause
+1.2(m) defines the term it uses:
+
+> "Multi-Storeyed Building or High-rise Building" means building above four storeys, and/or
+> a building exceeding 15 meters or more in height (without stilt) and 17.5 meters
+> (including stilt).
+
+Read together, a **stilted** building is not a multi-storeyed building until 17.5 m, which
+would lift the certificate threshold by 2.5 m on exactly the buildings that most often have
+a stilt — stilt parking being mandatory for multi-units under Para 3.3.4.8. Read on its own,
+Clause 10.1.3(a) states a flat 15 m.
+
+The engine applies the flat 15 m, which is the stricter reading, and emits a caveat naming
+the alternative for any building between 15 m and 17.5 m. `ProjectState.hasStilt` exists
+and is deliberately **not** consulted here: using it would silently switch to the laxer
+reading.
+
+### V-036 — "Covered area", "built-up area" and "ground coverage" for the same 500
+The three places the gazette gates a fire requirement at 500 m² each use a different
+measure. Clause 10.1.3(c) says **covered area**; Clause 1.2(q) says **total built up
+area**; the Chapter 2 completion record says **ground coverage**. Chapter 1 defines two of
+them and they are not the same quantity:
+
+> "Built-up area (Building)" … refers to the total covered area on all floors.
+> "Covered area" means the covered floor area above the plinth level over which a building
+> is constructed.
+
+The second reads as a footprint — its exclusion list is a footprint list (garden, well,
+compound wall, watchman booth, pump house) — and "ground coverage" in the completion clause
+agrees with that reading. So Clause 10.1.3(c)'s 500 m² is most likely a **footprint**, and
+the engine tests it against `proposedBuiltUpArea`, the all-floors total.
+
+That is the stricter direction: the larger number crosses 500 sooner, so the certificate is
+required earlier. But it is wrong by a factor of the floor count, and the engine has no
+ground-coverage field to do better. On a four-storey mixed-use building the two readings
+diverge fourfold.
+
+### V-037 — The completion-stage fire NOC turns on a floor count the app cannot see
+Clause 10.1.3 is the sanction-stage trigger. The records deposited with the notice of
+completion (Clause 2.9.3.2) carry a fourth, different one:
+
+> No-objection certificate from the competent authority from the point of view of fire
+> safety for buildings **more than four floors or 15-meters and more high** and special
+> buildings like educational, assembly, institutional, industrial, storage and buildings
+> with hazardous use and buildings with mixed occupancies of the above mentioned uses whose
+> **ground coverage is more than 500 square meters**
+
+Two differences from Clause 10.1.3, beyond the list and the area basis (V-034, V-036):
+it is **inclusive** at 15 m where Chapter 10 is exclusive, and it adds a **floor count**
+Chapter 10 does not use. A five-storey block standing at 14 m needs a fire NOC at
+completion and is caught by nothing in Chapter 10.
+
+`ProjectState` has no floor count and one cannot be derived from height. `assessFireSafety`
+returns `dependsOnFloorCount` and says so in a caveat rather than assuming four or fewer —
+the same treatment as the thirteen compounding bars at V-006. Advanced mode has to ask.
+
+*A note on the clause numbers in this entry and B-030.* `gazette-tmpr8.txt` drops clause
+numbering entirely — the flattened text carries the sentence but not the "2.9.3.2" above
+it — so every clause number here was read off the per-chapter PDF extractions, which keep
+it. Four numbers written from memory during this pass were wrong and were corrected that
+way: the completion record is 2.9.3.2 and not 2.7.3 (which is "Grant of permit/refusal"),
+the fire escape is 3.3.1.16 and not 3.5.5, the parking standards are 3.3.4.3, and the
+motorable surround is 3.3.4.7. The citation test checks that a quote resolves to a line;
+it cannot check that the clause number attached to it is right. Only the PDFs can.
+
 
 ### V-029 — Clause 9.2.3's master FAR table mislabels its own maximum column
 The table that governs purchasable FAR across the whole byelaws states each band's
@@ -677,13 +922,28 @@ building) per floor". Perimeter × floors, or metres of excess height? The engin
 the larger and prints the alternative on the line item. Settling this needs an
 authority's worked example, not a re-reading.
 
-### V-006 — The thirteen non-compoundable bars are modelled but not collected
+### V-006 — The thirteen non-compoundable bars are modelled but not collected — ONE LIMB NOW CLOSES
 `NonCompoundableFlags` carries all thirteen offences at 16.1.3 and each one ends the
 assessment. Nothing in the app sets them: whether the plot is disputed, whether the Fire
 NOC was obtained, whether the land is a filled pond are facts about the site and its
 clearances, not about the drawing. Advanced mode has to ask. Until it does, the fee is
 quoted on the assumption that none of the thirteen applies, and that assumption is
 stated in the caveats.
+
+**Bar (vii) is now half-computable.** It reads "Firefighting requirements are mandatory, or
+the Fire NOC has not been obtained where it is mandatory **as per chapter 10.1.3**" — and
+10.1.3 has now been read. Whether a fire clearance is *mandatory* for a given building is a
+fact about the drawing, and `assessFireSafety` determines it. Only the second half — whether
+the owner actually obtained one — remains a question the app must ask. The fire finding now
+states the consequence on every building 10.1.3 catches, so a user sees the compounding bar
+before they build rather than after.
+
+Chapter 10 also constrains what bar (vii) can mean for an *existing* building, which is the
+only kind a compounding application concerns. Clause 10.3.1 splits them three ways and
+relaxes real requirements for two of the classes — for an unapproved old building, "provision
+of access road, setback and fire escape shall not be mandatory". `EXISTING_BUILDING_TREATMENTS`
+holds all three. Nothing consumes them yet; the compounding engine has no notion of when a
+building was built or whether its map was approved.
 
 ### V-007 — The 9 m floor under the commercial FAR ladder is the engine's, not the gazette's
 Rows 3(a) and 3(b) print their first band as "Up to 12m" with nothing under it. The

@@ -288,10 +288,17 @@ export const RULES: RuleSet = {
   'parking.ecs-ratios': {
     id: 'parking.ecs-ratios',
     question: 'How many car spaces are required?',
-    clause: 'Chapter 10 (Table 10.1)',
+    clause: 'Para 3.3.4.3 (Parking Standards)',
     confidence: 'inferred',
     derivedFrom: ['occupancy'],
     ifWrong: 'Parking provision would be misstated, which is a common cause of sanction refusal.',
+    challenge: {
+      id: 'V-032',
+      summary:
+        'The rule cited "Chapter 10 (Table 10.1)" and Chapter 10 is Fire Prevention and Life Safety — three pages, no tables. The parking standards are at Para 3.3.4.3, and opening it shows the engine reading the wrong basis for residential and the wrong figure for three commercial uses.',
+      derivedFromInstead: ['occupancy', 'plotArea'],
+      maxDivergence: 'Shops 2.0 ECS/100 m² against the gazette\'s 1.0 — double. Residential is stated per dwelling unit by unit size, not per 100 m² at all.',
+    },
   },
 
   'services.rwh-threshold': {
@@ -302,6 +309,46 @@ export const RULES: RuleSet = {
     derivedFrom: ['plotArea'],
     checked: '2026-09-09',
     ifWrong: 'A mandatory provision would be missed, blocking the completion certificate.',
+  },
+
+  'fire.safety-certificate': {
+    id: 'fire.safety-certificate',
+    question: 'Does this building need a Fire Safety Certificate?',
+    clause: 'Clause 10.1.3',
+    confidence: 'gazette',
+    derivedFrom: ['buildingHeight', 'occupancy'],
+    checked: '2026-09-11',
+    quote:
+      'Without prejudice to these building byelaws and enforcement of byelaws by the State, following ' +
+      'buildings shall obtain \u2018Fire Safety Certificate\u2019 from Fire and Emergency Services; ' +
+      '(a) Multi-storied buildings having more than 15 meters height. (b) Special buildings like ' +
+      'educational, institutional, assembly, business, mercantile, industrial, storage and hazardous ' +
+      'buildings as defined in National Building Code as amended from time to time. (c) Mixed ' +
+      'occupancies with any of the aforesaid occupancies having more than 500 square meter covered area.',
+    ifWrong:
+      'A missing Fire Safety Certificate is one of the thirteen offences at Clause 16.1.3 that cannot be compounded at any price, and without it no occupancy certificate can issue. Under-requiring it builds something that can never be regularised.',
+    challenge: {
+      id: 'V-034',
+      summary:
+        'Clause 1.2(q) defines "Special Building" over a different list and gates it at 500 sqm of built-up area. The engine takes the union of the two, which is the stricter reading; on the Clause 1.2(q) reading alone a school, an office or a shop below 500 sqm would need no certificate.',
+      derivedFromInstead: ['occupancy'],
+      maxDivergence: 'A 400 sqm school: certificate required under Clause 10.1.3(b), not required under Clause 1.2(q).',
+    },
+  },
+
+  'fire.access': {
+    id: 'fire.access',
+    question: 'What access must a fire tender have to the building?',
+    clause: 'Clause 10.2.1',
+    confidence: 'gazette',
+    derivedFrom: ['buildingHeight', 'roadWidth'],
+    checked: '2026-09-11',
+    quote:
+      'Access to the building shall mean the availability of means of approach to each floor of the ' +
+      'building or to nearest point of the building in case of emergency-situation for firefighting ' +
+      'and/or rescue operations at least from one side like-road or permanent open space etc.',
+    ifWrong:
+      'The engine previously blocked any building over 15 m on a road under 12 m as non-negotiable, citing a clause that is about mixed-use development. No such rule is in the gazette, and a fabricated block tells someone their project cannot be sanctioned when the byelaws do not say so.',
   },
 };
 

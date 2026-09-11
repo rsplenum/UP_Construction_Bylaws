@@ -1507,6 +1507,146 @@ export const CITATIONS: readonly Citation[] = [
     line: 8520,
     text: 'In case that the developer fails to achieve committed rating as per pre-certification at the time of final occupancy, a penalty shall be imposed at the rate 2 times of the land cost as per the circle rates for the additional FAR for the rating not achieved.',
   },
+  {
+    id: 'fire.safety-certificate.trigger',
+    rule: 'fire.safety-certificate',
+    clause: 'Clause 10.1.3',
+    supports:
+      'The lead-in to the three limbs. FIRE_CERTIFICATE_HEIGHT_M and the limb set in fire.ts.',
+    gazettePage: 113,
+    kind: 'prose',
+    line: 8535,
+    text:
+      'Without prejudice to these building byelaws and enforcement of byelaws by the State, following buildings shall obtain ‘Fire Safety Certificate’ from Fire and Emergency Services;',
+  },
+  {
+    id: 'fire.safety-certificate.height',
+    rule: 'fire.safety-certificate',
+    clause: 'Clause 10.1.3(a)',
+    supports:
+      'FIRE_CERTIFICATE_HEIGHT_M = 15, applied as a strict inequality.',
+    gazettePage: 113,
+    kind: 'prose',
+    line: 8536,
+    text:
+      'Multi-storied buildings having more than 15 meters height.',
+  },
+  {
+    id: 'fire.safety-certificate.special',
+    rule: 'fire.safety-certificate',
+    clause: 'Clause 10.1.3(b)',
+    supports:
+      'SPECIAL_BUILDING_GROUPS — NBC groups B to J, with NO area threshold. This is the limb B-028 was missing.',
+    gazettePage: 113,
+    kind: 'prose',
+    line: 8537,
+    text:
+      'Special buildings like educational, institutional, assembly, business, mercantile, industrial, storage and hazardous buildings as defined in National Building Code as amended from time to time.',
+  },
+  {
+    id: 'fire.safety-certificate.mixed',
+    rule: 'fire.safety-certificate',
+    clause: 'Clause 10.1.3(c)',
+    supports:
+      'MIXED_OCCUPANCY_AREA_SQM = 500. The only place Chapter 10 attaches an area to the trigger.',
+    gazettePage: 113,
+    kind: 'prose',
+    line: 8538,
+    text:
+      'Mixed occupancies with any of the aforesaid occupancies having more than 500 square meter covered area.',
+  },
+  {
+    id: 'fire.safety-certificate.occupancy-gate',
+    rule: 'fire.safety-certificate',
+    clause: 'Clause 10.1.2',
+    supports:
+      'OCCUPANCY_CERTIFICATE_GATE — what a missing certificate actually costs.',
+    gazettePage: 113,
+    kind: 'prose',
+    line: 8533,
+    text:
+      'Occupancy certificate for a building shall not be issued, unless the development authority is satisfied that the owner or occupier, either individually or jointly, has complied with the provisions.',
+  },
+  {
+    id: 'fire.safety-certificate.special-building-definition',
+    rule: 'fire.safety-certificate',
+    clause: 'Clause 1.2(q)',
+    supports:
+      'The competing definition behind V-034. A different list, gated at 500 sqm, which SPECIAL_UNDER_1_2Q holds.',
+    gazettePage: 10,
+    kind: 'prose',
+    line: 317,
+    text:
+      '| (q) “Special Building” includes all buildings like assembly, industrial, buildings used for wholesale establishments, hotels, hostels, hazardous, mixed occupancies with any of the aforesaid occupancies and centrally air-conditioned buildings having total built up area exceeding 500 sq m.',
+  },
+  {
+    id: 'fire.safety-certificate.multi-storey-definition',
+    rule: 'fire.safety-certificate',
+    clause: 'Clause 1.2(m)',
+    supports:
+      'MULTI_STOREY_STILT_HEIGHT_M = 17.5 — the stilted reading of the height limb, recorded as V-035.',
+    gazettePage: 9,
+    kind: 'prose',
+    line: 291,
+    text:
+      '| (m) “Multi-Storeyed Building or High-rise Building” means building above four storeys, and/or a building exceeding 15 meters or more in height (without stilt) and 17.5 meters (including stilt).',
+  },
+  {
+    id: 'fire.safety-certificate.noc-table',
+    rule: 'fire.safety-certificate',
+    clause: 'Para 2.2.3, NOC schedule row 7',
+    supports:
+      'The same three limbs restated as the Fire Department row of the clearances table — an independent confirmation of Clause 10.1.3.',
+    kind: 'prose',
+    line: 846,
+    text:
+      '(i) Multi-storied buildings above 15 meters height; (ii) special buildings like educational, institutional, assembly, business, mercantile, industrial, storage and hazardous buildings as defined in National Building Code; (iii) Mixed occupancies with any of the aforesaid occupancies having more than 500 square meter covered area',
+  },
+  {
+    id: 'fire.safety-certificate.completion-record',
+    rule: 'fire.safety-certificate',
+    clause: 'Clause 2.9.3.2',
+    supports:
+      'CompletionStageNoc — a fourth statement of the trigger, on floor count and ground coverage. V-037.',
+    kind: 'prose',
+    line: 1420,
+    text:
+      'No-objection certificate from the competent authority from the point of view of fire safety for buildings more than four floors or 15-meters and more high and special buildings like educational, assembly, institutional, industrial, storage and buildings with hazardous use and buildings with mixed occupancies of the above mentioned uses whose ground coverage is more than 500 square meters,',
+  },
+  {
+    id: 'fire.access.definition',
+    rule: 'fire.access',
+    clause: 'Clause 10.2.1',
+    supports:
+      'FIRE_ACCESS_DEFINITION. The gazette\'s only statement of fire access, and it carries no width — the basis for demoting the 12 m block (V-033).',
+    gazettePage: 114,
+    kind: 'prose',
+    line: 8566,
+    text:
+      'Access to the building shall mean the availability of means of approach to each floor of the building or to nearest point of the building in case of emergency-situation for firefighting and/or rescue operations at least from one side like-road or permanent open space etc.',
+  },
+  {
+    id: 'fire.access.motorable-surround',
+    rule: 'fire.access',
+    clause: 'Para 3.3.4.7',
+    supports:
+      'The 6.0 m motorable surround, which is the width the byelaws DO state for firefighting.',
+    kind: 'prose',
+    line: 5567,
+    text:
+      '50 percent of the set-back area can be used as parking with the restriction that a minimum distance of 6.0 meters around the building shall be kept motorable and completely free from obstructions for firefighting purposes and construction of ramp shall not be allowed in this.',
+  },
+  {
+    id: 'fire.access.two-staircases',
+    rule: 'fire.access',
+    clause: 'Para 3.3.1.16',
+    supports:
+      'The special-building staircase rule quoted on the fire finding.',
+    kind: 'prose',
+    line: 5129,
+    text:
+      'All buildings having height more than one storey shall have provision of at least one staircase. The special buildings shall have two staircases out of which one shall be fire escape staircase. Fire escape shall be on external walls of buildings and shall open directly in the external open space.',
+  },
 ];
 
 /** Every rule id that has at least one citation. */
