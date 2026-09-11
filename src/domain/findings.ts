@@ -23,6 +23,7 @@ import { assessStructuralSafety, PEER_REVIEW_HEIGHT_M, PERIODIC_AUDIT_FIRST_YEAR
 import { assessAccessibility, ACCESSIBILITY_REQUIREMENTS, ACCESSIBILITY_NON_COMPOUNDABLE_NOTE } from './accessibility';
 import { assessLicensing, LICENSED_ROLE_LABEL, SITE_ENGINEER_PER_SQM } from './licensing';
 import { assessEvCharging, EV_SHARE_OF_PARKING } from './ev-charging';
+import { assessTelecom, TERM_CELL_STAGES, TSP_SPACE_PER_PROVIDER_M } from './telecom';
 import { assessSocialHousing } from './social-housing';
 import {
   assessSustainability, RECHARGE_BORE_PER_BUILT_UP_SQM, RWH_PLOT_AREA_SQM,
@@ -663,6 +664,29 @@ export function assessProject(project: ProjectState): Assessment {
     proposed: `${sqm(plotArea)} plot, ${height} m, ${sqm(proposedArea)}`,
     clause: licensing.clauseRef,
   }, 'licensing.competence'));
+
+  // ---- 6e. Common Telecom Infrastructure (Chapter 18) ----------------------------
+  const telecom = assessTelecom({ builtUpAreaSqm: proposedArea });
+  findings.push(sourced({
+    id: 'telecom-cti',
+    topic: 'procedure',
+    status: 'attention',
+    headline: 'This building needs an IBS NOC from the TERM cell — twice, and you have to apply for it yourself.',
+    detail:
+      'Clause 18.3 makes Common Telecom Infrastructure a condition of the Occupancy-cum-Completion '
+      + 'Certificate in the same terms as the fire certificate: the OCC is "to be granted only after '
+      + 'ensuring that the CTI as per the prescribed standards is in place", with an undertaking from '
+      + 'the architect or engineer that common access has been given to every service provider. '
+      + TERM_CELL_STAGES.map((t) => `${t.stage}: ${t.what}`).join(' ')
+      + ` Provision for this building: ${telecom.roomProvision}, plus ${TSP_SPACE_PER_PROVIDER_M.width} m × `
+      + `${TSP_SPACE_PER_PROVIDER_M.depth} m beside the entrance facility for each service provider and `
+      + '100 mm encased conduit to the distribution frame. Clause 18.5.5: no fee is charged for the '
+      + 'IBS or FTTx network itself. '
+      + telecom.caveats.join(' '),
+    required: `${telecom.roomProvision}; IBS Service Plan certified by a telecom consultant; sharing undertaking`,
+    proposed: `${sqm(proposedArea)} built-up`,
+    clause: telecom.clauseRef,
+  }, 'telecom.cti'));
 
   // ---- 7. Water, energy, waste (Chapter 13) ---------------------------------------
   const green = assessSustainability({

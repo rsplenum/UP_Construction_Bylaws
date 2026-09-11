@@ -25,6 +25,7 @@ be modified: the whole verification chain assumes these bytes are the ones that 
 | 07 | 100–103 | 4 | 5 | Industrial and agricultural. Farmhouses and dairy farms — see V-022 |
 | 08 | 104–107 | 4 | 6 | Mixed use and TOD. **Standards keyed on LOCATION, and FAR as a multiplier** — see V-024 and V-026 |
 | 09 | 108–112 | 5 | 4 | Additional FAR. Compensatory, purchasable and premium purchasable, green-building incentive. **The master FAR ladder's maximum column is mislabelled** — see V-029 |
+| 10 | 113–115 | 3 | 0 | Fire prevention and life safety. Three pages, no tables, and **it states the certificate trigger four times in four different forms**. See B-029, B-030 and V-033 to V-037 |
 | 11 | 116–122 | 7 | 1 | Structural safety and quality control. Mostly delegates to NBC 2016 and 23 Indian Standards; its own thresholds are 12 m / 3 floors for seismic design, 50 m for peer review — see B-032 and V-038 |
 | 12 | 123–126 | 4 | 0 | Differently abled, elderly and children. **The only mandatory-measure chapter with no height, floor or area threshold** — use alone decides it. See B-033, B-034 and V-041 |
 | 13 | 127–133 | 7 | 9 | Environmental sustainability. Rainwater harvesting, solar, waste, trees — and **seven tables of conditions keyed on built-up area**, where the SEIAA Environment Clearance lives. See B-035 to B-037 and V-042 to V-045 |
@@ -32,6 +33,7 @@ be modified: the whole verification chain assumes these bytes are the ones that 
 | 15 | 138–156 | 19 | 31 | Zoning. **States permitted/prohibited in colour** — see V-008 |
 | 16 | 157–163 | 7 | 5 | Compounding. Read from the flattened docx in an earlier pass; the PDF confirmed every figure and corrected **91 clause numbers**. See B-040, B-041, V-048 |
 | 17 | 164–174 | 11 | 6 | EV charging. Three clauses bind a building permit; the other eight pages reproduce the MoP 2018 Guidelines. See B-042, V-049, V-050 |
+| 18 | 175–180 | 6 | 2 | Common Telecom Infrastructure. **An IBS NOC from the TERM cell that gates the occupancy certificate** — and which the applicant must apply for themselves. See B-043, V-051 |
 
 Chapters 7 and 8 share gazette page 100: Chapter 7 opens on it, and the last table of
 Chapter 6 finishes on it.

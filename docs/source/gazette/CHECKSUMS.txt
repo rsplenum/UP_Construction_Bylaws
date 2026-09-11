@@ -20,3 +20,4 @@ a4831eceb4e284949ddefe7724f94a87  pdf/chapter-10.pdf
 de2f1e41005e9a317c6dc5702d863f91  pdf/chapter-15.pdf
 f6a8e82b10fb9297c0940bf9d458644f  pdf/chapter-16.pdf
 6169d5f5818b87e231e981e49114ad0c  pdf/chapter-17.pdf
+f3524b65ed9590bd37bf2ae076077662  pdf/chapter-18.pdf

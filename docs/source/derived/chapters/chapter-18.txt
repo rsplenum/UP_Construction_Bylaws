@@ -1,0 +1,255 @@
+=== chapter 18 · gazette page 175 · pdf page 1 ===
+18 In-Building Solutions for Common Telecom Infrastructure
+(CTI)
+18.1 Introduction to Communication System
+Data growth is exploding globally and in India as per Nokia MBiT 2021 Report, the average monthly
+data usage per user in India has increased almost 17 times over the past 5 years. Covid 19 has further
+pushed data consumption with people staying indoors. Government has facilitated Work from Home
+(WFH) guidelines with a Work from Anywhere (within India) permitted. Home consumption of data
+has therefore grown exponentially through 2020. According to the Tower and Infrastructure Providers
+Association, almost 85% data traffic and 70% voice traffic is now generated indoors.
+The World Bank has clearly demonstrated that every 10% increase in broadband penetration leads to
+nearly 1.40% increase in GDP growth rate. While that is a global average, even the India specific study
+by the reputed quasi- Government research agency, ICRIER, has shown that every 10% increase in
+internet traffic delivers 3.1% increase in GDP per capita and a 10% increase in investment in Telecom
+Infrastructure will increase GDP by 3.3% The entire consumer pull today is focused on data and
+broadband now with the new digital services providing voice services free with the data services. Video
+and app-based services are driving the demand for broadband with Apps for e-commerce, e- healthcare
+etc. in everyday use. It is very clear that internet traffic and Apps are contributing to GDP growth and
+for this to grow even further, conventional connectivity needs to be replaced with duct-sharing and fibre
+especially, which is an essential requirement In-Building as much as it is for FTTx and Tower
+Fiberization.
+Note: "Service Provider'': an agency that provides any type of telecom I IT services in a building
+complex, as per scope denned by DOT i.e. TSP I ISP I IP1 etc.
+A broad variety of Information Communication Technology (ICT) systems are expected to be installed
+in buildings. In order to facilitate proper cabling and installation /up gradation of ICT systems and their
+cost effectiveness and maintenance, adequate physical infrastructure is required within buildings. This
+infrastructure will include common ducts, cable riser systems, conduits, cable trays and utility closets
+etc. among other things. The same can also be retrofitted into existing buildings wherever possible and
+feasible and must be designed in all new, re-developed and renovated structures. This section describes
+the general and specific requirements of such an ICT infrastructure in Building specially in respect of
+cabling aspects.
+Communication systems are general utility in much the same way as water, power, gas, cable TV &
+CCTV/Security. Unlike traditional communication systems which are constantly evolving, the
+recommended Digital infrastructure has to be designed to be flexible enough to accommodate a variety
+of ICT systems and emerging technologies and be future proof for the next 25-30 years. Space and
+power are required for installation of common ducts, optical fibre, small cells, antennas, smart sensors
+etc, space, power and earthing are required for electronic equipment installation for supporting the
+various digital technologies of now and the future. Most communication utilities can share the same
+space since the physical topology and wiring requirements are similar and no significant power is
+present in the cables. However, in some cases state-of-the - art communication cabling or equipment
+will involve new or more specific requirements for utility spaces such as
+(i) Cable routing layout and cable length restrictions between Workspace and utility closet.
+(ii) Bending radius and working clearance requirements for different cable types, e.g. Fiberoptic
+cables, Cat-6 Cables and co-axial cables.
+(iii) Isolated power circuits for permanent communication equipment.
+(iv) Protection, Safety, Grounding, and environmental requirements of communication equipment.
+175
+
+=== chapter 18 · gazette page 176 · pdf page 2 ===
+18.2 In- Building and Gated Buildings Solutions
+It is important to ensure quality telecom services inside a building - in residential, multi-story building,
+commercial complex, hotel or airport, police/Government offices/buildings etc. It is also essential for
+Telecommunication Service Providers/IP-1s to work on sharing of telecom infrastructure which may
+be made mandatory as they extend the services in the buildings.
+Telecom Service Providers/IP-1s require a non-discriminatory and unhindered access inside the
+building / along the premises to install the telecom infrastructure or lay their cables.
+At present, mobile operators and the building owner or building developer or Resident Welfare
+Associations (RWA) enter into commercial agreements for in- building deployment. Building owners
+or building developers delay the negotiations or request exorbitant rents - slowing down the speed of
+deployment. The Urban Local Body /Urban Development Authority may intervene in this regard
+wherein commercial agreements are insisted upon. TSPs/IP-1s should be given legal rights and
+permissions to use the Common Telecom Infrastructure (CTI) within the premises of Building / Gated
+Society free of charge or for a standardized nominal charge just like other essential services like water
+electricity and/or gas. Provision of CTI in a building should not be deemed as a revenue source in any
+way, much as the water and electricity utilities are not. Sufficient space should be provided within the
+premises to install telecom services by MNOs/ network operators. The issue is not limited to sharing of
+IBS/ Distributed Antenna System (DAS) systems only, but TSP should get access to all telecom
+infrastructures including Fiber Cable and LAN cables for provision of wired and wireless network,
+other telecom/ ICT and IoT services.
+It is important for telecom service providers to provide mobile coverage I network presence/high speed
+connectivity inside big residential / commercial complexes to improve QoS of their networks. It may
+not be practical to install individual in-building infrastructure by TSPs/IP-1s as this will result in not
+only duplication of network resources but will also entail huge avoidable cost. It may also be not
+advisable to lay down cables again and again on the same land / building by several TSPs/IP-1s.
+18.3 Incorporation in State Building Bye Laws
+The buildings are to be constructed in such a way that they are 'Digital Infrastructure deployment'/
+'Digital Connectivity' ready. There should be provision of telecom ducts / common pathways / runways
+(digital access paths) to reach to the accessible parts of the buildings. The common ducts /digital access
+paths to access buildings from outside should invariably be part of the CTI, which could be used by
+TSPs/IP-1s for laying/deploying digital infrastructure including cables. While approving the building
+plans, it has to be ensured that plan for creation of CTI including the common duct to access the common
+space used as telecom room inside the building is also prepared and separate set of drawings showing
+the inter/ intra connectivity access to the building with distribution network need to be furnished.
+Occupancy-cum-Completion certificate to a building to be granted only after ensuring that the CTI as
+per the prescribed standards is in place and an undertaking by the Architect or Engineer to be insisted
+to certify that building has ensured common access to all digital infrastructure to all Service providers
+in accordance with plan of creation of CTI. Provision of visit from Department of Telecom (DoT) /
+TRAI officials along-with joint inspection with TSPs - who may suggest any relevant modification in
+the plan to be ensured.
+As part of Building Byelaws, the builder/RWA should be mandated to ensure that:
+(i) While preparing the building plans, there is a need to mandate to have properly demarcated
+sections within buildings and on rooftops for housing Broadband / digital connectivity
+176
+
+=== chapter 18 · gazette page 177 · pdf page 3 ===
+infrastructure/ antenna. These areas should have access to power supply for reliable, always-on
+services.
+(ii) Access to building as well as CTI facilities inside the building should be available on a fair,
+transparent and non- discriminatory manner to all Service Providers /IP1's.
+(iii) The Service Providers / IP1's should have unrestricted access for maintenance work.
+(iv) The permission to in-building access and/or CTI facilities inside the building should not be seen
+as a source of revenue generation for builder(s)/RWA(s) but as a means for facilitating
+penetration of broadband access and thereby helping in socio-economic growth of all the
+residents.
+(v) Charges (rentals/power rates etc.) levied to the TSPs/IP-1s should be fair, transparent, and non-
+discriminatory and should be on residential rates.
+Suitable provision for the creation of Common Telecom Infrastructure (CTI) inside the newly
+constructed public places like Airports, commercial complexes, and residential complexes, be
+incorporated in State/UT Building Bye Laws.
+18.4 At Layout Level
+While developing Greenfield cities/towns, the layout plans should clearly indicate the telecom as Utility
+infrastructure lines. Standards followed for Utility planning shall be published and work shall be done
+by the respective department for bringing in the standardization of the utility coding and sequences.
+The placement and sequence of above- and below-ground utilities at the appropriate location in the
+right-of-way to be ensured for unconstrained movement as well as easy access for maintenance.
+Telecommunication cables should be placed in a duct that can be accessed at frequent service points
+with sufficient spare capacity to enable scaling and future expansion, and empty pipes (large size hume
+pipes/ HOPE pipes) should be laid before planting trees to accommodate additional infrastructure.
+Digital Readiness Rating of Buildings / Society in line to the GREEN ratings shall be created where the
+existing and new buildings shall be rated on standardized parameters such as but not limited to; Digital
+Infrastructure access, provisions for Emerging Technologies, Maintenance and Operational ease to
+TSPs / IPv1, Quality of Wireless Services, Quality / Interchangeability ease of Wireline Services till
+each Unit Security, redundancy and Expandability of the digital infrastructure etc. A detailed rating
+parameters and calculation mechanism of Points / Stars shall be devised and benchmarked for all new/
+retrofitting of buildings/ societies.
+Digital Asset repository which will ensure Proper planning and mapping of utilities through GIS is
+necessary especially when the alignments of telecommunication cables are identified. Design criteria
+and standards Utilities should meet the following criteria:
+(i) Telecommunication cables should ideally be placed below the parking area or service lane,
+which may be dug up easily without causing major inconvenience. Where this is not possible,
+the cables may be placed at the outer edge of the right-of-way.
+(ii) There is a need to reduce conflicts with pedestrian movements is to place telecom boxes in
+easements just off the right-of-way. Where this is not possible, they should be placed within
+parking or landscaping areas. If cables have to be located in the pedestrian path, a space of at
+least 2m should be maintained for the through movement of pedestrians. Telecom boxes should
+never constrain the width of a cycle track.
+(iii) In order to minimize disruptions, cables should be installed with proper maintenance
+infrastructure.
+177
+
+=== chapter 18 · gazette page 178 · pdf page 4 ===
+18.5 Other procedures for setting up In-Building Solution (IBS)/Fiber
+Networks
+18.5.1 Installation of In-Building Solution (IBS) / Smart Connectivity infrastructure
+There is a need to promote installation of In-Building Solution (IBS) / Smart Connectivity
+infrastructure, where there is a poor connectivity in terms of weak signal strength inside the office,
+shopping mall, hospitals, multi-story building, education institutions and the objective has to be to
+strengthen quality of service of the voice & data of mobile and Fiber broadband network and access to
+digital services being offered by TSP And IP1's.
+18.5.1.1 Procedures of obtaining IBS-NOC during plan approval and completion
+a) While submitting the proposed Building plan seeking approval from the relevant sanctioning
+Authority, applicant shall also submit:
+(i) A complete Service Plan for IBS-infrastructure along with required specifications (in
+consultation with, and certified by a credible Telecom Networking hardware-consultant)
+(ii) An undertaking that such IBS Infrastructure, when constructed shall be available for sharing by
+various TSPs/IP-ls.
+(iii) Such Service Plan (IBS) shall be forwarded by the concerned Local Authority to the Telecom
+Enforcement Resource and Monitoring (TERM) cell of the State (external NOC agency) - for
+approval NOC.
+(iv) During the Joint Site Inspection of the completed building structure the TERM cell shall
+undertake inspection of the constructed/installed IBS infrastructure - for issuance of NOC for
+OCC.
+b) The Local Authority shall liaise with the TERM cell as per its relevant online/offline process of
+communication to seek the relevant NOCs within the specified time as per the Service Charter/
+Service Guarantee Act and rules in place. Separate communication from the applicant shall be
+needed to secure the IBS NOC.
+18.5.1.2 Provision of IBS components in building premises: (as per NBC 2016)
+a) Entrance Facilities (EF) /Lead-in conduits: (clause 3.1.4, of Part 8: Sec 6)
+b) Min. 1.2m x 1.83m space to be allocated for each TSP adjacent to the EF.
+c) Underground conduits/pipes to MDF room: min 100mm diameter encased conduits.
+d) Main Distribution Frame (MDF)/Equipment Room (ER): (clause 3.1.2, Part 8: Sec 6)
+(i) prescribed size with L:W ratio between 1:1 to 2:1
+(ii) appropriate ventilation of MDF room
+(iii) proper lighting for vision of equipment,
+(iv) located at a level above from the Natural Ground level to avoid incidence of flooding.
+e) Electric distribution panels, isolators, sockets and earthing as per specific requirements w.r.t the
+area proposed for coverage (DUs/ service subscribers)
+f) Telecommunications Room (TR) at each building block unless provided with MDF room: (all
+provisions of space to be as per clause 3.1.3.2, Part 8: Sec 6)
+178
+
+=== chapter 18 · gazette page 179 · pdf page 5 ===
+g) Appropriate nos. of Service/Telecom risers (vertical shafts) for all multi- storeyed buildings w.r.t
+the area proposed for coverage (DUs/ service subscribers):
+(i) of appropriate nos. and size (width & depth) to accommodate cable trays
+(ii) with of access door at each floor.
+h) Telecommunications Enclosures (TE) at each floor of a block or TR (clause 3.1.5, Part 8: Sec 6)
+i) Telecom Media and Connecting Hardware (TE): (clause 3.2, Part 8: Sec6)
+j) Various cabling system and trays: (clause 3.2.4, Part 8: Sec 6)
+k) Wireless systems: (clause 3.2.5, Part 8: Sec6)
+l) Backbone Cabling Media Distribution and Bldg. pathways (clause 3.3, Part 8: Sec 6)
+m) Horizontal Cabling Media Distribution and Bldg. pathways (clause 3.4, Part 8: Sec 6)
+n) IBS installation spaces: area for rooms or systems (e.g. antennas, base stations, remote units, power
+distribution boxes etc.) to be provided as per requirements w.r.t the area proposed for coverage/ no.
+of proposed users (as per clause 3.1.3.2, Part 8: Sec6, table stated below).
+Telecom room space norm for buildings with Built-up area >465 sqm
+Space requirements for smaller buildings with Built-up area <465 sqm:
+Note:
+IBS installation spaces, so provided, should be:
+(i) not susceptible to flooding.
+(ii) not exposed to water, moisture, fumes, gases, or dust.
+(iii) able to withstand designed equipment load (to be specified in design)
+(iv) located away from any vibrations to avoid dislocation/dislodgement.
+For any other necessary detailing of building components and service installations with respect to
+common Telecom/Digital connectivity Infrastructure, architects/ developers and other service
+consultants involved in preparing building and service drawings may refer Part 8 - Section 6:
+Information and Communication Enabled Installations of Volume 2 of the National Building Code,
+2016.
+179
+
+--- table 0 (4 rows × 8 cols) ---
+[#D9E2F3] | Sl. | [#D9E2F3] | [#D9E2F3] | Area to be covered by IBS | [#D9E2F3] | [#D9E2F3] | Size of Telecom Room (all dimension in m)
+1 |  |  | Upto 465 sqm |  |  | 3.0 X 2.4 | 
+2 |  |  | 465.0 sqm to 930.0 sqm |  |  | 3.0 X 3.4 | 
+3 |  |  | More than 930.0 sqm |  |  | Additional TR required with same space norms | 
+
+--- table 1 (3 rows × 3 cols) ---
+Sl. | Area to be covered by IBS | Space provisions (all dimensions in m)
+1 | Up to 93.0 sqm | Wall cabinets, self-contained enclosed cabinets
+2 | 93.0 sqm to 465.0 sqm | Shallow Room (0.6 x 2.6) Walk-in Room (1.3 x 1.3)
+
+=== chapter 18 · gazette page 180 · pdf page 6 ===
+18.5.2 Mode of deployment of In-Building, FTTx/ IP Solution:
+There shall be various mode of deployment of In Building solutions such as: the possible modes are
+deployment by a neutral host infrastructure provider or build and managed by mobile operator and
+sharing with other service providers on non-discriminatory basis. The In-Build Solutions (IBS),
+FTTx/IP Solutions can also be deployed by TSPs/ IPs. Moreover, if TSP/ IP1 requires to install optical
+fiber for connecting In-Building Solution (IBS)/ Distributed Antenna System (DAS) nodes/ FTTx
+solutions, RoW/ permissions should be granted by the road owning agency through online mode (if
+same is working seamlessly) or offline mode till online system is established. For deploying indoor
+solutions these companies should have deemed permissions from the premises owners for installation
+of Distribution Network within the utility shafts / common spaces with provisions for common I shared
+Points of Interconnect for Connectivity to individual units. Moreover, if the TSP/IP requires to install
+optical fiber for connecting In-Building Solution (IBS) / Distributed Antenna System (DAS) nodes,
+FTTx/IP Solutions for which RoW / permissions should be granted by the road owning agency through
+online mode.
+18.5.3 Permissibility
+The IBS, FTTx/IP component being small equipment can be installed on any type of
+land/building/utility pole and shall be exempted from obtaining the permission for installation of these
+components from the respective Urban Local Body/Urban Development Authority but should get
+permission from the Administrative Authority of the concerned premises.
+18.5.4 Procedure for submitting application for obtaining clearance.
+TSP/ IP-1 will apply to the administrative authority of the building/ head of the office with layout
+diagram for implementing IBS in the building as mentioned in the RoW Rules 2016 or State notified
+RoW Policy.
+18.5.5 Fees
+No fee will be charged for IBS/ FTTx Network. However, charges may be levied for power (as per
+Industry tariffs), fixtures, etc. provided by building owners to TSP/ IP-1s as per actuals.
+18.5.6 Access and Distribution Fiber and IP/LAN networks
+Access and Distribution Fiber and IP/LAN networks for connectivity for the shopping malls, Multi-
+Storey Residential Buildings, Cooperative Housing Societies, Residential Welfare Association and
+Commercial Buildings to be planned and deployed by TSP/IP-1s as per standard requirement of
+providing high bandwidth and adequate indoor coverage to each unit/apartment in these complexes.
+xx-end of the chapters-xx
+180

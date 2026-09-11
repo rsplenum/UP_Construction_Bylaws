@@ -4,7 +4,11 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: fourteen transcriptions verified exactly right, and forty-two real bugs found.**
+**Headline: fourteen transcriptions verified exactly right, and forty-three real bugs found.**
+
+**All eighteen chapters have now been read against the gazette.** What remains unread is the
+appendices — and Appendices 8, 9, 10, 11 and 14 are already named by the structural and
+licensing rules, so they are not a long tail: they are forms the engine cites and has never seen.
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -822,7 +826,72 @@ space norms, and the load stated explicitly as a floor rather than a specificati
 
 ---
 
+### B-043 — A clearance that gates the occupancy certificate, and the engine had never heard of it
+Chapter 18 introduces the **IBS NOC from the state TERM cell** — the Telecom Enforcement
+Resource and Monitoring cell — and the engine modelled nothing of it.
+
+Clause 18.3 makes it an occupancy gate in terms as plain as the fire certificate's:
+
+> Occupancy-cum-Completion certificate to a building to be granted **only after** ensuring
+> that the CTI as per the prescribed standards is in place, and an undertaking by the
+> Architect or Engineer to be insisted to certify that building has ensured common access to
+> all digital infrastructure to all Service providers.
+
+**And the duty to apply is the applicant's, not the Authority's.** Clause 18.5.1.1(b) says
+the Local Authority liaises with the TERM cell — and then: *"Separate communication from the
+applicant shall be needed to secure the IBS NOC."* An applicant who reads the first half and
+assumes the liaison is the application has not applied, and finds out when the building is
+finished and cannot be occupied.
+
+The clearance is needed **twice**: on the plan submitted for approval, with a Service Plan
+certified by a telecom networking hardware consultant and an undertaking that the
+infrastructure will be shared; and again at the joint site inspection of the completed
+building.
+
+What the chapter states in its own right, rather than deferring to NBC 2016 Part 8 Section 6:
+
+| | |
+|---|---|
+| Telecom room, coverage ≤465 m² | 3.0 m × 2.4 m |
+| 465–930 m² | 3.0 m × 3.4 m |
+| Above 930 m² | An additional room to the same norms |
+| Small building, coverage ≤93 m² | Wall or self-contained cabinets |
+| 93–465 m² | Shallow room 0.6 × 2.6 m, or walk-in 1.3 × 1.3 m |
+| Per service provider, beside the entrance facility | 1.2 m × 1.83 m |
+| Conduit to the distribution frame | 100 mm, encased |
+| MDF room proportion | between 1:1 and 2:1 |
+
+Two things are worth telling an applicant outright, because both cut the other way from what
+they would assume: Clause 18.5.5 charges **no fee** for the IBS or FTTx network, and Clause
+18.5.3 **exempts the equipment** from any ULB or Development Authority permission. The
+obligation is on the building plan, not on the hardware.
+
+*Fixed: `src/domain/telecom.ts` and a procedure finding on every assessment.*
+
+---
+
 ## Still open
+
+### V-051 — Two telecom tables captioned one way and keyed another
+Clause 18.5.1.2(n) prints two tables. The first is captioned *"Telecom room space norm for
+buildings with **Built-up area** >465 sqm"*; the second *"Space requirements for smaller
+buildings with **Built-up area** <465 sqm"*. Both then key their rows on *"**Area to be
+covered by IBS**"*, and nothing in the chapter says the two quantities are the same.
+
+They need not be. A 2,000 m² office may run its in-building solution over the three floors
+that have poor signal and not the basement, in which case the covered area is a fraction of
+the built-up area and the table gives a smaller room. Read the other way — coverage equals
+the whole building — it gives a larger one, and above 930 m² a second room entirely.
+
+The engine takes the whole built-up area as covered, which is the stricter reading, and says
+so. It has nowhere else to go: `ProjectState` has no IBS coverage figure, and one cannot be
+derived from anything it holds.
+
+**Everything below the tables defers to NBC 2016 Part 8 Section 6** — entrance facilities,
+distribution frames, risers, cabling media, wireless systems, backbone and horizontal
+pathways, each cited by its NBC clause number. This repository does not hold the NBC. That is
+the same answer as V-033 gave for fire access, and it is the honest one: the byelaws delegate,
+and a delegation recorded is worth more than a number invented.
 
 ### V-049 — Chapter 17 states the EV share twice as 20% and once as 15%
 Clause 17.1 and Clause 17.1.2.1 Note (i) both say **20%**, flatly and operatively. Clause

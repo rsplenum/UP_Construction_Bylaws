@@ -383,6 +383,34 @@ export const RULES: RuleSet = {
     },
   },
 
+  'telecom.cti': {
+    id: 'telecom.cti',
+    question: 'What telecom infrastructure must this building provide, and whose clearance does it need?',
+    clause: 'Chapter 18 — 18.3, 18.5.1.1 and 18.5.1.2',
+    confidence: 'gazette',
+    derivedFrom: ['plotArea'],
+    checked: '2026-09-11',
+    quote:
+      'Occupancy-cum-Completion certificate to a building to be granted only after ensuring that '
+      + 'the CTI as per the prescribed standards is in place. Telecom room: up to 465 sqm 3.0 x 2.4 m; '
+      + '465-930 sqm 3.0 x 3.4 m; above 930 sqm an additional room. Min 1.2m x 1.83m per TSP beside '
+      + 'the entrance facility; 100 mm encased conduit to the MDF room. No fee will be charged for '
+      + 'IBS/FTTx Network.',
+    ifWrong:
+      'This is a clearance most applicants do not know exists, gating the same certificate the fire '
+      + 'NOC gates, and Clause 18.5.1.1(b) puts the duty to apply on the applicant rather than the '
+      + 'Authority. Discovering it at completion means the building is finished and cannot be occupied.',
+    challenge: {
+      id: 'V-051',
+      summary:
+        'Both telecom-room tables are captioned by built-up area and keyed by "area to be covered by '
+        + 'IBS", and the chapter nowhere says the two are the same — so a building over 465 m² whose '
+        + 'IBS covers only part of it reads two ways. With no coverage figure in the project model the '
+        + 'whole building is taken as covered, which gives the larger room. Everything below the '
+        + 'tables defers to NBC 2016 Part 8 Section 6, which this repository does not hold.',
+    },
+  },
+
   'occupancy.thresholds': {
     id: 'occupancy.thresholds',
     question: 'What road width, plot size and height does each use require?',

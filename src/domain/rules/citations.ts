@@ -2110,6 +2110,50 @@ export const CITATIONS: readonly Citation[] = [
     line: 11753,
     text: 'At least 1 Public Charging Station is to be available within a grid of 3Km x 3Km.',
   },
+  {
+    id: 'telecom.occ-gate',
+    rule: 'telecom.cti',
+    clause: 'Clause 18.3',
+    supports:
+      'gatesOccupancyCertificate — the CTI is a condition of the Occupancy-cum-Completion Certificate in the same terms as the fire certificate.',
+    gazettePage: 176,
+    kind: 'prose',
+    line: 11874,
+    text: 'Occupancy-cum-Completion certificate to a building to be granted only after ensuring that the CTI as per the prescribed standards is in place and an undertaking by the Architect or Engineer to be insisted to certify that building has ensured common access to all digital infrastructure to all Service providers in accordance with plan of creation of CTI. Provision of visit from Department of Telecom (DoT) / TRAI officials along-with joint inspection with TSPs - who may suggest any relevant modification in the plan to be ensured.',
+  },
+  {
+    id: 'telecom.separate-application',
+    rule: 'telecom.cti',
+    clause: 'Clause 18.5.1.1(b)',
+    supports:
+      'TERM_CELL_STAGES — the burden is on the applicant, not on the Authority\'s liaison. An applicant who assumes otherwise has not applied.',
+    gazettePage: 178,
+    kind: 'prose',
+    line: 11901,
+    text: 'The Local Authority shall liaise with the TERM cell as per its relevant online/offline process of communication to seek the relevant NOCs within the specified time as per the Service Charter/ Service Guarantee Act and rules in place. Separate communication from the applicant shall be needed to secure the IBS NOC.',
+  },
+  {
+    id: 'telecom.equipment-exemption',
+    rule: 'telecom.cti',
+    clause: 'Clause 18.5.3',
+    supports:
+      'IBS_EQUIPMENT_EXEMPT_FROM_ULB_PERMISSION — the equipment needs no ULB or Development Authority permission, only the premises administrator\'s. The NOC obligation is on the building plan, not the hardware.',
+    gazettePage: 180,
+    kind: 'prose',
+    line: 11969,
+    text: 'The IBS, FTTx/IP component being small equipment can be installed on any type of land/building/utility pole and shall be exempted from obtaining the permission for installation of these components from the respective Urban Local Body/Urban Development Authority but should get permission from the Administrative Authority of the concerned premises.',
+  },
+  {
+    id: 'telecom.no-fee',
+    rule: 'telecom.cti',
+    clause: 'Clause 18.5.5',
+    supports:
+      'IBS_NOC_FEE = 0 — no fee for the IBS or FTTx network; power at industry tariffs and fixtures at actuals may still be charged.',
+    gazettePage: 180,
+    kind: 'prose',
+    line: 11973,
+    text: 'No fee will be charged for IBS/ FTTx Network. However, charges may be levied for power (as per Industry tariffs), fixtures, etc. provided by building owners to TSP/ IP-1s as per actuals.',
+  },
 ];
 
 /** Every rule id that has at least one citation. */
