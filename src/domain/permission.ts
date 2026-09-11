@@ -186,3 +186,85 @@ export function assessSanctionRoute(input: {
     ],
   };
 }
+
+/**
+ * Which completion-certificate form to file — Appendix-4 and the three parts of Appendix-7.
+ *
+ * The forms themselves are field templates and carry no rule the chapters do not already
+ * state. Their *titles*, though, partition the world, and the partition has a hole in it:
+ *
+ *   Form A  residential building > 300 sqm
+ *   Form B  group housing, commercial and multi-storey building
+ *   Form C  buildings OTHER THAN residential, group housing, commercial and multi-storey
+ *   Form D  layout plan (Appendix-4)
+ *
+ * A residential building on a plot between 100 and 300 m² needs a completion certificate —
+ * Clause 2.1.2(ii) exempts only up to 100 m² — and Form A excludes it on size, Form B on
+ * type, and Form C on type expressly. See V-058.
+ */
+export type CompletionForm = 'A' | 'B' | 'C' | 'D' | 'none' | 'unmatched';
+
+export interface CompletionFormChoice {
+  readonly form: CompletionForm;
+  readonly appendix: string;
+  readonly title: string;
+  readonly note?: string;
+}
+
+export function completionFormFor(input: {
+  occupancy: OccupancyDefinition;
+  plotAreaSqm: number;
+  buildingHeightM: number;
+  highRiseThresholdM: number;
+  /** True where the route is Clause 2.1.2(ii), which requires no completion certificate. */
+  exemptRoute: boolean;
+}): CompletionFormChoice {
+  if (input.exemptRoute) {
+    return {
+      form: 'none', appendix: '—',
+      title: 'No completion certificate is required',
+      note: 'Clause 2.1.2(ii): a plot on the no-permission route "shall also not require a '
+        + 'completion certificate".',
+    };
+  }
+
+  const residential = input.occupancy.group === 'Residential';
+  const multiStorey = input.buildingHeightM > input.highRiseThresholdM;
+  const groupHousingOrCommercial = input.occupancy.id === 'res_group_housing'
+    || input.occupancy.group === 'Commercial';
+
+  if (groupHousingOrCommercial || multiStorey) {
+    return {
+      form: 'B', appendix: 'Appendix-7 Form-B',
+      title: 'Completion certificate for group housing, commercial and multi-storey building',
+    };
+  }
+  if (residential) {
+    if (input.plotAreaSqm > 300) {
+      return {
+        form: 'A', appendix: 'Appendix-7 Form-A',
+        title: 'Completion certificate for a residential building over 300 sqm',
+      };
+    }
+    return {
+      form: 'unmatched', appendix: '—',
+      title: 'No completion form matches this building',
+      note: 'Form A covers residential buildings over 300 m², Form B group housing, commercial '
+        + 'and multi-storey, and Form C buildings "other than residential". A residential '
+        + 'building on a plot between 100 and 300 m² needs a completion certificate and is '
+        + 'excluded from all three. File Form A, which is the nearest, and expect the authority '
+        + 'to have its own practice here (V-058).',
+    };
+  }
+  return {
+    form: 'C', appendix: 'Appendix-7 Form-C',
+    title: 'Completion certificate for buildings other than residential, group housing, '
+      + 'commercial and multi-storey',
+  };
+}
+
+/** Appendix-4 — the layout-plan completion certificate, filed for a land sub-division. */
+export const LAYOUT_COMPLETION_FORM: CompletionFormChoice = {
+  form: 'D', appendix: 'Appendix-4 Form-D',
+  title: 'Completion certificate for a layout plan',
+};

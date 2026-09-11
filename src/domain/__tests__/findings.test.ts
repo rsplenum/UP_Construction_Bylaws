@@ -231,3 +231,40 @@ describe('B-044 — two clauses give the height ceiling and the stricter governs
     expect(finding?.required).toBe('Governed by road width and fire clearance');
   });
 });
+
+describe('V-058 — the completion forms do not partition the world', () => {
+  const form = (over: Partial<ProjectState>) =>
+    assessProject(project(over)).findings.find((f) => f.id === 'completion-form')!;
+
+  it('asks for no certificate on the exempt route', () => {
+    // Clause 2.1.2(ii): "it shall also not require a completion certificate".
+    expect(form({ occupancy: 'res_single', plotArea: 90, buildingHeight: 7 }).headline)
+      .toMatch(/No completion certificate is required/);
+  });
+
+  it('picks Form A for a residential building over 300 m²', () => {
+    expect(form({ occupancy: 'res_single', plotArea: 400, buildingHeight: 12 }).required)
+      .toBe('Appendix-7 Form-A');
+  });
+
+  it('picks Form B for group housing and for anything multi-storey', () => {
+    expect(form({ occupancy: 'res_group_housing', plotArea: 3_000, roadWidth: 24, buildingHeight: 30 }).required)
+      .toBe('Appendix-7 Form-B');
+    expect(form({ occupancy: 'res_single', plotArea: 400, buildingHeight: 20 }).required)
+      .toBe('Appendix-7 Form-B');
+  });
+
+  it('picks Form C for a use that is none of those', () => {
+    expect(form({ occupancy: 'inst_education', plotArea: 800, roadWidth: 18, buildingHeight: 10 }).required)
+      .toBe('Appendix-7 Form-C');
+  });
+
+  it('reports the hole rather than filing the nearest form silently', () => {
+    // A residential building on 100–300 m² needs a certificate and is excluded from A on
+    // size, from B on type, and from C on type expressly.
+    const f = form({ occupancy: 'res_single', plotArea: 200, buildingHeight: 10 });
+    expect(f.status).toBe('attention');
+    expect(f.detail).toMatch(/excluded from all three/);
+    expect(f.detail).toMatch(/V-058/);
+  });
+});

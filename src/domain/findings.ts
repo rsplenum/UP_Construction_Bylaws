@@ -24,7 +24,7 @@ import { assessAccessibility, ACCESSIBILITY_REQUIREMENTS, ACCESSIBILITY_NON_COMP
 import { assessLicensing, LICENSED_ROLE_LABEL, SITE_ENGINEER_PER_SQM } from './licensing';
 import { assessEvCharging, EV_SHARE_OF_PARKING } from './ev-charging';
 import { assessTelecom, TERM_CELL_STAGES, TSP_SPACE_PER_PROVIDER_M } from './telecom';
-import { assessSanctionRoute, SELF_CERTIFICATION_FEE_RUPEES } from './permission';
+import { assessSanctionRoute, completionFormFor, SELF_CERTIFICATION_FEE_RUPEES } from './permission';
 import { assessZoning, ZONE_LABEL, activityFor } from './zoning';
 import { localZoneNames, zonesOfAuthority, authorityNamed } from './master-plan-zones';
 import { assessSocialHousing } from './social-housing';
@@ -1030,6 +1030,30 @@ export function assessProject(project: ProjectState): Assessment {
     required: route.conditions.length ? route.conditions.join('; ') : 'One common online application',
     proposed: `${sqm(plotArea)} plot, ${occupancy.label}, ${height} m`,
     clause: route.clause,
+  }, 'permission.route'));
+
+  // Which completion form to file. Derived from the Appendix-4 and Appendix-7 titles, which
+  // partition the world and leave a hole in it — see V-058.
+  const completion = completionFormFor({
+    occupancy,
+    plotAreaSqm: plotArea,
+    buildingHeightM: height,
+    highRiseThresholdM: HIGH_RISE_THRESHOLD_M,
+    exemptRoute: route.route === 'exempt',
+  });
+  findings.push(sourced({
+    id: 'completion-form',
+    topic: 'procedure',
+    status: completion.form === 'unmatched' ? 'attention' : 'info',
+    headline: completion.form === 'none'
+      ? 'No completion certificate is required for this route.'
+      : completion.form === 'unmatched'
+        ? 'No completion-certificate form in the byelaws matches this building.'
+        : `File ${completion.appendix} for the completion certificate.`,
+    detail: `${completion.title}.${completion.note ? ` ${completion.note}` : ''}`,
+    required: completion.appendix,
+    proposed: `${occupancy.label}, ${sqm(plotArea)} plot, ${height} m`,
+    clause: 'Clause 2.9 with Appendix-4 and Appendix-7',
   }, 'permission.route'));
 
   // ---- 10. What the deviations cost -----------------------------------------------

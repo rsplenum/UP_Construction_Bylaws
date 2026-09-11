@@ -1087,6 +1087,35 @@ bare lowercase word. `unwrap()` joins on exactly those and leaves everything els
 
 ## Still open
 
+### V-058 — The completion-certificate forms leave a hole, and an ordinary house falls in it
+The question "are the appendices needed" was answered by scanning them rather than reading
+them. Across **Appendices 2 to 14** the flattened gazette carries **two lines bearing a number
+with a unit and three bearing an obligation**, and every one restates a rule the chapters
+already state: the 500 m² solar-water-heating threshold is Chapter 13, and the two SDBR
+deferral rules are Chapter 11.7. Both were already modelled. **The forms are field templates
+and carry no rule of their own.**
+
+What they do carry is a partition, visible in their titles alone:
+
+| Form | Covers |
+|---|---|
+| Appendix-7 Form-A | residential building **> 300 sqm** |
+| Appendix-7 Form-B | group housing, commercial and multi-storey building |
+| Appendix-7 Form-C | buildings **other than** residential, group housing, commercial and multi-storey |
+| Appendix-4 Form-D | layout plan |
+
+**A residential building on a plot between 100 and 300 m² is excluded from all three.** It
+needs a completion certificate — Clause 2.1.2(ii) exempts only up to 100 m², and says so
+expressly — and Form A excludes it on size, Form B on type, and Form C on type in terms
+(*"other than residential"*).
+
+That is the commonest building in the state. `completionFormFor` reports it as unmatched
+rather than filing the nearest form silently, and says to expect the authority to have its own
+practice. What would settle it: an authority circular, or a Form-A that reads "residential
+building" without the size qualifier.
+
+*The appendices were not needed to find this. It is visible in the index.*
+
 ### V-056 — Appendix-15 omits Lucknow, Noida and Ghaziabad
 The table covers 22 Development Authorities: Agra, Aligarh, Ayodhya, Bareilly, Basti,
 Bulandshahr, Firozabad-Shikohabad, Gorakhpur, Hapur, Jhansi, Kanpur, Khurja,
