@@ -127,3 +127,39 @@ describe('assessProject — every fix actually resolves its finding', () => {
     }
   });
 });
+
+describe('B-031 — the purchasable FAR charge on the finding itself', () => {
+  const gazetteExample = project({
+    occupancy: 'res_group_housing',
+    areaType: 'non_built_up',
+    plotArea: 2_000,
+    roadWidth: 30,
+    circleRate: 35_000,
+    proposedBuiltUpArea: 16_000,
+    greenRating: 'none',
+  });
+
+  it('quotes the gazette worked example to the rupee', () => {
+    const far = assessProject(gazetteExample).findings.find((f) => f.id === 'far');
+    // Clause 9.2.5's own example: base 2.5 on 2000 m², 5000 m² purchasable and 6000 m²
+    // premium, at ₹35,000/m². The gazette prints ₹9,52,00,000.
+    expect(far?.money?.amount).toBe(9_52_00_000);
+  });
+
+  it('no longer charges the floor area directly, which was 2.5× too much here', () => {
+    const far = assessProject(gazetteExample).findings.find((f) => f.id === 'far');
+    const extra = 16_000 - 2.5 * 2_000;
+    expect(far?.money?.amount).not.toBe(extra * 35_000 * 0.4);
+    expect(far?.working).toMatch(/÷ base FAR/);
+  });
+
+  it('prices each use at its own factor coefficient, not a flat 0.40', () => {
+    const commercial = assessProject(project({
+      occupancy: 'com_complex', plotArea: 1_000, roadWidth: 30,
+      circleRate: 35_000, proposedBuiltUpArea: 4_000,
+    })).findings.find((f) => f.id === 'far');
+    // Commercial is 0.50 purchasable and 1.0 premium — the old flat 0.40 under-charged both.
+    expect(commercial?.working).toMatch(/× 0\.5 /);
+    expect(commercial?.money?.amount).toBeGreaterThan(2_500 * 35_000 * 0.4);
+  });
+});

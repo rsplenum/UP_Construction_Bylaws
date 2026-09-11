@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: twelve transcriptions verified exactly right, and thirty real bugs found.**
+**Headline: twelve transcriptions verified exactly right, and thirty-one real bugs found.**
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -446,6 +446,45 @@ gave the chapter's page range as 113–116 where the gazette prints 113–115.
 
 ---
 
+### B-031 — The purchasable FAR charge dropped the divisor and flattened the coefficient
+Chapter 9 was read, `assessPurchaseFee` was written against Clause 9.2.5 and tested against
+the gazette's own worked example — and `findings.ts` went on computing the fee inline:
+
+```
+const charge = extra * project.circleRate * 0.4;
+```
+
+Two errors, in opposite directions:
+
+**The divisor is missing.** Clause 9.2.5 is `C = Le × Rc × P` where `Le = FP ÷ Base FAR`.
+`extra` is FP, the floor area. Multiplying it by the rate charges for floor area where the
+clause charges for the *land that floor area would have needed* — over-stating the fee by a
+factor of the base FAR. On the gazette's own example that is ₹7,00,00,000 against the
+₹2,80,00,000 the gazette prints, **2.5× too much**.
+
+**The coefficient is not 0.40 for everyone.** P runs from 0.20 (community facilities) to
+1.0 (commercial premium). A flat 0.40 under-charges commercial purchasable by a fifth and
+commercial *premium* purchasable by 60%, and over-charges community facilities by double.
+
+Nor was the tranche split at all: everything above base FAR was priced as ordinary
+purchasable FAR, when Clause 9.2.5 prices the premium tranche at up to 2.5× that rate.
+
+| Case | Engine had | Gazette |
+|---|---|---|
+| Group housing 2000 m², 30 m road, new layout, 16000 m² proposed | ₹15,40,00,000 | **₹9,52,00,000** |
+| Commercial complex 1000 m², 30 m road, 4000 m² proposed | ₹3,50,00,000 | **₹4,08,33,333** |
+
+Both directions in two adjacent cases, which is why "it errs safe" was never available as a
+defence here. This is the fee a user budgets against.
+
+*Fixed: `findings.ts` calls `assessPurchaseFee`. `splitPurchasedFar` divides the headroom
+into the two tranches using Clause 9.2.3 columns (3) and (4) — 20% / 50% / 100% / 100% of
+base FAR by road band — cheaper tranche first, which is the order the gazette's example
+avails them in. `findings.test.ts` now asserts the app reproduces that example to the rupee
+end to end, not just in the unit test.*
+
+---
+
 ## Still open
 
 ### V-032 — The parking rule cites a chapter that has no tables, and the real table disagrees
@@ -623,24 +662,35 @@ engine reads the per-chapter tables, so it never evaluates the master ladder and
 cannot reach a number. Recorded because the ladder is the one an authority reviewer is most
 likely to quote from memory.
 
-### V-030 — The purchase fee is exact, and nothing can call it
+### V-030 — The tranche split is the general ladder, not the per-chapter one — NARROWED
 `assessPurchaseFee` reproduces the gazette's own worked example to the rupee — ₹2,80,00,000
 for the purchasable tranche, ₹6,72,00,000 for the premium, ₹9,52,00,000 in total — which is
 the strongest check available anywhere in this codebase, because it is the drafter's
 arithmetic rather than a reading of it. Two things stop it reaching a user:
 
-1. **No land rate.** Rc is the higher of the District Magistrate's circle rate and the
-   Authority's residential rate. Both are published elsewhere, vary by locality, and change;
-   `ProjectState` has no field for either. This is the first input the engine needs that is
-   not a fact about the building or the plot, which is why `landRate` had to be added to
-   `RuleInput` before the rule could even be declared.
-2. **No split.** `resolveBaseFar` returns `purchasableFar` as a single number — everything
-   between base FAR and the ceiling. Clause 9.2.5 prices the two tranches at different
-   coefficients (0.50 against 1.0 for commercial), and the per-chapter tables print them as
-   separate columns, so the split exists in the source and is being discarded on the way in.
+~~1. **No land rate.**~~ **This was wrong when written.** `ProjectState.circleRate` has
+   existed all along, documented against Clause 16.3.6.1 as the higher of the Authority's
+   residential rate and the District Collector's circle rate — materially the quantity
+   Clause 9.2.5 calls Rc. Worse, `findings.ts` was *already using it* to charge for
+   purchasable FAR, with the wrong formula and a hardcoded coefficient. Writing "nothing can
+   call it" without opening the one call site that already did is how B-031 survived a
+   chapter-9 pass that was otherwise careful. The lesson is narrow and worth keeping: a new
+   module is not unreached until the call sites have been read, and "this is not wired up
+   yet" is a claim about other files, not about the module in hand.
 
-Modelled and uncalled, in the same posture as V-026. The alternative — inventing a circle
-rate — would produce a number that looks authoritative and is not.
+2. **The split is approximated, not read.** `resolveBaseFar` returns `purchasableFar` as a
+   single number. `splitPurchasedFar` now divides it using Clause 9.2.3 columns (3) and (4),
+   which is the gazette's general ladder — but Note-2 makes the **per-chapter** tables
+   prevail where they differ, and those are exactly the PFAR and PPFAR columns already
+   sitting in `purchasable-far.json` with `far.ts` not reading them. Until `far.ts` resolves
+   its ceiling from those rows instead of the hardcoded ladders, the split is right in the
+   general case and unverified against the specific one.
+
+**What remains.** The fee is now computed, called and checked end to end against the
+gazette's worked example. What is open is narrower than this entry originally claimed:
+wiring `far.ts` onto `purchasable-far.json` so the tranche boundary comes from the same
+table as the ceiling. That is the same work V-003 and V-015 are waiting on, not a separate
+task.
 
 ### V-031 — The green incentive is awarded unconditionally and cannot be taken back
 Clause 9.3 gives 3% / 5% / 7% additional FAR on the FAR availed, and the engine applies it
@@ -653,7 +703,8 @@ shall be over and above the MFAR."* Both of that Note's conditions are missing:
 - **Note II** imposes a penalty *"at the rate 2 times of the land cost as per the circle
   rates for the additional FAR for the rating not achieved"* if the committed rating is not
   reached at final occupancy. `greenRatingShortfallPenalty()` computes it and nothing calls
-  it — it needs the same circle rate V-030 is waiting on.
+  it. `ProjectState.circleRate` supplies the rate — the gap is that nothing records what
+  rating was *committed* as against achieved, so there is no shortfall to price.
 
 The incentive is therefore presented as settled entitlement when the byelaws make it
 provisional and reversible at twice the land cost. On a 2000 m² plot at a 2.5 ceiling and a

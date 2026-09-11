@@ -6,6 +6,7 @@ import {
   GREEN_RATING_SHORTFALL_PENALTY_MULTIPLE,
   assessPurchaseFee,
   greenRatingShortfallPenalty,
+  splitPurchasedFar, PURCHASABLE_SHARE_BY_ROAD,
 } from '../purchasable-fee';
 
 /**
@@ -147,5 +148,70 @@ describe('Clause 9.3 Note II — the green rating penalty', () => {
     expect(greenRatingShortfallPenalty({
       unearnedFarPoints: 0, plotAreaSqm: 1_000, circleRate: 40_000,
     })).toBe(0);
+  });
+});
+
+describe('Clause 9.2.3 columns (3) and (4) — the tranche split', () => {
+  it('matches the gazette worked example: purchasable is exhausted before premium begins', () => {
+    // Group housing, non-built-up, base FAR 2.5, road 30 m. The example avails 2.5 of
+    // purchasable and 3.0 of premium — so purchasable capacity is 100% of base at 24–45 m.
+    const split = splitPurchasedFar({ farAboveBase: 5.5, baseFar: 2.5, roadWidth: 30 });
+    expect(split.purchasableCapacity).toBe(2.5);
+    expect(split.purchasable).toBe(2.5);
+    expect(split.premiumPurchasable).toBe(3.0);
+    expect(split.band).toBe('24 – 45m');
+  });
+
+  it('prices that split exactly as the gazette does', () => {
+    const split = splitPurchasedFar({ farAboveBase: 5.5, baseFar: 2.5, roadWidth: 30 });
+    const fee = assessPurchaseFee({
+      category: 'Residential (Group Housing)',
+      baseFar: 2.5,
+      plotAreaSqm: 2_000,
+      landRate: 35_000,
+      purchasableFarAvailed: split.purchasable,
+      premiumPurchasableFarAvailed: split.premiumPurchasable,
+    });
+    expect(fee.lines.map((l) => l.charge)).toEqual([2_80_00_000, 6_72_00_000]);
+    expect(fee.totalCharge).toBe(9_52_00_000);
+  });
+
+  it('takes nothing as premium while the purchasable tranche has room', () => {
+    const split = splitPurchasedFar({ farAboveBase: 1.0, baseFar: 2.5, roadWidth: 30 });
+    expect(split.purchasable).toBe(1.0);
+    expect(split.premiumPurchasable).toBe(0);
+  });
+
+  it('gives each road band the percentage Clause 9.2.3 prints for it', () => {
+    const capacity = (roadWidth: number) =>
+      splitPurchasedFar({ farAboveBase: 99, baseFar: 2.0, roadWidth }).purchasableCapacity;
+    expect(capacity(9)).toBe(0.4);    // 20% of B1
+    expect(capacity(12)).toBe(0.4);   // inclusive upper edge
+    expect(capacity(18)).toBe(1.0);   // 50% of B2
+    expect(capacity(24)).toBe(1.0);
+    expect(capacity(30)).toBe(2.0);   // 100% of B3
+    expect(capacity(60)).toBe(2.0);   // 100% of B4
+  });
+
+  it('uses only the two columns that are not defective', () => {
+    // V-029: column (5) mislabels its base. Columns (3) and (4) are self-consistent, and
+    // nothing here reads column (5).
+    expect(PURCHASABLE_SHARE_BY_ROAD.map((b) => b.purchasable)).toEqual([0.2, 0.5, 1.0, 1.0]);
+  });
+});
+
+describe('B-031 — the charge is Le, not FP', () => {
+  it('does not multiply the floor area by the rate directly', () => {
+    const fee = assessPurchaseFee({
+      category: 'Residential (Group Housing)',
+      baseFar: 2.5, plotAreaSqm: 2_000, landRate: 35_000,
+      purchasableFarAvailed: 2.5,
+    });
+    const floorArea = 2.5 * 2_000;
+    expect(fee.lines[0].additionalFloorAreaSqm).toBe(floorArea);
+    expect(fee.lines[0].proportionalLandSqm).toBe(floorArea / 2.5);
+    // The old inline formula charged FP × Rc × 0.4 — 2.5× the gazette figure.
+    expect(fee.totalCharge).toBe(2_80_00_000);
+    expect(fee.totalCharge).not.toBe(floorArea * 35_000 * 0.4);
   });
 });

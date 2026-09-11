@@ -235,11 +235,12 @@ export const RULES: RuleSet = {
     challenge: {
       id: 'V-030',
       summary:
-        'The formula is right and unreachable. `ProjectState` carries no land rate, and the engine '
-        + 'resolves purchasable FAR as one lump rather than splitting it into the purchasable and '
-        + 'premium purchasable portions the two coefficients price differently. Until both exist, '
-        + 'assessPurchaseFee can be called but nothing in the app calls it.',
-      derivedFromInstead: ['landRate'],
+        'The formula and the coefficients are read from the gazette and the app reproduces its '
+        + 'worked example to the rupee. What is approximated is the boundary between the two '
+        + 'tranches: splitPurchasedFar uses Clause 9.2.3 columns (3) and (4), the general ladder, '
+        + 'where Note-2 makes the per-chapter PFAR and PPFAR columns prevail. Those columns are '
+        + 'loaded in purchasable-far.json and far.ts does not yet read them.',
+      derivedFromInstead: ['roadWidth', 'occupancy', 'areaType'],
     },
   },
 

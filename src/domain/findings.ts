@@ -17,6 +17,7 @@
 import { assessSetbackFaces, resolveRequiredSetbacks, HIGH_RISE_THRESHOLD_M, SetbackFace } from './setbacks';
 import { PURCHASABLE_FAR_MIN_ROAD_WIDTH, resolveBaseFar } from './far';
 import { assessCompounding, compoundableLimits } from './compounding';
+import { assessPurchaseFee, splitPurchasedFar } from './purchasable-fee';
 import { assessFireSafety, OCCUPANCY_CERTIFICATE_GATE } from './fire';
 import { assessSocialHousing } from './social-housing';
 import { forArea, getOccupancy } from './occupancy';
@@ -236,7 +237,25 @@ export function assessProject(project: ProjectState): Assessment {
     }, 'far.telescopic-residential'));
   } else if (proposedArea <= far.maxPermissibleBuiltUpArea + 0.01) {
     const extra = proposedArea - far.effectiveBuiltUpArea;
-    const charge = extra * project.circleRate * 0.4;
+    // Clause 9.2.5 is C = Le × Rc × P, and Le is FP ÷ Base FAR — not FP. Charging the floor
+    // area directly over-states the fee by a factor of the base FAR (B-031), and the factor
+    // coefficient is not 0.40 for every use: it runs from 0.20 to 1.0 across the seven
+    // categories. Both now come from `purchasable-fee.ts`, which reproduces the gazette's
+    // own worked example exactly.
+    const tranches = splitPurchasedFar({
+      farAboveBase: extra / Math.max(1e-9, plotArea),
+      baseFar: far.effectiveBaseFar,
+      roadWidth: project.roadWidth,
+    });
+    const fee = assessPurchaseFee({
+      category: getOccupancy(project.occupancy).purchasableFarCategory,
+      baseFar: far.effectiveBaseFar,
+      plotAreaSqm: plotArea,
+      landRate: project.circleRate,
+      purchasableFarAvailed: tranches.purchasable,
+      premiumPurchasableFarAvailed: tranches.premiumPurchasable,
+    });
+    const charge = fee.totalCharge;
     findings.push(sourced({
       id: 'far',
       topic: 'bulk',
@@ -245,11 +264,14 @@ export function assessProject(project: ProjectState): Assessment {
       detail: `Proposed ${sqm(proposedArea)} exceeds the base entitlement of ${sqm(far.effectiveBuiltUpArea)} by ${sqm(extra)}, within the purchasable ceiling of ${sqm(far.maxPermissibleBuiltUpArea)}.`,
       required: `Free up to ${sqm(far.effectiveBuiltUpArea)}; ceiling ${sqm(far.maxPermissibleBuiltUpArea)}`,
       proposed: sqm(proposedArea),
-      working: `${sqm(extra)} × ${inr(project.circleRate)}/m² × factor 0.40 (Chapter 9: C = Le × Rc × P)`,
-      clause: 'Chapter 9.2 (Purchasable FAR)',
+      working: [
+        ...fee.lines.map((l) => `${l.kind === 'premiumPurchasable' ? 'Premium purchasable' : 'Purchasable'}: ${l.working} = ${inr(l.charge)}`),
+        ...fee.caveats,
+      ].join(' · ') || `${sqm(extra)} within the base entitlement`,
+      clause: fee.clauseRef,
       money: { label: 'Purchasable FAR charge', amount: charge },
       fix: { label: `Reduce to the free ${sqm(far.effectiveBuiltUpArea)}`, patch: { proposedBuiltUpArea: Math.floor(far.effectiveBuiltUpArea) } },
-    }, 'far.telescopic-residential'));
+    }, 'far.purchasable-fee'));
   } else {
     findings.push(sourced({
       id: 'far',

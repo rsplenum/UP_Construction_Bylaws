@@ -47,6 +47,70 @@ export const FACTOR_COEFFICIENTS: Readonly<Record<PurchasableFarCategory, {
  */
 export const GREEN_RATING_SHORTFALL_PENALTY_MULTIPLE = 2;
 
+const round2 = (n: number) => Math.round(n * 100) / 100;
+const positive = (n: unknown) => Math.max(0, Number(n) || 0);
+
+/**
+ * Clause 9.2.3, columns (3) and (4) — how much of the headroom is ordinary purchasable FAR
+ * before premium purchasable FAR begins, as a multiple of base FAR.
+ *
+ * The two coefficients in FACTOR_COEFFICIENTS differ by as much as 2.5× (commercial: 0.50
+ * against 1.0), so a fee quoted without this split is not approximately right, it is the
+ * wrong tranche at the wrong price. The gazette's worked example settles the order:
+ * purchasable is availed to its permissible limit (2.5 of 2.5) before any premium is taken.
+ *
+ * Only columns (3) and (4) are used. Column (5) is the one V-029 records as mislabelled —
+ * these two state their percentages against their own band's base and are self-consistent.
+ *
+ * Clause 9.2.3 Note-2 makes a per-chapter table prevail over this one where they differ.
+ * `purchasable-far.json` holds those tables and `far.ts` does not yet read them, so this is
+ * the general ladder standing in until it does — see V-030.
+ */
+export const PURCHASABLE_SHARE_BY_ROAD: readonly {
+  readonly overMoreThan: number;
+  readonly upToAndIncluding: number | null;
+  readonly label: string;
+  /** Column (3), as a multiple of base FAR. */
+  readonly purchasable: number;
+}[] = [
+  { overMoreThan: 0, upToAndIncluding: 12, label: 'Up to 12m', purchasable: 0.20 },
+  { overMoreThan: 12, upToAndIncluding: 24, label: '12 – 24m', purchasable: 0.50 },
+  { overMoreThan: 24, upToAndIncluding: 45, label: '24 – 45m', purchasable: 1.00 },
+  { overMoreThan: 45, upToAndIncluding: null, label: 'More than 45m', purchasable: 1.00 },
+];
+
+export interface TrancheSplit {
+  readonly purchasable: number;
+  readonly premiumPurchasable: number;
+  readonly band: string;
+  readonly purchasableCapacity: number;
+}
+
+/**
+ * Split FAR points taken above base into the two priced tranches, cheaper one first.
+ */
+export function splitPurchasedFar(input: {
+  farAboveBase: number;
+  baseFar: number;
+  roadWidth: number;
+}): TrancheSplit {
+  const taken = positive(input.farAboveBase);
+  const baseFar = positive(input.baseFar);
+  const road = positive(input.roadWidth);
+  const band =
+    PURCHASABLE_SHARE_BY_ROAD.find(
+      (b) => road > b.overMoreThan && (b.upToAndIncluding === null || road <= b.upToAndIncluding),
+    ) ?? PURCHASABLE_SHARE_BY_ROAD[0];
+  const capacity = round2(baseFar * band.purchasable);
+  const purchasable = Math.min(taken, capacity);
+  return {
+    purchasable: round2(purchasable),
+    premiumPurchasable: round2(Math.max(0, taken - purchasable)),
+    band: band.label,
+    purchasableCapacity: capacity,
+  };
+}
+
 export interface PurchaseLine {
   readonly kind: 'purchasable' | 'premiumPurchasable';
   /** FAR points taken, above what the band below already gives. */
@@ -67,9 +131,6 @@ export interface PurchaseAssessment {
   readonly caveats: readonly string[];
   readonly clauseRef: string;
 }
-
-const round2 = (n: number) => Math.round(n * 100) / 100;
-const positive = (n: unknown) => Math.max(0, Number(n) || 0);
 
 export interface PurchaseInput {
   category: PurchasableFarCategory;
