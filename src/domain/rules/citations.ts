@@ -110,7 +110,7 @@ export const CITATIONS: readonly Citation[] = [
     id: 'setback.plotted-residential.note1',
     rule: 'setback.plotted-residential',
     clause: 'Para 3.2.4.1 Note-1',
-    supports: 'The 40% rear-setback allowance the compounding table at 16.2 refers to. Not yet modelled.',
+    supports: 'The 40% rear-setback allowance the compounding table at 16.3.3 refers to. Not yet modelled.',
     kind: 'prose',
     line: 4489,
     text: 'Note-1: Construction shall be permitted on 40 percent of the rear setback up to 7 meter height, in semi-detached buildings. But in corner plots the said covering shall be permissible only after leaving the side set back. In case of stilt floor, construction on 40 percent area of the rear setback shall not be allowed.',
@@ -245,7 +245,7 @@ export const CITATIONS: readonly Citation[] = [
   {
     id: 'compounding.non-compoundable',
     rule: 'compounding.schedule',
-    clause: 'Clause 16.1.3',
+    clause: 'Clause 16.3.2',
     supports: 'NonCompoundableFlags — the thirteen offences, in the gazette’s order.',
     kind: 'cells',
     lines: [11094, 11108],
@@ -269,7 +269,7 @@ export const CITATIONS: readonly Citation[] = [
   {
     id: 'compounding.limits',
     rule: 'compounding.schedule',
-    clause: 'Clause 16.2 Table',
+    clause: 'Clause 16.3.3 Table',
     supports: 'compoundableLimits() — both columns, every parameter. The column-B setback cell is printed once and spans the front, rear and side rows.',
     kind: 'cells',
     lines: [11113, 11165],
@@ -371,7 +371,7 @@ export const CITATIONS: readonly Citation[] = [
   {
     id: 'compounding.land-rate',
     rule: 'compounding.schedule',
-    clause: 'Clause 16.3.6.1',
+    clause: 'Clause 16.3.7(c)',
     supports: 'The land rate is the residential rate whatever the building’s use. The multipliers carry the use, not the rate.',
     kind: 'prose',
     line: 11181,
@@ -380,7 +380,7 @@ export const CITATIONS: readonly Citation[] = [
   {
     id: 'compounding.purchasable-far',
     rule: 'compounding.schedule',
-    clause: 'Clause 16.3.7.2',
+    clause: 'Clause 16.3.7(e)',
     supports: 'Purchasable FAR charges are payable on top, except on the first 10%.',
     kind: 'prose',
     line: 11183,
@@ -1652,7 +1652,7 @@ export const CITATIONS: readonly Citation[] = [
     rule: 'structural.seismic-applicability',
     clause: 'Clause 11.8.1(i)',
     supports:
-      'EARTHQUAKE_HEIGHT_M = 12, EARTHQUAKE_FLOORS_INCLUDING_GROUND = 3 and INFRASTRUCTURE_GROUND_COVER_SQM = 500 — the trigger for mandatory seismic design, and through Clause 16.1.3(vi) for the compounding bar that rests on it.',
+      'EARTHQUAKE_HEIGHT_M = 12, EARTHQUAKE_FLOORS_INCLUDING_GROUND = 3 and INFRASTRUCTURE_GROUND_COVER_SQM = 500 — the trigger for mandatory seismic design, and through Clause 16.3.2(vi) for the compounding bar that rests on it.',
     gazettePage: 120,
     kind: 'prose',
     line: 8711,
@@ -1693,7 +1693,7 @@ export const CITATIONS: readonly Citation[] = [
   {
     id: 'structural.non-compoundable-bar',
     rule: 'structural.seismic-applicability',
-    clause: 'Clause 16.1.3(vi)',
+    clause: 'Clause 16.3.2(vi)',
     supports:
       'The bar NON_COMPOUNDABLE_READING interprets. Read literally it would bar compounding on every building over 12 m and so empty Chapter 16\'s own ">15-meter height" column of all meaning, which is why the engine reads it as catching construction that violates the mandatory measures rather than all construction in such a building.',
     kind: 'prose',
@@ -1758,7 +1758,7 @@ export const CITATIONS: readonly Citation[] = [
   {
     id: 'accessibility.non-compoundable',
     rule: 'accessibility.scope',
-    clause: 'Clause 16.1.3(xii)',
+    clause: 'Clause 16.3.2(xii)',
     supports:
       'ACCESSIBILITY_NON_COMPOUNDABLE_NOTE. Third of the three bars sharing the "buildings where X is mandatory" shape, and read as V-039 reads the other two.',
     kind: 'prose',
@@ -2010,6 +2010,61 @@ export const CITATIONS: readonly Citation[] = [
     kind: 'prose',
     line: 9229,
     text: '**Note: One site engineer of specified qualification shall be deployed to supervise every 2500 sqm.',
+  },
+  {
+    id: 'compounding.bars.heading',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.3.2',
+    supports:
+      'The heading over the thirteen non-compoundable offences. Renumbered from the 16.1.3 the engine cited for thirty-eight references — the gazette has no 16.1.3 at all (B-040).',
+    gazettePage: 157,
+    kind: 'prose',
+    line: 11094,
+    text: 'Following offences shall not be compoundable.',
+  },
+  {
+    id: 'compounding.limits.scope',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.3.3',
+    supports:
+      'The compoundable-limits table and its contiguity condition. Renumbered from 16.2, which in the gazette is "Compounding of Offences" — a real clause about something else, which is the worst kind of wrong citation (B-040).',
+    gazettePage: 158,
+    kind: 'prose',
+    line: 11111,
+    text: 'Construction permissible as per building byelaws and unauthorized construction shall be shown separately in the plan submitted with the application for compounding. Unauthorized construction in setbacks, ground coverage and FAR in front, side and rear setback shall be compoundable only in contiguity of main building up to the limits prescribed as under:',
+  },
+  {
+    id: 'compounding.land-cost',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.3.7(c)',
+    supports:
+      'LAND_RATE basis — the higher of the Authority residential rate and the District Collector non-agriculture circle rate, and the rule that only the residential rate is used whatever the construction. Renumbered from 16.3.6.1, where the gazette\'s 16.3.6 is Demolition.',
+    gazettePage: 159,
+    kind: 'prose',
+    line: 11181,
+    text: 'The cost of land shall be assessed at the prevailing residential rate of the Authority, or the non-agriculture circle rate fixed by the District Collector, whichever is higher. For calculation of Compounding fee for all kinds of constructions only the residential rate of the land shall be taken into consideration.',
+  },
+  {
+    id: 'compounding.purchasable-first-10pc',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.3.7(e)',
+    supports:
+      'The compounding fee is payable in addition to purchasable FAR charges, and the first 10% of purchasable FAR carries no purchase charge. Renumbered from 16.3.7.2 — 16.3.7 is lettered (a)–(h), not numbered.',
+    gazettePage: 159,
+    kind: 'prose',
+    line: 11183,
+    text: 'In addition to charges payable as per rules for purchasable FAR, Compounding fee shall also be payable at the rates prescribed under Serial No.-2 of the Schedule. However, purchasable FAR charges for first 10% purchasable FAR shall not be payable.',
+  },
+  {
+    id: 'compounding.note6-purchasable',
+    rule: 'compounding.schedule',
+    clause: 'Clause 16.3.8 Note (vi)',
+    supports:
+      'NOTE6_PURCHASABLE_FAR_CONDITIONS — the provision that lets a compounding applicant buy FAR at all, and the five conditions on it. Missing from the engine entirely until the chapter PDF was read.',
+    gazettePage: 163,
+    kind: 'prose',
+    line: 11497,
+    text: 'Purchasable and Premium Purchasable FAR shall be applicable in already constructed buildings submitted for compounding. Such provision shall be availed only after ensuring the requisite statutory approvals, structural stability, fire and life safety requirements, parking and other provisions of building byelaws.',
   },
 ];
 

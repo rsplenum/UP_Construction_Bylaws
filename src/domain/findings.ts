@@ -498,7 +498,7 @@ export function assessProject(project: ProjectState): Assessment {
           ? ' As a special building it must also have two staircases, one of them an external fire escape ' +
             '(Para 3.3.1.16): internal stairs at least 1.5 m wide (Para 3.3.1.15), the fire escape at least 1.25 m.'
           : '') +
-        ' Clause 16.1.3(vii) makes a deviation non-compoundable at any price where firefighting ' +
+        ' Clause 16.3.2(vii) makes a deviation non-compoundable at any price where firefighting ' +
         'requirements are mandatory or the Fire NOC was not obtained where it is — so on this ' +
         'building a fee cannot regularise a breach later.' +
         (fire.caveats.length ? ` ${fire.caveats.join(' ')}` : ''),
@@ -904,7 +904,7 @@ export function assessProject(project: ProjectState): Assessment {
     heightM: height,
     isGroupHousing,
     isMultiUnit,
-    // The thirteen Clause 16.1.3 bars turn on facts about the land and the clearances —
+    // The thirteen Clause 16.3.2 bars turn on facts about the land and the clearances —
     // whether the plot is disputed, whether the Fire NOC was obtained — that the app has
     // no way to know. Advanced mode will collect them; asserting them from the drawing
     // would be inventing evidence. Until then the assessment reports the fee and names

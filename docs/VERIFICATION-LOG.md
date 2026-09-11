@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: thirteen transcriptions verified exactly right, and thirty-nine real bugs found.**
+**Headline: fourteen transcriptions verified exactly right, and forty-one real bugs found.**
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -15,6 +15,33 @@ described. Verification has to be against the source, not against consensus.
 ---
 
 ## Resolved
+
+### V-048 — Chapter 16's figures confirmed against the paginated chapter — ENGINE CORRECT
+Every figure, every rate and the whole structure of the compounding engine survived the
+check. What failed was only the numbering (B-040) and one missing note (B-041).
+
+Two confirmations are worth recording because they were the hardest calls in V-004:
+
+**The column-B merge.** The limits table leaves column B visibly blank for the rear and side
+setback rows. V-004 decided from the docx XML — cells with nil top and bottom borders — that
+this is a *vertically merged* cell, so column B's single rule ("10 percent of setback area,
+maximum up to a width of 1-meter, subject to Fire NOC") governs all three faces rather than
+the front alone. The PDF geometry says the same thing independently: in those two rows the
+column-B cell **is not present in the row at all**, where every other row has one.
+
+And the fee schedule confirms it a third way, from the other side of the chapter. Item 2A
+gives three different rates by face — front 100%, side 75%, rear 50% of land price. Item 2B
+reads *"On **all sides** of buildings >15-meter height and Group Housing except multi-units"*
+with **one** rate. The schedule treats column-B buildings as having a single rule for every
+face, exactly as the limits table does.
+
+Three independent sources — docx merge metadata, PDF cell geometry, and the fee schedule's
+own structure — agreeing on a cell that is printed blank. That is as well established as
+anything in this repository.
+
+**The "-" in the Building Height row.** Column B carries an explicit dash where the merged
+cells carry nothing, which is what makes the merge reading safe: the drafter distinguishes
+"same rule as above" from "not allowed". The engine already relied on that distinction.
 
 ### V-001 — Front setback derived from plot area — ENGINE CORRECT
 Two web sources claimed the front margin was driven by abutting road width. The gazette
@@ -699,6 +726,64 @@ Read from the flattened text alone, a structural engineer in a Zone-4 district w
 been given the Zone-1 requirement — 3 years where the table asks for 5, and 7 where it asks
 for 9. *This is the third time the geometry has held a rule the text lost, and the second
 time this week.*
+
+---
+
+### B-040 — Ninety-one wrong clause numbers in the chapter every fee comes from
+Chapter 16 was read in full before the per-chapter PDFs existed, from the flattened docx —
+which **drops clause numbering entirely**, carrying the sentence but not the "16.3.2" above
+it. Every clause number in the compounding engine was therefore written from context rather
+than read. `docs/RULE-GRAPH-PLAN.md` flagged this and asked for the PDF specifically. It was
+right to.
+
+The gazette's actual structure, from the paginated chapter:
+
+| Engine cited | Content | Gazette | |
+|---|---|---|---|
+| **16.1.3** ×38 | the thirteen non-compoundable bars | **16.3.2** | no 16.1.3 exists |
+| **16.2** ×38 | the compoundable-limits table | **16.3.3** | 16.2 exists — it is "Compounding of Offences" |
+| **16.3.6.1** ×8 | cost of land | **16.3.7(c)** | 16.3.6 is "Demolition" |
+| 16.3.6.2 | highest category use | 16.3.7(d) | |
+| 16.3.7.1 | additional parking | 16.3.7(f) | 16.3.7 is lettered (a)–(h), not numbered |
+| 16.3.7.2 ×2 | purchasable FAR charges | 16.3.7(e) | |
+| 16.3.7.3 | basement of another use | 16.3.7(g) | |
+| 16.3.7.4 | projections | 16.3.7(h) | |
+| 16.3.4.2 | instalments at MCLR+1% | 16.3.5(ii) | |
+| **16.3.8** ×48 | the Schedule (Rule No 4) | **16.3.8** | correct all along |
+
+**Ninety-one references corrected.** The 16.2 case is the worst of them: it is not a number
+that fails to resolve, it is a number that resolves to a *different real clause*, so a
+reviewer looking it up finds a clause about who may compound an offence where they expected
+a table of limits.
+
+**The app was already contradicting itself in public.** `src/data/byelawsData.ts`, which
+drives the byelaws navigator, has carried 16.3.2, 16.3.3 and 16.3.8 since it was written. A
+user could read "16.3.2 — 13 Absolute Non-Compoundable Offences" on one screen and "Clause
+16.1.3(vi)" on a finding about the same rule on another.
+
+*Fixed across `compounding.ts`, `findings.ts`, `registry.ts` and the domain tests, with five
+new citations anchored to the paginated chapter and a test that fails on any Chapter 16
+clause number the chapter does not contain.*
+
+### B-041 — Schedule Note (vi) was missing, and it is the one that connects two chapters
+The last note on the last page of Chapter 16:
+
+> Purchasable and Premium Purchasable FAR shall be applicable in **already constructed
+> buildings submitted for compounding**. Such provision shall be availed only after ensuring
+> the requisite statutory approvals, structural stability, fire and life safety
+> requirements, parking and other provisions of building byelaws.
+
+This is the provision that lets a compounding applicant reach Chapter 9 at all, and the
+engine did not have it. Read with Note (v) — the authority shall not compound beyond the
+maximum permissible FAR and shall ensure demolition of the excess *before* considering
+purchasable FAR — the sequence is: **demolish above MFAR, buy up to MFAR, compound the
+rest**, with Clause 16.3.7(e) then charging a compounding fee on top and waiving the
+purchase charge on the first 10%.
+
+It sits after the schedule tables on the final page, and the flattened text ran it together
+with the preceding note.
+
+*Fixed: `NOTE6_PURCHASABLE_FAR_CONDITIONS` holds the five conditions.*
 
 ---
 

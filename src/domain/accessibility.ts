@@ -2,7 +2,7 @@
  * Chapter 12 — Provisions for differently abled, elderly and children.
  *
  * Four pages, no tables, and the third of the three compounding bars that cite an unread
- * chapter. Clause 16.1.3(xii) makes "construction in the buildings where measures for
+ * chapter. Clause 16.3.2(xii) makes "construction in the buildings where measures for
  * access to differently abled persons are mandatory as per chapter 12" non-compoundable,
  * and `accessibilityMandatory` has been a boolean nobody could set.
  *
@@ -190,9 +190,9 @@ export const ACCESSIBILITY_REQUIREMENTS: readonly AccessibilityRequirement[] = [
   { area: 'Buildings for children', clause: '12.4.7', requirement: 'Where children are the predominant users, handrail and fitting heights must be altered to suit.' },
 ];
 
-/** Clause 16.1.3(xii), read as V-039 reads its two siblings. */
+/** Clause 16.3.2(xii), read as V-039 reads its two siblings. */
 export const ACCESSIBILITY_NON_COMPOUNDABLE_NOTE =
-  'Clause 16.1.3(xii) makes construction that breaches these mandatory provisions '
+  'Clause 16.3.2(xii) makes construction that breaches these mandatory provisions '
   + 'non-compoundable — no fee regularises it. As with the seismic and firefighting bars, it '
   + 'is read as catching construction that violates the measures rather than all construction '
   + 'in a building subject to them, because the literal reading would empty Chapter 16\'s own '

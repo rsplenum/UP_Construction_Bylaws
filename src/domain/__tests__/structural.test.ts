@@ -58,7 +58,7 @@ describe('Clause 11.8.1 — when seismic design is mandatory', () => {
   });
 });
 
-describe('the Clause 16.1.3(vi) reading', () => {
+describe('the Clause 16.3.2(vi) reading', () => {
   it('does not treat every building over 12 m as non-compoundable', () => {
     // The literal reading would empty Chapter 16's own ">15-meter height" column. The
     // caveat states the narrower reading wherever the requirement binds.

@@ -1,3 +1,5 @@
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
   ITEM1F_RATE_PER_EXTRA_UNIT,
@@ -15,7 +17,7 @@ import {
  * above it. A test that only pins current behaviour is not a check on the byelaw.
  */
 
-const LAND = 40_000; // ₹/m², the Clause 16.3.6.1 residential rate
+const LAND = 40_000; // ₹/m², the Clause 16.3.7(c) residential rate
 
 const base: CompoundingInput = {
   use: 'residential',
@@ -29,10 +31,10 @@ const base: CompoundingInput = {
 };
 
 // -------------------------------------------------------------------------------------
-// 16.1.3 — offences that shall not be compoundable
+// 16.3.2 — offences that shall not be compoundable
 // -------------------------------------------------------------------------------------
 
-describe('Clause 16.1.3 — non-compoundable offences', () => {
+describe('Clause 16.3.2 — non-compoundable offences', () => {
   const allFlags = Object.keys(NON_COMPOUNDABLE_REASONS) as (keyof NonCompoundableFlags)[];
 
   it('carries all thirteen offences the gazette lists', () => {
@@ -54,10 +56,10 @@ describe('Clause 16.1.3 — non-compoundable offences', () => {
 });
 
 // -------------------------------------------------------------------------------------
-// 16.2 — which column applies
+// 16.3.3 — which column applies
 // -------------------------------------------------------------------------------------
 
-describe('Clause 16.2 — column A vs column B', () => {
+describe('Clause 16.3.3 — column A vs column B', () => {
   // A: "All Buildings <=15-meter and multi-units upto 17.5 meter height except Group Housing"
   // B: "Buildings >15-meter height and Group Housing except multi-units."
   it.each([
@@ -73,7 +75,7 @@ describe('Clause 16.2 — column A vs column B', () => {
   });
 });
 
-describe('Clause 16.2 — compoundable limits', () => {
+describe('Clause 16.3.3 — compoundable limits', () => {
   const at = (o: Partial<Parameters<typeof compoundableLimits>[0]>) =>
     compoundableLimits({
       heightM: 12, isGroupHousing: false, isMultiUnit: false,
@@ -424,7 +426,45 @@ describe('the total', () => {
     expect(r.isCompoundable).toBe(true);
   });
 
-  it('uses the residential land rate whatever the building’s use (Clause 16.3.6.1)', () => {
+  it('uses the residential land rate whatever the building’s use (Clause 16.3.7(c))', () => {
     expect(assessCompounding({ ...base, use: 'industrial' }).landRateApplied).toBe(LAND);
+  });
+});
+
+describe('B-040 — the clause numbering, checked against the paginated chapter', () => {
+  const sources = [
+    'src/domain/compounding.ts',
+    'src/domain/findings.ts',
+    'src/domain/rules/registry.ts',
+  ];
+  const read = (p: string) => readFileSync(resolve(process.cwd(), p), 'utf-8');
+
+  it('cites no clause number Chapter 16 does not contain', () => {
+    // The gazette's Chapter 16 runs 16.1, 16.2, 16.3, then 16.3.1–16.3.8 and 16.3.8.1.
+    // There is no 16.1.3, and 16.3.6/16.3.7 are not sub-numbered — they are lettered.
+    const phantom = /Clause 16\.1\.3|Clause 16\.3\.[467]\.[0-9]/;
+    for (const f of sources) {
+      const hit = phantom.exec(read(f));
+      expect(hit?.[0], `${f} cites ${hit?.[0]}`).toBeUndefined();
+    }
+  });
+
+  it('cites the bars at 16.3.2 and the limits table at 16.3.3', () => {
+    const src = read('src/domain/compounding.ts');
+    expect(src).toMatch(/Clause 16\.3\.2 i\)/);
+    expect(src).toMatch(/Clause 16\.3\.3/);
+  });
+
+  it('keeps the Schedule at 16.3.8, which was right all along', () => {
+    expect(read('src/domain/compounding.ts')).toMatch(/Clause 16\.3\.8/);
+  });
+
+  it('agrees with the byelaws navigator, which had it right', () => {
+    // byelawsData.ts has carried 16.3.2 / 16.3.3 / 16.3.8 since it was written, so the
+    // app was showing a user two different numbers for one rule.
+    const nav = read('src/data/byelawsData.ts');
+    for (const clause of ['16.3.2', '16.3.3', '16.3.8']) {
+      expect(nav, clause).toContain(clause);
+    }
   });
 });

@@ -91,7 +91,7 @@ export interface ProjectState {
   greenRating: GreenRating;
 
   /**
-   * ₹ per sqm, and the basis of every fee figure in the app. Clause 16.3.6.1: "The cost
+   * ₹ per sqm, and the basis of every fee figure in the app. Clause 16.3.7(c): "The cost
    * of land shall be assessed at the prevailing residential rate of the Authority, or
    * the non-agriculture circle rate fixed by the District Collector, whichever is
    * higher. For calculation of Compounding fee for all kinds of constructions only the

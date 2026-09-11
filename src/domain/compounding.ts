@@ -30,7 +30,7 @@ import type { SetbackFace } from './setbacks';
 
 /**
  * The five fee columns the schedule uses. Every table in 16.3.8 is keyed by these.
- * A building's column is its *predominant* use — 16.3.6.2: "Compounding fee for
+ * A building's column is its *predominant* use — 16.3.7(d): "Compounding fee for
  * compoundable construction in mixed land use shall be payable on the highest
  * category use basis."
  */
@@ -45,11 +45,11 @@ export const COMPOUNDING_USE_LABEL: Readonly<Record<CompoundingUse, string>> = {
 };
 
 // ---------------------------------------------------------------------------------
-// 16.1.3 — offences that cannot be compounded at any price
+// 16.3.2 — offences that cannot be compounded at any price
 // ---------------------------------------------------------------------------------
 
 /**
- * Gazette, 16.1.3: "Following offences shall not be compoundable." Thirteen items,
+ * Gazette, 16.3.2: "Following offences shall not be compoundable." Thirteen items,
  * transcribed in the order the gazette lists them. Any one of these ends the
  * assessment — there is no fee that makes the construction lawful.
  */
@@ -84,37 +84,37 @@ export interface NonCompoundableFlags {
 
 export const NON_COMPOUNDABLE_REASONS: Readonly<Record<keyof NonCompoundableFlags, string>> = {
   onPublicAmenityLand:
-    'Built on land reserved for public or semi-public amenities, services or utilities — road, railway line, park, green verge or belt (Clause 16.1.3 i)',
+    'Built on land reserved for public or semi-public amenities, services or utilities — road, railway line, park, green verge or belt (Clause 16.3.2 i)',
   contravenesLandUse:
-    'Contravenes the land use prescribed in the Master Plan, Zonal Development Plan, layout plan or lease (Clause 16.1.3 ii)',
-  inIllegalColony: 'The plot lies in an illegal colony (Clause 16.1.3 iii)',
+    'Contravenes the land use prescribed in the Master Plan, Zonal Development Plan, layout plan or lease (Clause 16.3.2 ii)',
+  inIllegalColony: 'The plot lies in an illegal colony (Clause 16.3.2 iii)',
   onGovernmentLandWithoutPermission:
-    'Built on government or public land without the concerned department’s permission (Clause 16.1.3 iv)',
-  onDisputedLand: 'The land is disputed (Clause 16.1.3 v)',
+    'Built on government or public land without the concerned department’s permission (Clause 16.3.2 iv)',
+  onDisputedLand: 'The land is disputed (Clause 16.3.2 v)',
   earthquakeMeasuresMandatory:
-    'Earthquake-resistance measures are mandatory for this building under Chapter 11.8 (Clause 16.1.3 vi)',
+    'Earthquake-resistance measures are mandatory for this building under Chapter 11.8 (Clause 16.3.2 vi)',
   fireNocMissing:
-    'Firefighting requirements are mandatory, or the Fire NOC has not been obtained where it is mandatory under Chapter 10.1.3 (Clause 16.1.3 vii)',
+    'Firefighting requirements are mandatory, or the Fire NOC has not been obtained where it is mandatory under Chapter 10.1.3 (Clause 16.3.2 vii)',
   breachesRestrictedHeightArea:
-    'Breaches the height limit of a heritage zone, protected monument, civil aviation area or other restricted-height area (Clause 16.1.3 viii)',
+    'Breaches the height limit of a heritage zone, protected monument, civil aviation area or other restricted-height area (Clause 16.3.2 viii)',
   parkingNotFeasible:
-    'The required parking arrangement is not feasible on the plot (Clause 16.1.3 ix)',
+    'The required parking arrangement is not feasible on the plot (Clause 16.3.2 ix)',
   onReservedCommonArea:
-    'Built on area reserved for common areas and facilities in group housing or a multi-storey building (Clause 16.1.3 x)',
+    'Built on area reserved for common areas and facilities in group housing or a multi-storey building (Clause 16.3.2 x)',
   onWaterBody:
-    'Built on land covered by a pond, reservoir, river or drain shown in the Master Plan, Zonal Plan or Layout Plan, or recorded in the revenue records (Clause 16.1.3 xi)',
+    'Built on land covered by a pond, reservoir, river or drain shown in the Master Plan, Zonal Plan or Layout Plan, or recorded in the revenue records (Clause 16.3.2 xi)',
   accessibilityMandatory:
-    'Access for differently-abled persons is mandatory for this building under Chapter 12 (Clause 16.1.3 xii)',
+    'Access for differently-abled persons is mandatory for this building under Chapter 12 (Clause 16.3.2 xii)',
   violatesPredominantUse:
-    'Mixed-use development violating the predominant land use criteria (Clause 16.1.3 xiii)',
+    'Mixed-use development violating the predominant land use criteria (Clause 16.3.2 xiii)',
 };
 
 // ---------------------------------------------------------------------------------
-// 16.2 — the compoundable-limits table
+// 16.3.3 — the compoundable-limits table
 // ---------------------------------------------------------------------------------
 
 /**
- * The table at 16.2 has two columns:
+ * The table at 16.3.3 has two columns:
  *
  *   A — "All Buildings <=15-meter and multi-units upto 17.5 meter height except Group Housing"
  *   B — "Buildings >15-meter height and Group Housing except multi-units."
@@ -125,8 +125,8 @@ export const NON_COMPOUNDABLE_REASONS: Readonly<Record<keyof NonCompoundableFlag
 export type CompoundingColumn = 'A' | 'B';
 
 export const COMPOUNDING_COLUMN_LABEL: Readonly<Record<CompoundingColumn, string>> = {
-  A: 'Buildings up to 15 m, and multi-unit buildings up to 17.5 m (Clause 16.2, column 1)',
-  B: 'Buildings above 15 m, and group housing (Clause 16.2, column 2)',
+  A: 'Buildings up to 15 m, and multi-unit buildings up to 17.5 m (Clause 16.3.3, column 1)',
+  B: 'Buildings above 15 m, and group housing (Clause 16.3.3, column 2)',
 };
 
 export interface BuildingContext {
@@ -161,18 +161,18 @@ export interface SetbackCompoundingLimit {
 export interface CompoundableLimits {
   readonly column: CompoundingColumn;
   readonly setback: Readonly<Record<SetbackFace, SetbackCompoundingLimit>>;
-  /** 16.2: "Construction up to a maximum of 10% of total permissible FAR". Both columns. */
+  /** 16.3.3: "Construction up to a maximum of 10% of total permissible FAR". Both columns. */
   readonly farFraction: number;
-  /** 16.2: 10% in column A "without changing the number of floors"; "-" in column B. */
+  /** 16.3.3: 10% in column A "without changing the number of floors"; "-" in column B. */
   readonly heightFraction: number;
   readonly heightBasis: string;
-  /** 16.2: one extra unit in plotted development (A); proportionate in group housing (B). */
+  /** 16.3.3: one extra unit in plotted development (A); proportionate in group housing (B). */
   readonly extraUnits: number | 'proportionate';
   readonly extraUnitsBasis: string;
 }
 
 /**
- * Gazette, 16.2, verbatim by cell.
+ * Gazette, 16.3.3, verbatim by cell.
  *
  * Front setback, column A: "25% of front setback area up to a maximum of 1.0 meter"
  * Rear setback, column A:  "Residential: (a) Plot Size up to 500 sqm- 100% compoundable
@@ -200,7 +200,7 @@ export function compoundableLimits(ctx: BuildingContext & {
     const cell: SetbackCompoundingLimit = {
       fraction: 0.10,
       maxDepthM: 1.0,
-      basis: '10% of the setback area, up to a width of 1 m (Clause 16.2)',
+      basis: '10% of the setback area, up to a width of 1 m (Clause 16.3.3)',
       requiresFireNoc: true,
     };
     return {
@@ -208,25 +208,25 @@ export function compoundableLimits(ctx: BuildingContext & {
       setback: { front: cell, rear: cell, side1: cell, side2: cell },
       farFraction: 0.10,
       heightFraction: 0,
-      heightBasis: 'Not compoundable above 15 m or in group housing — the gazette prints "-" (Clause 16.2)',
+      heightBasis: 'Not compoundable above 15 m or in group housing — the gazette prints "-" (Clause 16.3.3)',
       extraUnits: ctx.isGroupHousing ? 'proportionate' : 0,
       extraUnitsBasis: ctx.isGroupHousing
-        ? 'Group housing: units proportionate to the percentage of compoundable additional or purchasable FAR (Clause 16.2)'
-        : 'No extra unit is compoundable above 15 m outside group housing (Clause 16.2)',
+        ? 'Group housing: units proportionate to the percentage of compoundable additional or purchasable FAR (Clause 16.3.3)'
+        : 'No extra unit is compoundable above 15 m outside group housing (Clause 16.3.3)',
     };
   }
 
   const front: SetbackCompoundingLimit = {
     fraction: 0.25,
     maxDepthM: 1.0,
-    basis: '25% of the front setback area, up to a maximum of 1.0 m (Clause 16.2)',
+    basis: '25% of the front setback area, up to a maximum of 1.0 m (Clause 16.3.3)',
     requiresFireNoc: false,
   };
 
   const side: SetbackCompoundingLimit = {
     fraction: 0.25,
     maxDepthM: Infinity,
-    basis: '25% of the width of the side setback (Clause 16.2)',
+    basis: '25% of the width of the side setback (Clause 16.3.3)',
     requiresFireNoc: false,
   };
 
@@ -235,7 +235,7 @@ export function compoundableLimits(ctx: BuildingContext & {
       ? {
           fraction: 1.0,
           maxDepthM: Infinity,
-          basis: 'Residential plot up to 500 m²: the whole rear setback is compoundable (Clause 16.2)',
+          basis: 'Residential plot up to 500 m²: the whole rear setback is compoundable (Clause 16.3.3)',
           requiresFireNoc: false,
           condition: 'Only where proper provision has been made for light and ventilation.',
         }
@@ -243,7 +243,7 @@ export function compoundableLimits(ctx: BuildingContext & {
         ? {
             fraction: 0.10,
             maxDepthM: Infinity,
-            basis: 'Residential plot above 500 m²: 10% of the rear setback area, in addition to the 40% already permitted (Clause 16.2)',
+            basis: 'Residential plot above 500 m²: 10% of the rear setback area, in addition to the 40% already permitted (Clause 16.3.3)',
             requiresFireNoc: false,
             condition:
               'The "permissible 40%" is the semi-detached rear-setback allowance of Clause 3.2.4.1 Note-1, which does not apply to a corner plot until the side setback is left, nor to a stilt floor.',
@@ -251,7 +251,7 @@ export function compoundableLimits(ctx: BuildingContext & {
         : {
             fraction: 0.10,
             maxDepthM: Infinity,
-            basis: 'Non-residential: 10% of the rear setback area (Clause 16.2)',
+            basis: 'Non-residential: 10% of the rear setback area (Clause 16.3.3)',
             requiresFireNoc: false,
           };
 
@@ -261,14 +261,14 @@ export function compoundableLimits(ctx: BuildingContext & {
     farFraction: 0.10,
     heightFraction: 0.10,
     heightBasis:
-      '10% above the permissible height, without changing the number of floors (Clause 16.2)',
+      '10% above the permissible height, without changing the number of floors (Clause 16.3.3)',
     extraUnits: 1,
-    extraUnitsBasis: 'One unit in plotted development beyond the permissible limit (Clause 16.2)',
+    extraUnitsBasis: 'One unit in plotted development beyond the permissible limit (Clause 16.3.3)',
   };
 }
 
 /**
- * 16.2, both columns: "Construction up to a maximum of 10% of total permissible FAR,
+ * 16.3.3, both columns: "Construction up to a maximum of 10% of total permissible FAR,
  * in addition to permissible ground coverage." With the note printed under it:
  * "Construction in front, rear and side setbacks shall be counted while calculating
  * the maximum permissible compoundable area."
@@ -464,6 +464,31 @@ export const NOTE3_CHARITABLE_FRACTION_OF_RESIDENTIAL = 0.50;
  */
 export const SCHEDULE_BASE_YEAR = 2025;
 
+/**
+ * Note-6 — the provision that makes Chapter 9 reachable from a compounding application.
+ *
+ * "Purchasable and Premium Purchasable FAR shall be applicable in already constructed
+ * buildings submitted for compounding. Such provision shall be availed only after ensuring
+ * the requisite statutory approvals, structural stability, fire and life safety
+ * requirements, parking and other provisions of building byelaws."
+ *
+ * Read against Note-5 — which bars the authority from compounding anything beyond the
+ * maximum permissible FAR and requires demolition of the excess *before* purchasable FAR
+ * is considered — the sequence is: demolish above MFAR, then buy up to MFAR, then compound
+ * what remains. Clause 16.3.7(e) then makes the compounding fee payable on top of the
+ * purchase price, with the first 10% of purchasable FAR free of purchase charges.
+ *
+ * Missing until the chapter PDF was read, because the note sits on the last page after the
+ * schedule tables and the flattened text ran it together with the preceding note.
+ */
+export const NOTE6_PURCHASABLE_FAR_CONDITIONS: readonly string[] = [
+  'The requisite statutory approvals are in place',
+  'Structural stability is established',
+  'Fire and life safety requirements are met',
+  'Parking is provided to the standard',
+  'The other provisions of these byelaws are satisfied',
+];
+
 // ---------------------------------------------------------------------------------
 // Assessment
 // ---------------------------------------------------------------------------------
@@ -499,14 +524,14 @@ export interface CompoundingAssessment {
   /** Conditions and readings a reviewer has to settle before the figure can be relied on. */
   readonly caveats: readonly string[];
   readonly clauseRef: string;
-  /** Land rate actually used, after Clause 16.3.6.1 and Note-3. */
+  /** Land rate actually used, after Clause 16.3.7(c) and Note-3. */
   readonly landRateApplied: number;
 }
 
 export interface CompoundingInput {
   use: CompoundingUse;
   /**
-   * ₹ per m². Clause 16.3.6.1: "The cost of land shall be assessed at the prevailing
+   * ₹ per m². Clause 16.3.7(c): "The cost of land shall be assessed at the prevailing
    * residential rate of the Authority, or the non-agriculture circle rate fixed by the
    * District Collector, whichever is higher. For calculation of Compounding fee for all
    * kinds of constructions only the residential rate of the land shall be taken into
@@ -529,9 +554,9 @@ export interface CompoundingInput {
 
   /** Item 2 — ground-floor footprint inside each setback, in m². */
   setbackEncroachmentSqm: Partial<Record<SetbackFace, number>>;
-  /** Deficit on each face as a fraction of the required setback, for the 16.2 caps. */
+  /** Deficit on each face as a fraction of the required setback, for the 16.3.3 caps. */
   setbackDeficitFraction?: Partial<Record<SetbackFace, number>>;
-  /** Deficit on each face in metres, for the 16.2 absolute 1.0 m caps. */
+  /** Deficit on each face in metres, for the 16.3.3 absolute 1.0 m caps. */
   setbackDeficitM?: Partial<Record<SetbackFace, number>>;
   /** Note-1 — projections (balcony, chhajja, porch) above the ground floor, in m². */
   projectionSqm?: number;
@@ -613,12 +638,12 @@ export function assessCompounding(input: CompoundingInput): CompoundingAssessmen
       totalPayable: 0,
       overLimitItems: [],
       caveats: [],
-      clauseRef: 'Clause 16.1.3 — offences that shall not be compoundable',
+      clauseRef: 'Clause 16.3.2 — offences that shall not be compoundable',
       landRateApplied: 0,
     };
   }
 
-  // Clause 16.3.6.1 + Note-3.
+  // Clause 16.3.7(c) + Note-3.
   const landRate = positive(input.residentialLandRate)
     * (input.charitableOrPublicInstitution ? NOTE3_CHARITABLE_FRACTION_OF_RESIDENTIAL : 1);
   // Note-4 indexes the per-square-metre heads only, never the land-price heads.
@@ -671,7 +696,7 @@ export function assessCompounding(input: CompoundingInput): CompoundingAssessmen
         : undefined,
     });
     if (limits.extraUnits === 'proportionate') {
-      caveats.push('The number of compoundable units in group housing is set proportionately by the authority (Clause 16.2).');
+      caveats.push('The number of compoundable units in group housing is set proportionately by the authority (Clause 16.3.3).');
     }
   }
 
@@ -710,7 +735,7 @@ export function assessCompounding(input: CompoundingInput): CompoundingAssessmen
     });
 
     if (within && limit.requiresFireNoc) {
-      caveats.push(`Compounding the ${FACE_LABEL[face]} above 15 m is allowed only against a Fire NOC (Clause 16.2).`);
+      caveats.push(`Compounding the ${FACE_LABEL[face]} above 15 m is allowed only against a Fire NOC (Clause 16.3.3).`);
     }
     if (within && limit.condition) caveats.push(limit.condition);
   }
@@ -729,7 +754,7 @@ export function assessCompounding(input: CompoundingInput): CompoundingAssessmen
       amount: money(projections * rate),
       basis: `₹491/m²${useMultiplier === 1 ? '' : ` × ${useMultiplier}`} (Clause 16.3.8 Note-1)`,
       withinStatutoryLimit: true,
-      condition: 'Clause 16.3.7.4: projections are compoundable only up to the compoundable limit in the setback area.',
+      condition: 'Clause 16.3.7(h): projections are compoundable only up to the compoundable limit in the setback area.',
     });
   }
 
@@ -752,10 +777,10 @@ export function assessCompounding(input: CompoundingInput): CompoundingAssessmen
       withinStatutoryLimit: within,
       limitNote: within
         ? undefined
-        : `The excess is ${(fraction * 100).toFixed(1)}% of the permissible FAR; Clause 16.2 caps compounding at ${(limits.farFraction * 100).toFixed(0)}%. Clause 16.3.8 Note-5: the authority shall not compound any construction beyond the maximum permissible FAR, and shall ensure demolition of it before considering purchasable FAR.`,
+        : `The excess is ${(fraction * 100).toFixed(1)}% of the permissible FAR; Clause 16.3.3 caps compounding at ${(limits.farFraction * 100).toFixed(0)}%. Clause 16.3.8 Note-5: the authority shall not compound any construction beyond the maximum permissible FAR, and shall ensure demolition of it before considering purchasable FAR.`,
     });
-    caveats.push('Clause 16.2 note: construction in the front, rear and side setbacks counts towards this same 10% of permissible FAR — the two allowances are one allowance.');
-    caveats.push('Clause 16.3.7.1: additional parking must be provided for compoundable and purchasable FAR.');
+    caveats.push('Clause 16.3.3 note: construction in the front, rear and side setbacks counts towards this same 10% of permissible FAR — the two allowances are one allowance.');
+    caveats.push('Clause 16.3.7(f): additional parking must be provided for compoundable and purchasable FAR.');
   }
 
   // ---- Item 4 — basement beyond the permissible limit ------------------------------
@@ -773,7 +798,7 @@ export function assessCompounding(input: CompoundingInput): CompoundingAssessmen
       amount: money(excessBasement * rate),
       basis: `${(fraction * 100).toFixed(0)}% of the price of land`,
       withinStatutoryLimit: true,
-      condition: 'Clause 16.3.7.3: where the basement is used for a purpose the byelaws do not permit, the area counts towards FAR and is compoundable only if standard parking is available inside the plot.',
+      condition: 'Clause 16.3.7(g): where the basement is used for a purpose the byelaws do not permit, the area counts towards FAR and is compoundable only if standard parking is available inside the plot.',
     });
   }
 
@@ -858,7 +883,7 @@ export function assessCompounding(input: CompoundingInput): CompoundingAssessmen
     });
 
     if (within) {
-      caveats.push('Clause 16.2: a height deviation is compoundable only if the number of floors does not change.');
+      caveats.push('Clause 16.3.3: a height deviation is compoundable only if the number of floors does not change.');
     }
   }
 
@@ -923,8 +948,8 @@ export function assessCompounding(input: CompoundingInput): CompoundingAssessmen
   if (index !== 1) {
     caveats.push(`Per-square-metre rates indexed by ×${index} under Clause 16.3.8 Note-4. Percentage-of-land-price heads are not indexed.`);
   }
-  caveats.push('Clause 16.3.7.2: purchasable FAR charges are payable in addition to this, except on the first 10% of purchasable FAR.');
-  caveats.push('Clause 16.3.4.2: the fee may be paid in instalments carrying interest at MCLR + 1%.');
+  caveats.push('Clause 16.3.7(e): purchasable FAR charges are payable in addition to this, except on the first 10% of purchasable FAR.');
+  caveats.push('Clause 16.3.5(ii): the fee may be paid in instalments carrying interest at MCLR + 1%.');
 
   return {
     isCompoundable: overLimitItems.length === 0,
@@ -935,7 +960,7 @@ export function assessCompounding(input: CompoundingInput): CompoundingAssessmen
     totalPayable,
     overLimitItems,
     caveats: [...new Set(caveats)],
-    clauseRef: 'Chapter 16 — Clause 16.2 (compoundable limits) and Clause 16.3.8 (Schedule of Compounding Fee, Rule No 4)',
+    clauseRef: 'Chapter 16 — Clause 16.3.3 (compoundable limits) and Clause 16.3.8 (Schedule of Compounding Fee, Rule No 4)',
     landRateApplied: money(landRate),
   };
 }

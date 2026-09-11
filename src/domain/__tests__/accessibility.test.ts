@@ -101,7 +101,7 @@ describe('the finding reaches the user', () => {
   it('states the compounding consequence', () => {
     const f = assessProject(project({ occupancy: 'inst_education' }))
       .findings.find((x) => x.id === 'accessibility');
-    expect(f?.detail).toMatch(/16\.1\.3\(xii\)/);
+    expect(f?.detail).toMatch(/16\.3\.2\(xii\)/);
     expect(f?.detail).toMatch(/V-039/);
   });
 

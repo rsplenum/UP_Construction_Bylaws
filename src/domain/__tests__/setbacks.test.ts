@@ -66,7 +66,7 @@ describe('resolveRequiredSetbacks — high rise', () => {
 describe('assessSetbackFaces', () => {
   const required = resolveRequiredSetbacks({ ...base, plotArea: 450 }); // front 3, rear 3
 
-  // Chapter 16.2, column A, residential plot up to 500 sqm.
+  // Chapter 16.3.3, column A, residential plot up to 500 sqm.
   const colA = compoundableLimits({
     heightM: 12, isGroupHousing: false, isMultiUnit: false, plotAreaSqm: 450, use: 'residential',
   }).setback;
@@ -85,7 +85,7 @@ describe('assessSetbackFaces', () => {
   });
 
   it('applies the absolute 1.0 m front cap even when the percentage passes', () => {
-    // Clause 16.2: "25% of front setback area up to a maximum of 1.0 meter". On a deep
+    // Clause 16.3.3: "25% of front setback area up to a maximum of 1.0 meter". On a deep
     // front setback, 25% is more than a metre, and the metre is what binds.
     const deep = resolveRequiredSetbacks({ ...base, plotArea: 2000 }); // front 6 m
     const face = assessSetbackFaces(deep, { front: 4.8, rear: 6, side1: 6, side2: 6 }, compoundableLimits({
@@ -98,7 +98,7 @@ describe('assessSetbackFaces', () => {
 
   it('still compounds a setback shortfall above 15 m, at the tighter column-B limit', () => {
     // The engine used to make every high-rise setback deficit a flat violation. Clause
-    // 16.2 column B allows 10% of the setback area, up to a width of 1 m, against a
+    // 16.3.3 column B allows 10% of the setback area, up to a width of 1 m, against a
     // Fire NOC. 0.01 m off a 6 m setback is 0.17% — inside it.
     const hr = resolveRequiredSetbacks({ ...base, buildingHeight: 20 }); // 6 m all round
     const colB = compoundableLimits({

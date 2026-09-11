@@ -119,7 +119,7 @@ export interface MixingBreach {
  * of single other use shall not be more than principal use" — vacuously true, because
  * nothing can exceed the largest. The principal use is the one the master plan, zonal
  * plan or layout assigns: Clause 8.2.2.1's note says the "MP/ZDP/layout land use shall
- * remain pre-dominant land use", and Clause 16.1.3(xiii) makes building in breach of the
+ * remain pre-dominant land use", and Clause 16.3.2(xiii) makes building in breach of the
  * predominant land use non-compoundable. So it is a fact about the plot, not about the
  * drawing, and a mix can breach the clause while still having a clear largest use.
  *

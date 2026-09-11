@@ -84,12 +84,12 @@ export const RULES: RuleSet = {
   'compounding.schedule': {
     id: 'compounding.schedule',
     question: 'What does it cost to regularise a deviation, and can it be regularised at all?',
-    clause: 'Chapter 16 — 16.1.3, 16.2, 16.3.6, 16.3.7 and the Schedule at 16.3.8 (Rule No 4)',
+    clause: 'Chapter 16 — 16.3.2, 16.3.3, 16.3.5, 16.3.7 and the Schedule at 16.3.8 (Rule No 4)',
     confidence: 'gazette',
     derivedFrom: ['occupancy', 'plotArea', 'buildingHeight'],
     checked: '2026-09-10',
     quote:
-      'Compoundable limits (16.2), column A (<=15 m, and multi-units up to 17.5 m, except group housing): front "25% of front setback area up to a maximum of 1.0 meter"; rear, residential "(a) Plot Size up to 500 sqm- 100% compoundable in cases where proper provisions have been made for light and ventilation. (b) Plot Size > 500 sqm - construction up to maximum 10% of the area in rear setback (in addition to permissible 40%)", others "10 percent of rear setback area"; side "Construction up to a maximum of 25% of width of side setback"; FAR "Construction up to a maximum of 10% of total permissible FAR"; height "Construction up to a maximum of 10% height from permissible limit without changing the number of floors"; units "Maximum one unit in plotted development beyond permissible limit". Column B (>15 m, and group housing, except multi-units): setbacks "10 percent of setback area (maximum up to a width of 1-meter), subject to Fire NOC" (printed as one cell spanning the front, rear and side rows); FAR the same 10%; height "-"; units "In Group Housing: Proportionate units relative to percentage of compoundable additional FAR/Purchasable FAR". Fee schedule (16.3.8): Item 1 Rs. 25/38/50/62 per sqm by plot size, x2.0 commercial, x1.5 office, x0.4 industrial, x0.5 facilities, and Item 1F "Rs. 122640 per unit"; Item 2, percent of the price of land, column A front 100/200/150/40/50, side 75/150/100/40/50, rear 50/100/75/20/25, column B all sides 100/200/150/40/50; Item 3 "Rs. 491 per sqm. and 50% of required land price for additional floor area" (982/100%, 736/75%, 196/40%, 246/50%); Item 4 basement 50/100/75/20/25 percent; Items 5-8 room dimensions Rs. 246 and Rs. 123 residential; Item 9 compound wall Rs. 123 per running metre, minimum Rs. 5000; Item 10 height "@Rs. 6132/- per running meter of height (measured as per periphery of existing building) per floor"; Item 11 layout 1.0 percent of land price on saleable area; Item 12 "two times of price of land equivalent to decrease in the area required". Land basis (16.3.6.1): "only the residential rate of the land shall be taken into consideration".',
+      'Compoundable limits (16.3.3), column A (<=15 m, and multi-units up to 17.5 m, except group housing): front "25% of front setback area up to a maximum of 1.0 meter"; rear, residential "(a) Plot Size up to 500 sqm- 100% compoundable in cases where proper provisions have been made for light and ventilation. (b) Plot Size > 500 sqm - construction up to maximum 10% of the area in rear setback (in addition to permissible 40%)", others "10 percent of rear setback area"; side "Construction up to a maximum of 25% of width of side setback"; FAR "Construction up to a maximum of 10% of total permissible FAR"; height "Construction up to a maximum of 10% height from permissible limit without changing the number of floors"; units "Maximum one unit in plotted development beyond permissible limit". Column B (>15 m, and group housing, except multi-units): setbacks "10 percent of setback area (maximum up to a width of 1-meter), subject to Fire NOC" (printed as one cell spanning the front, rear and side rows); FAR the same 10%; height "-"; units "In Group Housing: Proportionate units relative to percentage of compoundable additional FAR/Purchasable FAR". Fee schedule (16.3.8): Item 1 Rs. 25/38/50/62 per sqm by plot size, x2.0 commercial, x1.5 office, x0.4 industrial, x0.5 facilities, and Item 1F "Rs. 122640 per unit"; Item 2, percent of the price of land, column A front 100/200/150/40/50, side 75/150/100/40/50, rear 50/100/75/20/25, column B all sides 100/200/150/40/50; Item 3 "Rs. 491 per sqm. and 50% of required land price for additional floor area" (982/100%, 736/75%, 196/40%, 246/50%); Item 4 basement 50/100/75/20/25 percent; Items 5-8 room dimensions Rs. 246 and Rs. 123 residential; Item 9 compound wall Rs. 123 per running metre, minimum Rs. 5000; Item 10 height "@Rs. 6132/- per running meter of height (measured as per periphery of existing building) per floor"; Item 11 layout 1.0 percent of land price on saleable area; Item 12 "two times of price of land equivalent to decrease in the area required". Land basis (16.3.7(c)): "only the residential rate of the land shall be taken into consideration".',
     ifWrong:
       'Every rupee figure the app shows would be wrong, and a deviation the byelaws bar outright could be presented as purchasable.',
     challenge: {
@@ -287,7 +287,7 @@ export const RULES: RuleSet = {
       + 'and agrees on every figure. Peer review above 50 m (11.3); structural audit in year 10 and '
       + 'every 5 years thereafter for high-rise and special buildings (11.5).',
     ifWrong:
-      'Clause 16.1.3(vi) hangs off this: it makes construction non-compoundable where earthquake '
+      'Clause 16.3.2(vi) hangs off this: it makes construction non-compoundable where earthquake '
       + 'measures are mandatory. Getting the trigger wrong either bars compounding that the byelaws '
       + 'allow or quotes a fee for work no fee can regularise.',
     challenge: {
@@ -316,7 +316,7 @@ export const RULES: RuleSet = {
     ifWrong:
       'Alone among the three mandatory-measure chapters this one sets no height, floor or area '
       + 'threshold, so it reaches a single-storey shop that neither the fire nor the seismic trigger '
-      + 'touches. Clause 16.1.3(xii) makes a breach of it non-compoundable.',
+      + 'touches. Clause 16.3.2(xii) makes a breach of it non-compoundable.',
     challenge: {
       id: 'V-041',
       summary:
@@ -565,7 +565,7 @@ export const RULES: RuleSet = {
       'buildings as defined in National Building Code as amended from time to time. (c) Mixed ' +
       'occupancies with any of the aforesaid occupancies having more than 500 square meter covered area.',
     ifWrong:
-      'A missing Fire Safety Certificate is one of the thirteen offences at Clause 16.1.3 that cannot be compounded at any price, and without it no occupancy certificate can issue. Under-requiring it builds something that can never be regularised.',
+      'A missing Fire Safety Certificate is one of the thirteen offences at Clause 16.3.2 that cannot be compounded at any price, and without it no occupancy certificate can issue. Under-requiring it builds something that can never be regularised.',
     challenge: {
       id: 'V-034',
       summary:

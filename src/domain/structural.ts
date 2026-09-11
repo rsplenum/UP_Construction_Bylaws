@@ -8,7 +8,7 @@
  * What the chapter does state in its own right is a set of *thresholds* — which buildings
  * must be designed seismically, which must be peer reviewed, which must be re-audited and
  * how often. Those are computable, and one of them is load-bearing far outside this
- * chapter: Clause 16.1.3(vi) makes "construction in the buildings where earthquake
+ * chapter: Clause 16.3.2(vi) makes "construction in the buildings where earthquake
  * resistance measures are mandatory as per chapter 11.8" non-compoundable, and until now
  * `earthquakeMeasuresMandatory` was a boolean nobody could set because 11.8 had not been
  * read.
@@ -64,7 +64,7 @@ export const SEISMIC_RETROFIT_STANDARDS: readonly {
 ];
 
 /**
- * How far Clause 16.1.3(vi) reaches — and why this module does not apply it on height
+ * How far Clause 16.3.2(vi) reaches — and why this module does not apply it on height
  * alone.
  *
  * Read literally, "construction in the buildings where earthquake resistance measures are
@@ -84,7 +84,7 @@ export const SEISMIC_RETROFIT_STANDARDS: readonly {
  * same column.
  */
 export const NON_COMPOUNDABLE_READING =
-  'Clause 16.1.3(vi) bars compounding of construction that violates the mandatory '
+  'Clause 16.3.2(vi) bars compounding of construction that violates the mandatory '
   + 'earthquake-resistance measures, not all construction in a building subject to them: '
   + 'the literal reading would empty Chapter 16\'s own ">15-meter height" compounding '
   + 'column, which prescribes limits for exactly those buildings.';

@@ -21,7 +21,7 @@
  * catches it — and reports which limb fired, because the requirement is a *requirement*
  * and the failure mode of getting it wrong is asymmetric: a project told it needs a
  * clearance it does not need loses a fortnight, and a project told it does not need one
- * it does need is non-compoundable for ever under Clause 16.1.3(vii).
+ * it does need is non-compoundable for ever under Clause 16.3.2(vii).
  *
  * The narrower Clause 1.2(q) reading is computed alongside and surfaced wherever the two
  * disagree, per the standing rule that an ambiguity is resolved to the stricter reading
@@ -319,7 +319,7 @@ export const FIRE_ACCESS_DEFINITION =
  * Clause 10.3.1 — how an existing building is assessed, which is not how a new one is.
  *
  * This matters to Chapter 16 rather than to a new sanction: a compounding application is
- * by definition about a building that already stands, and Clause 16.1.3(vii) makes a
+ * by definition about a building that already stands, and Clause 16.3.2(vii) makes a
  * missing fire NOC non-compoundable. Clause 10.3.1 says which fire requirements an
  * existing building must actually meet, and for two of the three classes the answer is
  * markedly less than for a new building.
