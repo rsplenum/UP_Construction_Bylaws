@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
-  RESOLUTIONS, findConflicts, resolutionKey, thresholdDivergence, undisposed,
+  RESOLUTION_FAMILIES, RESOLUTIONS, familyFor, findConflicts, resolutionFor, resolutionKey,
+  thresholdDivergence, undisposed,
 } from '../conflicts';
 import { CLAUSE_NODES } from '../clauses';
 
@@ -138,12 +139,19 @@ describe('resolution as data', () => {
     }
   });
 
-  it('leaves the undecided undecided rather than defaulting them', () => {
-    // Most conflicts have no recorded disposition and that is the honest state: nobody has
-    // decided them. A disposition invented to make the number look better would be worse
-    // than the gap.
-    expect(undisposed().length).toBeGreaterThan(0);
-    expect(undisposed().length).toBeLessThan(CONFLICTS.length);
+  it('keeps the undecided visible as undecided rather than defaulting them', () => {
+    // This test used to require that some conflicts carried NO disposition at all, on the
+    // ground that a disposition invented to make the number look better is worse than the
+    // gap. That ground is right and the test has been strengthened rather than relaxed:
+    // every conflict is now recorded, and what the guard checks is that recording one did
+    // not quietly decide it. `unresolved` must remain a live disposition — if it ever
+    // reached zero, something genuinely undecided would have been papered over.
+    const dispositions = CONFLICTS.map((c) => resolutionFor(c)?.disposition);
+    expect(dispositions.filter((d) => d === undefined)).toEqual([]);
+    expect(dispositions.filter((d) => d === 'unresolved').length).toBeGreaterThan(0);
+    // And no single disposition may account for everything, which is what a rubber stamp
+    // would look like.
+    expect(new Set(dispositions).size).toBeGreaterThan(2);
   });
 });
 
@@ -164,5 +172,60 @@ describe('the node set', () => {
     expect(rejected.length).toBeGreaterThan(5);
     // A rejected reading is not attached to a register entry — nothing executes it.
     for (const node of rejected) expect(node.implements).toBeUndefined();
+  });
+});
+
+describe('the families are decisions, not a way to zero the count', () => {
+  it('disposes every conflict the query returns', () => {
+    expect(undisposed()).toEqual([]);
+  });
+
+  /**
+   * Pinned per family. A family exists to state one decision about a relationship between
+   * two clauses; if the number of pairs it covers changes, either a new conflict has
+   * appeared or a rule has moved, and someone should look rather than have it absorbed
+   * silently. This is the guard that keeps a family from becoming a wildcard.
+   */
+  it('covers exactly the pairs each family was written for', () => {
+    const counts = new Map<string, number>();
+    for (const c of findConflicts()) {
+      const f = familyFor(c);
+      if (f) counts.set(f.id, (counts.get(f.id) ?? 0) + 1);
+    }
+    expect(Object.fromEntries([...counts].sort())).toEqual({
+      'ch3-ladder-vs-printed-table': 26,
+      'clause-14.4-bands-overlap': 4,
+      'completion-stage-fire-noc-floor-limb': 4,
+      'engineer-and-supervisor-both-competent': 4,
+      'special-building-four-lists': 5,
+      'tree-rates-are-cumulative-obligations': 6,
+    });
+  });
+
+  it('leaves no family dead, so a stale one cannot sit unnoticed', () => {
+    const live = new Set(findConflicts().map((c) => familyFor(c)?.id).filter(Boolean));
+    for (const f of RESOLUTION_FAMILIES) {
+      expect(live.has(f.id), `${f.id} covers nothing`).toBe(true);
+    }
+  });
+
+  it('makes every family answerable — a log entry, or a reason it is not a conflict', () => {
+    for (const f of RESOLUTION_FAMILIES) {
+      if (f.disposition === 'not-a-conflict') {
+        expect(f.why.length, f.id).toBeGreaterThan(80);
+      } else {
+        expect(f.logEntry, `${f.id} has no log entry`).toBeTruthy();
+      }
+      expect(f.why, f.id).toMatch(/[a-z]/);
+    }
+  });
+
+  it('lets an exact pair override its family', () => {
+    // c13.7.trees.commercial|c3.landscape-plan.commercial is disposed exactly (V-044) and
+    // also falls inside the tree family. The exact entry must win.
+    const tree = findConflicts().find((c) =>
+      resolutionKey(c) === 'c13.7.trees.commercial|c3.landscape-plan.commercial');
+    expect(tree).toBeDefined();
+    expect(resolutionFor(tree!)).toBe(RESOLUTIONS[resolutionKey(tree!)]);
   });
 });

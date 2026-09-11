@@ -1060,6 +1060,58 @@ it.
 
 ## Still open
 
+### V-055 — Every conflict the query finds now carries a disposition, and five are families
+The conflict query returned 54 conflicts and 45 of them had no recorded disposition. That
+number was misleading in both directions, and working through it is what this entry records.
+
+**It was not 45 undecided questions.** Twenty-six of them are one decision — that where
+Chapter 3's summary ladder and a per-occupancy printed table give the same band two ceilings,
+the lower governs — restated once per band. Writing that out twenty-six times would not have
+made it twenty-six decisions; it would have made one decision harder to review and easier to
+let drift. So `RESOLUTION_FAMILIES` states a relationship between two clauses once, and each
+family names the log entry it rests on:
+
+| Family | Pairs | Disposition | Rests on |
+|---|---:|---|---|
+| Chapter 3 ladder vs a printed chapter table | 26 | stricter | V-014 |
+| Tree rates are cumulative obligations | 6 | stricter | V-044 |
+| "Special Building" over four lists | 5 | stricter | V-034 |
+| Clause 14.4's experience bands overlap | 4 | stricter | V-046 |
+| Engineer and supervisor are both competent | 4 | not-a-conflict | — |
+| Completion-stage fire NOC, floor limb | 4 | **unresolved** | V-037 |
+
+**Two of the six were wrong on the first pass and are worth recording as such.**
+
+The first draft had one family covering every `specialBuilding` and `fireClearanceRequired`
+pair and dispositioning all of them `stricter`. That is right for the list question and wrong
+for the completion-stage NOC: Clause 2.9.3.2's floor limb is not resolved strictly, it is not
+resolved **at all**, because no storey count exists to resolve it with. Marking it `stricter`
+would have claimed a decision nobody has made. Split into two families, and the floor limb
+keeps `unresolved`.
+
+Two genuinely new findings came out of the exercise, neither previously in the log:
+
+**Clause 14.4's bands overlap, and the gazette does not say which governs.** Each band is a
+three-way disjunction — *"4 storeys or 12-meter height or 2500 sqm floor area"* — so a
+building of 10 m with 3,000 m² of floor area is inside band 1 on height and inside band 2 on
+area. `bandFor` takes the first band **all** of whose limits are satisfied, so exceeding any
+one limb moves the project up a band. That is the stricter reading and the safer one for a
+supervision requirement, but it is a choice the clause does not make for us.
+
+**The engineer and the supervisor are not in conflict at all.** Clause 14.2 states each role's
+competence; it nowhere says the lighter qualification displaces the heavier. On a small
+residential job both are competent, and two permissions overlapping is not two answers to one
+question. Dispositioned `not-a-conflict`, which is the only one of the six that needs no log
+entry behind it.
+
+**The guard that made this honest.** A test required that some conflicts carry no disposition
+at all, on the ground that a disposition invented to make a number look better is worse than
+the gap. That ground is right, and the test was strengthened rather than relaxed: every
+conflict is now recorded, and the guard checks that recording one did not quietly decide it —
+`unresolved` must remain a live disposition, no single disposition may account for
+everything, and each family's pair count is pinned so a new conflict cannot be absorbed into
+an existing family unnoticed.
+
 ### V-054 — Five occupancies read the stricter of two rows, and 47 cells carry a condition
 The Clause 15.3 mapping is deliberately partial in two ways, both surfaced on the finding
 rather than hidden in it.

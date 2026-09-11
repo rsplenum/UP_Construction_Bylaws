@@ -261,8 +261,119 @@ export const RESOLUTIONS: Readonly<Record<string, Resolution>> = {
 export const resolutionKey = (c: Conflict): string =>
   [c.a.id, c.b.id].sort().join('|');
 
+/**
+ * Systematic dispositions.
+ *
+ * Most of what the query returns is not forty-five separate judgements. Twenty-six of them
+ * are one decision — that where Chapter 3's ladder and a per-occupancy printed table give
+ * the same band two ceilings, the lower governs — restated once per band. Writing that out
+ * twenty-six times would not make it twenty-six decisions; it would make one decision harder
+ * to review and easier to drift.
+ *
+ * So a family is an explicit claim about a *relationship between two clauses*, and it is
+ * held to the same standard as an exact entry: it names the log entry it rests on and it
+ * says why. An exact key in `RESOLUTIONS` always wins, so a pair that turns out to need its
+ * own answer can still have one.
+ *
+ * What a family must never become is a way to make the undisposed count go to zero. Each of
+ * the five below covers a relationship that is already recorded in the verification log and
+ * was decided before the query existed.
+ */
+export interface ResolutionFamily extends Resolution {
+  readonly id: string;
+  readonly covers: (c: Conflict) => boolean;
+}
+
+const isChapter3Ladder = (n: ClauseNode) => n.clause.startsWith('Para 3.2.5');
+const isPrintedTable = (n: ClauseNode) => n.id.startsWith('printed.');
+
+export const RESOLUTION_FAMILIES: readonly ResolutionFamily[] = [
+  {
+    id: 'ch3-ladder-vs-printed-table',
+    disposition: 'stricter',
+    logEntry: 'V-014',
+    covers: (c) => c.fact === 'ceilingFar'
+      && ((isChapter3Ladder(c.a) && isPrintedTable(c.b)) || (isChapter3Ladder(c.b) && isPrintedTable(c.a))),
+    why:
+      'Chapter 3\'s summary ladder and the per-occupancy table printed in chapters 4–7 give the '
+      + 'same band two ceilings. Clause 9.2.3 Note-2 subordinates chapter 9 to the chapters; nothing '
+      + 'subordinates chapter 3 to chapter 5, so both readings stand and the engine keeps the lower. '
+      + 'The direction is not constant — Chapter 3 is lower on malls and hotels above 24 m and higher '
+      + 'on bazaar streets below 12 m — which is what B-046 fixed after this query found it.',
+  },
+  {
+    id: 'engineer-and-supervisor-both-competent',
+    disposition: 'not-a-conflict',
+    covers: (c) => c.fact === 'licensedRole'
+      && [c.a.id, c.b.id].some((id) => id.startsWith('c14.2.4.2a.supervisor'))
+      && [c.a.id, c.b.id].some((id) => id.startsWith('c14.2.2.2b.structural-engineer')),
+    why:
+      'Clause 14.2 states each role\'s competence, not an exclusive assignment. On a small '
+      + 'residential job both a supervisor and an engineer are competent, and the clause nowhere says '
+      + 'the lighter qualification displaces the heavier. Two permissions overlapping is not two '
+      + 'answers to one question; the finding reports the supervisor route because it is the cheaper '
+      + 'one available, and names the engineer as well.',
+  },
+  {
+    id: 'clause-14.4-bands-overlap',
+    disposition: 'stricter',
+    logEntry: 'V-046',
+    covers: (c) => c.fact === 'siteEngineerRequired'
+      && [c.a.id, c.b.id].every((id) => id.startsWith('c14.4.experience.band-')),
+    why:
+      'Clause 14.4\'s bands are three-way disjunctions — "4 storeys or 12-meter height or 2500 sqm" — '
+      + 'and they overlap: a building of 10 m with 3,000 m² of floor area is inside band 1 on height '
+      + 'and inside band 2 on area. The gazette does not say which limb governs. `bandFor` takes the '
+      + 'first band ALL of whose limits are satisfied, so exceeding any one limb moves the project up '
+      + 'a band, which is the stricter reading and the safer one for a supervision requirement.',
+  },
+  {
+    id: 'special-building-four-lists',
+    disposition: 'stricter',
+    logEntry: 'V-034',
+    covers: (c) => c.fact === 'specialBuilding',
+    why:
+      'One defined term — which buildings are the serious ones — stated four times across Clauses '
+      + '1.2(q), 10.1.3(b), 10.1.3(c) and the Chapter 2 completion records, over four different lists '
+      + 'and three area bases (V-034, V-036). Nothing reconciles them, so `assessFireSafety` takes '
+      + 'the union: a building is caught if any limb catches it, and the finding names which limb '
+      + 'fired. That is a decision, and the stricter one.',
+  },
+  {
+    id: 'completion-stage-fire-noc-floor-limb',
+    disposition: 'unresolved',
+    logEntry: 'V-037',
+    covers: (c) => c.fact === 'fireClearanceRequired'
+      && [c.a.clause, c.b.clause].some((cl) => cl.includes('2.9.3.2')),
+    why:
+      'Clause 2.9.3.2 gates the completion-stage NOC on ">4 floors OR 15 m and more", where Chapter '
+      + '10 is exclusive at 15 m and uses no floor count at all. The height limb resolves to the '
+      + 'stricter reading; the floor limb cannot be evaluated, because `ProjectState` has no storey '
+      + 'count and one cannot be derived from height. `assessFireSafety` returns dependsOnFloorCount '
+      + 'and the finding says "unless this runs to more than four floors" rather than answering. '
+      + 'Recorded as unresolved because it is: a five-storey block at 14 m is caught by Chapter 2 '
+      + 'and by nothing in Chapter 10.',
+  },
+  {
+    id: 'tree-rates-are-cumulative-obligations',
+    disposition: 'stricter',
+    logEntry: 'V-044',
+    covers: (c) => c.fact === 'treePlantingRequired',
+    why:
+      'Chapter 13.7\'s per-plot rate, Chapter 3\'s landscape-plan rate per hectare of open space, and '
+      + 'Clause 13.2.4\'s Category-A environmental condition are three obligations that meet on one '
+      + 'site rather than one obligation stated three times — the third is a condition of an '
+      + 'environment clearance, not a byelaw rate at all. The engine holds the greatest, which '
+      + 'satisfies all three.',
+  },
+];
+
+export function familyFor(c: Conflict): ResolutionFamily | undefined {
+  return RESOLUTION_FAMILIES.find((f) => f.covers(c));
+}
+
 export function resolutionFor(c: Conflict): Resolution | undefined {
-  return RESOLUTIONS[resolutionKey(c)];
+  return RESOLUTIONS[resolutionKey(c)] ?? familyFor(c);
 }
 
 /** Conflicts with nobody's decision recorded against them. */
