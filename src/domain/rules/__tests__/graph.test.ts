@@ -93,7 +93,8 @@ describe('the graph', () => {
       'compoundableLimit', 'compoundingFee', 'environmentalCategory', 'evChargingProvision',
       'ewsLigReservation', 'fireAccessRequirement', 'ibsNocRequired', 'licensedRole',
       'minPlotArea', 'minRoadWidth', 'nonCompoundable', 'occupancyCertificateGate',
-      'peerReviewRequired', 'purchaseFee', 'rainwaterHarvestingRequired', 'shelterFee',
+      'peerReviewRequired', 'purchaseFee', 'rainwaterHarvestingRequired',
+      'sanctionRoute', 'shelterFee',
       'siteEngineerRequired', 'solarPvRequired', 'solarWaterHeatingRequired',
       'solidWasteProvision', 'specialBuilding', 'structuralAuditSchedule',
       'telecomRoomSpace', 'treePlantingRequired', 'useAllowed',
@@ -139,6 +140,7 @@ describe('findings.ts evaluates in an order the graph permits', () => {
       'services.solar-water-heating', 'services.solid-waste', 'services.tree-plantation',
       'services.environmental-conditions']],
     [/\bassessSocialHousing\(/, ['social.ews-lig']],
+    [/\bassessSanctionRoute\(/, ['permission.route']],
     [/\bassessCompounding\(/, ['compounding.schedule']],
   ];
 

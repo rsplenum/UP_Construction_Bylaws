@@ -24,6 +24,7 @@ import { assessAccessibility, ACCESSIBILITY_REQUIREMENTS, ACCESSIBILITY_NON_COMP
 import { assessLicensing, LICENSED_ROLE_LABEL, SITE_ENGINEER_PER_SQM } from './licensing';
 import { assessEvCharging, EV_SHARE_OF_PARKING } from './ev-charging';
 import { assessTelecom, TERM_CELL_STAGES, TSP_SPACE_PER_PROVIDER_M } from './telecom';
+import { assessSanctionRoute, SELF_CERTIFICATION_FEE_RUPEES } from './permission';
 import { assessSocialHousing } from './social-housing';
 import {
   assessSustainability, RECHARGE_BORE_PER_BUILT_UP_SQM, RWH_PLOT_AREA_SQM,
@@ -913,28 +914,32 @@ export function assessProject(project: ProjectState): Assessment {
   }
 
   // ---- 9. How it gets sanctioned --------------------------------------------------
-  if (occupancy.id === 'res_single' && plotArea <= 100) {
-    findings.push(sourced({
-      id: 'route', topic: 'procedure', status: 'ok',
-      headline: 'No building permit needed — you can self-certify online for ₹1.',
-      detail: 'Residential plots up to 100 m² are exempt from building permit and completion certificate; a token ₹1 online self-certification with affidavit applies.',
-      clause: 'Chapter 2.1.2',
-    }, 'occupancy.thresholds'));
-  } else if (plotArea <= 500 && occupancy.group === 'Residential' && occupancy.id !== 'res_group_housing') {
-    findings.push(sourced({
-      id: 'route', topic: 'procedure', status: 'ok',
-      headline: 'This qualifies for instant online approval through a licensed technical person.',
-      detail: 'Plots up to 500 m² in approved layouts receive instant sanction on an LTP certificate, with a 15-day deemed-sanction limit.',
-      clause: 'Chapter 2.1.2 (OBPAS)',
-    }, 'occupancy.thresholds'));
-  } else {
-    findings.push(sourced({
-      id: 'route', topic: 'procedure', status: 'info',
-      headline: 'This goes through full scrutiny with clearances from other departments.',
-      detail: 'A unified online application with inter-departmental NOCs. Deemed approval is triggered on the 30th day where a department has not responded.',
-      clause: 'Chapter 2.1.2 & Chapter 2.3 (Deemed NOC)',
-    }, 'occupancy.thresholds'));
-  }
+  const route = assessSanctionRoute({
+    occupancy,
+    plotAreaSqm: plotArea,
+    buildingHeightM: height,
+    highRiseThresholdM: HIGH_RISE_THRESHOLD_M,
+  });
+  const ROUTE_HEADLINE: Record<typeof route.route, string> = {
+    exempt: `No building permit needed — an online self-declaration and ₹${SELF_CERTIFICATION_FEE_RUPEES}, if the conditions below hold.`,
+    instant_ltp: 'Instant online approval on a licensed technical person\'s certificate — if the plot is in an approved layout.',
+    full_scrutiny: 'This goes through the full route, with inter-departmental NOCs.',
+  };
+  findings.push(sourced({
+    id: 'route',
+    topic: 'procedure',
+    status: route.conditional ? 'attention' : 'info',
+    headline: ROUTE_HEADLINE[route.route],
+    detail: route.because
+      + (route.conditions.length
+        ? ` This route holds only if: ${route.conditions.map((c) => c.replace(/\.$/, '')).join('; ')}. `
+          + 'None of those is visible on a drawing, so the route is conditional rather than settled.'
+        : '')
+      + (route.caveats.length ? ` ${route.caveats.join(' ')}` : ''),
+    required: route.conditions.length ? route.conditions.join('; ') : 'One common online application',
+    proposed: `${sqm(plotArea)} plot, ${occupancy.label}, ${height} m`,
+    clause: route.clause,
+  }, 'permission.route'));
 
   // ---- 10. What the deviations cost -----------------------------------------------
   const frontage = Math.max(1, project.plotFrontage);

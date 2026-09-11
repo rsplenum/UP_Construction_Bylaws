@@ -584,6 +584,37 @@ export const RULES: RuleSet = {
     },
   },
 
+  'permission.route': {
+    id: 'permission.route',
+    question: 'Which sanction route does this project take, and what does that route depend on?',
+    clause: 'Clause 2.1.2, with the deemed NOC at 2.2.3(v)',
+    confidence: 'gazette',
+    derivedFrom: ['plotArea', 'occupancy', 'buildingHeight'],
+    checked: '2026-09-11',
+    quote:
+      'For plots of size upto 100 square meters for residential purpose and plots of size up to 30 '
+      + 'square meters for commercial purpose will not require any permission, except in the mela area '
+      + '... and plots in unauthoritized layouts/ colonies. For plots in layouts approved or developed '
+      + 'by the Authority: for plots of size upto 500 square meters for residential purpose (except '
+      + 'multi-unit) and plots of size up to 200 square meters for commercial purpose ... instant '
+      + 'online approval.',
+    consumes: ['plotArea', 'occupancy', 'buildingHeight', 'approvedLayout', 'melaOrUnauthorisedArea'],
+    produces: ['sanctionRoute'],
+    ifWrong:
+      'This is the first practical question an applicant asks. Sending a project down a lighter route '
+      + 'than it qualifies for produces an approval revocable within thirty days under Clause '
+      + '2.1.2(v), with the owner, applicant and licensed technical person each personally liable.',
+    challenge: {
+      id: 'V-053',
+      summary:
+        'Both lighter routes turn on facts no drawing shows — whether the plot is in a layout approved '
+        + 'by the Authority, in a mela area, or in an unauthorised colony. Assuming them favourably is '
+        + 'the laxer reading in both cases, so the route is reported with its conditions attached '
+        + 'rather than asserted.',
+      derivedFromInstead: ['approvedLayout', 'melaOrUnauthorisedArea'],
+    },
+  },
+
   'occupancy.thresholds': {
     id: 'occupancy.thresholds',
     question: 'What road width, plot size and height does each use require?',

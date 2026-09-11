@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: fourteen transcriptions verified exactly right, and forty-six real bugs found.**
+**Headline: fourteen transcriptions verified exactly right, and forty-seven real bugs found.**
 
 **All eighteen chapters have now been read against the gazette.** What remains unread is the
 appendices — and Appendices 8, 9, 10, 11 and 14 are already named by the structural and
@@ -972,7 +972,73 @@ road, not about which ceiling won.*
 
 ---
 
+### B-047 — The sanction route, answered from three branches nobody had checked
+The first practical question an applicant asks — *which route does this go through* — was
+answered by three inline branches in `findings.ts`. Reading Clause 2.1.2 against them found
+four separate errors, one of them material.
+
+**A multi-unit building was offered a route the clause expressly denies it.** The branch read
+`plotArea <= 500 && group === 'Residential' && id !== 'res_group_housing'`, which admits
+`res_multi`. Clause 2.1.2(iii) gives instant approval to residential plots up to 500 m²
+**"(except multi-unit)"**. A multi-unit on a 400 m² plot was told it had instant online
+approval on an LTP certificate when Clause 2.1.2(iv) sends it to full scrutiny — and an
+approval taken on the wrong route is revocable within thirty days under 2.1.2(v), with the
+owner, applicant **and** licensed technical person each personally liable.
+
+**Both commercial limbs were missing entirely.** Clause 2.1.2 states every limit twice, once
+for each purpose:
+
+| | Residential | Commercial |
+|---|---|---|
+| No permission at all — 2.1.2(ii) | ≤100 m² | **≤30 m²** |
+| Instant approval — 2.1.2(iii) | ≤500 m², except multi-unit | **≤200 m²** |
+
+The engine had only the residential column. A 25 m² shop was told it needed full scrutiny;
+so was a 150 m² shop in an approved layout.
+
+**A 15-day deemed sanction that is not in the clause.** The instant-approval branch promised
+"a 15-day deemed-sanction limit". Clause 2.1.2(iii) gives *instant* approval and states no
+such period. What 2.1.2(v) does state, and the engine did not, is a **30-day revocation
+window**.
+
+**And a clause citation that points at the wrong subject.** The full-scrutiny branch cited
+*"Chapter 2.3 (Deemed NOC)"*. **Clause 2.3 is "All Plans"** — key plans, site plans, building
+plans — and says nothing about NOCs. The deemed NOC is Clause **2.2.3(v)**, which also
+carries the 7-day objection window that confirms it. The same species as B-040, found the
+same way.
+
+**All three findings also carried the wrong provenance.** They were sourced to
+`occupancy.thresholds` — a rule about minimum road widths and plot sizes, of `inferred`
+confidence, carrying V-005's challenge. So the app presented the sanction route as an
+unverified inference disputed on grounds that have nothing to do with it. There was no
+Chapter 2 rule in the register at all; there is now.
+
+*Fixed: `src/domain/permission.ts`, a `permission.route` register entry with four citations,
+and the route reported with its conditions attached rather than asserted.*
+
+---
+
 ## Still open
+
+### V-053 — Both lighter sanction routes turn on facts no drawing shows
+Clause 2.1.2 grants its two concessions conditionally, and every condition is a fact about
+the plot's history rather than its geometry:
+
+- **2.1.2(ii)**, no permission at all, excludes plots in a **mela area** declared under the
+  Uttar Pradesh Melas Act 1938 and plots in **unauthorised layouts or colonies**, and forbids
+  splitting a plot above 100 m² to qualify.
+- **2.1.2(iii)**, instant approval, applies only **"For Plots in layouts approved or developed
+  by the Authority"**.
+
+Assuming these favourably is the **laxer** reading in both cases — it would tell an applicant
+they need no permission when they do, which is the one direction this engine must not err in.
+So the route is reported with its conditions listed and marked conditional, rather than
+asserted. `approvedLayout` and `melaOrUnauthorisedArea` are declared in the fact vocabulary
+as unsupplied, which makes them count in the graph's missing-field report alongside
+`floorCount` and the rest.
+
+This is the same shape as V-034 and V-037 and brings the tally of obligations blocked on a
+field `ProjectState` does not carry to eleven.
 
 ### V-054 — The rule graph is built, and 45 of its 54 conflicts have nobody's decision on them
 `docs/RULE-GRAPH-PLAN.md` now carries a full outcome section; this is the log's summary of

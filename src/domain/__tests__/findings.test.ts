@@ -86,11 +86,28 @@ describe('assessProject — the verdict tracks the rules', () => {
     expect(a.findings.find((f) => f.id === 'envelope-viability')?.status).toBe('blocked');
   });
 
-  it('routes a small house to self-certification and a large scheme to full scrutiny', () => {
-    const small = assessProject(project({ occupancy: 'res_single', plotArea: 90 }));
-    expect(small.findings.find((f) => f.id === 'route')!.headline).toMatch(/self-certify/i);
-    const large = assessProject(project({ occupancy: 'res_group_housing', plotArea: 5000, roadWidth: 24 }));
-    expect(large.findings.find((f) => f.id === 'route')!.headline).toMatch(/full scrutiny/i);
+  it('routes a small house to self-declaration and a large scheme to the full route', () => {
+    const route = (p: Parameters<typeof assessProject>[0]) =>
+      assessProject(p).findings.find((f) => f.id === 'route')!;
+    expect(route(project({ occupancy: 'res_single', plotArea: 90 })).clause).toBe('Clause 2.1.2(ii)');
+    expect(route(project({ occupancy: 'res_group_housing', plotArea: 5000, roadWidth: 24 })).clause)
+      .toBe('Clause 2.1.2(iv)');
+  });
+
+  it('keeps a multi-unit building off the instant route, which Clause 2.1.2(iii) denies it', () => {
+    // B-047: the old branch admitted any Residential except group housing, so a multi-unit
+    // on a 400 m² plot was told it had instant approval. The clause reads "(except
+    // multi-unit)".
+    const r = assessProject(project({ occupancy: 'res_multi', plotArea: 400, buildingHeight: 12 }))
+      .findings.find((f) => f.id === 'route')!;
+    expect(r.clause).toMatch(/2\.1\.2\(iii\) and \(iv\)/);
+    expect(r.detail).toMatch(/except multi-unit/);
+  });
+
+  it('cites a rule about permission, not one about occupancy thresholds', () => {
+    const r = assessProject(project()).findings.find((f) => f.id === 'route')!;
+    expect(r.rule).toBe('permission.route');
+    expect(r.confidence).toBe('gazette');
   });
 
   it('raises the affordable-housing obligation only where the occupancy triggers it', () => {

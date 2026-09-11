@@ -183,7 +183,18 @@ export type GivenFact =
   /** Whether the plot is inside a Transit Oriented Development zone (V-026). */
   | 'todZone'
   /** The area an in-building solution actually covers, which need not be the whole building (V-051). */
-  | 'ibsCoveredArea';
+  | 'ibsCoveredArea'
+  /**
+   * Whether the plot lies in a layout approved or developed by the Authority. Clause
+   * 2.1.2(iii) makes the instant-approval route conditional on it, and nothing on a drawing
+   * shows it (V-053).
+   */
+  | 'approvedLayout'
+  /**
+   * Whether the plot lies in a mela area under the UP Melas Act 1938, or in an unauthorised
+   * layout or colony. Clause 2.1.2(ii) excludes both from the no-permission route (V-053).
+   */
+  | 'melaOrUnauthorisedArea';
 
 /**
  * A fact a rule establishes. Closed, and that is the load-bearing decision: the value of
@@ -222,6 +233,8 @@ export type DerivedFact =
   | 'ewsLigReservation' | 'shelterFee'
   /* regularisation */
   | 'compoundableLimit' | 'compoundingFee' | 'nonCompoundable'
+  /* procedure */
+  | 'sanctionRoute'
   /* the last gate */
   | 'occupancyCertificateGate';
 
@@ -240,7 +253,7 @@ export const DERIVED_FACTS: readonly DerivedFact[] = [
   'solidWasteProvision', 'treePlantingRequired', 'environmentalCategory',
   'ewsLigReservation', 'shelterFee',
   'compoundableLimit', 'compoundingFee', 'nonCompoundable',
-  'occupancyCertificateGate',
+  'sanctionRoute', 'occupancyCertificateGate',
 ];
 
 const DERIVED_SET: ReadonlySet<string> = new Set<string>(DERIVED_FACTS);
@@ -257,6 +270,7 @@ export function isDerived(fact: Fact): fact is DerivedFact {
 export const UNSUPPLIED_FACTS: readonly GivenFact[] = [
   'floorCount', 'groundCoverage', 'dwellingUnits', 'unitCarpetArea',
   'hotelRooms', 'mixedUseLocation', 'todZone', 'ibsCoveredArea', 'zone',
+  'approvedLayout', 'melaOrUnauthorisedArea',
 ];
 
 /* ---- Guards ------------------------------------------------------------------------

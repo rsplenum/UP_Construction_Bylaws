@@ -2154,6 +2154,50 @@ export const CITATIONS: readonly Citation[] = [
     line: 11973,
     text: 'No fee will be charged for IBS/ FTTx Network. However, charges may be levied for power (as per Industry tariffs), fixtures, etc. provided by building owners to TSP/ IP-1s as per actuals.',
   },
+  {
+    id: 'permission.exempt',
+    rule: 'permission.route',
+    clause: 'Clause 2.1.2(ii)',
+    supports:
+      'EXEMPT_RESIDENTIAL_MAX_SQM = 100 and EXEMPT_COMMERCIAL_MAX_SQM = 30, the ₹1 registration, the absence of a completion certificate, and the three conditions the engine reports rather than assumes — mela areas, unauthorised colonies, and the anti-splitting rule.',
+    gazettePage: 19,
+    kind: 'prose',
+    line: 777,
+    text: 'For plots of size upto 100 square meters for residential purpose and plots of size up to 30 square meters for commercial purpose will not require any permission, except in the mela area declared under the Uttar Pradesh Melas Act, 1938 and plots in unauthoritized layouts/ colonies.',
+  },
+  {
+    id: 'permission.instant',
+    rule: 'permission.route',
+    clause: 'Clause 2.1.2(iii)',
+    supports:
+      'INSTANT_RESIDENTIAL_MAX_SQM = 500 "(except multi-unit)" and INSTANT_COMMERCIAL_MAX_SQM = 200, and the requirement that the plot be in a layout approved or developed by the Authority. The multi-unit exclusion is the one B-047 turned on.',
+    gazettePage: 19,
+    kind: 'prose',
+    line: 779,
+    text: 'For Plots in layouts approved or developed by the Authority: For plots of size upto 500 square meters for residential purpose (except multi-unit) and plots of size up to 200 square meters for commercial purpose, where the plans are prepared by a licensed technical person and certified that the proposed construction/ reconstruction is as per the master plan and building bye-laws, the applicant upon furnishing all required information/details and payment of fees, shall get instant online approval. The onus to ensure authenticity of self-declaration and compliance with the Self-Certification lies on the Owner, Applicant and Licensed Technical Personnel, who shall all be held personally responsible and accountable in case of false declaration, and the Owner, Applicant and the Licensed Technical Personnel, will be liable for action as per law.',
+  },
+  {
+    id: 'permission.revocation',
+    rule: 'permission.route',
+    clause: 'Clause 2.1.2(v)',
+    supports:
+      'REVOCATION_WINDOW_DAYS = 30 — an approval under (ii) or (iii) is revocable for misrepresentation, which is why both lighter routes are reported as conditional rather than settled.',
+    gazettePage: 19,
+    kind: 'prose',
+    line: 781,
+    text: 'The permission issued under (ii) and (iii) can be revoked by the Authority within 30 days from the date of approval if it is found that approval has been obtained by mis-representation of the facts or false statements, and/or against the building byelaws and Master Plan land use provisions.',
+  },
+  {
+    id: 'permission.deemed-noc',
+    rule: 'permission.route',
+    clause: 'Clause 2.2.3(v)',
+    supports:
+      'DEEMED_NOC_DAYS = 30. The engine previously cited this as "Chapter 2.3 (Deemed NOC)"; Clause 2.3 is "All Plans" and says nothing about NOCs.',
+    gazettePage: 22,
+    kind: 'prose',
+    line: 893,
+    text: 'If the application is in order with all the requisite particulars and if the concerned department has neither called for any additional details nor rejected it by an explicit order on substantial grounds with the reasons recorded in writing for such rejection, the NOC shall be deemed to have been given on the 30th day (or on expiry of days specified in the table above whichever is earlier) from the date of such application. The following procedures may be further stipulated for the',
+  },
 ];
 
 /** Every rule id that has at least one citation. */
