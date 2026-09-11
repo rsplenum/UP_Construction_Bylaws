@@ -35,6 +35,15 @@ be modified: the whole verification chain assumes these bytes are the ones that 
 | 17 | 164–174 | 11 | 6 | EV charging. Three clauses bind a building permit; the other eight pages reproduce the MoP 2018 Guidelines. See B-042, V-049, V-050 |
 | 18 | 175–180 | 6 | 2 | Common Telecom Infrastructure. **An IBS NOC from the TERM cell that gates the occupancy certificate** — and which the applicant must apply for themselves. See B-043, V-051 |
 
+### Appendices held so far
+
+| App | Gazette pages | Pages | Tables | |
+|---:|---|---:|---:|---|
+| 15 | 214–218 | 5 | 5 | Use zones across different master plans. **The translation between each authority's own zone names and the 16 columns Clause 15.3 keys on** — 22 authorities, 314 local names. See B-049, V-056, V-057 |
+
+Appendices go through the same extractor as chapters: `appendix-NN.pdf` in the same folder,
+`./tools/extract-all.sh`, and the same staleness guard in `sources.test.ts`.
+
 Chapters 7 and 8 share gazette page 100: Chapter 7 opens on it, and the last table of
 Chapter 6 finishes on it.
 

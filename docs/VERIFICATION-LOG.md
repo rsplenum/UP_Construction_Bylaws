@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: fourteen transcriptions verified exactly right, and forty-eight real bugs found.**
+**Headline: fourteen transcriptions verified exactly right, and forty-nine real bugs found.**
 
 **All eighteen chapters have now been read against the gazette.** What remains unread is the
 appendices — and Appendices 8, 9, 10, 11 and 14 are already named by the structural and
@@ -1058,7 +1058,66 @@ it.
 
 ---
 
+### B-049 — The zone code the engine asks for is one no master plan prints
+`masterPlanZone` was added with the zoning matrix (B-048) and asked the user to choose from
+BU, R, MU, C-1 … — sixteen codes that appear in Clause 15.3 and **nowhere on any applicant's
+master plan**. Gorakhpur's plan says "C3- Wholesale / Storage/godown/Warehousing".
+Muzaffarnagar's says "Ganna Shodh Kendra". Bareilly splits commerce across C1, C2 and C3 and
+none of those is the byelaws' C-1.
+
+Appendix-15 is the table that closes the gap — *"Use zones across different master plans"*,
+22 Development Authorities against the same 16 rows, in the same order Clause 15.3 prints its
+columns. **314 local zone names.** The app can now ask the question in the form the user can
+answer — which of these names is on your plan — and derive the code, or run it the other way
+and show the local words for the code it used.
+
+*Fixed: `tools/extract-master-plan-zones.py`, `src/domain/master-plan-zones.ts`, and two
+findings — the local name for a resolved zone, and the authority's own vocabulary offered
+when no zone is set yet.*
+
+**One extraction subtlety, recorded because the wrong choice would have been invisible.** A
+cell whose text wraps is emitted as its first line only, with the rest arriving as later rows.
+Folding those back is straightforward; deciding whether two lines are one name or two is not.
+Agra lists **four** distinct commercial zones under C-1 — joining them would have destroyed a
+real distinction. Only four cells in the whole appendix actually wrap, and each announces
+itself: the continuation starts with a slash, or the line before ends with one, or it is a
+bare lowercase word. `unwrap()` joins on exactly those and leaves everything else alone.
+
+---
+
 ## Still open
+
+### V-056 — Appendix-15 omits Lucknow, Noida and Ghaziabad
+The table covers 22 Development Authorities: Agra, Aligarh, Ayodhya, Bareilly, Basti,
+Bulandshahr, Firozabad-Shikohabad, Gorakhpur, Hapur, Jhansi, Kanpur, Khurja,
+Mathura-Vrindavan, Meerut, Mirzapur-Vindhyachal, Moradabad, Muzaffarnagar, Prayagraj, Rampur,
+Saharanpur, Varanasi-1 and Varanasi-2.
+
+**The state capital is not among them, and neither is Noida or Ghaziabad** — the two largest
+authorities in the National Capital Region. `ProjectState.cityName` has defaulted to
+`'Lucknow'` since the project model was written, so the commonest case in the app is one the
+appendix cannot serve.
+
+There is no reading of the appendix that supplies them. `localZoneNames` returns
+`authority-not-listed` and the finding falls back to listing the sixteen codes, which is worse
+for the user and honest. What would settle it: the Lucknow, Noida and Ghaziabad master plans'
+own use-zone schedules, or a later amendment extending the appendix.
+
+### V-057 — NIL and blank are different in this appendix, and two cells are blank
+Most authorities that lack a zone have **NIL** printed against it — 36 cells say so, and that
+is a statement: no plot in that authority's area carries that zone. Two cells say nothing at
+all. **Hapur's Small Industries and Public & Semi-public rows are simply empty**, while the
+rows immediately around them — Commercial-2, Large Industries — carry an explicit NIL for the
+same authority.
+
+So the drafter distinguishes the two, and the difference matters: NIL answers the question and
+blank does not. `LocalZoneLookup` keeps them apart as `nil` and `blank`, and the engine reports
+an empty cell as unknown rather than as an absence.
+
+It is a small thing and it is the kind of small thing that becomes a wrong answer when
+flattened. A user in Hapur told "your authority has no Small Industries zone" would conclude
+their plot is in a different authority's area; told "the appendix does not say", they go and
+look at the plan.
 
 ### V-055 — Every conflict the query finds now carries a disposition, and five are families
 The conflict query returned 54 conflicts and 45 of them had no recorded disposition. That

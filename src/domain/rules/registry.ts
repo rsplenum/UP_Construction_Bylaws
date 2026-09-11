@@ -644,6 +644,32 @@ export const RULES: RuleSet = {
     },
   },
 
+  'zoning.master-plan-names': {
+    id: 'zoning.master-plan-names',
+    question: 'What does this plot\'s own master plan call the zone the byelaws code?',
+    clause: 'Appendix-15 (gazette pp. 214–218)',
+    confidence: 'gazette',
+    derivedFrom: ['zone'],
+    checked: '2026-09-11',
+    quote:
+      'Use zones across different master plans — 22 Development Authorities against the same 16 '
+      + 'use-zone rows Clause 15.3 prints as columns, giving the local name each authority\'s plan '
+      + 'uses, or NIL where it has no zone of that kind.',
+    consumes: ['zone'],
+    produces: ['useAllowed'],
+    ifWrong:
+      'Clause 15.3 is keyed on codes no applicant\'s master plan uses. Without this table the '
+      + 'engine asks a question the user cannot answer about their own plot, and a wrong column '
+      + 'gives a confident verdict about a different zone.',
+    challenge: {
+      id: 'V-056',
+      summary:
+        'The appendix covers 22 authorities and omits Lucknow, Noida and Ghaziabad — the state '
+        + 'capital and the two largest NCR authorities. For a plot in any of them the translation '
+        + 'is unavailable and the engine says so rather than guessing.',
+    },
+  },
+
   'occupancy.thresholds': {
     id: 'occupancy.thresholds',
     question: 'What road width, plot size and height does each use require?',

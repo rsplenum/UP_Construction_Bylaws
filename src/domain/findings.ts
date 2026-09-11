@@ -26,6 +26,7 @@ import { assessEvCharging, EV_SHARE_OF_PARKING } from './ev-charging';
 import { assessTelecom, TERM_CELL_STAGES, TSP_SPACE_PER_PROVIDER_M } from './telecom';
 import { assessSanctionRoute, SELF_CERTIFICATION_FEE_RUPEES } from './permission';
 import { assessZoning, ZONE_LABEL, activityFor } from './zoning';
+import { localZoneNames, zonesOfAuthority, authorityNamed } from './master-plan-zones';
 import { assessSocialHousing } from './social-housing';
 import {
   assessSustainability, RECHARGE_BORE_PER_BUILT_UP_SQM, RWH_PLOT_AREA_SQM,
@@ -204,6 +205,40 @@ export function assessProject(project: ProjectState): Assessment {
         clause: `Clause 15.3 (gazette p.${zoning.gazettePage})`,
         nonNegotiable: blocked,
       }, 'zoning.permissibility'));
+
+      // Appendix-15 translates the code back into the words on the applicant's own plan,
+      // which is the only form in which they can check we picked the right column.
+      const local = localZoneNames(project.cityName, zoning.zone);
+      if (local.state === 'named') {
+        findings.push(sourced({
+          id: 'zone-local-name',
+          topic: 'permissibility',
+          status: 'info',
+          headline: `On the ${authorityNamed(project.cityName)} master plan this zone is called `
+            + `${local.names.join(', or ')}.`,
+          detail:
+            `Appendix-15 maps the byelaws' ${zoning.zone} column onto the names each Development `
+            + `Authority's own plan uses. Check that one of these is the zone marked on your plot; `
+            + 'if it is not, the land-use verdict above is answering about a different column.',
+          required: `${zoning.zone} — ${zoning.zoneLabel}`,
+          proposed: local.names.join(', or '),
+          clause: 'Appendix-15',
+        }, 'zoning.master-plan-names'));
+      } else if (local.state === 'nil') {
+        findings.push(sourced({
+          id: 'zone-local-name',
+          topic: 'permissibility',
+          status: 'attention',
+          headline: `The ${authorityNamed(project.cityName)} master plan has no ${zoning.zoneLabel} zone at all.`,
+          detail:
+            `Appendix-15 prints NIL against ${zoning.zone} for this authority, so no plot in its `
+            + 'area carries that zone. Either the plot is in another authority\'s area, or the zone '
+            + 'selected here is not the one on the plan.',
+          required: `A zone the ${authorityNamed(project.cityName)} plan actually uses`,
+          proposed: `${zoning.zone} — ${zoning.zoneLabel}`,
+          clause: 'Appendix-15',
+        }, 'zoning.master-plan-names'));
+      }
     }
   } else if (activityFor({ occupancy: project.occupancy, areaType, plotAreaSqm: plotArea })) {
     findings.push(sourced({
@@ -216,7 +251,11 @@ export function assessProject(project: ProjectState): Assessment {
         + `activities against 16 land-use zones. Without the zone the engine can check the road `
         + 'width and the plot size but not the use itself, and a use prohibited in the zone is '
         + 'not made lawful by satisfying either. The zone is shown on the master plan or zonal '
-        + `development plan: ${Object.entries(ZONE_LABEL).map(([c, l]) => `${c} ${l}`).join(', ')}.`,
+        + (zonesOfAuthority(project.cityName).length
+          ? ` On the ${authorityNamed(project.cityName)} master plan the zones are named: `
+            + `${zonesOfAuthority(project.cityName).map((z) => `${z.names.join(' / ')} (${z.zone})`).join('; ')} `
+            + '(Appendix-15).'
+          : ` development plan: ${Object.entries(ZONE_LABEL).map(([c, l]) => `${c} ${l}`).join(', ')}.`),
       required: 'The plot\'s land-use zone',
       proposed: 'Not set',
       clause: 'Clause 15.3',

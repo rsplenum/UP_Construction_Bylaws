@@ -188,10 +188,10 @@ def extract_page(page, pdf_index):
     }
 
 
-def render_text(chapter, pages):
+def render_text(part, pages):
     out = []
     for p in pages:
-        out.append(f"\n=== chapter {chapter} · gazette page {p['gazettePage']} "
+        out.append(f"\n=== {part} · gazette page {p['gazettePage']} "
                    f"· pdf page {p['pdfPage']} ===")
         for w in p['warnings']:
             out.append(f'!!! {w}')
@@ -211,9 +211,22 @@ def render_text(chapter, pages):
     return '\n'.join(out).strip() + '\n'
 
 
+def part_of(pdf_path):
+    """
+    ('chapter', '09') / ('appendix', '15'), from the filename.
+
+    The byelaws have two kinds of numbered part and the appendices carry rules the chapters
+    only name — Appendix-14 is the Structural Design Basis Report Chapter 11.2 requires,
+    Appendices 8 to 11 the certificates Chapter 11.8.2 demands. Extracting them through the
+    same path as a chapter is what lets the citation gate reach them.
+    """
+    m = re.search(r'(chapter|appendix)-(\d+)', pdf_path.stem)
+    return (m.group(1), m.group(2)) if m else ('chapter', pdf_path.stem)
+
+
 def extract(pdf_path):
-    chapter = re.search(r'chapter-(\d+)', pdf_path.stem)
-    chapter = chapter.group(1) if chapter else pdf_path.stem
+    kind, number = part_of(pdf_path)
+    chapter = number
     doc = pymupdf.open(pdf_path)
     pages = [extract_page(page, i) for i, page in enumerate(doc)]
 
@@ -259,14 +272,14 @@ def extract(pdf_path):
     }
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
-    (OUT_DIR / f'chapter-{chapter}.json').write_text(json.dumps(payload, indent=1))
-    (OUT_DIR / f'chapter-{chapter}.txt').write_text(render_text(chapter, pages))
+    (OUT_DIR / f'{kind}-{number}.json').write_text(json.dumps(payload, indent=1))
+    (OUT_DIR / f'{kind}-{number}.txt').write_text(render_text(f'{kind} {number}', pages))
 
     span = f"p.{payload['gazettePages'][0]}–{payload['gazettePages'][1]}" if numbers else 'p.?'
     note = f'  colour-only cells: {colour_only}' if colour_only else ''
     vr = f'  colour-coded rows: {verdict_rows}' if verdict_rows else ''
     warn = f'  WARNINGS: {len(payload["warnings"])}' if payload['warnings'] else ''
-    print(f"chapter {chapter}: {len(pages)} pages ({span}), "
+    print(f"{kind} {number}: {len(pages)} pages ({span}), "
           f"{payload['tableCount']} tables{vr}{note}{warn}", file=sys.stderr)
     return payload
 
@@ -274,10 +287,11 @@ def extract(pdf_path):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('pdf', nargs='*', type=pathlib.Path)
-    ap.add_argument('--all', action='store_true', help='every chapter PDF in the repo')
+    ap.add_argument('--all', action='store_true', help='every chapter and appendix PDF in the repo')
     args = ap.parse_args()
 
-    paths = sorted(PDF_DIR.glob('chapter-*.pdf')) if args.all else args.pdf
+    paths = (sorted(PDF_DIR.glob('chapter-*.pdf')) + sorted(PDF_DIR.glob('appendix-*.pdf'))
+             if args.all else args.pdf)
     if not paths:
         ap.error('give a PDF path, or --all')
     for p in paths:

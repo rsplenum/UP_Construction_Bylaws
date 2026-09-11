@@ -3,6 +3,7 @@
 # reproducible from exactly these bytes.
 
 861651b088ec07f5adf5285c53c04f24  UP-Building-Byelaws-2025-TMPR8.docx
+aeaa63a63e92e6edc300f28d947635db  pdf/appendix-15.pdf
 a436592ab2cd8be701ea058ac669d4b8  pdf/chapter-01.pdf
 e56e50774783a925a1c0693db6edb82a  pdf/chapter-02.pdf
 54b717db0dd7677bd8a4899fa55cfa53  pdf/chapter-03.pdf

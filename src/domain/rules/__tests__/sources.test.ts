@@ -45,17 +45,19 @@ describe('the checked-in gazette originals', () => {
   });
 });
 
-describe.skipIf(chapters.length === 0)('every chapter PDF has a current extraction', () => {
+describe.skipIf(chapters.length === 0)('every chapter and appendix PDF has a current extraction', () => {
   it.each(chapters)('%s', (pdf) => {
-    const n = pdf.match(/chapter-(\d+)\.pdf/)?.[1];
-    const json = join(DERIVED, `chapter-${n}.json`);
-    const text = join(DERIVED, `chapter-${n}.txt`);
+    // Chapters and appendices go through the same extractor and the same guard: an
+    // appendix carries rules the chapters only name, so a stale one is as bad.
+    const part = pdf.replace(/\.pdf$/, '');
+    const json = join(DERIVED, `${part}.json`);
+    const text = join(DERIVED, `${part}.txt`);
 
     expect(existsSync(json), `${pdf} has no extraction — run ./tools/extract-all.sh`).toBe(true);
     expect(existsSync(text), `${pdf} has no text rendering — run ./tools/extract-all.sh`).toBe(true);
 
     const extraction = JSON.parse(readFileSync(json, 'utf-8'));
-    expect(extraction.sourceMd5, `chapter-${n}.json was extracted from a different ${pdf} — run ./tools/extract-all.sh`)
+    expect(extraction.sourceMd5, `${part}.json was extracted from a different ${pdf} — run ./tools/extract-all.sh`)
       .toBe(md5(join(PDF_DIR, pdf)));
 
     // A chapter with no pages, or one that lost its page numbering, is a broken extraction.
@@ -66,11 +68,10 @@ describe.skipIf(chapters.length === 0)('every chapter PDF has a current extracti
 
   it('reports any rasterised content, which no extractor can read', () => {
     const warnings = chapters.flatMap((pdf) => {
-      const n = pdf.match(/chapter-(\d+)\.pdf/)?.[1];
-      const json = join(DERIVED, `chapter-${n}.json`);
+      const json = join(DERIVED, `${pdf.replace(/\.pdf$/, '')}.json`);
       if (!existsSync(json)) return [];
       return (JSON.parse(readFileSync(json, 'utf-8')).warnings ?? [])
-        .map((w: string) => `chapter ${n}, ${w}`);
+        .map((w: string) => `${pdf.replace(/\.pdf$/, '')}, ${w}`);
     });
     // Not a failure — a manifest. Anything listed here has to be read by eye.
     if (warnings.length > 0) console.warn('Rasterised content:\n  ' + warnings.join('\n  '));

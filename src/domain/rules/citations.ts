@@ -2218,6 +2218,34 @@ export const CITATIONS: readonly Citation[] = [
     line: 10874,
     text: 'Note1: RW: Road Width, NA: Not Defined, PA: Plot Area, #: As per Principal Use, # #: As per Site Condition, (x) – as per paragraph 15.3.3 of this byelaws.',
   },
+  {
+    id: 'zoning.appendix-15.title',
+    rule: 'zoning.master-plan-names',
+    clause: 'Appendix-15',
+    supports:
+      'That the appendix exists and what it is for — the translation between each master plan’s own zone names and the sixteen columns Clause 15.3 keys on.',
+    gazettePage: 214,
+    kind: 'prose',
+    line: 13558,
+    text: 'Appendix-15: Use zones across different master plans',
+  },
+  {
+    id: 'zoning.appendix-15.authorities',
+    rule: 'zoning.master-plan-names',
+    clause: 'Appendix-15 (first table)',
+    supports:
+      'The first five of the 22 Development Authorities the appendix covers, in the order it prints them. The flattened text keeps the column heads even though it loses the grid, so this fingerprints the authority list.',
+    gazettePage: 214,
+    kind: 'cells',
+    lines: [13569, 13573],
+    cells: [
+      'Ayodhya',
+      'Bareilly',
+      'Muzaffarnagar',
+      'Gorakhpur',
+      'Khurja',
+    ],
+  },
 ];
 
 /** Every rule id that has at least one citation. */

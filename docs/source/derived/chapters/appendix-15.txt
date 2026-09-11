@@ -1,0 +1,237 @@
+=== appendix 15 · gazette page 214 · pdf page 1 ===
+Appendix-15: Use zones across different master plans
+214
+
+--- table 0 (48 rows × 7 cols) ---
+ | Sl. No. | 1 | 2 | 3 | 4 | 5
+# | Development Authority/ | Ayodhya | Bareilly | Muzaffarnagar | Gorakhpur | Khurja
+[#D9E1F2] | Use Zone | [#002060] | [#002060] | [#002060] | [#002060] | [#002060]
+1 | Built up | Built-up | Built-up | Built-up | Built-up | Built-up
+[#D9E1F2] | [#D9E1F2] | [#FFF2CC] | [#FFF2CC] | [#FFF2CC] | [#FFF2CC] | [#FFF2CC]
+2 | Residential | Residential[YELLOW] | Residential[YELLOW] | Residential[YELLOW] | Residential[YELLOW] | Residential[YELLOW]
+[#D9E1F2] | [#D9E1F2] | [YELLOW] | [YELLOW] | [YELLOW] | [YELLOW] | [YELLOW]
+3 | Mixed Use 1&2 | Mixed Use | NIL | NIL | NIL | NIL
+[#D9E1F2] | [#D9E1F2] | [#F8CBAD] |  |  |  | 
+4 | Commercial 1-Retail /CBD /Sub- | Commercial | C1- City Centre/ Sub- City Centre | Commercial Bazaar Marg | C1- Bazaar Marg/ Commercial Centre | Commercial
+[#D9E1F2] | CBD /Bazaar Street | [#BDD7EE] | C3 -Bazaar Marg | [#BDD7EE] | C2- City Centre/ Sub- City Centre | Bazaar Street
+ | [#D9E1F2] |  | [#BDD7EE] |  | [#BDD7EE] | [#BDD7EE]
+5 | Commercial 2-Wholesale/ | NIL | C2- Wholesale / Storage | NIL | C3- Wholesale / Storage/godown | Warehouse/Mandi
+[#D9E1F2] | Godown | [#D9E1F2] | [#5B9BD5] | [#D9E1F2] | /Warehousing | [#5B9BD5]
+6 | Small Industries | Industries | Small Industries | IT Park | Small Industries | NIL
+[#D9E1F2] | [#D9E1F2] | [#CCCCFF] | [#CCCCFF] | [#CCCCFF] | [#CCCCFF] | 
+7 | Large Industries | NIL | Large Industries | Industries | Medium/Large Industries | Industries
+[#D9E1F2] | [#D9E1F2] |  | [#CCCCFF] | [#CCCCFF] | [#CCCCFF] | [#CCCCFF]
+8 | Office Buildings | Offices | Offices | Offices | Offices | Offices
+[#D9E1F2] | [#D9E1F2] |  |  |  |  | 
+9 | Public & Semi-public | Public & Semi-public Facilities | Community Facilities / Utilities | Public Facilities | 1-Public & Semi-public Facilities | Public Semi-Public Facilities & Utilities
+[#D9E1F2] | [#D9E1F2] | Historical Places | Educational Institution | Public Utilities | (Educational, Healthcare Facilities, Hospital) | [#FFF2CC]
+ |  | Religious Places | Hospital | Ganna Shodh Kendra | 2-Social & Religious Institution-Community | 
+ |  | [#FFF2CC] | Water works /Power Station | Medical/ Medicity | Facilities, Radio Station /Doordarshan | 
+ |  |  | Radio Station /Doordarshan | Vidyut Kendra | 3-Public utilities & services-Sewage Farm, | 
+ |  |  | Treatment Plant / Dumping Ground | Landfill | SWM, Electrical sub station | 
+ |  |  | Sewage Farm | [#FFF2CC] | [#FFF2CC] | 
+ |  |  | [#FFF2CC] |  |  | 
+10 | Transport 1&2, Parking | Transport Facility | T1 - Bus terminal/Truck terminal | Bust Station | Transport centre/Bus terminal/ Truck | Bus Terminal /Truck Terminal
+[#D9E1F2] | [#D9E1F2] | Bus Stand | T2 - Marg | Transport Nagar | terminal | [#D6DCE4]
+ |  | [#D6DCE4] | Parking Areas | Railways | [#D6DCE4] | 
+ |  |  | [#D6DCE4] | [#D6DCE4] |  | 
+11 | Forest | NIL | Garden | NIL | NIL | Forest
+[#D9E1F2] | [#D9E1F2] |  | Forest |  |  | [#C6E0B4]
+12 | Recreational 1&2 | Park and Open Spaces | P1 - Recreational Park / Zonal Park | Park and Open Areas | Park / Open Spaces/Recreational Area | Park & Open Spaces
+[#D9E1F2] | [#D9E1F2] | Fair Ground and Garden | P2 - Park / District Park / Exhibition | Baagh & Udyaan | [#A9D08E] | [#A9D08E]
+ |  | [#A9D08E] | Park / Mela / Rally Ground | Regional Park |  | 
+ |  |  | [#A9D08E] | Stadium |  | 
+ |  |  |  | [#A9D08E] |  | 
+13 | Green belt | Green Belt | Green Belt | Green Belt | Green Belt | Green Belt
+[#D9E1F2] | [#D9E1F2] | [#A9D08E] | [#A9D08E] | [#A9D08E] | [#A9D08E] | [#A9D08E]
+14 | Rural Abadi | Rural Abadi | Rural Abadi | Rural Abadi | Rural Abadi | Rural Abadi; Future expansion
+15 | Agriculture | Agriculture | Agriculture | Agriculture | Agriculture | Agriculture
+[#D9E1F2] | [#D9E1F2] | [#A9D08E] | [#A9D08E] | [#A9D08E] | [#A9D08E] | [#A9D08E]
+16 | Highway Facilities | Highway Facility Zone | Highway Facility Zone | Highway Facility Zone | Highway Facility Zone | Highway Facility Zone
+[#D9E1F2] | [#D9E1F2] | [#D0CECE] | [#D0CECE] | [#D0CECE] | [#D0CECE] | [#D0CECE]
+17 | Additional Land use |  |  |  |  | 
+[#D9E1F2] | [#D9E1F2] |  |  |  |  | 
+
+=== appendix 15 · gazette page 215 · pdf page 2 ===
+Appendix-15 (part-2)
+215
+
+--- table 0 (39 rows × 7 cols) ---
+ | Sl. No. | 6 | 7 | 8 | 9 | 10
+# | Development Authority/ | Bulandshahr | Basti | Meerut | Saharanpur | Moradabad
+[#D9E1F2] | Use Zone | [#002060] | [#002060] | [#002060] | [#002060] | [#002060]
+1 | Built up | Built-up | Built-up | Built-up | Built-up | Built-up
+2 | Residential | Residential[YELLOW] | Residential[YELLOW] | Residential[YELLOW] | Residential[YELLOW] | Residential[YELLOW]
+3 | Mixed Use 1&2 | NIL | NIL | Mixed Use | NIL | NIL
+4 | Commercial 1-Retail /CBD /Sub-CBD | Commercial | C1- Bazaar Marg/ Commercial Centre | Commercial | Bazaar Street/ Bazaar Area | (C-1)- City Centre/ Central Commercial
+ | /Bazaar Street | Bazaar Street | C2- City Centre/ Sub- City Centre | Bazaar Street | City Centre/ Sub- City Centre | (C-2)-Sub City Centre/Sub Central Commercial
+[#D9E1F2] |  |  |  | Saghan Bazar |  | (C-4) -Bazaar Street
+5 | Commercial 2-Wholesale/ Godown | Warehouse/Wholesale | C3- Wholesale / Storage | Wholesale Mkt/Mandi | Wholesale | (C-3)- Wholesale / Storage
+ |  |  |  | Warehouse | Other commercial | 
+6 | Small Industries | Small Industries | Small Industries | Small Industries | NIL | (M-1)-Small Industries
+ |  |  |  |  |  | (M-3)-Handicrafts/Cottage/Home Industries
+7 | Large Industries | Heavy Industries | Large Industries | Large Industries | Industries | Large Industries
+ |  |  |  | Industries (Light/Med/Heavy) |  | 
+[#D9E1F2] | [#D9E1F2] | [#CCCCFF] | [#CCCCFF] | Logistic Park | [#CCCCFF] | [#CCCCFF]
+8 | Office Buildings | Offices | Offices; Jail | Offices; CPRI | Offices | Govt Semi-govt and other Offices
+9 | Public & Semi-public | Public and Semi-Public Facility & | Community Facilities / Utilities | Public Facility | Public Facility | (F1)-Community Facilities /Utilities and Services
+[#D9E1F2] | [#D9E1F2] | Utilities | Fire Station, Police station, Post office, | Public Utility | Public Utility | (F2)-electrical substation
+ |  | [#FFF2CC] | Water works, Sewage Farm | [#FFF2CC] | [#FFF2CC] | (F3)- Sewage Farm/Solid Waste Disposal Centre
+ |  |  | [#FFF2CC] |  |  | (F4)-Proposed Sewage Treatment Plant
+ |  |  |  |  |  | (F5)-Slaughter house; (F6)-STP; (F7)-SWM
+10 | Transport 1&2, Parking | Bus Terminal/Truck Terminal | Transport 1 - Bus terminal/Truck | Bus terminal | Bus Terminal | (T-1) - Bus terminal
+[#D9E1F2] | [#D9E1F2] | Railway Yard/Railway Line | terminal | Air Strip/ Airport | Truck Terminal | (T-2)-Truck terminal
+ |  | [#D6DCE4] | Marg | Transport Nagar | Railway Area | (T-3)-Railway Notified Area
+ |  |  | [#D6DCE4] | Cargo Centre | [#D6DCE4] | (T-4)-Existing Road; (T-5)-Proposed Road
+ |  |  |  | RRTS Depot |  | (T-6)-Railway Line
+ |  |  |  | [#D6DCE4] |  | (T-9)-Proposed fly over
+11 | Forest | NIL | NIL | Forest | NIL | Garden; Forest
+12 | Recreational 1&2 | Park & Open Spaces | Park/open spaces and playground | Park and Open Area/ Stadium | Regional Park | (P-1)-District Park
+[#D9E1F2] | [#D9E1F2] | [#A9D08E] | [#A9D08E] | Regional Park | Park and Open Area | (P-2)-Zonal Park; (P-3)-Park
+ |  |  |  | Amusement Park | [#A9D08E] | (P-4)-Riverfront Development
+ |  |  |  | [#A9D08E] |  | (P-6)-non-conforming developed green area.
+13 | Green belt | Green Belt | Green Belt | Green Belt | Green Belt | Green Belt
+14 | Rural Abadi | Rural Abadi; Future expansion | Rural Abadi | Rural Abadi | Rural Abadi; Future expansion | Rural Abadi
+15 | Agriculture | Agriculture | Agriculture | Agriculture | Agriculture | Agriculture
+16 | Highway Facilities | Highway Facility Zone | Highway Facility Zone | Highway Facility Zone | Highway Facility Zone | Highway Facility Zone
+17 | Additional Land use |  |  |  |  | 
+[#D9E1F2] | [#D9E1F2] |  |  |  |  | 
+
+=== appendix 15 · gazette page 216 · pdf page 3 ===
+Appendix-15 (part-3)
+216
+
+--- table 0 (48 rows × 7 cols) ---
+ | Sl. No. | 11 | 12 | 13 | 14 | 15
+ |  |  |  |  |  | 
+# | Development Authority/ | Mathura-Vrindavan | Aligarh | Jhansi | Rampur | Firozabad-Shikohabad
+[#D9E1F2] | Use Zone | [#002060] | [#002060] | [#002060] | [#002060] | [#002060]
+1 | Built up | Built-up | Built-up | Built-up | Built-up | Built-up
+[#D9E1F2] | [#D9E1F2] | [#FFF2CC] | [#FFF2CC] | [#FFF2CC] | [#FFF2CC] | [#FFF2CC]
+2 | Residential | Residential[YELLOW] | Residential[YELLOW] | Residential[YELLOW] | Residential[YELLOW] | Residential[YELLOW]
+[#D9E1F2] | [#D9E1F2] | [YELLOW] | [YELLOW] | [YELLOW] | [YELLOW] | [YELLOW]
+3 | Mixed Use 1&2 | NIL | NIL | NIL | NIL | NIL
+[#D9E1F2] | [#D9E1F2] |  |  |  |  | 
+4 | Commercial 1-Retail /CBD | City Centre | Commercial | Bazar Street | (C-1) - City Centre | Bazaar Street
+[#D9E1F2] | /Sub-CBD /Bazaar Street | Sub- City Centre | Bazaar Street | Commercial, Retail shops | (C-2) - Sub-City Centre | City Centre
+ | [#D9E1F2] | Bazaar Street | [#BDD7EE] | Sector/Neighbour Hood | (C-3) - Zonal Commercial | Sub city Centre
+ |  | [#BDD7EE] |  | [#BDD7EE] | (C-5) - Bazaar Street | [#BDD7EE]
+5 | Commercial 2-Wholesale/ | Wholesale | District Business | Wholesale/ Storage | (C-4) - Wholesale/ Storage | Wholesale Business
+[#D9E1F2] | Godown | [#5B9BD5] | Wholesale Business Centre | [#5B9BD5] | [#5B9BD5] | [#5B9BD5]
+6 | Small Industries | Small Industries | Small Industries | Small Industries | Small Industries | Small & Service Industries
+[#D9E1F2] | [#D9E1F2] | IT industries | [#CCCCFF] | [#CCCCFF] | [#CCCCFF] | [#CCCCFF]
+7 | Large Industries | Large Industries | Large Industries | Large / Medium Industries | Large Industries | Large Industries
+[#D9E1F2] | [#D9E1F2] | [#CCCCFF] | Defence Industrial Corridor | Logistic Park, Technology park; Crusher Zone | [#CCCCFF] | [#CCCCFF]
+8 | Office Buildings | Offices, Police Lines | Offices | Offices | Govt Semi-govt and other Offices | Offices
+9 | Public & Semi-public | Public Semi-Public | Community Facilities | Public Semi-Public Facilities | (F1) - Community Facilities /Utilities, Public | Inter College; Degree College
+[#D9E1F2] | [#D9E1F2] | Facilities | Inter college; Graduate / Post Graduate | Dumping Ground | Services and Utilities | Technical Institutes
+ |  | Amusement park | College; Pravidhik sansthan | Sewage Farm/ STP | (F2) - Electrical Sub-station | Hospital
+ |  | Knowledge park | Aligarh Muslim university | Regional/ Historical Place | (F3) - Sewerage Treatment Plant | Police/Fire Station
+ |  | Medical & Health Care | Utilities & Services | Shamshan / Kabristan | (F4) - Solid Waste Disposal Centre | Post Office/ Telecom Centre
+ |  | Tourist Facilitation Centre | Police Station/ Thana | Flood Area | (F5) -Sewage Farm | Electric Station
+ |  | [#FFF2CC] | Fire Station, Phone Booth | [#FFF2CC] | [#FFF2CC] | Water Works
+ |  |  | Post Office, Sewage Farm/Treatment Plant |  |  | Sewage Treatment Plant
+ |  |  | Healthcare |  |  | Religious Place
+ |  |  | District Hospital; Other Main Hospitals |  |  | Knowledge Park
+10 | Transport 1&2, Parking | Transport Nagar | Transport 1 - (Bus terminal) | T1 - (Bus terminal | (T-1) - Bus Terminal and Workshop | Truck Terminal
+[#D9E1F2] | [#D9E1F2] | Parking & Camping Area | Transport 2 - (Truck terminal) | T2 - (Transport Nagar / Truck terminal) | (T-2) - Truck Terminal / Transport Nagar | Bus Terminal
+ |  | Bus Terminal | Parking Areas, Air Strip | [#D6DCE4] | (T-3) - Existing Road, (T-4) - Proposed Road | Railway Line/ Railway Compound
+ |  | [#D6DCE4] | Existing roads, Proposed roads |  | (T-5) - Railway Line | Over Head Bridge
+ |  |  | Railway lines/ Railway campus |  | (T-6) - Proposed Flyover | [#D6DCE4]
+ |  |  | Dedicated Freight Corridor |  | (T-7) - Railway Notified Area | 
+11 | Forest | Forest | Garden | Forest | NIL | Forest
+12 | Recreational 1&2 | Park/ Sector Park | Park and Open spaces | Recreational 1 - Theme Park | (P1) - Park | NIL
+[#D9E1F2] | [#D9E1F2] | District Park | Regional Park, River Buffer | Recreational 2 - Regional Park/ Prakhandiy | (P2) - Zonal Park | [#A9D08E]
+ |  | Zonal Park | Exhibition ground | Park/Nagar Park and Playground | (P4) - River Front Development | 
+ |  | Sanrakshit sthal | Shekha Lake Eco Sensitive Zone | Water bodies/Pond, Pahad | (P5) - Non-Conforming Developed Green | 
+ |  | [#A9D08E] | Lake Zone | [#A9D08E] | [#A9D08E] | 
+13 | Green belt | Green Belt | Green Belt | Green Belt | Green Belt | Green Belt
+14 | Rural Abadi | Rural Abadi | Rural Abadi | Rural Abadi, Future expansion | Rural Abadi | Rural Abadi
+15 | Agriculture | Agriculture | Agriculture | Agriculture | Agriculture | Agriculture
+16 | Highway Facilities | Highway Facility Zone | Highway Facility Zone | Highway Facility Zone | Highway Facility Zone | NIL
+17 | Additional Land use |  |  |  |  | 
+
+=== appendix 15 · gazette page 217 · pdf page 4 ===
+Appendix-15 (part-4)
+217
+
+--- table 0 (31 rows × 6 cols) ---
+ | Sl. No. | 16 | 17 | 18 | 19
+# | Development Authority/ | Varanasi-1 | Varanasi-2 | Agra | Hapur
+[#D9E1F2] | Use Zone | [#002060] | [#002060] | [#002060] | [#002060]
+1 | Built up | Built-up | Built-up | Built-up | Built-up
+2 | Residential | Residential[YELLOW] | Residential[YELLOW] | Residential[YELLOW] | Residential[YELLOW]
+3 | Mixed Use 1&2 | Mixed Use | Mixed Use | NIL | NIL
+4 | Commercial 1-Retail /CBD /Sub- | City Centre | City Centre | Bazaar Street | Commercial/ Leather
+[#D9E1F2] | CBD /Bazaar Street | Sub- City Centre | Sub- City Centre | City Centre/ CBD | Mandi/ Business Centre
+ | [#D9E1F2] | Bazaar Street | Bazaar Street | Sub-city centre/Sub-CBD | Bazaar Street
+ |  | Other Commercial | [#BDD7EE] | Neighbourhood, Tourism | [#BDD7EE]
+5 | Commercial 2-Wholesale/ Godown | Wholesale/ Warehousing/ Mandi | Wholesale/ Warehousing/ Mandi | Wholesale Business | NIL
+[#D9E1F2] | [#D9E1F2] | [#5B9BD5] | [#5B9BD5] | [#5B9BD5] | 
+6 | Small Industries | Small & Service Industries | Small & Service Industries | Non polluting industries | [#CCCCFF]
+7 | Large Industries | Medium/Large Industries | Medium/Large Industries | Non polluting industries | NIL
+8 | Office Buildings | Govt Semi-govt and other Offices | Govt Semi-govt and other Offices | Offices | Offices
+9 | Public & Semi-public | Public Semi-Public Facilities | Public Semi-Public Facilities and | Community Facilities | [#D9E1F2]
+[#D9E1F2] | [#D9E1F2] | Services and Utilities | Services and Utilities | [#FFF2CC] | [#D9E1F2]
+ |  | [#FFF2CC] | [#FFF2CC] |  | 
+10 | Transport 1&2, Parking | Transport Services | Transport Services | Transport Nagar | Traffic and Transportation
+[#D9E1F2] | [#D9E1F2] | Airport/ Water Transport Terminal | Airport/ Water Transport Terminal | Bus stand | [#D6DCE4]
+ |  | Railway Yard/ Railway Land | Railway Yard/ Railway Land | [#D6DCE4] | 
+ |  | [#D6DCE4] | [#D6DCE4] |  | 
+11 | Forest | Garden | Garden | Forest area | NIL
+12 | Recreational 1&2 | Park | Park | Sector Park, Regional Park, District Park, Zonal Park, | Recreational area
+[#D9E1F2] | [#D9E1F2] | [#A9D08E] | [#A9D08E] | Amusement Park, National Park, | [#A9D08E]
+ |  |  |  | Riverfront Development | 
+13 | Green belt | Green Belt | Green Belt | Green Belt | Green Belt
+14 | Rural Abadi | Rural Abadi | Rural Abadi | Rural Abadi | Rural Abadi
+15 | Agriculture | Agriculture | Agriculture | Agriculture | Agriculture
+16 | Highway Facilities | Highway Facility Zone | Highway Facility Zone | Highway Facility Zone | Highway Facility Zone
+17 | Additional Land use |  |  |  | 
+
+=== appendix 15 · gazette page 218 · pdf page 5 ===
+Appendix-15 (part-5)
+218
+
+--- table 0 (42 rows × 5 cols) ---
+ | Sl. No. | 20 | 21 | 22
+# | Development Authority/ | Kanpur | Mirzapur-Vindhyachal | Prayagraj
+[#D9E1F2] | Use Zone | [#002060] | [#002060] | [#002060]
+1 | Built up | Built-up | Built-up | Built-up
+2 | Residential | Residential[YELLOW] | Residential[YELLOW] | Residential[YELLOW]
+3 | Mixed Use 1&2 | NIL | NIL | NIL
+4 | Commercial 1-Retail /CBD /Sub-CBD /Bazaar Street | City Centre/ CBD | Zonal Centre, City Centre | District Centre, City Centre
+[#D9E1F2] | [#D9E1F2] | Sub-city centre | Bazaar Street | General Business, Bazaar Street
+ |  | Bazaar Street | [#BDD7EE] | [#BDD7EE]
+5 | Commercial 2-Wholesale/ Godown | Warehousing/ Agricultural Produce Mandi | Wholesale/ Storage Godown/ Warehouse | Wholesale/ Storage
+[#D9E1F2] | [#D9E1F2] | [#5B9BD5] | [#5B9BD5] | [#5B9BD5]
+6 | Small Industries | Small & Service Industries | Small Industries | Small Industries/Cottage
+[#D9E1F2] | [#D9E1F2] | Cottage Industries | [#CCCCFF] | [#CCCCFF]
+7 | Large Industries | Medium/Large Industries | NIL | Medium Industries
+[#D9E1F2] | [#D9E1F2] | [#CCCCFF] |  | Large Industries
+8 | Office Buildings | Offices | Govt Semi-Govt and Local Offices | Govt Semi-Govt and Local Offices
+[#D9E1F2] | [#D9E1F2] |  | Private Offices/ Agent Offices | Private Offices/ Agent Offices
+ |  |  | Banks | Banks
+ |  |  |  | 
+9 | Public & Semi-public | 1. Public Semi-Public Facilities and Services and Utilities | School, College | School, College
+[#D9E1F2] | [#D9E1F2] | 2. Educational Institution, Healthcare Services, | University, Technical, Hitech, | University, Technical, Hitech,
+ |  | Knowledge Park, Technical/Specialized institutes | General Hospital | General Hospital
+ |  | 3. Jalkal, Power house, HT Line, Dumping Ground, STP, | Medical College | Medical College
+ |  | Fire Station, Police Station, Telecom | Jalkal, Power, Sewage Farm | Jalkal, Power, Sewage Farm
+10 | Transport 1&2, Parking | Transport Services | Transport Nagar | Transport Nagar
+[#D9E1F2] | [#D9E1F2] | Airstrip/ Airport/ Water Transport/ ISBT | Bus Terminal | Bus Terminal ;
+ |  | Bus Terminal/ Railway Yard/ Railway land/ Truck | Truck Terminal | Truck Terminal
+ |  | Terminal/ Multi-modal logistic park | Water Transport | Water Transport
+11 | Forest | Reserved Forest, Afforestation | Protected Forests | Afforestation
+[#D9E1F2] | [#D9E1F2] | Bird Sanctuary | [#C6E0B4] | Grassland and Dairy Farm
+12 | Recreational 1&2 | 1. Parks and Open Spaces | Park | Parks/Open spaces; District Park, Local
+[#D9E1F2] | [#D9E1F2] | 2. Stadium/ Playground/ District Park/ Regional Park/ | City level Park | 
+ |  | Amusement Park, Ecological Park/ Mela ground | Exhibition Ground/ Tourism | Park
+ |  | 3. Riverfront Development | Socio-cultural and Religious area | Kumbh mela
+ |  | [#A9D08E] | [#A9D08E] | 
+ |  |  |  | Umsam Riverfront Development
+ |  |  |  | Cultural and religious site
+13 | Green belt | Green Belt | Green Belt | Green Belt
+14 | Rural Abadi | Rural Abadi | Rural Abadi | Rural Abadi
+15 | Agriculture | Agriculture | Agriculture | Agriculture
+16 | Highway Facilities | Highway Facility Zone | Highway Facility Zone | Highway Facility Zone
+17 | Additional Land use |  |  |
