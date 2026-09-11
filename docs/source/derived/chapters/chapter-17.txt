@@ -1,0 +1,425 @@
+=== chapter 17 · gazette page 164 · pdf page 1 ===
+17 Provision of Electric Charging Infrastructure
+17.1 Electric Vehicle Charging Infrastructure (EVCI)
+Based on the occupancy pattern and the total parking provisions in the premises of the various building
+types, charging infrastructures shall be provided only for EVs, which is currently assumed to be 20%
+of all 'vehicle holding capacity'/'parking capacity' at the premise.
+Additionally, the building premise will have to have an additional power load, equivalent to the power
+required for all charging points (in a PCS) to be operated simultaneously, with a safety factor of 1.25
+(refer Explanatory Note- Annexure E-1 as given in paragraph 17.2 of this chapter)
+17.1.1 Residential Buildings (plotted house)
+17.1.1.1 Charging Infrastructure requirements for individual house/self-use:
+Note: -
+The charging infrastructure installed by a homeowner shall be construed as a Private Cl meant for self-
+use (non-commercial basis) as per the note at clause no 4 of the explanatory notes at Annexure E-1
+given in paragraph 17.2 of this chapter.
+17.1.2 All other buildings (including Group Housing)
+Any PCS installed at Public/Private areas or building premises of any category that caters to commercial
+mode of charging of EVs shall be deemed as a Public Charging Station and shall have to install the
+minimum requirements of chargers as specified in the Guidelines dated 14.12.2018 of Ministry of
+Power (refer Annexure E-2 for MoP Guidelines). However, in order to provide sufficient charging
+points for the EV share in all vehicles (refer clause 3 of the Explanatory Note-Annexure E-1 given in
+paragraph 17.2 of this chapter), ratio of types of chargers is recommended in the table below-
+17.1.2.1 Charging Infrastructure requirements for PCS (commercial use):
+164
+
+--- table 0 (6 rows × 2 cols) ---
+Building Type | Plotted House
+Ownership of station | Private (Owner)
+Connection and Metering | Domestic meter
+Type of Charger | Slow charger as per owner's specific requirements
+Modes of Charger | AC (Single charging gun)
+Norms of Provisions | Min.1 SC and additional provisions as per the owner individual
+
+--- table 1 (6 rows × 5 cols) ---
+Building Type | Any building type |  |  | 
+Ownership of Station | Service provider |  |  | 
+Connection and Metering | Commercial Metering and Payment |  |  | 
+Type of Charger | as per min requirements specified in MoP Guidelines (refer Annexure E-2 given in paragraph 17.8 of this chapter) |  |  | 
+Additional Chargers | PCS service providers shall install additional number of kiosk/chargers beyond the minimum specified requirements to meet the ratio of charging points as prescribed below (by the type of vehicles). |  |  | 
+Norms of Provisions for charging points | 4Ws 1 SC-each 3 EVs 1 FC-each 10 EVs | 3Ws 1 SC - each 2 EVs | 2Ws 1 SC - each 2 EVs | PV (Buses) 1 FC- each 10 EVS
+
+=== chapter 17 · gazette page 165 · pdf page 2 ===
+Note:
+(i) Charging bays shall be planned currently at 20% capacity of all vehicles including 2Ws and
+PVs(cars)
+(ii) Open metering and on-spot payment options to be available for all users.
+(iii) Provision of FCB, CS and BS shall not be mandatory and will be at the discretion of the service
+provider.
+Abbreviations used:
+2Ws Two wheelers
+3Ws Three wheelers
+4Ws Four wheelers/PV (cars)
+PVs Passenger Vehicles
+EV Electric Vehicle
+SC Slow Charger/Slow Charging (AC)
+FC Fast Charger/Fast Charging (DC and a few AC ones)
+PCS Public Charging Stations
+FCBCS Fluid Cooled Battery Charging Station
+BS Battery Swap
+17.1.2.2 Space Norms for Electric Vehicle Charging Infrastructure:
+Source: Urban & Regional Development Plans Formulation and Implementation Guidelines (URDPFl-
+2014)
+165
+
+--- table 0 (11 rows × 6 cols) ---
+Sl. | [#D9E2F3] | Population | [#D9E2F3] |  | [#D9E2F3]
+ | Category |  | Land area requirement |  | Other controls
+No. |  | served per unit |  |  | 
+ | [#D9E2F3] |  | [#D9E2F3] |  | [#D9E2F3]
+ |  |  |  |  | «band #D9E2F3»
+[#D9E2F3] | [#D9E2F3] | [#D9E2F3] | Type of Facility | Area Required | [#D9E2F3]
+ |  |  |  |  | «band #D9E2F3»
+A. | Public Charging Stations | Every 25 Kms, both sides along the highways/ roads | PCS with charger ratio (min. requirements of PCS, as per MoP) 1 FC for every 10 EVs 1 SC for every 3 EVs | Additional area as per total parking capacity at the Restaurants/ Eateries | Equipped with CCE and LCC, as may be required for fast charging.
+B. | Fast Charging facility/FCB CS (for long Distance & Heavy Duty EVs) | Every 100 Kms. both sides along the highways/ roads | At least 2 chargers 1 CCC type 1 CHAdeMO type (min. 100KW each) | Min. 15m x 7m | May be coupled with the PCS at item A above, with CCE and LCC.
+C. | Battery Swapping Station | Optional provisions as per MoP Guidelines | Standalone | Min. 5.5m x 2.75m | May be coupled with PCS at item A or FCB CS at item B above.
+ |  |  | Provided along with FBC charging Stations |  | 
+
+=== chapter 17 · gazette page 166 · pdf page 3 ===
+Explanatory Note on Electric Vehicle Charging Infrastructure (Annexure
+17.2
+E-1):
+Abbreviations:
+UNFCC - United Nations Framework Convention on Climate Change
+IPCC - Intergovernmental Panel on Climate Change
+GHG - Green House Gases
+2Ws - Two wheelers
+3Ws - Three wheelers
+4Ws - Four wheelers/PV (cars)
+PVs - Passenger Vehicles
+CVs - Commercial Vehicles
+EV - Electric Vehicle
+EVSE - Electric Vehicle Supply Equipment
+SC - Slow Charger/Slow Charging (AC)
+FC - Fast Charger/Fast Charging (DC and a few AC ones)
+BS - Battery Swap
+PCS - Public Charging Stations
+PCI - Public Charging Infrastructure
+Private CI - Private Charging Infrastructure
+NSP - Network Service Provider (information network)
+SP - Service Provider
+Contents:
+1. Rationale for EVCI establishment
+2. EV Charging Technology
+3. Options for EV Charging
+4. Charger Specifications and PCS Infrastructure
+5. Location of PCS/FCB CS in local area/Building Precincts
+166
+
+=== chapter 17 · gazette page 167 · pdf page 4 ===
+17.3 Rationale for EVCI establishment
+Rapid urbanization coupled with adoption of mechanized transportation modes has resulted in high
+emissions of Green House Gases that goes on to impact Global warming. Unless the global surface
+temperature rise is restricted to no more than 2°c compared with pre-industrial levels, the IPCC has
+warned that the world will see irreversible catastrophic climate change.
+India being a signatory to the UNFCCC, has pledged for efforts to assess the Greenhouse Gas Emissions
+(GHG) of anthropogenic origin and removal by sinks. India's per capita emissions are still considered
+low at 1.9 tonnes (2013), but its total emissions are next only to China and the US and is likely to
+overtake those of the EU by 2019.
+While comparing the Indian cities for their emission scores, Delhi is on top as the biggest emitter at
+over 38.38 million tonnes of carbon dioxide equivalent overall emissions, followed by Greater Mumbai
+at 22.7 million tonnes and Chennai at 22.1 million tonnes, Kolkata at 14.8 million tonnes, Bangalore at
+19.8 million tonnes, Hyderabad at 13.7 million tonnes and Ahmedabad at 9 million tonnes were the
+other cities whose emissions for the year were calculated sector wise.
+As per the statistics of Transport Department (GNCTD), total number of vehicles in Delhi is more than
+the combined total vehicles in Mumbai, Chennai, and Kolkata. Delhi has 85 private cars per 1000
+population against the national average of 8 cars per 1000 population. In terms of CO2 emissions due
+to motor vehicles, Delhi emits about 12.4 million tonnes while the city of Bengaluru emits about 8.6
+million tonnes.
+Therefore, addressing the quantum of emissions from the "Transport" and "Domestic" sector emerges
+to be the high priority subjects under the overarching umbrella of "Climate change mitigation" as
+committed to the UNFCC.
+Encouraging "Electric Vehicles" as a viable option for phased transportation in terms of short and long-
+distance trips with appropriate "Charging Infrastructure" is therefore, the pre-condition for this
+paradigm shift I phased migration to sustainable transportation.
+For this, changes are required in Infrastructure provisions (at Regional and City levels) and in
+Development Control Regulations (in terms of provisions therein) to include the formulations of norms
+and standards for "Charging Infrastructure" in the said Master Plan Regulations and State Byelaws for
+adoption across the country suiting local conditions.
+17.4 EV Charging Technology
+17.4.1 Electric Vehicle Supply Equipment (EVSE)
+An EVSE is a wall mounted box that supplies electric energy for recharging of electric vehicle batteries.
+Also, EVSEs have a safety lock-out feature that does not allow current to flow from the device until the
+plug is physically inserted into the car.
+EVSEs can be customized with added features like:
+(i) Authentication
+(ii) Integrated payment gateways
+(iii) Software for remote monitoring.
+As electric vehicle charging technology continues to advance, several standards and guidelines have
+become widely accepted across the industry. This section gives a brief overview of charging
+infrastructure technology, standards, and terminology.
+167
+
+=== chapter 17 · gazette page 168 · pdf page 5 ===
+17.4.2 Different types of EVSE:
+Charging speeds:
+Charging power, which determines the time required to charge a vehicle, can vary by orders of
+magnitude across charge points, as shown in Table in 3.1.1. A small household outlet may charge as
+slowly as 1.2 KW, while the most advanced rapid charging stations can charge at up to 350 KW.
+Charging infrastructure is broadly broken into three categories based on speed: Level 1, Level 2, and
+direct current (DC) fast charging (sometimes referred to as Level 3).
+(Source: Emerging Best Practices for Electric Vehicle Charging Infrastructure- Oct' 2017)
+Private Charging:
+Charging batteries of privately owned cars through domestic charging points. Billing is mostly part of
+home/domestic metering.
+AC "Slow" Charging:
+The home private chargers are generally used with 230V/15A single phase plug which can deliver a
+maximum of up to about 2.5 KW of power. The EVSE supplies AC current to the vehicle's onboard
+charger which in turn converts the AC power to DC allowing the battery to be charged.
+Public Charging:
+For charging outside the home premises, electric power needs to be billed and payment needs to be
+collected. The power drawn by these chargers may need to be managed from time to time.
+DC "Fast" Charging:
+DC current is sent to the electric car's battery directly via the charge port. Fe chargers (usually 50 KW
+or more) can supply 100 or more kilometres of range per hour of charging. The fast chargers would
+generally be used as a top-up, rather than fully charging vehicles. These are important for cab companies
+and corporate users who have a fleet of electric cars.
+17.5 Options for EV Charging
+There is an urgent need to offer flexible charging infrastructure for different vehicle segments to drive
+adoption of EVs. Charging infrastructure is the most crucial enabler in the entire EV value chain. The
+exploration of different charging models according to the local conditions shall enable faster
+deployment of electric vehicles in the country.
+17.5.1 EV share in all vehicles
+It has been broadly projected that by the current rate of adoption of EVs, about 15% of all vehicles in
+the country would be EVs by the year 2020. Therefore, while assuming percentage composition of all
+proposed capacities in public facilities of vehicle holding capacity, the Metropolitan and 'Tier I' cities
+will be assumed to have a higher percentage share of EVs, say 20% for now. The charging infrastructure
+prescriptions in all urban development guidelines shall, therefore, be in consonance with the said
+percentage.
+Power Load sanction to premises -While adding these Charging Infrastructures to the proposed set of
+building types of the Indian cities, enhanced Power Load shall have to be had for each such building
+type by the Power DISCOMs, commensurate to the total additional power requirement of simultaneous
+operation of all the prescribed charging points in the premise. With further advancement of charging
+technologies and the enhanced capacity of chargers to draw more power, it is advised that the load
+168
+
+=== chapter 17 · gazette page 169 · pdf page 6 ===
+capacity assigned to each premise should be kept with a safety factor of 1.25 with a long-term vision
+of 30 years.
+17.5.1.1 EVs charging " modes" and 'availability'
+17.5.1.2 Charging options for EV types (by ownership)
+Note:
+(i) The option of Battery Swapping (BS) for privately owned 2Ws and PV(Cars) is limited to Private
+Cl.
+(ii) For 3 Ws the BS is proposed to be made available in PCS, for faster recharge experience only.
+(iii) For PV (Buses), Captive Fast charging infrastructure for 100% internal use for fleets may be
+adopted by privately owned Depots/Garages.
+Based on the above stated EV charging technologies available and the current trend of evolving
+technologies of faster charging experience, the Ministry of Power has issued Guidelines and Standards
+for setting up Charging Infrastructure for Electric Vehicles, Ministry of Power (MoP) Guidelines
+dated 14.12.2018 for charging infrastructure to be installed at every Public Charging Station (PCS).
+'Connectivity regulations and Safety norms' shall be defined by respective authorities such as Central
+Electric Authority/MoP for grid access to such PCS/ any other charging station/infrastructure.
+17.6 Charger Specifications and PCS Infrastructure
+Any installed PCS shall have one or more electric kiosk/boards with installation of all charger models
+as prescribed in the Guidelines and Standards notified by Ministry of Power, dated 14 December 2018
+for "Charging Infrastructure for EVs" (at Annexure E-2), with other necessary arrangements as deemed
+necessary.
+Public Charging Station service providers shall be free to create charging hubs and to install additional
+number of kiosk/chargers in addition to the minimum chargers prescribed vide the MoP Guidelines,
+including options for installation of additional chargers, if required.
+Note:
+1. Minimum infrastructure requirements do not apply to Private Charging Points meant for self-
+use of individual EV owners (non-commercial basis).
+169
+
+--- table 0 (5 rows × 4 cols) ---
+Vehicle type | Slow Charging | Fast Charging | Public Cl
+2 Wheelers | Y | N | Yes/limited
+3 Wheelers | Y | N | Yes/limited
+PVs (Cars) | Y | Y | Yes
+PVs (Buses) | N | Y | Yes
+
+--- table 1 (5 rows × 4 cols) ---
+Vehicle Type | Private Cl | Public CS | Predominant place of charging
+2 Wheelers | SC/BS | SC | Point of residence I Work
+3 Wheelers | SC/BS | SC/BS | Residence / Parking stations
+PVs (Cars) | SC/BS | FC | Residence / Point of work / other public places
+PVs (Buses) | - | FC/BS | Bus Terminals/Depots
+
+=== chapter 17 · gazette page 170 · pdf page 7 ===
+2. Captive charging infrastructure for 100% internal use for a company's own fleet will not be
+required to install all type of chargers and to have NSP tie ups.
+17.7 Location of PCS / FCB CS in local area / building precincts
+In accordance with the Guidelines issued by the Ministry of Power (MoP), following minimum
+standards with regard to density of/distance between PCS in local level facilities in building premise /
+urban precincts shall be followed:
+(i) At the Local levels (within the urban area):
+•
+At least 1 Public Charging Station is to be available within a grid of 3Km x 3Km.
+(ii) At the Building premise levels (for various building types)
+•
+Private charging infrastructure (non-commercial use) for individuals.
+•
+For all commercial modes of charging EVs, at least 1PCS, as per minimum specifications laid
+under MoP guidelines.
+•
+Standalone Battery Swapping Stations may be added with the PCs.
+170
+
+=== chapter 17 · gazette page 171 · pdf page 8 ===
+17.8 Public Charging Infrastructure (PCI) - Minimum Requirements (Annexure
+E-2)
+1. Every Public Charging Infrastructure shall have the following minimum infrastructure.
+a) An exclusive transformer with all related substation equipment including safety appliances.
+b) 33/11 KV line/cables with associated equipment including as needed for line
+termination/metering etc.
+c) Appropriate civil works.
+d) Adequate space for Charging and entry/exit of vehicles.
+e) Current international standards that are prevalent and used by most vehicle manufacturers
+internationally are CCS and CHadeMO. Hence, Public Charging Stations shall have, one
+or more electric kiosk/boards with installation of all the charger models as follows:
+Note: In addition, any other fast/slow/moderate charger as per approved BIS standards whenever
+notified.
+f) The kiosk/board may have options for installation or additional chargers if required.
+g) The Public Charging Station Providers are free to create Charging Hubs and to install
+additional number of Kiosk/Chargers in addition to the minimum number of chargers
+prescribed above.
+h) Tie up with at least one online Network Service Providers (NSPs) to enable advance
+remote/online booking of charging slots by EV owners. Such online information to EV
+owners should also include information regarding location, types and numbers of chargers
+installed/available etc.
+i) Share charging station data with appropriate DISCOM and to maintain appropriate
+protocols as prescribed by such DISCOM for this purpose. CEA shall have access to this
+database.
+j) Appropriate public amenities.
+k) Where, in addition to the above, fast charging facility is also planned to be provided at the
+PCS by the PCI provider, the following additional infrastructure must be provided:
+•
+Appropriate Liquid Cooled cables if High Speed Charging Facility for onboard
+charging of Fluid Cooled Batteries (FCBs) is also planned,
+•
+Appropriate Climate Control Equipment for Fast Charging of Batteries to be used for
+swapping (i.e., not onboard)
+2. Every Public Charging Station (PCS) shall be operational only after inspection and clearance as
+communicated by a suitable clearance certificate, by the concerned electrical inspectors/technical
+171
+
+--- table 0 (9 rows × 4 cols) ---
+[#D9E2F3] | [#D9E2F3] | Rated Voltage | No. of Charging Points/No. of
+Charger Type | Charger Connectors* |  | 
+ |  | (V) | Connector guns (CG)
+[#D9E2F3] | [#D9E2F3] |  | 
+Fast | CCS (min 50 kW) | 200 – 1000 | 1/1 CG
+ | CHAdeMO (min 50 kW) | 200 – 1000 | 1/1 CG
+Slow / Moderate | Type-2 AC (min 22 kW) | 380 - 480 | 1/1 CG
+ | Bharat DC-001 (15 kW) | 72 - 200 | 1/1 CG
+ | Bharat AC-001 (10 kW) | 230 | 3/3 CG of 3.3 kW each
+
+=== chapter 17 · gazette page 172 · pdf page 9 ===
+personnel designated specifically by the respective DISCOM for this purpose. DISCOMs may also
+empanel one or more third party authorized technical agencies for this purpose.
+3. Electric Vehicle Service Equipment (EVSE) shall be type tested by an appropriate reputed
+authority.
+4. The above minimum infrastructure requirements do not apply to Private Charging Points meant for
+self-use of individual EV owners (non-commercial basis).
+5. Captive charging infrastructure for 100% internal use for a company's own/leased fleet for its own
+use will not be required to install all type of chargers and to have NSP tie ups.
+6. Public Charging Station can also have the option to add Standalone battery swapping facilities in
+addition to the above mandatory facilities, provided space/other conditions permit.
+17.8.1 Public charging Infrastructure (PCI) for long distance EVs and/or heavy day EVs
+1. Public charging stations for long distance EVs and/or heavy duty EVs (like trucks, busses etc.) shall
+have the following minimum requirements:
+a) At least two chargers of minimum 100 kW (with 200-1000 VI each of different
+specification (CCS & Chademo) and with single connector gun each in addition to the
+minimum charging infrastructure requirements as mandated for Public Charging Stations
+in para 3.
+b) Appropriate Liquid Cooled Cables for high-speed charging facility for onboard charging
+of Fluid Cooled Batteries (currently available in some long range EVs).
+c) In addition to 4.1 (i) and (ii) above, the Fast-Charging Stations (FCS) for Long Distance
+EVs and/or Heavy Duty EVs may also have the option of swapping facilities for batteries
+for meeting the charging requirements as per para 3 and para 4.1(i)&(ii) above. It is notable
+that Fluid Cooled Batteries (FCBs) are generally necessary for Fast Charging / Long
+Distance use of EVs and/or for Heavy Duty Vehicles like buses/trucks etc. FCBs will have
+higher charging rate and longer life.
+2. Such Fast-Charging Stations (FCS)which are meant only for 100% in house/captive utilisation, for
+example buses of a company, would be free to decide the charging specifications as per requirement
+for its in-house company EVs.
+17.8.2 Location of Public Charging Stations:
+1. In case of Public Charging Stations, the following minimum requirements are laid down with regard
+to density/distance between two charging points:
+a) At least one Charging Station should be available in a grid of 3 Km X 3 Km. Further, one
+Charging Station be set up at every 25 Km on both sides of highways/roads.
+b) For long range EVs (like long range SUVs) and heavy duty EVs like buses/trucks etc., there
+should be at least one Fast Charging Station with Charging Infrastructure Specifications as
+per para4. I at every 100 Kms, one on each side of the highways/road located preferably
+within/alongside the stations laid in para3 above. Within cities, such charging facilities for
+heavy duty EVs shall be located within Transport Nagar, bus depots. Moreover, swapping
+facilities are also not mandatory within cities for Buses/trucks.
+2. Additional public charging stations shall be set up in any area only after meeting the above
+requirements.
+3. The above density/distance requirements shall be used by the concerned state/UT
+Governments/their Agencies for the twin purposes of arrangement of land in any manner for public
+charging stations as well as for priority in installation of distribution network including
+transformers/feeders etc. This shall be done in all cases including where no central/state subsidy is
+provided.
+172
+
+=== chapter 17 · gazette page 173 · pdf page 10 ===
+4. The appropriate Governments (Central/State/UTs) may also give priority to existing retail outlets
+(ROs) of Oil Marketing Companies (OMCs) for installation of Public EV Charging Stations (in
+compliance with safety norms including 'firewalls' etc.) to meet the requirements as laid above.
+Further, within such ROs. Company Owned and Company Operated (COCO) ROs may be given
+higher preference.
+5. Any deviation from above norms shall be admissible only after specific approval of State Nodal
+Agency in consultation with the Central Nodal Agency.
+17.8.3 Database of Public EV Charging Stations
+Central Electricity Authority (CEA) shall create and maintain a national online database of all the Public
+Charging Stations through DISCOMs. Appropriate protocols shall be notified by DISCOMs for this
+purpose which shall be mandatorily complied by the PCS/BCS. This database shall have restricted
+access as finalised between CEA and Ministry of Power.
+17.8.4 Tariff for supply of electricity to EV Public Charging Stations
+1. The tariff for supply of electricity to EV Public Charging Station shall be determined by the
+appropriate commission, provided however that the tariff shall not be more than the average cost of
+supply plus 15 (fifteen) percent.
+2. The tariff applicable for domestic consumption shall be applicable for domestic charging.
+17.8.5 Service charges at PCS/BCS
+1. Charging of EVs is a service as already clarified by Ministry of Power vide letter No. 23/08/2018-
+R&R dated 13.04.2018.
+2. The State Nodal Agency shall fix the ceiling of the Service Charges to be charged by the Public
+Charging Stations.
+17.8.6 Priority for Rollout of EV Public Charging Infrastructure
+After extensive consultations with State Governments and different Department/Agencies of Central
+Government, phasing as follows are laid down as national priority for rollout of EV Public Charging
+Infrastructure:
+17.8.6.1 Phase 1 (1-3 Years)
+All Mega Cities with population of 4 million plus as per census 2011, all existing expressways
+connected to these Mega Cities & important Highway's connected with each of these Mega Cities shall
+be taken up for coverage. A list of these Mega Cities and existing connected expressways is attached at
+Annexure 1.
+17.8.6.2 Phase 11 (3-5 Years)
+Big cities like State Capitals, UT headquarters shall be covered for distributed and demonstrative effect.
+Further, important Highways connected with each of these Mega Cities shall be taken up for coverage.
+The above priorities for phasing of rollout shall be kept in mind by all concerned. including, different
+agencies of Central/State Governments while framing of further policies/guidelines for Public Charging
+Infrastructure of EVs, including for declaring further incentives/subsidies for such infrastructure and
+for such other purposes.
+17.8.7 Implementation Mechanism for Rollout
+1. Ministry of Power shall designate a Central Nodal Agency for the rollout. All relevant agencies
+including Central Electricity Authority (CEA) shall provide necessary support to this nodal agency.
+2. Every State Government shall nominate a Nodal Agency for that State for setting up charging
+infrastructure. The State DISCOM shall generally be the Nodal Agency for such purposes.
+173
+
+=== chapter 17 · gazette page 174 · pdf page 11 ===
+However. State Government shall be free to select a Central/State Public Sector Undertaking (PSU)
+including Urban Local Bodies (ULBs), Urban/Area Development Authorities etc. as its Nodal
+Agency.
+17.8.8 Selection of Implementation Agency for Rollout
+1. The Central Nodal Agency shall finalize the cities and expressways/highways to be finally taken
+up from the above phasing. in consultation with the respective State Governments.
+2. An Implementation Agency shall be selected by the respective State Nodal Agency and shall be
+entrusted with responsibility of installation, operation and maintenance of PCS/FCS/BCS/BSF for
+designated period as per parameters laid down in this document and as entrusted by the concerned
+Nodal Agency. The Implementation Agency can be an Aggregator as mutually decided between
+Central and State Nodal Agencies. However, they can also decide to choose different PCS/FCS
+providers for bundled packages or for individual locations as mutually decided. Further, whenever
+bundled packages are carved for bidding, such packages shall necessarily include at least one
+identified expressway/highway or part thereof prepare a cohesive regional package; the selected
+identified cities may be divided into one or more parts as necessary for such purposes.
+3. Where Implementing Agency is selected by bidding, all bidding shall be conducted by the State
+Nodal Agency.
+4. There shall be an upper cap on the Service Charges declared by the State Nodal Agency as per para
+8.2 above. Subsidy, if admissible from Central/State governments, shall be suitably factored in such
+calculations of Upper Cap/Bid Variable.
+174

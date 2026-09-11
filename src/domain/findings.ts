@@ -22,6 +22,7 @@ import { assessFireSafety, OCCUPANCY_CERTIFICATE_GATE } from './fire';
 import { assessStructuralSafety, PEER_REVIEW_HEIGHT_M, PERIODIC_AUDIT_FIRST_YEAR, PERIODIC_AUDIT_INTERVAL_YEARS } from './structural';
 import { assessAccessibility, ACCESSIBILITY_REQUIREMENTS, ACCESSIBILITY_NON_COMPOUNDABLE_NOTE } from './accessibility';
 import { assessLicensing, LICENSED_ROLE_LABEL, SITE_ENGINEER_PER_SQM } from './licensing';
+import { assessEvCharging, EV_SHARE_OF_PARKING } from './ev-charging';
 import { assessSocialHousing } from './social-housing';
 import {
   assessSustainability, RECHARGE_BORE_PER_BUILT_UP_SQM, RWH_PLOT_AREA_SQM,
@@ -463,20 +464,27 @@ export function assessProject(project: ProjectState): Assessment {
 
   // ---- 5. Parking ---------------------------------------------------------------
   const requiredEcs = Math.ceil((proposedArea / 100) * occupancy.parkingEcsPer100Sqm);
-  const evBays = Math.ceil(requiredEcs * 0.2);
+  const ev = assessEvCharging({
+    parkingBays: requiredEcs,
+    isPlottedHouse: occupancy.group === 'Residential' && !occupancy.multiUnitHousing,
+  });
   const parkingOk = project.parkingBaysProvided >= requiredEcs;
   findings.push(sourced({
     id: 'parking',
     topic: 'parking',
     status: parkingOk ? 'ok' : 'attention',
     headline: parkingOk
-      ? `${requiredEcs} car spaces needed, ${project.parkingBaysProvided} provided — including ${evBays} with EV charging.`
+      ? `${requiredEcs} car spaces needed, ${project.parkingBaysProvided} provided — with ${ev.chargingBays} laid out for EVs.`
       : `You need ${requiredEcs} car spaces and have ${project.parkingBaysProvided}. ${requiredEcs - project.parkingBaysProvided} more required.`,
-    detail: `${occupancy.parkingEcsPer100Sqm} ECS per 100 m² of built-up area. ${sqm(proposedArea)} → ${requiredEcs} ECS, of which 20% (${evBays}) must have EV charging points.`,
-    required: `${requiredEcs} ECS (incl. ${evBays} EV)`,
+    detail: `${occupancy.parkingEcsPer100Sqm} ECS per 100 m² of built-up area. ${sqm(proposedArea)} → ${requiredEcs} ECS. `
+      + `Clause 17.1 plans ${EV_SHARE_OF_PARKING * 100}% of capacity for EVs — ${ev.chargingBays} bays — and Clause 17.1.2.1 `
+      + `serves them with ${ev.slowChargers} slow charger${ev.slowChargers === 1 ? '' : 's'} (one per 3 EVs) and `
+      + `${ev.fastChargers} fast (one per 10). The premises must carry at least ${ev.additionalLoadKw} kW of additional `
+      + `sanctioned load for them, all operating together at a 1.25 safety factor.`,
+    required: `${requiredEcs} ECS, ${ev.chargingBays} EV bays, ${ev.slowChargers} SC + ${ev.fastChargers} FC`,
     proposed: `${project.parkingBaysProvided} ECS`,
-    working: `${sqm(proposedArea)} ÷ 100 × ${occupancy.parkingEcsPer100Sqm} = ${requiredEcs} ECS`,
-    clause: 'Para 3.3.4.3 (Parking Standards) & Chapter 17 (EV Charging)',
+    working: `${sqm(proposedArea)} ÷ 100 × ${occupancy.parkingEcsPer100Sqm} = ${requiredEcs} ECS · ${ev.working}`,
+    clause: `Para 3.3.4.3 (Parking Standards) & ${ev.clauseRef}`,
     fix: parkingOk ? undefined : { label: `Provide ${requiredEcs} spaces`, patch: { parkingBaysProvided: requiredEcs } },
   }, 'parking.ecs-ratios'));
 

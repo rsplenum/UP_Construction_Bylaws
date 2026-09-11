@@ -1,0 +1,3159 @@
+{
+ "chapter": "17",
+ "source": "docs/source/gazette/pdf/chapter-17.pdf",
+ "sourceMd5": "6169d5f5818b87e231e981e49114ad0c",
+ "gazettePages": [
+  164,
+  174
+ ],
+ "pageCount": 11,
+ "tableCount": 6,
+ "fillCounts": {
+  "#D9E2F3": 53
+ },
+ "colourOnlyCells": 14,
+ "colourCodedTableRows": 0,
+ "warnings": [],
+ "pages": [
+  {
+   "pdfPage": 1,
+   "gazettePage": 164,
+   "prose": "17 Provision of Electric Charging Infrastructure\n17.1 Electric Vehicle Charging Infrastructure (EVCI)\nBased on the occupancy pattern and the total parking provisions in the premises of the various building\ntypes, charging infrastructures shall be provided only for EVs, which is currently assumed to be 20%\nof all 'vehicle holding capacity'/'parking capacity' at the premise.\nAdditionally, the building premise will have to have an additional power load, equivalent to the power\nrequired for all charging points (in a PCS) to be operated simultaneously, with a safety factor of 1.25\n(refer Explanatory Note- Annexure E-1 as given in paragraph 17.2 of this chapter)\n17.1.1 Residential Buildings (plotted house)\n17.1.1.1 Charging Infrastructure requirements for individual house/self-use:\nNote: -\nThe charging infrastructure installed by a homeowner shall be construed as a Private Cl meant for self-\nuse (non-commercial basis) as per the note at clause no 4 of the explanatory notes at Annexure E-1\ngiven in paragraph 17.2 of this chapter.\n17.1.2 All other buildings (including Group Housing)\nAny PCS installed at Public/Private areas or building premises of any category that caters to commercial\nmode of charging of EVs shall be deemed as a Public Charging Station and shall have to install the\nminimum requirements of chargers as specified in the Guidelines dated 14.12.2018 of Ministry of\nPower (refer Annexure E-2 for MoP Guidelines). However, in order to provide sufficient charging\npoints for the EV share in all vehicles (refer clause 3 of the Explanatory Note-Annexure E-1 given in\nparagraph 17.2 of this chapter), ratio of types of chargers is recommended in the table below-\n17.1.2.1 Charging Infrastructure requirements for PCS (commercial use):\n164",
+   "proseLines": [
+    {
+     "y": 73,
+     "text": "17 Provision of Electric Charging Infrastructure"
+    },
+    {
+     "y": 99,
+     "text": "17.1 Electric Vehicle Charging Infrastructure (EVCI)"
+    },
+    {
+     "y": 122,
+     "text": "Based on the occupancy pattern and the total parking provisions in the premises of the various building"
+    },
+    {
+     "y": 136,
+     "text": "types, charging infrastructures shall be provided only for EVs, which is currently assumed to be 20%"
+    },
+    {
+     "y": 150,
+     "text": "of all 'vehicle holding capacity'/'parking capacity' at the premise."
+    },
+    {
+     "y": 170,
+     "text": "Additionally, the building premise will have to have an additional power load, equivalent to the power"
+    },
+    {
+     "y": 184,
+     "text": "required for all charging points (in a PCS) to be operated simultaneously, with a safety factor of 1.25"
+    },
+    {
+     "y": 198,
+     "text": "(refer Explanatory Note- Annexure E-1 as given in paragraph 17.2 of this chapter)"
+    },
+    {
+     "y": 218,
+     "text": "17.1.1 Residential Buildings (plotted house)"
+    },
+    {
+     "y": 241,
+     "text": "17.1.1.1 Charging Infrastructure requirements for individual house/self-use:"
+    },
+    {
+     "y": 364,
+     "text": "Note: -"
+    },
+    {
+     "y": 384,
+     "text": "The charging infrastructure installed by a homeowner shall be construed as a Private Cl meant for self-"
+    },
+    {
+     "y": 398,
+     "text": "use (non-commercial basis) as per the note at clause no 4 of the explanatory notes at Annexure E-1"
+    },
+    {
+     "y": 412,
+     "text": "given in paragraph 17.2 of this chapter."
+    },
+    {
+     "y": 433,
+     "text": "17.1.2 All other buildings (including Group Housing)"
+    },
+    {
+     "y": 453,
+     "text": "Any PCS installed at Public/Private areas or building premises of any category that caters to commercial"
+    },
+    {
+     "y": 467,
+     "text": "mode of charging of EVs shall be deemed as a Public Charging Station and shall have to install the"
+    },
+    {
+     "y": 481,
+     "text": "minimum requirements of chargers as specified in the Guidelines dated 14.12.2018 of Ministry of"
+    },
+    {
+     "y": 495,
+     "text": "Power (refer Annexure E-2 for MoP Guidelines). However, in order to provide sufficient charging"
+    },
+    {
+     "y": 509,
+     "text": "points for the EV share in all vehicles (refer clause 3 of the Explanatory Note-Annexure E-1 given in"
+    },
+    {
+     "y": 523,
+     "text": "paragraph 17.2 of this chapter), ratio of types of chargers is recommended in the table below-"
+    },
+    {
+     "y": 546,
+     "text": "17.1.2.1 Charging Infrastructure requirements for PCS (commercial use):"
+    },
+    {
+     "y": 788,
+     "text": "164"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.2,
+      257.0,
+      525.0,
+      356.4
+     ],
+     "rows": [
+      [
+       {
+        "text": "Building Type",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.2,
+         257.0,
+         227.8,
+         273.1
+        ]
+       },
+       {
+        "text": "Plotted House",
+        "fill": "#D9E2F3",
+        "bbox": [
+         227.8,
+         257.0,
+         525.0,
+         273.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Ownership of station",
+        "bbox": [
+         72.2,
+         273.1,
+         227.8,
+         291.1
+        ]
+       },
+       {
+        "text": "Private (Owner)",
+        "bbox": [
+         227.8,
+         273.1,
+         525.0,
+         291.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Connection and Metering",
+        "bbox": [
+         72.2,
+         291.1,
+         227.8,
+         306.4
+        ]
+       },
+       {
+        "text": "Domestic meter",
+        "bbox": [
+         227.8,
+         291.1,
+         525.0,
+         306.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Type of Charger",
+        "bbox": [
+         72.2,
+         306.4,
+         227.8,
+         323.6
+        ]
+       },
+       {
+        "text": "Slow charger as per owner's specific requirements",
+        "bbox": [
+         227.8,
+         306.4,
+         525.0,
+         323.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Modes of Charger",
+        "bbox": [
+         72.2,
+         323.6,
+         227.8,
+         339.8
+        ]
+       },
+       {
+        "text": "AC (Single charging gun)",
+        "bbox": [
+         227.8,
+         323.6,
+         525.0,
+         339.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Norms of Provisions",
+        "bbox": [
+         72.2,
+         339.8,
+         227.8,
+         356.4
+        ]
+       },
+       {
+        "text": "Min.1 SC and additional provisions as per the owner individual",
+        "bbox": [
+         227.8,
+         339.8,
+         525.0,
+         356.4
+        ]
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      72.2,
+      559.9,
+      525.0,
+      750.4
+     ],
+     "rows": [
+      [
+       {
+        "text": "Building Type",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.2,
+         559.9,
+         164.0,
+         574.3
+        ]
+       },
+       {
+        "text": "Any building type",
+        "fill": "#D9E2F3",
+        "bbox": [
+         164.0,
+         559.9,
+         525.0,
+         574.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Ownership of\nStation",
+        "bbox": [
+         72.2,
+         574.3,
+         164.0,
+         604.3
+        ]
+       },
+       {
+        "text": "Service provider",
+        "bbox": [
+         164.0,
+         574.3,
+         525.0,
+         604.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Connection and\nMetering",
+        "bbox": [
+         72.2,
+         604.3,
+         164.0,
+         632.9
+        ]
+       },
+       {
+        "text": "Commercial Metering and Payment",
+        "bbox": [
+         164.0,
+         604.3,
+         525.0,
+         632.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Type of Charger",
+        "bbox": [
+         72.2,
+         632.9,
+         164.0,
+         659.2
+        ]
+       },
+       {
+        "text": "as per min requirements specified in MoP Guidelines (refer Annexure E-2 given\nin paragraph 17.8 of this chapter)",
+        "bbox": [
+         164.0,
+         632.9,
+         525.0,
+         659.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Additional\nChargers",
+        "bbox": [
+         72.2,
+         659.2,
+         164.0,
+         703.4
+        ]
+       },
+       {
+        "text": "PCS service providers shall install additional number of kiosk/chargers beyond\nthe minimum specified requirements to meet the ratio of charging points as\nprescribed below (by the type of vehicles).",
+        "bbox": [
+         164.0,
+         659.2,
+         525.0,
+         703.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Norms of\nProvisions for\ncharging points",
+        "bbox": [
+         72.2,
+         703.4,
+         164.0,
+         750.4
+        ]
+       },
+       {
+        "text": "4Ws\n1 SC-each 3 EVs\n1 FC-each 10 EVs",
+        "bbox": [
+         164.0,
+         703.4,
+         255.7,
+         750.4
+        ]
+       },
+       {
+        "text": "3Ws\n1 SC - each 2\nEVs",
+        "bbox": [
+         255.7,
+         703.4,
+         343.1,
+         750.4
+        ]
+       },
+       {
+        "text": "2Ws\n1 SC - each 2\nEVs",
+        "bbox": [
+         343.1,
+         703.4,
+         426.7,
+         750.4
+        ]
+       },
+       {
+        "text": "PV (Buses)\n1 FC- each 10 EVS",
+        "bbox": [
+         426.7,
+         703.4,
+         525.0,
+         750.4
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 2,
+   "gazettePage": 165,
+   "prose": "Note:\n(i) Charging bays shall be planned currently at 20% capacity of all vehicles including 2Ws and\nPVs(cars)\n(ii) Open metering and on-spot payment options to be available for all users.\n(iii) Provision of FCB, CS and BS shall not be mandatory and will be at the discretion of the service\nprovider.\nAbbreviations used:\n2Ws Two wheelers\n3Ws Three wheelers\n4Ws Four wheelers/PV (cars)\nPVs Passenger Vehicles\nEV Electric Vehicle\nSC Slow Charger/Slow Charging (AC)\nFC Fast Charger/Fast Charging (DC and a few AC ones)\nPCS Public Charging Stations\nFCBCS Fluid Cooled Battery Charging Station\nBS Battery Swap\n17.1.2.2 Space Norms for Electric Vehicle Charging Infrastructure:\nSource: Urban & Regional Development Plans Formulation and Implementation Guidelines (URDPFl-\n2014)\n165",
+   "proseLines": [
+    {
+     "y": 80,
+     "text": "Note:"
+    },
+    {
+     "y": 100,
+     "text": "(i) Charging bays shall be planned currently at 20% capacity of all vehicles including 2Ws and"
+    },
+    {
+     "y": 114,
+     "text": "PVs(cars)"
+    },
+    {
+     "y": 134,
+     "text": "(ii) Open metering and on-spot payment options to be available for all users."
+    },
+    {
+     "y": 154,
+     "text": "(iii) Provision of FCB, CS and BS shall not be mandatory and will be at the discretion of the service"
+    },
+    {
+     "y": 168,
+     "text": "provider."
+    },
+    {
+     "y": 188,
+     "text": "Abbreviations used:"
+    },
+    {
+     "y": 207,
+     "text": "2Ws Two wheelers"
+    },
+    {
+     "y": 222,
+     "text": "3Ws Three wheelers"
+    },
+    {
+     "y": 236,
+     "text": "4Ws Four wheelers/PV (cars)"
+    },
+    {
+     "y": 249,
+     "text": "PVs Passenger Vehicles"
+    },
+    {
+     "y": 263,
+     "text": "EV Electric Vehicle"
+    },
+    {
+     "y": 277,
+     "text": "SC Slow Charger/Slow Charging (AC)"
+    },
+    {
+     "y": 291,
+     "text": "FC Fast Charger/Fast Charging (DC and a few AC ones)"
+    },
+    {
+     "y": 305,
+     "text": "PCS Public Charging Stations"
+    },
+    {
+     "y": 319,
+     "text": "FCBCS Fluid Cooled Battery Charging Station"
+    },
+    {
+     "y": 333,
+     "text": "BS Battery Swap"
+    },
+    {
+     "y": 354,
+     "text": "17.1.2.2 Space Norms for Electric Vehicle Charging Infrastructure:"
+    },
+    {
+     "y": 661,
+     "text": "Source: Urban & Regional Development Plans Formulation and Implementation Guidelines (URDPFl-"
+    },
+    {
+     "y": 675,
+     "text": "2014)"
+    },
+    {
+     "y": 781,
+     "text": "165"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.1,
+      366.1,
+      525.1,
+      652.5
+     ],
+     "rows": [
+      [
+       {
+        "text": "Sl.",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.1,
+         366.1,
+         97.7,
+         384.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         97.7,
+         366.1,
+         171.1,
+         376.0
+        ]
+       },
+       {
+        "text": "Population",
+        "fill": "#D9E2F3",
+        "bbox": [
+         171.1,
+         366.1,
+         248.8,
+         384.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         248.8,
+         366.1,
+         439.7,
+         376.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         439.7,
+         366.1,
+         525.1,
+         376.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "Category",
+        "fill": "#D9E2F3",
+        "bbox": [
+         97.7,
+         376.0,
+         171.1,
+         390.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Land area requirement",
+        "fill": "#D9E2F3",
+        "bbox": [
+         248.8,
+         376.0,
+         439.7,
+         390.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Other controls",
+        "fill": "#D9E2F3",
+        "bbox": [
+         439.7,
+         376.0,
+         525.1,
+         390.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": "No.",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.1,
+         384.5,
+         97.7,
+         400.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "served per unit",
+        "fill": "#D9E2F3",
+        "bbox": [
+         171.1,
+         384.5,
+         248.8,
+         400.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         97.7,
+         390.0,
+         171.1,
+         400.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         248.8,
+         390.0,
+         439.7,
+         400.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         439.7,
+         390.0,
+         525.1,
+         400.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.1,
+         400.2,
+         97.7,
+         404.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         97.7,
+         400.2,
+         171.1,
+         404.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         171.1,
+         400.2,
+         248.8,
+         404.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         248.8,
+         400.2,
+         354.0,
+         404.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         354.0,
+         400.2,
+         439.7,
+         404.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         439.7,
+         400.2,
+         525.1,
+         404.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.1,
+         404.8,
+         97.7,
+         418.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         97.7,
+         404.8,
+         171.1,
+         418.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         171.1,
+         404.8,
+         248.8,
+         418.8
+        ]
+       },
+       {
+        "text": "Type of Facility",
+        "fill": "#D9E2F3",
+        "bbox": [
+         248.8,
+         404.8,
+         354.0,
+         418.8
+        ]
+       },
+       {
+        "text": "Area Required",
+        "fill": "#D9E2F3",
+        "bbox": [
+         354.0,
+         404.8,
+         439.7,
+         418.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         439.7,
+         404.8,
+         525.1,
+         418.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.1,
+         418.8,
+         97.7,
+         423.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         97.7,
+         418.8,
+         171.1,
+         423.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         171.1,
+         418.8,
+         248.8,
+         423.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         248.8,
+         418.8,
+         354.0,
+         423.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         354.0,
+         418.8,
+         439.7,
+         423.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         439.7,
+         418.8,
+         525.1,
+         423.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "A.",
+        "bbox": [
+         72.1,
+         423.1,
+         97.7,
+         497.6
+        ]
+       },
+       {
+        "text": "Public Charging\nStations",
+        "bbox": [
+         97.7,
+         423.1,
+         171.1,
+         497.6
+        ]
+       },
+       {
+        "text": "Every 25 Kms,\nboth sides along\nthe highways/\nroads",
+        "bbox": [
+         171.1,
+         423.1,
+         248.8,
+         497.6
+        ]
+       },
+       {
+        "text": "PCS with charger ratio\n(min. requirements of\nPCS, as per MoP)\n1 FC for every 10 EVs\n1 SC for every 3 EVs",
+        "bbox": [
+         248.8,
+         423.1,
+         354.0,
+         497.6
+        ]
+       },
+       {
+        "text": "Additional area as\nper total parking\ncapacity at the\nRestaurants/\nEateries",
+        "bbox": [
+         354.0,
+         423.1,
+         439.7,
+         497.6
+        ]
+       },
+       {
+        "text": "Equipped with\nCCE and LCC, as\nmay be required for\nfast charging.",
+        "bbox": [
+         439.7,
+         423.1,
+         525.1,
+         497.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "B.",
+        "bbox": [
+         72.1,
+         497.6,
+         97.7,
+         582.3
+        ]
+       },
+       {
+        "text": "Fast Charging\nfacility/FCB CS\n(for long\nDistance &\nHeavy Duty\nEVs)",
+        "bbox": [
+         97.7,
+         497.6,
+         171.1,
+         582.3
+        ]
+       },
+       {
+        "text": "Every 100 Kms.\nboth sides along\nthe highways/\nroads",
+        "bbox": [
+         171.1,
+         497.6,
+         248.8,
+         582.3
+        ]
+       },
+       {
+        "text": "At least 2 chargers\n1 CCC type\n1 CHAdeMO type\n(min. 100KW each)",
+        "bbox": [
+         248.8,
+         497.6,
+         354.0,
+         582.3
+        ]
+       },
+       {
+        "text": "Min. 15m x 7m",
+        "bbox": [
+         354.0,
+         497.6,
+         439.7,
+         582.3
+        ]
+       },
+       {
+        "text": "May be coupled\nwith the PCS at\nitem A above, with\nCCE and LCC.",
+        "bbox": [
+         439.7,
+         497.6,
+         525.1,
+         582.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "C.",
+        "bbox": [
+         72.1,
+         582.3,
+         97.7,
+         652.5
+        ]
+       },
+       {
+        "text": "Battery\nSwapping\nStation",
+        "bbox": [
+         97.7,
+         582.3,
+         171.1,
+         652.5
+        ]
+       },
+       {
+        "text": "Optional\nprovisions as per\nMoP Guidelines",
+        "bbox": [
+         171.1,
+         582.3,
+         248.8,
+         652.5
+        ]
+       },
+       {
+        "text": "Standalone",
+        "bbox": [
+         248.8,
+         582.3,
+         354.0,
+         617.3
+        ]
+       },
+       {
+        "text": "Min. 5.5m x 2.75m",
+        "bbox": [
+         354.0,
+         582.3,
+         439.7,
+         652.5
+        ]
+       },
+       {
+        "text": "May be coupled\nwith PCS at item A\nor FCB CS at item\nB above.",
+        "bbox": [
+         439.7,
+         582.3,
+         525.1,
+         652.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Provided along with\nFBC charging Stations",
+        "bbox": [
+         248.8,
+         617.3,
+         354.0,
+         652.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 3,
+   "gazettePage": 166,
+   "prose": "Explanatory Note on Electric Vehicle Charging Infrastructure (Annexure\n17.2\nE-1):\nAbbreviations:\nUNFCC - United Nations Framework Convention on Climate Change\nIPCC - Intergovernmental Panel on Climate Change\nGHG - Green House Gases\n2Ws - Two wheelers\n3Ws - Three wheelers\n4Ws - Four wheelers/PV (cars)\nPVs - Passenger Vehicles\nCVs - Commercial Vehicles\nEV - Electric Vehicle\nEVSE - Electric Vehicle Supply Equipment\nSC - Slow Charger/Slow Charging (AC)\nFC - Fast Charger/Fast Charging (DC and a few AC ones)\nBS - Battery Swap\nPCS - Public Charging Stations\nPCI - Public Charging Infrastructure\nPrivate CI - Private Charging Infrastructure\nNSP - Network Service Provider (information network)\nSP - Service Provider\nContents:\n1. Rationale for EVCI establishment\n2. EV Charging Technology\n3. Options for EV Charging\n4. Charger Specifications and PCS Infrastructure\n5. Location of PCS/FCB CS in local area/Building Precincts\n166",
+   "proseLines": [
+    {
+     "y": 75,
+     "text": "Explanatory Note on Electric Vehicle Charging Infrastructure (Annexure"
+    },
+    {
+     "y": 76,
+     "text": "17.2"
+    },
+    {
+     "y": 92,
+     "text": "E-1):"
+    },
+    {
+     "y": 115,
+     "text": "Abbreviations:"
+    },
+    {
+     "y": 134,
+     "text": "UNFCC - United Nations Framework Convention on Climate Change"
+    },
+    {
+     "y": 148,
+     "text": "IPCC - Intergovernmental Panel on Climate Change"
+    },
+    {
+     "y": 162,
+     "text": "GHG - Green House Gases"
+    },
+    {
+     "y": 176,
+     "text": "2Ws - Two wheelers"
+    },
+    {
+     "y": 190,
+     "text": "3Ws - Three wheelers"
+    },
+    {
+     "y": 204,
+     "text": "4Ws - Four wheelers/PV (cars)"
+    },
+    {
+     "y": 218,
+     "text": "PVs - Passenger Vehicles"
+    },
+    {
+     "y": 232,
+     "text": "CVs - Commercial Vehicles"
+    },
+    {
+     "y": 246,
+     "text": "EV - Electric Vehicle"
+    },
+    {
+     "y": 260,
+     "text": "EVSE - Electric Vehicle Supply Equipment"
+    },
+    {
+     "y": 274,
+     "text": "SC - Slow Charger/Slow Charging (AC)"
+    },
+    {
+     "y": 288,
+     "text": "FC - Fast Charger/Fast Charging (DC and a few AC ones)"
+    },
+    {
+     "y": 302,
+     "text": "BS - Battery Swap"
+    },
+    {
+     "y": 316,
+     "text": "PCS - Public Charging Stations"
+    },
+    {
+     "y": 330,
+     "text": "PCI - Public Charging Infrastructure"
+    },
+    {
+     "y": 344,
+     "text": "Private CI - Private Charging Infrastructure"
+    },
+    {
+     "y": 358,
+     "text": "NSP - Network Service Provider (information network)"
+    },
+    {
+     "y": 372,
+     "text": "SP - Service Provider"
+    },
+    {
+     "y": 392,
+     "text": "Contents:"
+    },
+    {
+     "y": 412,
+     "text": "1. Rationale for EVCI establishment"
+    },
+    {
+     "y": 432,
+     "text": "2. EV Charging Technology"
+    },
+    {
+     "y": 452,
+     "text": "3. Options for EV Charging"
+    },
+    {
+     "y": 472,
+     "text": "4. Charger Specifications and PCS Infrastructure"
+    },
+    {
+     "y": 492,
+     "text": "5. Location of PCS/FCB CS in local area/Building Precincts"
+    },
+    {
+     "y": 781,
+     "text": "166"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 4,
+   "gazettePage": 167,
+   "prose": "17.3 Rationale for EVCI establishment\nRapid urbanization coupled with adoption of mechanized transportation modes has resulted in high\nemissions of Green House Gases that goes on to impact Global warming. Unless the global surface\ntemperature rise is restricted to no more than 2\u00b0c compared with pre-industrial levels, the IPCC has\nwarned that the world will see irreversible catastrophic climate change.\nIndia being a signatory to the UNFCCC, has pledged for efforts to assess the Greenhouse Gas Emissions\n(GHG) of anthropogenic origin and removal by sinks. India's per capita emissions are still considered\nlow at 1.9 tonnes (2013), but its total emissions are next only to China and the US and is likely to\novertake those of the EU by 2019.\nWhile comparing the Indian cities for their emission scores, Delhi is on top as the biggest emitter at\nover 38.38 million tonnes of carbon dioxide equivalent overall emissions, followed by Greater Mumbai\nat 22.7 million tonnes and Chennai at 22.1 million tonnes, Kolkata at 14.8 million tonnes, Bangalore at\n19.8 million tonnes, Hyderabad at 13.7 million tonnes and Ahmedabad at 9 million tonnes were the\nother cities whose emissions for the year were calculated sector wise.\nAs per the statistics of Transport Department (GNCTD), total number of vehicles in Delhi is more than\nthe combined total vehicles in Mumbai, Chennai, and Kolkata. Delhi has 85 private cars per 1000\npopulation against the national average of 8 cars per 1000 population. In terms of CO2 emissions due\nto motor vehicles, Delhi emits about 12.4 million tonnes while the city of Bengaluru emits about 8.6\nmillion tonnes.\nTherefore, addressing the quantum of emissions from the \"Transport\" and \"Domestic\" sector emerges\nto be the high priority subjects under the overarching umbrella of \"Climate change mitigation\" as\ncommitted to the UNFCC.\nEncouraging \"Electric Vehicles\" as a viable option for phased transportation in terms of short and long-\ndistance trips with appropriate \"Charging Infrastructure\" is therefore, the pre-condition for this\nparadigm shift I phased migration to sustainable transportation.\nFor this, changes are required in Infrastructure provisions (at Regional and City levels) and in\nDevelopment Control Regulations (in terms of provisions therein) to include the formulations of norms\nand standards for \"Charging Infrastructure\" in the said Master Plan Regulations and State Byelaws for\nadoption across the country suiting local conditions.\n17.4 EV Charging Technology\n17.4.1 Electric Vehicle Supply Equipment (EVSE)\nAn EVSE is a wall mounted box that supplies electric energy for recharging of electric vehicle batteries.\nAlso, EVSEs have a safety lock-out feature that does not allow current to flow from the device until the\nplug is physically inserted into the car.\nEVSEs can be customized with added features like:\n(i) Authentication\n(ii) Integrated payment gateways\n(iii) Software for remote monitoring.\nAs electric vehicle charging technology continues to advance, several standards and guidelines have\nbecome widely accepted across the industry. This section gives a brief overview of charging\ninfrastructure technology, standards, and terminology.\n167",
+   "proseLines": [
+    {
+     "y": 74,
+     "text": "17.3 Rationale for EVCI establishment"
+    },
+    {
+     "y": 96,
+     "text": "Rapid urbanization coupled with adoption of mechanized transportation modes has resulted in high"
+    },
+    {
+     "y": 110,
+     "text": "emissions of Green House Gases that goes on to impact Global warming. Unless the global surface"
+    },
+    {
+     "y": 124,
+     "text": "temperature rise is restricted to no more than 2\u00b0c compared with pre-industrial levels, the IPCC has"
+    },
+    {
+     "y": 138,
+     "text": "warned that the world will see irreversible catastrophic climate change."
+    },
+    {
+     "y": 158,
+     "text": "India being a signatory to the UNFCCC, has pledged for efforts to assess the Greenhouse Gas Emissions"
+    },
+    {
+     "y": 172,
+     "text": "(GHG) of anthropogenic origin and removal by sinks. India's per capita emissions are still considered"
+    },
+    {
+     "y": 186,
+     "text": "low at 1.9 tonnes (2013), but its total emissions are next only to China and the US and is likely to"
+    },
+    {
+     "y": 200,
+     "text": "overtake those of the EU by 2019."
+    },
+    {
+     "y": 220,
+     "text": "While comparing the Indian cities for their emission scores, Delhi is on top as the biggest emitter at"
+    },
+    {
+     "y": 234,
+     "text": "over 38.38 million tonnes of carbon dioxide equivalent overall emissions, followed by Greater Mumbai"
+    },
+    {
+     "y": 248,
+     "text": "at 22.7 million tonnes and Chennai at 22.1 million tonnes, Kolkata at 14.8 million tonnes, Bangalore at"
+    },
+    {
+     "y": 262,
+     "text": "19.8 million tonnes, Hyderabad at 13.7 million tonnes and Ahmedabad at 9 million tonnes were the"
+    },
+    {
+     "y": 276,
+     "text": "other cities whose emissions for the year were calculated sector wise."
+    },
+    {
+     "y": 296,
+     "text": "As per the statistics of Transport Department (GNCTD), total number of vehicles in Delhi is more than"
+    },
+    {
+     "y": 310,
+     "text": "the combined total vehicles in Mumbai, Chennai, and Kolkata. Delhi has 85 private cars per 1000"
+    },
+    {
+     "y": 324,
+     "text": "population against the national average of 8 cars per 1000 population. In terms of CO2 emissions due"
+    },
+    {
+     "y": 338,
+     "text": "to motor vehicles, Delhi emits about 12.4 million tonnes while the city of Bengaluru emits about 8.6"
+    },
+    {
+     "y": 352,
+     "text": "million tonnes."
+    },
+    {
+     "y": 372,
+     "text": "Therefore, addressing the quantum of emissions from the \"Transport\" and \"Domestic\" sector emerges"
+    },
+    {
+     "y": 386,
+     "text": "to be the high priority subjects under the overarching umbrella of \"Climate change mitigation\" as"
+    },
+    {
+     "y": 400,
+     "text": "committed to the UNFCC."
+    },
+    {
+     "y": 420,
+     "text": "Encouraging \"Electric Vehicles\" as a viable option for phased transportation in terms of short and long-"
+    },
+    {
+     "y": 434,
+     "text": "distance trips with appropriate \"Charging Infrastructure\" is therefore, the pre-condition for this"
+    },
+    {
+     "y": 448,
+     "text": "paradigm shift I phased migration to sustainable transportation."
+    },
+    {
+     "y": 468,
+     "text": "For this, changes are required in Infrastructure provisions (at Regional and City levels) and in"
+    },
+    {
+     "y": 482,
+     "text": "Development Control Regulations (in terms of provisions therein) to include the formulations of norms"
+    },
+    {
+     "y": 496,
+     "text": "and standards for \"Charging Infrastructure\" in the said Master Plan Regulations and State Byelaws for"
+    },
+    {
+     "y": 510,
+     "text": "adoption across the country suiting local conditions."
+    },
+    {
+     "y": 531,
+     "text": "17.4 EV Charging Technology"
+    },
+    {
+     "y": 554,
+     "text": "17.4.1 Electric Vehicle Supply Equipment (EVSE)"
+    },
+    {
+     "y": 575,
+     "text": "An EVSE is a wall mounted box that supplies electric energy for recharging of electric vehicle batteries."
+    },
+    {
+     "y": 589,
+     "text": "Also, EVSEs have a safety lock-out feature that does not allow current to flow from the device until the"
+    },
+    {
+     "y": 603,
+     "text": "plug is physically inserted into the car."
+    },
+    {
+     "y": 623,
+     "text": "EVSEs can be customized with added features like:"
+    },
+    {
+     "y": 643,
+     "text": "(i) Authentication"
+    },
+    {
+     "y": 663,
+     "text": "(ii) Integrated payment gateways"
+    },
+    {
+     "y": 683,
+     "text": "(iii) Software for remote monitoring."
+    },
+    {
+     "y": 703,
+     "text": "As electric vehicle charging technology continues to advance, several standards and guidelines have"
+    },
+    {
+     "y": 717,
+     "text": "become widely accepted across the industry. This section gives a brief overview of charging"
+    },
+    {
+     "y": 731,
+     "text": "infrastructure technology, standards, and terminology."
+    },
+    {
+     "y": 769,
+     "text": "167"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 5,
+   "gazettePage": 168,
+   "prose": "17.4.2 Different types of EVSE:\nCharging speeds:\nCharging power, which determines the time required to charge a vehicle, can vary by orders of\nmagnitude across charge points, as shown in Table in 3.1.1. A small household outlet may charge as\nslowly as 1.2 KW, while the most advanced rapid charging stations can charge at up to 350 KW.\nCharging infrastructure is broadly broken into three categories based on speed: Level 1, Level 2, and\ndirect current (DC) fast charging (sometimes referred to as Level 3).\n(Source: Emerging Best Practices for Electric Vehicle Charging Infrastructure- Oct' 2017)\nPrivate Charging:\nCharging batteries of privately owned cars through domestic charging points. Billing is mostly part of\nhome/domestic metering.\nAC \"Slow\" Charging:\nThe home private chargers are generally used with 230V/15A single phase plug which can deliver a\nmaximum of up to about 2.5 KW of power. The EVSE supplies AC current to the vehicle's onboard\ncharger which in turn converts the AC power to DC allowing the battery to be charged.\nPublic Charging:\nFor charging outside the home premises, electric power needs to be billed and payment needs to be\ncollected. The power drawn by these chargers may need to be managed from time to time.\nDC \"Fast\" Charging:\nDC current is sent to the electric car's battery directly via the charge port. Fe chargers (usually 50 KW\nor more) can supply 100 or more kilometres of range per hour of charging. The fast chargers would\ngenerally be used as a top-up, rather than fully charging vehicles. These are important for cab companies\nand corporate users who have a fleet of electric cars.\n17.5 Options for EV Charging\nThere is an urgent need to offer flexible charging infrastructure for different vehicle segments to drive\nadoption of EVs. Charging infrastructure is the most crucial enabler in the entire EV value chain. The\nexploration of different charging models according to the local conditions shall enable faster\ndeployment of electric vehicles in the country.\n17.5.1 EV share in all vehicles\nIt has been broadly projected that by the current rate of adoption of EVs, about 15% of all vehicles in\nthe country would be EVs by the year 2020. Therefore, while assuming percentage composition of all\nproposed capacities in public facilities of vehicle holding capacity, the Metropolitan and 'Tier I' cities\nwill be assumed to have a higher percentage share of EVs, say 20% for now. The charging infrastructure\nprescriptions in all urban development guidelines shall, therefore, be in consonance with the said\npercentage.\nPower Load sanction to premises -While adding these Charging Infrastructures to the proposed set of\nbuilding types of the Indian cities, enhanced Power Load shall have to be had for each such building\ntype by the Power DISCOMs, commensurate to the total additional power requirement of simultaneous\noperation of all the prescribed charging points in the premise. With further advancement of charging\ntechnologies and the enhanced capacity of chargers to draw more power, it is advised that the load\n168",
+   "proseLines": [
+    {
+     "y": 94,
+     "text": "17.4.2 Different types of EVSE:"
+    },
+    {
+     "y": 114,
+     "text": "Charging speeds:"
+    },
+    {
+     "y": 134,
+     "text": "Charging power, which determines the time required to charge a vehicle, can vary by orders of"
+    },
+    {
+     "y": 148,
+     "text": "magnitude across charge points, as shown in Table in 3.1.1. A small household outlet may charge as"
+    },
+    {
+     "y": 162,
+     "text": "slowly as 1.2 KW, while the most advanced rapid charging stations can charge at up to 350 KW."
+    },
+    {
+     "y": 176,
+     "text": "Charging infrastructure is broadly broken into three categories based on speed: Level 1, Level 2, and"
+    },
+    {
+     "y": 190,
+     "text": "direct current (DC) fast charging (sometimes referred to as Level 3)."
+    },
+    {
+     "y": 210,
+     "text": "(Source: Emerging Best Practices for Electric Vehicle Charging Infrastructure- Oct' 2017)"
+    },
+    {
+     "y": 230,
+     "text": "Private Charging:"
+    },
+    {
+     "y": 250,
+     "text": "Charging batteries of privately owned cars through domestic charging points. Billing is mostly part of"
+    },
+    {
+     "y": 264,
+     "text": "home/domestic metering."
+    },
+    {
+     "y": 284,
+     "text": "AC \"Slow\" Charging:"
+    },
+    {
+     "y": 304,
+     "text": "The home private chargers are generally used with 230V/15A single phase plug which can deliver a"
+    },
+    {
+     "y": 318,
+     "text": "maximum of up to about 2.5 KW of power. The EVSE supplies AC current to the vehicle's onboard"
+    },
+    {
+     "y": 332,
+     "text": "charger which in turn converts the AC power to DC allowing the battery to be charged."
+    },
+    {
+     "y": 352,
+     "text": "Public Charging:"
+    },
+    {
+     "y": 372,
+     "text": "For charging outside the home premises, electric power needs to be billed and payment needs to be"
+    },
+    {
+     "y": 386,
+     "text": "collected. The power drawn by these chargers may need to be managed from time to time."
+    },
+    {
+     "y": 406,
+     "text": "DC \"Fast\" Charging:"
+    },
+    {
+     "y": 426,
+     "text": "DC current is sent to the electric car's battery directly via the charge port. Fe chargers (usually 50 KW"
+    },
+    {
+     "y": 440,
+     "text": "or more) can supply 100 or more kilometres of range per hour of charging. The fast chargers would"
+    },
+    {
+     "y": 454,
+     "text": "generally be used as a top-up, rather than fully charging vehicles. These are important for cab companies"
+    },
+    {
+     "y": 468,
+     "text": "and corporate users who have a fleet of electric cars."
+    },
+    {
+     "y": 489,
+     "text": "17.5 Options for EV Charging"
+    },
+    {
+     "y": 511,
+     "text": "There is an urgent need to offer flexible charging infrastructure for different vehicle segments to drive"
+    },
+    {
+     "y": 525,
+     "text": "adoption of EVs. Charging infrastructure is the most crucial enabler in the entire EV value chain. The"
+    },
+    {
+     "y": 539,
+     "text": "exploration of different charging models according to the local conditions shall enable faster"
+    },
+    {
+     "y": 553,
+     "text": "deployment of electric vehicles in the country."
+    },
+    {
+     "y": 574,
+     "text": "17.5.1 EV share in all vehicles"
+    },
+    {
+     "y": 594,
+     "text": "It has been broadly projected that by the current rate of adoption of EVs, about 15% of all vehicles in"
+    },
+    {
+     "y": 608,
+     "text": "the country would be EVs by the year 2020. Therefore, while assuming percentage composition of all"
+    },
+    {
+     "y": 622,
+     "text": "proposed capacities in public facilities of vehicle holding capacity, the Metropolitan and 'Tier I' cities"
+    },
+    {
+     "y": 636,
+     "text": "will be assumed to have a higher percentage share of EVs, say 20% for now. The charging infrastructure"
+    },
+    {
+     "y": 650,
+     "text": "prescriptions in all urban development guidelines shall, therefore, be in consonance with the said"
+    },
+    {
+     "y": 664,
+     "text": "percentage."
+    },
+    {
+     "y": 684,
+     "text": "Power Load sanction to premises -While adding these Charging Infrastructures to the proposed set of"
+    },
+    {
+     "y": 698,
+     "text": "building types of the Indian cities, enhanced Power Load shall have to be had for each such building"
+    },
+    {
+     "y": 712,
+     "text": "type by the Power DISCOMs, commensurate to the total additional power requirement of simultaneous"
+    },
+    {
+     "y": 726,
+     "text": "operation of all the prescribed charging points in the premise. With further advancement of charging"
+    },
+    {
+     "y": 740,
+     "text": "technologies and the enhanced capacity of chargers to draw more power, it is advised that the load"
+    },
+    {
+     "y": 769,
+     "text": "168"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 6,
+   "gazettePage": 169,
+   "prose": "capacity assigned to each premise should be kept with a safety factor of 1.25 with a long-term vision\nof 30 years.\n17.5.1.1 EVs charging \" modes\" and 'availability'\n17.5.1.2 Charging options for EV types (by ownership)\nNote:\n(i) The option of Battery Swapping (BS) for privately owned 2Ws and PV(Cars) is limited to Private\nCl.\n(ii) For 3 Ws the BS is proposed to be made available in PCS, for faster recharge experience only.\n(iii) For PV (Buses), Captive Fast charging infrastructure for 100% internal use for fleets may be\nadopted by privately owned Depots/Garages.\nBased on the above stated EV charging technologies available and the current trend of evolving\ntechnologies of faster charging experience, the Ministry of Power has issued Guidelines and Standards\nfor setting up Charging Infrastructure for Electric Vehicles, Ministry of Power (MoP) Guidelines\ndated 14.12.2018 for charging infrastructure to be installed at every Public Charging Station (PCS).\n'Connectivity regulations and Safety norms' shall be defined by respective authorities such as Central\nElectric Authority/MoP for grid access to such PCS/ any other charging station/infrastructure.\n17.6 Charger Specifications and PCS Infrastructure\nAny installed PCS shall have one or more electric kiosk/boards with installation of all charger models\nas prescribed in the Guidelines and Standards notified by Ministry of Power, dated 14 December 2018\nfor \"Charging Infrastructure for EVs\" (at Annexure E-2), with other necessary arrangements as deemed\nnecessary.\nPublic Charging Station service providers shall be free to create charging hubs and to install additional\nnumber of kiosk/chargers in addition to the minimum chargers prescribed vide the MoP Guidelines,\nincluding options for installation of additional chargers, if required.\nNote:\n1. Minimum infrastructure requirements do not apply to Private Charging Points meant for self-\nuse of individual EV owners (non-commercial basis).\n169",
+   "proseLines": [
+    {
+     "y": 73,
+     "text": "capacity assigned to each premise should be kept with a safety factor of 1.25 with a long-term vision"
+    },
+    {
+     "y": 87,
+     "text": "of 30 years."
+    },
+    {
+     "y": 122,
+     "text": "17.5.1.1 EVs charging \" modes\" and 'availability'"
+    },
+    {
+     "y": 257,
+     "text": "17.5.1.2 Charging options for EV types (by ownership)"
+    },
+    {
+     "y": 381,
+     "text": "Note:"
+    },
+    {
+     "y": 401,
+     "text": "(i) The option of Battery Swapping (BS) for privately owned 2Ws and PV(Cars) is limited to Private"
+    },
+    {
+     "y": 415,
+     "text": "Cl."
+    },
+    {
+     "y": 435,
+     "text": "(ii) For 3 Ws the BS is proposed to be made available in PCS, for faster recharge experience only."
+    },
+    {
+     "y": 455,
+     "text": "(iii) For PV (Buses), Captive Fast charging infrastructure for 100% internal use for fleets may be"
+    },
+    {
+     "y": 469,
+     "text": "adopted by privately owned Depots/Garages."
+    },
+    {
+     "y": 489,
+     "text": "Based on the above stated EV charging technologies available and the current trend of evolving"
+    },
+    {
+     "y": 503,
+     "text": "technologies of faster charging experience, the Ministry of Power has issued Guidelines and Standards"
+    },
+    {
+     "y": 517,
+     "text": "for setting up Charging Infrastructure for Electric Vehicles, Ministry of Power (MoP) Guidelines"
+    },
+    {
+     "y": 531,
+     "text": "dated 14.12.2018 for charging infrastructure to be installed at every Public Charging Station (PCS)."
+    },
+    {
+     "y": 545,
+     "text": "'Connectivity regulations and Safety norms' shall be defined by respective authorities such as Central"
+    },
+    {
+     "y": 559,
+     "text": "Electric Authority/MoP for grid access to such PCS/ any other charging station/infrastructure."
+    },
+    {
+     "y": 580,
+     "text": "17.6 Charger Specifications and PCS Infrastructure"
+    },
+    {
+     "y": 603,
+     "text": "Any installed PCS shall have one or more electric kiosk/boards with installation of all charger models"
+    },
+    {
+     "y": 617,
+     "text": "as prescribed in the Guidelines and Standards notified by Ministry of Power, dated 14 December 2018"
+    },
+    {
+     "y": 631,
+     "text": "for \"Charging Infrastructure for EVs\" (at Annexure E-2), with other necessary arrangements as deemed"
+    },
+    {
+     "y": 645,
+     "text": "necessary."
+    },
+    {
+     "y": 665,
+     "text": "Public Charging Station service providers shall be free to create charging hubs and to install additional"
+    },
+    {
+     "y": 679,
+     "text": "number of kiosk/chargers in addition to the minimum chargers prescribed vide the MoP Guidelines,"
+    },
+    {
+     "y": 693,
+     "text": "including options for installation of additional chargers, if required."
+    },
+    {
+     "y": 713,
+     "text": "Note:"
+    },
+    {
+     "y": 733,
+     "text": "1. Minimum infrastructure requirements do not apply to Private Charging Points meant for self-"
+    },
+    {
+     "y": 747,
+     "text": "use of individual EV owners (non-commercial basis)."
+    },
+    {
+     "y": 769,
+     "text": "169"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      73.4,
+      140.8,
+      522.0,
+      239.1
+     ],
+     "rows": [
+      [
+       {
+        "text": "Vehicle type",
+        "fill": "#D9E2F3",
+        "bbox": [
+         73.4,
+         140.8,
+         194.6,
+         160.0
+        ]
+       },
+       {
+        "text": "Slow Charging",
+        "fill": "#D9E2F3",
+        "bbox": [
+         194.6,
+         140.8,
+         306.4,
+         160.0
+        ]
+       },
+       {
+        "text": "Fast Charging",
+        "fill": "#D9E2F3",
+        "bbox": [
+         306.4,
+         140.8,
+         417.0,
+         160.0
+        ]
+       },
+       {
+        "text": "Public Cl",
+        "fill": "#D9E2F3",
+        "bbox": [
+         417.0,
+         140.8,
+         522.0,
+         160.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": "2 Wheelers",
+        "bbox": [
+         73.4,
+         160.0,
+         194.6,
+         179.9
+        ]
+       },
+       {
+        "text": "Y",
+        "bbox": [
+         194.6,
+         160.0,
+         306.4,
+         179.9
+        ]
+       },
+       {
+        "text": "N",
+        "bbox": [
+         306.4,
+         160.0,
+         417.0,
+         179.9
+        ]
+       },
+       {
+        "text": "Yes/limited",
+        "bbox": [
+         417.0,
+         160.0,
+         522.0,
+         179.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "3 Wheelers",
+        "bbox": [
+         73.4,
+         179.9,
+         194.6,
+         199.6
+        ]
+       },
+       {
+        "text": "Y",
+        "bbox": [
+         194.6,
+         179.9,
+         306.4,
+         199.6
+        ]
+       },
+       {
+        "text": "N",
+        "bbox": [
+         306.4,
+         179.9,
+         417.0,
+         199.6
+        ]
+       },
+       {
+        "text": "Yes/limited",
+        "bbox": [
+         417.0,
+         179.9,
+         522.0,
+         199.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "PVs (Cars)",
+        "bbox": [
+         73.4,
+         199.6,
+         194.6,
+         219.3
+        ]
+       },
+       {
+        "text": "Y",
+        "bbox": [
+         194.6,
+         199.6,
+         306.4,
+         219.3
+        ]
+       },
+       {
+        "text": "Y",
+        "bbox": [
+         306.4,
+         199.6,
+         417.0,
+         219.3
+        ]
+       },
+       {
+        "text": "Yes",
+        "bbox": [
+         417.0,
+         199.6,
+         522.0,
+         219.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "PVs (Buses)",
+        "bbox": [
+         73.4,
+         219.3,
+         194.6,
+         239.1
+        ]
+       },
+       {
+        "text": "N",
+        "bbox": [
+         194.6,
+         219.3,
+         306.4,
+         239.1
+        ]
+       },
+       {
+        "text": "Y",
+        "bbox": [
+         306.4,
+         219.3,
+         417.0,
+         239.1
+        ]
+       },
+       {
+        "text": "Yes",
+        "bbox": [
+         417.0,
+         219.3,
+         522.0,
+         239.1
+        ]
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      73.4,
+      275.1,
+      522.0,
+      373.4
+     ],
+     "rows": [
+      [
+       {
+        "text": "Vehicle Type",
+        "fill": "#D9E2F3",
+        "bbox": [
+         73.4,
+         275.1,
+         172.2,
+         294.3
+        ]
+       },
+       {
+        "text": "Private Cl",
+        "fill": "#D9E2F3",
+        "bbox": [
+         172.2,
+         275.1,
+         239.6,
+         294.3
+        ]
+       },
+       {
+        "text": "Public CS",
+        "fill": "#D9E2F3",
+        "bbox": [
+         239.6,
+         275.1,
+         306.4,
+         294.3
+        ]
+       },
+       {
+        "text": "Predominant place of charging",
+        "fill": "#D9E2F3",
+        "bbox": [
+         306.4,
+         275.1,
+         522.0,
+         294.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "2 Wheelers",
+        "bbox": [
+         73.4,
+         294.3,
+         172.2,
+         314.2
+        ]
+       },
+       {
+        "text": "SC/BS",
+        "bbox": [
+         172.2,
+         294.3,
+         239.6,
+         314.2
+        ]
+       },
+       {
+        "text": "SC",
+        "bbox": [
+         239.6,
+         294.3,
+         306.4,
+         314.2
+        ]
+       },
+       {
+        "text": "Point of residence I Work",
+        "bbox": [
+         306.4,
+         294.3,
+         522.0,
+         314.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": "3 Wheelers",
+        "bbox": [
+         73.4,
+         314.2,
+         172.2,
+         333.9
+        ]
+       },
+       {
+        "text": "SC/BS",
+        "bbox": [
+         172.2,
+         314.2,
+         239.6,
+         333.9
+        ]
+       },
+       {
+        "text": "SC/BS",
+        "bbox": [
+         239.6,
+         314.2,
+         306.4,
+         333.9
+        ]
+       },
+       {
+        "text": "Residence / Parking stations",
+        "bbox": [
+         306.4,
+         314.2,
+         522.0,
+         333.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "PVs (Cars)",
+        "bbox": [
+         73.4,
+         333.9,
+         172.2,
+         353.5
+        ]
+       },
+       {
+        "text": "SC/BS",
+        "bbox": [
+         172.2,
+         333.9,
+         239.6,
+         353.5
+        ]
+       },
+       {
+        "text": "FC",
+        "bbox": [
+         239.6,
+         333.9,
+         306.4,
+         353.5
+        ]
+       },
+       {
+        "text": "Residence / Point of work / other public places",
+        "bbox": [
+         306.4,
+         333.9,
+         522.0,
+         353.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "PVs (Buses)",
+        "bbox": [
+         73.4,
+         353.5,
+         172.2,
+         373.4
+        ]
+       },
+       {
+        "text": "-",
+        "bbox": [
+         172.2,
+         353.5,
+         239.6,
+         373.4
+        ]
+       },
+       {
+        "text": "FC/BS",
+        "bbox": [
+         239.6,
+         353.5,
+         306.4,
+         373.4
+        ]
+       },
+       {
+        "text": "Bus Terminals/Depots",
+        "bbox": [
+         306.4,
+         353.5,
+         522.0,
+         373.4
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 7,
+   "gazettePage": 170,
+   "prose": "2. Captive charging infrastructure for 100% internal use for a company's own fleet will not be\nrequired to install all type of chargers and to have NSP tie ups.\n17.7 Location of PCS / FCB CS in local area / building precincts\nIn accordance with the Guidelines issued by the Ministry of Power (MoP), following minimum\nstandards with regard to density of/distance between PCS in local level facilities in building premise /\nurban precincts shall be followed:\n(i) At the Local levels (within the urban area):\n\u2022\nAt least 1 Public Charging Station is to be available within a grid of 3Km x 3Km.\n(ii) At the Building premise levels (for various building types)\n\u2022\nPrivate charging infrastructure (non-commercial use) for individuals.\n\u2022\nFor all commercial modes of charging EVs, at least 1PCS, as per minimum specifications laid\nunder MoP guidelines.\n\u2022\nStandalone Battery Swapping Stations may be added with the PCs.\n170",
+   "proseLines": [
+    {
+     "y": 73,
+     "text": "2. Captive charging infrastructure for 100% internal use for a company's own fleet will not be"
+    },
+    {
+     "y": 87,
+     "text": "required to install all type of chargers and to have NSP tie ups."
+    },
+    {
+     "y": 108,
+     "text": "17.7 Location of PCS / FCB CS in local area / building precincts"
+    },
+    {
+     "y": 130,
+     "text": "In accordance with the Guidelines issued by the Ministry of Power (MoP), following minimum"
+    },
+    {
+     "y": 144,
+     "text": "standards with regard to density of/distance between PCS in local level facilities in building premise /"
+    },
+    {
+     "y": 158,
+     "text": "urban precincts shall be followed:"
+    },
+    {
+     "y": 178,
+     "text": "(i) At the Local levels (within the urban area):"
+    },
+    {
+     "y": 197,
+     "text": "\u2022"
+    },
+    {
+     "y": 198,
+     "text": "At least 1 Public Charging Station is to be available within a grid of 3Km x 3Km."
+    },
+    {
+     "y": 218,
+     "text": "(ii) At the Building premise levels (for various building types)"
+    },
+    {
+     "y": 237,
+     "text": "\u2022"
+    },
+    {
+     "y": 238,
+     "text": "Private charging infrastructure (non-commercial use) for individuals."
+    },
+    {
+     "y": 251,
+     "text": "\u2022"
+    },
+    {
+     "y": 252,
+     "text": "For all commercial modes of charging EVs, at least 1PCS, as per minimum specifications laid"
+    },
+    {
+     "y": 266,
+     "text": "under MoP guidelines."
+    },
+    {
+     "y": 279,
+     "text": "\u2022"
+    },
+    {
+     "y": 280,
+     "text": "Standalone Battery Swapping Stations may be added with the PCs."
+    },
+    {
+     "y": 769,
+     "text": "170"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 8,
+   "gazettePage": 171,
+   "prose": "17.8 Public Charging Infrastructure (PCI) - Minimum Requirements (Annexure\nE-2)\n1. Every Public Charging Infrastructure shall have the following minimum infrastructure.\na) An exclusive transformer with all related substation equipment including safety appliances.\nb) 33/11 KV line/cables with associated equipment including as needed for line\ntermination/metering etc.\nc) Appropriate civil works.\nd) Adequate space for Charging and entry/exit of vehicles.\ne) Current international standards that are prevalent and used by most vehicle manufacturers\ninternationally are CCS and CHadeMO. Hence, Public Charging Stations shall have, one\nor more electric kiosk/boards with installation of all the charger models as follows:\nNote: In addition, any other fast/slow/moderate charger as per approved BIS standards whenever\nnotified.\nf) The kiosk/board may have options for installation or additional chargers if required.\ng) The Public Charging Station Providers are free to create Charging Hubs and to install\nadditional number of Kiosk/Chargers in addition to the minimum number of chargers\nprescribed above.\nh) Tie up with at least one online Network Service Providers (NSPs) to enable advance\nremote/online booking of charging slots by EV owners. Such online information to EV\nowners should also include information regarding location, types and numbers of chargers\ninstalled/available etc.\ni) Share charging station data with appropriate DISCOM and to maintain appropriate\nprotocols as prescribed by such DISCOM for this purpose. CEA shall have access to this\ndatabase.\nj) Appropriate public amenities.\nk) Where, in addition to the above, fast charging facility is also planned to be provided at the\nPCS by the PCI provider, the following additional infrastructure must be provided:\n\u2022\nAppropriate Liquid Cooled cables if High Speed Charging Facility for onboard\ncharging of Fluid Cooled Batteries (FCBs) is also planned,\n\u2022\nAppropriate Climate Control Equipment for Fast Charging of Batteries to be used for\nswapping (i.e., not onboard)\n2. Every Public Charging Station (PCS) shall be operational only after inspection and clearance as\ncommunicated by a suitable clearance certificate, by the concerned electrical inspectors/technical\n171",
+   "proseLines": [
+    {
+     "y": 74,
+     "text": "17.8 Public Charging Infrastructure (PCI) - Minimum Requirements (Annexure"
+    },
+    {
+     "y": 91,
+     "text": "E-2)"
+    },
+    {
+     "y": 114,
+     "text": "1. Every Public Charging Infrastructure shall have the following minimum infrastructure."
+    },
+    {
+     "y": 128,
+     "text": "a) An exclusive transformer with all related substation equipment including safety appliances."
+    },
+    {
+     "y": 142,
+     "text": "b) 33/11 KV line/cables with associated equipment including as needed for line"
+    },
+    {
+     "y": 156,
+     "text": "termination/metering etc."
+    },
+    {
+     "y": 170,
+     "text": "c) Appropriate civil works."
+    },
+    {
+     "y": 184,
+     "text": "d) Adequate space for Charging and entry/exit of vehicles."
+    },
+    {
+     "y": 198,
+     "text": "e) Current international standards that are prevalent and used by most vehicle manufacturers"
+    },
+    {
+     "y": 212,
+     "text": "internationally are CCS and CHadeMO. Hence, Public Charging Stations shall have, one"
+    },
+    {
+     "y": 226,
+     "text": "or more electric kiosk/boards with installation of all the charger models as follows:"
+    },
+    {
+     "y": 390,
+     "text": "Note: In addition, any other fast/slow/moderate charger as per approved BIS standards whenever"
+    },
+    {
+     "y": 404,
+     "text": "notified."
+    },
+    {
+     "y": 424,
+     "text": "f) The kiosk/board may have options for installation or additional chargers if required."
+    },
+    {
+     "y": 444,
+     "text": "g) The Public Charging Station Providers are free to create Charging Hubs and to install"
+    },
+    {
+     "y": 458,
+     "text": "additional number of Kiosk/Chargers in addition to the minimum number of chargers"
+    },
+    {
+     "y": 472,
+     "text": "prescribed above."
+    },
+    {
+     "y": 492,
+     "text": "h) Tie up with at least one online Network Service Providers (NSPs) to enable advance"
+    },
+    {
+     "y": 506,
+     "text": "remote/online booking of charging slots by EV owners. Such online information to EV"
+    },
+    {
+     "y": 520,
+     "text": "owners should also include information regarding location, types and numbers of chargers"
+    },
+    {
+     "y": 534,
+     "text": "installed/available etc."
+    },
+    {
+     "y": 554,
+     "text": "i) Share charging station data with appropriate DISCOM and to maintain appropriate"
+    },
+    {
+     "y": 568,
+     "text": "protocols as prescribed by such DISCOM for this purpose. CEA shall have access to this"
+    },
+    {
+     "y": 582,
+     "text": "database."
+    },
+    {
+     "y": 602,
+     "text": "j) Appropriate public amenities."
+    },
+    {
+     "y": 622,
+     "text": "k) Where, in addition to the above, fast charging facility is also planned to be provided at the"
+    },
+    {
+     "y": 636,
+     "text": "PCS by the PCI provider, the following additional infrastructure must be provided:"
+    },
+    {
+     "y": 655,
+     "text": "\u2022"
+    },
+    {
+     "y": 656,
+     "text": "Appropriate Liquid Cooled cables if High Speed Charging Facility for onboard"
+    },
+    {
+     "y": 670,
+     "text": "charging of Fluid Cooled Batteries (FCBs) is also planned,"
+    },
+    {
+     "y": 689,
+     "text": "\u2022"
+    },
+    {
+     "y": 690,
+     "text": "Appropriate Climate Control Equipment for Fast Charging of Batteries to be used for"
+    },
+    {
+     "y": 704,
+     "text": "swapping (i.e., not onboard)"
+    },
+    {
+     "y": 724,
+     "text": "2. Every Public Charging Station (PCS) shall be operational only after inspection and clearance as"
+    },
+    {
+     "y": 738,
+     "text": "communicated by a suitable clearance certificate, by the concerned electrical inspectors/technical"
+    },
+    {
+     "y": 769,
+     "text": "171"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      73.4,
+      250.9,
+      522.0,
+      381.6
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         73.4,
+         250.9,
+         172.2,
+         257.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         172.2,
+         250.9,
+         292.8,
+         257.5
+        ]
+       },
+       {
+        "text": "Rated Voltage",
+        "fill": "#D9E2F3",
+        "bbox": [
+         292.8,
+         250.9,
+         370.8,
+         270.0
+        ]
+       },
+       {
+        "text": "No. of Charging Points/No. of",
+        "fill": "#D9E2F3",
+        "bbox": [
+         370.8,
+         250.9,
+         522.0,
+         270.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Charger Type",
+        "fill": "#D9E2F3",
+        "bbox": [
+         73.4,
+         257.5,
+         172.2,
+         276.5
+        ]
+       },
+       {
+        "text": "Charger Connectors*",
+        "fill": "#D9E2F3",
+        "bbox": [
+         172.2,
+         257.5,
+         292.8,
+         276.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "(V)",
+        "fill": "#D9E2F3",
+        "bbox": [
+         292.8,
+         270.0,
+         370.8,
+         283.1
+        ]
+       },
+       {
+        "text": "Connector guns (CG)",
+        "fill": "#D9E2F3",
+        "bbox": [
+         370.8,
+         270.0,
+         522.0,
+         283.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         73.4,
+         276.5,
+         172.2,
+         283.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         172.2,
+         276.5,
+         292.8,
+         283.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Fast",
+        "bbox": [
+         73.4,
+         283.1,
+         172.2,
+         303.0
+        ]
+       },
+       {
+        "text": "CCS (min 50 kW)",
+        "bbox": [
+         172.2,
+         283.1,
+         292.8,
+         303.0
+        ]
+       },
+       {
+        "text": "200 \u2013 1000",
+        "bbox": [
+         292.8,
+         283.1,
+         370.8,
+         303.0
+        ]
+       },
+       {
+        "text": "1/1 CG",
+        "bbox": [
+         370.8,
+         283.1,
+         522.0,
+         303.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         73.4,
+         303.0,
+         172.2,
+         322.5
+        ]
+       },
+       {
+        "text": "CHAdeMO (min 50 kW)",
+        "bbox": [
+         172.2,
+         303.0,
+         292.8,
+         322.5
+        ]
+       },
+       {
+        "text": "200 \u2013 1000",
+        "bbox": [
+         292.8,
+         303.0,
+         370.8,
+         322.5
+        ]
+       },
+       {
+        "text": "1/1 CG",
+        "bbox": [
+         370.8,
+         303.0,
+         522.0,
+         322.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Slow / Moderate",
+        "bbox": [
+         73.4,
+         322.5,
+         172.2,
+         342.2
+        ]
+       },
+       {
+        "text": "Type-2 AC (min 22 kW)",
+        "bbox": [
+         172.2,
+         322.5,
+         292.8,
+         342.2
+        ]
+       },
+       {
+        "text": "380 - 480",
+        "bbox": [
+         292.8,
+         322.5,
+         370.8,
+         342.2
+        ]
+       },
+       {
+        "text": "1/1 CG",
+        "bbox": [
+         370.8,
+         322.5,
+         522.0,
+         342.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         73.4,
+         342.2,
+         172.2,
+         361.9
+        ]
+       },
+       {
+        "text": "Bharat DC-001 (15 kW)",
+        "bbox": [
+         172.2,
+         342.2,
+         292.8,
+         361.9
+        ]
+       },
+       {
+        "text": "72 - 200",
+        "bbox": [
+         292.8,
+         342.2,
+         370.8,
+         361.9
+        ]
+       },
+       {
+        "text": "1/1 CG",
+        "bbox": [
+         370.8,
+         342.2,
+         522.0,
+         361.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         73.4,
+         361.9,
+         172.2,
+         381.6
+        ]
+       },
+       {
+        "text": "Bharat AC-001 (10 kW)",
+        "bbox": [
+         172.2,
+         361.9,
+         292.8,
+         381.6
+        ]
+       },
+       {
+        "text": "230",
+        "bbox": [
+         292.8,
+         361.9,
+         370.8,
+         381.6
+        ]
+       },
+       {
+        "text": "3/3 CG of 3.3 kW each",
+        "bbox": [
+         370.8,
+         361.9,
+         522.0,
+         381.6
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 9,
+   "gazettePage": 172,
+   "prose": "personnel designated specifically by the respective DISCOM for this purpose. DISCOMs may also\nempanel one or more third party authorized technical agencies for this purpose.\n3. Electric Vehicle Service Equipment (EVSE) shall be type tested by an appropriate reputed\nauthority.\n4. The above minimum infrastructure requirements do not apply to Private Charging Points meant for\nself-use of individual EV owners (non-commercial basis).\n5. Captive charging infrastructure for 100% internal use for a company's own/leased fleet for its own\nuse will not be required to install all type of chargers and to have NSP tie ups.\n6. Public Charging Station can also have the option to add Standalone battery swapping facilities in\naddition to the above mandatory facilities, provided space/other conditions permit.\n17.8.1 Public charging Infrastructure (PCI) for long distance EVs and/or heavy day EVs\n1. Public charging stations for long distance EVs and/or heavy duty EVs (like trucks, busses etc.) shall\nhave the following minimum requirements:\na) At least two chargers of minimum 100 kW (with 200-1000 VI each of different\nspecification (CCS & Chademo) and with single connector gun each in addition to the\nminimum charging infrastructure requirements as mandated for Public Charging Stations\nin para 3.\nb) Appropriate Liquid Cooled Cables for high-speed charging facility for onboard charging\nof Fluid Cooled Batteries (currently available in some long range EVs).\nc) In addition to 4.1 (i) and (ii) above, the Fast-Charging Stations (FCS) for Long Distance\nEVs and/or Heavy Duty EVs may also have the option of swapping facilities for batteries\nfor meeting the charging requirements as per para 3 and para 4.1(i)&(ii) above. It is notable\nthat Fluid Cooled Batteries (FCBs) are generally necessary for Fast Charging / Long\nDistance use of EVs and/or for Heavy Duty Vehicles like buses/trucks etc. FCBs will have\nhigher charging rate and longer life.\n2. Such Fast-Charging Stations (FCS)which are meant only for 100% in house/captive utilisation, for\nexample buses of a company, would be free to decide the charging specifications as per requirement\nfor its in-house company EVs.\n17.8.2 Location of Public Charging Stations:\n1. In case of Public Charging Stations, the following minimum requirements are laid down with regard\nto density/distance between two charging points:\na) At least one Charging Station should be available in a grid of 3 Km X 3 Km. Further, one\nCharging Station be set up at every 25 Km on both sides of highways/roads.\nb) For long range EVs (like long range SUVs) and heavy duty EVs like buses/trucks etc., there\nshould be at least one Fast Charging Station with Charging Infrastructure Specifications as\nper para4. I at every 100 Kms, one on each side of the highways/road located preferably\nwithin/alongside the stations laid in para3 above. Within cities, such charging facilities for\nheavy duty EVs shall be located within Transport Nagar, bus depots. Moreover, swapping\nfacilities are also not mandatory within cities for Buses/trucks.\n2. Additional public charging stations shall be set up in any area only after meeting the above\nrequirements.\n3. The above density/distance requirements shall be used by the concerned state/UT\nGovernments/their Agencies for the twin purposes of arrangement of land in any manner for public\ncharging stations as well as for priority in installation of distribution network including\ntransformers/feeders etc. This shall be done in all cases including where no central/state subsidy is\nprovided.\n172",
+   "proseLines": [
+    {
+     "y": 73,
+     "text": "personnel designated specifically by the respective DISCOM for this purpose. DISCOMs may also"
+    },
+    {
+     "y": 87,
+     "text": "empanel one or more third party authorized technical agencies for this purpose."
+    },
+    {
+     "y": 101,
+     "text": "3. Electric Vehicle Service Equipment (EVSE) shall be type tested by an appropriate reputed"
+    },
+    {
+     "y": 115,
+     "text": "authority."
+    },
+    {
+     "y": 129,
+     "text": "4. The above minimum infrastructure requirements do not apply to Private Charging Points meant for"
+    },
+    {
+     "y": 143,
+     "text": "self-use of individual EV owners (non-commercial basis)."
+    },
+    {
+     "y": 157,
+     "text": "5. Captive charging infrastructure for 100% internal use for a company's own/leased fleet for its own"
+    },
+    {
+     "y": 171,
+     "text": "use will not be required to install all type of chargers and to have NSP tie ups."
+    },
+    {
+     "y": 185,
+     "text": "6. Public Charging Station can also have the option to add Standalone battery swapping facilities in"
+    },
+    {
+     "y": 199,
+     "text": "addition to the above mandatory facilities, provided space/other conditions permit."
+    },
+    {
+     "y": 220,
+     "text": "17.8.1 Public charging Infrastructure (PCI) for long distance EVs and/or heavy day EVs"
+    },
+    {
+     "y": 240,
+     "text": "1. Public charging stations for long distance EVs and/or heavy duty EVs (like trucks, busses etc.) shall"
+    },
+    {
+     "y": 254,
+     "text": "have the following minimum requirements:"
+    },
+    {
+     "y": 268,
+     "text": "a) At least two chargers of minimum 100 kW (with 200-1000 VI each of different"
+    },
+    {
+     "y": 282,
+     "text": "specification (CCS & Chademo) and with single connector gun each in addition to the"
+    },
+    {
+     "y": 296,
+     "text": "minimum charging infrastructure requirements as mandated for Public Charging Stations"
+    },
+    {
+     "y": 310,
+     "text": "in para 3."
+    },
+    {
+     "y": 324,
+     "text": "b) Appropriate Liquid Cooled Cables for high-speed charging facility for onboard charging"
+    },
+    {
+     "y": 338,
+     "text": "of Fluid Cooled Batteries (currently available in some long range EVs)."
+    },
+    {
+     "y": 352,
+     "text": "c) In addition to 4.1 (i) and (ii) above, the Fast-Charging Stations (FCS) for Long Distance"
+    },
+    {
+     "y": 366,
+     "text": "EVs and/or Heavy Duty EVs may also have the option of swapping facilities for batteries"
+    },
+    {
+     "y": 380,
+     "text": "for meeting the charging requirements as per para 3 and para 4.1(i)&(ii) above. It is notable"
+    },
+    {
+     "y": 394,
+     "text": "that Fluid Cooled Batteries (FCBs) are generally necessary for Fast Charging / Long"
+    },
+    {
+     "y": 408,
+     "text": "Distance use of EVs and/or for Heavy Duty Vehicles like buses/trucks etc. FCBs will have"
+    },
+    {
+     "y": 422,
+     "text": "higher charging rate and longer life."
+    },
+    {
+     "y": 436,
+     "text": "2. Such Fast-Charging Stations (FCS)which are meant only for 100% in house/captive utilisation, for"
+    },
+    {
+     "y": 450,
+     "text": "example buses of a company, would be free to decide the charging specifications as per requirement"
+    },
+    {
+     "y": 464,
+     "text": "for its in-house company EVs."
+    },
+    {
+     "y": 485,
+     "text": "17.8.2 Location of Public Charging Stations:"
+    },
+    {
+     "y": 505,
+     "text": "1. In case of Public Charging Stations, the following minimum requirements are laid down with regard"
+    },
+    {
+     "y": 519,
+     "text": "to density/distance between two charging points:"
+    },
+    {
+     "y": 533,
+     "text": "a) At least one Charging Station should be available in a grid of 3 Km X 3 Km. Further, one"
+    },
+    {
+     "y": 547,
+     "text": "Charging Station be set up at every 25 Km on both sides of highways/roads."
+    },
+    {
+     "y": 561,
+     "text": "b) For long range EVs (like long range SUVs) and heavy duty EVs like buses/trucks etc., there"
+    },
+    {
+     "y": 575,
+     "text": "should be at least one Fast Charging Station with Charging Infrastructure Specifications as"
+    },
+    {
+     "y": 589,
+     "text": "per para4. I at every 100 Kms, one on each side of the highways/road located preferably"
+    },
+    {
+     "y": 603,
+     "text": "within/alongside the stations laid in para3 above. Within cities, such charging facilities for"
+    },
+    {
+     "y": 617,
+     "text": "heavy duty EVs shall be located within Transport Nagar, bus depots. Moreover, swapping"
+    },
+    {
+     "y": 631,
+     "text": "facilities are also not mandatory within cities for Buses/trucks."
+    },
+    {
+     "y": 645,
+     "text": "2. Additional public charging stations shall be set up in any area only after meeting the above"
+    },
+    {
+     "y": 659,
+     "text": "requirements."
+    },
+    {
+     "y": 673,
+     "text": "3. The above density/distance requirements shall be used by the concerned state/UT"
+    },
+    {
+     "y": 687,
+     "text": "Governments/their Agencies for the twin purposes of arrangement of land in any manner for public"
+    },
+    {
+     "y": 701,
+     "text": "charging stations as well as for priority in installation of distribution network including"
+    },
+    {
+     "y": 715,
+     "text": "transformers/feeders etc. This shall be done in all cases including where no central/state subsidy is"
+    },
+    {
+     "y": 729,
+     "text": "provided."
+    },
+    {
+     "y": 769,
+     "text": "172"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 10,
+   "gazettePage": 173,
+   "prose": "4. The appropriate Governments (Central/State/UTs) may also give priority to existing retail outlets\n(ROs) of Oil Marketing Companies (OMCs) for installation of Public EV Charging Stations (in\ncompliance with safety norms including 'firewalls' etc.) to meet the requirements as laid above.\nFurther, within such ROs. Company Owned and Company Operated (COCO) ROs may be given\nhigher preference.\n5. Any deviation from above norms shall be admissible only after specific approval of State Nodal\nAgency in consultation with the Central Nodal Agency.\n17.8.3 Database of Public EV Charging Stations\nCentral Electricity Authority (CEA) shall create and maintain a national online database of all the Public\nCharging Stations through DISCOMs. Appropriate protocols shall be notified by DISCOMs for this\npurpose which shall be mandatorily complied by the PCS/BCS. This database shall have restricted\naccess as finalised between CEA and Ministry of Power.\n17.8.4 Tariff for supply of electricity to EV Public Charging Stations\n1. The tariff for supply of electricity to EV Public Charging Station shall be determined by the\nappropriate commission, provided however that the tariff shall not be more than the average cost of\nsupply plus 15 (fifteen) percent.\n2. The tariff applicable for domestic consumption shall be applicable for domestic charging.\n17.8.5 Service charges at PCS/BCS\n1. Charging of EVs is a service as already clarified by Ministry of Power vide letter No. 23/08/2018-\nR&R dated 13.04.2018.\n2. The State Nodal Agency shall fix the ceiling of the Service Charges to be charged by the Public\nCharging Stations.\n17.8.6 Priority for Rollout of EV Public Charging Infrastructure\nAfter extensive consultations with State Governments and different Department/Agencies of Central\nGovernment, phasing as follows are laid down as national priority for rollout of EV Public Charging\nInfrastructure:\n17.8.6.1 Phase 1 (1-3 Years)\nAll Mega Cities with population of 4 million plus as per census 2011, all existing expressways\nconnected to these Mega Cities & important Highway's connected with each of these Mega Cities shall\nbe taken up for coverage. A list of these Mega Cities and existing connected expressways is attached at\nAnnexure 1.\n17.8.6.2 Phase 11 (3-5 Years)\nBig cities like State Capitals, UT headquarters shall be covered for distributed and demonstrative effect.\nFurther, important Highways connected with each of these Mega Cities shall be taken up for coverage.\nThe above priorities for phasing of rollout shall be kept in mind by all concerned. including, different\nagencies of Central/State Governments while framing of further policies/guidelines for Public Charging\nInfrastructure of EVs, including for declaring further incentives/subsidies for such infrastructure and\nfor such other purposes.\n17.8.7 Implementation Mechanism for Rollout\n1. Ministry of Power shall designate a Central Nodal Agency for the rollout. All relevant agencies\nincluding Central Electricity Authority (CEA) shall provide necessary support to this nodal agency.\n2. Every State Government shall nominate a Nodal Agency for that State for setting up charging\ninfrastructure. The State DISCOM shall generally be the Nodal Agency for such purposes.\n173",
+   "proseLines": [
+    {
+     "y": 73,
+     "text": "4. The appropriate Governments (Central/State/UTs) may also give priority to existing retail outlets"
+    },
+    {
+     "y": 87,
+     "text": "(ROs) of Oil Marketing Companies (OMCs) for installation of Public EV Charging Stations (in"
+    },
+    {
+     "y": 101,
+     "text": "compliance with safety norms including 'firewalls' etc.) to meet the requirements as laid above."
+    },
+    {
+     "y": 115,
+     "text": "Further, within such ROs. Company Owned and Company Operated (COCO) ROs may be given"
+    },
+    {
+     "y": 129,
+     "text": "higher preference."
+    },
+    {
+     "y": 143,
+     "text": "5. Any deviation from above norms shall be admissible only after specific approval of State Nodal"
+    },
+    {
+     "y": 157,
+     "text": "Agency in consultation with the Central Nodal Agency."
+    },
+    {
+     "y": 178,
+     "text": "17.8.3 Database of Public EV Charging Stations"
+    },
+    {
+     "y": 198,
+     "text": "Central Electricity Authority (CEA) shall create and maintain a national online database of all the Public"
+    },
+    {
+     "y": 212,
+     "text": "Charging Stations through DISCOMs. Appropriate protocols shall be notified by DISCOMs for this"
+    },
+    {
+     "y": 226,
+     "text": "purpose which shall be mandatorily complied by the PCS/BCS. This database shall have restricted"
+    },
+    {
+     "y": 240,
+     "text": "access as finalised between CEA and Ministry of Power."
+    },
+    {
+     "y": 260,
+     "text": "17.8.4 Tariff for supply of electricity to EV Public Charging Stations"
+    },
+    {
+     "y": 281,
+     "text": "1. The tariff for supply of electricity to EV Public Charging Station shall be determined by the"
+    },
+    {
+     "y": 295,
+     "text": "appropriate commission, provided however that the tariff shall not be more than the average cost of"
+    },
+    {
+     "y": 309,
+     "text": "supply plus 15 (fifteen) percent."
+    },
+    {
+     "y": 323,
+     "text": "2. The tariff applicable for domestic consumption shall be applicable for domestic charging."
+    },
+    {
+     "y": 343,
+     "text": "17.8.5 Service charges at PCS/BCS"
+    },
+    {
+     "y": 364,
+     "text": "1. Charging of EVs is a service as already clarified by Ministry of Power vide letter No. 23/08/2018-"
+    },
+    {
+     "y": 378,
+     "text": "R&R dated 13.04.2018."
+    },
+    {
+     "y": 392,
+     "text": "2. The State Nodal Agency shall fix the ceiling of the Service Charges to be charged by the Public"
+    },
+    {
+     "y": 406,
+     "text": "Charging Stations."
+    },
+    {
+     "y": 426,
+     "text": "17.8.6 Priority for Rollout of EV Public Charging Infrastructure"
+    },
+    {
+     "y": 447,
+     "text": "After extensive consultations with State Governments and different Department/Agencies of Central"
+    },
+    {
+     "y": 461,
+     "text": "Government, phasing as follows are laid down as national priority for rollout of EV Public Charging"
+    },
+    {
+     "y": 475,
+     "text": "Infrastructure:"
+    },
+    {
+     "y": 495,
+     "text": "17.8.6.1 Phase 1 (1-3 Years)"
+    },
+    {
+     "y": 514,
+     "text": "All Mega Cities with population of 4 million plus as per census 2011, all existing expressways"
+    },
+    {
+     "y": 528,
+     "text": "connected to these Mega Cities & important Highway's connected with each of these Mega Cities shall"
+    },
+    {
+     "y": 542,
+     "text": "be taken up for coverage. A list of these Mega Cities and existing connected expressways is attached at"
+    },
+    {
+     "y": 556,
+     "text": "Annexure 1."
+    },
+    {
+     "y": 577,
+     "text": "17.8.6.2 Phase 11 (3-5 Years)"
+    },
+    {
+     "y": 595,
+     "text": "Big cities like State Capitals, UT headquarters shall be covered for distributed and demonstrative effect."
+    },
+    {
+     "y": 608,
+     "text": "Further, important Highways connected with each of these Mega Cities shall be taken up for coverage."
+    },
+    {
+     "y": 627,
+     "text": "The above priorities for phasing of rollout shall be kept in mind by all concerned. including, different"
+    },
+    {
+     "y": 640,
+     "text": "agencies of Central/State Governments while framing of further policies/guidelines for Public Charging"
+    },
+    {
+     "y": 653,
+     "text": "Infrastructure of EVs, including for declaring further incentives/subsidies for such infrastructure and"
+    },
+    {
+     "y": 665,
+     "text": "for such other purposes."
+    },
+    {
+     "y": 686,
+     "text": "17.8.7 Implementation Mechanism for Rollout"
+    },
+    {
+     "y": 707,
+     "text": "1. Ministry of Power shall designate a Central Nodal Agency for the rollout. All relevant agencies"
+    },
+    {
+     "y": 721,
+     "text": "including Central Electricity Authority (CEA) shall provide necessary support to this nodal agency."
+    },
+    {
+     "y": 735,
+     "text": "2. Every State Government shall nominate a Nodal Agency for that State for setting up charging"
+    },
+    {
+     "y": 749,
+     "text": "infrastructure. The State DISCOM shall generally be the Nodal Agency for such purposes."
+    },
+    {
+     "y": 769,
+     "text": "173"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 11,
+   "gazettePage": 174,
+   "prose": "However. State Government shall be free to select a Central/State Public Sector Undertaking (PSU)\nincluding Urban Local Bodies (ULBs), Urban/Area Development Authorities etc. as its Nodal\nAgency.\n17.8.8 Selection of Implementation Agency for Rollout\n1. The Central Nodal Agency shall finalize the cities and expressways/highways to be finally taken\nup from the above phasing. in consultation with the respective State Governments.\n2. An Implementation Agency shall be selected by the respective State Nodal Agency and shall be\nentrusted with responsibility of installation, operation and maintenance of PCS/FCS/BCS/BSF for\ndesignated period as per parameters laid down in this document and as entrusted by the concerned\nNodal Agency. The Implementation Agency can be an Aggregator as mutually decided between\nCentral and State Nodal Agencies. However, they can also decide to choose different PCS/FCS\nproviders for bundled packages or for individual locations as mutually decided. Further, whenever\nbundled packages are carved for bidding, such packages shall necessarily include at least one\nidentified expressway/highway or part thereof prepare a cohesive regional package; the selected\nidentified cities may be divided into one or more parts as necessary for such purposes.\n3. Where Implementing Agency is selected by bidding, all bidding shall be conducted by the State\nNodal Agency.\n4. There shall be an upper cap on the Service Charges declared by the State Nodal Agency as per para\n8.2 above. Subsidy, if admissible from Central/State governments, shall be suitably factored in such\ncalculations of Upper Cap/Bid Variable.\n174",
+   "proseLines": [
+    {
+     "y": 73,
+     "text": "However. State Government shall be free to select a Central/State Public Sector Undertaking (PSU)"
+    },
+    {
+     "y": 87,
+     "text": "including Urban Local Bodies (ULBs), Urban/Area Development Authorities etc. as its Nodal"
+    },
+    {
+     "y": 101,
+     "text": "Agency."
+    },
+    {
+     "y": 122,
+     "text": "17.8.8 Selection of Implementation Agency for Rollout"
+    },
+    {
+     "y": 142,
+     "text": "1. The Central Nodal Agency shall finalize the cities and expressways/highways to be finally taken"
+    },
+    {
+     "y": 156,
+     "text": "up from the above phasing. in consultation with the respective State Governments."
+    },
+    {
+     "y": 176,
+     "text": "2. An Implementation Agency shall be selected by the respective State Nodal Agency and shall be"
+    },
+    {
+     "y": 190,
+     "text": "entrusted with responsibility of installation, operation and maintenance of PCS/FCS/BCS/BSF for"
+    },
+    {
+     "y": 204,
+     "text": "designated period as per parameters laid down in this document and as entrusted by the concerned"
+    },
+    {
+     "y": 218,
+     "text": "Nodal Agency. The Implementation Agency can be an Aggregator as mutually decided between"
+    },
+    {
+     "y": 232,
+     "text": "Central and State Nodal Agencies. However, they can also decide to choose different PCS/FCS"
+    },
+    {
+     "y": 246,
+     "text": "providers for bundled packages or for individual locations as mutually decided. Further, whenever"
+    },
+    {
+     "y": 260,
+     "text": "bundled packages are carved for bidding, such packages shall necessarily include at least one"
+    },
+    {
+     "y": 274,
+     "text": "identified expressway/highway or part thereof prepare a cohesive regional package; the selected"
+    },
+    {
+     "y": 288,
+     "text": "identified cities may be divided into one or more parts as necessary for such purposes."
+    },
+    {
+     "y": 308,
+     "text": "3. Where Implementing Agency is selected by bidding, all bidding shall be conducted by the State"
+    },
+    {
+     "y": 322,
+     "text": "Nodal Agency."
+    },
+    {
+     "y": 342,
+     "text": "4. There shall be an upper cap on the Service Charges declared by the State Nodal Agency as per para"
+    },
+    {
+     "y": 356,
+     "text": "8.2 above. Subsidy, if admissible from Central/State governments, shall be suitably factored in such"
+    },
+    {
+     "y": 370,
+     "text": "calculations of Upper Cap/Bid Variable."
+    },
+    {
+     "y": 769,
+     "text": "174"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  }
+ ]
+}

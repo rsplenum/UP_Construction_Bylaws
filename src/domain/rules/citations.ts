@@ -2066,6 +2066,50 @@ export const CITATIONS: readonly Citation[] = [
     line: 11497,
     text: 'Purchasable and Premium Purchasable FAR shall be applicable in already constructed buildings submitted for compounding. Such provision shall be availed only after ensuring the requisite statutory approvals, structural stability, fire and life safety requirements, parking and other provisions of building byelaws.',
   },
+  {
+    id: 'ev.share',
+    rule: 'ev.charging-infrastructure',
+    clause: 'Clause 17.1',
+    supports:
+      'EV_SHARE_OF_PARKING = 0.20 — the EV share of parking capacity, which is a count of vehicles and not of chargers.',
+    gazettePage: 164,
+    kind: 'prose',
+    line: 11503,
+    text: 'Based on the occupancy pattern and the total parking provisions in the premises of the various building types, charging infrastructures shall be provided only for EVs, which is currently assumed to be 20% of all \'vehicle holding capacity\'/\'parking capacity\' at the premise.',
+  },
+  {
+    id: 'ev.power-load',
+    rule: 'ev.charging-infrastructure',
+    clause: 'Clause 17.1',
+    supports:
+      'POWER_LOAD_SAFETY_FACTOR = 1.25 and the rule that the additional load covers every charging point operating simultaneously.',
+    gazettePage: 164,
+    kind: 'prose',
+    line: 11504,
+    text: 'Additionally, the building premise will have to have an additional power load, equivalent to the power required for all charging points (in a PCS) to be operated simultaneously, with a safety factor of 1.25 (refer Explanatory Note- Annexure E-1 as given in paragraph 17.2 of this chapter)',
+  },
+  {
+    id: 'ev.charging-bays',
+    rule: 'ev.charging-infrastructure',
+    clause: 'Clause 17.1.2.1 Note (i)',
+    supports:
+      'The second statement of the 20% figure, and the one that makes it a bay-planning rule as well as a vehicle-share assumption. It also names two-wheelers, which the engine cannot compute (V-050).',
+    gazettePage: 165,
+    kind: 'prose',
+    line: 11560,
+    text: 'Charging bays shall be planned currently at 20% capacity of all vehicles including 2Ws and PVs(cars)',
+  },
+  {
+    id: 'ev.pcs-grid',
+    rule: 'ev.charging-infrastructure',
+    clause: 'Clause 17.7(i)',
+    supports:
+      'EV_SPACE_NORMS — one Public Charging Station per 3 km × 3 km grid within an urban area.',
+    gazettePage: 170,
+    kind: 'prose',
+    line: 11753,
+    text: 'At least 1 Public Charging Station is to be available within a grid of 3Km x 3Km.',
+  },
 ];
 
 /** Every rule id that has at least one citation. */

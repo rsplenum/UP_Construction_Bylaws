@@ -355,6 +355,34 @@ export const RULES: RuleSet = {
     },
   },
 
+  'ev.charging-infrastructure': {
+    id: 'ev.charging-infrastructure',
+    question: 'How many EV charging points does this building need, and what load must it carry?',
+    clause: 'Clause 17.1 and 17.1.2.1',
+    confidence: 'gazette',
+    derivedFrom: ['occupancy', 'plotArea'],
+    checked: '2026-09-11',
+    quote:
+      'Charging infrastructures shall be provided only for EVs, which is currently assumed to be '
+      + '20% of all vehicle holding capacity / parking capacity at the premise, with an additional '
+      + 'power load equivalent to all charging points operating simultaneously at a safety factor '
+      + 'of 1.25. Norms of provisions: 4Ws 1 SC each 3 EVs, 1 FC each 10 EVs; 3Ws 1 SC each 2 EVs; '
+      + '2Ws 1 SC each 2 EVs; PV (Buses) 1 FC each 10 EVs.',
+    ifWrong:
+      'The load figure decides the DISCOM sanction the premises applies for, which is a long-lead '
+      + 'item on any commercial project. Reading the EV share as a charger count — which the engine '
+      + 'did — over-states the charger requirement threefold and omits fast chargers entirely.',
+    challenge: {
+      id: 'V-050',
+      summary:
+        'Clause 17.1.2.1 states ratios for two- and three-wheelers as well as cars, and Note (i) '
+        + 'plans bays at 20% of the capacity of all vehicles "including 2Ws". The parking standard '
+        + 'the engine applies is expressed in car-equivalent spaces only, so those limbs cannot be '
+        + 'computed at all. The load figure also uses the smallest chargers Clause 17.8 admits, so '
+        + 'it is a floor rather than a specification.',
+    },
+  },
+
   'occupancy.thresholds': {
     id: 'occupancy.thresholds',
     question: 'What road width, plot size and height does each use require?',

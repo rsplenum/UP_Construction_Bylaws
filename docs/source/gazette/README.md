@@ -31,6 +31,7 @@ be modified: the whole verification chain assumes these bytes are the ones that 
 | 14 | 134–137 | 4 | 3 | Licensed technical persons — who may sign. **Three 19-column tables whose merged spans the text pipeline lost**; recovered from cell geometry. See B-038, B-039, V-046 and V-047 |
 | 15 | 138–156 | 19 | 31 | Zoning. **States permitted/prohibited in colour** — see V-008 |
 | 16 | 157–163 | 7 | 5 | Compounding. Read from the flattened docx in an earlier pass; the PDF confirmed every figure and corrected **91 clause numbers**. See B-040, B-041, V-048 |
+| 17 | 164–174 | 11 | 6 | EV charging. Three clauses bind a building permit; the other eight pages reproduce the MoP 2018 Guidelines. See B-042, V-049, V-050 |
 
 Chapters 7 and 8 share gazette page 100: Chapter 7 opens on it, and the last table of
 Chapter 6 finishes on it.

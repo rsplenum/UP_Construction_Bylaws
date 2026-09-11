@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: fourteen transcriptions verified exactly right, and forty-one real bugs found.**
+**Headline: fourteen transcriptions verified exactly right, and forty-two real bugs found.**
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -787,7 +787,74 @@ with the preceding note.
 
 ---
 
+### B-042 — The EV share of parking was read as the charger count
+The parking finding computed `evBays = ceil(requiredEcs × 0.2)` and told the user that many
+bays "must have EV charging points". Chapter 17 states two different quantities and the
+engine had collapsed them into one.
+
+**Clause 17.1** sets the *vehicle* share: charging infrastructure is provided "only for EVs,
+which is currently assumed to be **20% of all 'vehicle holding capacity'/'parking capacity'**
+at the premise". That is a count of cars, not of chargers.
+
+**Clause 17.1.2.1** then says how many chargers serve them:
+
+| Vehicle | Slow | Fast |
+|---|---|---|
+| 4Ws / cars | 1 per **3** EVs | 1 per **10** EVs |
+| 3Ws | 1 per 2 EVs | — |
+| 2Ws | 1 per 2 EVs | — |
+| PV (buses) | — | 1 per 10 EVs |
+
+So a 30-bay office has 6 EVs, and those 6 are served by **2 slow chargers and 1 fast** — not
+by 6 charging points. The engine over-stated the slow-charger requirement roughly threefold
+and **had no concept of a fast charger at all**, on a chapter whose whole point is that fast
+charging is the expensive part.
+
+**The bigger omission is the load.** Clause 17.1 requires the premises to carry "an
+additional power load, equivalent to the power required for all charging points to be
+operated simultaneously, with a safety factor of **1.25**". Nothing computed it. On a 200-bay
+mall that is 14 slow and 4 fast chargers — **425 kW of additional sanctioned load** at the
+minimum ratings Clause 17.8 admits. A DISCOM sanction of that size is a long-lead item, and
+an applicant who first learns of it at submission has lost months.
+
+*Fixed: `src/domain/ev-charging.ts`, with the five charger models of Clause 17.8, the three
+space norms, and the load stated explicitly as a floor rather than a specification.*
+
+---
+
 ## Still open
+
+### V-049 — Chapter 17 states the EV share twice as 20% and once as 15%
+Clause 17.1 and Clause 17.1.2.1 Note (i) both say **20%**, flatly and operatively. Clause
+17.5.1, inside the explanatory annexure, says something else:
+
+> It has been broadly projected that by the current rate of adoption of EVs, about **15%** of
+> all vehicles in the country would be EVs by the year **2020**. Therefore … the Metropolitan
+> and 'Tier I' cities will be assumed to have a higher percentage share of EVs, say **20%**
+> for now.
+
+Read in context this is a projection written about 2020 rather than a requirement, and it
+resolves *to* 20% for the cities the byelaws govern — so the engine applies 20% without a
+caveat. Recorded because the passage also introduces **"Metropolitan and 'Tier I' cities"**,
+a third undefined city classification, alongside Chapter 14's *"metro cities"* (V-047) and
+the annexure's *"Mega Cities with population of 4 million plus as per census 2011"*. Three
+terms, three clauses, no definitions, and no statement that any two of them mean the same
+thing.
+
+### V-050 — Two- and three-wheeler charging cannot be computed at all
+Clause 17.1.2.1 gives ratios for two-wheelers and three-wheelers — 1 slow charger per 2 EVs
+in each case — and Note (i) plans charging bays at 20% of the capacity of *all* vehicles,
+"including 2Ws and PVs(cars)".
+
+The parking standard the engine applies, Para 3.3.4.3, is expressed in **equivalent car
+spaces** only. There is no two-wheeler count anywhere in the project model, and ECS cannot be
+decomposed into vehicle classes after the fact. So two of the four rows of the table are
+unreachable, and on a residential or retail project — where two-wheelers are the majority of
+the parking demand in most Indian cities — the unreachable rows are the larger ones.
+
+The load figure has a second, smaller limitation of the same kind: it uses the minimum
+ratings Clause 17.8 admits, 10 kW slow and 50 kW fast. A Type-2 AC at 22 kW or a CCS above
+50 kW raises it proportionately. The finding says so, and states the figure as a floor.
 
 ### V-046 — A seismic zoning with six zones, where the standard the byelaws adopt has four
 All three tables at Clause 14.4 are keyed on *"Building location in Earthquake Zone"* —
