@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: thirteen transcriptions verified exactly right, and thirty-seven real bugs found.**
+**Headline: thirteen transcriptions verified exactly right, and thirty-nine real bugs found.**
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -644,7 +644,112 @@ crosses the threshold.*
 
 ---
 
+### B-038 — The app never said who is allowed to sign the drawings
+Chapter 14 makes it a gate, not advice. Clause 14.1: *"Every building/ development work for
+which permission is sought under the Code **shall** be planned, designed, and supervised by
+licensed persons."* Nothing in the engine had ever expressed that, in an app whose three
+user types include an architect and an LTP.
+
+The competence limits are plain numbers and every one of them is computable:
+
+| Role | May take | Clause |
+|---|---|---|
+| Supervisor | Residential, plot ≤100 m², ≤2 storeys or ≤7.5 m — **whole permit** | 14.2.4.2(a) |
+| Engineer | Structural details, plot ≤500 m², ≤5 storeys or ≤16.0 m | 14.2.2.2(b) |
+| Structural engineer | All buildings, without limit | 14.2.3.2 |
+| Architect | All building-permit plans except services of a multi-storied or special building; layouts to 2 ha (1 ha metro) | 14.2.1.2 |
+| Town planner | Layouts of all areas | 14.2.5.2 |
+| Landscape architect | Required at ≥5 ha, ≥2 ha in a metro city | 14.2.6.2 |
+| Urban designer | Required above 5 ha, or a campus above 2 ha | 14.2.7.2 |
+| Utility service engineers | Required for every multi-storied or special building | 14.2.8 |
+
+**The supervisor row is the one worth surfacing.** It is the only route the byelaws offer
+that is cheaper than an architect, it is capped tightly, and nobody who needed it would find
+it by reading Chapter 14 — the app now tells a 90 m², 7 m house that one licensed supervisor
+can prepare and sign the whole application.
+
+Clause 14.4 adds the only staffing ratio in the byelaws: **one site civil engineer per
+2500 m² supervised.**
+
+*Fixed: `src/domain/licensing.ts` and a procedure finding on every assessment.*
+
+### B-039 — Three 19-column tables that the flattened text reduced to two columns
+The experience tables at 14.4 are 19 columns wide with horizontally merged cells. The
+flattened text places each value in the first column of its span and blanks the rest, so
+five of the six seismic-zone columns read as empty — the same failure that lost Clause 15.3
+entirely (V-008), rotated ninety degrees.
+
+The spans were recovered from the cell bounding boxes in `chapter-14.json`, by testing which
+zone header falls inside which value cell:
+
+```
+Zone-1 x[239–279] ┐
+Zone-2 x[290–317] ├─ inside value cell x[233.4–359.4]   → first figure
+Zone-3 x[328–354] ┘
+Zone-4 x[365–402] ┐
+Zone-5 x[413–476] ┘─ inside value cell x[359.4–481.5]   → second figure
+Zone-6 x[487–517]  ─ inside cell x[481.5–522.4], which is EMPTY
+```
+
+So each banded row carries **two** figures and not one, and Zone-6's blank is a real,
+distinct cell rather than an artifact of the merge. The bottom row of each table is a single
+cell spanning all six zones, which is why it carries no zone split.
+
+Read from the flattened text alone, a structural engineer in a Zone-4 district would have
+been given the Zone-1 requirement — 3 years where the table asks for 5, and 7 where it asks
+for 9. *This is the third time the geometry has held a rule the text lost, and the second
+time this week.*
+
+---
+
 ## Still open
+
+### V-046 — A seismic zoning with six zones, where the standard the byelaws adopt has four
+All three tables at Clause 14.4 are keyed on *"Building location in Earthquake Zone"* —
+**Zone-1 through Zone-6**. IS 1893 (Part 1), which Chapter 11.1 adopts by name, defines
+**four** zones, numbered **II to V**. Zone I was folded into Zone II in the 2002 revision and
+there has never been a Zone VI.
+
+Three things are certain from the geometry (B-039): the values group as 1–3 and 4–5, Zone-6
+is blank in every banded row, and the largest band ignores zones altogether.
+
+What the grouping most likely means, and why the engine does not act on it: Uttar Pradesh
+spans IS 1893 zones **II, III and IV**, with Zone IV across the west of the state. A table
+that splits at "1–3 versus 4–5" maps onto that exactly — lower zones get the lower
+experience requirement, Zone IV the higher. On that reading "Zone-4" is IS 1893's Zone IV and
+the table is usable.
+
+**Not acted on.** The engine holds the two column groups exactly as printed and does not map
+them onto IS 1893, because nothing in the byelaws says how, and because the reading above is
+an inference from a state map rather than from the document. It also has nowhere to put the
+answer: `ProjectState` has no seismic zone, and one cannot be derived from latitude and
+longitude without the IS 1893 zone polygons, which this repository does not hold.
+
+Appendix-14's SDBR form asks the applicant for the seismic zone directly, which suggests the
+byelaws expect it to come from the applicant rather than be derived.
+
+What would settle it: the notified UP seismic zone map, or an authority circular reconciling
+the Chapter 14 numbering with IS 1893.
+
+### V-047 — "Metro city" decides two thresholds and is defined nowhere
+Chapter 14 uses the term three times — Clauses 14.2.1.2(c), 14.2.1.2(d) and 14.2.6.2 — and
+each time it halves a threshold:
+
+| | Other places | Metro city |
+|---|---|---|
+| Architect's layout competence | 2 ha | **1 ha** |
+| Landscape architect required at | 5 ha | **2 ha** |
+
+The byelaws never define it. There is no entry in Chapter 1.2's definitions, and the only
+neighbouring population tests in the document are unrelated: Chapter 17 speaks of
+*"Metropolitan and Tier I cities"* for EV charging and the expressway annexure uses *"Mega
+Cities with population of 4 million plus as per census 2011"*. Neither is offered as a
+definition of this term, and the two do not agree with each other.
+
+It bites only between 2 and 5 hectares — a band in which a site needs a landscape architect
+in Lucknow and does not in a district town, on a word neither the applicant nor the reviewer
+can look up. The engine treats metro status as unknown, applies the non-metro threshold, and
+names the question in a caveat wherever the two readings diverge.
 
 ### V-042 — Five triggers in Chapter 13 that turn on facts no drawing shows
 The chapter is unusually rich in rules that turn on something no drawing shows. Recorded
@@ -795,6 +900,30 @@ one governs a different clearance, so a building can be caught by one and not th
 
 The seismic threshold is the lowest of them at 12 m, which makes it the binding one on
 ordinary buildings — and the one that was missing entirely until now.
+
+**Chapter 14 nearly doubles the pile.** Competence and experience limits add four more
+heights and three more floor counts, none of which line up with the four above:
+
+| Threshold | Height | Floors | Area |
+|---|---|---|---|
+| Supervisor's competence — 14.2.4.2(a) | **7.5 m** | 2 | plot 100 m² |
+| Seismic design — 11.8.1 | 12 m | 3 | 500 m² land cover |
+| Experience band 1 — 14.4 | 12 m | 4 | 2500 m² floor area |
+| Fire certificate — 10.1.3 | 15 m | — | 500 m² covered |
+| Completion NOC — 2.9.3.2 | 15 m | 4 | 500 m² ground coverage |
+| Engineer's structural competence — 14.2.2.2(b) | **16 m** | 5 | plot 500 m² |
+| Experience band 2 — 14.4 | **24 m** | 8 | 5000 m² covered |
+| Peer review — 11.3 | **50 m** | — | — |
+
+**Eight obligations, seven distinct heights, six distinct floor counts, and four words for
+area.** Two of them — 12 m and 15 m — are each used by two different clauses with different
+floor counts attached, so even the shared numbers do not mean the same thing.
+
+The floor-count gap is now costing more than it was. Chapter 14 states **every** competence
+limit as "storeys or height", so the supervisor and engineer verdicts both rest on height
+alone and say so in a caveat. A four-storey building at 15 m reads as inside an engineer's
+competence on height and is outside it on storeys. This is the fifth obligation blocked on
+the same missing field.
 
 **The floor-count limb cannot be evaluated at all.** `ProjectState` has no floor count, and
 one cannot be derived from height: four floors at 2.75 m stands at 11 m, under the seismic

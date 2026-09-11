@@ -328,6 +328,33 @@ export const RULES: RuleSet = {
     },
   },
 
+  'licensing.competence': {
+    id: 'licensing.competence',
+    question: 'Which licensed professionals must prepare, sign and supervise this application?',
+    clause: 'Chapter 14 (14.1, 14.2 and 14.4)',
+    confidence: 'gazette',
+    derivedFrom: ['plotArea', 'buildingHeight', 'occupancy'],
+    checked: '2026-09-11',
+    quote:
+      'Supervisor: residential buildings on plot up to 100 m2 and up to two storeys or 7.5 m. '
+      + 'Engineer: structural details and calculations on plot up to 500 sq.m and up to 5 storeys or '
+      + '16.0 m. Structural engineer: all buildings. Landscape architect: 5 hectares and above, 2 in '
+      + 'metro cities. One site engineer per 2500 sqm supervised.',
+    ifWrong:
+      'Clause 14.1 makes this a gate — work not planned and supervised by licensed persons is work '
+      + 'for which permission cannot be sought. Naming the wrong professional wastes a fee and a '
+      + 'submission cycle; missing one means the application is not competently signed at all.',
+    challenge: {
+      id: 'V-046',
+      summary:
+        'The three experience tables at 14.4 are keyed on six seismic zones where IS 1893 — which '
+        + 'Chapter 11.1 itself adopts — defines four, numbered II to V. Zone-6 is a real empty cell '
+        + 'in every banded row. The engine holds the two merged column groups as printed and does '
+        + 'not map them to IS 1893 zones, because nothing in the byelaws says how.',
+      derivedFromInstead: ['zone'],
+    },
+  },
+
   'occupancy.thresholds': {
     id: 'occupancy.thresholds',
     question: 'What road width, plot size and height does each use require?',

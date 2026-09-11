@@ -21,6 +21,7 @@ import { assessPurchaseFee, splitPurchasedFar } from './purchasable-fee';
 import { assessFireSafety, OCCUPANCY_CERTIFICATE_GATE } from './fire';
 import { assessStructuralSafety, PEER_REVIEW_HEIGHT_M, PERIODIC_AUDIT_FIRST_YEAR, PERIODIC_AUDIT_INTERVAL_YEARS } from './structural';
 import { assessAccessibility, ACCESSIBILITY_REQUIREMENTS, ACCESSIBILITY_NON_COMPOUNDABLE_NOTE } from './accessibility';
+import { assessLicensing, LICENSED_ROLE_LABEL, SITE_ENGINEER_PER_SQM } from './licensing';
 import { assessSocialHousing } from './social-housing';
 import {
   assessSustainability, RECHARGE_BORE_PER_BUILT_UP_SQM, RWH_PLOT_AREA_SQM,
@@ -616,6 +617,44 @@ export function assessProject(project: ProjectState): Assessment {
       clause: access.clauseRef,
     }, 'accessibility.scope'));
   }
+
+  // ---- 6d. Who may sign the drawings (Chapter 14) --------------------------------
+  const licensing = assessLicensing({
+    plotAreaSqm: plotArea,
+    buildingHeightM: height,
+    builtUpAreaSqm: proposedArea,
+    isResidentialSingleUnit: occupancy.group === 'Residential' && !occupancy.multiUnitHousing,
+    isMultiStoreyedOrSpecial: height > HIGH_RISE_THRESHOLD_M || fire.certificateRequired,
+  });
+
+  findings.push(sourced({
+    id: 'licensed-persons',
+    topic: 'procedure',
+    status: 'info',
+    headline: licensing.supervisorMaySign
+      ? 'A licensed supervisor can prepare and sign this entire application.'
+      : `This application needs ${licensing.required.length} licensed professionals to sign it.`,
+    detail:
+      licensing.required.map((r) => `${LICENSED_ROLE_LABEL[r.role]} (${r.clause}) — ${r.why}`).join(' ')
+      + (licensing.supervisorMaySign
+        ? ' Clause 14.2.4.2(a) lets a supervisor take a residential building on a plot up to 100 m²'
+          + ' and up to two storeys or 7.5 m, which this is — the one place the byelaws offer a'
+          + ' cheaper route than an architect.'
+        : '')
+      + ` Clause 14.4 asks for one site civil engineer per ${SITE_ENGINEER_PER_SQM} m² supervised:`
+      + ` ${licensing.siteEngineersRequired} here.`
+      + (licensing.experienceBand
+        ? (licensing.experienceBand.zones4to5
+          ? ` At this size the structural engineer needs ${licensing.experienceBand.zones1to3}`
+            + ` in seismic zones 1–3, rising to ${licensing.experienceBand.zones4to5} in zones 4 and 5.`
+          : ` At this size, in every seismic zone, the structural engineer needs `
+            + `${licensing.experienceBand.zones1to3}`)
+        : '')
+      + (licensing.caveats.length ? ` ${licensing.caveats.join(' ')}` : ''),
+    required: licensing.required.map((r) => LICENSED_ROLE_LABEL[r.role]).join(', '),
+    proposed: `${sqm(plotArea)} plot, ${height} m, ${sqm(proposedArea)}`,
+    clause: licensing.clauseRef,
+  }, 'licensing.competence'));
 
   // ---- 7. Water, energy, waste (Chapter 13) ---------------------------------------
   const green = assessSustainability({

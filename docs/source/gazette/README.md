@@ -28,6 +28,7 @@ be modified: the whole verification chain assumes these bytes are the ones that 
 | 11 | 116–122 | 7 | 1 | Structural safety and quality control. Mostly delegates to NBC 2016 and 23 Indian Standards; its own thresholds are 12 m / 3 floors for seismic design, 50 m for peer review — see B-032 and V-038 |
 | 12 | 123–126 | 4 | 0 | Differently abled, elderly and children. **The only mandatory-measure chapter with no height, floor or area threshold** — use alone decides it. See B-033, B-034 and V-041 |
 | 13 | 127–133 | 7 | 9 | Environmental sustainability. Rainwater harvesting, solar, waste, trees — and **seven tables of conditions keyed on built-up area**, where the SEIAA Environment Clearance lives. See B-035 to B-037 and V-042 to V-045 |
+| 14 | 134–137 | 4 | 3 | Licensed technical persons — who may sign. **Three 19-column tables whose merged spans the text pipeline lost**; recovered from cell geometry. See B-038, B-039, V-046 and V-047 |
 | 15 | 138–156 | 19 | 31 | Zoning. **States permitted/prohibited in colour** — see V-008 |
 
 Chapters 7 and 8 share gazette page 100: Chapter 7 opens on it, and the last table of

@@ -1956,6 +1956,61 @@ export const CITATIONS: readonly Citation[] = [
     line: 9076,
     text: 'For all buildings above 50,000 sqm built up area:',
   },
+  {
+    id: 'licensing.essential',
+    rule: 'licensing.competence',
+    clause: 'Clause 14.1',
+    supports:
+      'That this is a gate rather than advice: no permission is sought for work that licensed persons have not planned, designed and supervised.',
+    gazettePage: 134,
+    kind: 'prose',
+    line: 9094,
+    text: 'Every building/ development work for which permission is sought under the Code shall be planned, designed, and supervised by licensed persons. The licensed persons for carrying out the various activities shall be a) architect, (b) engineer, (c) structural engineer, (d) supervisor, (e) town planner, (f) landscape architect, (g) urban designer, and (h) utility service engineer. Requirements of registration for various professionals by the Authority or by the body governing such profession and constituted under a statute, as applicable to practice within the local body\'s jurisdiction, are given in 14.2.1 to 14.2.5. The competence of such licensed personnel to carry out various activities is also indicated in 14.2.1.2 to 14.2.5.2.',
+  },
+  {
+    id: 'licensing.engineer-structural-limit',
+    rule: 'licensing.competence',
+    clause: 'Clause 14.2.2.2(b)',
+    supports:
+      'ENGINEER_STRUCTURAL_MAX_PLOT_SQM = 500, MAX_STOREYS = 5, MAX_HEIGHT_M = 16 — where an engineer\'s structural competence ends and a structural engineer becomes necessary.',
+    gazettePage: 134,
+    kind: 'prose',
+    line: 9110,
+    text: 'Structural details and calculations of buildings on plot up to 500 sq.m and up to 5 storeys or 16.0 m in height.',
+  },
+  {
+    id: 'licensing.supervisor-limit',
+    rule: 'licensing.competence',
+    clause: 'Clause 14.2.4.2(a)',
+    supports:
+      'SUPERVISOR_MAX_PLOT_SQM = 100, MAX_STOREYS = 2, MAX_HEIGHT_M = 7.5 — the one place the byelaws offer a route cheaper than an architect.',
+    gazettePage: 135,
+    kind: 'prose',
+    line: 9132,
+    text: 'All plans and related information connected with building permit for residential buildings on plot up to 100 m2 and up to two storeys or 7.5 m in height; and',
+  },
+  {
+    id: 'licensing.landscape-architect',
+    rule: 'licensing.competence',
+    clause: 'Clause 14.2.6.2',
+    supports:
+      'LANDSCAPE_ARCHITECT_MIN_HA = 5 and the metro-city halving to 2, the undefined term V-047 records.',
+    gazettePage: 136,
+    kind: 'prose',
+    line: 9152,
+    text: 'The licensed landscape Architect shall be competent to carry out the work related to landscape design for building development permit for land areas 5 hectares and above. In case of metro cities, this limit of land area shall be 2 hectares and above.',
+  },
+  {
+    id: 'licensing.site-engineer-ratio',
+    rule: 'licensing.competence',
+    clause: 'Clause 14.4 note to the site engineer table',
+    supports:
+      'SITE_ENGINEER_PER_SQM = 2500 — the only staffing ratio the byelaws state.',
+    gazettePage: 137,
+    kind: 'prose',
+    line: 9229,
+    text: '**Note: One site engineer of specified qualification shall be deployed to supervise every 2500 sqm.',
+  },
 ];
 
 /** Every rule id that has at least one citation. */
