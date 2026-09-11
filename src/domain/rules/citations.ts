@@ -1700,6 +1700,71 @@ export const CITATIONS: readonly Citation[] = [
     line: 11100,
     text: 'Construction in the buildings where earthquake resistance measures are mandatory as per chapter 11.8.',
   },
+  {
+    id: 'accessibility.scope',
+    rule: 'accessibility.scope',
+    clause: 'Clause 12.2(a)',
+    supports:
+      'ACCESSIBILITY_NAMED_GROUPS and the single-dwelling exclusion. The six named categories are NBC groups B–F plus the multi-unit part of A; industrial, storage and hazardous are absent, where Clause 10.1.3(b) names all three.',
+    gazettePage: 123,
+    kind: 'prose',
+    line: 8760,
+    text: 'These regulations are applicable to all buildings and facilities used by the public such as educational, institutional, assembly, commercial, business, mercantile buildings, multi-units and group housing. It shall not apply to single unit residential dwellings.',
+  },
+  {
+    id: 'accessibility.wheelchair',
+    rule: 'accessibility.scope',
+    clause: 'Clause 12.1(e)',
+    supports:
+      'WHEELCHAIR_SIZE_MM — the dimension every clearance in the chapter is drawn around.',
+    gazettePage: 123,
+    kind: 'prose',
+    line: 8758,
+    text: 'Wheelchair: Chair used by disabled people for mobility. The standard size of wheelchair shall be taken as 1050 mm x 750 mm.',
+  },
+  {
+    id: 'accessibility.access-path',
+    rule: 'accessibility.scope',
+    clause: 'Clause 12.3.1',
+    supports:
+      'The access path row of ACCESSIBILITY_REQUIREMENTS: 1800 mm wide, even, stepless, no steeper than 5%.',
+    gazettePage: 123,
+    kind: 'prose',
+    line: 8768,
+    text: 'Access path from plot entry and surface parking to Building entrance shall be minimum of 1800 mm. wide having even surface without any steps. Slope, if any, shall not have gradient greater than 5%. Selection of floor material shall be made suitably to attract floor material shall be made suitably to attract or to guide visually impaired persons (limited to coloured floor material whose colour and brightness is conspicuously different from that of the surrounding floor material or the material that emit different sound to guide visually impaired persons hereinafter referred to as "guiding floor material" (explained below). Finishes shall have a non-slip surface with a texture traversable by a wheelchair. Curbs wherever provided should blend to a common level.',
+  },
+  {
+    id: 'accessibility.ramp',
+    rule: 'accessibility.scope',
+    clause: 'Clause 12.4.1(a)',
+    supports:
+      'The ramp row: 1800 mm wide, 1:12 maximum gradient, 9.0 m maximum length, 800 mm handrails extending 300 mm.',
+    gazettePage: 125,
+    kind: 'prose',
+    line: 8792,
+    text: 'Ramped approach: Ramp shall be finished with non-slip material to enter the building. Minimum width of ramp shall be 1800 mm. with maximum gradient 1:12, length of ramp shall not exceed 9.0 meter having 800 mm high handrail on both sides extending 300 mm. beyond top and bottom of the ramp. Minimum gap from the adjacent wall to the handrail shall be 50 mm.',
+  },
+  {
+    id: 'accessibility.wc-typo',
+    rule: 'accessibility.scope',
+    clause: 'Clause 12.4.5(a)',
+    supports:
+      'The accessible WC dimension, recorded as the gazette prints it — "1750 m" where only 1750 mm is a possible reading. The engine holds 1750 mm and says so rather than transcribing a metre silently (V-040).',
+    gazettePage: 126,
+    kind: 'prose',
+    line: 8821,
+    text: 'The minimum size shall be 1500 mm x 1750 m.',
+  },
+  {
+    id: 'accessibility.non-compoundable',
+    rule: 'accessibility.scope',
+    clause: 'Clause 16.1.3(xii)',
+    supports:
+      'ACCESSIBILITY_NON_COMPOUNDABLE_NOTE. Third of the three bars sharing the "buildings where X is mandatory" shape, and read as V-039 reads the other two.',
+    kind: 'prose',
+    line: 11107,
+    text: 'Construction in the buildings where measures for access to differently abled persons are mandatory as per chapter 12.',
+  },
 ];
 
 /** Every rule id that has at least one citation. */

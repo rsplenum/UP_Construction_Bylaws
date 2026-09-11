@@ -302,6 +302,32 @@ export const RULES: RuleSet = {
     },
   },
 
+  'accessibility.scope': {
+    id: 'accessibility.scope',
+    question: 'Must this building be accessible to people with disabilities, and to what standard?',
+    clause: 'Clause 12.2, with the requirements at 12.3 and 12.4',
+    confidence: 'gazette',
+    derivedFrom: ['occupancy'],
+    checked: '2026-09-11',
+    quote:
+      'These regulations are applicable to all buildings and facilities used by the public such as '
+      + 'educational, institutional, assembly, commercial, business, mercantile buildings, multi-units '
+      + 'and group housing. It shall not apply to single unit residential dwellings.',
+    ifWrong:
+      'Alone among the three mandatory-measure chapters this one sets no height, floor or area '
+      + 'threshold, so it reaches a single-storey shop that neither the fire nor the seismic trigger '
+      + 'touches. Clause 16.1.3(xii) makes a breach of it non-compoundable.',
+    challenge: {
+      id: 'V-041',
+      summary:
+        'Clause 12.2(a) applies to buildings "used by the public such as" six named categories, and '
+        + 'industrial, storage and hazardous are not among them — though Clause 10.1.3(b) names all '
+        + 'three for the fire certificate. "Such as" leaves the list open, so the governing test is '
+        + 'public use, which the project model cannot see. Industrial uses are reported unresolved '
+        + 'rather than decided.',
+    },
+  },
+
   'occupancy.thresholds': {
     id: 'occupancy.thresholds',
     question: 'What road width, plot size and height does each use require?',

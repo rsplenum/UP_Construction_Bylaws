@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: thirteen transcriptions verified exactly right, and thirty-two real bugs found.**
+**Headline: thirteen transcriptions verified exactly right, and thirty-four real bugs found.**
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -515,7 +515,88 @@ and the Clause 11.5 audit cycle.*
 
 ---
 
+### B-033 — The last of the three bars that cited an unread chapter
+`NonCompoundableFlags.accessibilityMandatory` carried the comment *"ch. 12"* and, like bar
+(vi) before it, nothing could set it because Chapter 12 had not been read. Clause 12.2(a)
+settles it in one sentence:
+
+> These regulations are applicable to all buildings and facilities used by the public such
+> as educational, institutional, assembly, commercial, business, mercantile buildings,
+> multi-units and group housing. **It shall not apply to single unit residential dwellings.**
+
+**What is not in that sentence is the point.** The fire certificate turns on height and
+area; seismic design turns on height, floors and ground cover. Accessibility sets **no
+height, no floor count and no area threshold at all** — it turns on use alone. So it is the
+only one of the three that is fully computable from what the project model already holds,
+and the only one that reaches a **single-storey shop**, which neither of the others touches.
+
+Thirteen of the sixteen occupancies are caught. Only a single dwelling is excluded, and
+that exclusion is the gazette's own words rather than an inference.
+
+*Fixed: `src/domain/accessibility.ts`, twenty-one dimensional requirements as a checklist,
+and a finding that states the Clause 16.1.3(xii) consequence.*
+
+### B-034 — Reading the exclusion off the NBC group would have excused every hotel
+Caught before it shipped, by printing the verdict for all sixteen occupancies rather than
+trusting the mapping.
+
+Chapter 12's six named categories are NBC groups B to F exactly, so keying the rule on
+`nbcGroup` looked clean. It is wrong in one place. **NBC 2016 puts hotels in group A-4** —
+residential — and the engine duly returned *"single unit residential dwelling, excluded"*
+for `com_hotel`.
+
+A hotel is not a single unit residential dwelling. It is close to the paradigm case of a
+building used by the public, and Clause 12.2(c) names *"waiting areas, coffee shops, display
+areas, service areas, ticket counters, refreshment stands"* — a hotel lobby, itemised.
+
+The exclusion is narrow and literal and has to be read that way: it reaches a dwelling, not
+everything the Code files under group A. `assessAccessibility` now takes the byelaws' own use
+category alongside the NBC group, and the two disagree in exactly one place.
+
+*The general lesson is the cheap one: an occupancy mapping that looks clean in the aggregate
+should still be printed row by row before it is believed.*
+
+---
+
 ## Still open
+
+### V-040 — Two drafting defects in Chapter 12, carried through rather than corrected
+Neither changes an answer. Both are recorded because a transcription that silently fixes its
+source is no longer checkable against it.
+
+**Clause 12.4.5(a)** prints the accessible WC as *"1500 mm x 1750 m"* — metres for the second
+dimension. A 1.75 km toilet is not a possible reading, so the engine holds 1750 mm, and the
+citation records the printed text so the two can be compared.
+
+**Clause 12.4.1(d)** refers the reader to *"paragraph 11.3.1"* for guiding floor material.
+Chapter 11.3 is *Review of Structural Design* and has no sub-clause 11.3.1 at all; the
+definition is at **12.3.1**, in this chapter. An off-by-one-chapter reference, the same shape
+as the two at V-027.
+
+### V-041 — Industrial buildings sit outside a list that is not closed
+Clause 12.2(a) applies to *"all buildings and facilities used by the public **such as**"* six
+categories. Industrial, storage and hazardous are not among them — and Clause 10.1.3(b)'s
+parallel list for the fire certificate names all three expressly.
+
+Two readings, and the gazette does not choose:
+
+- **The list is the rule.** Industry is out, and the omission against Chapter 10's list is
+  deliberate: a factory is a special building for fire and is not a building used by the
+  public.
+- **"Used by the public" is the rule and the list illustrates it.** Then a factory with a
+  public counter or a visitor reception is in, and one without is out — a distinction about
+  the building's operation that no drawing shows.
+
+The engine reports industrial uses as **not mandatory with the question surfaced**, which is
+the laxer direction and a departure from standing rule 4. The reason for departing: the
+stricter reading here is not a stricter *threshold* but a wholly different test, and applying
+it would mean asserting that a warehouse is a building used by the public — inventing a fact
+about the site rather than resolving an ambiguity about a number. The finding says the clause
+turns on public use and that the app cannot see it.
+
+What would settle it: an authority circular, or the Rights of Persons with Disabilities Act
+2016 harmonised guidelines, which the byelaws do not cite here but which govern the same
+subject.
 
 ### V-038 — Four safety obligations, three floor counts, two heights, three words for area
 Chapter 11 adds a fourth statement of "which buildings are the serious ones", and like the

@@ -26,6 +26,7 @@ be modified: the whole verification chain assumes these bytes are the ones that 
 | 08 | 104–107 | 4 | 6 | Mixed use and TOD. **Standards keyed on LOCATION, and FAR as a multiplier** — see V-024 and V-026 |
 | 09 | 108–112 | 5 | 4 | Additional FAR. Compensatory, purchasable and premium purchasable, green-building incentive. **The master FAR ladder's maximum column is mislabelled** — see V-029 |
 | 11 | 116–122 | 7 | 1 | Structural safety and quality control. Mostly delegates to NBC 2016 and 23 Indian Standards; its own thresholds are 12 m / 3 floors for seismic design, 50 m for peer review — see B-032 and V-038 |
+| 12 | 123–126 | 4 | 0 | Differently abled, elderly and children. **The only mandatory-measure chapter with no height, floor or area threshold** — use alone decides it. See B-033, B-034 and V-041 |
 | 15 | 138–156 | 19 | 31 | Zoning. **States permitted/prohibited in colour** — see V-008 |
 
 Chapters 7 and 8 share gazette page 100: Chapter 7 opens on it, and the last table of

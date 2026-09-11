@@ -20,6 +20,7 @@ import { assessCompounding, compoundableLimits } from './compounding';
 import { assessPurchaseFee, splitPurchasedFar } from './purchasable-fee';
 import { assessFireSafety, OCCUPANCY_CERTIFICATE_GATE } from './fire';
 import { assessStructuralSafety, PEER_REVIEW_HEIGHT_M, PERIODIC_AUDIT_FIRST_YEAR, PERIODIC_AUDIT_INTERVAL_YEARS } from './structural';
+import { assessAccessibility, ACCESSIBILITY_REQUIREMENTS, ACCESSIBILITY_NON_COMPOUNDABLE_NOTE } from './accessibility';
 import { assessSocialHousing } from './social-housing';
 import { forArea, getOccupancy } from './occupancy';
 import { ProjectState, derivePlotDepth } from './project';
@@ -570,6 +571,46 @@ export function assessProject(project: ProjectState): Assessment {
       proposed: `${height} m, ${occupancy.label}`,
       clause: 'Clause 11.8.1(i)',
     }, 'structural.seismic-applicability'));
+  }
+
+  // ---- 6c. Accessibility (Chapter 12) --------------------------------------------
+  const access = assessAccessibility({
+    nbcGroup: occupancy.nbcGroup,
+    occupancyGroup: occupancy.group,
+    multiUnitHousing: occupancy.multiUnitHousing,
+    occupancyLabel: occupancy.label,
+  });
+
+  if (access.mandatory) {
+    const count = ACCESSIBILITY_REQUIREMENTS.length;
+    findings.push(sourced({
+      id: 'accessibility',
+      topic: 'safety',
+      status: 'attention',
+      headline: `Accessible design is mandatory for this building — ${count} requirements apply from the ground up.`,
+      detail:
+        `${access.because} ${ACCESSIBILITY_NON_COMPOUNDABLE_NOTE}`
+        + ' The load-bearing dimensions: an 1800 mm access path at no more than 5%; a ramp 1800 mm'
+        + ' wide at 1:12, no longer than 9.0 m per flight; entrance doors 900 mm clear with a'
+        + ' threshold under 12 mm; corridors 1500 mm; the accessible stair 1350 mm with at most 12'
+        + ' risers per flight; where a lift is required, a car 2000 mm wide × 1100 mm deep with a'
+        + ' 900 mm door; an accessible WC of 1500 mm × 1750 mm with an outward-swinging 900 mm door;'
+        + ' and two parking bays of 3.6 m × 5.0 m within 30 m of the entrance.',
+      required: 'Chapter 12 provisions in full',
+      proposed: occupancy.label,
+      clause: access.clauseRef,
+    }, 'accessibility.scope'));
+  } else if (access.dependsOnPublicUse) {
+    findings.push(sourced({
+      id: 'accessibility',
+      topic: 'safety',
+      status: 'info',
+      headline: 'Accessible design is probably not mandatory here — but the clause turns on public use, not on the building type.',
+      detail: `${access.because} ${access.caveats.join(' ')}`,
+      required: 'Unresolved — depends on whether the building is used by the public',
+      proposed: occupancy.label,
+      clause: access.clauseRef,
+    }, 'accessibility.scope'));
   }
 
   // ---- 7. Water, energy, waste ---------------------------------------------------

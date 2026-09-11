@@ -1,0 +1,781 @@
+{
+ "chapter": "12",
+ "source": "docs/source/gazette/pdf/chapter-12.pdf",
+ "sourceMd5": "49e761272a1448c031dc12c00ab2edea",
+ "gazettePages": [
+  123,
+  126
+ ],
+ "pageCount": 4,
+ "tableCount": 0,
+ "fillCounts": {},
+ "colourOnlyCells": 0,
+ "colourCodedTableRows": 0,
+ "warnings": [],
+ "pages": [
+  {
+   "pdfPage": 1,
+   "gazettePage": 123,
+   "prose": "12 Provisions for differently abled, elderly and children\n12.1 Definitions\na. Non-ambulatory Disabilities: Impairments that, regardless of cause of manifestation, for all\npractical purposes, confine individuals to wheelchairs.\nb. Semi-ambulatory Disabilities: Impairments that cause individuals to walk with difficulty or\ninsecurity. Individuals using braces or crutches, amputees, arthritics, spastics, and those with\npulmonary and cardiac ills may be semi-ambulatory.\nc. Hearing Disabilities: Deafness or hearing handicaps that might make an individual insecure in\npublic areas because he is unable to communicate or hear warning signals.\nd. Sight Disabilities: Total blindness or impairments affecting sight to the extent that the individual,\nfunctioning in public areas, is insecure or exposed to danger.\ne. Wheelchair: Chair used by disabled people for mobility. The standard size of wheelchair shall be\ntaken as 1050 mm x 750 mm.\n12.2 Scope\na. These regulations are applicable to all buildings and facilities used by the public such as educational,\ninstitutional, assembly, commercial, business, mercantile buildings, multi-units and group housing.\nIt shall not apply to single unit residential dwellings.\nb. For accessible buildings, at least one entrance and exit per facility should be accessible to a\nwheelchair user and persons with disabilities such as visually impaired, etc. For new buildings, the\naccessible entrance(s) should be the main entrance(s), and not side or back entry, intended for use\nof public.\nc. Wherever waiting areas, coffee shops, display areas, merchandising departments, service areas,\nticket counters, refreshment stands etc. are provided for public use, these facilities should be\naccessible to \u2018all persons with disabilities\u2019 and not just wheelchair user only.\nd. In all buildings at least one unisex accessible washroom/toilet should be provided. In multi-level\nbuildings, all floors should have one such facility near the general washrooms.\n12.3 Site Development Specifications\nLevel of the roads, access paths and parking areas shall be described in the plan (in different colors)\nalong with specification of the materials.\n12.3.1 Access Path/ Walkway\nAccess path from plot entry and surface parking to Building entrance shall be minimum of 1800 mm.\nwide having even surface without any steps. Slope, if any, shall not have gradient greater than 5%.\nSelection of floor material shall be made suitably to attract floor material shall be made suitably to\nattract or to guide visually impaired persons (limited to coloured floor material whose colour and\nbrightness is conspicuously different from that of the surrounding floor material or the material that\nemit different sound to guide visually impaired persons hereinafter referred to as \"guiding floor\nmaterial\" (explained below). Finishes shall have a non-slip surface with a texture traversable by a\nwheelchair. Curbs wherever provided should blend to a common level.\nGuiding/warning floor material - The floor material to guide or to warm the visually impaired persons\nwith a change of colour or material with conspicuously different texture and easily distinguishable from\nthe rest of the surrounding floor materials is called guiding or warning floor material. The material with\ndifferent texture gives audible signals with sensory warning when a person moves on this surface with\n123",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "12 Provisions for differently abled, elderly and children"
+    },
+    {
+     "y": 99,
+     "text": "12.1 Definitions"
+    },
+    {
+     "y": 120,
+     "text": "a. Non-ambulatory Disabilities: Impairments that, regardless of cause of manifestation, for all"
+    },
+    {
+     "y": 132,
+     "text": "practical purposes, confine individuals to wheelchairs."
+    },
+    {
+     "y": 151,
+     "text": "b. Semi-ambulatory Disabilities: Impairments that cause individuals to walk with difficulty or"
+    },
+    {
+     "y": 164,
+     "text": "insecurity. Individuals using braces or crutches, amputees, arthritics, spastics, and those with"
+    },
+    {
+     "y": 176,
+     "text": "pulmonary and cardiac ills may be semi-ambulatory."
+    },
+    {
+     "y": 195,
+     "text": "c. Hearing Disabilities: Deafness or hearing handicaps that might make an individual insecure in"
+    },
+    {
+     "y": 208,
+     "text": "public areas because he is unable to communicate or hear warning signals."
+    },
+    {
+     "y": 226,
+     "text": "d. Sight Disabilities: Total blindness or impairments affecting sight to the extent that the individual,"
+    },
+    {
+     "y": 239,
+     "text": "functioning in public areas, is insecure or exposed to danger."
+    },
+    {
+     "y": 258,
+     "text": "e. Wheelchair: Chair used by disabled people for mobility. The standard size of wheelchair shall be"
+    },
+    {
+     "y": 270,
+     "text": "taken as 1050 mm x 750 mm."
+    },
+    {
+     "y": 291,
+     "text": "12.2 Scope"
+    },
+    {
+     "y": 312,
+     "text": "a. These regulations are applicable to all buildings and facilities used by the public such as educational,"
+    },
+    {
+     "y": 326,
+     "text": "institutional, assembly, commercial, business, mercantile buildings, multi-units and group housing."
+    },
+    {
+     "y": 340,
+     "text": "It shall not apply to single unit residential dwellings."
+    },
+    {
+     "y": 359,
+     "text": "b. For accessible buildings, at least one entrance and exit per facility should be accessible to a"
+    },
+    {
+     "y": 373,
+     "text": "wheelchair user and persons with disabilities such as visually impaired, etc. For new buildings, the"
+    },
+    {
+     "y": 387,
+     "text": "accessible entrance(s) should be the main entrance(s), and not side or back entry, intended for use"
+    },
+    {
+     "y": 400,
+     "text": "of public."
+    },
+    {
+     "y": 420,
+     "text": "c. Wherever waiting areas, coffee shops, display areas, merchandising departments, service areas,"
+    },
+    {
+     "y": 434,
+     "text": "ticket counters, refreshment stands etc. are provided for public use, these facilities should be"
+    },
+    {
+     "y": 447,
+     "text": "accessible to \u2018all persons with disabilities\u2019 and not just wheelchair user only."
+    },
+    {
+     "y": 467,
+     "text": "d. In all buildings at least one unisex accessible washroom/toilet should be provided. In multi-level"
+    },
+    {
+     "y": 481,
+     "text": "buildings, all floors should have one such facility near the general washrooms."
+    },
+    {
+     "y": 503,
+     "text": "12.3 Site Development Specifications"
+    },
+    {
+     "y": 524,
+     "text": "Level of the roads, access paths and parking areas shall be described in the plan (in different colors)"
+    },
+    {
+     "y": 536,
+     "text": "along with specification of the materials."
+    },
+    {
+     "y": 570,
+     "text": "12.3.1 Access Path/ Walkway"
+    },
+    {
+     "y": 589,
+     "text": "Access path from plot entry and surface parking to Building entrance shall be minimum of 1800 mm."
+    },
+    {
+     "y": 602,
+     "text": "wide having even surface without any steps. Slope, if any, shall not have gradient greater than 5%."
+    },
+    {
+     "y": 614,
+     "text": "Selection of floor material shall be made suitably to attract floor material shall be made suitably to"
+    },
+    {
+     "y": 627,
+     "text": "attract or to guide visually impaired persons (limited to coloured floor material whose colour and"
+    },
+    {
+     "y": 640,
+     "text": "brightness is conspicuously different from that of the surrounding floor material or the material that"
+    },
+    {
+     "y": 653,
+     "text": "emit different sound to guide visually impaired persons hereinafter referred to as \"guiding floor"
+    },
+    {
+     "y": 666,
+     "text": "material\" (explained below). Finishes shall have a non-slip surface with a texture traversable by a"
+    },
+    {
+     "y": 679,
+     "text": "wheelchair. Curbs wherever provided should blend to a common level."
+    },
+    {
+     "y": 711,
+     "text": "Guiding/warning floor material - The floor material to guide or to warm the visually impaired persons"
+    },
+    {
+     "y": 724,
+     "text": "with a change of colour or material with conspicuously different texture and easily distinguishable from"
+    },
+    {
+     "y": 737,
+     "text": "the rest of the surrounding floor materials is called guiding or warning floor material. The material with"
+    },
+    {
+     "y": 750,
+     "text": "different texture gives audible signals with sensory warning when a person moves on this surface with"
+    },
+    {
+     "y": 775,
+     "text": "123"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 2,
+   "gazettePage": 124,
+   "prose": "walking stick. The guiding/warning floor material is meant to give the directional effect or warn a\nperson at critical places. This floor material shall be provided in the following areas:\na. The access path to the building and to the parking area.\nb. The landing lobby towards the information board, reception, lifts, stair-cases ad toilets.\nc. Immediately at the beginning/end of walkway where there is a vehicular traffic.\nd. At the location abruptly changing in level or beginning/end of a ramp.\ne. Immediately in front of an entrance/exit and the landing.\nProper Signage - Appropriate identification of specific facilities within a building for the handicapped\npersons should be done with proper signages. Visually impaired persons make use of other senses such\nas hearing and touch to compensate for the lack of vision. Whereas visual signals benefit those with\nhearing disabilities. Signs should be designed and located so that they are easily legible by using suitable\nletter size (not less than 20 mm high). For visually impaired persons, information board in braille should\nbe installed on the wall at a suitable height and it should be possible to approach them closely. To ensure\nsafe walking there should not be any protruding sign which creates obstruction in walking. Public\nAddress System may also be provided in busy public areas. The symbols/information should be in\ncontrasting colour and properly illuminated because people with limited vision may be able to\ndifferentiate amongst primary colours. International symbol mark for wheelchair as shown below be\ninstalled at the lift, toilet, staircase, parking areas etc., that have been provided for the handicapped.\n12.3.2 Parking\nFor parking of vehicles of disabled persons, following provisions shall be made:\na. Surface parking for at least two car-spaces shall be provided near the entrance of building/ premises\nwith a maximum travel distance of 30.0 meter from building entrance. In case the access is through\nlift, the parking shall be located within 30.0 meter of the lift lobby.\nb. The width and length of parking bay shall be minimum 3.6 m X 5.0m. where the minimum width\nincludes transfer area beside the car with a minimum of 1200 mm. Where there are two accessible\nparking bays adjoining each other, then 1200mm side transfer bay shall be shared by two parking\nbays.\nc. The information stating that the space is reserved for wheelchair users shall be conspicuously\ndisplayed (that is in big and clear letters).\nd. Guiding floor materials shall be provided or a device which guides visually impaired persons with\naudible signals or other devices which serves the same purpose shall be provided.\ne. Space should be provided for passenger drop-off / alighting points for taxis, public transport and\nfor large vehicles such as vans, etc., as near as possible to the main accessible entrance. Vehicle\ndrop-off areas should be a minimum of 9000 mm in length, have a minimum width of 3600 mm\nand be served by a kerb ramp.\nf. At least one accessible route marked by tactile pavers leading to an accessible entrance of the\nbuilding shall be provided from the alighting and boarding point of taxi stands and car park lots for\npeople with disabilities.\n12.4 Building Requirements\nSpecified facilities shall be provided in buildings for physically disabled persons with due regard to (a)\naccess route to plinth level, (b) corridor connecting entry/exit for disabled, (c) stairway, (d) lift, (e)\ntoilet, and (f) drinking water, as follows:\n124",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "walking stick. The guiding/warning floor material is meant to give the directional effect or warn a"
+    },
+    {
+     "y": 85,
+     "text": "person at critical places. This floor material shall be provided in the following areas:"
+    },
+    {
+     "y": 103,
+     "text": "a. The access path to the building and to the parking area."
+    },
+    {
+     "y": 122,
+     "text": "b. The landing lobby towards the information board, reception, lifts, stair-cases ad toilets."
+    },
+    {
+     "y": 141,
+     "text": "c. Immediately at the beginning/end of walkway where there is a vehicular traffic."
+    },
+    {
+     "y": 160,
+     "text": "d. At the location abruptly changing in level or beginning/end of a ramp."
+    },
+    {
+     "y": 179,
+     "text": "e. Immediately in front of an entrance/exit and the landing."
+    },
+    {
+     "y": 198,
+     "text": "Proper Signage - Appropriate identification of specific facilities within a building for the handicapped"
+    },
+    {
+     "y": 211,
+     "text": "persons should be done with proper signages. Visually impaired persons make use of other senses such"
+    },
+    {
+     "y": 224,
+     "text": "as hearing and touch to compensate for the lack of vision. Whereas visual signals benefit those with"
+    },
+    {
+     "y": 237,
+     "text": "hearing disabilities. Signs should be designed and located so that they are easily legible by using suitable"
+    },
+    {
+     "y": 250,
+     "text": "letter size (not less than 20 mm high). For visually impaired persons, information board in braille should"
+    },
+    {
+     "y": 263,
+     "text": "be installed on the wall at a suitable height and it should be possible to approach them closely. To ensure"
+    },
+    {
+     "y": 275,
+     "text": "safe walking there should not be any protruding sign which creates obstruction in walking. Public"
+    },
+    {
+     "y": 288,
+     "text": "Address System may also be provided in busy public areas. The symbols/information should be in"
+    },
+    {
+     "y": 301,
+     "text": "contrasting colour and properly illuminated because people with limited vision may be able to"
+    },
+    {
+     "y": 314,
+     "text": "differentiate amongst primary colours. International symbol mark for wheelchair as shown below be"
+    },
+    {
+     "y": 327,
+     "text": "installed at the lift, toilet, staircase, parking areas etc., that have been provided for the handicapped."
+    },
+    {
+     "y": 348,
+     "text": "12.3.2 Parking"
+    },
+    {
+     "y": 367,
+     "text": "For parking of vehicles of disabled persons, following provisions shall be made:"
+    },
+    {
+     "y": 386,
+     "text": "a. Surface parking for at least two car-spaces shall be provided near the entrance of building/ premises"
+    },
+    {
+     "y": 398,
+     "text": "with a maximum travel distance of 30.0 meter from building entrance. In case the access is through"
+    },
+    {
+     "y": 411,
+     "text": "lift, the parking shall be located within 30.0 meter of the lift lobby."
+    },
+    {
+     "y": 429,
+     "text": "b. The width and length of parking bay shall be minimum 3.6 m X 5.0m. where the minimum width"
+    },
+    {
+     "y": 442,
+     "text": "includes transfer area beside the car with a minimum of 1200 mm. Where there are two accessible"
+    },
+    {
+     "y": 455,
+     "text": "parking bays adjoining each other, then 1200mm side transfer bay shall be shared by two parking"
+    },
+    {
+     "y": 468,
+     "text": "bays."
+    },
+    {
+     "y": 486,
+     "text": "c. The information stating that the space is reserved for wheelchair users shall be conspicuously"
+    },
+    {
+     "y": 499,
+     "text": "displayed (that is in big and clear letters)."
+    },
+    {
+     "y": 517,
+     "text": "d. Guiding floor materials shall be provided or a device which guides visually impaired persons with"
+    },
+    {
+     "y": 530,
+     "text": "audible signals or other devices which serves the same purpose shall be provided."
+    },
+    {
+     "y": 549,
+     "text": "e. Space should be provided for passenger drop-off / alighting points for taxis, public transport and"
+    },
+    {
+     "y": 561,
+     "text": "for large vehicles such as vans, etc., as near as possible to the main accessible entrance. Vehicle"
+    },
+    {
+     "y": 574,
+     "text": "drop-off areas should be a minimum of 9000 mm in length, have a minimum width of 3600 mm"
+    },
+    {
+     "y": 587,
+     "text": "and be served by a kerb ramp."
+    },
+    {
+     "y": 605,
+     "text": "f. At least one accessible route marked by tactile pavers leading to an accessible entrance of the"
+    },
+    {
+     "y": 618,
+     "text": "building shall be provided from the alighting and boarding point of taxi stands and car park lots for"
+    },
+    {
+     "y": 631,
+     "text": "people with disabilities."
+    },
+    {
+     "y": 652,
+     "text": "12.4 Building Requirements"
+    },
+    {
+     "y": 679,
+     "text": "Specified facilities shall be provided in buildings for physically disabled persons with due regard to (a)"
+    },
+    {
+     "y": 692,
+     "text": "access route to plinth level, (b) corridor connecting entry/exit for disabled, (c) stairway, (d) lift, (e)"
+    },
+    {
+     "y": 705,
+     "text": "toilet, and (f) drinking water, as follows:"
+    },
+    {
+     "y": 775,
+     "text": "124"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 3,
+   "gazettePage": 125,
+   "prose": "12.4.1 Approach to the plinth level.\nEvery building should have at least one entrance accessible to the handicapped and shall be indicated\nby proper signage. This entrance shall be approached through a ramp together with the stepped entry.\na) Ramped approach: Ramp shall be finished with non-slip material to enter the building. Minimum\nwidth of ramp shall be 1800 mm. with maximum gradient 1:12, length of ramp shall not exceed 9.0\nmeter having 800 mm high handrail on both sides extending 300 mm. beyond top and bottom of\nthe ramp. Minimum gap from the adjacent wall to the handrail shall be 50 mm.\nb) Stepped approach: For stepped approach size of tread shall not be less than 300 mm. and\nmaximum riser shall be 150 mm. Provision of 800 mm. high handrail on both sides of the stepped\napproach similar to the ramped approach.\nc) Exit/ Entrance Door: Minimum clear opening of the entrance door shall be 900 mm. and it shall\nnot be provided with a step that obstructs the passage of a wheelchair user. Threshold shall not be\nraised more than 12 mm.\nd) Entrance Landing: Entrance landing shall be provided adjacent to ramp with the minimum\ndimension 1800 mm x 2000 mm. The entrance landing that adjoins the top end of a slope shall be\nprovided with floor materials to attract the attention of visually impaired persons (limited to\ncoloured floor material whose colour and brightness is conspicuously different from that of the\nsurrounding floor material or the material that emit different sound to guide visually impaired\npersons hereinafter referred to as 'guiding floor material\" (see paragraph 11.3.1). Finishes shall\nhave a non-slip surface with a texture traversable by a wheelchair. Curbs wherever provided should\nblend to a common level.\n12.4.2 Corridor connecting exit/entrance for the disabled.\nThe corridor connecting the entrance/exit for handicapped leading directly outdoors to a place where\ninformation concerning the overall use of the specified building can be provided to visually impaired\npersons either by a person or by signs, shall be provided as follows:\na. Guiding floor material or devices that emit sound shall be provided, to guide visually impaired\npersons,\nb. The minimum width shall be 1500 mm.\nc. In case there is a difference of level slope ways shall be provided with a slope of 1:12.\nd. Handrails shall be provided for ramps/slope ways.\n12.4.3 Stairways\nOne of the stairways near the entrance/exit for the disabled shall have the following provisions:\na. The minimum width shall be 1350 mm.\nb. Height of the riser shall not be more than 150 mm and width of the tread 300 mm. The steps shall\nnot have abrupt (square) nosing (i.e. edges of the stairs shall be smooth and not pointed).\nc. Maximum number of risers on a flight shall be limited to 12.\nd. Handrails shall be provided on both sides and shall extend 300 mm on the top and bottom of each\nflight of steps.\ne. Projected nosing and open stairs shall not be provided to minimize the risk of stumbling.\nf. No appliances, fixtures or fittings shall project beyond 90 mm from the surface of any wall in a\nstaircase below a level of 2100 mm, measured above the treads of the staircase. If such a projection\nis unavoidable, the same shall also be extended downwards to the level of the treads. However, in\nno case the width of the staircase shall be less than that prescribed in these byelaws.\n12.4.4 Lift\nWhenever lift is required as per byelaws, provision of at least one lift shall be made for the wheelchair\nuser with the following cage dimensions of lift recommended for passenger lift of 13 persons capacity\n125",
+   "proseLines": [
+    {
+     "y": 74,
+     "text": "12.4.1 Approach to the plinth level."
+    },
+    {
+     "y": 93,
+     "text": "Every building should have at least one entrance accessible to the handicapped and shall be indicated"
+    },
+    {
+     "y": 105,
+     "text": "by proper signage. This entrance shall be approached through a ramp together with the stepped entry."
+    },
+    {
+     "y": 124,
+     "text": "a) Ramped approach: Ramp shall be finished with non-slip material to enter the building. Minimum"
+    },
+    {
+     "y": 137,
+     "text": "width of ramp shall be 1800 mm. with maximum gradient 1:12, length of ramp shall not exceed 9.0"
+    },
+    {
+     "y": 150,
+     "text": "meter having 800 mm high handrail on both sides extending 300 mm. beyond top and bottom of"
+    },
+    {
+     "y": 163,
+     "text": "the ramp. Minimum gap from the adjacent wall to the handrail shall be 50 mm."
+    },
+    {
+     "y": 176,
+     "text": "b) Stepped approach: For stepped approach size of tread shall not be less than 300 mm. and"
+    },
+    {
+     "y": 189,
+     "text": "maximum riser shall be 150 mm. Provision of 800 mm. high handrail on both sides of the stepped"
+    },
+    {
+     "y": 202,
+     "text": "approach similar to the ramped approach."
+    },
+    {
+     "y": 215,
+     "text": "c) Exit/ Entrance Door: Minimum clear opening of the entrance door shall be 900 mm. and it shall"
+    },
+    {
+     "y": 228,
+     "text": "not be provided with a step that obstructs the passage of a wheelchair user. Threshold shall not be"
+    },
+    {
+     "y": 241,
+     "text": "raised more than 12 mm."
+    },
+    {
+     "y": 254,
+     "text": "d) Entrance Landing: Entrance landing shall be provided adjacent to ramp with the minimum"
+    },
+    {
+     "y": 266,
+     "text": "dimension 1800 mm x 2000 mm. The entrance landing that adjoins the top end of a slope shall be"
+    },
+    {
+     "y": 279,
+     "text": "provided with floor materials to attract the attention of visually impaired persons (limited to"
+    },
+    {
+     "y": 292,
+     "text": "coloured floor material whose colour and brightness is conspicuously different from that of the"
+    },
+    {
+     "y": 305,
+     "text": "surrounding floor material or the material that emit different sound to guide visually impaired"
+    },
+    {
+     "y": 318,
+     "text": "persons hereinafter referred to as 'guiding floor material\" (see paragraph 11.3.1). Finishes shall"
+    },
+    {
+     "y": 331,
+     "text": "have a non-slip surface with a texture traversable by a wheelchair. Curbs wherever provided should"
+    },
+    {
+     "y": 344,
+     "text": "blend to a common level."
+    },
+    {
+     "y": 365,
+     "text": "12.4.2 Corridor connecting exit/entrance for the disabled."
+    },
+    {
+     "y": 384,
+     "text": "The corridor connecting the entrance/exit for handicapped leading directly outdoors to a place where"
+    },
+    {
+     "y": 397,
+     "text": "information concerning the overall use of the specified building can be provided to visually impaired"
+    },
+    {
+     "y": 410,
+     "text": "persons either by a person or by signs, shall be provided as follows:"
+    },
+    {
+     "y": 429,
+     "text": "a. Guiding floor material or devices that emit sound shall be provided, to guide visually impaired"
+    },
+    {
+     "y": 441,
+     "text": "persons,"
+    },
+    {
+     "y": 454,
+     "text": "b. The minimum width shall be 1500 mm."
+    },
+    {
+     "y": 467,
+     "text": "c. In case there is a difference of level slope ways shall be provided with a slope of 1:12."
+    },
+    {
+     "y": 480,
+     "text": "d. Handrails shall be provided for ramps/slope ways."
+    },
+    {
+     "y": 514,
+     "text": "12.4.3 Stairways"
+    },
+    {
+     "y": 533,
+     "text": "One of the stairways near the entrance/exit for the disabled shall have the following provisions:"
+    },
+    {
+     "y": 552,
+     "text": "a. The minimum width shall be 1350 mm."
+    },
+    {
+     "y": 565,
+     "text": "b. Height of the riser shall not be more than 150 mm and width of the tread 300 mm. The steps shall"
+    },
+    {
+     "y": 578,
+     "text": "not have abrupt (square) nosing (i.e. edges of the stairs shall be smooth and not pointed)."
+    },
+    {
+     "y": 591,
+     "text": "c. Maximum number of risers on a flight shall be limited to 12."
+    },
+    {
+     "y": 604,
+     "text": "d. Handrails shall be provided on both sides and shall extend 300 mm on the top and bottom of each"
+    },
+    {
+     "y": 616,
+     "text": "flight of steps."
+    },
+    {
+     "y": 629,
+     "text": "e. Projected nosing and open stairs shall not be provided to minimize the risk of stumbling."
+    },
+    {
+     "y": 642,
+     "text": "f. No appliances, fixtures or fittings shall project beyond 90 mm from the surface of any wall in a"
+    },
+    {
+     "y": 655,
+     "text": "staircase below a level of 2100 mm, measured above the treads of the staircase. If such a projection"
+    },
+    {
+     "y": 668,
+     "text": "is unavoidable, the same shall also be extended downwards to the level of the treads. However, in"
+    },
+    {
+     "y": 681,
+     "text": "no case the width of the staircase shall be less than that prescribed in these byelaws."
+    },
+    {
+     "y": 702,
+     "text": "12.4.4 Lift"
+    },
+    {
+     "y": 721,
+     "text": "Whenever lift is required as per byelaws, provision of at least one lift shall be made for the wheelchair"
+    },
+    {
+     "y": 734,
+     "text": "user with the following cage dimensions of lift recommended for passenger lift of 13 persons capacity"
+    },
+    {
+     "y": 775,
+     "text": "125"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 4,
+   "gazettePage": 126,
+   "prose": "by Bureau of Indian Standards. Clear internal depth 1100 mm, Clear internal width 2000 mm, and\nEntrance door width 900 mm.\na. A handrail not less than 600 mm. long at 1000 mm above floor level shall be fixed adjacent to\nthe control panel.\nb. The lift lobby shall be of an inside measurement of 1800 mm x 1800 mm. or more.\nc. The time of an automatically closing door shall be minimum 5 seconds and the closing speed\nshould not exceed 0.25 Meter/Sec.\nd. The interior of the cage shall be provided with a device that audibly indicates the floor the\ncage has reached and indicates that the door of the cage for entrance/exit is either open or\nclosed.\n12.4.5 Toilet\nOne special Water Closet (WC) in a set of toilets shall be provided for the use of handicapped, with\nessential provision of wash basin near the entrance for the disabled/handicapped.\na. The minimum size shall be 1500 mm x 1750 m.\nb. Minimum clear opening of the door shall be 900 mm. and the door shall swing out.\nc. Suitable arrangement of vertical/horizontal handrails with 50 mm. clearance from wall shall\nbe made in the toilet.\nd. The seat of the Water Closet (Commode) shall be 500 mm from the door.\n12.4.6 Drinking Water\nSuitable provision of drinking water shall be made for the disabled/handicapped near the special toilet\nprovided for them.\n12.4.7 Building design for children\nIn the buildings meant for the pre-dominant use of the children, it shall be necessary to suitably alter\nthe height of the handrail and other fitting & fixtures etc.\n12.4.8 Refuge\nAn alternative to immediate evacuation of a building via staircases and/ or lifts for the movement of\npersons with disabilities to areas of safety within a building. If possible, they could remain there until\nthe fire is controlled and extinguished or until rescued by the fire fighters.\na. It is useful to have the provisions of a refuge area, usually at the fire protected stair landing on each\nfloor that can safely hold one or two wheelchairs.\nb. Hand Doorways with clear opening width of 900mm ensuring regular compliance and\nc. Have an alarm switch installed between 900mm and 1200mm from floor level.\nd. All stairs next to the refuge shall be with a clear width of 1500mm between the handrails.\n12.4.9 Proper Signage\na. Appropriate identification of specific facilities within a building for the persons with disabilities\nshould be done with proper signals.\nb. Signs should be designed and located so that they are easily legible by using suitable letter size (not\nless than 20 mm high).\nc. For visually impaired persons, information board in Braille should be installed on the wall at a\nsuitable height and it should be possible to approach them closely.\nd. To ensure safe walking, there should not be any protruding sign which creates obstruction in\nwalking.\ne. Public Address System shall also be provided in busy public areas.\nf. The symbols/information should be in contrasting colour and properly illuminated because people\nwith limited vision shall be able to differentiate amongst primary colours.\ng.\nInternational Symbol Mark for wheelchair be installed in a lift, toilet, staircase, parking areas, etc.,\nthat have been provided for the differently abled.\n126",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "by Bureau of Indian Standards. Clear internal depth 1100 mm, Clear internal width 2000 mm, and"
+    },
+    {
+     "y": 85,
+     "text": "Entrance door width 900 mm."
+    },
+    {
+     "y": 103,
+     "text": "a. A handrail not less than 600 mm. long at 1000 mm above floor level shall be fixed adjacent to"
+    },
+    {
+     "y": 116,
+     "text": "the control panel."
+    },
+    {
+     "y": 129,
+     "text": "b. The lift lobby shall be of an inside measurement of 1800 mm x 1800 mm. or more."
+    },
+    {
+     "y": 142,
+     "text": "c. The time of an automatically closing door shall be minimum 5 seconds and the closing speed"
+    },
+    {
+     "y": 155,
+     "text": "should not exceed 0.25 Meter/Sec."
+    },
+    {
+     "y": 168,
+     "text": "d. The interior of the cage shall be provided with a device that audibly indicates the floor the"
+    },
+    {
+     "y": 181,
+     "text": "cage has reached and indicates that the door of the cage for entrance/exit is either open or"
+    },
+    {
+     "y": 194,
+     "text": "closed."
+    },
+    {
+     "y": 215,
+     "text": "12.4.5 Toilet"
+    },
+    {
+     "y": 234,
+     "text": "One special Water Closet (WC) in a set of toilets shall be provided for the use of handicapped, with"
+    },
+    {
+     "y": 247,
+     "text": "essential provision of wash basin near the entrance for the disabled/handicapped."
+    },
+    {
+     "y": 266,
+     "text": "a. The minimum size shall be 1500 mm x 1750 m."
+    },
+    {
+     "y": 278,
+     "text": "b. Minimum clear opening of the door shall be 900 mm. and the door shall swing out."
+    },
+    {
+     "y": 291,
+     "text": "c. Suitable arrangement of vertical/horizontal handrails with 50 mm. clearance from wall shall"
+    },
+    {
+     "y": 304,
+     "text": "be made in the toilet."
+    },
+    {
+     "y": 317,
+     "text": "d. The seat of the Water Closet (Commode) shall be 500 mm from the door."
+    },
+    {
+     "y": 338,
+     "text": "12.4.6 Drinking Water"
+    },
+    {
+     "y": 357,
+     "text": "Suitable provision of drinking water shall be made for the disabled/handicapped near the special toilet"
+    },
+    {
+     "y": 370,
+     "text": "provided for them."
+    },
+    {
+     "y": 391,
+     "text": "12.4.7 Building design for children"
+    },
+    {
+     "y": 410,
+     "text": "In the buildings meant for the pre-dominant use of the children, it shall be necessary to suitably alter"
+    },
+    {
+     "y": 423,
+     "text": "the height of the handrail and other fitting & fixtures etc."
+    },
+    {
+     "y": 444,
+     "text": "12.4.8 Refuge"
+    },
+    {
+     "y": 462,
+     "text": "An alternative to immediate evacuation of a building via staircases and/ or lifts for the movement of"
+    },
+    {
+     "y": 475,
+     "text": "persons with disabilities to areas of safety within a building. If possible, they could remain there until"
+    },
+    {
+     "y": 488,
+     "text": "the fire is controlled and extinguished or until rescued by the fire fighters."
+    },
+    {
+     "y": 500,
+     "text": "a. It is useful to have the provisions of a refuge area, usually at the fire protected stair landing on each"
+    },
+    {
+     "y": 513,
+     "text": "floor that can safely hold one or two wheelchairs."
+    },
+    {
+     "y": 526,
+     "text": "b. Hand Doorways with clear opening width of 900mm ensuring regular compliance and"
+    },
+    {
+     "y": 538,
+     "text": "c. Have an alarm switch installed between 900mm and 1200mm from floor level."
+    },
+    {
+     "y": 551,
+     "text": "d. All stairs next to the refuge shall be with a clear width of 1500mm between the handrails."
+    },
+    {
+     "y": 578,
+     "text": "12.4.9 Proper Signage"
+    },
+    {
+     "y": 597,
+     "text": "a. Appropriate identification of specific facilities within a building for the persons with disabilities"
+    },
+    {
+     "y": 609,
+     "text": "should be done with proper signals."
+    },
+    {
+     "y": 622,
+     "text": "b. Signs should be designed and located so that they are easily legible by using suitable letter size (not"
+    },
+    {
+     "y": 635,
+     "text": "less than 20 mm high)."
+    },
+    {
+     "y": 647,
+     "text": "c. For visually impaired persons, information board in Braille should be installed on the wall at a"
+    },
+    {
+     "y": 660,
+     "text": "suitable height and it should be possible to approach them closely."
+    },
+    {
+     "y": 673,
+     "text": "d. To ensure safe walking, there should not be any protruding sign which creates obstruction in"
+    },
+    {
+     "y": 685,
+     "text": "walking."
+    },
+    {
+     "y": 698,
+     "text": "e. Public Address System shall also be provided in busy public areas."
+    },
+    {
+     "y": 711,
+     "text": "f. The symbols/information should be in contrasting colour and properly illuminated because people"
+    },
+    {
+     "y": 723,
+     "text": "with limited vision shall be able to differentiate amongst primary colours."
+    },
+    {
+     "y": 736,
+     "text": "g."
+    },
+    {
+     "y": 737,
+     "text": "International Symbol Mark for wheelchair be installed in a lift, toilet, staircase, parking areas, etc.,"
+    },
+    {
+     "y": 749,
+     "text": "that have been provided for the differently abled."
+    },
+    {
+     "y": 775,
+     "text": "126"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  }
+ ]
+}
