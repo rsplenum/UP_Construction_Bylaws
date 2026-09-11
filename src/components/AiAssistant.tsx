@@ -84,7 +84,7 @@ export const AiAssistant: React.FC = () => {
         `- Abutting road: ${project.roadWidth} m${project.isCornerPlot ? ' (corner plot)' : ''}`,
         `- Proposed height: ${project.buildingHeight} m, built-up ${project.proposedBuiltUpArea} sqm`,
         `- Setbacks provided: front ${project.frontSetbackProvided} m, rear ${project.rearSetbackProvided} m, sides ${project.side1Provided} / ${project.side2Provided} m`,
-        `- Parking: ${project.parkingBaysProvided} ECS; RWH ${project.hasRWH ? 'yes' : 'no'}; solar ${project.hasSolarHeating ? 'yes' : 'no'}; green rating ${project.greenRating}`,
+        `- Parking: ${project.parkingBaysProvided} ECS; RWH ${project.hasRWH ? 'yes' : 'no'}; solar PV ${project.hasSolarPv ? 'yes' : 'no'}; solar water heating ${project.hasSolarHeating ? 'yes' : 'no'}; green rating ${project.greenRating}`,
         'Answer with reference to these figures when the question is about "my plot" or "this project".',
       ].join('\n'),
     [project],

@@ -137,7 +137,8 @@ export const SitePanel: React.FC = () => {
             />
             <div className="mt-3 space-y-2 text-[12px] text-slate-700 dark:text-slate-300">
               {([
-                ['hasRWH', 'Rainwater harvesting pit'],
+                ['hasRWH', 'Rainwater harvesting system'],
+                ['hasSolarPv', 'Solar photovoltaics'],
                 ['hasSolarHeating', 'Solar water heating'],
                 ['hasStilt', 'Stilt floor for parking'],
               ] as const).map(([key, label]) => (

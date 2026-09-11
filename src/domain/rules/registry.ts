@@ -359,14 +359,168 @@ export const RULES: RuleSet = {
     },
   },
 
-  'services.rwh-threshold': {
-    id: 'services.rwh-threshold',
+  'services.rainwater-harvesting': {
+    id: 'services.rainwater-harvesting',
     question: 'When is rainwater harvesting compulsory?',
-    clause: 'Chapter 13.1',
-    confidence: 'secondary',
+    clause: 'Clause 13.1.2 (Requirements of Building Plan), with 13.1.2(f)',
+    confidence: 'gazette',
     derivedFrom: ['plotArea'],
-    checked: '2026-09-09',
-    ifWrong: 'A mandatory provision would be missed, blocking the completion certificate.',
+    checked: '2026-09-11',
+    quote:
+      'In case of no collective recharge network, roof top rainwater harvesting system in plots '
+      + 'of all uses of 300 square meters and more area (including group housing) except '
+      + 'waterlogged areas. … Ground water recharging system should not be adopted in areas with '
+      + 'water logging problem, but arrangements can be made to collect rainwater received from '
+      + 'the roofs of buildings. 13.1.2(f): for plots of areas from 100-300 square meters it is '
+      + 'not mandatory if the rainwater flows into the scheme\'s collective recharge network; '
+      + 'above 300 square meters "it shall be mandatory for the building owner to install '
+      + 'rainwater harvesting system himself".',
+    ifWrong:
+      'The engine applied "more than 300 m²" against a clause that reads "300 square meters and '
+      + 'more area", so a plot standing at exactly 300 m² was excused a mandatory provision — and '
+      + 'it stated the requirement unconditionally, where the gazette excepts waterlogged areas '
+      + 'and substitutes roof collection for recharge there.',
+  },
+
+  'services.solar-pv': {
+    id: 'services.solar-pv',
+    question: 'When must a plot generate solar power?',
+    clause: 'Clause 13.2.3.1',
+    confidence: 'gazette',
+    derivedFrom: ['plotArea'],
+    checked: '2026-09-11',
+    quote:
+      'All plots having size 500 sqm and above shall install solar photovoltaic power generation '
+      + 'system. This should also be encouraged for plots smaller than 500 sqm. The power '
+      + 'generated may be used for in-house utilization or for transfer to the grid.',
+    ifWrong:
+      'This is the plot-size trigger the engine used to require solar *water heating* against. '
+      + 'Getting it wrong names the wrong system on the wrong buildings — and a photovoltaic '
+      + 'array and a solar thermal collector are not substitutes for one another.',
+  },
+
+  'services.solar-water-heating': {
+    id: 'services.solar-water-heating',
+    question: 'Which buildings must heat their water with solar?',
+    clause: 'Clause 13.2.3.2',
+    confidence: 'gazette',
+    derivedFrom: ['occupancy'],
+    checked: '2026-09-11',
+    quote:
+      'No new building in the following categories in which there is a system of installation for '
+      + 'supplying hot water shall be built unless the system of the installation is also having '
+      + 'an auxiliary solar assisted water heating system: (a) hotels, lodges, guest houses, '
+      + 'service apartments; (b) institutional buildings (hospitals and nursing home); (c) '
+      + 'schools, colleges, universities, technical institutions, training centres; (d) assembly '
+      + 'buildings (auditorium, community halls, wedding/banquet halls, etc); (e) barracks of '
+      + 'armed forces/paramilitary forces and police forces; (f) hostels for schools, colleges, '
+      + 'and training centres with more than 100 students.',
+    ifWrong:
+      'The trigger is the building category and nothing else — no plot size, no built-up area, no '
+      + 'height. Keying it on plot area, as the engine did, exempts a small hotel and burdens a '
+      + 'large house with an obligation the chapter does not place on it.',
+    challenge: {
+      id: 'V-042',
+      summary:
+        'The clause binds a building of these categories "in which there is a system of '
+        + 'installation for supplying hot water". ProjectState records no hot water system, so '
+        + 'the engine assumes a hotel, hospital, school or assembly building has one — the '
+        + 'stricter reading. Two of the six categories, barracks and hostels of more than 100 '
+        + 'students, have no occupancy in the taxonomy at all.',
+      derivedFromInstead: ['occupancy'],
+    },
+  },
+
+  'services.solid-waste': {
+    id: 'services.solid-waste',
+    question: 'What waste facilities must the building provide?',
+    clause: 'Clause 13.4',
+    confidence: 'gazette',
+    derivedFrom: ['occupancy'],
+    checked: '2026-09-11',
+    quote:
+      'All buildings shall provide facilities for solid waste management with segregation of dry '
+      + 'and wet waste at source. For waste management in residential buildings (including group '
+      + 'housing) and all non-residential buildings with an area of more than 500 square meters, '
+      + 'two types of dustbins (biodegradable and non-biodegradable) shall be provided on the '
+      + 'ground floor near the entrance of the plot.',
+    ifWrong:
+      'Small, and cheap to comply with — but it is a submission item, and the 500 m² qualifier '
+      + 'attaches to non-residential buildings only, so reading it across residential as well '
+      + 'would drop the requirement from every house.',
+  },
+
+  'services.tree-plantation': {
+    id: 'services.tree-plantation',
+    question: 'How many trees must the landscape plan show?',
+    clause: 'Clause 13.7',
+    confidence: 'gazette',
+    derivedFrom: ['plotArea', 'occupancy'],
+    checked: '2026-09-11',
+    quote:
+      'Residential: one tree on a plot of area less than 200 square meters; two trees on a plot '
+      + 'of 200 to 300 square meters area; four trees on a plot of area 301 to 500 square meters; '
+      + 'one tree per 100 square meter area or part thereof in a plot of area more than 500 '
+      + 'square meter; 50 trees per hectare in group housing scheme. Industrial: one tree per 80 '
+      + 'square meter plot of land. Commercial: one tree per 100 square meter area. '
+      + 'Institutional/community facilities, playgrounds, open areas and parks: greenery on a '
+      + 'minimum of 20% of the total area where trees shall be planted at the rate of 125 trees '
+      + 'per hectare. Environmental condition, Category-A and above: a minimum of 1 tree for '
+      + 'every 80 sqm of land.',
+    ifWrong:
+      'The landscape plan is a submission requirement checked again before the completion '
+      + 'certificate, and the count is one of the few figures in Chapter 13 an app can compute '
+      + 'exactly.',
+    challenge: {
+      id: 'V-044',
+      summary:
+        'Chapter 3\'s landscape plan states the same obligation on a different base — 50 trees '
+        + 'per hectare of the 20% of open space in a commercial scheme, against Chapter 13\'s '
+        + 'one tree per 100 m² of the whole plot. The engine takes Chapter 13\'s per-plot rate, '
+        + 'which is much the stricter. Clause 13.7(a) also leaves a gap between its "200 to 300" '
+        + 'and "301 to 500" bands, and an office building is in none of the four categories the '
+        + 'clause names.',
+      derivedFromInstead: ['plotArea', 'occupancy'],
+      maxDivergence:
+        'A 1,000 m² commercial plot: 10 trees under Chapter 13.7(c), under one under Chapter 3\'s '
+        + 'rate applied to its open space.',
+    },
+  },
+
+  'services.environmental-conditions': {
+    id: 'services.environmental-conditions',
+    question: 'What does a building owe once it passes 5,000 m² of built-up area — and when does '
+      + 'it need Environment Clearance?',
+    clause: 'Clause 13.1.2, 13.2.4, 13.3, 13.4, 13.6, 13.7, 13.8 and 13.9 (environmental conditions)',
+    confidence: 'gazette',
+    derivedFrom: ['occupancy', 'plotArea'],
+    checked: '2026-09-11',
+    quote:
+      'Category-A (5000-20000 sqm), Category-B (20000 -50000 sqm), Category-C (50000-150000 '
+      + 'sqm), Category-D (>150000 sqm or Site Area >50 Ha). 13.8 Category-B: "No development '
+      + 'permission shall be given to the Building and Construction projects, until getting '
+      + 'Environment Clearance from SEIAA (State Level Environment Impact Assessment Authority) '
+      + 'as required under the Environmental Impact Assessment notification-2006 and amended from '
+      + 'time to time. If the developer wishes to split the project into phases, developer has to '
+      + 'produce Environment Clearance from SEIAA, prior to the approval of first phase of the '
+      + 'project." 13.9: "For all buildings above 50,000 sqm built up area".',
+    ifWrong:
+      'The Environment Clearance is the one thing in Chapter 13 that stops a development '
+      + 'permission being issued at all, and it was not modelled: every project above 20,000 m² '
+      + 'of built-up area was told it could proceed. The conditions attached to the categories '
+      + 'are also the only place several obligations appear — recharge bores, fly ash, the '
+      + 'renewable 1%, the DG exhaust, the compensatory 1:3 plantation.',
+    challenge: {
+      id: 'V-043',
+      summary:
+        'The printed bands overlap: 20,000 m² is inside both Category-A and Category-B, 50,000 '
+        + 'inside both B and C. And Category-D appears in only one of the seven tables, so read '
+        + 'literally a 200,000 m² project owes no recharge bore while a 6,000 m² one does. The '
+        + 'engine places a boundary project in the higher band and lets D inherit C, on the '
+        + 'strength of Clause 13.9\'s own preamble — "For all buildings above 50,000 sqm built '
+        + 'up area" — against a table whose only row is printed "50000-150000 sqm".',
+      derivedFromInstead: ['occupancy'],
+    },
   },
 
   'fire.safety-certificate': {

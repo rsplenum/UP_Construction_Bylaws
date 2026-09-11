@@ -483,31 +483,43 @@ export const BYELAW_CHAPTERS: ByelawChapter[] = [
     chapterNumber: "Chapter 13",
     title: "Environmental Sustainability",
     pageRange: "pp. 127-133",
-    summary: "Rainwater harvesting (plots >=300 sqm), Solar water heating (plots >=500 sqm), Solar PV (>=25% roof area for plots >=5000 sqm), wastewater recycling (>10,000 L/day), and tree plantation.",
+    summary: "Rainwater harvesting (plots of 300 sqm and more), solar photovoltaics (plots of 500 sqm and above), solar water heating (six named building categories, no size threshold), wastewater recycling (>10,000 L/day), tree plantation, and seven tables of environmental conditions keyed on built-up area — including the SEIAA Environment Clearance that withholds development permission above 20,000 sqm.",
     sections: [
       {
         id: "13.1.2",
         clauseNumber: "13.1.2",
         title: "Rainwater Harvesting",
-        content: "Mandatory on all plots >=300 sqm and all group housing. In layouts >10 acres (>4 Ha), rainwater reservoirs must occupy min 1% of scheme area (max depth 2m). Recharge bores: min 1 per 5000 sqm built-up area for buildings >5000 sqm.",
+        content: "Building plan: \"In case of no collective recharge network, roof top rainwater harvesting system in plots of all uses of 300 square meters and more area (including group housing) except waterlogged areas.\" In a waterlogged area recharge is not to be adopted, but rainwater from the roofs is still to be collected.\n\nLayout plans (13.1.2 f): in the 100-300 sqm band an individual system is not mandatory where the rainwater flows into the scheme's collective recharge network; above 300 sqm the owner must install one himself whatever the scheme provides.\n\nLayouts over 10 acres (>4 Ha): reservoirs on min 1% of scheme area, max depth 2 m; concrete in parks not more than 5%.\n\nEnvironmental condition, Category-A and above (5,000 sqm built-up and more): recharge bores, minimum one per 5,000 sqm of built-up area; unpaved area at least 20% of the recreational open spaces.",
       },
       {
         id: "13.2.3",
         clauseNumber: "13.2.3",
         title: "Solar Photovoltaic & Water Heating",
-        content: "- Solar PV: Mandatory on plots >=500 sqm. For buildings >=5000 sqm, rooftop solar PV must cover at least 25% of plinth roof area.\n- Solar Water Heating: Mandatory on residential plots >=500 sqm, hotels, hospitals, hostels with >100 students, and banquet halls.",
+        content: "Two obligations, two different triggers.\n\n- Solar PV (13.2.3.1): \"All plots having size 500 sqm and above shall install solar photovoltaic power generation system\" — any use. Encouraged below 500 sqm. Clause 13.2.3 adds that 25-50% of roof area may be used for solar water heating and PV together; that is a recommendation, not a requirement, and it carries no plot-size qualifier.\n- Solar water heating (13.2.3.2): required in six categories of building that have a hot water installation — (a) hotels, lodges, guest houses, service apartments; (b) hospitals and nursing homes; (c) schools, colleges, universities, technical institutions, training centres; (d) assembly buildings; (e) armed forces, paramilitary and police barracks; (f) hostels with more than 100 students. No plot size, built-up area or height threshold appears anywhere in the clause.",
+      },
+      {
+        id: "13.4",
+        clauseNumber: "13.4",
+        title: "Solid Waste Management",
+        content: "All buildings must segregate dry and wet waste at source. Two dustbins (biodegradable and non-biodegradable) on the ground floor near the plot entrance, for residential buildings including group housing, and for non-residential buildings of more than 500 sqm.\n\nCategory-C and above: non-biodegradable waste to authorised recyclers under a written tie-up; an organic waste composter or vermiculture pit of at least 0.3 kg per tenement per day.",
       },
       {
         id: "13.5",
         clauseNumber: "13.5",
         title: "Wastewater Recycling & Dual Plumbing",
-        content: "Mandatory when estimated discharge exceeds 10,000 liters/day. Must have separate purple-coloured down-take pipes for treated grey water to be reused for flushing, gardening, and car washing.",
+        content: "Mandatory when estimated discharge exceeds 10,000 liters/day. Must have separate purple-coloured down-take pipes for treated grey water to be reused for flushing, gardening, and car washing. The discharge estimate, with its calculations and references, is submitted by the applicant as part of the services plan.",
       },
       {
         id: "13.7",
         clauseNumber: "13.7",
         title: "Green Cover & Tree Plantation Norms",
-        content: "Residential: <200 sqm -> 1 tree; 200-300 sqm -> 2 trees; 301-500 sqm -> 4 trees; >500 sqm -> 1 tree per 100 sqm; Group housing -> 50 trees/Ha. Industrial: 1 tree per 80 sqm. Commercial: 1 tree per 100 sqm. Institutional/parks: 125 trees/Ha (min 20% greenery).",
+        content: "Residential: <200 sqm -> 1 tree; 200-300 sqm -> 2 trees; 301-500 sqm -> 4 trees; >500 sqm -> 1 tree per 100 sqm or part thereof; group housing -> 50 trees/Ha. Industrial: 1 tree per 80 sqm. Commercial: 1 tree per 100 sqm. Institutional/parks: 125 trees/Ha (min 20% greenery).\n\nCategory-A and above: a minimum of 1 tree for every 80 sqm of land — a higher rate than the per-use figures above, and the one that then governs. Compensatory plantation at 1:3 for any tree cut. Existing grown trees that are conserved count against the requirement, and a refundable tree plantation deposit is payable with the application, released after five years.",
+      },
+      {
+        id: "13.8",
+        clauseNumber: "13.8",
+        title: "Environment Impact Assessment",
+        content: "\"No development permission shall be given to the Building and Construction projects, until getting Environment Clearance from SEIAA (State Level Environment Impact Assessment Authority) as required under the Environmental Impact Assessment notification-2006.\" Applies from Category-B — 20,000 sqm of built-up area — upward, and to townships and area development projects in Category-D (>150,000 sqm, or a site over 50 Ha). A phased project needs the clearance before the first phase is approved.",
       }
     ]
   },

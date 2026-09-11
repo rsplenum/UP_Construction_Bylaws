@@ -73,7 +73,21 @@ export interface ProjectState {
 
   parkingBaysProvided: number;
   hasRWH: boolean;
+  /**
+   * Solar water heating — Clause 13.2.3.2, which binds six named categories of building
+   * that have a hot water installation, and sets no plot-size threshold.
+   */
   hasSolarHeating: boolean;
+  /**
+   * Solar photovoltaics — Clause 13.2.3.1, "All plots having size 500 sqm and above shall
+   * install solar photovoltaic power generation system."
+   *
+   * A separate field because they are separate obligations on separate triggers, and the
+   * engine used to hold one boolean for both: it required water heating on the plot-size
+   * trigger that belongs to photovoltaics, so a 600 m² house was told to install the wrong
+   * system and a 400 m² hotel was told nothing (B-035).
+   */
+  hasSolarPv: boolean;
   greenRating: GreenRating;
 
   /**
@@ -126,6 +140,7 @@ export const DEFAULT_PROJECT: ProjectState = {
   parkingBaysProvided: 4,
   hasRWH: true,
   hasSolarHeating: false,
+  hasSolarPv: false,
   greenRating: 'none',
 
   circleRate: 35000,

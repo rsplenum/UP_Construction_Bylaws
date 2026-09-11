@@ -1,0 +1,2355 @@
+{
+ "chapter": "13",
+ "source": "docs/source/gazette/pdf/chapter-13.pdf",
+ "sourceMd5": "468477cec474ecad710dcbf6569feec6",
+ "gazettePages": [
+  127,
+  133
+ ],
+ "pageCount": 7,
+ "tableCount": 9,
+ "fillCounts": {
+  "#D9E2F3": 48
+ },
+ "colourOnlyCells": 32,
+ "colourCodedTableRows": 0,
+ "warnings": [],
+ "pages": [
+  {
+   "pdfPage": 1,
+   "gazettePage": 127,
+   "prose": "13 Environmental Sustainability\nThe general principles for sustainability in buildings shall be in accordance with Part 11- \u2018Approach to\nSustainability\u2019 of NBC 2016.\n13.1 Water Conservation\n13.1.1 Water management during construction\nWater from authorized sources shall be used for construction. Where ground water is used for\nconstruction, permission from the concerned ground water authority shall be taken. Less water\nintensive construction methods may be employed using prefabricated members, pre-mix concrete,\ncuring agents, etc.\nOn construction sites, potable water shall be used only for drinking, human activities and concrete\nworks. Use of potable water for any other construction activity may not be allowed. Treated wastewater\nfrom appropriate sources should be used in such construction activities after complying with all the\nrequired parameters for water use.\n13.1.2 Rainwater Harvesting\nRainwater harvesting shall be achieved by adopting the techniques given below:\na) storage of rainwater on surface for future use; and\nb) recharge to ground water\nAll public open spaces and recreational area shall make provisions for rainwater harvesting.\nRequirements of Layout/Sub-division Plan for Development Permission\n(a) Before making a new plan, geological /hydrological /hydrogeological survey of the area should be\nconducted and appropriate method should be adopted as per local requirement for recharging of ground\nwater.\n(b) In the layout plans of schemes having an area of more than 10 acres (>4 hectares), reservoir(s) shall\nbe constructed at suitable places within the land proposed for parks and open areas, wherein such area\nshall be a minimum 01 percent of total scheme area. Prior to building such reservoir(s) in such scheme,\nwhile identifying natural rainwater catchment areas, the size and depth of such reservoir shall be\ndetermined, after study/assessment of envisaged volume of rainwater, hydrogeological, topography,\nlithology, soil properties of the area, possible retention and \u2018stagnation\u2019 of rainwater in the proposed\nreservoir and the feasibility thereof. However, the maximum depth of the reservoir should be kept at 02\nmeters. Apart from this, arrangements should be made to dispose only the \u2018surface-run-off\u2019 of that\nscheme in the reservoir; polluted water and effluent should not be mixed in it. Recharge pit/recharge\nshaft should be made in one corner of the park and open area as per the prescribed standards. Such\nrecharge pits/recharge shafts and reservoirs should be constructed in the direction of the slope in\naccordance with the regional hydrogeology.\n(c) Concrete construction in parks should not be more than 5 percent, including concrete pavement and\nfootpaths and tracks, and should be made using \u2018permeable\u2019 or semi-permeable perforated blocks as\nmuch as possible. Maximum underground seepage of rainwater should be encouraged in parks and open\nareas.\n(d) Such trees and plants shall be planted on roads, parks and open spaces which require minimum water\nand which can absorb less water and remain green even in summer.\n(e) In the layout plans of new schemes, in addition to infrastructure facilities like water supply, drainage\nand sewerage network, other separate networks shall be provided for collective recharge of ground\nwater through roof-top rainwater harvesting with an arrangement for recharging pits for individual\nplots/ buildings and recharging structures at other suitable places.\n127",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "13 Environmental Sustainability"
+    },
+    {
+     "y": 96,
+     "text": "The general principles for sustainability in buildings shall be in accordance with Part 11- \u2018Approach to"
+    },
+    {
+     "y": 109,
+     "text": "Sustainability\u2019 of NBC 2016."
+    },
+    {
+     "y": 131,
+     "text": "13.1 Water Conservation"
+    },
+    {
+     "y": 154,
+     "text": "13.1.1 Water management during construction"
+    },
+    {
+     "y": 173,
+     "text": "Water from authorized sources shall be used for construction. Where ground water is used for"
+    },
+    {
+     "y": 185,
+     "text": "construction, permission from the concerned ground water authority shall be taken. Less water"
+    },
+    {
+     "y": 198,
+     "text": "intensive construction methods may be employed using prefabricated members, pre-mix concrete,"
+    },
+    {
+     "y": 211,
+     "text": "curing agents, etc."
+    },
+    {
+     "y": 230,
+     "text": "On construction sites, potable water shall be used only for drinking, human activities and concrete"
+    },
+    {
+     "y": 243,
+     "text": "works. Use of potable water for any other construction activity may not be allowed. Treated wastewater"
+    },
+    {
+     "y": 256,
+     "text": "from appropriate sources should be used in such construction activities after complying with all the"
+    },
+    {
+     "y": 269,
+     "text": "required parameters for water use."
+    },
+    {
+     "y": 290,
+     "text": "13.1.2 Rainwater Harvesting"
+    },
+    {
+     "y": 309,
+     "text": "Rainwater harvesting shall be achieved by adopting the techniques given below:"
+    },
+    {
+     "y": 328,
+     "text": "a) storage of rainwater on surface for future use; and"
+    },
+    {
+     "y": 347,
+     "text": "b) recharge to ground water"
+    },
+    {
+     "y": 366,
+     "text": "All public open spaces and recreational area shall make provisions for rainwater harvesting."
+    },
+    {
+     "y": 385,
+     "text": "Requirements of Layout/Sub-division Plan for Development Permission"
+    },
+    {
+     "y": 403,
+     "text": "(a) Before making a new plan, geological /hydrological /hydrogeological survey of the area should be"
+    },
+    {
+     "y": 416,
+     "text": "conducted and appropriate method should be adopted as per local requirement for recharging of ground"
+    },
+    {
+     "y": 429,
+     "text": "water."
+    },
+    {
+     "y": 448,
+     "text": "(b) In the layout plans of schemes having an area of more than 10 acres (>4 hectares), reservoir(s) shall"
+    },
+    {
+     "y": 461,
+     "text": "be constructed at suitable places within the land proposed for parks and open areas, wherein such area"
+    },
+    {
+     "y": 474,
+     "text": "shall be a minimum 01 percent of total scheme area. Prior to building such reservoir(s) in such scheme,"
+    },
+    {
+     "y": 487,
+     "text": "while identifying natural rainwater catchment areas, the size and depth of such reservoir shall be"
+    },
+    {
+     "y": 500,
+     "text": "determined, after study/assessment of envisaged volume of rainwater, hydrogeological, topography,"
+    },
+    {
+     "y": 513,
+     "text": "lithology, soil properties of the area, possible retention and \u2018stagnation\u2019 of rainwater in the proposed"
+    },
+    {
+     "y": 526,
+     "text": "reservoir and the feasibility thereof. However, the maximum depth of the reservoir should be kept at 02"
+    },
+    {
+     "y": 539,
+     "text": "meters. Apart from this, arrangements should be made to dispose only the \u2018surface-run-off\u2019 of that"
+    },
+    {
+     "y": 552,
+     "text": "scheme in the reservoir; polluted water and effluent should not be mixed in it. Recharge pit/recharge"
+    },
+    {
+     "y": 564,
+     "text": "shaft should be made in one corner of the park and open area as per the prescribed standards. Such"
+    },
+    {
+     "y": 577,
+     "text": "recharge pits/recharge shafts and reservoirs should be constructed in the direction of the slope in"
+    },
+    {
+     "y": 590,
+     "text": "accordance with the regional hydrogeology."
+    },
+    {
+     "y": 609,
+     "text": "(c) Concrete construction in parks should not be more than 5 percent, including concrete pavement and"
+    },
+    {
+     "y": 622,
+     "text": "footpaths and tracks, and should be made using \u2018permeable\u2019 or semi-permeable perforated blocks as"
+    },
+    {
+     "y": 635,
+     "text": "much as possible. Maximum underground seepage of rainwater should be encouraged in parks and open"
+    },
+    {
+     "y": 648,
+     "text": "areas."
+    },
+    {
+     "y": 667,
+     "text": "(d) Such trees and plants shall be planted on roads, parks and open spaces which require minimum water"
+    },
+    {
+     "y": 680,
+     "text": "and which can absorb less water and remain green even in summer."
+    },
+    {
+     "y": 699,
+     "text": "(e) In the layout plans of new schemes, in addition to infrastructure facilities like water supply, drainage"
+    },
+    {
+     "y": 712,
+     "text": "and sewerage network, other separate networks shall be provided for collective recharge of ground"
+    },
+    {
+     "y": 724,
+     "text": "water through roof-top rainwater harvesting with an arrangement for recharging pits for individual"
+    },
+    {
+     "y": 737,
+     "text": "plots/ buildings and recharging structures at other suitable places."
+    },
+    {
+     "y": 775,
+     "text": "127"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 2,
+   "gazettePage": 128,
+   "prose": "(f) In the layout plans of new schemes, for plots of areas from 100-300 square meters, it shall not be\nmandatory to establish rainwater harvesting system in individual buildings if the rainwater from group\nof buildings flows into the network of the collective recharge of the scheme. However, in relation to\nbuildings constructed on plots of area more than 300 square meters, then it shall be mandatory for the\nbuilding owner to install rainwater harvesting system himself.\nRequirements of Building Plan submitted along with application for permission.\nIn case of no collective recharge network, roof top rainwater harvesting system in plots of all uses of\n300 square meters and more area (including group housing) except waterlogged areas. Construction of\nrainwater harvesting structures shall be ensured as per standard technology and rainwater shall be\nallowed to penetrate the soil to the minimum required depth so that the problem of pollution of ground\nwater sources does not arise. Ground water recharging system should not be adopted in areas with water\nlogging problem, but arrangements can be made to collect rainwater received from the roofs of\nbuildings.\nEnvironmental Conditions required for buildings (amended from time to time):\n13.2 Energy Conservation\nFor all public buildings or building complexes with a connected load of 100 kW or greater or having a\ncontract demand of 120 KV or greater and intended to be used for commercial purpose, Energy\nConservation Building Code (ECBC) standards, as amended from time to time, shall be applicable.\nOccupancy sensors, movement sensors, lux level sensors, etc, may also be considered as switching\noptions for lights, fans, TV, etc, for different closed spaces.\n13.2.1 Energy Conservation through Efficient Lighting\nA substantial portion of the energy consumed on lighting may be saved by utilization of daylight and\nrational design of supplementary artificial lights. In common areas, cost effective and energy saving\nLED/solar lights may be provided.\nAll exterior lighting may use solar-powered lighting and be fitted with automatic controls so that the\nlights do not operate during daylight hours.\n13.2.2 Energy Conservation through Efficient HVAC\nMaximum possible use shall be made of wind induced natural ventilation. An adequate number of\ncirculating fans shall be installed to serve all the rooms during summer months in hot and warm regions\nand dry and humid conditions.\n128",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "(f) In the layout plans of new schemes, for plots of areas from 100-300 square meters, it shall not be"
+    },
+    {
+     "y": 85,
+     "text": "mandatory to establish rainwater harvesting system in individual buildings if the rainwater from group"
+    },
+    {
+     "y": 97,
+     "text": "of buildings flows into the network of the collective recharge of the scheme. However, in relation to"
+    },
+    {
+     "y": 110,
+     "text": "buildings constructed on plots of area more than 300 square meters, then it shall be mandatory for the"
+    },
+    {
+     "y": 123,
+     "text": "building owner to install rainwater harvesting system himself."
+    },
+    {
+     "y": 142,
+     "text": "Requirements of Building Plan submitted along with application for permission."
+    },
+    {
+     "y": 161,
+     "text": "In case of no collective recharge network, roof top rainwater harvesting system in plots of all uses of"
+    },
+    {
+     "y": 174,
+     "text": "300 square meters and more area (including group housing) except waterlogged areas. Construction of"
+    },
+    {
+     "y": 187,
+     "text": "rainwater harvesting structures shall be ensured as per standard technology and rainwater shall be"
+    },
+    {
+     "y": 200,
+     "text": "allowed to penetrate the soil to the minimum required depth so that the problem of pollution of ground"
+    },
+    {
+     "y": 213,
+     "text": "water sources does not arise. Ground water recharging system should not be adopted in areas with water"
+    },
+    {
+     "y": 226,
+     "text": "logging problem, but arrangements can be made to collect rainwater received from the roofs of"
+    },
+    {
+     "y": 239,
+     "text": "buildings."
+    },
+    {
+     "y": 257,
+     "text": "Environmental Conditions required for buildings (amended from time to time):"
+    },
+    {
+     "y": 499,
+     "text": "13.2 Energy Conservation"
+    },
+    {
+     "y": 520,
+     "text": "For all public buildings or building complexes with a connected load of 100 kW or greater or having a"
+    },
+    {
+     "y": 533,
+     "text": "contract demand of 120 KV or greater and intended to be used for commercial purpose, Energy"
+    },
+    {
+     "y": 546,
+     "text": "Conservation Building Code (ECBC) standards, as amended from time to time, shall be applicable."
+    },
+    {
+     "y": 565,
+     "text": "Occupancy sensors, movement sensors, lux level sensors, etc, may also be considered as switching"
+    },
+    {
+     "y": 578,
+     "text": "options for lights, fans, TV, etc, for different closed spaces."
+    },
+    {
+     "y": 599,
+     "text": "13.2.1 Energy Conservation through Efficient Lighting"
+    },
+    {
+     "y": 618,
+     "text": "A substantial portion of the energy consumed on lighting may be saved by utilization of daylight and"
+    },
+    {
+     "y": 631,
+     "text": "rational design of supplementary artificial lights. In common areas, cost effective and energy saving"
+    },
+    {
+     "y": 644,
+     "text": "LED/solar lights may be provided."
+    },
+    {
+     "y": 663,
+     "text": "All exterior lighting may use solar-powered lighting and be fitted with automatic controls so that the"
+    },
+    {
+     "y": 676,
+     "text": "lights do not operate during daylight hours."
+    },
+    {
+     "y": 696,
+     "text": "13.2.2 Energy Conservation through Efficient HVAC"
+    },
+    {
+     "y": 715,
+     "text": "Maximum possible use shall be made of wind induced natural ventilation. An adequate number of"
+    },
+    {
+     "y": 728,
+     "text": "circulating fans shall be installed to serve all the rooms during summer months in hot and warm regions"
+    },
+    {
+     "y": 741,
+     "text": "and dry and humid conditions."
+    },
+    {
+     "y": 775,
+     "text": "128"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.3,
+      270.0,
+      523.2,
+      471.3
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.3,
+         270.0,
+         77.7,
+         281.7
+        ]
+       },
+       {
+        "text": "Built-up area",
+        "fill": "#D9E2F3",
+        "bbox": [
+         77.7,
+         270.0,
+         222.6,
+         281.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         222.6,
+         270.0,
+         228.0,
+         281.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         228.0,
+         270.0,
+         233.4,
+         281.7
+        ]
+       },
+       {
+        "text": "Requirements",
+        "fill": "#D9E2F3",
+        "bbox": [
+         233.4,
+         270.0,
+         517.8,
+         281.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         517.8,
+         270.0,
+         523.2,
+         281.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Category-A (5000-20000 sqm)",
+        "bbox": [
+         72.3,
+         281.7,
+         228.0,
+         293.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "\u2022 A rainwater harvesting plan needs to be designed where the\nrecharge bores (minimum one per 5000 sqm of built-up area) shall\nbe provided. The rainwater harvested should be stored in a tank for\nreuse in household through a provision of separate water tank and\npipeline to avoid mixing with potable municipal water supply. The\nexcess rainwater harvested be linked to the tube well bore in the\npremise through a pipeline after filtration in the installed filters.\n\u2022 The unpaved area shall be more than or equal to 20% of the\nrecreational open spaces.",
+        "bbox": [
+         228.0,
+         281.7,
+         523.2,
+         387.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-B (20000 -50000 sqm)",
+        "bbox": [
+         72.3,
+         293.9,
+         228.0,
+         305.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-C (50000-150000 sqm)",
+        "bbox": [
+         72.3,
+         305.9,
+         228.0,
+         387.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Additional Conditions\nCategory-C (50000-150000 sqm)",
+        "bbox": [
+         72.3,
+         387.3,
+         228.0,
+         471.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "\u2022 The ground water shall not be withdrawn without approval from\nthe competent authority.\n\u2022 Use of potable water in construction should be minimized.\n\u2022 Low flow fixtures and sensors must be used to promote water\nconservation.\n\u2022 Separation of grey and black water should be done by the use of\ndual plumbing system.",
+        "bbox": [
+         228.0,
+         387.3,
+         523.2,
+         471.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 3,
+   "gazettePage": 129,
+   "prose": "13.2.3 Solar Energy\nAll efforts shall be made towards optimum and efficient use of renewable energy in buildings and,\nthereby reduce the building\u2019s dependency on fuels derived from conventional sources. This may be\nachieved by installing solar water heater and Solar Photovoltaic (SPV) systems. To facilitate the\ninstallation of such a solar system, at least 25-50 percent of roof area may be utilized for installation of\nsolar water heater and SPV system in new buildings.\n13.2.3.1 Solar Photovoltaic Power Generation System\nAll plots having size 500 sqm and above shall install solar photovoltaic power generation system. This\nshould also be encouraged for plots smaller than 500 sqm. The power generated may be used for in-\nhouse utilization or for transfer to the grid.\n13.2.3.2 Solar Water Heating System\nNo new building in the following categories in which there is a system of installation for supplying hot\nwater shall be built unless the system of the installation is also having an auxiliary solar assisted water\nheating system. Solar water heating systems shall be provided in the following buildings:\na) hotels, lodges, guest houses, service apartments;\nb) institutional buildings (hospitals and nursing home);\nc) schools, colleges, universities, technical institutions, training centres;\nd) assembly buildings (auditorium, community halls, wedding/banquet halls, etc);\ne) barracks of armed forces/paramilitary forces and police forces;\nf) hostels for schools, colleges, and training centres with more than 100 students.\n13.2.4 Energy Efficiency Compliance\nEnvironmental Conditions required for buildings (amended from time to time):\n129",
+   "proseLines": [
+    {
+     "y": 74,
+     "text": "13.2.3 Solar Energy"
+    },
+    {
+     "y": 93,
+     "text": "All efforts shall be made towards optimum and efficient use of renewable energy in buildings and,"
+    },
+    {
+     "y": 105,
+     "text": "thereby reduce the building\u2019s dependency on fuels derived from conventional sources. This may be"
+    },
+    {
+     "y": 118,
+     "text": "achieved by installing solar water heater and Solar Photovoltaic (SPV) systems. To facilitate the"
+    },
+    {
+     "y": 131,
+     "text": "installation of such a solar system, at least 25-50 percent of roof area may be utilized for installation of"
+    },
+    {
+     "y": 144,
+     "text": "solar water heater and SPV system in new buildings."
+    },
+    {
+     "y": 165,
+     "text": "13.2.3.1 Solar Photovoltaic Power Generation System"
+    },
+    {
+     "y": 183,
+     "text": "All plots having size 500 sqm and above shall install solar photovoltaic power generation system. This"
+    },
+    {
+     "y": 196,
+     "text": "should also be encouraged for plots smaller than 500 sqm. The power generated may be used for in-"
+    },
+    {
+     "y": 209,
+     "text": "house utilization or for transfer to the grid."
+    },
+    {
+     "y": 229,
+     "text": "13.2.3.2 Solar Water Heating System"
+    },
+    {
+     "y": 247,
+     "text": "No new building in the following categories in which there is a system of installation for supplying hot"
+    },
+    {
+     "y": 260,
+     "text": "water shall be built unless the system of the installation is also having an auxiliary solar assisted water"
+    },
+    {
+     "y": 273,
+     "text": "heating system. Solar water heating systems shall be provided in the following buildings:"
+    },
+    {
+     "y": 292,
+     "text": "a) hotels, lodges, guest houses, service apartments;"
+    },
+    {
+     "y": 305,
+     "text": "b) institutional buildings (hospitals and nursing home);"
+    },
+    {
+     "y": 318,
+     "text": "c) schools, colleges, universities, technical institutions, training centres;"
+    },
+    {
+     "y": 331,
+     "text": "d) assembly buildings (auditorium, community halls, wedding/banquet halls, etc);"
+    },
+    {
+     "y": 344,
+     "text": "e) barracks of armed forces/paramilitary forces and police forces;"
+    },
+    {
+     "y": 357,
+     "text": "f) hostels for schools, colleges, and training centres with more than 100 students."
+    },
+    {
+     "y": 390,
+     "text": "13.2.4 Energy Efficiency Compliance"
+    },
+    {
+     "y": 409,
+     "text": "Environmental Conditions required for buildings (amended from time to time):"
+    },
+    {
+     "y": 775,
+     "text": "129"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.3,
+      421.9,
+      523.2,
+      755.5
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.3,
+         421.9,
+         77.7,
+         433.6
+        ]
+       },
+       {
+        "text": "Built-up area",
+        "fill": "#D9E2F3",
+        "bbox": [
+         77.7,
+         421.9,
+         224.1,
+         433.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         224.1,
+         421.9,
+         229.5,
+         433.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         229.5,
+         421.9,
+         234.9,
+         433.6
+        ]
+       },
+       {
+        "text": "Requirement",
+        "fill": "#D9E2F3",
+        "bbox": [
+         234.9,
+         421.9,
+         517.8,
+         433.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         517.8,
+         421.9,
+         523.2,
+         433.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Category-A (5000-20000 sqm)",
+        "bbox": [
+         72.3,
+         433.6,
+         229.5,
+         458.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "\u2022 In common areas, LED/ solar lights must be provided.",
+        "bbox": [
+         229.5,
+         433.6,
+         523.2,
+         458.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-B (20000 -50000 sqm)",
+        "bbox": [
+         72.3,
+         458.7,
+         229.5,
+         470.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "\u2022 In common areas, LED/ solar lights must be provided.\n\u2022 At least 1% of connected applied load generated from renewable\nenergy source such as photovoltaic cells or windmills or hybrid\nshould be provided.\n\u2022 As per the provisions of the Ministry of New and Renewable\nenergy solar water heater of minimum capacity 10 litres/4 persons\n(2.5 litres per capita) shall be installed.\n\u2022 Use of fly ash bricks: Fly ash should be used as building material\nin the construction as per the provisions of Fly Ash Notification of\nSeptember 1999 and as amended from time to time.",
+        "bbox": [
+         229.5,
+         458.7,
+         523.2,
+         577.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-C (50000-150000 sqm)",
+        "bbox": [
+         72.3,
+         470.7,
+         229.5,
+         577.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-C (50000-150000 sqm)",
+        "bbox": [
+         72.3,
+         577.1,
+         229.5,
+         755.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "\u2022 Use of concept of passive solar design of buildings using\narchitectural design approaches that minimize energy consumption\nin buildings by integrating conventional energy-efficient devices,\nsuch as mechanical and electric pumps, fans, lighting fixtures and\nother equipment, with the passive design elements, such as\nbuilding orientation, landscaping, efficient building envelope,\nappropriate fenestration, increased day lighting design and thermal\nmass.\n\u2022 Optimize use of energy systems in buildings that should maintain\na specific indoor environment conducive to the functional\nrequirements of the building by following mandatory compliance\nmeasures (for all applicable buildings) as recommended in the\nEnergy Conservation Building Code (ECBC) 2007 of the Bureau\nof Energy Efficiency, Government of India.",
+        "bbox": [
+         229.5,
+         577.1,
+         523.2,
+         755.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 4,
+   "gazettePage": 130,
+   "prose": "13.3 Natural Drainage\nEnvironmental Conditions required for buildings (amended from time to time):\n13.4 Solid Waste Management\nAll buildings shall provide facilities for solid waste management with segregation of dry and wet waste\nat source. For waste management in residential buildings (including group housing) and all non-\nresidential buildings with an area of more than 500 square meters, two types of dustbins (biodegradable\nand non-biodegradable) shall be provided on the ground floor near the entrance of the plot so that it\nbecomes easy for the local body to collect garbage from dustbins every day, de-process it at ward or\nsector level and prepare fuel cake, fertilizer, paper etc.\nEnvironmental Conditions required for buildings (amended from time to time):\n13.5 Wastewater Recycling\nWastewater generated from residential, industrial, medical, commercial and wastewater generated from\ngarbage shall be treated as per the guidelines given by the state pollution control board.\nA wastewater recycling facility shall be installed wherever the minimum estimated water discharge\nfrom the building(s) on a plot exceeds 10,000 liters per day.\nThe applicant shall, along with their application for obtaining necessary development permit/ building\npermit, submit as part of the services plans, a plan showing the location of wastewater treatment plant,\nfurnishing details of calculations, references, implementation, etc. This plan shall accompany the\napplicant\u2019s commitment to monitor the system periodically from the date of occupation of the respective\nbuilding.\nProvisions of recycling system\nThe applicant shall along with his application submit the designs, plans, calculations and the references\nused for the calculations etc. to provide the system to recycle the grey water. Such system shall include\nthe provisions to facilitate the following:\n(i) Treated grey water is pumped to a separate tank on the roof from where grey water will be\nsupplied to water closets, garden taps, car washing taps etc.\n(ii) Only water from water closets should be let in to sewerage system.\n130",
+   "proseLines": [
+    {
+     "y": 93,
+     "text": "13.3 Natural Drainage"
+    },
+    {
+     "y": 114,
+     "text": "Environmental Conditions required for buildings (amended from time to time):"
+    },
+    {
+     "y": 196,
+     "text": "13.4 Solid Waste Management"
+    },
+    {
+     "y": 217,
+     "text": "All buildings shall provide facilities for solid waste management with segregation of dry and wet waste"
+    },
+    {
+     "y": 230,
+     "text": "at source. For waste management in residential buildings (including group housing) and all non-"
+    },
+    {
+     "y": 242,
+     "text": "residential buildings with an area of more than 500 square meters, two types of dustbins (biodegradable"
+    },
+    {
+     "y": 255,
+     "text": "and non-biodegradable) shall be provided on the ground floor near the entrance of the plot so that it"
+    },
+    {
+     "y": 268,
+     "text": "becomes easy for the local body to collect garbage from dustbins every day, de-process it at ward or"
+    },
+    {
+     "y": 280,
+     "text": "sector level and prepare fuel cake, fertilizer, paper etc."
+    },
+    {
+     "y": 306,
+     "text": "Environmental Conditions required for buildings (amended from time to time):"
+    },
+    {
+     "y": 482,
+     "text": "13.5 Wastewater Recycling"
+    },
+    {
+     "y": 503,
+     "text": "Wastewater generated from residential, industrial, medical, commercial and wastewater generated from"
+    },
+    {
+     "y": 516,
+     "text": "garbage shall be treated as per the guidelines given by the state pollution control board."
+    },
+    {
+     "y": 535,
+     "text": "A wastewater recycling facility shall be installed wherever the minimum estimated water discharge"
+    },
+    {
+     "y": 548,
+     "text": "from the building(s) on a plot exceeds 10,000 liters per day."
+    },
+    {
+     "y": 567,
+     "text": "The applicant shall, along with their application for obtaining necessary development permit/ building"
+    },
+    {
+     "y": 580,
+     "text": "permit, submit as part of the services plans, a plan showing the location of wastewater treatment plant,"
+    },
+    {
+     "y": 592,
+     "text": "furnishing details of calculations, references, implementation, etc. This plan shall accompany the"
+    },
+    {
+     "y": 605,
+     "text": "applicant\u2019s commitment to monitor the system periodically from the date of occupation of the respective"
+    },
+    {
+     "y": 618,
+     "text": "building."
+    },
+    {
+     "y": 637,
+     "text": "Provisions of recycling system"
+    },
+    {
+     "y": 659,
+     "text": "The applicant shall along with his application submit the designs, plans, calculations and the references"
+    },
+    {
+     "y": 672,
+     "text": "used for the calculations etc. to provide the system to recycle the grey water. Such system shall include"
+    },
+    {
+     "y": 685,
+     "text": "the provisions to facilitate the following:"
+    },
+    {
+     "y": 704,
+     "text": "(i) Treated grey water is pumped to a separate tank on the roof from where grey water will be"
+    },
+    {
+     "y": 717,
+     "text": "supplied to water closets, garden taps, car washing taps etc."
+    },
+    {
+     "y": 731,
+     "text": "(ii) Only water from water closets should be let in to sewerage system."
+    },
+    {
+     "y": 775,
+     "text": "130"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.3,
+      126.5,
+      523.2,
+      174.5
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.3,
+         126.5,
+         77.7,
+         138.1
+        ]
+       },
+       {
+        "text": "Built-up area",
+        "fill": "#D9E2F3",
+        "bbox": [
+         77.7,
+         126.5,
+         223.8,
+         138.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         223.8,
+         126.5,
+         229.2,
+         138.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         229.2,
+         126.5,
+         234.7,
+         138.1
+        ]
+       },
+       {
+        "text": "Requirement",
+        "fill": "#D9E2F3",
+        "bbox": [
+         234.7,
+         126.5,
+         517.8,
+         138.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         517.8,
+         126.5,
+         523.2,
+         138.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Category-A (5000-20000 sqm)",
+        "bbox": [
+         72.3,
+         138.1,
+         229.2,
+         150.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "The inlet and outlet point of natural drain system should be maintained\nwith adequate size of channel for ensuring unrestricted flow of water.",
+        "bbox": [
+         229.2,
+         138.1,
+         523.2,
+         174.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-B (20000 -50000 sqm)",
+        "bbox": [
+         72.3,
+         150.3,
+         229.2,
+         162.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-C (50000-150000 sqm)",
+        "bbox": [
+         72.3,
+         162.3,
+         229.2,
+         174.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      72.3,
+      318.3,
+      523.2,
+      460.2
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.3,
+         318.3,
+         77.7,
+         330.1
+        ]
+       },
+       {
+        "text": "Built-up area",
+        "fill": "#D9E2F3",
+        "bbox": [
+         77.7,
+         318.3,
+         223.8,
+         330.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         223.8,
+         318.3,
+         229.2,
+         330.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         229.2,
+         318.3,
+         234.7,
+         330.1
+        ]
+       },
+       {
+        "text": "Requirement",
+        "fill": "#D9E2F3",
+        "bbox": [
+         234.7,
+         318.3,
+         517.8,
+         330.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         517.8,
+         318.3,
+         523.2,
+         330.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Category-A (5000-20000 sqm)",
+        "bbox": [
+         72.3,
+         330.1,
+         229.2,
+         342.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "\u2022 Separate wet and dry bins must be provided at the ground level for\nfacilitating segregation of waste.",
+        "bbox": [
+         229.2,
+         330.1,
+         523.2,
+         366.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-B (20000 -50000 sqm)",
+        "bbox": [
+         72.3,
+         342.2,
+         229.2,
+         354.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-C (50000-150000 sqm)",
+        "bbox": [
+         72.3,
+         354.2,
+         229.2,
+         366.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-C (50000-150000 sqm)",
+        "bbox": [
+         72.3,
+         366.2,
+         229.2,
+         460.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "\u2022 All non-biodegradable waste shall be handed over to authorized\nrecyclers for which a written tie-up must be done with the\nauthorized recyclers.\n\u2022 Organic waste composter/vermiculture pit with a minimum\ncapacity of 0.3 Kg/tenement/day must be installed wherein the STP\nsludge may be used to be converted to manure which could be used\nat the site or handed over to authorized recyclers for which a\nwritten tie-up must be done with the authorized recyclers.",
+        "bbox": [
+         229.2,
+         366.2,
+         523.2,
+         460.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 5,
+   "gazettePage": 131,
+   "prose": "(iii) Wherever arrangements for reuse of recycled water is provided, additional arrangements for\ncarrying the excess grey water to the sewerage system may also be provided.\n(iv) The recycled water shall be used for non-potable, no contact purposes within premises and shall\nnot be connected to sewage/wastewater system of local authority. However, the waste generated\nby the recycle plant can be connected to local authority sewer network if it is of the accepted\nquality as mentioned in the guidelines of competent authority.\n(v) Separation of grey water:\n(a) The wastes from toilets in the premises will be separated from grey water that is of\nbathroom and kitchen wastes by means of separate down take discharge system.\n(b) The grey water shall be recycled by providing recycling plant and shall be reused for\nnon-potable purposes after storing the same in distinctly separate tank by means of\npurple coloured down take pipes.\n(c) The water quality shall conform to standards of non-potable water. The recycled water\nshall be tested once in six months and results shall be made available to competent\nauthority whenever demanded.\n(d) The make\u2010up connection to the system will be done at the collection tank of the treated\nwater, through a free fall if from Municipal water connection.\n(e) Separate plumbing for grey water: Every developer/owner shall provide the newly\nconstructed building with the provision of down take plumbing for grey water,\nrecycling water plant, storage and reuse fitting before selling the building.\n(vi) Reuse of water strictly for not potable non\u2010contact use.\na. The reuse of water will be strictly for not potable use by means of providing a distinctly\nseparate reuse system coloured in purple. The non\u2010contact uses shall be restricted to\ntoilet flushing, drip irrigation of trees/shrubs, sub surface irrigation of lawns and\nrecharge of ground water.\nb. There shall not be cross\u2010connection of fitting of the potable and not potable water at\nany point. The recycled water system shall be maintained at a lower operating pressure\nthat of the potable water system. Precautions should be taken to prevent cross\ncontamination.\nQuality of Water and Treatment\n(i) The water generated after treatment should be safe for its use for flushing toilets, gardening etc.\n(ii) The company or the agency engaged for installation of system for recycling of wastewater shall\npreferably confirm ISO:14000.\n(iii) Provision may be made for checking the quality of recycled water with Water testing laboratory\nwith Municipal Corporation or Jal Nigam.\n(iv) The testing of wastes and the submission of the results shall be done in a manner in accordance\nwith the terms and conditions prescribed by the Municipal Commissioner or Uttar Pradesh\nPollution Control Board (UPPCB) / Competent authority.\n13.6 Air Quality & Noise\nEnvironmental Conditions required for buildings (amended from time to time):\n131",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "(iii) Wherever arrangements for reuse of recycled water is provided, additional arrangements for"
+    },
+    {
+     "y": 85,
+     "text": "carrying the excess grey water to the sewerage system may also be provided."
+    },
+    {
+     "y": 99,
+     "text": "(iv) The recycled water shall be used for non-potable, no contact purposes within premises and shall"
+    },
+    {
+     "y": 113,
+     "text": "not be connected to sewage/wastewater system of local authority. However, the waste generated"
+    },
+    {
+     "y": 126,
+     "text": "by the recycle plant can be connected to local authority sewer network if it is of the accepted"
+    },
+    {
+     "y": 140,
+     "text": "quality as mentioned in the guidelines of competent authority."
+    },
+    {
+     "y": 154,
+     "text": "(v) Separation of grey water:"
+    },
+    {
+     "y": 167,
+     "text": "(a) The wastes from toilets in the premises will be separated from grey water that is of"
+    },
+    {
+     "y": 181,
+     "text": "bathroom and kitchen wastes by means of separate down take discharge system."
+    },
+    {
+     "y": 194,
+     "text": "(b) The grey water shall be recycled by providing recycling plant and shall be reused for"
+    },
+    {
+     "y": 208,
+     "text": "non-potable purposes after storing the same in distinctly separate tank by means of"
+    },
+    {
+     "y": 222,
+     "text": "purple coloured down take pipes."
+    },
+    {
+     "y": 235,
+     "text": "(c) The water quality shall conform to standards of non-potable water. The recycled water"
+    },
+    {
+     "y": 249,
+     "text": "shall be tested once in six months and results shall be made available to competent"
+    },
+    {
+     "y": 263,
+     "text": "authority whenever demanded."
+    },
+    {
+     "y": 276,
+     "text": "(d) The make\u2010up connection to the system will be done at the collection tank of the treated"
+    },
+    {
+     "y": 290,
+     "text": "water, through a free fall if from Municipal water connection."
+    },
+    {
+     "y": 304,
+     "text": "(e) Separate plumbing for grey water: Every developer/owner shall provide the newly"
+    },
+    {
+     "y": 317,
+     "text": "constructed building with the provision of down take plumbing for grey water,"
+    },
+    {
+     "y": 331,
+     "text": "recycling water plant, storage and reuse fitting before selling the building."
+    },
+    {
+     "y": 345,
+     "text": "(vi) Reuse of water strictly for not potable non\u2010contact use."
+    },
+    {
+     "y": 358,
+     "text": "a. The reuse of water will be strictly for not potable use by means of providing a distinctly"
+    },
+    {
+     "y": 372,
+     "text": "separate reuse system coloured in purple. The non\u2010contact uses shall be restricted to"
+    },
+    {
+     "y": 386,
+     "text": "toilet flushing, drip irrigation of trees/shrubs, sub surface irrigation of lawns and"
+    },
+    {
+     "y": 399,
+     "text": "recharge of ground water."
+    },
+    {
+     "y": 413,
+     "text": "b. There shall not be cross\u2010connection of fitting of the potable and not potable water at"
+    },
+    {
+     "y": 427,
+     "text": "any point. The recycled water system shall be maintained at a lower operating pressure"
+    },
+    {
+     "y": 440,
+     "text": "that of the potable water system. Precautions should be taken to prevent cross"
+    },
+    {
+     "y": 454,
+     "text": "contamination."
+    },
+    {
+     "y": 486,
+     "text": "Quality of Water and Treatment"
+    },
+    {
+     "y": 508,
+     "text": "(i) The water generated after treatment should be safe for its use for flushing toilets, gardening etc."
+    },
+    {
+     "y": 522,
+     "text": "(ii) The company or the agency engaged for installation of system for recycling of wastewater shall"
+    },
+    {
+     "y": 535,
+     "text": "preferably confirm ISO:14000."
+    },
+    {
+     "y": 549,
+     "text": "(iii) Provision may be made for checking the quality of recycled water with Water testing laboratory"
+    },
+    {
+     "y": 563,
+     "text": "with Municipal Corporation or Jal Nigam."
+    },
+    {
+     "y": 576,
+     "text": "(iv) The testing of wastes and the submission of the results shall be done in a manner in accordance"
+    },
+    {
+     "y": 590,
+     "text": "with the terms and conditions prescribed by the Municipal Commissioner or Uttar Pradesh"
+    },
+    {
+     "y": 604,
+     "text": "Pollution Control Board (UPPCB) / Competent authority."
+    },
+    {
+     "y": 638,
+     "text": "13.6 Air Quality & Noise"
+    },
+    {
+     "y": 660,
+     "text": "Environmental Conditions required for buildings (amended from time to time):"
+    },
+    {
+     "y": 775,
+     "text": "131"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.3,
+      672.1,
+      523.2,
+      744.4
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.3,
+         672.1,
+         77.7,
+         683.9
+        ]
+       },
+       {
+        "text": "Built-up area",
+        "fill": "#D9E2F3",
+        "bbox": [
+         77.7,
+         672.1,
+         224.1,
+         683.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         224.1,
+         672.1,
+         229.6,
+         683.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         229.6,
+         672.1,
+         234.9,
+         683.9
+        ]
+       },
+       {
+        "text": "Requirement",
+        "fill": "#D9E2F3",
+        "bbox": [
+         234.9,
+         672.1,
+         517.8,
+         683.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         517.8,
+         672.1,
+         523.2,
+         683.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Category-A (5000-20000 sqm)",
+        "bbox": [
+         72.3,
+         683.9,
+         229.6,
+         696.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "\u2022 Dust, smoke and debris prevention measures such as screens,\nbarricading shall be installed at the site during construction.\nPlastic/ tarpaulin sheet covers must be used for trucks bringing in\nsand and material at the site.",
+        "bbox": [
+         229.6,
+         683.9,
+         523.2,
+         744.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-B (20000 -50000 sqm)",
+        "bbox": [
+         72.3,
+         696.0,
+         229.6,
+         708.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-C (50000-150000 sqm)",
+        "bbox": [
+         72.3,
+         708.0,
+         229.6,
+         744.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 6,
+   "gazettePage": 132,
+   "prose": "13.7 Green Cover/ Tree Plantation\nIn alignment with National Mission for Sustainable Habitat, the Authority encourages augmentation of\ngreen cover in the city/plot by implementing relevant provisions of the Urban Greening Guidelines,\n2014 circulated by Ministry of Housing and Urban Affairs, Government of India.\nLandscape Plan submitted along with Site Plan for Building Permission\nLandscape plan showing plantation of trees while keeping the circulation area free from obstructions.\n(a) In residential plots\ni. One tree on a plot of area less than 200 square meters.\nii. Two trees on a plot of 200 to 300 square meters area.\niii. Four trees on a plot of area 301 to 500 square meters.\niv. One tree per 100 square meter area or part thereof in a plot of area more than 500 square meter.\nv. 50 trees per hectare in group housing scheme.\n(b) In industrial plots\nOne tree per 80 square meter plot of land.\n(c) In commercial plots\nOne tree per 100 square meter area.\n(d) Institutional/community facilities, playgrounds, open areas and parks\nThere shall be greenery on a minimum of 20% of the total area where trees shall be planted at the rate\nof 125 trees per hectare.\nEnvironmental Conditions required for buildings (amended from time to time):\n(i) Trees shall be planted without causing obstruction to the easy movement of fire fighting vehicles\nin case of fire emergency.\n(ii) The requirement of trees shall be reduced on the basis of the number of grown existing trees that\nare conserved and not affected by the proposed development.\n(iii) A person applying for permission to carry out any development shall have to pay tree plantation\ndeposit along with his application to the Competent Authority at the rates decided by the Competent\nAuthority from time to time. This deposit shall be refundable after the period of five years with the\ncondition that trees planted on the site shall be grown\u2010up and maintained properly, otherwise the\ndeposit shall be forfeited and shall be utilised only for tree plantation and maintenance by the\nCompetent Authority.\n132",
+   "proseLines": [
+    {
+     "y": 142,
+     "text": "13.7 Green Cover/ Tree Plantation"
+    },
+    {
+     "y": 163,
+     "text": "In alignment with National Mission for Sustainable Habitat, the Authority encourages augmentation of"
+    },
+    {
+     "y": 175,
+     "text": "green cover in the city/plot by implementing relevant provisions of the Urban Greening Guidelines,"
+    },
+    {
+     "y": 188,
+     "text": "2014 circulated by Ministry of Housing and Urban Affairs, Government of India."
+    },
+    {
+     "y": 213,
+     "text": "Landscape Plan submitted along with Site Plan for Building Permission"
+    },
+    {
+     "y": 232,
+     "text": "Landscape plan showing plantation of trees while keeping the circulation area free from obstructions."
+    },
+    {
+     "y": 258,
+     "text": "(a) In residential plots"
+    },
+    {
+     "y": 271,
+     "text": "i. One tree on a plot of area less than 200 square meters."
+    },
+    {
+     "y": 284,
+     "text": "ii. Two trees on a plot of 200 to 300 square meters area."
+    },
+    {
+     "y": 297,
+     "text": "iii. Four trees on a plot of area 301 to 500 square meters."
+    },
+    {
+     "y": 310,
+     "text": "iv. One tree per 100 square meter area or part thereof in a plot of area more than 500 square meter."
+    },
+    {
+     "y": 323,
+     "text": "v. 50 trees per hectare in group housing scheme."
+    },
+    {
+     "y": 348,
+     "text": "(b) In industrial plots"
+    },
+    {
+     "y": 361,
+     "text": "One tree per 80 square meter plot of land."
+    },
+    {
+     "y": 387,
+     "text": "(c) In commercial plots"
+    },
+    {
+     "y": 400,
+     "text": "One tree per 100 square meter area."
+    },
+    {
+     "y": 426,
+     "text": "(d) Institutional/community facilities, playgrounds, open areas and parks"
+    },
+    {
+     "y": 445,
+     "text": "There shall be greenery on a minimum of 20% of the total area where trees shall be planted at the rate"
+    },
+    {
+     "y": 457,
+     "text": "of 125 trees per hectare."
+    },
+    {
+     "y": 483,
+     "text": "Environmental Conditions required for buildings (amended from time to time):"
+    },
+    {
+     "y": 627,
+     "text": "(i) Trees shall be planted without causing obstruction to the easy movement of fire fighting vehicles"
+    },
+    {
+     "y": 640,
+     "text": "in case of fire emergency."
+    },
+    {
+     "y": 654,
+     "text": "(ii) The requirement of trees shall be reduced on the basis of the number of grown existing trees that"
+    },
+    {
+     "y": 668,
+     "text": "are conserved and not affected by the proposed development."
+    },
+    {
+     "y": 681,
+     "text": "(iii) A person applying for permission to carry out any development shall have to pay tree plantation"
+    },
+    {
+     "y": 695,
+     "text": "deposit along with his application to the Competent Authority at the rates decided by the Competent"
+    },
+    {
+     "y": 709,
+     "text": "Authority from time to time. This deposit shall be refundable after the period of five years with the"
+    },
+    {
+     "y": 722,
+     "text": "condition that trees planted on the site shall be grown\u2010up and maintained properly, otherwise the"
+    },
+    {
+     "y": 736,
+     "text": "deposit shall be forfeited and shall be utilised only for tree plantation and maintenance by the"
+    },
+    {
+     "y": 750,
+     "text": "Competent Authority."
+    },
+    {
+     "y": 775,
+     "text": "132"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.2,
+      71.2,
+      523.2,
+      113.9
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "bbox": [
+         72.2,
+         71.2,
+         229.6,
+         113.9
+        ]
+       },
+       {
+        "text": "\u2022 The exhaust pipe of the DG set, if installed, must be minimum 10m\naway from the building. In case it is less than 10m away, the\nexhaust pipe shall be taken up to 3m above the building.",
+        "bbox": [
+         229.6,
+         71.2,
+         523.2,
+         113.9
+        ]
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      72.2,
+      495.2,
+      523.2,
+      601.2
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.2,
+         495.2,
+         77.7,
+         506.9
+        ]
+       },
+       {
+        "text": "Built-up area",
+        "fill": "#D9E2F3",
+        "bbox": [
+         77.7,
+         495.2,
+         224.2,
+         506.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         224.2,
+         495.2,
+         229.6,
+         506.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         229.6,
+         495.2,
+         235.0,
+         506.9
+        ]
+       },
+       {
+        "text": "Requirement",
+        "fill": "#D9E2F3",
+        "bbox": [
+         235.0,
+         495.2,
+         517.8,
+         506.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         517.8,
+         495.2,
+         523.2,
+         506.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Category-A (5000-20000 sqm)",
+        "bbox": [
+         72.2,
+         506.9,
+         229.6,
+         520.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "\u2022 A minimum of 1 tree for every 80 sqm of land shall be planted and\nmaintained. The existing trees will be counted for this purpose.\nPreference should be given to planting native species. The Trees\nshall preferably be shade\u2010giving.\n\u2022 Where the trees need to be cut, compensatory plantation in the ratio\nof 1:3 (i.e. planting of 3 trees for every 1 tree that is cut) shall be\ndone with the obligation to provide continued maintenance for\nsuch plantations.",
+        "bbox": [
+         229.6,
+         506.9,
+         523.2,
+         601.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-B (20000 -50000 sqm)",
+        "bbox": [
+         72.2,
+         520.6,
+         229.6,
+         535.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-C (50000-150000 sqm)",
+        "bbox": [
+         72.2,
+         535.0,
+         229.6,
+         601.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 7,
+   "gazettePage": 133,
+   "prose": "(iv) Competent Authority may consult Forest and Environment Department for tree typology, plantation\nand maintenance, etc. if required.\n13.8 Environment Impact Assessment\nEnvironmental Conditions required for buildings (amended from time to time):\n13.9 Environment Management Plan\nFor all buildings above 50,000 sqm built up area:\nEnvironmental Conditions required for buildings (amended from time to time):\n133",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "(iv) Competent Authority may consult Forest and Environment Department for tree typology, plantation"
+    },
+    {
+     "y": 85,
+     "text": "and maintenance, etc. if required."
+    },
+    {
+     "y": 109,
+     "text": "13.8 Environment Impact Assessment"
+    },
+    {
+     "y": 130,
+     "text": "Environmental Conditions required for buildings (amended from time to time):"
+    },
+    {
+     "y": 420,
+     "text": "13.9 Environment Management Plan"
+    },
+    {
+     "y": 441,
+     "text": "For all buildings above 50,000 sqm built up area:"
+    },
+    {
+     "y": 459,
+     "text": "Environmental Conditions required for buildings (amended from time to time):"
+    },
+    {
+     "y": 775,
+     "text": "133"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.3,
+      142.8,
+      523.2,
+      391.7
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.3,
+         142.8,
+         77.7,
+         154.6
+        ]
+       },
+       {
+        "text": "Built-up area",
+        "fill": "#D9E2F3",
+        "bbox": [
+         77.7,
+         142.8,
+         224.3,
+         154.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         224.3,
+         142.8,
+         229.7,
+         154.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         229.7,
+         142.8,
+         235.1,
+         154.6
+        ]
+       },
+       {
+        "text": "Requirement",
+        "fill": "#D9E2F3",
+        "bbox": [
+         235.1,
+         142.8,
+         517.8,
+         154.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         517.8,
+         142.8,
+         523.2,
+         154.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Category-A (5000-20000 sqm)",
+        "bbox": [
+         72.3,
+         154.6,
+         229.7,
+         166.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "-",
+        "bbox": [
+         229.7,
+         154.6,
+         523.2,
+         166.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-B (20000 -50000 sqm)",
+        "bbox": [
+         72.3,
+         166.7,
+         229.7,
+         178.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "No development permission shall be given to the Building and\nConstruction projects, until getting Environment Clearance from\nSEIAA (State Level Environment Impact Assessment Authority) as\nrequired under the Environmental Impact Assessment notification\u2010\n2006 and amended from time to time.\nIf the developer wishes to split the project into phases, developer has to\nproduce Environment Clearance from SEIAA, prior to the approval of\nfirst phase of the project.",
+        "bbox": [
+         229.7,
+         166.7,
+         523.2,
+         279.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-C (50000-150000 sqm)",
+        "bbox": [
+         72.3,
+         178.7,
+         229.7,
+         279.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-D (>150000 sqm or Site\nArea >50 Ha)",
+        "bbox": [
+         72.3,
+         279.2,
+         229.7,
+         391.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "No development permission shall be given to the Townships and Area\nDevelopment projects until getting Environment Clearance from\nSEIAA (State Level Environment Impact Assessment Authority) as\nrequired under the Environmental Impact Assessment notification\u2010\n2006 and amended from time to time.\nIf the developer wishes to split the project into phases, developer has to\nproduce Environment Clearance from SEIAA, prior to the approval of\nfirst phase of the project.",
+        "bbox": [
+         229.7,
+         279.2,
+         523.2,
+         391.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      72.3,
+      472.2,
+      523.2,
+      577.7
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.3,
+         472.2,
+         77.7,
+         483.9
+        ]
+       },
+       {
+        "text": "Built-up area",
+        "fill": "#D9E2F3",
+        "bbox": [
+         77.7,
+         472.2,
+         224.3,
+         483.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         224.3,
+         472.2,
+         229.7,
+         483.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         229.7,
+         472.2,
+         235.1,
+         483.9
+        ]
+       },
+       {
+        "text": "Requirement",
+        "fill": "#D9E2F3",
+        "bbox": [
+         235.1,
+         472.2,
+         517.8,
+         483.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         517.8,
+         472.2,
+         523.2,
+         483.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Category-A (5000-20000 sqm)",
+        "bbox": [
+         72.3,
+         483.9,
+         229.7,
+         496.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "-",
+        "bbox": [
+         229.7,
+         483.9,
+         523.2,
+         496.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-B (20000 -50000 sqm)",
+        "bbox": [
+         72.3,
+         496.1,
+         229.7,
+         508.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "-",
+        "bbox": [
+         229.7,
+         496.1,
+         523.2,
+         508.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Category-C (50000-150000 sqm)",
+        "bbox": [
+         72.3,
+         508.1,
+         229.7,
+         577.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "The environment infrastructure like Sewage Treatment Plant,\nLandscaping, Rainwater Harvesting, Power backup for environment,\nInfrastructure, Environment Monitoring, Solid Waste Management and\nSolar and Energy conservation, should be kept operational through\nEnvironment Monitoring Committee with defined functions and\nresponsibility",
+        "bbox": [
+         229.7,
+         508.1,
+         523.2,
+         577.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  }
+ ]
+}

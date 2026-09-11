@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: thirteen transcriptions verified exactly right, and thirty-four real bugs found.**
+**Headline: thirteen transcriptions verified exactly right, and thirty-seven real bugs found.**
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -556,9 +556,189 @@ category alongside the NBC group, and the two disagree in exactly one place.
 *The general lesson is the cheap one: an occupancy mapping that looks clean in the aggregate
 should still be printed row by row before it is believed.*
 
+### B-035 — The wrong solar system, required on the other one's trigger
+Chapter 13 states two solar obligations, one clause apart, and the engine had them fused
+into a single rule keyed on plot area.
+
+| | Clause | Trigger | System |
+|---|---|---|---|
+| Gazette | 13.2.3.1 | plot **500 m² and above**, any use | **Photovoltaic** power generation |
+| Gazette | 13.2.3.2 | six **named building categories** with a hot water installation, no size threshold | **Solar water heating** |
+| Engine | "Chapter 13.2" | plot **above** 500 m² | Solar water heating |
+
+So the engine took the photovoltaic clause's threshold and required a solar thermal
+collector against it. Three consequences, in increasing order of seriousness:
+
+- **A 600 m² house** was told to install solar water heating. The gazette asks it for
+  photovoltaics, and asks it for water heating not at all — a dwelling is in none of the six
+  categories at any plot size. The applicant who complies as instructed is still in breach.
+- **A 400 m² hotel** was told nothing. Clause 13.2.3.2 binds it whatever its plot, and
+  hotels are the first category the clause names.
+- **A plot of exactly 500 m²** fell through both readings: `> 500` against "500 sqm and
+  above".
+
+There was also a figure in the finding's own text — *"rooftop solar thermal sized for at
+least 100 litres/day per 100 m² of built-up area"* — that is **in no clause of the gazette**.
+The only capacity Chapter 13 states is the Category-B condition: *"solar water heater of
+minimum capacity 10 litres/4 persons (2.5 litres per capita)"*, and that is a per-capita
+figure, not a per-area one. Same shape as B-029: a number with no source, presented in the
+same typeface as the ones that have one.
+
+*Fixed: `hasSolarPv` is now a separate field from `hasSolarHeating`, because they are
+separate systems answering separate clauses. A test asserts that no finding anywhere in the
+engine ever says "100 litres" again.*
+
+### B-036 — A mandatory provision excused at exactly the threshold
+Clause 13.1.2 requires roof-top rainwater harvesting *"in plots of all uses of **300 square
+meters and more** area (including group housing)"*. The engine applied `plotArea > 300`, so
+a plot standing at 300.0 m² was told the requirement did not reach it.
+
+Narrow, but it is the second time this exact error has been found — the fire certificate's
+15 m limb is the strict inequality the gazette writes and the completion clause's is not
+(V-037) — and here the gazette's words are unambiguous.
+
+Two conditions the engine also dropped, both of which change the answer:
+
+- **The collective recharge network.** Clause 13.1.2(f) lifts the requirement in the
+  100–300 m² band *only* where the rainwater from a group of buildings flows into the
+  scheme's network, and says that above 300 m² *"it shall be mandatory for the building
+  owner to install rainwater harvesting system himself"*. The engine stated the rule
+  unconditionally in both directions.
+- **Waterlogged areas.** The clause excepts them, and then says what happens instead:
+  *"Ground water recharging system should not be adopted in areas with water logging
+  problem, but arrangements can be made to collect rainwater received from the roofs of
+  buildings."* The exception is from recharge, not from the obligation. An app that reports
+  it as a blanket exemption would authorise nothing at all on a waterlogged site.
+
+*Fixed: the comparison is inclusive, and both conditions are surfaced — the waterlogged
+question as an unknown the project model does not hold rather than as a default.*
+
+### B-037 — The one thing in Chapter 13 that stops a permission being issued was not modelled
+Seven of the chapter's nine sections end in a table headed *"Environmental Conditions
+required for buildings"*, keyed on **built-up area** in four categories from 5,000 m² up.
+None of them was in the engine, and one of them is not a design condition at all:
+
+> **Clause 13.8, Category-B and above:** "No development permission shall be given to the
+> Building and Construction projects, until getting Environment Clearance from SEIAA (State
+> Level Environment Impact Assessment Authority) as required under the Environmental Impact
+> Assessment notification-2006 and amended from time to time."
+
+Every project above **20,000 m² of built-up area** needs a clearance from a different
+authority before the Development Authority may grant permission at all, and the app was
+telling such projects they could proceed. It is also the one obligation in this chapter that
+no fee and no redesign substitutes for, which is why it is filed under *Getting it
+sanctioned* rather than under services.
+
+The categories carry sixteen other conditions the prose never mentions, several of them
+computable: **one recharge bore per 5,000 m² of built-up area**; unpaved area at 20% of the
+recreational open spaces; 1% of connected load from renewables; fly ash as a building
+material; the DG-set exhaust at 10 m or 3 m above the building; compensatory plantation at
+**1:3**; an organic waste composter at 0.3 kg per tenement per day; and an Environment
+Monitoring Committee to keep the whole lot operational above 50,000 m².
+
+*Fixed: `classifyEnvironmental` places the project, `conditionsFor` returns what binds it,
+and the clearance is a finding of its own. The phasing rule is stated with it — the
+clearance is needed before the **first** phase is approved, not before the phase that
+crosses the threshold.*
+
+
 ---
 
 ## Still open
+
+### V-042 — Five triggers in Chapter 13 that turn on facts no drawing shows
+The chapter is unusually rich in rules that turn on something no drawing shows. Recorded
+together because the pattern is the finding: this is the first chapter where most of what is
+unresolved is unresolved for want of a *fact about the building's operation* rather than a
+fact about its geometry.
+
+| Clause | Trigger | What would close it |
+|---|---|---|
+| 13.2 | ECBC applies at a connected load of **100 kW**, or a contract demand of **120 kVA**, for a public or commercial building | An electrical load in `ProjectState` |
+| 13.5 | Wastewater recycling wherever estimated discharge exceeds **10,000 litres/day** | An occupant load, and a per-capita water figure the byelaws do not give |
+| 13.1.2 | The exception for **waterlogged areas** | A site attribute, or the GIS layer |
+| 13.1.2(f) | The **collective recharge network** of the scheme | A fact about the layout, not the plot |
+| 13.2.3.2 | *"in which there is a system of installation for supplying hot water"* | A services field |
+
+Only the last is currently decided rather than deferred: a hotel, hospital, school or
+assembly building is assumed to have hot water, which is the stricter reading and is stated
+in the finding. The other four are reported as open.
+
+Two of the six solar-water-heating categories have no occupancy in the taxonomy at all —
+barracks, and hostels of more than 100 students — and are listed in
+`SOLAR_WATER_HEATING_UNMAPPED` so that the gap is visible rather than merely absent.
+
+### V-043 — The category bands overlap, and the largest projects fall outside them
+The four categories are printed as **5000-20000**, **20000 -50000**, **50000-150000** and
+**>150000 sqm or Site Area >50 Ha**. Two problems, in opposite directions.
+
+**They overlap.** A building of exactly 20,000 m² is inside Category-A and Category-B both,
+and one of exactly 50,000 m² is inside B and C. The difference is not cosmetic: B is where
+the Environment Clearance starts. The engine places a boundary project in the **higher**
+band — standing rule 4.
+
+**Category-D appears in one table of seven.** Only the EIA table has a D row, so read
+literally a 200,000 m² project owes no recharge bore, no wet/dry bin and no compensatory
+plantation, while a 6,000 m² project owes all three. That cannot be the intent, and the
+gazette says so itself one section later: Clause 13.9 introduces its table with *"For all
+buildings **above 50,000 sqm** built up area"* against a table whose only row is printed
+"50000-150000 sqm". The C row is open at the top. **Category-D inherits everything Category-C
+carries**, and `conditionsFor('D')` returns C's set.
+
+The site-area limb is kept separate from all of this. *"Site Area >50 Ha"* appears only in
+the EIA table, whose D row is about *"Townships and Area Development projects"*, while every
+other table is keyed on built-up area. So a 60 ha site carrying 3,000 m² of building needs
+the clearance and does **not** thereby acquire Category-C's recharge bores.
+
+### V-044 — Tree plantation is stated twice, in two chapters, on two bases
+Chapter 13.7 gives a rate per square metre of **plot**. Chapter 3's Landscape Plan gives a
+rate per hectare of **open space**. They are not the same obligation expressed twice; they
+are two obligations that meet on the same site.
+
+| Use | Chapter 13.7 | Chapter 3 (Landscape Plan) |
+|---|---|---|
+| Industrial | 1 tree per 80 m² of plot | 125 per hectare of the total open space |
+| Commercial | 1 tree per 100 m² of plot | 50 per hectare of 20% of the open space |
+| Institutional, playgrounds, parks | 125 per hectare, greenery on ≥20% | 125 per hectare of 20% of the area |
+
+On a 1,000 m² commercial plot Chapter 13 asks for **10 trees**; Chapter 3's rate applied to
+that plot's open space asks for **under one**. The engine holds Chapter 13's per-plot rate,
+which is much the stricter, and the difference is large enough that it should be checked
+against an authority's landscape practice before it is relied on.
+
+Three more things inside Chapter 13.7 itself:
+
+- **A one-square-metre gap.** The bands run *"200 to 300 square meters"* and *"301 to 500
+  square meters"*. A plot of 300.5 m² is in neither. The engine applies the higher band.
+- **A third rate that beats both.** The Category-A environmental condition — *"a minimum of
+  1 tree for every 80 sqm of land"* — binds any building of 5,000 m² built-up area or more,
+  and on a group housing scheme it is **2.5 times** the 50-per-hectare figure Clause
+  13.7(a)(v) gives the same scheme. The larger governs, and the finding says which one it
+  took and why.
+- **An office building is in none of the four categories.** Clause 13.7 names residential,
+  industrial, commercial and institutional plots. `office` takes the commercial rate by
+  analogy, and the caveat says it is an analogy.
+
+### V-045 — Two unit defects, and a requirement recovered from the page geometry
+**"Contract demand of 120 KV"** (Clause 13.2). A kV is a voltage; a contract demand is
+measured in kVA, and ECBC's own trigger is 120 kVA. Carried as printed, with the reading
+stated — the same treatment as Chapter 12's "1750 m" toilet (V-040).
+
+**"More than 10 acres (>4 hectares)"** (Clause 13.1.2 b). Ten acres is 4.047 ha, so the two
+limbs of one parenthesis disagree by about 1.2%: a scheme of 4.02 ha is over the metric
+figure and under the imperial one. The hectare figure is the stricter and is the one held.
+
+**The DG-set exhaust bullet.** Printed on gazette page 132, after the 13.6 air-quality table
+has finished on page 131, it reads in flattened text as an orphan paragraph — or, if you
+squint, as a Category-C-only condition. The extraction settles it: the bullet sits in a cell
+spanning **x 229.6–523.2** with an empty label cell at **72.2–229.6**, which are exactly the
+Requirement and Built-up area column boundaries of the table above it. It is that table's
+merged requirement cell continuing across the page break, so the DG rule binds Category-A
+upward like everything else in that cell.
+
+That is the third time cell geometry rather than cell text has decided a rule — Chapter 16's
+column B (V-004) and Clause 15.3's colours (V-008) were the first two. The flattened docx
+carried none of the three.
 
 ### V-040 — Two drafting defects in Chapter 12, carried through rather than corrected
 Neither changes an answer. Both are recorded because a transcription that silently fixes its

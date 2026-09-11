@@ -149,7 +149,7 @@ export function generateAuditPdfReport(state: ProjectState, assessment: Assessme
   doc.setFont('helvetica', 'bold');
   doc.text('RWH / Solar:', col3X, py);
   doc.setFont('helvetica', 'normal');
-  doc.text(`${state.hasRWH ? 'RWH' : 'No RWH'} | ${state.hasSolarHeating ? 'Solar' : 'No Solar'}`, col3X + 22, py);
+  doc.text(`${state.hasRWH ? 'RWH' : 'No RWH'} | ${state.hasSolarPv ? 'Solar PV' : 'No PV'} | ${state.hasSolarHeating ? 'Solar HW' : 'No solar HW'}`, col3X + 22, py);
 
   y += 48;
 

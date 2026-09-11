@@ -22,6 +22,10 @@ import { assessFireSafety, OCCUPANCY_CERTIFICATE_GATE } from './fire';
 import { assessStructuralSafety, PEER_REVIEW_HEIGHT_M, PERIODIC_AUDIT_FIRST_YEAR, PERIODIC_AUDIT_INTERVAL_YEARS } from './structural';
 import { assessAccessibility, ACCESSIBILITY_REQUIREMENTS, ACCESSIBILITY_NON_COMPOUNDABLE_NOTE } from './accessibility';
 import { assessSocialHousing } from './social-housing';
+import {
+  assessSustainability, RECHARGE_BORE_PER_BUILT_UP_SQM, RWH_PLOT_AREA_SQM,
+  SOLAR_PV_PLOT_AREA_SQM, SOLAR_WATER_HEATER_LITRES_PER_CAPITA,
+} from './sustainability';
 import { forArea, getOccupancy } from './occupancy';
 import { ProjectState, derivePlotDepth } from './project';
 import { RULES } from './rules/registry';
@@ -613,40 +617,177 @@ export function assessProject(project: ProjectState): Assessment {
     }, 'accessibility.scope'));
   }
 
-  // ---- 7. Water, energy, waste ---------------------------------------------------
-  if (plotArea > 300 && !project.hasRWH) {
-    findings.push(sourced({
+  // ---- 7. Water, energy, waste (Chapter 13) ---------------------------------------
+  const green = assessSustainability({
+    plotAreaSqm: plotArea,
+    builtUpAreaSqm: proposedArea,
+    occupancyId: occupancy.id,
+    occupancyGroup: occupancy.group,
+    occupancyLabel: occupancy.label,
+    hasRainwaterHarvesting: project.hasRWH,
+    hasSolarPv: project.hasSolarPv,
+    hasSolarWaterHeating: project.hasSolarHeating,
+  });
+
+  if (green.rainwater.required) {
+    const caveats = green.rainwater.caveats.length ? ` ${green.rainwater.caveats.join(' ')}` : '';
+    findings.push(sourced(green.rainwater.provided ? {
+      id: 'rwh', topic: 'services', status: 'ok',
+      headline: 'Rainwater harvesting is provided, as this plot size requires.',
+      detail: `${green.rainwater.because}${caveats}`,
+      required: 'Roof-top rainwater harvesting system',
+      proposed: 'Provided',
+      clause: green.rainwater.clause,
+    } : {
       id: 'rwh',
       topic: 'services',
       status: 'blocked',
-      headline: 'A rainwater harvesting pit is compulsory on a plot this size.',
-      detail: `Plots above 300 m² require an engineered recharge pit with silt trap before sanction. This plot is ${sqm(plotArea)}.`,
-      required: 'Rainwater harvesting pit',
+      headline: 'A roof-top rainwater harvesting system is compulsory on a plot this size.',
+      detail: `${green.rainwater.because}${caveats}`,
+      required: 'Roof-top rainwater harvesting system, built to standard technology and allowing '
+        + 'rainwater to penetrate the soil to the minimum required depth',
       proposed: 'Not provided',
-      clause: 'Chapter 13.1',
+      clause: green.rainwater.clause,
       fix: { label: 'Add rainwater harvesting', patch: { hasRWH: true } },
-    }, 'services.rwh-threshold'));
-  } else if (plotArea > 300) {
+    }, 'services.rainwater-harvesting'));
+  } else {
     findings.push(sourced({
-      id: 'rwh', topic: 'services', status: 'ok',
-      headline: 'Rainwater harvesting is provided, as required on this plot size.',
-      detail: `Mandatory above 300 m²; plot is ${sqm(plotArea)}.`,
-      clause: 'Chapter 13.1',
-    }, 'services.rwh-threshold'));
+      id: 'rwh', topic: 'services', status: 'info',
+      headline: `Below ${RWH_PLOT_AREA_SQM} m² an individual rainwater harvesting system is not compulsory.`,
+      detail: green.rainwater.because,
+      required: `Mandatory at ${RWH_PLOT_AREA_SQM} m² and above`,
+      proposed: sqm(plotArea),
+      clause: green.rainwater.clause,
+    }, 'services.rainwater-harvesting'));
   }
 
-  if (plotArea > 500 && !project.hasSolarHeating) {
+  // Two clauses, two triggers, two systems. Reading the plot-size trigger of 13.2.3.1 onto
+  // the building-category trigger of 13.2.3.2 is what B-035 was.
+  if (green.solarPv.required && !green.solarPv.provided) {
     findings.push(sourced({
-      id: 'solar',
+      id: 'solar-pv',
       topic: 'services',
       status: 'attention',
-      headline: 'Solar water heating is required on plots above 500 m².',
-      detail: `Rooftop solar thermal sized for at least 100 litres/day per 100 m² of built-up area.`,
-      required: 'Solar water heating',
+      headline: `A solar photovoltaic system is required on any plot of ${SOLAR_PV_PLOT_AREA_SQM} m² or more.`,
+      detail: `${green.solarPv.because} The power generated may be used in-house or exported to the `
+        + 'grid. Clause 13.2.3 adds that 25–50% of the roof area may be given over to solar water '
+        + 'heating and photovoltaics together — a recommendation, not a requirement.',
+      required: 'Solar photovoltaic power generation system',
       proposed: 'Not provided',
-      clause: 'Chapter 13.2',
+      clause: green.solarPv.clause,
+      fix: { label: 'Add solar photovoltaics', patch: { hasSolarPv: true } },
+    }, 'services.solar-pv'));
+  } else if (green.solarPv.required) {
+    findings.push(sourced({
+      id: 'solar-pv', topic: 'services', status: 'ok',
+      headline: 'Solar photovoltaics are provided, as this plot size requires.',
+      detail: green.solarPv.because,
+      clause: green.solarPv.clause,
+    }, 'services.solar-pv'));
+  }
+
+  if (green.solarWaterHeating.required) {
+    const caveats = green.solarWaterHeating.caveats.length
+      ? ` ${green.solarWaterHeating.caveats.join(' ')}` : '';
+    findings.push(sourced(green.solarWaterHeating.provided ? {
+      id: 'solar-water', topic: 'services', status: 'ok',
+      headline: 'Solar water heating is provided, as this building type requires.',
+      detail: `${green.solarWaterHeating.because}${caveats}`,
+      clause: green.solarWaterHeating.clause,
+    } : {
+      id: 'solar-water',
+      topic: 'services',
+      status: 'attention',
+      headline: 'Solar water heating is required for this building type, whatever the plot size.',
+      detail: `${green.solarWaterHeating.because} An auxiliary solar assisted water heating system `
+        + 'must serve the hot water installation. The only capacity the chapter states is the '
+        + `Category-B condition: ${SOLAR_WATER_HEATER_LITRES_PER_CAPITA} litres per capita `
+        + `(10 litres per 4 persons), per the Ministry of New and Renewable Energy.${caveats}`,
+      required: 'Auxiliary solar assisted water heating system',
+      proposed: 'Not provided',
+      clause: green.solarWaterHeating.clause,
       fix: { label: 'Add solar water heating', patch: { hasSolarHeating: true } },
-    }, 'services.rwh-threshold'));
+    }, 'services.solar-water-heating'));
+  }
+
+  findings.push(sourced({
+    id: 'solid-waste',
+    topic: 'services',
+    status: 'info',
+    headline: green.solidWasteBins.required
+      ? 'Two dustbins at the plot entrance, and waste segregated at source.'
+      : 'Dry and wet waste must be segregated at source.',
+    detail: green.solidWasteBins.required
+      ? `${green.solidWasteBins.because} Biodegradable and non-biodegradable bins go on the ground `
+        + `floor near the plot entrance, where the local body can collect daily. `
+        + `${green.solidWasteBins.caveats.join(' ')}`
+      : `${green.solidWasteBins.because} ${green.solidWasteBins.caveats.join(' ')}`,
+    required: green.solidWasteBins.required
+      ? 'Segregation at source, and two dustbins at the entrance'
+      : 'Segregation of dry and wet waste at source',
+    clause: green.solidWasteBins.clause,
+  }, 'services.solid-waste'));
+
+  findings.push(sourced({
+    id: 'trees',
+    topic: 'services',
+    status: 'attention',
+    headline: `${green.trees.trees} ${green.trees.trees === 1 ? 'tree' : 'trees'} must be shown on the landscape plan.`,
+    detail: `${green.trees.rate}. ${green.trees.caveats.join(' ')}`,
+    required: `${green.trees.trees} ${green.trees.trees === 1 ? 'tree' : 'trees'}`,
+    proposed: 'Not recorded — the landscape plan submitted with the site plan carries it',
+    working: green.trees.working,
+    clause: green.trees.clause,
+  }, 'services.tree-plantation'));
+
+  if (green.environmentClearance.required) {
+    findings.push(sourced({
+      id: 'environment-clearance',
+      topic: 'procedure',
+      status: 'attention',
+      headline: 'No development permission can issue until SEIAA grants Environment Clearance.',
+      detail: `${green.environmentClearance.because} ${green.environmentClearance.caveats.join(' ')}`,
+      required: 'Environment Clearance from SEIAA under the EIA Notification 2006',
+      proposed: `${sqm(proposedArea)} built-up on a ${round(plotArea / 10_000, 2)} ha site`,
+      clause: green.environmentClearance.clause,
+      nonNegotiable: true,
+    }, 'services.environmental-conditions'));
+  }
+
+  if (green.category) {
+    const bores = green.rechargeBores;
+    findings.push(sourced({
+      id: 'environmental-conditions',
+      topic: 'services',
+      status: 'attention',
+      headline: `${green.conditions.length} environmental conditions apply at this size — `
+        + `${green.categoryLabel.split(' (')[0]}.`,
+      detail: `Chapter 13 attaches seven tables of conditions to built-up area. At `
+        + `${sqm(proposedArea)} this building is ${green.categoryLabel}, which carries: `
+        + `${green.conditions.map((c) => c.requirement).join(' ')}`,
+      required: `${green.conditions.length} conditions, including ${bores} recharge `
+        + `${bores === 1 ? 'bore' : 'bores'} at one per ${RECHARGE_BORE_PER_BUILT_UP_SQM} m² of built-up area`,
+      proposed: sqm(proposedArea),
+      working: `⌈${round(proposedArea)} m² ÷ ${RECHARGE_BORE_PER_BUILT_UP_SQM}⌉ = ${bores} recharge `
+        + `${bores === 1 ? 'bore' : 'bores'}`,
+      clause: 'Clause 13.1.2, 13.2.4, 13.3, 13.4, 13.6, 13.7 and 13.9 (environmental conditions)',
+    }, 'services.environmental-conditions'));
+  }
+
+  // Chapter 13 states more triggers than the project model has fields for, and they are
+  // worth saying out loud: a rule the app cannot evaluate is not a rule that does not
+  // apply. V-042.
+  if (green.unresolved.length > 0) {
+    findings.push(sourced({
+      id: 'services-open-questions',
+      topic: 'services',
+      status: 'info',
+      headline: `${green.unresolved.length} of Chapter 13's requirements turn on figures this `
+        + 'description does not carry.',
+      detail: green.unresolved.join(' '),
+      required: 'Settled by the applicant, in the services plan submitted with the application',
+      clause: 'Clause 13.2, 13.5 and 13.1.2(b)',
+    }, 'services.environmental-conditions'));
   }
 
   // ---- 8. Affordable housing -----------------------------------------------------

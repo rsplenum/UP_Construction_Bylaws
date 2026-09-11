@@ -111,9 +111,9 @@ is a rule table rather than prose.
 | 8 | Mixed-Use and Transit-Oriented Development | 251 | 156 | 110 | One occupancy; TOD not modelled |
 | 9 | Additional Floor Area Ratio | 263 | 127 | 131 | **Done — level 3** |
 | 10 | Fire Prevention and Life Safety | 57 | 0 | 22 | **Done — level 3** |
-| 11 | Structural Safety and Quality Control | 170 | 15 | 138 | Nothing yet |
-| 12 | Provisions for differently abled, elderly and children | 92 | 0 | 59 | Nothing yet |
-| 13 | Environmental Sustainability | 248 | 74 | 113 | RWH, solar |
+| 11 | Structural Safety and Quality Control | 170 | 15 | 138 | **Done — level 3** |
+| 12 | Provisions for differently abled, elderly and children | 92 | 0 | 59 | **Done — level 3** |
+| 13 | Environmental Sustainability | 248 | 74 | 113 | **Done — level 3** |
 | 14 | Qualifications and Competence of Licensed Technical Persons | 172 | 57 | 110 | LTP sanction route |
 | 15 | Zoning Regulations | **1,820** | **1,223** | 491 | Permissibility, impact fee |
 | 16 | Compounding of Building Construction and Development | 417 | 265 | 179 | **Done — level 3** |
@@ -244,6 +244,16 @@ not.
 The lesson for chapters 11 and 12, which look equally thin: line count predicts reading
 time, not defect count. What predicts defect count is how many places the same rule is
 stated.
+
+**Chapter 13 closed the phase, and it is the one that did not fit the phase's premise.**
+It creates no non-compoundable bar at all — the reason for reading it here was that the
+engine was *already asserting two of its rules*, transcribed before the gazette arrived.
+Both were wrong (B-035, B-036), and one of them named a system the clause does not ask for
+on a threshold that belongs to a different clause. That is a second predictor of defect
+count, alongside "how many places state the same rule": **a chapter the engine already
+quotes without having read**. Chapters 14, 17 and 18 should be triaged against it — the
+engine cites Chapter 17 for EV charging in the parking finding today, and has never opened
+it.
 
 ### Phase 5 — the long tail
 
