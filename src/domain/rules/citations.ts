@@ -1647,6 +1647,59 @@ export const CITATIONS: readonly Citation[] = [
     text:
       'All buildings having height more than one storey shall have provision of at least one staircase. The special buildings shall have two staircases out of which one shall be fire escape staircase. Fire escape shall be on external walls of buildings and shall open directly in the external open space.',
   },
+  {
+    id: 'structural.seismic.applicability',
+    rule: 'structural.seismic-applicability',
+    clause: 'Clause 11.8.1(i)',
+    supports:
+      'EARTHQUAKE_HEIGHT_M = 12, EARTHQUAKE_FLOORS_INCLUDING_GROUND = 3 and INFRASTRUCTURE_GROUND_COVER_SQM = 500 — the trigger for mandatory seismic design, and through Clause 16.1.3(vi) for the compounding bar that rests on it.',
+    gazettePage: 120,
+    kind: 'prose',
+    line: 8711,
+    text: 'Earthquake-proof construction requirements will be applicable to buildings with more than 3 floors including ground floor or more than 12 meters in height and all infrastructure facilities with land cover of more than 500 square meters. (Such as water works and overhead tanks, telephone exchanges, bridges and culverts, power generation centres and power sub-stations and power towers, hospitals, photo galleries, auditoriums, assembly halls, educational institutions, bus terminals, etc.)',
+  },
+  {
+    id: 'structural.seismic.chapter-3-restatement',
+    rule: 'structural.seismic-applicability',
+    clause: 'Para 3.3.4 (restating 11.8.1)',
+    supports:
+      'The same rule printed a second time in Chapter 3, agreeing on all three figures. Two independent printings agreeing is the strongest confirmation the gazette offers and it is rare — the only difference is "ground cover" against 11.8.1\'s "land cover", which is V-036\'s ambiguity again and not a difference in the threshold.',
+    kind: 'prose',
+    line: 5636,
+    text: 'Buildings more than 3 floors including the ground floor or more than 12 meters high and buildings related to important infrastructure facilities with more than 500 square meters of ground cover shall be planned, designed and constructed as per the requirements of Chapter-11 while ensuring earthquake-resistant arrangements.',
+  },
+  {
+    id: 'structural.peer-review',
+    rule: 'structural.seismic-applicability',
+    clause: 'Clause 11.3',
+    supports:
+      'PEER_REVIEW_HEIGHT_M = 50 and the three-stage submission — SDBR, preliminary design, detailed design — each released only after the previous is agreed.',
+    gazettePage: 117,
+    kind: 'prose',
+    line: 8645,
+    text: 'The Authority shall empanel structural engineers for peer reviewing/proof checking and certifying the design of buildings with height above 50 m, important service and community buildings or structures, lifeline and emergency buildings and/or large assembly buildings. The owner may also decide to carry',
+  },
+  {
+    id: 'structural.periodic-audit',
+    rule: 'structural.seismic-applicability',
+    clause: 'Clause 11.5',
+    supports:
+      'PERIODIC_AUDIT_FIRST_YEAR = 10 and PERIODIC_AUDIT_INTERVAL_YEARS = 5, and the rule that above 50 m only an expert structural engineer may do it.',
+    gazettePage: 118,
+    kind: 'prose',
+    line: 8661,
+    text: 'In case of high-rise buildings and special buildings, the owner of the building shall get the building structural audit/ inspection done by the registered/ licensed structural engineer/empanelled expert structural engineer first in the tenth year from the date of grant of occupancy permit, and thereafter in every 5 years. Findings shall be submitted to the Authority for record. In case the building shows signs of distress such as structural cracks, etc the owner may opt for conducting such evaluation immediately. For buildings of height more than 50 m and special structures, the evaluation shall be done by expert structural engineer only.',
+  },
+  {
+    id: 'structural.non-compoundable-bar',
+    rule: 'structural.seismic-applicability',
+    clause: 'Clause 16.1.3(vi)',
+    supports:
+      'The bar NON_COMPOUNDABLE_READING interprets. Read literally it would bar compounding on every building over 12 m and so empty Chapter 16\'s own ">15-meter height" column of all meaning, which is why the engine reads it as catching construction that violates the mandatory measures rather than all construction in such a building.',
+    kind: 'prose',
+    line: 11100,
+    text: 'Construction in the buildings where earthquake resistance measures are mandatory as per chapter 11.8.',
+  },
 ];
 
 /** Every rule id that has at least one citation. */

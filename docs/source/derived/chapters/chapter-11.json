@@ -1,0 +1,1502 @@
+{
+ "chapter": "11",
+ "source": "docs/source/gazette/pdf/chapter-11.pdf",
+ "sourceMd5": "9cf608fc6009e888843e8d0e7ec3e84d",
+ "gazettePages": [
+  116,
+  122
+ ],
+ "pageCount": 7,
+ "tableCount": 1,
+ "fillCounts": {
+  "#D9E2F3": 9
+ },
+ "colourOnlyCells": 6,
+ "colourCodedTableRows": 0,
+ "warnings": [],
+ "pages": [
+  {
+   "pdfPage": 1,
+   "gazettePage": 116,
+   "prose": "11 Structural Safety and Quality Control\n11.1 Structural Design and Safety\nFor any building under the jurisdiction of these regulations, the structural design shall be carried out\nby registered/ licensed engineer/ structural engineer as specified in Chapter-14 of these regulations.\nThe structural design of different building elements shall conform to the relevant Indian Standards\nprovided in Part 6 \u2018Structural Design\u2019 of NBC 2016 comprising of the following sections:\na) Section 1- Loads, forces and effects\nb) Section 2- Soils and foundations\nc) Section 3- Timber and bamboo\nd) Section 4- Masonry\ne) Section 5- Concrete\nf) Section 6- Steel\ng) Section 7- Prefabrication systems, building and mixed/composite construction.\nh) Section 8- Glass and glazing\nRequirements specified in the following Indian Standards, Codes and guidelines and other documents\nneeds to be observed for structural safety and natural hazard protection of buildings etc:\na) For General Structural Safety\n1) IS: 456:2000 \u201cCode of Practice for Plain and Reinforced Concrete.\n2) IS: 800-2007 \u201cCode of Practice for General Construction in Steel.\n3) IS: 801-1975 \u201cCode of Practice for Use of Cold Formal Light Gauge Steel Structural\nMembers in General Building Construction.\n4) IS 875 (Part 2):1987 Design loads (other than earthquake) for buildings and structures Part2\nImposed Loads.\n5) (Reference to Table 4.1- \u201cOccupant Load\u201d may be considered for design load) 5) IS 875 (Part\n3):1987 Design loads (other than earthquake) for buildings and structures Part 3 Wind Loads.\n6) IS 875 (Part 4):1987 Design loads (other than earthquake) for buildings and structures Part 4\nSnow Loads.\n7) IS 875 (Part 5):1987 Design loads (other than earthquake) for buildings and structures Part 5\nspecial loads and load combination.\n8) IS: 883:1994 \u201cCode of Practice for Design of Structural Timber in Building.\n9) IS: 1904:1986 (R 2005) \u201cCode of Practice for Structural Safety of Buildings: Foundation\u201d\n10) IS 1905:1987 \u201cCode of Practice for Structural Safety of Buildings: Masonry Walls.\n11) IS 2911(Part 1): Section 1: 2010 \u201cCode of Practice for Design and Construction of Pile\nFoundation Section 1.\n(b) For Cyclone/ Wind-storm Protection\n12) IS 875 (3):1987 \"Code of Practice for Design Loads (other than Earthquake) for Buildings\nand Structures, Part 3, Wind Loads\"\n13) Guidelines (Based on IS 875 (3)-1987) for improving the Cyclonic Resistance of Low-rise\nhouses and other building.\n(c) For Earthquake Protection\n14) IS: 1893 (Part 1,2,3,4) \"Criteria for Earthquake Resistant Design of Structures\"\n116",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "11 Structural Safety and Quality Control"
+    },
+    {
+     "y": 118,
+     "text": "11.1 Structural Design and Safety"
+    },
+    {
+     "y": 139,
+     "text": "For any building under the jurisdiction of these regulations, the structural design shall be carried out"
+    },
+    {
+     "y": 152,
+     "text": "by registered/ licensed engineer/ structural engineer as specified in Chapter-14 of these regulations."
+    },
+    {
+     "y": 189,
+     "text": "The structural design of different building elements shall conform to the relevant Indian Standards"
+    },
+    {
+     "y": 202,
+     "text": "provided in Part 6 \u2018Structural Design\u2019 of NBC 2016 comprising of the following sections:"
+    },
+    {
+     "y": 221,
+     "text": "a) Section 1- Loads, forces and effects"
+    },
+    {
+     "y": 234,
+     "text": "b) Section 2- Soils and foundations"
+    },
+    {
+     "y": 246,
+     "text": "c) Section 3- Timber and bamboo"
+    },
+    {
+     "y": 259,
+     "text": "d) Section 4- Masonry"
+    },
+    {
+     "y": 272,
+     "text": "e) Section 5- Concrete"
+    },
+    {
+     "y": 284,
+     "text": "f) Section 6- Steel"
+    },
+    {
+     "y": 297,
+     "text": "g) Section 7- Prefabrication systems, building and mixed/composite construction."
+    },
+    {
+     "y": 310,
+     "text": "h) Section 8- Glass and glazing"
+    },
+    {
+     "y": 342,
+     "text": "Requirements specified in the following Indian Standards, Codes and guidelines and other documents"
+    },
+    {
+     "y": 355,
+     "text": "needs to be observed for structural safety and natural hazard protection of buildings etc:"
+    },
+    {
+     "y": 380,
+     "text": "a) For General Structural Safety"
+    },
+    {
+     "y": 399,
+     "text": "1) IS: 456:2000 \u201cCode of Practice for Plain and Reinforced Concrete."
+    },
+    {
+     "y": 412,
+     "text": "2) IS: 800-2007 \u201cCode of Practice for General Construction in Steel."
+    },
+    {
+     "y": 425,
+     "text": "3) IS: 801-1975 \u201cCode of Practice for Use of Cold Formal Light Gauge Steel Structural"
+    },
+    {
+     "y": 438,
+     "text": "Members in General Building Construction."
+    },
+    {
+     "y": 451,
+     "text": "4) IS 875 (Part 2):1987 Design loads (other than earthquake) for buildings and structures Part2"
+    },
+    {
+     "y": 464,
+     "text": "Imposed Loads."
+    },
+    {
+     "y": 477,
+     "text": "5) (Reference to Table 4.1- \u201cOccupant Load\u201d may be considered for design load) 5) IS 875 (Part"
+    },
+    {
+     "y": 490,
+     "text": "3):1987 Design loads (other than earthquake) for buildings and structures Part 3 Wind Loads."
+    },
+    {
+     "y": 503,
+     "text": "6) IS 875 (Part 4):1987 Design loads (other than earthquake) for buildings and structures Part 4"
+    },
+    {
+     "y": 516,
+     "text": "Snow Loads."
+    },
+    {
+     "y": 528,
+     "text": "7) IS 875 (Part 5):1987 Design loads (other than earthquake) for buildings and structures Part 5"
+    },
+    {
+     "y": 541,
+     "text": "special loads and load combination."
+    },
+    {
+     "y": 554,
+     "text": "8) IS: 883:1994 \u201cCode of Practice for Design of Structural Timber in Building."
+    },
+    {
+     "y": 567,
+     "text": "9) IS: 1904:1986 (R 2005) \u201cCode of Practice for Structural Safety of Buildings: Foundation\u201d"
+    },
+    {
+     "y": 580,
+     "text": "10) IS 1905:1987 \u201cCode of Practice for Structural Safety of Buildings: Masonry Walls."
+    },
+    {
+     "y": 593,
+     "text": "11) IS 2911(Part 1): Section 1: 2010 \u201cCode of Practice for Design and Construction of Pile"
+    },
+    {
+     "y": 606,
+     "text": "Foundation Section 1."
+    },
+    {
+     "y": 625,
+     "text": "(b) For Cyclone/ Wind-storm Protection"
+    },
+    {
+     "y": 644,
+     "text": "12) IS 875 (3):1987 \"Code of Practice for Design Loads (other than Earthquake) for Buildings"
+    },
+    {
+     "y": 657,
+     "text": "and Structures, Part 3, Wind Loads\""
+    },
+    {
+     "y": 670,
+     "text": "13) Guidelines (Based on IS 875 (3)-1987) for improving the Cyclonic Resistance of Low-rise"
+    },
+    {
+     "y": 683,
+     "text": "houses and other building."
+    },
+    {
+     "y": 714,
+     "text": "(c) For Earthquake Protection"
+    },
+    {
+     "y": 733,
+     "text": "14) IS: 1893 (Part 1,2,3,4) \"Criteria for Earthquake Resistant Design of Structures\""
+    },
+    {
+     "y": 775,
+     "text": "116"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 2,
+   "gazettePage": 117,
+   "prose": "15) IS:13920-2016 \"Ductile Detailing of Reinforced Concrete Structures subjected to Seismic\nForces - Code of Practice\"\n16) IS:4326-2013 \"Earthquake Resistant Design and Construction of Buildings - Code of Practice\n(Second Revision)\"\n17) IS:13828-1993 \"Improving Earthquake Resistance of Low Strength Masonry Buildings -\nGuidelines\"\n18) IS:138271993 \"Improving Earthquake Resistance of Earthen Buildings- Guidelines\"\n19) IS:13935-2009 \"Seismic Evaluation, Repair and Seismic Strengthening of Buildings -\nGuidelines\u201d\n(d) For Protection of Landslide Hazard (for protection of earth at different levels)\n20) IS 14458 (Part 1): 1998 Guidelines for retaining wall for hill area: Part 1 Selection of type of\nwall.\n21) IS 14458 (Part 2): 1997 Guidelines for retaining wall for hill area: Part 2 Design of\nretaining/breast walls.\n22) IS 14458 (Part 3): 1998 Guidelines for retaining wall for hill area: Part 3 Construction of dry\nstone walls.\n23) IS 14496 (Part 2): 1998 Guidelines for preparation of landslide \u2013 Hazard zonation maps in\nmountainous terrains: Part 2 Macro-zonation.\nNote:\nWhenever an Indian Standard including those referred in the National Building Code, the latest\nrevision of the same shall be followed except specific criteria, if any, mentioned above against the\nprovisions of that code.\n11.2 Structural Design Basis Report (SDBR)\nThe SDBR (Appendix-14) consists of basis for designing the building. It includes four parts as provided\nbelow:\na) Part 1: General information/data\nb) Part 2: Load bearing masonry buildings\nc) Part 3: Reinforced concrete buildings\nd) Part 4: Steel buildings\nIn compliance of the design with the relevant Indian Standards mentioned in NBC 2016, the registered/\nlicensed engineer/ structural engineer/ principal design consultant shall submit a SDBR for structures\nof different complexities, as given in paragraph 11.3 of this guidelines, along with the drawings and\ndocuments to be submitted with the application. The SDBR shall include the parts as detailed below:\na) Part 1\nb) Part 2, Part 3 or Part 4 (whichever is applicable)\nSDBR shall be submitted to the LTP in accordance with Chapter-14 of these byelaws.\n11.3 Review of Structural Design\nThe Authority shall empanel structural engineers for peer reviewing/proof checking and certifying the\ndesign of buildings with height above 50 m, important service and community buildings or structures,\nlifeline and emergency buildings and/or large assembly buildings. The owner may also decide to carry\n117",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "15) IS:13920-2016 \"Ductile Detailing of Reinforced Concrete Structures subjected to Seismic"
+    },
+    {
+     "y": 85,
+     "text": "Forces - Code of Practice\""
+    },
+    {
+     "y": 97,
+     "text": "16) IS:4326-2013 \"Earthquake Resistant Design and Construction of Buildings - Code of Practice"
+    },
+    {
+     "y": 110,
+     "text": "(Second Revision)\""
+    },
+    {
+     "y": 123,
+     "text": "17) IS:13828-1993 \"Improving Earthquake Resistance of Low Strength Masonry Buildings -"
+    },
+    {
+     "y": 136,
+     "text": "Guidelines\""
+    },
+    {
+     "y": 149,
+     "text": "18) IS:138271993 \"Improving Earthquake Resistance of Earthen Buildings- Guidelines\""
+    },
+    {
+     "y": 162,
+     "text": "19) IS:13935-2009 \"Seismic Evaluation, Repair and Seismic Strengthening of Buildings -"
+    },
+    {
+     "y": 175,
+     "text": "Guidelines\u201d"
+    },
+    {
+     "y": 207,
+     "text": "(d) For Protection of Landslide Hazard (for protection of earth at different levels)"
+    },
+    {
+     "y": 226,
+     "text": "20) IS 14458 (Part 1): 1998 Guidelines for retaining wall for hill area: Part 1 Selection of type of"
+    },
+    {
+     "y": 239,
+     "text": "wall."
+    },
+    {
+     "y": 251,
+     "text": "21) IS 14458 (Part 2): 1997 Guidelines for retaining wall for hill area: Part 2 Design of"
+    },
+    {
+     "y": 264,
+     "text": "retaining/breast walls."
+    },
+    {
+     "y": 277,
+     "text": "22) IS 14458 (Part 3): 1998 Guidelines for retaining wall for hill area: Part 3 Construction of dry"
+    },
+    {
+     "y": 290,
+     "text": "stone walls."
+    },
+    {
+     "y": 303,
+     "text": "23) IS 14496 (Part 2): 1998 Guidelines for preparation of landslide \u2013 Hazard zonation maps in"
+    },
+    {
+     "y": 316,
+     "text": "mountainous terrains: Part 2 Macro-zonation."
+    },
+    {
+     "y": 335,
+     "text": "Note:"
+    },
+    {
+     "y": 348,
+     "text": "Whenever an Indian Standard including those referred in the National Building Code, the latest"
+    },
+    {
+     "y": 361,
+     "text": "revision of the same shall be followed except specific criteria, if any, mentioned above against the"
+    },
+    {
+     "y": 374,
+     "text": "provisions of that code."
+    },
+    {
+     "y": 408,
+     "text": "11.2 Structural Design Basis Report (SDBR)"
+    },
+    {
+     "y": 429,
+     "text": "The SDBR (Appendix-14) consists of basis for designing the building. It includes four parts as provided"
+    },
+    {
+     "y": 441,
+     "text": "below:"
+    },
+    {
+     "y": 460,
+     "text": "a) Part 1: General information/data"
+    },
+    {
+     "y": 479,
+     "text": "b) Part 2: Load bearing masonry buildings"
+    },
+    {
+     "y": 497,
+     "text": "c) Part 3: Reinforced concrete buildings"
+    },
+    {
+     "y": 516,
+     "text": "d) Part 4: Steel buildings"
+    },
+    {
+     "y": 553,
+     "text": "In compliance of the design with the relevant Indian Standards mentioned in NBC 2016, the registered/"
+    },
+    {
+     "y": 566,
+     "text": "licensed engineer/ structural engineer/ principal design consultant shall submit a SDBR for structures"
+    },
+    {
+     "y": 578,
+     "text": "of different complexities, as given in paragraph 11.3 of this guidelines, along with the drawings and"
+    },
+    {
+     "y": 591,
+     "text": "documents to be submitted with the application. The SDBR shall include the parts as detailed below:"
+    },
+    {
+     "y": 610,
+     "text": "a) Part 1"
+    },
+    {
+     "y": 628,
+     "text": "b) Part 2, Part 3 or Part 4 (whichever is applicable)"
+    },
+    {
+     "y": 647,
+     "text": "SDBR shall be submitted to the LTP in accordance with Chapter-14 of these byelaws."
+    },
+    {
+     "y": 687,
+     "text": "11.3 Review of Structural Design"
+    },
+    {
+     "y": 708,
+     "text": "The Authority shall empanel structural engineers for peer reviewing/proof checking and certifying the"
+    },
+    {
+     "y": 721,
+     "text": "design of buildings with height above 50 m, important service and community buildings or structures,"
+    },
+    {
+     "y": 733,
+     "text": "lifeline and emergency buildings and/or large assembly buildings. The owner may also decide to carry"
+    },
+    {
+     "y": 775,
+     "text": "117"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 3,
+   "gazettePage": 118,
+   "prose": "out proof checking of structural design for other buildings, provisions of IS 18299:2023 shall be\nadopted.\nNOTE \u2014 Important service and community buildings or structures may include critical governance buildings,\nschools, signature buildings, monument buildings. Lifeline and emergency buildings may include hospitals,\ntelecommunication buildings, bus stations, railway stations/buildings, airports, ports, food storage, power stations,\nfuel stations, fire stations, etc.\nThe peer reviewer/proof checker shall have the minimum qualification, experience, and competence as\nper IS 18299:2023:\nThe submission of the structural design by the structural engineer to the peer reviewer/proof checker\nshall be done in three stages as given below, and the succeeding stage submission shall be made only\nafter obtaining concurrence for the preceding stage:\na) SDBR\nb) Preliminary design, related drawings and documents\nc) Detailed design, related drawings and documents\n11.4 Quality Control and Safety during Construction\nAll material shall be of good quality conforming to relevant Indian Standards (BIS certified) as given\nin Part 5 \u2018Building Materials\u2019 of NBC 2016. All workmanship shall also be of good quality conforming\nto relevant Indian Standards as given in Part 7 \u2018Construction Management, Practices and Safety\u2019 of\nNBC 2016. Alternative building materials and construction technology may also be adopted with the\napproval of the authority in compliance with NBC 2016.\nThere should be a clearly defined competence requirement for the workers based on the work-related\npeculiarities. Workers in a project should be adequately qualified, trained, experienced and competent.\nA formal training or a certified course undertaken should be a preferred selection criterion for the\nworkers. All efforts should also be made to impart on site skilling/training of construction workers for\nspecific tasks. A periodic review of the performance may be made to establish the nature of training\nrequired and methods for imparting training.\nSafety during construction shall be ensured in accordance with Part 7 \u2018Construction Management,\nPractices and Safety\u2019 of NBC 2016.\n11.5 Periodic Evaluation of Buildings\nIn case of high-rise buildings and special buildings, the owner of the building shall get the building\nstructural audit/ inspection done by the registered/ licensed structural engineer/empanelled expert\nstructural engineer first in the tenth year from the date of grant of occupancy permit, and thereafter in\nevery 5 years. Findings shall be submitted to the Authority for record. In case the building shows signs\nof distress such as structural cracks, etc the owner may opt for conducting such evaluation immediately.\nFor buildings of height more than 50 m and special structures, the evaluation shall be done by expert\nstructural engineer only.\nIf any action for ensuring the structural safety and stability of the building is to be taken, as\nrecommended by the registered/ licensed structural engineer/ empanelled expert structural engineer, it\nshall be completed within the time period as stipulated by the Authority to maintain the occupancy.\nThe owner on the advice of the Authority shall carry out such repair/restoration and strengthening/\nretrofitting of the building found necessary as per paragraph 11.6 (seismic strengthening/retrofitting)\nof these regulations, so as to comply with the safety standards.\nIn case, the owner does not carry out such action, the Authority or any agency authorized by the\nAuthority may carry out such action at the cost of the owner.\n118",
+   "proseLines": [
+    {
+     "y": 71,
+     "text": "out proof checking of structural design for other buildings, provisions of IS 18299:2023 shall be"
+    },
+    {
+     "y": 84,
+     "text": "adopted."
+    },
+    {
+     "y": 103,
+     "text": "NOTE \u2014 Important service and community buildings or structures may include critical governance buildings,"
+    },
+    {
+     "y": 114,
+     "text": "schools, signature buildings, monument buildings. Lifeline and emergency buildings may include hospitals,"
+    },
+    {
+     "y": 126,
+     "text": "telecommunication buildings, bus stations, railway stations/buildings, airports, ports, food storage, power stations,"
+    },
+    {
+     "y": 137,
+     "text": "fuel stations, fire stations, etc."
+    },
+    {
+     "y": 155,
+     "text": "The peer reviewer/proof checker shall have the minimum qualification, experience, and competence as"
+    },
+    {
+     "y": 167,
+     "text": "per IS 18299:2023:"
+    },
+    {
+     "y": 186,
+     "text": "The submission of the structural design by the structural engineer to the peer reviewer/proof checker"
+    },
+    {
+     "y": 199,
+     "text": "shall be done in three stages as given below, and the succeeding stage submission shall be made only"
+    },
+    {
+     "y": 211,
+     "text": "after obtaining concurrence for the preceding stage:"
+    },
+    {
+     "y": 230,
+     "text": "a) SDBR"
+    },
+    {
+     "y": 243,
+     "text": "b) Preliminary design, related drawings and documents"
+    },
+    {
+     "y": 255,
+     "text": "c) Detailed design, related drawings and documents"
+    },
+    {
+     "y": 295,
+     "text": "11.4 Quality Control and Safety during Construction"
+    },
+    {
+     "y": 316,
+     "text": "All material shall be of good quality conforming to relevant Indian Standards (BIS certified) as given"
+    },
+    {
+     "y": 329,
+     "text": "in Part 5 \u2018Building Materials\u2019 of NBC 2016. All workmanship shall also be of good quality conforming"
+    },
+    {
+     "y": 341,
+     "text": "to relevant Indian Standards as given in Part 7 \u2018Construction Management, Practices and Safety\u2019 of"
+    },
+    {
+     "y": 354,
+     "text": "NBC 2016. Alternative building materials and construction technology may also be adopted with the"
+    },
+    {
+     "y": 367,
+     "text": "approval of the authority in compliance with NBC 2016."
+    },
+    {
+     "y": 385,
+     "text": "There should be a clearly defined competence requirement for the workers based on the work-related"
+    },
+    {
+     "y": 398,
+     "text": "peculiarities. Workers in a project should be adequately qualified, trained, experienced and competent."
+    },
+    {
+     "y": 411,
+     "text": "A formal training or a certified course undertaken should be a preferred selection criterion for the"
+    },
+    {
+     "y": 423,
+     "text": "workers. All efforts should also be made to impart on site skilling/training of construction workers for"
+    },
+    {
+     "y": 436,
+     "text": "specific tasks. A periodic review of the performance may be made to establish the nature of training"
+    },
+    {
+     "y": 449,
+     "text": "required and methods for imparting training."
+    },
+    {
+     "y": 467,
+     "text": "Safety during construction shall be ensured in accordance with Part 7 \u2018Construction Management,"
+    },
+    {
+     "y": 480,
+     "text": "Practices and Safety\u2019 of NBC 2016."
+    },
+    {
+     "y": 520,
+     "text": "11.5 Periodic Evaluation of Buildings"
+    },
+    {
+     "y": 541,
+     "text": "In case of high-rise buildings and special buildings, the owner of the building shall get the building"
+    },
+    {
+     "y": 553,
+     "text": "structural audit/ inspection done by the registered/ licensed structural engineer/empanelled expert"
+    },
+    {
+     "y": 566,
+     "text": "structural engineer first in the tenth year from the date of grant of occupancy permit, and thereafter in"
+    },
+    {
+     "y": 579,
+     "text": "every 5 years. Findings shall be submitted to the Authority for record. In case the building shows signs"
+    },
+    {
+     "y": 591,
+     "text": "of distress such as structural cracks, etc the owner may opt for conducting such evaluation immediately."
+    },
+    {
+     "y": 604,
+     "text": "For buildings of height more than 50 m and special structures, the evaluation shall be done by expert"
+    },
+    {
+     "y": 617,
+     "text": "structural engineer only."
+    },
+    {
+     "y": 635,
+     "text": "If any action for ensuring the structural safety and stability of the building is to be taken, as"
+    },
+    {
+     "y": 648,
+     "text": "recommended by the registered/ licensed structural engineer/ empanelled expert structural engineer, it"
+    },
+    {
+     "y": 661,
+     "text": "shall be completed within the time period as stipulated by the Authority to maintain the occupancy."
+    },
+    {
+     "y": 679,
+     "text": "The owner on the advice of the Authority shall carry out such repair/restoration and strengthening/"
+    },
+    {
+     "y": 692,
+     "text": "retrofitting of the building found necessary as per paragraph 11.6 (seismic strengthening/retrofitting)"
+    },
+    {
+     "y": 704,
+     "text": "of these regulations, so as to comply with the safety standards."
+    },
+    {
+     "y": 723,
+     "text": "In case, the owner does not carry out such action, the Authority or any agency authorized by the"
+    },
+    {
+     "y": 736,
+     "text": "Authority may carry out such action at the cost of the owner."
+    },
+    {
+     "y": 775,
+     "text": "118"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 4,
+   "gazettePage": 119,
+   "prose": "11.6 Seismic Strengthening/Retrofitting\nIf as per periodic evaluation, the seismic resistance is assessed to be less than the specified minimum\nseismic resistance as given in the concerned Indian Standards listed in table below, action shall be\ninitiated to carry out the upgrading of the seismic resistance and other structural requirements of the\nbuilding as per the provisions of standards given in the table.\nTable - Indian Standards for Seismic Evaluation and Strengthening of Buildings\nProvisions in the Indian Standard, IS 18289 \u2019Post - earthquake safety assessment of buildings \u2013\nGuidelines\u2019 should be followed for the following building typologies to ascertain whether or not a\nbuilding affected during an earthquake can be occupied immediately after the earthquake:\na) Unreinforced masonry load-bearing buildings; and\nb) RC moment frame buildings with unreinforced masonry infill walls.\n11.7 Format for Structural Design Basis Report (SDBR)\na) This report shall accompany the application for Building Permit.\nb) In case information on items (iii), (x), (xviii), (xix) and (xx) of Part 1 of SDBR cannot be\ngiven at this time, it should be submitted at least one week before commencement of\nconstruction.\nc) In case of reinforced concrete framed buildings, a certificate to the effect that the Part-3 of the\nreport will be completed and submitted at least one month before commencement of\nconstruction, shall be submitted with the application for Building Permit. In addition to the\ncompleted report, the following additional information shall be submitted, at the latest, one\nmonth before the commencement of construction.\n1) Foundations\ni. In case raft foundation has been adopted, indicate K value used for analysis\nof the raft.\nii. In case pile foundations have been used, give full particulars of the piles,\ntype, diameter, length, capacity.\niii. In case of high-water table, indicate system of countering water pressure, and\nindicate the existing water table, and that assumed to design foundations.\n2) Idealization for earthquake analysis\ni. In case of a composite system of shear walls and rigid frames, give\ndistribution of base shear in the two systems on the basis of analysis, and that\nused for design of each system.\nii. Indicate the idealization of frames and shear walls adopted in the analysis\nwith the help of sketches.\n119",
+   "proseLines": [
+    {
+     "y": 74,
+     "text": "11.6 Seismic Strengthening/Retrofitting"
+    },
+    {
+     "y": 95,
+     "text": "If as per periodic evaluation, the seismic resistance is assessed to be less than the specified minimum"
+    },
+    {
+     "y": 108,
+     "text": "seismic resistance as given in the concerned Indian Standards listed in table below, action shall be"
+    },
+    {
+     "y": 120,
+     "text": "initiated to carry out the upgrading of the seismic resistance and other structural requirements of the"
+    },
+    {
+     "y": 133,
+     "text": "building as per the provisions of standards given in the table."
+    },
+    {
+     "y": 152,
+     "text": "Table - Indian Standards for Seismic Evaluation and Strengthening of Buildings"
+    },
+    {
+     "y": 369,
+     "text": "Provisions in the Indian Standard, IS 18289 \u2019Post - earthquake safety assessment of buildings \u2013"
+    },
+    {
+     "y": 381,
+     "text": "Guidelines\u2019 should be followed for the following building typologies to ascertain whether or not a"
+    },
+    {
+     "y": 394,
+     "text": "building affected during an earthquake can be occupied immediately after the earthquake:"
+    },
+    {
+     "y": 413,
+     "text": "a) Unreinforced masonry load-bearing buildings; and"
+    },
+    {
+     "y": 431,
+     "text": "b) RC moment frame buildings with unreinforced masonry infill walls."
+    },
+    {
+     "y": 465,
+     "text": "11.7 Format for Structural Design Basis Report (SDBR)"
+    },
+    {
+     "y": 486,
+     "text": "a) This report shall accompany the application for Building Permit."
+    },
+    {
+     "y": 499,
+     "text": "b) In case information on items (iii), (x), (xviii), (xix) and (xx) of Part 1 of SDBR cannot be"
+    },
+    {
+     "y": 511,
+     "text": "given at this time, it should be submitted at least one week before commencement of"
+    },
+    {
+     "y": 524,
+     "text": "construction."
+    },
+    {
+     "y": 537,
+     "text": "c) In case of reinforced concrete framed buildings, a certificate to the effect that the Part-3 of the"
+    },
+    {
+     "y": 549,
+     "text": "report will be completed and submitted at least one month before commencement of"
+    },
+    {
+     "y": 562,
+     "text": "construction, shall be submitted with the application for Building Permit. In addition to the"
+    },
+    {
+     "y": 574,
+     "text": "completed report, the following additional information shall be submitted, at the latest, one"
+    },
+    {
+     "y": 587,
+     "text": "month before the commencement of construction."
+    },
+    {
+     "y": 600,
+     "text": "1) Foundations"
+    },
+    {
+     "y": 613,
+     "text": "i. In case raft foundation has been adopted, indicate K value used for analysis"
+    },
+    {
+     "y": 625,
+     "text": "of the raft."
+    },
+    {
+     "y": 638,
+     "text": "ii. In case pile foundations have been used, give full particulars of the piles,"
+    },
+    {
+     "y": 650,
+     "text": "type, diameter, length, capacity."
+    },
+    {
+     "y": 663,
+     "text": "iii. In case of high-water table, indicate system of countering water pressure, and"
+    },
+    {
+     "y": 676,
+     "text": "indicate the existing water table, and that assumed to design foundations."
+    },
+    {
+     "y": 688,
+     "text": "2) Idealization for earthquake analysis"
+    },
+    {
+     "y": 701,
+     "text": "i. In case of a composite system of shear walls and rigid frames, give"
+    },
+    {
+     "y": 714,
+     "text": "distribution of base shear in the two systems on the basis of analysis, and that"
+    },
+    {
+     "y": 726,
+     "text": "used for design of each system."
+    },
+    {
+     "y": 739,
+     "text": "ii. Indicate the idealization of frames and shear walls adopted in the analysis"
+    },
+    {
+     "y": 752,
+     "text": "with the help of sketches."
+    },
+    {
+     "y": 775,
+     "text": "119"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.3,
+      164.5,
+      523.2,
+      343.1
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.3,
+         164.5,
+         77.7,
+         189.5
+        ]
+       },
+       {
+        "text": "Sl.",
+        "fill": "#D9E2F3",
+        "bbox": [
+         77.7,
+         164.5,
+         100.2,
+         189.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         100.2,
+         164.5,
+         105.6,
+         189.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         105.6,
+         164.5,
+         111.0,
+         189.5
+        ]
+       },
+       {
+        "text": "Type of Buildings",
+        "fill": "#D9E2F3",
+        "bbox": [
+         111.0,
+         164.5,
+         266.2,
+         189.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         266.2,
+         164.5,
+         271.6,
+         189.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         271.6,
+         164.5,
+         276.9,
+         189.5
+        ]
+       },
+       {
+        "text": "Indian Standards",
+        "fill": "#D9E2F3",
+        "bbox": [
+         276.9,
+         164.5,
+         517.8,
+         189.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         517.8,
+         164.5,
+         523.2,
+         189.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "1",
+        "bbox": [
+         72.3,
+         189.5,
+         105.6,
+         228.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Masonry Buildings",
+        "bbox": [
+         105.6,
+         189.5,
+         271.6,
+         228.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "IS 13935 \u2018Seismic evaluation, repair and\nstrengthening of masonry buildings\u2019",
+        "bbox": [
+         271.6,
+         189.5,
+         523.2,
+         228.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "2",
+        "bbox": [
+         72.3,
+         228.1,
+         105.6,
+         266.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Concreter Buildings and Structures",
+        "bbox": [
+         105.6,
+         228.1,
+         271.6,
+         266.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "IS 15988 \u2018Seismic evaluation and strengthening of\nexisting RCC buildings - Guidelines\u2019",
+        "bbox": [
+         271.6,
+         228.1,
+         523.2,
+         266.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "3",
+        "bbox": [
+         72.3,
+         266.4,
+         105.6,
+         304.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Low strength masonry buildings",
+        "bbox": [
+         105.6,
+         266.4,
+         271.6,
+         304.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "IS 13828 \u2018Improving earthquake resistance of low\nstrength masonry buildings \u2013 Guidelines\u2019",
+        "bbox": [
+         271.6,
+         266.4,
+         523.2,
+         304.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "4",
+        "bbox": [
+         72.3,
+         304.8,
+         105.6,
+         343.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Earthen Buildings",
+        "bbox": [
+         105.6,
+         304.8,
+         271.6,
+         343.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "IS 13827 \u2018Improving earthquake resistance of earthen\nbuildings \u2013 Guidelines\u2019",
+        "bbox": [
+         271.6,
+         304.8,
+         523.2,
+         343.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 5,
+   "gazettePage": 120,
+   "prose": "3) Submit framing plans of each floor and in case of basements, indicate the system used\nto contain earth pressures.\nd) The latest version of the Indian Standards with their amendments as indicated in the SDBR\ntemplate given in Appendix-14, shall be referred for the preparation of the report.\n11.8 Requirements for earthquake resistant construction\n11.8.1 Applicability\n(i) Earthquake-proof construction requirements will be applicable to buildings with more than 3 floors\nincluding ground floor or more than 12 meters in height and all infrastructure facilities with land cover\nof more than 500 square meters. (Such as water works and overhead tanks, telephone exchanges, bridges\nand culverts, power generation centres and power sub-stations and power towers, hospitals, photo\ngalleries, auditoriums, assembly halls, educational institutions, bus terminals, etc.)\n(ii) For the development of buildings and important infrastructure facilities mentioned in paragraph (I)\nabove, it will be mandatory to adopt 100% of the provisions of Code of Practice of BIS, National\nBuilding Code, other relevant guidelines and records mentioned in Chapter-11.1 of the byelaws.\n11.8.2 Certificate required for construction permit.\n(i) To get the map approved for building construction, architectural plan as per the pre-determined\nprocedure, along with which the relevant parts of the details (related to the drawing) mentioned in the\n\u201cBuilding Information Schedule\u201d will be marked on the map in the form of a table on the format given\nin Appendix-8 and a certificate to this effect will be submitted on the format given in Appendix-9 with\nthe joint signatures of the land owner/builder, the architect who prepared the map and the structural\nengineer who prepared the structural design of the foundation and superstructure of the building that in\nthe building plan and design of foundation and superstructure, all the provisions related to earthquake\nresistance, the provisions of the above mentioned codes, guidelines and other relevant records have\nbeen 100 percent complied with. Apart from this, complete calculations and structural maps of the\nfoundation and superstructure design of the building signed by the structural engineer will also be\nsubmitted along with the forms related to map approval. Also, the maps which will be sent to the\nauthority appointed for the construction of the building, on all those plans, a certificate of earthquake\nresistant design will be submitted in the format mentioned in Appendix-10 with the full name and sealed\nsignature of the land owner/builder, registered/ licensed architect as well as the structural engineer doing\nthe structural design and the service engineer preparing the service design.\n(ii) If any changes/additions are made in the building map presented for approval after testing by the\ndesignated authority, then necessary changes in the anti-earthquake provisions in the structural and\nservices design will be made again by the structural engineer and the map will be presented again for\napproval.\nIn which the relevant part of the certificate and building information schedule will be mentioned as per\nabove and the execution of building construction works will be ensured as per the finally approved map.\n11.8.3 Conditions for construction permission\nApproval for building construction will be issued subject to the following conditions:\n(a)\nThe proposed construction will be as per the design certified by the Civil Engineer and Architect in\naccordance with the provisions of the relevant Indian Standards Institute and National Building Code.\n(b)\nThe supervision of the construction will also be done under the supervision and responsibility of the\narchitect/engineer and the developer so that compliance with the following safety related arrangements\ncan be ensured:-\n120",
+   "proseLines": [
+    {
+     "y": 71,
+     "text": "3) Submit framing plans of each floor and in case of basements, indicate the system used"
+    },
+    {
+     "y": 84,
+     "text": "to contain earth pressures."
+    },
+    {
+     "y": 97,
+     "text": "d) The latest version of the Indian Standards with their amendments as indicated in the SDBR"
+    },
+    {
+     "y": 109,
+     "text": "template given in Appendix-14, shall be referred for the preparation of the report."
+    },
+    {
+     "y": 149,
+     "text": "11.8 Requirements for earthquake resistant construction"
+    },
+    {
+     "y": 172,
+     "text": "11.8.1 Applicability"
+    },
+    {
+     "y": 191,
+     "text": "(i) Earthquake-proof construction requirements will be applicable to buildings with more than 3 floors"
+    },
+    {
+     "y": 204,
+     "text": "including ground floor or more than 12 meters in height and all infrastructure facilities with land cover"
+    },
+    {
+     "y": 217,
+     "text": "of more than 500 square meters. (Such as water works and overhead tanks, telephone exchanges, bridges"
+    },
+    {
+     "y": 230,
+     "text": "and culverts, power generation centres and power sub-stations and power towers, hospitals, photo"
+    },
+    {
+     "y": 243,
+     "text": "galleries, auditoriums, assembly halls, educational institutions, bus terminals, etc.)"
+    },
+    {
+     "y": 269,
+     "text": "(ii) For the development of buildings and important infrastructure facilities mentioned in paragraph (I)"
+    },
+    {
+     "y": 282,
+     "text": "above, it will be mandatory to adopt 100% of the provisions of Code of Practice of BIS, National"
+    },
+    {
+     "y": 295,
+     "text": "Building Code, other relevant guidelines and records mentioned in Chapter-11.1 of the byelaws."
+    },
+    {
+     "y": 315,
+     "text": "11.8.2 Certificate required for construction permit."
+    },
+    {
+     "y": 334,
+     "text": "(i) To get the map approved for building construction, architectural plan as per the pre-determined"
+    },
+    {
+     "y": 347,
+     "text": "procedure, along with which the relevant parts of the details (related to the drawing) mentioned in the"
+    },
+    {
+     "y": 360,
+     "text": "\u201cBuilding Information Schedule\u201d will be marked on the map in the form of a table on the format given"
+    },
+    {
+     "y": 373,
+     "text": "in Appendix-8 and a certificate to this effect will be submitted on the format given in Appendix-9 with"
+    },
+    {
+     "y": 386,
+     "text": "the joint signatures of the land owner/builder, the architect who prepared the map and the structural"
+    },
+    {
+     "y": 399,
+     "text": "engineer who prepared the structural design of the foundation and superstructure of the building that in"
+    },
+    {
+     "y": 412,
+     "text": "the building plan and design of foundation and superstructure, all the provisions related to earthquake"
+    },
+    {
+     "y": 425,
+     "text": "resistance, the provisions of the above mentioned codes, guidelines and other relevant records have"
+    },
+    {
+     "y": 438,
+     "text": "been 100 percent complied with. Apart from this, complete calculations and structural maps of the"
+    },
+    {
+     "y": 451,
+     "text": "foundation and superstructure design of the building signed by the structural engineer will also be"
+    },
+    {
+     "y": 464,
+     "text": "submitted along with the forms related to map approval. Also, the maps which will be sent to the"
+    },
+    {
+     "y": 477,
+     "text": "authority appointed for the construction of the building, on all those plans, a certificate of earthquake"
+    },
+    {
+     "y": 489,
+     "text": "resistant design will be submitted in the format mentioned in Appendix-10 with the full name and sealed"
+    },
+    {
+     "y": 502,
+     "text": "signature of the land owner/builder, registered/ licensed architect as well as the structural engineer doing"
+    },
+    {
+     "y": 515,
+     "text": "the structural design and the service engineer preparing the service design."
+    },
+    {
+     "y": 541,
+     "text": "(ii) If any changes/additions are made in the building map presented for approval after testing by the"
+    },
+    {
+     "y": 554,
+     "text": "designated authority, then necessary changes in the anti-earthquake provisions in the structural and"
+    },
+    {
+     "y": 567,
+     "text": "services design will be made again by the structural engineer and the map will be presented again for"
+    },
+    {
+     "y": 580,
+     "text": "approval."
+    },
+    {
+     "y": 593,
+     "text": "In which the relevant part of the certificate and building information schedule will be mentioned as per"
+    },
+    {
+     "y": 606,
+     "text": "above and the execution of building construction works will be ensured as per the finally approved map."
+    },
+    {
+     "y": 626,
+     "text": "11.8.3 Conditions for construction permission"
+    },
+    {
+     "y": 646,
+     "text": "Approval for building construction will be issued subject to the following conditions:"
+    },
+    {
+     "y": 664,
+     "text": "(a)"
+    },
+    {
+     "y": 668,
+     "text": "The proposed construction will be as per the design certified by the Civil Engineer and Architect in"
+    },
+    {
+     "y": 683,
+     "text": "accordance with the provisions of the relevant Indian Standards Institute and National Building Code."
+    },
+    {
+     "y": 702,
+     "text": "(b)"
+    },
+    {
+     "y": 706,
+     "text": "The supervision of the construction will also be done under the supervision and responsibility of the"
+    },
+    {
+     "y": 721,
+     "text": "architect/engineer and the developer so that compliance with the following safety related arrangements"
+    },
+    {
+     "y": 734,
+     "text": "can be ensured:-"
+    },
+    {
+     "y": 775,
+     "text": "120"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 6,
+   "gazettePage": 121,
+   "prose": "I. A site civil engineer with prescribed experience will be assigned to supervise the construction of the\nbuilding. During supervision, it will be specifically ensured that the building is being constructed as per\nthe design approved by the structural engineer for making all the arrangements for structural safety and\nanti-earthquake.\nII. To ensure the quality of the main construction materials cement, steel, stone grit, brick coarse sand\nand mortar and concrete mix, etc. that will be used in the construction of the building, it will be\nnecessary to have the facility to test them at the work site itself. Also, by regularly sampling the\nconstruction materials, their quality should be physically and chemically tested by authorized\nlaboratories/institutions and their test results should be available at the site itself, so that whenever an\nexpert goes to the site to inspect the works, so can see these test results too.\nIII. Random technical inspection of the construction work will also be done by an independent expert.\nThe construction work can also be inspected from time to time by experts appointed by the\nbuyer/allottees. In this regard, action will be taken as per the instructions issued from time to time.\n(c)\nIf any of the conditions of approval are not followed or the report of the inspecting technical expert\nis not satisfactory, then further construction work will be stopped and the construction work will be\nconsidered unauthorized and may also be sealed. In such a case, completion certificate will not be\nissued, and the builder and his assistants will be considered guilty of criminal laxity and legal action\nwill be taken accordingly.\n(d)\nA board of size 4 feet x 3 feet shall be installed at a prominent place at the work place. On which\nthe name of the builder and owner, the name of the architect, structural engineer, service design engineer\nand supervision engineer will be mentioned in such a way that it can be clearly read from the main road\nadjacent to the building. The following records will also be available at the work site related to\nconstruction work: -\n(I)\nSigned and sealed copy of the map approved by the appointed authority.\n(II)\nComplete report of soil testing done by the approved laboratory/institute and recommendations\nregarding provisions of the proposed foundation.\n(III)\nCalculations of foundation, superstructure and all maps and structural details related to structural\nsafety to make the building earthquake resistant, signed and sealed by an authorized structural engineer.\n(IV)\nAll working drawings including sections and elevations and services details etc. signed and sealed\nby the authorized architect.\n(V)\nDetails of all T&P required for the construction of the building.\n(VI)\nSite Engineer Inspection Report Register.\n(VII)\nMaterial testing report and related register.\n(e)\nAfter completion of construction, no use of the building or its part will be made, nor will it be\nallowed, without obtaining the completion certificate.\nNote:\nIn addition to the above, the appointed authority may prescribe other conditions as necessary.\n11.8.4 Completion Certificate\n(I) To obtain completion certificate from the land owner/builder, along with the application form to be\nsubmitted to the competent authority, a certificate to this effect will be given jointly by the concerned\narchitect, site engineer, land owner/builder on Appendix-11 that the building has been constructed with\n121",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "I. A site civil engineer with prescribed experience will be assigned to supervise the construction of the"
+    },
+    {
+     "y": 85,
+     "text": "building. During supervision, it will be specifically ensured that the building is being constructed as per"
+    },
+    {
+     "y": 97,
+     "text": "the design approved by the structural engineer for making all the arrangements for structural safety and"
+    },
+    {
+     "y": 110,
+     "text": "anti-earthquake."
+    },
+    {
+     "y": 129,
+     "text": "II. To ensure the quality of the main construction materials cement, steel, stone grit, brick coarse sand"
+    },
+    {
+     "y": 142,
+     "text": "and mortar and concrete mix, etc. that will be used in the construction of the building, it will be"
+    },
+    {
+     "y": 155,
+     "text": "necessary to have the facility to test them at the work site itself. Also, by regularly sampling the"
+    },
+    {
+     "y": 168,
+     "text": "construction materials, their quality should be physically and chemically tested by authorized"
+    },
+    {
+     "y": 181,
+     "text": "laboratories/institutions and their test results should be available at the site itself, so that whenever an"
+    },
+    {
+     "y": 194,
+     "text": "expert goes to the site to inspect the works, so can see these test results too."
+    },
+    {
+     "y": 213,
+     "text": "III. Random technical inspection of the construction work will also be done by an independent expert."
+    },
+    {
+     "y": 226,
+     "text": "The construction work can also be inspected from time to time by experts appointed by the"
+    },
+    {
+     "y": 239,
+     "text": "buyer/allottees. In this regard, action will be taken as per the instructions issued from time to time."
+    },
+    {
+     "y": 257,
+     "text": "(c)"
+    },
+    {
+     "y": 261,
+     "text": "If any of the conditions of approval are not followed or the report of the inspecting technical expert"
+    },
+    {
+     "y": 276,
+     "text": "is not satisfactory, then further construction work will be stopped and the construction work will be"
+    },
+    {
+     "y": 289,
+     "text": "considered unauthorized and may also be sealed. In such a case, completion certificate will not be"
+    },
+    {
+     "y": 302,
+     "text": "issued, and the builder and his assistants will be considered guilty of criminal laxity and legal action"
+    },
+    {
+     "y": 315,
+     "text": "will be taken accordingly."
+    },
+    {
+     "y": 333,
+     "text": "(d)"
+    },
+    {
+     "y": 337,
+     "text": "A board of size 4 feet x 3 feet shall be installed at a prominent place at the work place. On which"
+    },
+    {
+     "y": 353,
+     "text": "the name of the builder and owner, the name of the architect, structural engineer, service design engineer"
+    },
+    {
+     "y": 366,
+     "text": "and supervision engineer will be mentioned in such a way that it can be clearly read from the main road"
+    },
+    {
+     "y": 379,
+     "text": "adjacent to the building. The following records will also be available at the work site related to"
+    },
+    {
+     "y": 392,
+     "text": "construction work: -"
+    },
+    {
+     "y": 410,
+     "text": "(I)"
+    },
+    {
+     "y": 414,
+     "text": "Signed and sealed copy of the map approved by the appointed authority."
+    },
+    {
+     "y": 435,
+     "text": "(II)"
+    },
+    {
+     "y": 439,
+     "text": "Complete report of soil testing done by the approved laboratory/institute and recommendations"
+    },
+    {
+     "y": 454,
+     "text": "regarding provisions of the proposed foundation."
+    },
+    {
+     "y": 473,
+     "text": "(III)"
+    },
+    {
+     "y": 477,
+     "text": "Calculations of foundation, superstructure and all maps and structural details related to structural"
+    },
+    {
+     "y": 492,
+     "text": "safety to make the building earthquake resistant, signed and sealed by an authorized structural engineer."
+    },
+    {
+     "y": 510,
+     "text": "(IV)"
+    },
+    {
+     "y": 514,
+     "text": "All working drawings including sections and elevations and services details etc. signed and sealed"
+    },
+    {
+     "y": 530,
+     "text": "by the authorized architect."
+    },
+    {
+     "y": 548,
+     "text": "(V)"
+    },
+    {
+     "y": 552,
+     "text": "Details of all T&P required for the construction of the building."
+    },
+    {
+     "y": 573,
+     "text": "(VI)"
+    },
+    {
+     "y": 577,
+     "text": "Site Engineer Inspection Report Register."
+    },
+    {
+     "y": 598,
+     "text": "(VII)"
+    },
+    {
+     "y": 602,
+     "text": "Material testing report and related register."
+    },
+    {
+     "y": 623,
+     "text": "(e)"
+    },
+    {
+     "y": 627,
+     "text": "After completion of construction, no use of the building or its part will be made, nor will it be"
+    },
+    {
+     "y": 642,
+     "text": "allowed, without obtaining the completion certificate."
+    },
+    {
+     "y": 661,
+     "text": "Note:"
+    },
+    {
+     "y": 680,
+     "text": "In addition to the above, the appointed authority may prescribe other conditions as necessary."
+    },
+    {
+     "y": 701,
+     "text": "11.8.4 Completion Certificate"
+    },
+    {
+     "y": 720,
+     "text": "(I) To obtain completion certificate from the land owner/builder, along with the application form to be"
+    },
+    {
+     "y": 733,
+     "text": "submitted to the competent authority, a certificate to this effect will be given jointly by the concerned"
+    },
+    {
+     "y": 746,
+     "text": "architect, site engineer, land owner/builder on Appendix-11 that the building has been constructed with"
+    },
+    {
+     "y": 775,
+     "text": "121"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 7,
+   "gazettePage": 122,
+   "prose": "the specifications, quality and structural design approved by the structural engineer based on the Indian\nStandards Institute code, National Building Code and relevant guidelines mentioned in Chapter-11.1 of\nthe byelaws as per the approved map and with all anti-earthquake provisions and the building is safe\nfor use in every way. The officer issuing the completion certificate will ensure that along with all other\nformalities related to issuing the completion certificate, the security related certificate is also available\nin the prescribed format. Only after this, completion certificate will be issued.\n(II) If any building or any part thereof is put into unauthorized use or is likely to be used without\nobtaining completion certificate, such construction will be sealed and strict action will be taken against\nthe building owner/builder as per rules.\n11.8.5 Determination of qualifications\na) On the basis of construction work and earthquake resistant zone, the qualifications of Structural\nEngineers, Site Civil Engineers for site supervision and Expert Inspectional Civil Engineers for\nsurprise inspection of work during construction work will be as per paragraph 14.7 (Chapter-\n14) of these regulations.\nb) Post Graduate Structural Engineer mentioned in the said Appendices means, Graduate Degree\nin Civil Engineering from a recognized Technical Institute/University with Graduate Civil\nEngineer with Post Graduate Degree in Structural Engineer means Graduate Degree in Civil\nEngineering from a recognized technical institute/university or equivalent recognized technical\nqualification. And Diploma Civil Engineering means Diploma in Civil Engineering from a\nrecognized technical institute/university.\n122",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "the specifications, quality and structural design approved by the structural engineer based on the Indian"
+    },
+    {
+     "y": 85,
+     "text": "Standards Institute code, National Building Code and relevant guidelines mentioned in Chapter-11.1 of"
+    },
+    {
+     "y": 97,
+     "text": "the byelaws as per the approved map and with all anti-earthquake provisions and the building is safe"
+    },
+    {
+     "y": 110,
+     "text": "for use in every way. The officer issuing the completion certificate will ensure that along with all other"
+    },
+    {
+     "y": 123,
+     "text": "formalities related to issuing the completion certificate, the security related certificate is also available"
+    },
+    {
+     "y": 136,
+     "text": "in the prescribed format. Only after this, completion certificate will be issued."
+    },
+    {
+     "y": 155,
+     "text": "(II) If any building or any part thereof is put into unauthorized use or is likely to be used without"
+    },
+    {
+     "y": 168,
+     "text": "obtaining completion certificate, such construction will be sealed and strict action will be taken against"
+    },
+    {
+     "y": 181,
+     "text": "the building owner/builder as per rules."
+    },
+    {
+     "y": 202,
+     "text": "11.8.5 Determination of qualifications"
+    },
+    {
+     "y": 221,
+     "text": "a) On the basis of construction work and earthquake resistant zone, the qualifications of Structural"
+    },
+    {
+     "y": 234,
+     "text": "Engineers, Site Civil Engineers for site supervision and Expert Inspectional Civil Engineers for"
+    },
+    {
+     "y": 247,
+     "text": "surprise inspection of work during construction work will be as per paragraph 14.7 (Chapter-"
+    },
+    {
+     "y": 260,
+     "text": "14) of these regulations."
+    },
+    {
+     "y": 272,
+     "text": "b) Post Graduate Structural Engineer mentioned in the said Appendices means, Graduate Degree"
+    },
+    {
+     "y": 285,
+     "text": "in Civil Engineering from a recognized Technical Institute/University with Graduate Civil"
+    },
+    {
+     "y": 298,
+     "text": "Engineer with Post Graduate Degree in Structural Engineer means Graduate Degree in Civil"
+    },
+    {
+     "y": 311,
+     "text": "Engineering from a recognized technical institute/university or equivalent recognized technical"
+    },
+    {
+     "y": 324,
+     "text": "qualification. And Diploma Civil Engineering means Diploma in Civil Engineering from a"
+    },
+    {
+     "y": 337,
+     "text": "recognized technical institute/university."
+    },
+    {
+     "y": 775,
+     "text": "122"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  }
+ ]
+}

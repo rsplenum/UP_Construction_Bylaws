@@ -273,6 +273,35 @@ export const RULES: RuleSet = {
     },
   },
 
+  'structural.seismic-applicability': {
+    id: 'structural.seismic-applicability',
+    question: 'Must this building be designed to resist earthquakes, and what does that oblige?',
+    clause: 'Clause 11.8.1, with 11.3 and 11.5',
+    confidence: 'gazette',
+    derivedFrom: ['buildingHeight', 'occupancy'],
+    checked: '2026-09-11',
+    quote:
+      'Earthquake-proof construction requirements will be applicable to buildings with more than 3 '
+      + 'floors including ground floor or more than 12 meters in height and all infrastructure '
+      + 'facilities with land cover of more than 500 square meters. Chapter 3 restates the same rule '
+      + 'and agrees on every figure. Peer review above 50 m (11.3); structural audit in year 10 and '
+      + 'every 5 years thereafter for high-rise and special buildings (11.5).',
+    ifWrong:
+      'Clause 16.1.3(vi) hangs off this: it makes construction non-compoundable where earthquake '
+      + 'measures are mandatory. Getting the trigger wrong either bars compounding that the byelaws '
+      + 'allow or quotes a fee for work no fee can regularise.',
+    challenge: {
+      id: 'V-038',
+      summary:
+        'The four obligations that key on height and floor count — seismic design, the fire '
+        + 'certificate, the completion-stage fire NOC and the structural completion certificate — use '
+        + 'three different floor counts, two different heights and three different words for area, '
+        + 'and no clause relates them. The floor-count limb of 11.8.1 cannot be evaluated at all: '
+        + 'ProjectState has no floor count and one cannot be derived from height.',
+      derivedFromInstead: ['buildingHeight'],
+    },
+  },
+
   'occupancy.thresholds': {
     id: 'occupancy.thresholds',
     question: 'What road width, plot size and height does each use require?',

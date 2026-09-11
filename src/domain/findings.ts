@@ -19,6 +19,7 @@ import { PURCHASABLE_FAR_MIN_ROAD_WIDTH, resolveBaseFar } from './far';
 import { assessCompounding, compoundableLimits } from './compounding';
 import { assessPurchaseFee, splitPurchasedFar } from './purchasable-fee';
 import { assessFireSafety, OCCUPANCY_CERTIFICATE_GATE } from './fire';
+import { assessStructuralSafety, PEER_REVIEW_HEIGHT_M, PERIODIC_AUDIT_FIRST_YEAR, PERIODIC_AUDIT_INTERVAL_YEARS } from './structural';
 import { assessSocialHousing } from './social-housing';
 import { forArea, getOccupancy } from './occupancy';
 import { ProjectState, derivePlotDepth } from './project';
@@ -514,6 +515,61 @@ export function assessProject(project: ProjectState): Assessment {
       proposed: `${height} m, ${occupancy.label}`,
       clause: 'Clause 10.1.3 & Clause 2.9.3.2',
     }, 'fire.safety-certificate'));
+  }
+
+  // ---- 6b. Structural / seismic (Chapter 11) -------------------------------------
+  const structural = assessStructuralSafety({
+    buildingHeight: height,
+    // Clause 11.5 runs the audit cycle on high-rise and special buildings; the fire
+    // assessment has already decided which of those this is.
+    isHighRiseOrSpecial: height > HIGH_RISE_THRESHOLD_M
+      || fire.triggers.some((t) => t.limb === 'special_occupancy' || t.limb === 'special_definition'),
+  });
+
+  if (structural.earthquakeMeasuresMandatory) {
+    findings.push(sourced({
+      id: 'seismic',
+      topic: 'safety',
+      status: 'attention',
+      headline: 'Earthquake-resistant design is mandatory for this building, at 100% compliance.',
+      detail:
+        structural.triggers.map((t) => `${t.clause} — ${t.because}`).join(' ')
+        + ' Clause 11.8.1(ii) requires 100% of the BIS Codes of Practice, the National Building Code'
+        + ' and the guidelines in Chapter 11.1 to be adopted. The permit application must carry the'
+        + ' Appendix-9 certificate jointly signed by the owner, the architect and the structural'
+        + ' engineer, the Appendix-8 Building Information Schedule marked on the drawing, and the'
+        + ' Appendix-10 earthquake-resistant design certificate.'
+        + (structural.peerReviewRequired
+          ? ` Above ${PEER_REVIEW_HEIGHT_M} m the design must also be peer reviewed and proof checked`
+            + ' by an engineer empanelled by the Authority, in three stages — SDBR, preliminary'
+            + ' design, detailed design — each released only after the previous one is agreed'
+            + ' (Clause 11.3).'
+          : '')
+        + (structural.periodicAudit.required
+          ? ` A structural audit is due in year ${PERIODIC_AUDIT_FIRST_YEAR} after the occupancy`
+            + ` permit and every ${PERIODIC_AUDIT_INTERVAL_YEARS} years thereafter`
+            + `${structural.periodicAudit.expertEngineerOnly ? ', by an expert structural engineer only' : ''}`
+            + ' (Clause 11.5).'
+          : '')
+        + ` ${structural.caveats.join(' ')}`,
+      required: 'Seismic design to NBC 2016 Part 6 and the Chapter 11.1 standards, certified',
+      proposed: `${height} m, ${occupancy.label}`,
+      clause: structural.triggers.map((t) => t.clause).join(', '),
+    }, 'structural.seismic-applicability'));
+  } else if (structural.dependsOnFloorCount) {
+    findings.push(sourced({
+      id: 'seismic',
+      topic: 'safety',
+      status: 'info',
+      headline: 'Seismic design requirements are not triggered by height — unless this runs to more than three floors.',
+      detail:
+        `Clause 11.8.1 catches buildings over 12 m or of more than three floors including the `
+        + `ground floor. At ${height} m the height limb is not met, and the floor count is not part `
+        + `of this description. ${structural.caveats.join(' ')}`,
+      required: 'None triggered at this height',
+      proposed: `${height} m, ${occupancy.label}`,
+      clause: 'Clause 11.8.1(i)',
+    }, 'structural.seismic-applicability'));
   }
 
   // ---- 7. Water, energy, waste ---------------------------------------------------

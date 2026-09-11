@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: twelve transcriptions verified exactly right, and thirty-one real bugs found.**
+**Headline: thirteen transcriptions verified exactly right, and thirty-two real bugs found.**
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -485,7 +485,96 @@ end to end, not just in the unit test.*
 
 ---
 
+### B-032 — A non-compoundable bar that cited an unread chapter, and so never fired
+`NonCompoundableFlags.earthquakeMeasuresMandatory` has carried the comment *"ch. 11.8"*
+since the compounding engine was written. Chapter 11 had not been read, so nothing could
+set it, and the fee was quoted on the assumption that seismic requirements never bind.
+
+Clause 11.8.1(i) states the trigger outright:
+
+> Earthquake-proof construction requirements will be applicable to buildings with **more
+> than 3 floors including ground floor or more than 12 meters in height** and all
+> infrastructure facilities with **land cover of more than 500 square meters**.
+
+The height limb is computable from a field the project model already has, and it catches
+the commonest building in the state: stilt plus three floors stands at 15 m, and Para
+3.3.4.8 makes stilt parking mandatory for multi-units. The engine said nothing about
+seismic design on any of them.
+
+**The rule is confirmed by a second printing.** Chapter 3 states it again — *"Buildings
+more than 3 floors including the ground floor or more than 12 meters high and buildings
+related to important infrastructure facilities with more than 500 square meters of ground
+cover"* — and the two agree on all three figures. Two independent printings agreeing is the
+strongest confirmation this document offers and it has happened only twice in eleven
+chapters. The sole difference is *land cover* against *ground cover*, which is V-036's
+ambiguity and not a difference in the threshold.
+
+*Fixed: `src/domain/structural.ts`, and a seismic finding that names the Appendix-8, -9 and
+-10 certificates the permit application must carry, the Clause 11.3 peer review above 50 m,
+and the Clause 11.5 audit cycle.*
+
+---
+
 ## Still open
+
+### V-038 — Four safety obligations, three floor counts, two heights, three words for area
+Chapter 11 adds a fourth statement of "which buildings are the serious ones", and like the
+three before it, it agrees with none of them:
+
+| Obligation | Floors | Height | Area basis |
+|---|---|---|---|
+| Seismic design — Clause 11.8.1 | >3 incl. ground | **>12 m** | infrastructure, **land cover** >500 m² |
+| Fire certificate — Clause 10.1.3 | — | >15 m | **covered area** >500 m² |
+| Completion-stage fire NOC — Clause 2.9.3.2 | **>4** | ≥15 m | **ground coverage** >500 m² |
+| Structural completion certificate — Chapter 2 | >3 storeys | >15 m incl. ground floor | important infrastructure |
+
+Three different floor counts, two different heights, three different words for area, four
+different lists of what counts as important. Nothing in the byelaws relates them, and each
+one governs a different clearance, so a building can be caught by one and not the next.
+
+The seismic threshold is the lowest of them at 12 m, which makes it the binding one on
+ordinary buildings — and the one that was missing entirely until now.
+
+**The floor-count limb cannot be evaluated at all.** `ProjectState` has no floor count, and
+one cannot be derived from height: four floors at 2.75 m stands at 11 m, under the seismic
+height limb and over its floor limb. `assessStructuralSafety` reports `dependsOnFloorCount`
+and the finding says *"unless this runs to more than three floors"* rather than *"no"* —
+the same treatment as V-037. This is now the third obligation blocked on the same missing
+field.
+
+*One inconsistency inside the engine is worth recording alongside this.* `findings.ts`
+passes `floors: Math.ceil(height / 3)` to the compounding engine for the Item 10 fee
+quantity, while `fire.ts` and now `structural.ts` refuse to derive a floor count from
+height on principle. Both are defensible — a fee quantity degrades gracefully where a
+clearance trigger does not — but the codebase should not hold two answers to "can we guess
+the floor count" without saying which applies where.
+
+### V-039 — The literal reading of a non-compoundable bar would empty a neighbouring table
+Clause 16.1.3(vi) reads *"Construction in the buildings where earthquake resistance
+measures are mandatory as per chapter 11.8."* Read literally, and now that Chapter 11.8 has
+been read, that makes **every building over 12 m non-compoundable outright** — which would
+be the stricter reading and so, under standing rule 4, the one to apply.
+
+It is not the reading applied, because the gazette settles it two clauses later. Chapter
+16's own table of compoundable limits has a column headed *"Buildings >15-meter height and
+Group Housing except multi-units"*, with figures in every row. Under the literal reading
+that column could never apply to anything: every building it describes is over 12 m and
+therefore already barred. **A reading that empties a neighbouring table of all meaning is
+the wrong reading.**
+
+So the bar is taken to catch construction that *violates* the mandatory measures, not all
+construction in a building subject to them. `NON_COMPOUNDABLE_READING` states that on the
+finding rather than leaving it as an unexplained choice.
+
+The same argument applies to two more bars of the same shape: (vii) firefighting, *"as per
+chapter 10.1.3"*, and (xii) accessibility, *"as per chapter 12"*. All three would empty the
+same column. This narrows what the chapter-10 entry at V-006 claimed for bar (vii): the
+first limb is not a bar on its own, and it is the second limb — whether the NOC was
+actually obtained — that does the work there.
+
+Standing rule 4 says to apply the stricter reading where the gazette is ambiguous. It does
+not say to apply a reading the gazette contradicts elsewhere, and telling the two cases
+apart is what reading a whole chapter buys over reading a clause.
 
 ### V-032 — The parking rule cites a chapter that has no tables, and the real table disagrees
 `parking.ecs-ratios` cited "Chapter 10 (Table 10.1)". Chapter 10 is Fire Prevention and
