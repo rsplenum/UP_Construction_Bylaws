@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: ten transcriptions verified exactly right, and twenty-four real bugs found.**
+**Headline: ten transcriptions verified exactly right, and twenty-six real bugs found.**
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -303,6 +303,24 @@ commercial use that can sit inside a mixed-use building, so it under-provided pa
 all of them. The engine now carries 3.0 — the highest ratio it holds, which is the only
 reading of *"higher use"* a single field can express. See V-024 for what that still misses.
 *Fixed: `minPlotAreaSqm` 0, `parkingEcsPer100Sqm` 3.0.*
+
+### B-025 — Industry carried a minimum plot size the gazette does not impose
+Clause 7.1.2: *"There is no restriction on the minimum plot size for industrial buildings,
+flatted factories, data centres and MSME units."* The engine required **200 m²** for light
+industry and **1000 m²** for general industry.
+
+### B-026 — The general-industry road minimum was double the gazette's
+Clause 7.1.3 gives industrial buildings and MSME units **9 m in an industrial use zone**
+and 7 m in an agriculture use zone; flatted factories and data centres need 12 m. The
+engine required **18 m** for general industry — twice what the byelaws ask, on a threshold
+that decides whether a project is permissible at all.
+
+Both of these erred toward refusal. That direction is rarer in this codebase and no less
+wrong: a lawful industrial project on a 9 m road in an industrial zone was being told to
+find a wider road.
+
+`ind_warehouse` is deliberately untouched. Warehousing is Sl. 12 of Chapter 3's commercial
+matrix, not a Chapter 7 use, so Clause 7.1 does not govern it.
 
 ---
 
@@ -691,61 +709,6 @@ Chapter 7's own MSME row. **The engine uses Chapter 3 and ignores this row.**
 
 Chapter 7's MSME row also conflicts with Chapter 3 in the ordinary way — 10.50 against
 9.0 above a 24 m road — which standing rule 4 resolves to Chapter 3's 9.0.
-
-### B-023 — Industry carried a minimum plot size the gazette does not impose
-Clause 7.1.2: *"There is no restriction on the minimum plot size for industrial buildings,
-flatted factories, data centres and MSME units."* The engine required **200 m²** for light
-industry and **1000 m²** for general industry.
-
-### B-024 — The general-industry road minimum was double the gazette's
-Clause 7.1.3 gives industrial buildings and MSME units **9 m in an industrial use zone**
-and 7 m in an agriculture use zone; flatted factories and data centres need 12 m. The
-engine required **18 m** for general industry — twice what the byelaws ask, on a threshold
-that decides whether a project is permissible at all.
-
-Both of these erred toward refusal. That direction is rarer in this codebase and no less
-wrong: a lawful industrial project on a 9 m road in an industrial zone was being told to
-find a wider road.
-
-`ind_warehouse` is deliberately untouched. Warehousing is Sl. 12 of Chapter 3's commercial
-matrix, not a Chapter 7 use, so Clause 7.1 does not govern it.
-
-### V-021 — A threshold split by USE ZONE, a third dimension the engine has no field for
-Clause 7.1.3 states the road minimum as *"7-meters (Agriculture Use Zone) 9-meters
-(Industrial Use Zones)"*. After the facility (V-005) and the area type (B-017), this is a
-third axis the same number varies along, and the occupancy list has no field for it. The
-engine holds the industrial-zone figure — the commoner case and the stricter of the two.
-The extractor captures the split as `{byUseZone: {...}}` so the data is not lost.
-
-### V-022 — Farmhouses and dairy farms are not modelled at all
-Chapter 7 gives both a complete rule set and the engine has no occupancy for either:
-
-| | Farmhouse (7.2) | Dairy farm / gaushala (7.3) |
-|---|---|---|
-| Minimum plot | 4,000 m² | 1,000 m² |
-| Access road | 7 m | 7 m |
-| Ground coverage | after setbacks; non-farm activity ≤20% of plot | 20% |
-| FAR | 0.20 | 0.20 |
-| Height | no restriction | no restriction |
-| Setback | 9 m all sides for the non-farm building, except the guard room | by plot area: ≥1000–4000 → 6 m; >4000–7000 → 9 m; >7000 → 10 m |
-
-The dairy setback ladder is keyed on **plot area** and applies equally to all four sides,
-which is a shape no existing setback table has.
-
-### V-023 — A second place the gazette's arithmetic fails, and a worse one
-Clause 7.1.5 prints, for *Flatted Factories, Data Centres*: base FAR **3.00**, maxima of
-**2.00 and 3.50**. A maximum below the base cannot be right whatever the intent.
-
-The purchasable columns — 0.50 / 0.50 and 1.00 / 1.50 — are coherent only with a base of
-**1.00**, and they are character for character the same as the secondary-school row in
-Clause 6.2.4, which does carry 1.00. Chapter 3 Sl. 2 and Sl. 3 give flatted factories and
-data centres base 3.0 with maxima 3.0 / 6.0 / 9.0, which is internally coherent and
-matches the shape of Chapter 7's own MSME row. **The engine uses Chapter 3 and ignores
-this row.**
-
-One more conflict alongside it: Chapter 7 gives MSME units a maximum of **10.5** above a
-24 m road where Chapter 3 gives **9.0**. Standing rule 4 applies and the lower figure
-stands.
 
 ### V-018 — The gazette's own arithmetic fails in one place
 The identity MFAR = BFAR + PFAR + PPFAR holds on **153 of 157** band checks across the
