@@ -156,6 +156,47 @@ export const RULES: RuleSet = {
     },
   },
 
+  'far.mixed-use': {
+    id: 'far.mixed-use',
+    question: 'How much floor area may a mixed-use building have?',
+    clause: 'Clause 8.1.3.1',
+    confidence: 'gazette',
+    derivedFrom: ['roadWidth', 'areaType'],
+    checked: '2026-09-10',
+    quote:
+      'MU Built-up Area: base 2.0; Max FAR Upto 12m 2.0, >12–24m 4.0, >24–45m 5.25 as printed, '
+      + '>45m Unrestricted. MU non-built-up Area: base 2.5; Max FAR 2.5 / 5.0 / 6.25 / Unrestricted. '
+      + 'Chapter 3\'s matrix prints no mixed-use row at all, so this is the only table for the use.',
+    ifWrong:
+      'Mixed use was assessed on the commercial ladder written for shops — base 1.5 built-up against the 2.0 Chapter 8 gives it — so every mixed-use project was told it had roughly a quarter less base floor area than the byelaws allow.',
+    challenge: {
+      id: 'V-025',
+      summary:
+        'Two of the table\'s eight cells contradict themselves, and in opposite directions: the built-up 24–45 m band prints a maximum of 5.25 where its own components sum to 4.5, and the new-layout band prints 6.25 where they sum to 8.75. Standing rule 4 resolves each to the lower figure. With no Chapter 3 row to fall back on, there is no independent reading to check either against.',
+      maxDivergence: '2.5 FAR, on a new layout above a 24 m road',
+    },
+  },
+
+  'far.tod': {
+    id: 'far.tod',
+    question: 'How much floor area may a building in a Transit Oriented Development zone have?',
+    clause: 'Clause 8.2.2.2',
+    confidence: 'gazette',
+    derivedFrom: ['roadWidth'],
+    checked: '2026-09-10',
+    quote:
+      'Minimum right of way 12m — 150% of base FAR. >12–24m — 250%. >24–45m — 350%. >45m — Unrestricted. '
+      + 'Base FAR in every row is "As per byelaws". Note (2): the charges for purchasable FAR and '
+      + 'premium purchasable FAR shall be the same.',
+    ifWrong:
+      'Nothing in the app is decided by this yet. The ladder is read and tested; what is missing is any way for a project to say it sits in a TOD zone.',
+    challenge: {
+      id: 'V-026',
+      summary:
+        'TOD FAR is a multiplier on whatever base FAR the underlying use carries, so it cannot be resolved without first resolving that use — and it applies only inside a notified TOD zone, which is a fact about the plot that `ProjectState` has no field for. The ladder is modelled and unused rather than guessed at.',
+    },
+  },
+
   'occupancy.thresholds': {
     id: 'occupancy.thresholds',
     question: 'What road width, plot size and height does each use require?',

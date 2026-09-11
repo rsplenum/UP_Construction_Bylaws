@@ -113,15 +113,60 @@ export const COMMERCIAL_MAX_FAR: Readonly<Record<AreaType, readonly RoadFarBand[
   ],
 };
 
+/**
+ * Clause 8.1.3.1 — mixed-use development has its own table, and it is not the commercial
+ * one the engine had been reading.
+ *
+ * Mixed use was assessed on rows 3(a)/3(b), written for shops: base 1.5 built-up and
+ * 1.75 in a new layout. Chapter 8 gives it base 2.0 and 2.5, so every mixed-use project
+ * was told it had between a quarter and a third less base floor area than the byelaws
+ * allow. Chapter 3's matrix has no mixed-use row at all, so unlike every other
+ * cross-chapter conflict so far there is no second figure to fall back on: this table is
+ * the only one the byelaws print for the use.
+ *
+ * Two of its eight cells contradict themselves and both are resolved to the lowest
+ * reading the clause supports — 4.5 rather than the printed 5.25 at >24–45 m built-up,
+ * and the printed 6.25 rather than the components' 8.75 in a new layout. The reasoning
+ * is in GAZETTE_ARITHMETIC_DEFECTS, and `purchasable-far.test.ts` asserts that the two
+ * ladders below still agree with `strictCeiling` on the extracted rows, so neither can
+ * be edited into disagreeing with the gazette quietly.
+ *
+ * The floor is the gazette's own, not the engine's: Clause 8.1.3 puts the means of
+ * access for the most permissive location — a plot of up to 100 m² in a mixed-use zone —
+ * at 9 m, and every other location at 12 m or 24 m, so below 9 m no mixed use is
+ * permissible anywhere. That is the distinction V-007 records for the commercial ladder,
+ * where the same 9 m floor is an inference the gazette does not state.
+ */
+export const MIXED_USE_MAX_FAR: Readonly<Record<AreaType, readonly RoadFarBand[]>> = {
+  built_up: [
+    { label: 'Below 9m',    overMoreThan: 0,  upToAndIncluding: 9,        maxFar: 0 },
+    { label: 'Up to 12m',   overMoreThan: 9,  upToAndIncluding: 12,       maxFar: 2.0 },
+    { label: '>12 to 24m',  overMoreThan: 12, upToAndIncluding: 24,       maxFar: 4.0 },
+    { label: '>24 to 45m',  overMoreThan: 24, upToAndIncluding: 45,       maxFar: 4.5 },
+    { label: '>45m',        overMoreThan: 45, upToAndIncluding: Infinity, maxFar: Infinity },
+  ],
+  non_built_up: [
+    { label: 'Below 9m',    overMoreThan: 0,  upToAndIncluding: 9,        maxFar: 0 },
+    { label: 'Up to 12m',   overMoreThan: 9,  upToAndIncluding: 12,       maxFar: 2.5 },
+    { label: '>12 to 24m',  overMoreThan: 12, upToAndIncluding: 24,       maxFar: 5.0 },
+    { label: '>24 to 45m',  overMoreThan: 24, upToAndIncluding: 45,       maxFar: 6.25 },
+    { label: '>45m',        overMoreThan: 45, upToAndIncluding: Infinity, maxFar: Infinity },
+  ],
+};
+
 for (const areaType of ['built_up', 'non_built_up'] as const) {
   assertContiguousLadder(`GROUP_HOUSING_MAX_FAR.${areaType}`, GROUP_HOUSING_MAX_FAR[areaType]);
   assertContiguousLadder(`COMMERCIAL_MAX_FAR.${areaType}`, COMMERCIAL_MAX_FAR[areaType]);
+  assertContiguousLadder(`MIXED_USE_MAX_FAR.${areaType}`, MIXED_USE_MAX_FAR[areaType]);
 }
 
 /** Base FAR is a property of the occupancy and the area type, not of the road. */
-export const BASE_FAR: Readonly<Record<'group_housing' | 'commercial', Record<AreaType, number>>> = {
+export const BASE_FAR: Readonly<
+  Record<'group_housing' | 'commercial' | 'mixed_use', Record<AreaType, number>>
+> = {
   group_housing: { built_up: 1.5, non_built_up: 2.5 },
   commercial:    { built_up: 1.5, non_built_up: 1.75 },
+  mixed_use:     { built_up: 2.0, non_built_up: 2.5 },
 };
 
 /**
@@ -241,12 +286,21 @@ export function resolveBaseFar(input: {
     workings = slabs.map((s) => `${s.plotAreaInSlab} × ${s.far}`).join(' + ')
       + ` = ${round(totalBuiltUp, 2)} sqm ÷ ${plotArea} sqm = FAR ${baseFar}`;
   } else {
-    const isGroupHousing = definition.farBasis === 'road_width_group_housing';
-    const table = (isGroupHousing ? GROUP_HOUSING_MAX_FAR : COMMERCIAL_MAX_FAR)[areaType];
-    const key = isGroupHousing ? 'group_housing' : 'commercial';
-    clauseRef = isGroupHousing
-      ? 'Section 3.2.2.2 & 4.2.8 (Group Housing), verified against the gazette'
-      : 'Section 5.2.5 (Commercial), verified against the gazette';
+    const key = ({
+      road_width_group_housing: 'group_housing',
+      road_width_commercial: 'commercial',
+      road_width_mixed_use: 'mixed_use',
+    } as const)[definition.farBasis];
+    const table = {
+      group_housing: GROUP_HOUSING_MAX_FAR,
+      commercial: COMMERCIAL_MAX_FAR,
+      mixed_use: MIXED_USE_MAX_FAR,
+    }[key][areaType];
+    clauseRef = {
+      group_housing: 'Section 3.2.2.2 & 4.2.8 (Group Housing), verified against the gazette',
+      commercial: 'Section 5.2.5 (Commercial), verified against the gazette',
+      mixed_use: 'Clause 8.1.3.1 (Mixed use), verified against the gazette',
+    }[key];
 
     baseFar = BASE_FAR[key][areaType];
 

@@ -89,6 +89,46 @@ export function bandForRoad(row: PurchasableRow, roadWidthM: number): Purchasabl
 }
 
 /**
+ * How far the printed maximum may sit above its own components before the difference is
+ * a contradiction rather than a rounding step. The gazette rounds to one decimal place,
+ * and the widest rounding it actually takes is 3.55 → 3.6.
+ */
+export const PURCHASABLE_ROUNDING_TOLERANCE = 0.05;
+
+/**
+ * The ceiling to apply for a band — the lowest reading the gazette supports.
+ *
+ * On 153 of the 157 band checks the printed MFAR and the sum of the printed components
+ * are the same number and this returns it. On the other four the gazette contradicts
+ * itself, and standing rule 4 says to model both readings and apply the stricter one, so
+ * this returns the lesser.
+ *
+ * Which of the two is lower is not a constant. Until Chapter 8 the printed figure was
+ * always the lower one, and the engine could simply take the gazette at its word — which
+ * is what the Clause 6.2.4 note in GAZETTE_ARITHMETIC_DEFECTS describes. Clause 8.1.3.1
+ * is the first table to print a maximum ABOVE its own components (5.25 against 4.5), so
+ * honouring the printed figure there would over-permit by 0.75 FAR against the strictest
+ * reading. Choosing per band rather than per table is what covers both directions.
+ */
+export function strictCeiling(row: PurchasableRow, band: PurchasableBand): number | null {
+  const printed = asCeiling(band.maxFar);
+  if (printed === null) return null;
+  if (row.baseFar === null || !baseFarApplies(row, band)) return printed;
+  // "Unrestricted" in either purchasable column puts no number on the components, so the
+  // printed maximum is the only reading there is.
+  if (band.purchasable === 'unrestricted' || band.premiumPurchasable === 'unrestricted') {
+    return printed;
+  }
+  const purchasable = typeof band.purchasable === 'number' ? band.purchasable : 0;
+  const premium = typeof band.premiumPurchasable === 'number' ? band.premiumPurchasable : 0;
+  const components = Number((row.baseFar + purchasable + premium).toFixed(4));
+  // Three cells round rather than contradict: 1.75 + 0.9 + 0.9 = 3.55 is printed as 3.6.
+  // Preferring the components there would shave a ceiling by a rounding step and call it
+  // a stricter reading, so only a gap wider than that rounding counts as a disagreement.
+  return components + PURCHASABLE_ROUNDING_TOLERANCE < printed ? components : printed;
+}
+
+/**
  * Which printed row an occupancy reads.
  *
  * Several of these are finer-grained than the occupancy list: Clause 5.2.5 splits
@@ -122,6 +162,12 @@ export function purchasableRowFor(input: {
   }
 
   if (occupancy === 'com_bazaar') return find(84, (u) => u.includes('Bazaar'));
+
+  // Clause 8.1.3.1. Its two rows carry the area type inside their own names — "MU
+  // Built-up Area" and "MU non-built-up Area" — where other tables put it in a heading
+  // above the row, so the prefix is all there is to match on; `find` pairs the right one
+  // by area type.
+  if (occupancy === 'mixed_use') return find(105, (u) => u.startsWith('MU'));
   if (occupancy === 'com_hotel') return find(87, (u) => u.includes('Hotels'))
     ?? find(88, (u) => u.includes('Hotels'));
 
@@ -142,14 +188,21 @@ export function purchasableRowFor(input: {
 /**
  * Places where the gazette's own arithmetic does not close.
  *
- * The identity MFAR = BFAR + PFAR + PPFAR holds on 129 of the 130 band checks across the
- * twelve printed tables. The exception is a drafting slip, and the pattern makes it plain:
- * in Clause 6.2.4 every cell of the schools row scales by 1.2 from the built-up area to a
- * new layout — 0.50 to 0.60, 1.00 to 1.20, 2.00 to 2.40 — except the narrowest band, where
- * 0.20 / 0.20 / 1.40 is repeated verbatim instead of becoming 0.24 / 0.24 / 1.68.
+ * The identity MFAR = BFAR + PFAR + PPFAR holds on 153 of the 157 band checks across the
+ * sixteen printed tables. The four exceptions are drafting slips, and `resolved` records
+ * what the engine applies instead — always the lowest reading the clause supports, per
+ * standing rule 4.
  *
- * The engine honours the MFAR as printed. It is lower than either the components or the
- * pattern imply, so standing rule 4 is satisfied by taking the gazette at its word here.
+ * There is a second, stronger regularity underneath the identity, and it is what makes
+ * these four legible as slips rather than as unusual rules. Across the thirty-six rows
+ * that follow it, every table generates its 24–45 m band from the base FAR alone:
+ *
+ *     PFAR = 1.0 × BFAR      PPFAR = 1.5 × BFAR      MFAR = 3.5 × BFAR
+ *
+ * so a base of 2.0 gives 2.0 / 3.0 / 7.0 and a base of 2.5 gives 2.5 / 3.75 / 8.75. Every
+ * row below departs from that as well as from the identity, and in three of the four the
+ * departing figures are character for character a row printed elsewhere for a different
+ * base — which is what a copied cell looks like.
  */
 export const GAZETTE_ARITHMETIC_DEFECTS: readonly {
   readonly gazettePage: number;
@@ -158,6 +211,8 @@ export const GAZETTE_ARITHMETIC_DEFECTS: readonly {
   readonly band: string;
   readonly componentsImply: number;
   readonly printed: number;
+  /** What the engine applies: the lowest reading, or a figure from another chapter. */
+  readonly resolved: number;
   readonly note: string;
 }[] = [
   {
@@ -167,6 +222,7 @@ export const GAZETTE_ARITHMETIC_DEFECTS: readonly {
     band: '>12 -24m and >24 - 45m',
     componentsImply: 4.0,
     printed: 2.0,
+    resolved: 6.0,
     note: 'Clause 7.1.5. The printed maximum is BELOW the printed base FAR, which cannot '
       + 'be right: base 3.00 against maxima of 2.00 and 3.50. The purchasable columns '
       + '(0.50 / 0.50, 1.00 / 1.50) are coherent only with a base of 1.00, and are '
@@ -182,9 +238,44 @@ export const GAZETTE_ARITHMETIC_DEFECTS: readonly {
     band: 'Upto 12m',
     componentsImply: 1.6,
     printed: 1.4,
+    resolved: 1.4,
     note: 'Clause 6.2.4. The narrowest band repeats the built-up figures unscaled where '
       + 'every other band in the row scales by 1.2. The printed 1.40 is the lower figure '
       + 'and is what the engine uses.',
+  },
+  {
+    gazettePage: 105,
+    useType: 'MU Built-up Area',
+    areaType: 'built_up',
+    band: '24 - 45m',
+    componentsImply: 4.5,
+    printed: 5.25,
+    resolved: 4.5,
+    note: 'Clause 8.1.3.1, and the first table in the byelaws to print a maximum ABOVE '
+      + 'its own components rather than below. Three different base FARs appear in this '
+      + 'one cell: the row carries base 2.00, its PFAR and PPFAR of 1.00 / 1.50 are the '
+      + 'figures for a base of 1.00, and the printed maximum of 5.25 is 3.5 × 1.50, the '
+      + 'figure for a base of 1.50. Nothing in the cell is coherent with 2.00, which the '
+      + 'pattern would give as 2.00 / 3.00 / 7.00. The 1.00 / 1.50 pair is the same one '
+      + 'Clause 7.1.5 imported from the secondary-school row (V-023), so the same '
+      + 'base-1.00 line appears to have been copied into two chapters. The engine takes '
+      + 'the components at 4.50 — the lowest of the three readings, and 0.75 below the '
+      + 'figure printed.',
+  },
+  {
+    gazettePage: 105,
+    useType: 'MU non-built-up Area',
+    areaType: 'non_built_up',
+    band: '24 - 45m',
+    componentsImply: 8.75,
+    printed: 6.25,
+    resolved: 6.25,
+    note: 'Clause 8.1.3.1. Unlike the built-up row above it, this one\'s components are '
+      + 'exactly right: base 2.50 with PFAR 2.50 and PPFAR 3.75 is what the pattern gives '
+      + 'for a base of 2.50, and matches group housing and hotels at the same base cell '
+      + 'for cell. Only the total is wrong, and by an identifiable step — 2.50 + 3.75 = '
+      + '6.25 is the printed figure exactly, so the base was left out of the sum. The '
+      + 'engine honours the printed 6.25, which is 2.50 below what the components imply.',
   },
 ];
 

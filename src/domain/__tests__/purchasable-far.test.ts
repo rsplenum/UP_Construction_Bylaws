@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { COMMERCIAL_MAX_FAR, GROUP_HOUSING_MAX_FAR } from '../far';
+import { BASE_FAR, COMMERCIAL_MAX_FAR, GROUP_HOUSING_MAX_FAR, MIXED_USE_MAX_FAR } from '../far';
 import {
   CHAPTER_3_GAPS,
   GAZETTE_ARITHMETIC_DEFECTS,
@@ -11,6 +11,7 @@ import {
   asCeiling,
   bandForRoad,
   purchasableRowFor,
+  strictCeiling,
   type PurchasableRow,
 } from '../purchasable-far';
 
@@ -18,9 +19,9 @@ const n = (v: unknown): number | null => (typeof v === 'number' ? v : null);
 
 describe('every printed BFAR/PFAR/PPFAR/MFAR table is loaded', () => {
   it('has every row from every printed table', () => {
-    expect(PURCHASABLE_FAR_ROWS).toHaveLength(41);
+    expect(PURCHASABLE_FAR_ROWS).toHaveLength(43);
     const pages = [...new Set(PURCHASABLE_FAR_ROWS.map((r) => r.gazettePage))].sort((a, b) => a - b);
-    expect(pages).toEqual([78, 82, 84, 86, 87, 88, 90, 95, 97, 98, 99, 100, 101, 102]);
+    expect(pages).toEqual([78, 82, 84, 86, 87, 88, 90, 95, 97, 98, 99, 100, 101, 102, 105]);
   });
 
   it('splits a use that carries two base FARs into two rows with distinct ids', () => {
@@ -34,7 +35,10 @@ describe('every printed BFAR/PFAR/PPFAR/MFAR table is loaded', () => {
   it('carries a null area type where the gazette states none', () => {
     // Clause 7.1.5's industry tables have no built-up / new-layout split: industry sits
     // in a use zone instead. Rejecting rows without an area type dropped all of them.
-    const industry = PURCHASABLE_FAR_ROWS.filter((r) => r.gazettePage >= 101);
+    // Bounded at both ends — Chapter 8 is the next page along and does split by area
+    // type, so an open-ended `>= 101` swept its two rows in here as well.
+    const industry = PURCHASABLE_FAR_ROWS.filter(
+      (r) => r.gazettePage >= 101 && r.gazettePage <= 102);
     expect(industry).toHaveLength(4);
     expect(industry.every((r) => r.areaType === null)).toBe(true);
   });
@@ -106,12 +110,60 @@ describe('every printed BFAR/PFAR/PPFAR/MFAR table is loaded', () => {
   });
 });
 
-describe('the one place the gazette’s own arithmetic does not close', () => {
-  it('is two rows, and the printed figure is the lower one in both', () => {
-    expect(GAZETTE_ARITHMETIC_DEFECTS).toHaveLength(2);
+describe('the four places the gazette’s own arithmetic does not close', () => {
+  it('resolves every one of them to the lowest reading available', () => {
+    expect(GAZETTE_ARITHMETIC_DEFECTS).toHaveLength(4);
     for (const d of GAZETTE_ARITHMETIC_DEFECTS) {
-      expect(d.printed, `p.${d.gazettePage}`).toBeLessThan(d.componentsImply);
+      // Clause 7.1.5 is the exception: its row is discarded for Chapter 3's, so the
+      // figure the engine applies comes from neither column here.
+      if (d.gazettePage === 102) continue;
+      expect(d.resolved, `p.${d.gazettePage} ${d.band}`)
+        .toBe(Math.min(d.printed, d.componentsImply));
     }
+  });
+
+  /**
+   * Until Chapter 8 the printed maximum was always the lower of the two, so "honour what
+   * the gazette prints" and "apply the stricter reading" were the same instruction and
+   * nothing distinguished them. Clause 8.1.3.1 prints 5.25 against components of 4.5 and
+   * separates them: taking the gazette at its word there would over-permit.
+   */
+  it('finds the lower figure in both columns, so neither can be preferred by rule', () => {
+    const printedIsLower = GAZETTE_ARITHMETIC_DEFECTS.filter((d) => d.printed < d.componentsImply);
+    const componentsAreLower = GAZETTE_ARITHMETIC_DEFECTS.filter((d) => d.componentsImply < d.printed);
+    expect(printedIsLower.length).toBeGreaterThan(0);
+    expect(componentsAreLower.length).toBeGreaterThan(0);
+    expect(componentsAreLower.map((d) => d.gazettePage)).toContain(105);
+  });
+
+  /**
+   * The identity is not the only regularity the tables follow. Every row that behaves
+   * generates its 24–45 m band from the base FAR alone — PFAR 1.0×, PPFAR 1.5×, MFAR
+   * 3.5× — and it is the departure from THAT which makes a copied cell recognisable.
+   * Asserted here so the claim in the GAZETTE_ARITHMETIC_DEFECTS comment stays true as
+   * more chapters land.
+   */
+  it('holds a 1.0× / 1.5× / 3.5× band on every row that is not a known defect', () => {
+    const deviations: string[] = [];
+    for (const r of PURCHASABLE_FAR_ROWS) {
+      if (r.baseFar === null) continue;
+      const band = r.bands.find((b) => /24\s*-\s*45/.test(b.label));
+      if (!band || !baseFarApplies(r, band)) continue;
+      const got = [n(band.purchasable), n(band.premiumPurchasable), n(band.maxFar)];
+      if (got.some((v) => v === null)) continue;
+      const want = [1.0 * r.baseFar, 1.5 * r.baseFar, 3.5 * r.baseFar];
+      if (got.some((v, i) => Math.abs(v! - want[i]) > 0.051)) deviations.push(r.id);
+    }
+    // Clause 6.2.4's two school rows run on 1.0× / 1.0× / 3.0× throughout — a different
+    // multiplier family, internally consistent, and not a defect.
+    const schools = deviations.filter((id) => id.includes('schools-primary'));
+    expect(schools).toHaveLength(2);
+    const defects = deviations.filter((id) => !id.includes('schools-primary'));
+    expect(defects.sort()).toEqual([
+      'ch07-p102-flatted-factories-data-centres-None',
+      'ch08-p105-mu-built-up-area-built_up',
+      'ch08-p105-mu-non-built-up-area-non_built_up',
+    ]);
   });
 
   /**
@@ -138,6 +190,82 @@ describe('the one place the gazette’s own arithmetic does not close', () => {
     // Every other band in the row scales by 1.2 from its built-up twin.
     expect(row.bands[1].maxFar).toBe(2.4);
     expect(row.bands[2].maxFar).toBe(3.6);
+  });
+});
+
+describe('Clause 8.1.3.1 — mixed use, the one table with no Chapter 3 twin', () => {
+  const mixed = (areaType: 'built_up' | 'non_built_up') =>
+    purchasableRowFor({ occupancy: 'mixed_use', areaType, plotAreaSqm: 800 })!;
+
+  it('reads its own row, not the commercial one written for shops', () => {
+    expect(mixed('built_up').gazettePage).toBe(105);
+    expect(mixed('built_up').baseFar).toBe(2.0);
+    expect(mixed('non_built_up').baseFar).toBe(2.5);
+    // The row the engine used to read, for contrast: base 1.5 and 1.75.
+    expect(BASE_FAR.commercial).toEqual({ built_up: 1.5, non_built_up: 1.75 });
+  });
+
+  it('has no row in the Chapter 3 matrix to fall back on', () => {
+    // Every other cross-chapter disagreement is resolved by preferring Chapter 3's lower
+    // ceiling. Mixed use has no Chapter 3 row, so Clause 8.1.3.1 is the only source and
+    // the contradiction inside it has to be resolved on its own terms.
+    expect(CROSS_CHAPTER_MAX_FAR_CONFLICTS.some((c) => /mixed/i.test(c.useType))).toBe(false);
+    expect(CHAPTER_3_GAPS.some((g) => /mixed/i.test(g.useType))).toBe(false);
+  });
+
+  it.each([
+    ['built_up', 2.0, 4.0, 4.5],
+    ['non_built_up', 2.5, 5.0, 6.25],
+  ] as const)('resolves the %s ceilings to %s / %s / %s', (areaType, narrow, mid, wide) => {
+    const row = mixed(areaType);
+    expect(strictCeiling(row, row.bands[0])).toBe(narrow);
+    expect(strictCeiling(row, row.bands[1])).toBe(mid);
+    expect(strictCeiling(row, row.bands[2])).toBe(wide);
+    expect(strictCeiling(row, row.bands[3])).toBe(Infinity);
+  });
+
+  it('takes 4.50 over the printed 5.25 on a built-up 24–45 m road', () => {
+    const row = mixed('built_up');
+    expect(row.bands[2].maxFar).toBe(5.25);            // what the gazette prints
+    expect(strictCeiling(row, row.bands[2])).toBe(4.5); // what the components support
+  });
+
+  it('takes the printed 6.25 over the components’ 8.75 in a new layout', () => {
+    const row = mixed('non_built_up');
+    expect(row.bands[2].purchasable).toBe(2.5);
+    expect(row.bands[2].premiumPurchasable).toBe(3.75);
+    // 2.5 + 3.75 = 6.25 exactly: the printed total left the base out of the sum.
+    expect(row.bands[2].maxFar).toBe(6.25);
+    expect(strictCeiling(row, row.bands[2])).toBe(6.25);
+  });
+
+  /**
+   * The ladder in far.ts is written out by hand so it reads like the others; this is what
+   * stops it drifting from the table it was read off. A typo in either one fails here.
+   */
+  it('keeps far.ts’s ladder equal to the extracted row, band for band', () => {
+    for (const areaType of ['built_up', 'non_built_up'] as const) {
+      const row = mixed(areaType);
+      const ladder = MIXED_USE_MAX_FAR[areaType].filter((b) => b.maxFar !== 0);
+      expect(ladder, areaType).toHaveLength(row.bands.length);
+      row.bands.forEach((band, i) => {
+        expect(ladder[i].maxFar, `${areaType} ${band.label}`).toBe(strictCeiling(row, band));
+        expect(ladder[i].upToAndIncluding, `${areaType} ${band.label}`)
+          .toBe(band.upToAndIncluding ?? Infinity);
+      });
+    }
+  });
+
+  /**
+   * Clause 8.1.3 puts the means of access at 9 m for the most permissive location, so
+   * nothing below that is reachable. The same 9 m floor under the commercial ladder is
+   * the engine's own inference (V-007); this one the gazette states.
+   */
+  it('bars mixed use below a 9 m road, on the gazette’s own figure', () => {
+    for (const areaType of ['built_up', 'non_built_up'] as const) {
+      expect(MIXED_USE_MAX_FAR[areaType][0].maxFar, areaType).toBe(0);
+      expect(MIXED_USE_MAX_FAR[areaType][0].upToAndIncluding, areaType).toBe(9);
+    }
   });
 });
 

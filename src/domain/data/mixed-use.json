@@ -1,0 +1,291 @@
+{
+ "generatedBy": "tools/extract-mixed-use.py",
+ "source": "docs/source/gazette/pdf/chapter-08.pdf",
+ "sourceMd5": "e509e57c9eb413d12a2489965a5317e2",
+ "chapter": "08",
+ "standards": {
+  "clause": "8.1.3",
+  "gazettePage": 104,
+  "locations": [
+   {
+    "key": "mixed_use_zone",
+    "clause": "8.1.2(a)",
+    "name": "Mixed use zones earmarked under Master Plan"
+   },
+   {
+    "key": "approved_layout_plot",
+    "clause": "8.1.2(b)",
+    "name": "Mixed use plots as part of approved layouts"
+   },
+   {
+    "key": "bazaar_street",
+    "clause": "8.1.2(c)",
+    "name": "Notified bazaar streets"
+   },
+   {
+    "key": "wide_road",
+    "clause": "8.1.2(d)",
+    "name": "Along 24-meter and wider roads"
+   },
+   {
+    "key": "tod_zone",
+    "clause": "8.1.2(e)",
+    "name": "TOD zones"
+   }
+  ],
+  "parameters": [
+   {
+    "key": "minPlotSize",
+    "parameter": "Minimum Plot Size",
+    "byLocation": {
+     "mixed_use_zone": "No restriction",
+     "approved_layout_plot": "No restriction",
+     "bazaar_street": "No restriction",
+     "wide_road": "No restriction",
+     "tod_zone": "No restriction"
+    }
+   },
+   {
+    "key": "meansOfAccess",
+    "parameter": "Means of Access",
+    "byLocation": {
+     "mixed_use_zone": "9m (plots upto 100 sqm); 12m (other plots)",
+     "approved_layout_plot": "24m",
+     "bazaar_street": "12m",
+     "wide_road": "24m",
+     "tod_zone": "=>12m"
+    }
+   },
+   {
+    "key": "buildingHeight",
+    "parameter": "Building Height",
+    "byLocation": {
+     "mixed_use_zone": "Not restricted",
+     "approved_layout_plot": "Not restricted",
+     "bazaar_street": "Not restricted",
+     "wide_road": "Not restricted",
+     "tod_zone": "Not restricted"
+    }
+   },
+   {
+    "key": "minSetbacks",
+    "parameter": "Minimum Setbacks",
+    "byLocation": {
+     "mixed_use_zone": "As applicable for higher use",
+     "approved_layout_plot": "As applicable for higher use",
+     "bazaar_street": "As per para 5.1.5",
+     "wide_road": "As applicable for higher use",
+     "tod_zone": "As applicable for higher use"
+    }
+   },
+   {
+    "key": "floorAreaRatio",
+    "parameter": "Floor Area Ratio",
+    "byLocation": {
+     "mixed_use_zone": "As per para 8.1.3.6",
+     "approved_layout_plot": "As per para 8.1.3.6",
+     "bazaar_street": "As per para 5.1.4",
+     "wide_road": "As per Use Zone",
+     "tod_zone": "As per para 8.2.2.2"
+    }
+   },
+   {
+    "key": "mixing",
+    "parameter": "Mixing",
+    "byLocation": {
+     "mixed_use_zone": "0-100%",
+     "approved_layout_plot": "0-100%",
+     "bazaar_street": "Commercial (2 floors)",
+     "wide_road": "=>33% (principal use); =<67% (other uses) However, share of single other use shall not be more than principal use.",
+     "tod_zone": "=>33% (principal use); =<67% (other uses) However, share of single other use shall not be more than principal use."
+    }
+   },
+   {
+    "key": "parking",
+    "parameter": "Parking",
+    "byLocation": {
+     "mixed_use_zone": "As per proposed higher use",
+     "approved_layout_plot": "As per proposed higher use",
+     "bazaar_street": "As per proposed higher use",
+     "wide_road": "As per 3.3.4",
+     "tod_zone": "1ECS per 100 sqm."
+    }
+   },
+   {
+    "key": "groundCoverage",
+    "parameter": "Ground Coverage",
+    "byLocation": {
+     "mixed_use_zone": "Subject to adherence to prescribed setbacks",
+     "approved_layout_plot": "Subject to adherence to prescribed setbacks",
+     "bazaar_street": "Subject to adherence to prescribed setbacks",
+     "wide_road": "Subject to adherence to prescribed setbacks",
+     "tod_zone": "Subject to adherence to prescribed setbacks"
+    }
+   }
+  ]
+ },
+ "todMixing": {
+  "clause": "8.2.2.1",
+  "gazettePage": 106,
+  "rows": [
+   {
+    "landUse": "Residential",
+    "changedLandUse": "Residential Mixed-Use TOD",
+    "minimumFarInExistingUse": "33 percent",
+    "farInOtherUse": "67 percent",
+    "minimumSharePercent": 33.0,
+    "otherSharePercent": 67.0
+   },
+   {
+    "landUse": "Commercial (including retail)",
+    "changedLandUse": "Commercial Mixed-Use TOD",
+    "minimumFarInExistingUse": "33 percent",
+    "farInOtherUse": "67 percent",
+    "minimumSharePercent": 33.0,
+    "otherSharePercent": 67.0
+   },
+   {
+    "landUse": "Office/ Institutional",
+    "changedLandUse": "Office Mixed-Use TOD",
+    "minimumFarInExistingUse": "33 percent",
+    "farInOtherUse": "67 percent",
+    "minimumSharePercent": 33.0,
+    "otherSharePercent": 67.0
+   },
+   {
+    "landUse": "Industrial (except heavy and polluting industries)",
+    "changedLandUse": "Industrial Mixed-Use TOD",
+    "minimumFarInExistingUse": "33 percent",
+    "farInOtherUse": "67 percent",
+    "minimumSharePercent": 33.0,
+    "otherSharePercent": 67.0
+   },
+   {
+    "landUse": "Transportation",
+    "changedLandUse": "Transportation Mixed-Use TOD",
+    "minimumFarInExistingUse": "Operation as required",
+    "farInOtherUse": "Remaining FAR",
+    "minimumSharePercent": null,
+    "otherSharePercent": null
+   },
+   {
+    "landUse": "Public semi public",
+    "changedLandUse": "Public semi public Mixed-Use TOD",
+    "minimumFarInExistingUse": "33 percent",
+    "farInOtherUse": "67 percent",
+    "minimumSharePercent": 33.0,
+    "otherSharePercent": 67.0
+   }
+  ]
+ },
+ "todFar": {
+  "clause": "8.2.2.2",
+  "gazettePage": 106,
+  "bands": [
+   {
+    "label": "12m",
+    "overMoreThan": 0.0,
+    "upToAndIncluding": 12.0,
+    "baseFar": "As per byelaws",
+    "todFarPercentOfBase": 150.0,
+    "multiplier": 1.5,
+    "unrestricted": false
+   },
+   {
+    "label": ">12 - 24m",
+    "overMoreThan": 12.0,
+    "upToAndIncluding": 24.0,
+    "baseFar": "As per byelaws",
+    "todFarPercentOfBase": 250.0,
+    "multiplier": 2.5,
+    "unrestricted": false
+   },
+   {
+    "label": ">24 - 45m",
+    "overMoreThan": 24.0,
+    "upToAndIncluding": 45.0,
+    "baseFar": "As per byelaws",
+    "todFarPercentOfBase": 350.0,
+    "multiplier": 3.5,
+    "unrestricted": false
+   },
+   {
+    "label": ">45m",
+    "overMoreThan": 45.0,
+    "upToAndIncluding": null,
+    "baseFar": "As per byelaws",
+    "todFarPercentOfBase": null,
+    "multiplier": null,
+    "unrestricted": true
+   }
+  ]
+ },
+ "excludedFromMixing": {
+  "clause": "8.3.1(4)",
+  "gazettePage": 107,
+  "categories": [
+   {
+    "category": "Industrial",
+    "activities": [
+     "Large scale industry",
+     "sugar mill",
+     "rice seller",
+     "flour mill",
+     "Pasteurizing plant/ Milk storage centre",
+     "Meat Processing Plant",
+     "Mining brick/ lime kiln",
+     "crusher",
+     "Oil depot/ LPG refilling plant",
+     "Bio Diesel Plant",
+     "Power generation plant",
+     "Hazardous/ dangerous/ polluting industries"
+    ]
+   },
+   {
+    "category": "Public-Semi Public",
+    "activities": [
+     "Prison/ Jail",
+     "Correction facilities/ Reform Homes",
+     "Sanatorium",
+     "Compost plant",
+     "Scientific Landfill Sites",
+     "MRF Facilities",
+     "Bio-Medical Waste Treatment Facility",
+     "Slaughterhouses"
+    ]
+   },
+   {
+    "category": "Traffic & Transportation",
+    "activities": [
+     "Airport/ Flying club"
+    ]
+   },
+   {
+    "category": "Recreational",
+    "activities": [
+     "Shooting Range"
+    ]
+   },
+   {
+    "category": "Agricultural",
+    "activities": [
+     "Farmhouse",
+     "Repair of agricultural equipment/ servicing workshop"
+    ]
+   }
+  ],
+  "text": "Industrial: Large scale industry, sugar mill, rice seller, flour mill, Pasteurizing plant/ Milk storage centre, Meat Processing Plant, Mining brick/ lime kiln, crusher, Oil depot/ LPG refilling plant, Bio Diesel Plant, Power generation plant, Hazardous/ dangerous/ polluting industries Public-Semi Public: Prison/ Jail, Correction facilities/ Reform Homes, Sanatorium, Compost plant, Scientific Landfill Sites, MRF Facilities, Bio-Medical Waste Treatment Facility, Slaughterhouses Traffic & Transportation: Airport/ Flying club Recreational: Shooting Range Agricultural: Farmhouse, Repair of agricultural equipment/ servicing workshop"
+ },
+ "danglingReferences": [
+  {
+   "reference": "8.1.3.6",
+   "gazettePage": 104,
+   "context": "As per para 8.1.3.6"
+  },
+  {
+   "reference": "8.1.4",
+   "gazettePage": 105,
+   "context": "Note-1: Permissible occupancies in mixed-use development shall be as per paragraph 8.1.4. Permissibility of occupancies in mixed-use development shall be govern"
+  }
+ ]
+}

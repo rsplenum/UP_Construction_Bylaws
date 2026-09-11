@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: ten transcriptions verified exactly right, and twenty-two real bugs found.**
+**Headline: ten transcriptions verified exactly right, and twenty-four real bugs found.**
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -264,9 +264,193 @@ identical.
 width. The other three faces still fall back to Clause 3.2.4, and a building over 15 m
 still goes to the fire-tender ladder.*
 
+### B-023 — Mixed use was assessed on the table written for shops
+Clause 8.1.3.1 gives mixed-use development its own BFAR/PFAR/PPFAR/MFAR table. The engine
+routed `mixed_use` to `road_width_commercial`, which is rows 3(a)/3(b) — *"Shops /
+Convenience Shopping / Commercial Units"*:
+
+| | Engine had (commercial) | Gazette (Clause 8.1.3.1) |
+|---|---|---|
+| Base FAR, built-up | 1.5 | **2.0** |
+| Base FAR, new layout | 1.75 | **2.5** |
+| Max FAR, built-up | 2.1 / 3.0 / 5.0 / UR | **2.0 / 4.0 / 4.5 / UR** |
+| Max FAR, new layout | 2.45 / 3.5 / 6.0 / UR | **2.5 / 5.0 / 6.25 / UR** |
+
+On a 1000 m² plot facing an 18 m road that is 500 m² of base floor area the byelaws allow
+and the engine refused — a quarter of the entitlement. This is the same fault as **B-022**,
+one table standing in for another, and Chapter 3 does not catch it because **Chapter 3's
+FAR matrix has no mixed-use row at all**. Clause 8.1.3.1 is the only table the byelaws
+print for the use, which is why the contradiction inside it (V-025) has no second reading
+to be checked against.
+*Fixed: `MIXED_USE_MAX_FAR`, `BASE_FAR.mixed_use` and a `road_width_mixed_use` basis.*
+
+### B-024 — Three mixed-use thresholds the gazette does not impose
+Clause 8.1.3 states every development standard once per permissible location, and three of
+the engine's figures appear in none of the five columns:
+
+| | Engine had | Gazette (Clause 8.1.3) |
+|---|---|---|
+| `minPlotAreaSqm` | 300 m² | **No restriction**, in all five locations |
+| `parkingEcsPer100Sqm` | 1.75 | **"As per proposed higher use"** — a pointer, not a ratio |
+| `maxHeightM` | ∞ | **"Not restricted"** — already right |
+
+The plot minimum is the same over-restriction as Clause 7.1.2 in Chapter 7, and it bites
+hardest on exactly the plots the clause is most permissive about: a mixed-use zone
+explicitly contemplates plots **up to 100 m²**, which the engine rejected outright.
+
+Parking is worse than wrong, it is invented. 1.75 ECS/100 m² is below the ratio of every
+commercial use that can sit inside a mixed-use building, so it under-provided parking for
+all of them. The engine now carries 3.0 — the highest ratio it holds, which is the only
+reading of *"higher use"* a single field can express. See V-024 for what that still misses.
+*Fixed: `minPlotAreaSqm` 0, `parkingEcsPer100Sqm` 3.0.*
+
 ---
 
 ## Still open
+
+### V-025 — Clause 8.1.3.1 prints a maximum ABOVE its own components, and one below
+Two of the mixed-use table's eight band cells fail the identity MFAR = BFAR + PFAR + PPFAR,
+and — for the first time in the byelaws — they fail in **opposite directions**:
+
+| Area type | Band | BFAR | PFAR | PPFAR | Components | Printed MFAR |
+|---|---|---|---|---|---|---|
+| Built-up | >24–45 m | 2.00 | 1.00 | 1.50 | 4.50 | **5.25** |
+| New layout | >24–45 m | 2.50 | 2.50 | 3.75 | 8.75 | **6.25** |
+
+Both readings were taken independently from the chapter PDF and from the `.docx`, and the
+two agree cell for cell, so this is the gazette's arithmetic and not the pipeline's.
+
+**What makes them legible is a second regularity, underneath the identity.** Across the
+thirty-six rows that behave, every table generates its 24–45 m band from the base alone:
+PFAR = 1.0 × BFAR, PPFAR = 1.5 × BFAR, MFAR = 3.5 × BFAR. A base of 2.5 gives
+2.5 / 3.75 / 8.75; a base of 2.0 gives 2.0 / 3.0 / 7.0.
+
+- **The new-layout row's components are exactly right.** 2.50 / 3.75 is what the pattern
+  gives for a base of 2.50, and matches group housing and hotels at that base cell for
+  cell. Only the total is wrong, and by an identifiable step: 2.50 + 3.75 = **6.25**, the
+  printed figure exactly. The base was left out of the sum.
+- **The built-up row contains three different base FARs.** It carries base 2.00; its
+  1.00 / 1.50 purchasable pair is the pair for a base of 1.00; and its printed 5.25 is
+  3.5 × 1.50, the figure for a base of 1.50. Nothing in the cell is coherent with 2.00.
+  The 1.00 / 1.50 pair is the same one Clause 7.1.5 imported from the secondary-school row
+  (V-023), so the same base-1.00 line appears to have been copied into two chapters.
+
+Standing rule 4 resolves each to the lowest reading: **4.50** built-up (the components,
+0.75 below what is printed) and **6.25** in a new layout (the printed figure, 2.50 below
+what the components imply).
+
+**This is what changed about how the rule is applied.** Until Chapter 8 the printed
+maximum was always the lower of the two, so *"honour what the gazette prints"* and
+*"apply the stricter reading"* were the same instruction and nothing distinguished them —
+V-018 resolves Clause 6.2.4 by taking the gazette at its word, and says so. Clause 8.1.3.1
+separates them, and taking the gazette at its word here would over-permit. `strictCeiling()`
+now chooses per band rather than per table, gated on the 0.05 rounding step so that the
+three cells which round (1.75 + 0.9 + 0.9 = 3.55, printed 3.6) are not shaved by it.
+
+The identity now holds on **153 of 157** band checks across sixteen tables. The test suite
+asserts that these four are the only failures, and separately that the 1.0× / 1.5× / 3.5×
+pattern holds everywhere else — so a new copied cell fails the build on either count.
+
+### V-024 — A means of access split five ways by LOCATION, which the engine cannot express
+Clause 8.1.3 keys the mixed-use standards on **where the plot is**, and only the access
+figure actually differs across the five:
+
+| Location | Minimum road |
+|---|---|
+| 8.1.2(a) Mixed-use zone, plot up to 100 m² | 9 m |
+| 8.1.2(a) Mixed-use zone, larger plot | 12 m |
+| 8.1.2(b) Plot in an approved layout | **24 m** |
+| 8.1.2(c) Notified bazaar street | 12 m |
+| 8.1.2(d) Along a 24 m or wider road | **24 m** |
+| 8.1.2(e) TOD zone | 12 m or more |
+
+This is a **fifth** dimension after facility, area type, use zone (V-021) and plot size
+(V-019), and `OccupancyDefinition` has no field for it. `mixed_use` holds **12 m**, which
+is right for a mixed-use zone above 100 m² and for a bazaar street — the two commonest
+cases, and the same choice V-019 made for marriage halls. It is 3 m too strict for a small
+plot in a mixed-use zone and 12 m too lenient for an approved-layout plot, which would be
+passed on a 12 m road where the gazette asks for 24.
+
+Parking has the same shape and the engine flattens it the same way: three locations say
+*"as per proposed higher use"*, one says *"as per 3.3.4"* and the TOD column says
+*1 ECS per 100 m²*. `MIXED_USE_MIN_ROAD_M` and `MIXED_USE_STANDARDS` carry all five
+columns so the gap is measured rather than suspected.
+
+### V-026 — TOD is fully specified, fully modelled, and unreachable
+Clause 8.2.2.2 states TOD FAR as a **percentage of base FAR** — 150% at 12 m, 250% to 24 m,
+350% to 45 m, unrestricted above — with the base column reading *"As per byelaws"* in every
+row. It is the only FAR rule in the byelaws expressed as a multiplier, and it cannot be
+resolved without first resolving the underlying use.
+
+Everything about it is now read and tested: the ladder, Clause 8.2.2.1's land-use mixing
+table (six uses, 33% kept in the existing use and 67% available to the other), the
+predominance bar, and Clause 8.2.2.3's parking. What is missing is any way for a project to
+say it is in a TOD zone: that is a fact about the plot, notified by the Master Plan, and
+`ProjectState` has no field for it — the same shape of gap as V-006.
+
+One consequence is worth flagging because it is a **pricing** rule and the engine's
+purchasable/premium split exists precisely to price them apart. Clause 8.2.2.2 Note (2):
+*"the charges for purchasable FAR and premium purchasable FAR shall be the same."* In a TOD
+zone the distinction collapses, in the direction of the cheaper rate.
+Held as `TOD_PREMIUM_CHARGED_AS_PURCHASABLE`.
+
+### V-027 — Two cross-references that go nowhere, and one of them cannot be repaired
+Chapter 8 cites two paragraphs of itself that do not exist. Neither number appears anywhere
+else in the byelaws; both were found by checking every cross-reference in the chapter
+against its own headings, in `tools/extract-mixed-use.py`.
+
+- **8.1.3.6** — the standards table gives the FAR for a mixed-use zone and an
+  approved-layout plot as *"As per para 8.1.3.6"*. The chapter's FAR clause is numbered
+  **8.1.3.1** and is introduced as applying to *"paragraph 8.1.2 (a) and (b)"* — exactly
+  the two columns pointing at 8.1.3.6 — so the intent is not in doubt. The engine reads
+  8.1.3.1 and records the discrepancy rather than silently correcting it.
+- **8.1.4** — Note-1 says *"Permissible occupancies in mixed-use development shall be as
+  per paragraph 8.1.4."* There is no 8.1.4. **There is no list of permissible mixed-use
+  occupancies anywhere in the byelaws.** Clause 8.3.1 constrains what may be mixed — only
+  non-manufacturing and service industry, education kept away from healthcare and
+  warehousing, and twenty-four named activities barred outright — but it enumerates
+  nothing. This one cannot be resolved by reading; the list is absent.
+
+So the engine cannot answer *"may these two uses be combined here"* from the gazette. What
+it can answer is the negative half, and does: `EXCLUDED_FROM_MIXING` holds all twenty-four
+barred activities and `checkMixing` holds the proportions.
+
+**Clause 8.1.3's mixing proportions turn on a distinction worth recording.** Along a 24 m
+road and in a TOD zone the rule has three limbs: at least 33% to the principal use, at most
+67% to the others, and — printed as a sentence under the table rather than as a figure in
+it — *"share of single other use shall not be more than principal use."* The third limb is
+meaningless if the principal use is read as the largest share proposed, because nothing can
+then exceed it. It is the use the **master plan, zonal plan or layout assigns**: Clause
+8.2.2.1's note says the *"MP/ZDP/layout land use shall remain pre-dominant land use"*, and
+Clause 16.1.3(xiii) makes building in breach of the predominant land use non-compoundable.
+`checkMixing` therefore takes the principal use as an argument rather than deriving it, and
+a mix can breach the clause while still having a clear largest use.
+
+### V-028 — An unrestricted ceiling collapses to base FAR — PRE-EXISTING, not acted on
+Found while testing Chapter 8's top band, but not a Chapter 8 defect: it governs group
+housing and commercial too, both of which have had an unrestricted band since long before
+this chapter was read.
+
+Where the gazette says a road above 45 m carries **unrestricted** FAR, `resolveBaseFar`
+reports two figures that contradict each other:
+
+```
+ceilingFar       Infinity      ✓ what the gazette says
+purchasableFar   Infinity      ✓ consistent with it
+maxPermissibleFar   2.0        ✗ equal to the base FAR
+```
+
+The cause is one line — `availableFar = canPurchase && Number.isFinite(ceilingFar) ?
+ceilingFar : baseFar` — which falls back to the base whenever the ceiling is infinite.
+`findings.ts` blocks on `proposedFar > maxPermissibleFar`, so on a 60 m road a project is
+told it exceeds a ceiling the same call reports as unlimited. That direction is
+over-restriction: it refuses floor area the byelaws allow.
+
+Not fixed here. It is engine logic rather than a transcription, it changes the answer for
+three occupancies that this chapter did not touch, and it deserves its own change with its
+own tests rather than riding along inside a chapter's commit. `mixed-use.test.ts` asserts
+the present behaviour explicitly, on both a Chapter 8 ladder and a pre-existing one, so the
+fix cannot land without the assertion being updated deliberately.
 
 ### V-010 — Chapters 3 and 4 give different height ceilings — UNRESOLVED, stricter applied
 Clause 3.2.4.1 keys the plotted-residential ceiling on **plot size**: *"for all
@@ -444,6 +628,9 @@ The rows are **imported, not transcribed**: `tools/extract-purchasable-far.py` w
 with the gazette quietly. Eleven such tables exist in the full document; the remaining
 four are in chapters 6 to 9.
 
+Superseded by later chapters: sixteen tables and 43 rows are now loaded, across chapters 4
+to 8.
+
 Three structural features, each of which corrupts the reading if missed:
 
 - **Clause 4.4 bands on 18 m**, not the 12 m every other table uses, and prints **two base
@@ -505,9 +692,64 @@ Chapter 7's own MSME row. **The engine uses Chapter 3 and ignores this row.**
 Chapter 7's MSME row also conflicts with Chapter 3 in the ordinary way — 10.50 against
 9.0 above a 24 m road — which standing rule 4 resolves to Chapter 3's 9.0.
 
+### B-023 — Industry carried a minimum plot size the gazette does not impose
+Clause 7.1.2: *"There is no restriction on the minimum plot size for industrial buildings,
+flatted factories, data centres and MSME units."* The engine required **200 m²** for light
+industry and **1000 m²** for general industry.
+
+### B-024 — The general-industry road minimum was double the gazette's
+Clause 7.1.3 gives industrial buildings and MSME units **9 m in an industrial use zone**
+and 7 m in an agriculture use zone; flatted factories and data centres need 12 m. The
+engine required **18 m** for general industry — twice what the byelaws ask, on a threshold
+that decides whether a project is permissible at all.
+
+Both of these erred toward refusal. That direction is rarer in this codebase and no less
+wrong: a lawful industrial project on a 9 m road in an industrial zone was being told to
+find a wider road.
+
+`ind_warehouse` is deliberately untouched. Warehousing is Sl. 12 of Chapter 3's commercial
+matrix, not a Chapter 7 use, so Clause 7.1 does not govern it.
+
+### V-021 — A threshold split by USE ZONE, a third dimension the engine has no field for
+Clause 7.1.3 states the road minimum as *"7-meters (Agriculture Use Zone) 9-meters
+(Industrial Use Zones)"*. After the facility (V-005) and the area type (B-017), this is a
+third axis the same number varies along, and the occupancy list has no field for it. The
+engine holds the industrial-zone figure — the commoner case and the stricter of the two.
+The extractor captures the split as `{byUseZone: {...}}` so the data is not lost.
+
+### V-022 — Farmhouses and dairy farms are not modelled at all
+Chapter 7 gives both a complete rule set and the engine has no occupancy for either:
+
+| | Farmhouse (7.2) | Dairy farm / gaushala (7.3) |
+|---|---|---|
+| Minimum plot | 4,000 m² | 1,000 m² |
+| Access road | 7 m | 7 m |
+| Ground coverage | after setbacks; non-farm activity ≤20% of plot | 20% |
+| FAR | 0.20 | 0.20 |
+| Height | no restriction | no restriction |
+| Setback | 9 m all sides for the non-farm building, except the guard room | by plot area: ≥1000–4000 → 6 m; >4000–7000 → 9 m; >7000 → 10 m |
+
+The dairy setback ladder is keyed on **plot area** and applies equally to all four sides,
+which is a shape no existing setback table has.
+
+### V-023 — A second place the gazette's arithmetic fails, and a worse one
+Clause 7.1.5 prints, for *Flatted Factories, Data Centres*: base FAR **3.00**, maxima of
+**2.00 and 3.50**. A maximum below the base cannot be right whatever the intent.
+
+The purchasable columns — 0.50 / 0.50 and 1.00 / 1.50 — are coherent only with a base of
+**1.00**, and they are character for character the same as the secondary-school row in
+Clause 6.2.4, which does carry 1.00. Chapter 3 Sl. 2 and Sl. 3 give flatted factories and
+data centres base 3.0 with maxima 3.0 / 6.0 / 9.0, which is internally coherent and
+matches the shape of Chapter 7's own MSME row. **The engine uses Chapter 3 and ignores
+this row.**
+
+One more conflict alongside it: Chapter 7 gives MSME units a maximum of **10.5** above a
+24 m road where Chapter 3 gives **9.0**. Standing rule 4 applies and the lower figure
+stands.
+
 ### V-018 — The gazette's own arithmetic fails in one place
-The identity MFAR = BFAR + PFAR + PPFAR holds on **129 of 130** band checks across the
-twelve printed tables. The exception is a drafting slip in Clause 6.2.4, and the pattern
+The identity MFAR = BFAR + PFAR + PPFAR holds on **153 of 157** band checks across the
+sixteen printed tables. This one is a drafting slip in Clause 6.2.4, and the pattern
 makes it plain — every cell of the schools row scales by 1.2 from the built-up area to a
 new layout:
 

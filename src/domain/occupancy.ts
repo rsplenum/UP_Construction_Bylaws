@@ -37,7 +37,12 @@ export type OccupancyId =
 export type OccupancyGroup = 'Residential' | 'Commercial' | 'Workplace' | 'Institutional' | 'Industrial';
 
 /** Which FAR derivation applies. */
-export type FarBasis = 'telescopic_plotted' | 'road_width_group_housing' | 'road_width_commercial';
+export type FarBasis =
+  | 'telescopic_plotted'
+  | 'road_width_group_housing'
+  | 'road_width_commercial'
+  /** Clause 8.1.3.1 — mixed use has its own base and ceilings, not the commercial ones. */
+  | 'road_width_mixed_use';
 
 /** Which setback ladder applies below the high-rise threshold. */
 export type SetbackTable =
@@ -327,11 +332,23 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     id: 'mixed_use', group: 'Commercial',
     label: 'Mixed use',
     plain: 'Shops or offices below, homes above',
-    note: 'Both the residential and the commercial rules apply to their own floors.',
-    farBasis: 'road_width_commercial', setbackTable: 'commercial',
+    note: 'No minimum plot size, and no height limit — but the setbacks and parking of '
+      + 'the highest use in the mix apply to the whole building.',
+    farBasis: 'road_width_mixed_use', setbackTable: 'commercial',
     activityId: 'act-commercial-complex', purchasableFarCategory: 'Mixed Use',
     compoundingUse: 'commercial',
-    parkingEcsPer100Sqm: 1.75, minRoadWidthM: 12, minPlotAreaSqm: 300, maxHeightM: Infinity,
+    // Clause 8.1.3 states parking as "per proposed higher use", not as a ratio of its
+    // own. 3.0 is the highest ratio any occupancy here carries — the shopping-mall
+    // figure — so it is the higher use in every mix the engine can express. The engine
+    // previously invented 1.75, which is lower than the commercial uses that can sit in
+    // a mixed-use building and so under-provided parking for all of them. See V-024.
+    parkingEcsPer100Sqm: 3.0,
+    // Clause 8.1.3 splits the means of access five ways by location, from 9 m to 24 m.
+    // 12 m is the figure for a mixed-use zone above 100 m² and for a bazaar street, the
+    // two commonest cases. See V-024 for the two it gets wrong.
+    minRoadWidthM: 12,
+    minPlotAreaSqm: 0,                   // Clause 8.1.3: "No restriction", all five locations
+    maxHeightM: Infinity,                // Clause 8.1.3: "Not restricted", subject to Note-3
     multiUnitHousing: true, fireNocAbove500Sqm: true,
   },
 };

@@ -1645,6 +1645,92 @@
      "maxFar": "unrestricted"
     }
    ]
+  },
+  {
+   "id": "ch08-p105-mu-built-up-area-built_up",
+   "chapter": "08",
+   "gazettePage": 105,
+   "useType": "MU Built-up Area",
+   "areaType": "built_up",
+   "baseFar": 2.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 2.0
+    },
+    {
+     "label": "12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.0,
+     "maxFar": 4.0
+    },
+    {
+     "label": "24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.5,
+     "maxFar": 5.25
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch08-p105-mu-non-built-up-area-non_built_up",
+   "chapter": "08",
+   "gazettePage": 105,
+   "useType": "MU non-built-up Area",
+   "areaType": "non_built_up",
+   "baseFar": 2.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 2.5
+    },
+    {
+     "label": "12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.25,
+     "premiumPurchasable": 1.25,
+     "maxFar": 5.0
+    },
+    {
+     "label": "24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.5,
+     "premiumPurchasable": 3.75,
+     "maxFar": 6.25
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
   }
  ]
 }

@@ -18,7 +18,16 @@ be modified: the whole verification chain assumes these bytes are the ones that 
 |---:|---|---:|---:|---|
 | 01 | 7–18 | 12 | 11 | Definitions |
 | 02 | 19–36 | 18 | 10 | Permission for development and construction |
+| 03 | 37–75 | 39 | 52 | Standards for land development. The FAR matrix — 161 band rows across 63 occupancies |
+| 04 | 76–83 | 8 | 8 | Residential. EWS/LIG, group housing, affordable housing |
+| 05 | 84–93 | 10 | 12 | Commercial. Bazaar street, units, malls, hotels, cinemas |
+| 06 | 94–100 | 7 | 11 | Institutional. Healthcare, education, assembly |
+| 07 | 100–103 | 4 | 5 | Industrial and agricultural. Farmhouses and dairy farms — see V-022 |
+| 08 | 104–107 | 4 | 6 | Mixed use and TOD. **Standards keyed on LOCATION, and FAR as a multiplier** — see V-024 and V-026 |
 | 15 | 138–156 | 19 | 31 | Zoning. **States permitted/prohibited in colour** — see V-008 |
+
+Chapters 7 and 8 share gazette page 100: Chapter 7 opens on it, and the last table of
+Chapter 6 finishes on it.
 
 ## Adding a chapter PDF
 

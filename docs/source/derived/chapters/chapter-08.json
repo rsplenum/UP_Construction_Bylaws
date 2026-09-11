@@ -1,0 +1,2971 @@
+{
+ "chapter": "08",
+ "source": "docs/source/gazette/pdf/chapter-08.pdf",
+ "sourceMd5": "e509e57c9eb413d12a2489965a5317e2",
+ "gazettePages": [
+  104,
+  107
+ ],
+ "pageCount": 4,
+ "tableCount": 6,
+ "fillCounts": {
+  "#DBE5F1": 47,
+  "#DEEAF6": 24,
+  "#D9E2F3": 23,
+  "#D9E1F2": 11,
+  "#FFF2CC": 6
+ },
+ "colourOnlyCells": 43,
+ "colourCodedTableRows": 0,
+ "warnings": [],
+ "pages": [
+  {
+   "pdfPage": 1,
+   "gazettePage": 104,
+   "prose": "8 Mixed-Use and Transit-Oriented Development\n8.1 Mixed Use Development\n8.1.1 Definition\nMixed use development/ buildings integrate multiple uses, such as residential, commercial,\ninstitutional, and recreational spaces, within a single structure, land parcel or a neighbourhood. Mixed\nuse development is transitioning from land-based distribution to a built-space based approach, allowing\nfor mixing and co-location of compatible uses within a single plot/ structure.\nMixed use development/ buildings offer required flexibility to improve availability and access to\nfacilities within existing urban areas, thereby ensuring optimal utilisation of land. Such a development\nalso leads to reduction in trip lengths, promotes sustainable urban transport, and enables creation of\nvibrant and safer public areas. Mixed use buildings need to be regulated to manage and mitigate the\nassociated adverse impact related to congestion, increased traffic, and increased pressure on civic\namenities.\n8.1.2 Permissible locations for mixed-use development:\na) Mixed use zones earmarked under Master Plan.\nb) Mixed use plots identified as part of approved layouts.\nc) Notified bazaar streets (with specified conditions).\nd) Along 24-meter and wider roads\ne) Transit Oriented Development (TOD) Zones.\nDevelopment standards for 8.1.2 (c) regarding Bazaar Streets are covered in paragraph 5.1 of the\nbyelaws while for 8.1.2 (e) i.e. TOD Zones, the standards are covered in paragraph 8.2 of the byelaws.\n8.1.3 Development Standards for mixed-use development\n104",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "8 Mixed-Use and Transit-Oriented Development"
+    },
+    {
+     "y": 99,
+     "text": "8.1 Mixed Use Development"
+    },
+    {
+     "y": 122,
+     "text": "8.1.1 Definition"
+    },
+    {
+     "y": 141,
+     "text": "Mixed use development/ buildings integrate multiple uses, such as residential, commercial,"
+    },
+    {
+     "y": 154,
+     "text": "institutional, and recreational spaces, within a single structure, land parcel or a neighbourhood. Mixed"
+    },
+    {
+     "y": 167,
+     "text": "use development is transitioning from land-based distribution to a built-space based approach, allowing"
+    },
+    {
+     "y": 179,
+     "text": "for mixing and co-location of compatible uses within a single plot/ structure."
+    },
+    {
+     "y": 198,
+     "text": "Mixed use development/ buildings offer required flexibility to improve availability and access to"
+    },
+    {
+     "y": 211,
+     "text": "facilities within existing urban areas, thereby ensuring optimal utilisation of land. Such a development"
+    },
+    {
+     "y": 224,
+     "text": "also leads to reduction in trip lengths, promotes sustainable urban transport, and enables creation of"
+    },
+    {
+     "y": 237,
+     "text": "vibrant and safer public areas. Mixed use buildings need to be regulated to manage and mitigate the"
+    },
+    {
+     "y": 250,
+     "text": "associated adverse impact related to congestion, increased traffic, and increased pressure on civic"
+    },
+    {
+     "y": 263,
+     "text": "amenities."
+    },
+    {
+     "y": 284,
+     "text": "8.1.2 Permissible locations for mixed-use development:"
+    },
+    {
+     "y": 303,
+     "text": "a) Mixed use zones earmarked under Master Plan."
+    },
+    {
+     "y": 317,
+     "text": "b) Mixed use plots identified as part of approved layouts."
+    },
+    {
+     "y": 330,
+     "text": "c) Notified bazaar streets (with specified conditions)."
+    },
+    {
+     "y": 344,
+     "text": "d) Along 24-meter and wider roads"
+    },
+    {
+     "y": 357,
+     "text": "e) Transit Oriented Development (TOD) Zones."
+    },
+    {
+     "y": 379,
+     "text": "Development standards for 8.1.2 (c) regarding Bazaar Streets are covered in paragraph 5.1 of the"
+    },
+    {
+     "y": 393,
+     "text": "byelaws while for 8.1.2 (e) i.e. TOD Zones, the standards are covered in paragraph 8.2 of the byelaws."
+    },
+    {
+     "y": 416,
+     "text": "8.1.3 Development Standards for mixed-use development"
+    },
+    {
+     "y": 775,
+     "text": "104"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.8,
+      435.3,
+      522.9,
+      740.0
+     ],
+     "rows": [
+      [
+       {
+        "text": "Parameter/Development\nStandard",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.8,
+         435.3,
+         165.7,
+         479.3
+        ]
+       },
+       {
+        "text": "Mixed use zones",
+        "fill": "#D9E2F3",
+        "bbox": [
+         165.7,
+         435.3,
+         236.9,
+         452.0
+        ]
+       },
+       {
+        "text": "Mixed use plots",
+        "fill": "#D9E2F3",
+        "bbox": [
+         236.9,
+         435.3,
+         308.0,
+         452.0
+        ]
+       },
+       {
+        "text": "Notified bazaar\nstreets",
+        "fill": "#D9E2F3",
+        "bbox": [
+         308.0,
+         435.3,
+         380.4,
+         479.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         380.4,
+         435.3,
+         451.5,
+         440.2
+        ]
+       },
+       {
+        "text": "TOD zones",
+        "fill": "#D9E2F3",
+        "bbox": [
+         451.5,
+         435.3,
+         522.9,
+         479.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Along 24-meter",
+        "fill": "#D9E2F3",
+        "bbox": [
+         380.4,
+         440.2,
+         451.5,
+         456.9
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "earmarked under",
+        "fill": "#D9E2F3",
+        "bbox": [
+         165.7,
+         452.0,
+         236.9,
+         462.6
+        ]
+       },
+       {
+        "text": "as part of",
+        "fill": "#D9E2F3",
+        "bbox": [
+         236.9,
+         452.0,
+         308.0,
+         462.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "and wider roads",
+        "fill": "#D9E2F3",
+        "bbox": [
+         380.4,
+         456.9,
+         451.5,
+         474.4
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "Master Plan",
+        "fill": "#D9E2F3",
+        "bbox": [
+         165.7,
+         462.6,
+         236.9,
+         479.3
+        ]
+       },
+       {
+        "text": "approved layouts",
+        "fill": "#D9E2F3",
+        "bbox": [
+         236.9,
+         462.6,
+         308.0,
+         479.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         380.4,
+         474.4,
+         451.5,
+         479.3
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Minimum Plot Size",
+        "bbox": [
+         72.8,
+         479.3,
+         165.7,
+         502.4
+        ]
+       },
+       {
+        "text": "No restriction",
+        "bbox": [
+         165.7,
+         479.3,
+         236.9,
+         502.4
+        ]
+       },
+       {
+        "text": "No restriction",
+        "bbox": [
+         236.9,
+         479.3,
+         308.0,
+         502.4
+        ]
+       },
+       {
+        "text": "No restriction",
+        "bbox": [
+         308.0,
+         479.3,
+         380.4,
+         502.4
+        ]
+       },
+       {
+        "text": "No restriction",
+        "bbox": [
+         380.4,
+         479.3,
+         451.5,
+         502.4
+        ]
+       },
+       {
+        "text": "No restriction",
+        "bbox": [
+         451.5,
+         479.3,
+         522.9,
+         502.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Means of Access",
+        "bbox": [
+         72.8,
+         502.4,
+         165.7,
+         546.6
+        ]
+       },
+       {
+        "text": "9m (plots upto\n100 sqm); 12m\n(other plots)",
+        "bbox": [
+         165.7,
+         502.4,
+         236.9,
+         546.6
+        ]
+       },
+       {
+        "text": "24m",
+        "bbox": [
+         236.9,
+         502.4,
+         308.0,
+         546.6
+        ]
+       },
+       {
+        "text": "12m",
+        "bbox": [
+         308.0,
+         502.4,
+         380.4,
+         546.6
+        ]
+       },
+       {
+        "text": "24m",
+        "bbox": [
+         380.4,
+         502.4,
+         451.5,
+         546.6
+        ]
+       },
+       {
+        "text": "=>12m",
+        "bbox": [
+         451.5,
+         502.4,
+         522.9,
+         546.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Building Height",
+        "bbox": [
+         72.8,
+         546.6,
+         165.7,
+         569.7
+        ]
+       },
+       {
+        "text": "Not restricted",
+        "bbox": [
+         165.7,
+         546.6,
+         236.9,
+         569.7
+        ]
+       },
+       {
+        "text": "Not restricted",
+        "bbox": [
+         236.9,
+         546.6,
+         308.0,
+         569.7
+        ]
+       },
+       {
+        "text": "Not restricted",
+        "bbox": [
+         308.0,
+         546.6,
+         380.4,
+         569.7
+        ]
+       },
+       {
+        "text": "Not restricted",
+        "bbox": [
+         380.4,
+         546.6,
+         451.5,
+         569.7
+        ]
+       },
+       {
+        "text": "Not restricted",
+        "bbox": [
+         451.5,
+         546.6,
+         522.9,
+         569.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Minimum Setbacks",
+        "bbox": [
+         72.8,
+         569.7,
+         165.7,
+         603.4
+        ]
+       },
+       {
+        "text": "As applicable for\nhigher use",
+        "bbox": [
+         165.7,
+         569.7,
+         236.9,
+         603.4
+        ]
+       },
+       {
+        "text": "As applicable for\nhigher use",
+        "bbox": [
+         236.9,
+         569.7,
+         308.0,
+         603.4
+        ]
+       },
+       {
+        "text": "As per para 5.1.5",
+        "bbox": [
+         308.0,
+         569.7,
+         380.4,
+         603.4
+        ]
+       },
+       {
+        "text": "As applicable for\nhigher use",
+        "bbox": [
+         380.4,
+         569.7,
+         451.5,
+         603.4
+        ]
+       },
+       {
+        "text": "As applicable for\nhigher use",
+        "bbox": [
+         451.5,
+         569.7,
+         522.9,
+         603.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Floor Area Ratio",
+        "bbox": [
+         72.8,
+         603.4,
+         165.7,
+         637.0
+        ]
+       },
+       {
+        "text": "As per para\n8.1.3.6",
+        "bbox": [
+         165.7,
+         603.4,
+         236.9,
+         637.0
+        ]
+       },
+       {
+        "text": "As per para\n8.1.3.6",
+        "bbox": [
+         236.9,
+         603.4,
+         308.0,
+         637.0
+        ]
+       },
+       {
+        "text": "As per para 5.1.4",
+        "bbox": [
+         308.0,
+         603.4,
+         380.4,
+         637.0
+        ]
+       },
+       {
+        "text": "As per Use Zone",
+        "bbox": [
+         380.4,
+         603.4,
+         451.5,
+         637.0
+        ]
+       },
+       {
+        "text": "As per para\n8.2.2.2",
+        "bbox": [
+         451.5,
+         603.4,
+         522.9,
+         637.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Mixing",
+        "bbox": [
+         72.8,
+         637.0,
+         165.7,
+         740.0
+        ]
+       },
+       {
+        "text": "0-100%",
+        "bbox": [
+         165.7,
+         637.0,
+         236.9,
+         740.0
+        ]
+       },
+       {
+        "text": "0-100%",
+        "bbox": [
+         236.9,
+         637.0,
+         308.0,
+         740.0
+        ]
+       },
+       {
+        "text": "Commercial (2\nfloors)",
+        "bbox": [
+         308.0,
+         637.0,
+         380.4,
+         740.0
+        ]
+       },
+       {
+        "text": "=>33% (principal\nuse); =<67%\n(other uses)\nHowever, share\nof single other\nuse shall not be\nmore than\nprincipal use.",
+        "bbox": [
+         380.4,
+         637.0,
+         451.5,
+         740.0
+        ]
+       },
+       {
+        "text": "=>33% (principal\nuse); =<67%\n(other uses)\nHowever, share\nof single other\nuse shall not be\nmore than\nprincipal use.",
+        "bbox": [
+         451.5,
+         637.0,
+         522.9,
+         740.0
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 2,
+   "gazettePage": 105,
+   "prose": "Note-1: Permissible occupancies in mixed-use development shall be as per paragraph 8.1.4.\nPermissibility of occupancies in mixed-use development shall be governed by the minimum standards\nprescribed in paragraph 3.2.1.\nNote-2: The plot size shall be equal to or more than the minimum plot size requirements for higher use\nas defined in paragraph 3.2.1.\nNote-3: For mixing in plots identified as single and multi-units, the height restrictions as defined under\nparagraph 4.1.4 shall prevail.\n8.1.3.1 Floor Area Ratio (FAR):\nMixed-use buildings described in paragraph 8.1.2 (a) and (b) shall avail FAR as per table below:\nNote-1: BFAR \u2013 Base FAR, PFAR \u2013 Purchasable FAR, PPFAR \u2013 Premium Purchasable FAR, MFAR\n\u2013 Maximum Permissible FAR, UR \u2013 Unrestricted\nNote-2: The FAR of Bazaar Streets shall be as per paragraph 5.1.4.\nNote-3: For 8.1.2 (d), base FAR of principal use shall be availed, and purchasable FAR and premium\npurchasable FAR conditions of the principal use shall prevail.\n8.2 Transit Oriented Development (TOD)\nIn view of the continuous urbanization in the state and to meet the growing infrastructure needs, the\nUttar Pradesh Mixed Use and Transit Oriented Development Policy was notified in 2015 and further\nrevised in 2022 in line with the National TOD Policy 2017.\n8.2.1 Applicability\nThese provisions shall be applicable in the TOD Zones included in the Master Plan or as notified by the\nGovernment.\n8.2.2 TOD Plans, Permitted Uses and Building Byelaws\n8.2.2.1 Land use mixing in TOD schemes.\nMixed land use shall be permissible in TOD plots, but not mandatory. If mixed use is proposed, it shall\nbe as per the table below.\n105",
+   "proseLines": [
+    {
+     "y": 185,
+     "text": "Note-1: Permissible occupancies in mixed-use development shall be as per paragraph 8.1.4."
+    },
+    {
+     "y": 198,
+     "text": "Permissibility of occupancies in mixed-use development shall be governed by the minimum standards"
+    },
+    {
+     "y": 211,
+     "text": "prescribed in paragraph 3.2.1."
+    },
+    {
+     "y": 230,
+     "text": "Note-2: The plot size shall be equal to or more than the minimum plot size requirements for higher use"
+    },
+    {
+     "y": 243,
+     "text": "as defined in paragraph 3.2.1."
+    },
+    {
+     "y": 262,
+     "text": "Note-3: For mixing in plots identified as single and multi-units, the height restrictions as defined under"
+    },
+    {
+     "y": 275,
+     "text": "paragraph 4.1.4 shall prevail."
+    },
+    {
+     "y": 311,
+     "text": "8.1.3.1 Floor Area Ratio (FAR):"
+    },
+    {
+     "y": 329,
+     "text": "Mixed-use buildings described in paragraph 8.1.2 (a) and (b) shall avail FAR as per table below:"
+    },
+    {
+     "y": 447,
+     "text": "Note-1: BFAR \u2013 Base FAR, PFAR \u2013 Purchasable FAR, PPFAR \u2013 Premium Purchasable FAR, MFAR"
+    },
+    {
+     "y": 462,
+     "text": "\u2013 Maximum Permissible FAR, UR \u2013 Unrestricted"
+    },
+    {
+     "y": 480,
+     "text": "Note-2: The FAR of Bazaar Streets shall be as per paragraph 5.1.4."
+    },
+    {
+     "y": 499,
+     "text": "Note-3: For 8.1.2 (d), base FAR of principal use shall be availed, and purchasable FAR and premium"
+    },
+    {
+     "y": 512,
+     "text": "purchasable FAR conditions of the principal use shall prevail."
+    },
+    {
+     "y": 555,
+     "text": "8.2 Transit Oriented Development (TOD)"
+    },
+    {
+     "y": 576,
+     "text": "In view of the continuous urbanization in the state and to meet the growing infrastructure needs, the"
+    },
+    {
+     "y": 589,
+     "text": "Uttar Pradesh Mixed Use and Transit Oriented Development Policy was notified in 2015 and further"
+    },
+    {
+     "y": 602,
+     "text": "revised in 2022 in line with the National TOD Policy 2017."
+    },
+    {
+     "y": 623,
+     "text": "8.2.1 Applicability"
+    },
+    {
+     "y": 642,
+     "text": "These provisions shall be applicable in the TOD Zones included in the Master Plan or as notified by the"
+    },
+    {
+     "y": 655,
+     "text": "Government."
+    },
+    {
+     "y": 676,
+     "text": "8.2.2 TOD Plans, Permitted Uses and Building Byelaws"
+    },
+    {
+     "y": 696,
+     "text": "8.2.2.1 Land use mixing in TOD schemes."
+    },
+    {
+     "y": 714,
+     "text": "Mixed land use shall be permissible in TOD plots, but not mandatory. If mixed use is proposed, it shall"
+    },
+    {
+     "y": 727,
+     "text": "be as per the table below."
+    },
+    {
+     "y": 775,
+     "text": "105"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.9,
+      71.3,
+      520.3,
+      159.8
+     ],
+     "rows": [
+      [
+       {
+        "text": "Parking",
+        "bbox": [
+         72.9,
+         71.3,
+         165.5,
+         104.9
+        ]
+       },
+       {
+        "text": "As per proposed\nhigher use",
+        "bbox": [
+         165.5,
+         71.3,
+         235.8,
+         104.9
+        ]
+       },
+       {
+        "text": "As per proposed\nhigher use",
+        "bbox": [
+         235.8,
+         71.3,
+         308.2,
+         104.9
+        ]
+       },
+       {
+        "text": "As per proposed\nhigher use",
+        "bbox": [
+         308.2,
+         71.3,
+         377.5,
+         104.9
+        ]
+       },
+       {
+        "text": "As per 3.3.4",
+        "bbox": [
+         377.5,
+         71.3,
+         451.8,
+         104.9
+        ]
+       },
+       {
+        "text": "1ECS per 100\nsqm.",
+        "bbox": [
+         451.8,
+         71.3,
+         520.3,
+         104.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Ground Coverage",
+        "bbox": [
+         72.9,
+         104.9,
+         165.5,
+         159.8
+        ]
+       },
+       {
+        "text": "Subject to\nadherence to\nprescribed\nsetbacks",
+        "bbox": [
+         165.5,
+         104.9,
+         235.8,
+         159.8
+        ]
+       },
+       {
+        "text": "Subject to\nadherence to\nprescribed\nsetbacks",
+        "bbox": [
+         235.8,
+         104.9,
+         308.2,
+         159.8
+        ]
+       },
+       {
+        "text": "Subject to\nadherence to\nprescribed\nsetbacks",
+        "bbox": [
+         308.2,
+         104.9,
+         377.5,
+         159.8
+        ]
+       },
+       {
+        "text": "Subject to\nadherence to\nprescribed\nsetbacks",
+        "bbox": [
+         377.5,
+         104.9,
+         451.8,
+         159.8
+        ]
+       },
+       {
+        "text": "Subject to\nadherence to\nprescribed\nsetbacks",
+        "bbox": [
+         451.8,
+         104.9,
+         520.3,
+         159.8
+        ]
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      72.9,
+      348.5,
+      547.0,
+      439.1
+     ],
+     "rows": [
+      [
+       {
+        "text": "FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.9,
+         348.5,
+         178.7,
+         357.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         178.7,
+         348.5,
+         206.9,
+         357.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         206.9,
+         348.5,
+         292.0,
+         357.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         292.0,
+         348.5,
+         377.5,
+         357.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         377.5,
+         348.5,
+         462.2,
+         357.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         462.2,
+         348.5,
+         547.0,
+         357.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.9,
+         357.3,
+         178.7,
+         362.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         178.7,
+         357.3,
+         206.9,
+         367.0
+        ]
+       },
+       {
+        "text": "Road Width (Upto12m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         206.9,
+         357.3,
+         292.0,
+         367.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (12 -24m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         292.0,
+         357.3,
+         377.5,
+         367.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (24 - 45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         377.5,
+         357.3,
+         462.2,
+         367.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         462.2,
+         357.3,
+         547.0,
+         367.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.9,
+         362.9,
+         178.7,
+         367.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Mixed Use",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.9,
+         367.0,
+         178.7,
+         376.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         178.7,
+         367.0,
+         206.9,
+         376.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         206.9,
+         367.0,
+         292.0,
+         376.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         292.0,
+         367.0,
+         377.5,
+         376.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         377.5,
+         367.0,
+         462.2,
+         376.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         462.2,
+         367.0,
+         547.0,
+         376.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Buildings",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.9,
+         376.9,
+         178.7,
+         390.1
+        ]
+       },
+       {
+        "text": "BFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         178.7,
+         376.9,
+         206.9,
+         390.1
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         206.9,
+         376.9,
+         235.8,
+         390.1
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         235.8,
+         376.9,
+         264.1,
+         390.1
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         264.1,
+         376.9,
+         292.0,
+         390.1
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         292.0,
+         376.9,
+         320.6,
+         390.1
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         320.6,
+         376.9,
+         349.2,
+         390.1
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         349.2,
+         376.9,
+         377.5,
+         390.1
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         377.5,
+         376.9,
+         405.7,
+         390.1
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         405.7,
+         376.9,
+         434.3,
+         390.1
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         434.3,
+         376.9,
+         462.2,
+         390.1
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         462.2,
+         376.9,
+         490.8,
+         390.1
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         490.8,
+         376.9,
+         520.3,
+         390.1
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         520.3,
+         376.9,
+         547.0,
+         390.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.9,
+         390.1,
+         178.7,
+         395.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         178.7,
+         390.1,
+         206.9,
+         395.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         206.9,
+         390.1,
+         235.8,
+         395.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         235.8,
+         390.1,
+         264.1,
+         395.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         264.1,
+         390.1,
+         292.0,
+         395.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         292.0,
+         390.1,
+         320.6,
+         395.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         320.6,
+         390.1,
+         349.2,
+         395.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         349.2,
+         390.1,
+         377.5,
+         395.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         377.5,
+         390.1,
+         405.7,
+         395.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         405.7,
+         390.1,
+         434.3,
+         395.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         434.3,
+         390.1,
+         462.2,
+         395.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         462.2,
+         390.1,
+         490.8,
+         395.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         490.8,
+         390.1,
+         520.3,
+         395.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         520.3,
+         390.1,
+         547.0,
+         395.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "MU Built-up Area",
+        "bbox": [
+         72.9,
+         395.9,
+         178.7,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         178.7,
+         395.9,
+         206.9,
+         401.5
+        ]
+       },
+       {
+        "text": "NA",
+        "bbox": [
+         206.9,
+         395.9,
+         235.8,
+         417.5
+        ]
+       },
+       {
+        "text": "NA",
+        "bbox": [
+         235.8,
+         395.9,
+         264.1,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         264.1,
+         395.9,
+         292.0,
+         401.5
+        ]
+       },
+       {
+        "text": "1.0",
+        "bbox": [
+         292.0,
+         395.9,
+         320.6,
+         417.5
+        ]
+       },
+       {
+        "text": "1.0",
+        "bbox": [
+         320.6,
+         395.9,
+         349.2,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         349.2,
+         395.9,
+         377.5,
+         401.5
+        ]
+       },
+       {
+        "text": "1.0",
+        "bbox": [
+         377.5,
+         395.9,
+         405.7,
+         417.5
+        ]
+       },
+       {
+        "text": "1.5",
+        "bbox": [
+         405.7,
+         395.9,
+         434.3,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         434.3,
+         395.9,
+         462.2,
+         401.5
+        ]
+       },
+       {
+        "text": "1.5",
+        "bbox": [
+         462.2,
+         395.9,
+         490.8,
+         417.5
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         490.8,
+         395.9,
+         520.3,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         520.3,
+         395.9,
+         547.0,
+         401.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "2.0",
+        "fill": "#FFF2CC",
+        "bbox": [
+         178.7,
+         401.5,
+         206.9,
+         412.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "2.0",
+        "fill": "#DEEAF6",
+        "bbox": [
+         264.1,
+         401.5,
+         292.0,
+         412.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "4.0",
+        "fill": "#DEEAF6",
+        "bbox": [
+         349.2,
+         401.5,
+         377.5,
+         412.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "5.25",
+        "fill": "#DEEAF6",
+        "bbox": [
+         434.3,
+         401.5,
+         462.2,
+         412.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DEEAF6",
+        "bbox": [
+         520.3,
+         401.5,
+         547.0,
+         412.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         178.7,
+         412.1,
+         206.9,
+         417.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         264.1,
+         412.1,
+         292.0,
+         417.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         349.2,
+         412.1,
+         377.5,
+         417.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         434.3,
+         412.1,
+         462.2,
+         417.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         520.3,
+         412.1,
+         547.0,
+         417.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "MU non-built-up Area",
+        "bbox": [
+         72.9,
+         417.5,
+         178.7,
+         439.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         178.7,
+         417.5,
+         206.9,
+         423.0
+        ]
+       },
+       {
+        "text": "NA",
+        "bbox": [
+         206.9,
+         417.5,
+         235.8,
+         439.1
+        ]
+       },
+       {
+        "text": "NA",
+        "bbox": [
+         235.8,
+         417.5,
+         264.1,
+         439.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         264.1,
+         417.5,
+         292.0,
+         423.0
+        ]
+       },
+       {
+        "text": "1.25",
+        "bbox": [
+         292.0,
+         417.5,
+         320.6,
+         439.1
+        ]
+       },
+       {
+        "text": "1.25",
+        "bbox": [
+         320.6,
+         417.5,
+         349.2,
+         439.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         349.2,
+         417.5,
+         377.5,
+         423.0
+        ]
+       },
+       {
+        "text": "2.5",
+        "bbox": [
+         377.5,
+         417.5,
+         405.7,
+         439.1
+        ]
+       },
+       {
+        "text": "3.75",
+        "bbox": [
+         405.7,
+         417.5,
+         434.3,
+         439.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         434.3,
+         417.5,
+         462.2,
+         423.0
+        ]
+       },
+       {
+        "text": "2.5",
+        "bbox": [
+         462.2,
+         417.5,
+         490.8,
+         439.1
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         490.8,
+         417.5,
+         520.3,
+         439.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         520.3,
+         417.5,
+         547.0,
+         423.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "2.5",
+        "fill": "#FFF2CC",
+        "bbox": [
+         178.7,
+         423.0,
+         206.9,
+         433.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "2.5",
+        "fill": "#DEEAF6",
+        "bbox": [
+         264.1,
+         423.0,
+         292.0,
+         433.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "5.0",
+        "fill": "#DEEAF6",
+        "bbox": [
+         349.2,
+         423.0,
+         377.5,
+         433.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "6.25",
+        "fill": "#DEEAF6",
+        "bbox": [
+         434.3,
+         423.0,
+         462.2,
+         433.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DEEAF6",
+        "bbox": [
+         520.3,
+         423.0,
+         547.0,
+         433.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         178.7,
+         433.5,
+         206.9,
+         439.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         264.1,
+         433.5,
+         292.0,
+         439.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         349.2,
+         433.5,
+         377.5,
+         439.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         434.3,
+         433.5,
+         462.2,
+         439.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         520.3,
+         433.5,
+         547.0,
+         439.1
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 3,
+   "gazettePage": 106,
+   "prose": "Note* - Subject to restriction that MP/ZDP/layout land use shall remain pre-dominant land use.\n8.2.2.2 Floor Area Ratio (FAR) for TOD zone\nThe building byelaws for TOD zone shall be as follows:\nNote:\n(1) Basic FAR for various land uses in the TOD zone shall be as per prevailing building byelaws,\nwhereas the FAR above this shall be on purchasable basis.\n(2) For availing maximum permissible FAR, charges of purchasable FAR only shall apply. That is to\nsay, that the charges for purchasable FAR and premium purchasable FAR shall be the same.\n8.2.2.3 Parking\nParking requirement \u2013 1 ECS per 100 sqm of floor area.\n8.3 Other requirements\n8.3.1 Restrictions on mixing of activities in mixed-use development.\nThe owner/developer shall have the flexibility for horizontal and vertical mixed-use development,\nprovided that \u2013\n1) Only non-manufacturing industries and service industries like Information Technology,\nInformation Technology enabled services/ Business Process Outsourcing/ Knowledge Process\nOutsourcing, etc. (IT-ITES/ BPOs/ KPO) and pollution free MSME units may be mixed with\nother uses such as residential, commercial and institutional.\n2) Educational Institutions, Anganwadi, cr\u00e8ches, old age homes, etc. should not be mixed with\nhealth care facilities or manufacturing and/or warehousing facilities. These facilities\n(educational institutions, Anganwadi, creches, old age homes, etc.) should necessarily be\n106",
+   "proseLines": [
+    {
+     "y": 298,
+     "text": "Note* - Subject to restriction that MP/ZDP/layout land use shall remain pre-dominant land use."
+    },
+    {
+     "y": 319,
+     "text": "8.2.2.2 Floor Area Ratio (FAR) for TOD zone"
+    },
+    {
+     "y": 337,
+     "text": "The building byelaws for TOD zone shall be as follows:"
+    },
+    {
+     "y": 458,
+     "text": "Note:"
+    },
+    {
+     "y": 477,
+     "text": "(1) Basic FAR for various land uses in the TOD zone shall be as per prevailing building byelaws,"
+    },
+    {
+     "y": 491,
+     "text": "whereas the FAR above this shall be on purchasable basis."
+    },
+    {
+     "y": 504,
+     "text": "(2) For availing maximum permissible FAR, charges of purchasable FAR only shall apply. That is to"
+    },
+    {
+     "y": 518,
+     "text": "say, that the charges for purchasable FAR and premium purchasable FAR shall be the same."
+    },
+    {
+     "y": 541,
+     "text": "8.2.2.3 Parking"
+    },
+    {
+     "y": 559,
+     "text": "Parking requirement \u2013 1 ECS per 100 sqm of floor area."
+    },
+    {
+     "y": 581,
+     "text": "8.3 Other requirements"
+    },
+    {
+     "y": 604,
+     "text": "8.3.1 Restrictions on mixing of activities in mixed-use development."
+    },
+    {
+     "y": 623,
+     "text": "The owner/developer shall have the flexibility for horizontal and vertical mixed-use development,"
+    },
+    {
+     "y": 636,
+     "text": "provided that \u2013"
+    },
+    {
+     "y": 655,
+     "text": "1) Only non-manufacturing industries and service industries like Information Technology,"
+    },
+    {
+     "y": 668,
+     "text": "Information Technology enabled services/ Business Process Outsourcing/ Knowledge Process"
+    },
+    {
+     "y": 682,
+     "text": "Outsourcing, etc. (IT-ITES/ BPOs/ KPO) and pollution free MSME units may be mixed with"
+    },
+    {
+     "y": 696,
+     "text": "other uses such as residential, commercial and institutional."
+    },
+    {
+     "y": 717,
+     "text": "2) Educational Institutions, Anganwadi, cr\u00e8ches, old age homes, etc. should not be mixed with"
+    },
+    {
+     "y": 731,
+     "text": "health care facilities or manufacturing and/or warehousing facilities. These facilities"
+    },
+    {
+     "y": 745,
+     "text": "(educational institutions, Anganwadi, creches, old age homes, etc.) should necessarily be"
+    },
+    {
+     "y": 775,
+     "text": "106"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.1,
+      71.4,
+      522.9,
+      291.7
+     ],
+     "rows": [
+      [
+       {
+        "text": "Land use as per MP/ZDP/layout",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.1,
+         71.4,
+         212.8,
+         107.2
+        ]
+       },
+       {
+        "text": "Changed land use",
+        "fill": "#D9E2F3",
+        "bbox": [
+         212.8,
+         71.4,
+         355.0,
+         107.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         355.0,
+         71.4,
+         360.4,
+         107.2
+        ]
+       },
+       {
+        "text": "Minimum FAR",
+        "fill": "#D9E2F3",
+        "bbox": [
+         360.4,
+         71.4,
+         431.1,
+         89.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         431.1,
+         71.4,
+         436.6,
+         107.2
+        ]
+       },
+       {
+        "text": "In other use FAR*",
+        "fill": "#D9E2F3",
+        "bbox": [
+         436.6,
+         71.4,
+         522.9,
+         107.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "in existing use",
+        "fill": "#D9E2F3",
+        "bbox": [
+         360.4,
+         89.3,
+         431.1,
+         107.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Residential",
+        "bbox": [
+         72.1,
+         107.2,
+         212.8,
+         131.6
+        ]
+       },
+       {
+        "text": "Residential Mixed-Use TOD",
+        "bbox": [
+         212.8,
+         107.2,
+         355.0,
+         131.6
+        ]
+       },
+       {
+        "text": "33 percent",
+        "bbox": [
+         355.0,
+         107.2,
+         436.6,
+         131.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "67 percent",
+        "bbox": [
+         436.6,
+         107.2,
+         522.9,
+         131.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Commercial (including retail)",
+        "bbox": [
+         72.1,
+         131.6,
+         212.8,
+         159.4
+        ]
+       },
+       {
+        "text": "Commercial Mixed-Use TOD",
+        "bbox": [
+         212.8,
+         131.6,
+         355.0,
+         159.4
+        ]
+       },
+       {
+        "text": "33 percent",
+        "bbox": [
+         355.0,
+         131.6,
+         436.6,
+         159.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "67 percent",
+        "bbox": [
+         436.6,
+         131.6,
+         522.9,
+         159.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Office/ Institutional",
+        "bbox": [
+         72.1,
+         159.4,
+         212.8,
+         183.7
+        ]
+       },
+       {
+        "text": "Office Mixed-Use TOD",
+        "bbox": [
+         212.8,
+         159.4,
+         355.0,
+         183.7
+        ]
+       },
+       {
+        "text": "33 percent",
+        "bbox": [
+         355.0,
+         159.4,
+         436.6,
+         183.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "67 percent",
+        "bbox": [
+         436.6,
+         159.4,
+         522.9,
+         183.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Industrial (except heavy and\npolluting industries)",
+        "bbox": [
+         72.1,
+         183.7,
+         212.8,
+         219.7
+        ]
+       },
+       {
+        "text": "Industrial Mixed-Use TOD",
+        "bbox": [
+         212.8,
+         183.7,
+         355.0,
+         219.7
+        ]
+       },
+       {
+        "text": "33 percent",
+        "bbox": [
+         355.0,
+         183.7,
+         436.6,
+         219.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "67 percent",
+        "bbox": [
+         436.6,
+         183.7,
+         522.9,
+         219.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Transportation",
+        "bbox": [
+         72.1,
+         219.7,
+         212.8,
+         255.7
+        ]
+       },
+       {
+        "text": "Transportation Mixed-Use TOD",
+        "bbox": [
+         212.8,
+         219.7,
+         355.0,
+         255.7
+        ]
+       },
+       {
+        "text": "Operation as\nrequired",
+        "bbox": [
+         355.0,
+         219.7,
+         436.6,
+         255.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Remaining FAR",
+        "bbox": [
+         436.6,
+         219.7,
+         522.9,
+         255.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Public semi public",
+        "bbox": [
+         72.1,
+         255.7,
+         212.8,
+         291.7
+        ]
+       },
+       {
+        "text": "Public semi public Mixed-Use\nTOD",
+        "bbox": [
+         212.8,
+         255.7,
+         355.0,
+         291.7
+        ]
+       },
+       {
+        "text": "33 percent",
+        "bbox": [
+         355.0,
+         255.7,
+         436.6,
+         291.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "67 percent",
+        "bbox": [
+         436.6,
+         255.7,
+         522.9,
+         291.7
+        ]
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      72.1,
+      355.8,
+      522.9,
+      451.5
+     ],
+     "rows": [
+      [
+       {
+        "text": "Minimum Right of Way",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.1,
+         355.8,
+         221.1,
+         374.7
+        ]
+       },
+       {
+        "text": "Base FAR",
+        "fill": "#D9E2F3",
+        "bbox": [
+         221.1,
+         355.8,
+         369.9,
+         374.7
+        ]
+       },
+       {
+        "text": "TOD FAR as % of Base FAR",
+        "fill": "#D9E2F3",
+        "bbox": [
+         369.9,
+         355.8,
+         522.9,
+         374.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "12m",
+        "bbox": [
+         72.1,
+         374.7,
+         221.1,
+         393.9
+        ]
+       },
+       {
+        "text": "As per byelaws",
+        "bbox": [
+         221.1,
+         374.7,
+         369.9,
+         393.9
+        ]
+       },
+       {
+        "text": "150%",
+        "bbox": [
+         369.9,
+         374.7,
+         522.9,
+         393.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": ">12 - 24m",
+        "bbox": [
+         72.1,
+         393.9,
+         221.1,
+         413.2
+        ]
+       },
+       {
+        "text": "As per byelaws",
+        "bbox": [
+         221.1,
+         393.9,
+         369.9,
+         413.2
+        ]
+       },
+       {
+        "text": "250%",
+        "bbox": [
+         369.9,
+         393.9,
+         522.9,
+         413.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": ">24 - 45m",
+        "bbox": [
+         72.1,
+         413.2,
+         221.1,
+         432.4
+        ]
+       },
+       {
+        "text": "As per byelaws",
+        "bbox": [
+         221.1,
+         413.2,
+         369.9,
+         432.4
+        ]
+       },
+       {
+        "text": "350%",
+        "bbox": [
+         369.9,
+         413.2,
+         522.9,
+         432.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": ">45m",
+        "bbox": [
+         72.1,
+         432.4,
+         221.1,
+         451.5
+        ]
+       },
+       {
+        "text": "As per byelaws",
+        "bbox": [
+         221.1,
+         432.4,
+         369.9,
+         451.5
+        ]
+       },
+       {
+        "text": "Unrestricted",
+        "bbox": [
+         369.9,
+         432.4,
+         522.9,
+         451.5
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 4,
+   "gazettePage": 107,
+   "prose": "developed on the lower floors and preference should be given to reach the open places of the\nTOD scheme.\n3) Separate entry/exit and service shafts shall be provided as necessary in buildings with vertical\nmixed use.\n4) Following activities shall not be mixed with other permissible uses in mixed-use\ndevelopment:\nNote-1: In case of layout plots along roads of width 24-meter-wide or more on availing mixed land use\nand consequent FAR conditions, development fees, impact fees and other charges shall be applicable\non highest category use and the relevant changes shall also be incorporated in the lease deed.\n107",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "developed on the lower floors and preference should be given to reach the open places of the"
+    },
+    {
+     "y": 85,
+     "text": "TOD scheme."
+    },
+    {
+     "y": 107,
+     "text": "3) Separate entry/exit and service shafts shall be provided as necessary in buildings with vertical"
+    },
+    {
+     "y": 121,
+     "text": "mixed use."
+    },
+    {
+     "y": 142,
+     "text": "4) Following activities shall not be mixed with other permissible uses in mixed-use"
+    },
+    {
+     "y": 155,
+     "text": "development:"
+    },
+    {
+     "y": 365,
+     "text": "Note-1: In case of layout plots along roads of width 24-meter-wide or more on availing mixed land use"
+    },
+    {
+     "y": 378,
+     "text": "and consequent FAR conditions, development fees, impact fees and other charges shall be applicable"
+    },
+    {
+     "y": 391,
+     "text": "on highest category use and the relevant changes shall also be incorporated in the lease deed."
+    },
+    {
+     "y": 775,
+     "text": "107"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      67.5,
+      174.4,
+      518.6,
+      358.4
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E1F2",
+        "bbox": [
+         67.5,
+         174.4,
+         72.7,
+         225.5
+        ]
+       },
+       {
+        "text": "Industrial: Large scale industry, sugar mill, rice seller, flour mill, Pasteurizing plant/ Milk storage",
+        "fill": "#D9E1F2",
+        "bbox": [
+         72.7,
+         174.4,
+         513.3,
+         193.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E1F2",
+        "bbox": [
+         513.3,
+         174.4,
+         518.6,
+         225.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "centre, Meat Processing Plant, Mining brick/ lime kiln, crusher, Oil depot/ LPG refilling plant, Bio",
+        "fill": "#D9E1F2",
+        "bbox": [
+         72.7,
+         193.4,
+         513.3,
+         206.3
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "Diesel Plant, Power generation plant, Hazardous/ dangerous/ polluting industries",
+        "fill": "#D9E1F2",
+        "bbox": [
+         72.7,
+         206.3,
+         513.3,
+         225.5
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Public-Semi Public: Prison/ Jail, Correction facilities/ Reform Homes, Sanatorium, Compost\nplant, Scientific Landfill Sites, MRF Facilities, Bio-Medical Waste Treatment Facility,\nSlaughterhouses",
+        "bbox": [
+         67.5,
+         225.5,
+         518.6,
+         277.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E1F2",
+        "bbox": [
+         67.5,
+         277.8,
+         72.7,
+         303.1
+        ]
+       },
+       {
+        "text": "Traffic & Transportation: Airport/ Flying club",
+        "fill": "#D9E1F2",
+        "bbox": [
+         72.7,
+         277.8,
+         513.3,
+         303.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E1F2",
+        "bbox": [
+         513.3,
+         277.8,
+         518.6,
+         303.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Recreational: Shooting Range",
+        "bbox": [
+         67.5,
+         303.1,
+         518.6,
+         329.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E1F2",
+        "bbox": [
+         67.5,
+         329.7,
+         72.7,
+         355.0
+        ]
+       },
+       {
+        "text": "Agricultural: Farmhouse, Repair of agricultural equipment/ servicing workshop",
+        "fill": "#D9E1F2",
+        "bbox": [
+         72.7,
+         329.7,
+         513.3,
+         355.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E1F2",
+        "bbox": [
+         513.3,
+         329.7,
+         518.6,
+         355.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         67.5,
+         355.0,
+         518.6,
+         358.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  }
+ ]
+}

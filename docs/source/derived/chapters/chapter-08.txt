@@ -1,0 +1,147 @@
+=== chapter 08 · gazette page 104 · pdf page 1 ===
+8 Mixed-Use and Transit-Oriented Development
+8.1 Mixed Use Development
+8.1.1 Definition
+Mixed use development/ buildings integrate multiple uses, such as residential, commercial,
+institutional, and recreational spaces, within a single structure, land parcel or a neighbourhood. Mixed
+use development is transitioning from land-based distribution to a built-space based approach, allowing
+for mixing and co-location of compatible uses within a single plot/ structure.
+Mixed use development/ buildings offer required flexibility to improve availability and access to
+facilities within existing urban areas, thereby ensuring optimal utilisation of land. Such a development
+also leads to reduction in trip lengths, promotes sustainable urban transport, and enables creation of
+vibrant and safer public areas. Mixed use buildings need to be regulated to manage and mitigate the
+associated adverse impact related to congestion, increased traffic, and increased pressure on civic
+amenities.
+8.1.2 Permissible locations for mixed-use development:
+a) Mixed use zones earmarked under Master Plan.
+b) Mixed use plots identified as part of approved layouts.
+c) Notified bazaar streets (with specified conditions).
+d) Along 24-meter and wider roads
+e) Transit Oriented Development (TOD) Zones.
+Development standards for 8.1.2 (c) regarding Bazaar Streets are covered in paragraph 5.1 of the
+byelaws while for 8.1.2 (e) i.e. TOD Zones, the standards are covered in paragraph 8.2 of the byelaws.
+8.1.3 Development Standards for mixed-use development
+104
+
+--- table 0 (12 rows × 6 cols) ---
+Parameter/Development Standard | Mixed use zones | Mixed use plots | Notified bazaar streets | [#D9E2F3] | TOD zones
+ |  |  |  | Along 24-meter | 
+ | earmarked under | as part of |  |  | 
+ |  |  |  | and wider roads | 
+ | Master Plan | approved layouts |  |  | 
+ |  |  |  | [#D9E2F3] | 
+Minimum Plot Size | No restriction | No restriction | No restriction | No restriction | No restriction
+Means of Access | 9m (plots upto 100 sqm); 12m (other plots) | 24m | 12m | 24m | =>12m
+Building Height | Not restricted | Not restricted | Not restricted | Not restricted | Not restricted
+Minimum Setbacks | As applicable for higher use | As applicable for higher use | As per para 5.1.5 | As applicable for higher use | As applicable for higher use
+Floor Area Ratio | As per para 8.1.3.6 | As per para 8.1.3.6 | As per para 5.1.4 | As per Use Zone | As per para 8.2.2.2
+Mixing | 0-100% | 0-100% | Commercial (2 floors) | =>33% (principal use); =<67% (other uses) However, share of single other use shall not be more than principal use. | =>33% (principal use); =<67% (other uses) However, share of single other use shall not be more than principal use.
+
+=== chapter 08 · gazette page 105 · pdf page 2 ===
+Note-1: Permissible occupancies in mixed-use development shall be as per paragraph 8.1.4.
+Permissibility of occupancies in mixed-use development shall be governed by the minimum standards
+prescribed in paragraph 3.2.1.
+Note-2: The plot size shall be equal to or more than the minimum plot size requirements for higher use
+as defined in paragraph 3.2.1.
+Note-3: For mixing in plots identified as single and multi-units, the height restrictions as defined under
+paragraph 4.1.4 shall prevail.
+8.1.3.1 Floor Area Ratio (FAR):
+Mixed-use buildings described in paragraph 8.1.2 (a) and (b) shall avail FAR as per table below:
+Note-1: BFAR – Base FAR, PFAR – Purchasable FAR, PPFAR – Premium Purchasable FAR, MFAR
+– Maximum Permissible FAR, UR – Unrestricted
+Note-2: The FAR of Bazaar Streets shall be as per paragraph 5.1.4.
+Note-3: For 8.1.2 (d), base FAR of principal use shall be availed, and purchasable FAR and premium
+purchasable FAR conditions of the principal use shall prevail.
+8.2 Transit Oriented Development (TOD)
+In view of the continuous urbanization in the state and to meet the growing infrastructure needs, the
+Uttar Pradesh Mixed Use and Transit Oriented Development Policy was notified in 2015 and further
+revised in 2022 in line with the National TOD Policy 2017.
+8.2.1 Applicability
+These provisions shall be applicable in the TOD Zones included in the Master Plan or as notified by the
+Government.
+8.2.2 TOD Plans, Permitted Uses and Building Byelaws
+8.2.2.1 Land use mixing in TOD schemes.
+Mixed land use shall be permissible in TOD plots, but not mandatory. If mixed use is proposed, it shall
+be as per the table below.
+105
+
+--- table 0 (2 rows × 6 cols) ---
+Parking | As per proposed higher use | As per proposed higher use | As per proposed higher use | As per 3.3.4 | 1ECS per 100 sqm.
+Ground Coverage | Subject to adherence to prescribed setbacks | Subject to adherence to prescribed setbacks | Subject to adherence to prescribed setbacks | Subject to adherence to prescribed setbacks | Subject to adherence to prescribed setbacks
+
+--- table 1 (12 rows × 14 cols) ---
+FAR | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  | 
+[#DBE5F1] | [#DBE5F1] | Road Width (Upto12m) |  |  | Road Width (12 -24m) |  |  | Road Width (24 - 45m) |  |  | Road Width (>45m) |  | 
+[#DBE5F1] |  |  |  |  |  |  |  |  |  |  |  |  | 
+Mixed Use | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  | 
+Buildings | BFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR
+ |  |  |  |  |  |  |  |  |  |  |  |  | «band #DBE5F1»
+MU Built-up Area | [#FFF2CC] | NA | NA | [#DEEAF6] | 1.0 | 1.0 | [#DEEAF6] | 1.0 | 1.5 | [#DEEAF6] | 1.5 | UR | [#DEEAF6]
+ | 2.0 |  |  | 2.0 |  |  | 4.0 |  |  | 5.25 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+MU non-built-up Area | [#FFF2CC] | NA | NA | [#DEEAF6] | 1.25 | 1.25 | [#DEEAF6] | 2.5 | 3.75 | [#DEEAF6] | 2.5 | UR | [#DEEAF6]
+ | 2.5 |  |  | 2.5 |  |  | 5.0 |  |  | 6.25 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+
+=== chapter 08 · gazette page 106 · pdf page 3 ===
+Note* - Subject to restriction that MP/ZDP/layout land use shall remain pre-dominant land use.
+8.2.2.2 Floor Area Ratio (FAR) for TOD zone
+The building byelaws for TOD zone shall be as follows:
+Note:
+(1) Basic FAR for various land uses in the TOD zone shall be as per prevailing building byelaws,
+whereas the FAR above this shall be on purchasable basis.
+(2) For availing maximum permissible FAR, charges of purchasable FAR only shall apply. That is to
+say, that the charges for purchasable FAR and premium purchasable FAR shall be the same.
+8.2.2.3 Parking
+Parking requirement – 1 ECS per 100 sqm of floor area.
+8.3 Other requirements
+8.3.1 Restrictions on mixing of activities in mixed-use development.
+The owner/developer shall have the flexibility for horizontal and vertical mixed-use development,
+provided that –
+1) Only non-manufacturing industries and service industries like Information Technology,
+Information Technology enabled services/ Business Process Outsourcing/ Knowledge Process
+Outsourcing, etc. (IT-ITES/ BPOs/ KPO) and pollution free MSME units may be mixed with
+other uses such as residential, commercial and institutional.
+2) Educational Institutions, Anganwadi, crèches, old age homes, etc. should not be mixed with
+health care facilities or manufacturing and/or warehousing facilities. These facilities
+(educational institutions, Anganwadi, creches, old age homes, etc.) should necessarily be
+106
+
+--- table 0 (8 rows × 6 cols) ---
+Land use as per MP/ZDP/layout | Changed land use | [#D9E2F3] | Minimum FAR | [#D9E2F3] | In other use FAR*
+ |  |  | in existing use |  | 
+Residential | Residential Mixed-Use TOD | 33 percent |  |  | 67 percent
+Commercial (including retail) | Commercial Mixed-Use TOD | 33 percent |  |  | 67 percent
+Office/ Institutional | Office Mixed-Use TOD | 33 percent |  |  | 67 percent
+Industrial (except heavy and polluting industries) | Industrial Mixed-Use TOD | 33 percent |  |  | 67 percent
+Transportation | Transportation Mixed-Use TOD | Operation as required |  |  | Remaining FAR
+Public semi public | Public semi public Mixed-Use TOD | 33 percent |  |  | 67 percent
+
+--- table 1 (5 rows × 3 cols) ---
+Minimum Right of Way | Base FAR | TOD FAR as % of Base FAR
+12m | As per byelaws | 150%
+>12 - 24m | As per byelaws | 250%
+>24 - 45m | As per byelaws | 350%
+>45m | As per byelaws | Unrestricted
+
+=== chapter 08 · gazette page 107 · pdf page 4 ===
+developed on the lower floors and preference should be given to reach the open places of the
+TOD scheme.
+3) Separate entry/exit and service shafts shall be provided as necessary in buildings with vertical
+mixed use.
+4) Following activities shall not be mixed with other permissible uses in mixed-use
+development:
+Note-1: In case of layout plots along roads of width 24-meter-wide or more on availing mixed land use
+and consequent FAR conditions, development fees, impact fees and other charges shall be applicable
+on highest category use and the relevant changes shall also be incorporated in the lease deed.
+107
+
+--- table 0 (8 rows × 3 cols) ---
+[#D9E1F2] | Industrial: Large scale industry, sugar mill, rice seller, flour mill, Pasteurizing plant/ Milk storage | [#D9E1F2]
+ | centre, Meat Processing Plant, Mining brick/ lime kiln, crusher, Oil depot/ LPG refilling plant, Bio | 
+ | Diesel Plant, Power generation plant, Hazardous/ dangerous/ polluting industries | 
+Public-Semi Public: Prison/ Jail, Correction facilities/ Reform Homes, Sanatorium, Compost plant, Scientific Landfill Sites, MRF Facilities, Bio-Medical Waste Treatment Facility, Slaughterhouses |  | 
+[#D9E1F2] | Traffic & Transportation: Airport/ Flying club | [#D9E1F2]
+Recreational: Shooting Range |  | 
+[#D9E1F2] | Agricultural: Farmhouse, Repair of agricultural equipment/ servicing workshop | [#D9E1F2]
+ |  |
