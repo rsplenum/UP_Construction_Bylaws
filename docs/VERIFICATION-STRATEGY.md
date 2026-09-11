@@ -135,6 +135,14 @@ invent them.
 
 ---
 
+## After the phases
+
+`docs/RULE-GRAPH-PLAN.md` holds the agreed next piece of work: declaring `produces` /
+`consumes` on every rule, deriving the edge graph from them, and running a build-time query
+that finds the places where two clauses answer one question differently. It is deliberately
+sequenced after the chapter reading — the query is only as good as the corpus it runs over,
+and every chapter read adds nodes to it.
+
 ## The phases
 
 Ordered by how badly a wrong answer hurts, not by chapter number.

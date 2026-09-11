@@ -265,7 +265,9 @@ argument for the engine staying small enough to read in one sitting.
   session 14 cannot silently alter a session-5 answer. *(Not built. Highest priority.)*
 - **Cross-reference graph** — 197 explicit cross-chapter references harvested from the
   source, plus a declared produces/consumes graph for the implicit links the text does not
-  name. *(Extractor prototyped.)*
+  name. *(Extractor prototyped. Full execution plan, including the conflict query and its
+  eight-conflict benchmark, is in `docs/RULE-GRAPH-PLAN.md` — agreed, scheduled after the
+  chapter reading.)*
 
 ---
 
