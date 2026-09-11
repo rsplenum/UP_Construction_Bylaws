@@ -51,6 +51,20 @@ export type SetbackTable =
   /** Clause 5.1.5 — the one setback table keyed on road width rather than plot area. */
   | 'bazaar_street';
 
+/**
+ * The seven land-use categories Clause 9.2.5 prices purchasable FAR by. This field has
+ * always held exactly these strings; typing it means TypeScript checks that an occupancy
+ * cannot name a category the factor-coefficient table has no row for.
+ */
+export type PurchasableFarCategory =
+  | 'Commercial'
+  | 'Mixed Use'
+  | 'Office Buildings / Institutional'
+  | 'Hotels'
+  | 'Residential (Plotted)'
+  | 'Residential (Group Housing)'
+  | 'Community Facilities & Infrastructure';
+
 /** A threshold that is either flat, or different in a built-up area and a new layout. */
 export type AreaTypeValue = number | Readonly<Record<AreaType, number>>;
 
@@ -74,7 +88,7 @@ export interface OccupancyDefinition {
   /** Row in CHAPTER_15_ACTIVITY_PERMISSIBILITY, when one exists. */
   activityId?: string;
   /** Category in PURCHASABLE_FAR_FACTORS, for the Chapter 9 charge. */
-  purchasableFarCategory: string;
+  purchasableFarCategory: PurchasableFarCategory;
   /** Schedule used when pricing a deviation under Chapter 16. */
   compoundingUse: CompoundingUse;
 

@@ -197,6 +197,79 @@ export const RULES: RuleSet = {
     },
   },
 
+  'far.purchase-gate': {
+    id: 'far.purchase-gate',
+    question: 'May this project buy extra FAR at all, given the road it faces?',
+    clause: 'Clauses 9.2.1(ii) and 9.2.3 Note 1',
+    confidence: 'gazette',
+    derivedFrom: ['roadWidth', 'occupancy', 'areaType'],
+    checked: '2026-09-11',
+    quote:
+      'Purchasable and premium purchasable FAR shall be allowed only on roads with ROW 12m and above '
+      + 'in built-up and non-built-up areas. For group housing in built-up areas, this is allowed on '
+      + 'roads with ROW 9m. — and Note 1: In case of residential plotted development, calculation of '
+      + 'purchasable FAR is not dependent on the width of the approach road and will be allowed on '
+      + 'minimum 9-m /7.5-m or 4.0-m road as the case may be.',
+    ifWrong:
+      'This decides whether the headroom between base FAR and the ceiling is reachable or dead. Applied '
+      + 'too widely it bars purchases the byelaws allow — which is what B-027 found — and applied too '
+      + 'narrowly it prices floor area that cannot lawfully be built.',
+  },
+
+  'far.purchasable-fee': {
+    id: 'far.purchasable-fee',
+    question: 'What does the extra FAR cost?',
+    clause: 'Clause 9.2.5',
+    confidence: 'gazette',
+    derivedFrom: ['occupancy', 'plotArea', 'roadWidth', 'areaType', 'landRate'],
+    checked: '2026-09-11',
+    quote:
+      'C = Le x Rc x P, where Le = FP ÷ Base FAR and FP is the additional floor area availed. '
+      + 'Factor coefficients: Commercial 0.50 / 1.0; Mixed Use 0.45 / 0.9; Office Buildings / '
+      + 'Institutional 0.45 / 0.9; Hotels 0.40 / 0.8; Residential (Plotted) 0.40 / –; Residential '
+      + '(Group Housing) 0.40 / 0.8; Community Facilities and Infrastructure 0.20 / 0.4.',
+    ifWrong:
+      'The charge is the whole reason purchasable FAR is a decision rather than an entitlement. The '
+      + 'gazette prints its own worked example, which the engine reproduces to the rupee, so the '
+      + 'arithmetic is checked against the drafter rather than against a reading of the drafter.',
+    challenge: {
+      id: 'V-030',
+      summary:
+        'The formula is right and unreachable. `ProjectState` carries no land rate, and the engine '
+        + 'resolves purchasable FAR as one lump rather than splitting it into the purchasable and '
+        + 'premium purchasable portions the two coefficients price differently. Until both exist, '
+        + 'assessPurchaseFee can be called but nothing in the app calls it.',
+      derivedFromInstead: ['landRate'],
+    },
+  },
+
+  'far.green-incentive': {
+    id: 'far.green-incentive',
+    question: 'How much extra floor area does a green rating earn, and what happens if it is not achieved?',
+    clause: 'Clause 9.3',
+    confidence: 'gazette',
+    derivedFrom: ['greenRating'],
+    checked: '2026-09-11',
+    quote:
+      'GRIHA Three star/ IGBC Silver / LEED silver or equivalent rating – 3% additional FAR on availed '
+      + 'FAR. GRIHA Four star/IGBC Gold/LEED Gold – 5%. GRIHA Five star/ IGBC Platinum/ LEED Platinum – '
+      + '7%. Note I: awarded after pre-certification from the empanelled agency; this incentive FAR on '
+      + 'Green Buildings shall be over and above the MFAR. Note II: a penalty at 2 times of the land '
+      + 'cost as per the circle rates for the additional FAR for the rating not achieved.',
+    ifWrong:
+      'This is the one FAR addition that sits above the maximum permissible FAR rather than inside it, '
+      + 'so treating it as part of the ceiling would silently withhold up to 7% of the floor area a '
+      + 'rated building has earned.',
+    challenge: {
+      id: 'V-031',
+      summary:
+        'The 3/5/7% is applied on a self-declared rating. Note I awards it only after pre-certification '
+        + 'from an empanelled agency and Note II reverses it at twice the circle-rate land cost if the '
+        + 'rating is not achieved at occupancy — so the incentive is conditional and provisional, and '
+        + 'the engine presents it as neither. greenRatingShortfallPenalty is modelled and uncalled.',
+    },
+  },
+
   'occupancy.thresholds': {
     id: 'occupancy.thresholds',
     question: 'What road width, plot size and height does each use require?',

@@ -49,10 +49,22 @@ describe('resolveBaseFar — telescopic residential', () => {
 
 describe('resolveBaseFar — purchasable FAR gate', () => {
   it('bars purchasable FAR below the road-width threshold', () => {
-    const narrow = resolveBaseFar({ occupancy: 'res_single', plotArea: 400, roadWidth: PURCHASABLE_FAR_MIN_ROAD_WIDTH - 0.01 });
+    // res_single used to be the example here, but Clause 9.2.3 Note-1 exempts plotted
+    // residential from the road-width test entirely (B-027). A shop is the general case.
+    const narrow = resolveBaseFar({
+      occupancy: 'com_shop', plotArea: 400, roadWidth: PURCHASABLE_FAR_MIN_ROAD_WIDTH - 0.01,
+    });
     expect(narrow.purchasableFar).toBe(0);
     expect(narrow.caveats.join(' ')).toMatch(/barred/i);
     expect(narrow.maxPermissibleFar).toBe(narrow.effectiveBaseFar);
+  });
+
+  it('exempts plotted residential from the road-width test altogether', () => {
+    // Clause 9.2.3 Note-1: "calculation of purchasable FAR is not dependent on the width
+    // of the approach road and will be allowed on minimum 9-m /7.5-m or 4.0-m road".
+    const narrow = resolveBaseFar({ occupancy: 'res_single', plotArea: 400, roadWidth: 4 });
+    expect(narrow.purchasableFar).toBeGreaterThan(0);
+    expect(narrow.maxPermissibleFar).toBe(2.0);        // the flat plotted ceiling
   });
 
   it('permits purchasable FAR at exactly the threshold', () => {
@@ -67,11 +79,11 @@ describe('resolveBaseFar — road-width matrices', () => {
     // determines Max FAR (9-12m 2.0, >12-18m 3.0, >18-24m 3.0, >24-45m 5.25).
     const at = (roadWidth: number) => resolveBaseFar({ occupancy: 'res_group_housing', plotArea: 5000, roadWidth });
     for (const w of [12.005, 18.005, 24.005, 40]) expect(at(w).baseFar).toBe(1.5);
-    // A 10 m road clears the 9 m minimum, so the base is available — but Chapter 9.2.1
-    // bars buying the headroom up to the 2.0 ceiling.
+    // A 10 m road clears the 9 m minimum, and Clause 9.2.1(ii) lets built-up group
+    // housing purchase from 9 m, so the headroom up to the 2.0 ceiling is buyable.
     expect(at(10).baseFar).toBe(1.5);
-    expect(at(10).purchasableFar).toBe(0);
-    expect(at(10).maxPermissibleFar).toBe(1.5);
+    expect(at(10).purchasableFar).toBe(0.5);
+    expect(at(10).maxPermissibleFar).toBe(2.0);
     expect(at(15).maxPermissibleFar).toBe(3.0);
     expect(at(30).maxPermissibleFar).toBe(5.25);
   });

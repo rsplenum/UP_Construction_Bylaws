@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: ten transcriptions verified exactly right, and twenty-six real bugs found.**
+**Headline: ten transcriptions verified exactly right, and twenty-seven real bugs found.**
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -322,9 +322,98 @@ find a wider road.
 `ind_warehouse` is deliberately untouched. Warehousing is Sl. 12 of Chapter 3's commercial
 matrix, not a Chapter 7 use, so Clause 7.1 does not govern it.
 
+### B-027 — The 12 m bar on buying FAR was applied to two cases the gazette exempts
+`PURCHASABLE_FAR_MIN_ROAD_WIDTH = 12` was enforced on every occupancy without exception.
+Chapter 9 states the bar and then immediately carves two holes in it:
+
+| | Engine had | Gazette |
+|---|---|---|
+| Group housing, built-up area | 12 m | **9 m** (Clause 9.2.1(ii), second sentence) |
+| Residential plotted development | 12 m | **No road-width condition at all** (Clause 9.2.3 Note 1) |
+
+The plotted exception is the wider of the two and the easier to miss, because it is printed
+not with the bar but under a different table three pages later: *"calculation of purchasable
+FAR is not dependent on the width of the approach road and will be allowed on minimum 9-m
+/7.5-m or 4.0-m road as the case may be."* Chapter 3's telescopic ladder gives every plotted
+band a maximum of 2.0 against a base as low as 1.25, so on a plot over 1200 m² the engine was
+withholding **0.75 FAR** — 900 m² of floor area on a 1200 m² plot — from a house on a lane,
+which is the overwhelmingly common case for plotted development.
+
+Both exemptions run the same way: the engine refused purchases the byelaws allow. Nothing
+in the gazette's own text makes the 12 m figure a floor for these two uses, so this is not
+an ambiguity resolved strictly — it is a rule read without its exceptions, which is exactly
+the failure mode the architecture research names.
+*Fixed: `canPurchaseFarAt()` in `far.ts`, called by `resolveBaseFar`. The caveat it emits
+now names the threshold that actually applied rather than a constant.*
+
 ---
 
 ## Still open
+
+### V-029 — Clause 9.2.3's master FAR table mislabels its own maximum column
+The table that governs purchasable FAR across the whole byelaws states each band's
+components as a percentage of that band's base, and then states the total as a percentage
+of the *first* band's base:
+
+| Road width | BFAR | PFAR | PPFAR | MFAR as printed | MFAR as its own components add up |
+|---|---|---|---|---|---|
+| Up to 12m | B1 | Up to 20% of B1 | Up to 20% of B1 | 140% of B1 | 140% of B1 ✓ |
+| 12 – 24m | B2 | Up to 50% of B2 | Up to 50% of B2 | **200% of B1** | 200% of **B2** |
+| 24 – 45m | B3 | Up to 100% of B3 | Up to 150% of B3 | **350% of B1** | 350% of **B3** |
+| More than 45m | B4 | Up to 100% of B4 | Unrestricted* | Unrestricted* | — |
+
+The header of column (5) says `(5) = (2)+(3)+(4)`, which settles it: the total is the sum of
+the row's own cells, so rows 2 and 3 mean B2 and B3 and the "of B1" is a copy-paste that
+survived proofreading. Row 1 happens to read correctly only because B1 is its own base.
+
+It matters more than a typo normally would, because the per-chapter tables read literally.
+Industrial buildings carry B1 = 1.5 and B2 = 2.5; at 200% of B1 the 12–24 m maximum would be
+3.0, and Chapter 7 prints **5.0**, which is 200% of B2. Every per-chapter table checked so
+far follows the components, not the label.
+
+**Not acted on, and deliberately.** Clause 9.2.3 Note-2 makes this moot for the engine:
+*"In case of any difference in the prescribed limits of maximum permissible FAR in chapter-3
+to chapter-7 and the table above, the figures in respective chapters will prevail."* The
+engine reads the per-chapter tables, so it never evaluates the master ladder and the defect
+cannot reach a number. Recorded because the ladder is the one an authority reviewer is most
+likely to quote from memory.
+
+### V-030 — The purchase fee is exact, and nothing can call it
+`assessPurchaseFee` reproduces the gazette's own worked example to the rupee — ₹2,80,00,000
+for the purchasable tranche, ₹6,72,00,000 for the premium, ₹9,52,00,000 in total — which is
+the strongest check available anywhere in this codebase, because it is the drafter's
+arithmetic rather than a reading of it. Two things stop it reaching a user:
+
+1. **No land rate.** Rc is the higher of the District Magistrate's circle rate and the
+   Authority's residential rate. Both are published elsewhere, vary by locality, and change;
+   `ProjectState` has no field for either. This is the first input the engine needs that is
+   not a fact about the building or the plot, which is why `landRate` had to be added to
+   `RuleInput` before the rule could even be declared.
+2. **No split.** `resolveBaseFar` returns `purchasableFar` as a single number — everything
+   between base FAR and the ceiling. Clause 9.2.5 prices the two tranches at different
+   coefficients (0.50 against 1.0 for commercial), and the per-chapter tables print them as
+   separate columns, so the split exists in the source and is being discarded on the way in.
+
+Modelled and uncalled, in the same posture as V-026. The alternative — inventing a circle
+rate — would produce a number that looks authoritative and is not.
+
+### V-031 — The green incentive is awarded unconditionally and cannot be taken back
+Clause 9.3 gives 3% / 5% / 7% additional FAR on the FAR availed, and the engine applies it
+above the ceiling, which Note I confirms is right: *"This incentive FAR on Green Buildings
+shall be over and above the MFAR."* Both of that Note's conditions are missing:
+
+- **Note I** awards the incentive *"after pre-certification from the empanelled agency"*.
+  `greenRating` is a plain enum on `ProjectState` with no certification status behind it, so
+  a user who intends to seek a rating and one who holds a pre-certificate get the same answer.
+- **Note II** imposes a penalty *"at the rate 2 times of the land cost as per the circle
+  rates for the additional FAR for the rating not achieved"* if the committed rating is not
+  reached at final occupancy. `greenRatingShortfallPenalty()` computes it and nothing calls
+  it — it needs the same circle rate V-030 is waiting on.
+
+The incentive is therefore presented as settled entitlement when the byelaws make it
+provisional and reversible at twice the land cost. On a 2000 m² plot at a 2.5 ceiling and a
+₹35,000/m² circle rate, a platinum rating claimed and not achieved is a penalty of roughly
+₹2.45 crore — a figure the engine currently gives no hint of.
 
 ### V-025 — Clause 8.1.3.1 prints a maximum ABOVE its own components, and one below
 Two of the mixed-use table's eight band cells fail the identity MFAR = BFAR + PFAR + PPFAR,

@@ -44,7 +44,15 @@ export type RuleInput =
    * the built-up figures to both. Nothing declared area type as a driving input, so the
    * omission was not visible anywhere except in the numbers.
    */
-  | 'areaType';
+  | 'areaType'
+  /**
+   * The current rate of land, Rc in Clause 9.2.5. Added with the purchase-fee rule: it is
+   * the first input in this engine that is not a fact about the building or its plot but a
+   * figure published elsewhere — the District Magistrate's circle rate, or the Authority's
+   * residential rate where there is none, whichever is higher. Naming it here says the fee
+   * cannot be derived from the project alone.
+   */
+  | 'landRate';
 
 export interface Challenge {
   /** Entry in docs/VERIFICATION-LOG.md. */

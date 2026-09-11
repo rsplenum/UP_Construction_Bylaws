@@ -24,6 +24,7 @@ be modified: the whole verification chain assumes these bytes are the ones that 
 | 06 | 94–100 | 7 | 11 | Institutional. Healthcare, education, assembly |
 | 07 | 100–103 | 4 | 5 | Industrial and agricultural. Farmhouses and dairy farms — see V-022 |
 | 08 | 104–107 | 4 | 6 | Mixed use and TOD. **Standards keyed on LOCATION, and FAR as a multiplier** — see V-024 and V-026 |
+| 09 | 108–112 | 5 | 4 | Additional FAR. Compensatory, purchasable and premium purchasable, green-building incentive. **The master FAR ladder's maximum column is mislabelled** — see V-029 |
 | 15 | 138–156 | 19 | 31 | Zoning. **States permitted/prohibited in colour** — see V-008 |
 
 Chapters 7 and 8 share gazette page 100: Chapter 7 opens on it, and the last table of

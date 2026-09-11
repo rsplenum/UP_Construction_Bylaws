@@ -234,6 +234,50 @@ const round = (n: number, dp = 3): number => Number(n.toFixed(dp));
 /** Minimum abutting road width, in metres, below which no FAR may be purchased (Chapter 9.2.1). */
 export const PURCHASABLE_FAR_MIN_ROAD_WIDTH = 12;
 
+/**
+ * Clause 9.2.1(ii) and 9.2.3 Note-1 carve two exceptions out of that 12 m bar, and the
+ * engine applied it flatly to everything.
+ *
+ *   9.2.1(ii)  "Purchasable and premium purchasable FAR shall be allowed only on roads
+ *              with ROW 12m and above in built-up and non-built-up areas. For group
+ *              housing in built-up areas, this is allowed on roads with ROW 9m."
+ *   9.2.3 N-1  "In case of residential plotted development, calculation of purchasable
+ *              FAR is not dependent on the width of the approach road and will be allowed
+ *              on minimum 9-m /7.5-m or 4.0-m road as the case may be."
+ *
+ * Both were barred outright before (B-027). The plotted-residential case matters most: its
+ * ceiling is a flat 2.0 at every road width, so barring the purchase left a house on a
+ * 6 m road stuck at its telescopic base with headroom it was entitled to buy.
+ */
+export function canPurchaseFarAt(input: {
+  occupancy: OccupancyId;
+  roadWidth: number;
+  areaType: AreaType;
+}): { allowed: boolean; threshold: number; reason: string } {
+  const definition = getOccupancy(input.occupancy);
+
+  if (definition.farBasis === 'telescopic_plotted') {
+    return {
+      allowed: true, threshold: 0,
+      reason: 'Clause 9.2.3 Note-1: for residential plotted development the purchase does '
+        + 'not depend on the road width at all.',
+    };
+  }
+
+  if (input.occupancy === 'res_group_housing' && input.areaType === 'built_up') {
+    return {
+      allowed: input.roadWidth >= 9, threshold: 9,
+      reason: 'Clause 9.2.1(ii): group housing in a built-up area may purchase from a 9 m road.',
+    };
+  }
+
+  return {
+    allowed: input.roadWidth >= PURCHASABLE_FAR_MIN_ROAD_WIDTH,
+    threshold: PURCHASABLE_FAR_MIN_ROAD_WIDTH,
+    reason: `Clause 9.2.1(ii): purchasable FAR needs a ${PURCHASABLE_FAR_MIN_ROAD_WIDTH} m right of way.`,
+  };
+}
+
 export function resolveBaseFar(input: {
   occupancy: OccupancyId;
   plotArea: number;
@@ -325,14 +369,16 @@ export function resolveBaseFar(input: {
   // Base FAR is what the ladder gives; the green incentive does not alter it.
   const effectiveBaseFar = baseFar;
 
-  // Purchasable FAR is the gap between base and the ceiling, and Chapter 9.2.1 bars
-  // buying any of it below a 12 m road.
-  const canPurchase = roadWidth >= PURCHASABLE_FAR_MIN_ROAD_WIDTH;
+  // Purchasable FAR is the gap between base and the ceiling. Clause 9.2.1(ii) gates the
+  // purchase on road width, with two exceptions — see canPurchaseFarAt.
+  const purchaseGate = canPurchaseFarAt({ occupancy: input.occupancy, roadWidth, areaType });
+  const canPurchase = purchaseGate.allowed;
   const headroom = Number.isFinite(ceilingFar) ? Math.max(0, round(ceilingFar - baseFar)) : Infinity;
   const purchasableFar = canPurchase ? headroom : 0;
   if (!canPurchase && headroom > 0) {
     caveats.push(
-      `Purchasable FAR is barred: the abutting road is ${roadWidth}m, below the ${PURCHASABLE_FAR_MIN_ROAD_WIDTH}m threshold (Chapter 9.2.1).`,
+      `Purchasable FAR is barred: the abutting road is ${roadWidth}m, below the `
+      + `${purchaseGate.threshold}m threshold. ${purchaseGate.reason}`,
     );
   }
 

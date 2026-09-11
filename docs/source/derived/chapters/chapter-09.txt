@@ -1,0 +1,198 @@
+=== chapter 09 · gazette page 108 · pdf page 1 ===
+9 Additional Floor Area Ratio
+9.1 Compensatory Floor Area Ratio (FAR)
+9.1.1 Permissibility and conditions
+(i) Compensatory FAR may be provided by the Authority to the landowner in lieu of land parcel,
+which is required partly or fully for the following public purposes:
+a. Development and construction of roads, drains, traffic and transport infrastructure.
+b. Laying of service utilities such as water supply line, sewer lines, communication lines,
+electrical substations, electric lines, gas lines etc.
+c. Development of greenbelts and public parks/playgrounds.
+d. Any other infrastructure as decided by the Authority.
+(ii) Compensatory FAR shall not be permitted by the authority in following circumstances:
+a. For earlier land acquisition or development for which compensation has been already
+paid partly or fully. (a) Where award of land acquisition has been made unless lands
+are withdrawn from the award by the Appropriate Authority according to the provisions
+of the relevant Acts, and (b) If the compensation in the form of FAR has already been
+granted to the owner/applicant.
+b. Where lawful possession by mutual agreement/or contract has been taken.
+(iii) Compensatory FAR shall as far as possible be provided by the authority in the remaining part of
+the same plot. In case where it is not possible to use the Compensatory FAR on the same plot,
+the Authority may allow the owner to use compensatory FAR of the transferred plot on other
+receiving plot(s) in part or in full for the same land use.
+(iv) The owner shall be allowed Compensatory FAR equal to the permissible FAR on the transferred
+land, subject to not exceeding the maximum permissible FAR (including purchasable FAR) on
+the transferred plot.
+(v) If the land use of the remaining plot is earmarked for roads, transportation infrastructure,
+greenbelt, park and/or playground, where FAR is less than 1.0 or FAR and ground coverage is
+not permissible, then the Compensatory FAR shall be allowed to be used on any other plot.
+(vi) In case the land use of the remaining plot is proposed for more than one multiple uses in the
+master/zonal plan, the Compnesatory FAR shall be divided proportionately.
+(vii) Compensatory FAR is non-transferable.
+(viii) The transfer of title of land foregone shall be done as per the procedures laid down by the
+government.
+9.2 Purchasable & Premium Purchasable FAR
+9.2.1 Permissibility
+(i) In order to make FAR flexible as per market demand, purchasable and premium purchasable
+FAR in built-up and non-built-up areas shall be permissible to the Applicant only in the following
+cases:
+a. On a vacant plot; or
+b. On a plot where construction is yet to begin as per the sanctioned building plan; or
+c. To construct a new additional building(s); or
+108
+
+=== chapter 09 · gazette page 109 · pdf page 2 ===
+d. To construct additional floors(s) in cases where building structure was originally
+designed for additional FAR, but permission was obtained for less FAR.
+e. Occupied buildings only after ensuring structural safety certification and adequacy of
+infrastructure facilities.
+(ii) Purchasable and premium purchasable FAR shall be allowed only on roads with ROW 12m and
+above in built-up and non-built-up areas. For group housing in built-up areas, this is allowed on
+roads with ROW 9m.
+(iii) Before purchasing additional FAR especially in case of already sanctioned plans, the applicant
+shall comply with provisions of Real Estate (Regulation and Development) Act, 2016 and Uttar
+Pradesh Apartment (Promotion of Construction, Ownership and Maintenance) Act, 2010 and
+other relevant Acts as amended from time to time.
+9.2.2 Eligibility for Purchasable & Premium Purchasable FAR
+(i) For the approval of purchasable and premium purchasable FAR, following eligibility criteria
+shall be fulfilled:
+a. Provision of setback according to the height of the building shall be made as per the
+standards prescribed in the building byelaws.
+b. In the group housing scheme, residential units shall be permitted in relation to the
+purchasable Floor Area Ratio (FAR).
+c. Structural safety provisions in the building shall be made as per the requirements
+mentioned in these building byelaws.
+d. For the proposed building, a no objection certificate regarding fire safety shall be
+obtained from the fire department and submitted to the authority.
+e. Parking arrangements shall be made as per the standards prescribed in these building
+byelaws for the total floor area proposed in the building (after FAR purchase).
+9.2.3 Computation of Purchasable & Premium Purchasable FAR
+The computation of purchasable FAR (PFAR) and premium purchasable FAR (PPFAR) for buildings
+across different occupancies in built-up as well as non-built-up areas is dependant on width of the
+approach road or existing right of way (ROW) and shall be as follows:
+*Note-1: Unrestricted FAR shall be availed in the increments of 0.25 times Base FAR.
+Note-2: In case of any difference in the prescribed limits of maximum permissible FAR in chapter-3
+to chapter-7 and the table above, the figures in respective chapters will prevail.
+Note-3: In case of residential plotted development for both single and multi-units, the maximum
+permissible (purchasable) FAR is 2.0 irrespective of the width of the approach road, as follows:
+109
+
+--- table 0 (11 rows × 5 cols) ---
+[#DBE5F1] | Base FAR | [#DBE5F1] | [#DBE5F1] | Maximum Permissible FAR (MFAR)
+Road Width |  | Purchasable FAR | Premium Purchasable | 
+ | (BFAR) |  |  | 
+(m) |  | (PFAR) | FAR (PPFAR) | 
+ | [#DBE5F1] |  |  | 
+[#DBE5F1] |  | [#DBE5F1] | [#DBE5F1] | 
+(1) | (2) | (3) | (4) | (5) = (2)+(3)+(4)
+Up to 12m | B1 | Up to 20% of B1 | Up to 20% of B1 | 140% of B1
+12 – 24m | B2 | Up to 50% of B2 | Up to 50% of B2 | 200% of B1
+24 – 45m | B3 | Up to 100% of B3 | Up to 150% of B3 | 350% of B1
+More than 45m | B4 | Up to 100% of B4 | Unrestricted* | Unrestricted*
+
+=== chapter 09 · gazette page 110 · pdf page 3 ===
+Note 1: In case of residential plotted development, calculation of purchasable FAR is not dependent
+on the width of the approach road and will be allowed on minimum 9-m /7.5-m or 4.0-m road as the
+case may be.
+For maximum permissible FAR in TOD zones, refer to paragraph 8.2.2.2.
+9.2.4 Permission for Purchasable & Premium Purchasable FAR
+(i) Permission for purchasable and premium purchasable FAR in built-up and non-built up areas
+shall be given on the basis of the recommendation of the technical committee constituted under
+the chairmanship of the Vice Chairman, Development Authority / Housing Commissioner, Uttar
+Pradesh Awas Vikas Parishad, in which representatives of Public Works Department, Jal Nigam,
+District Magistrate, Chief Town and Country Planner, Fire Department and representatives of
+planning and engineering departments of the concerned authority, are members.
+(ii) The said committee shall examine maps and conduct site inspection of the proposed building
+based on the following parameters.
+a. Setback,
+b. Structural safety,
+c. Fire safety,
+d. Parking arrangement,
+e. Infrastructure facilities, etc.
+(iii) The committee shall submit its report / recommendation to the Vice Chairman / Housing
+Commissioner on whether purchasable and premium purchasable FAR shall be permitted or not.
+The Vice Chairman / Housing Commissioner based on the recommendation of the committee
+shall take decision regarding the approval of purchasable and premium purchasable FAR.
+(iv) Purchasable FAR is an enabling provision and shall not be permitted to any applicant as a matter
+of right. However, application for purchasable FAR can be rejected by the authority by recording
+reasons for doing so.
+9.2.5 Computation of Fees for Purchasable & Premium Purchasable FAR
+Purchasable and Premium Purchasable FAR fee shall be calculated as per the following formula: -
+C = Le x Rc x P
+C = Charge
+Le = Proportional land requirement for purchasable/ Premium Purchasable FAR (sq.m.);
+i.e. FP ÷ FAR
+FP = Permissible Additional Floor Area (sq.m.) as per PFAR/PPFAR, as the case may be
+FAR = Permissible Floor Area Ratio as per Master Plan / Building Byelaws (Base FAR)
+110
+
+--- table 0 (7 rows × 5 cols) ---
+Plot Area (sqm) | Base FAR | [#DBE5F1] | Max. Permissible FAR (including | [#DBE5F1]
+ |  |  | purchasable FAR) | 
+≥40 - 150 | 2.00 | 2.0 |  | 
+>150 - 300 | 1.80 | 2.0 |  | 
+>300 - 500 | 1.75 | 2.0 |  | 
+>500 - 1200 | 1.50 | 2.0 |  | 
+>1200 | 1.25 | 2.0 |  | 
+
+=== chapter 09 · gazette page 111 · pdf page 4 ===
+Rc = Current rate of land
+Note: The current rate of land refers to the circle rate determined by the District Magistrate,
+where such rate is not available, the current residential rate determined by the Authority/Awas
+Vikas Parishad whichever is higher.
+P = Factor Coefficient for various land use categories.
+Factor coefficients as per land use shall be as follows: -
+Example:
+In a group housing scheme of plot area of 2000 sq.m. in non-built-up area with approach road of width
+30m. The calculation of fees for purchasable and premium purchasable FAR shall be as follows.
+9.3 Additional FAR on Green Buildings
+The Authority shall strive to promote green building concepts and shall provide following incentive in
+the form of additional FAR, free of cost, for green rated buildings.
+a) GRIHA Three star/ IGBC Silver / LEED silver or equivalent rating – 3% additional FAR on
+availed FAR.
+b) GRIHA Four star/IGBC Gold/LEED Gold or equivalent rating – 5% additional FAR on availed
+FAR.
+111
+
+--- table 0 (11 rows × 4 cols) ---
+[#DBE5F1] | Land Use Category | Factor Coefficient (P) | Factor Coefficient (P)
+Sl. |  |  | 
+ |  | Purchasable FAR | Premium Purchasable FAR
+[#DBE5F1] |  |  | 
+1 | Commercial | 0.50 | 1.0
+2 | Mixed Use | 0.45 | 0.9
+3 | Office Buildings / Institutional | 0.45 | 0.9
+4 | Hotels | 0.40 | 0.8
+5 | Residential (Plotted) | 0.40 | -
+6 | Residential (Group Housing) | 0.40 | 0.8
+7 | Community Facilities and Infrastructure | 0.20 | 0.4
+
+--- table 1 (13 rows × 8 cols) ---
+Group Housing | FAR |  | FP | Le | Rc | P | C
+Area: Non-built-up | Permis sible | Availed | [#DBE5F1] | [#DBE5F1] | Current Land Rate | [#DBE5F1] | Charge = Le x Rc x P
+ |  |  |  |  |  | Factor | 
+Plot Area: 2000 |  |  | Add. FAR x | FP ÷ Base |  |  | 
+ |  |  |  |  |  | Coefficien | 
+sqm, |  |  | Plot Area | FAR |  |  | 
+ |  |  |  |  |  | t | 
+Road Width: 30m |  |  | [#DBE5F1] | [#DBE5F1] |  |  | 
+ |  |  |  |  |  | [#DBE5F1] | 
+Base FAR | 2.5 | 2.5 | - | - |  | - | -
+Purchasable FAR | 2.5 | 2.5 | 5000sqm | 2000sqm | 35000 Rs/sqm | 0.40 | Rs 2,80,00,000
+Premium Purchasable FAR | 3.75 | 3.0 | 6000sqm | 2400sqm | 35000 Rs/sqm | 0.80 | Rs 6,72,00,000
+Total Charge |  |  |  |  |  |  | Rs 9,52,00,000
+
+=== chapter 09 · gazette page 112 · pdf page 5 ===
+c) GRIHA Five star/ IGBC Platinum/ LEED Platinum or equivalent rating – 7% additional FAR
+on availed FAR.
+Note:
+I. Additional FAR mentioned above in point a), b) and c) shall be awarded after pre-certification
+from the empanelled agency. This incentive FAR on Green Buildings shall be over and above
+the MFAR.
+II. In case that the developer fails to achieve committed rating as per pre-certification at the time
+of final occupancy, a penalty shall be imposed at the rate 2 times of the land cost as per the
+circle rates for the additional FAR for the rating not achieved.
+III. The authority shall consider certification from any agency identified/ recognised by the State/
+Central Government.
+.
+112
