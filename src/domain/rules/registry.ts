@@ -9,6 +9,54 @@
 
 import { RuleSet } from './schema';
 
+/* ---- Occupancy sets the applicability guards key on. -------------------------------
+ *
+ * Named rather than inlined so that a guard reads as the claim it makes: "this rule
+ * speaks to plotted residential" is reviewable; a list of sixteen string literals
+ * repeated at five call sites is not.
+ */
+
+/** Clause 3.2.2's telescopic ladder and Table 3.2.1's setbacks — single and multi unit. */
+const PLOTTED_RESIDENTIAL = ['res_single', 'res_multi'] as const;
+
+/**
+ * Everything rows 3(a) and 3(b) are currently applied to. Ten of these have their own
+ * printed row in the gazette and read this one anyway — that is V-003, and the guard
+ * states the breadth of the claim so the register shows it without reading `far.ts`.
+ */
+const NON_RESIDENTIAL = [
+  'com_shop', 'com_complex', 'com_mall', 'com_hotel', 'com_bazaar', 'office',
+  'inst_health', 'inst_education', 'inst_assembly',
+  'ind_light', 'ind_general', 'ind_warehouse',
+] as const;
+
+/**
+ * Clause 12.2(a)'s scope — NBC groups B, C, D, E and F, plus multi-units and group
+ * housing. Industrial, storage and hazardous are absent, and conspicuously: Clause
+ * 10.1.3(b)'s parallel list for the fire certificate names all three. V-041 disputes
+ * whether the list is closed, since the governing words are "used by the public".
+ */
+const ACCESSIBILITY_SCOPE = [
+  'com_shop', 'com_complex', 'com_mall', 'com_hotel', 'com_bazaar', 'office',
+  'inst_health', 'inst_education', 'inst_assembly',
+  'res_multi', 'res_group_housing', 'mixed_use',
+] as const;
+
+/** The occupancies for which a printed BFAR/PFAR/PPFAR row exists (`purchasableRowFor`). */
+const PRINTED_SPLIT_ROWS = [
+  'res_group_housing', 'com_bazaar', 'com_shop', 'com_complex', 'com_mall', 'com_hotel',
+  'mixed_use',
+] as const;
+
+/**
+ * Clause 13.2.3.2 names six categories; four map onto an occupancy this engine knows.
+ * The other two — armed-forces barracks, and hostels of more than 100 students — are in
+ * `SOLAR_WATER_HEATING_UNMAPPED`, so this guard is narrower than the clause.
+ */
+const SOLAR_WATER_CATEGORIES = [
+  'com_hotel', 'inst_health', 'inst_education', 'inst_assembly',
+] as const;
+
 export const RULES: RuleSet = {
   'setback.plotted-residential': {
     id: 'setback.plotted-residential',
@@ -20,6 +68,13 @@ export const RULES: RuleSet = {
       'Up to 150: 1 / 0 / 0 / 0. >150 to 300: 3 / 1.5 / 0 / 0. >300 to 500: 3 / 3 / 0 / 0. ' +
       '>500 to 1200: 4.5 / 4.5 / 1.5 / 0. >1200: 6 / 6 / 1.5 / 1.5.',
     checked: '2026-09-10',
+    consumes: ['plotArea', 'occupancy', 'buildingHeight', 'cornerPlot'],
+    // Table 3.2.1 carries a height ceiling in its own right — "three floors with stilts up
+    // to 15 meter" under 300 m², "four storeys with stilts up to 17.5-meter" above it. That
+    // is the Chapter 3 limb of V-010, and declaring it here is what puts two producers of
+    // `maxHeight` in the graph.
+    produces: ['requiredSetback', 'maxHeight'],
+    appliesWhen: { oneOf: [{ fact: 'occupancy', values: PLOTTED_RESIDENTIAL }], ranges: [{ fact: 'buildingHeight', max: 15 }] },
     ifWrong:
       'Every front setback the engine reports is derived from the wrong input. The error is largest on small plots facing wide roads, and on large plots facing narrow ones.',
   },
@@ -32,8 +87,60 @@ export const RULES: RuleSet = {
     checked: '2026-09-10',
     quote: '>15–17.5: 5 all round. >17.5–21: 6. >21–27: 7. >27–33: 8. >33–39: 9. >39–45: 10. >45–51: 11. >51: 15 front, 12 others.',
     derivedFrom: ['buildingHeight'],
+    consumes: ['buildingHeight'],
+    produces: ['requiredSetback'],
+    appliesWhen: { ranges: [{ fact: 'buildingHeight', min: 15, minInclusive: false }] },
     ifWrong:
       'Fire tender access would be assessed against the wrong figure. These setbacks are non-compoundable, so an error here cannot be corrected by a fee later.',
+  },
+
+  /**
+   * Added when the graph showed six setback tables answering one question and only two of
+   * them in the register (B-045). Chapter 3.2.4.2's flat 5 m is one of the four that had
+   * no entry at all, so a group housing scheme's setback finding carried the plotted
+   * residential rule's provenance.
+   */
+  'setback.group-housing': {
+    id: 'setback.group-housing',
+    question: 'How far must a group housing block below 15 m sit from each boundary?',
+    clause: 'Clause 3.2.4.2',
+    confidence: 'transcribed',
+    derivedFrom: ['occupancy'],
+    consumes: ['occupancy', 'buildingHeight'],
+    produces: ['requiredSetback'],
+    appliesWhen: {
+      oneOf: [{ fact: 'occupancy', values: ['res_group_housing'] }],
+      ranges: [{ fact: 'buildingHeight', max: 15 }],
+    },
+    ifWrong:
+      'Every group housing scheme below the high-rise threshold is assessed against a flat 5 m on all four faces. The figure predates the verification pass and carries no line-anchored citation, so it cannot claim the gazette.',
+  },
+
+  /**
+   * The four plot-area ladders for non-residential uses below 15 m — commercial,
+   * healthcare, educational and industrial. One entry rather than four because they are
+   * one mechanism keyed on one input, and splitting them would say more than is known.
+   */
+  'setback.non-residential': {
+    id: 'setback.non-residential',
+    question: 'How far must a shop, hospital, school or factory below 15 m sit from each boundary?',
+    clause: 'Chapter 3.2.4, with the per-use tables in Chapters 5, 6 and 7',
+    confidence: 'transcribed',
+    derivedFrom: ['plotArea', 'occupancy'],
+    consumes: ['plotArea', 'occupancy', 'buildingHeight', 'cornerPlot'],
+    produces: ['requiredSetback'],
+    appliesWhen: {
+      oneOf: [{ fact: 'occupancy', values: NON_RESIDENTIAL }],
+      ranges: [{ fact: 'buildingHeight', max: 15 }],
+    },
+    ifWrong:
+      'The envelope is wrong on every non-residential project below the high-rise threshold, and the error scales with plot size — B-005 found the commercial >3000 m² band missing entirely, giving 6 m of front setback where the gazette requires 12.',
+    challenge: {
+      id: 'V-052',
+      summary:
+        'Two of the four ladders — commercial and healthcare — were checked against the gazette on 2026-09-10 and carry that note in `setbacks.ts`. The educational and industrial ladders have never been checked against any source, and neither of the two that were carries a line-anchored citation, so none of the four may claim gazette confidence.',
+      derivedFromInstead: ['plotArea', 'occupancy', 'roadWidth'],
+    },
   },
 
   'far.telescopic-residential': {
@@ -46,6 +153,9 @@ export const RULES: RuleSet = {
       'Up to 150 — Base FAR 2.0, Max FAR 2.0. >150 to 300 — 1.8 / 2.0. >300 to 500 — 1.75 / 2.0. ' +
       '>500 to 1200 — 1.5 / 2.0. >1200 — 1.25 / 2.0.',
     checked: '2026-09-10',
+    consumes: ['plotArea', 'occupancy', 'farIncentive'],
+    produces: ['baseFar', 'ceilingFar'],
+    appliesWhen: { oneOf: [{ fact: 'occupancy', values: PLOTTED_RESIDENTIAL }] },
     ifWrong:
       'The headline figure — how much you may build — would be wrong on every plotted residential project.',
   },
@@ -61,6 +171,9 @@ export const RULES: RuleSet = {
       'Built-up 2(a): base 1.5 throughout; Max FAR 9–12m 2.0, >12–18m 3.0, >18–24m 3.0, >24–45m 5.25, >45m Unrestricted. ' +
       'Non-built-up 2(b): base 2.5 throughout; Max FAR >12–18m 5.0, >18–24m 5.0, >24–45m 8.75, >45m Unrestricted — ' +
       'and no band below 12 m, so a new layout carries no group housing on a 9 m road.',
+    consumes: ['occupancy', 'roadWidth', 'areaType', 'farIncentive'],
+    produces: ['baseFar', 'ceilingFar'],
+    appliesWhen: { oneOf: [{ fact: 'occupancy', values: ['res_group_housing'] }] },
     ifWrong: 'Scheme viability would be misstated on every group housing project.',
   },
 
@@ -71,6 +184,11 @@ export const RULES: RuleSet = {
     confidence: 'inferred',
     derivedFrom: ['roadWidth', 'areaType'],
     checked: '2026-09-10',
+    consumes: ['roadWidth', 'areaType', 'occupancy', 'farIncentive'],
+    produces: ['baseFar', 'ceilingFar'],
+    // V-003: the gazette gives each of these its own row and the engine reads one table
+    // written for shops. The guard states the breadth of that claim rather than hiding it.
+    appliesWhen: { oneOf: [{ fact: 'occupancy', values: NON_RESIDENTIAL }] },
     ifWrong:
       'Rows 3(a) and 3(b) — shops, convenience shopping and commercial units — are now read from the gazette. The same two ladders are still applied by analogy to ten other occupancies, from hotels to warehouses, each of which the gazette gives its own row.',
     challenge: {
@@ -90,6 +208,12 @@ export const RULES: RuleSet = {
     checked: '2026-09-10',
     quote:
       'Compoundable limits (16.3.3), column A (<=15 m, and multi-units up to 17.5 m, except group housing): front "25% of front setback area up to a maximum of 1.0 meter"; rear, residential "(a) Plot Size up to 500 sqm- 100% compoundable in cases where proper provisions have been made for light and ventilation. (b) Plot Size > 500 sqm - construction up to maximum 10% of the area in rear setback (in addition to permissible 40%)", others "10 percent of rear setback area"; side "Construction up to a maximum of 25% of width of side setback"; FAR "Construction up to a maximum of 10% of total permissible FAR"; height "Construction up to a maximum of 10% height from permissible limit without changing the number of floors"; units "Maximum one unit in plotted development beyond permissible limit". Column B (>15 m, and group housing, except multi-units): setbacks "10 percent of setback area (maximum up to a width of 1-meter), subject to Fire NOC" (printed as one cell spanning the front, rear and side rows); FAR the same 10%; height "-"; units "In Group Housing: Proportionate units relative to percentage of compoundable additional FAR/Purchasable FAR". Fee schedule (16.3.8): Item 1 Rs. 25/38/50/62 per sqm by plot size, x2.0 commercial, x1.5 office, x0.4 industrial, x0.5 facilities, and Item 1F "Rs. 122640 per unit"; Item 2, percent of the price of land, column A front 100/200/150/40/50, side 75/150/100/40/50, rear 50/100/75/20/25, column B all sides 100/200/150/40/50; Item 3 "Rs. 491 per sqm. and 50% of required land price for additional floor area" (982/100%, 736/75%, 196/40%, 246/50%); Item 4 basement 50/100/75/20/25 percent; Items 5-8 room dimensions Rs. 246 and Rs. 123 residential; Item 9 compound wall Rs. 123 per running metre, minimum Rs. 5000; Item 10 height "@Rs. 6132/- per running meter of height (measured as per periphery of existing building) per floor"; Item 11 layout 1.0 percent of land price on saleable area; Item 12 "two times of price of land equivalent to decrease in the area required". Land basis (16.3.7(c)): "only the residential rate of the land shall be taken into consideration".',
+    consumes: [
+      'occupancy', 'plotArea', 'buildingHeight', 'landRate', 'floorCount',
+      'requiredSetback', 'ceilingFar', 'maxHeight', 'seismicMandatory',
+      'fireClearanceRequired', 'accessibilityRequired',
+    ],
+    produces: ['compoundableLimit', 'compoundingFee', 'nonCompoundable'],
     ifWrong:
       'Every rupee figure the app shows would be wrong, and a deviation the byelaws bar outright could be presented as purchasable.',
     challenge: {
@@ -112,6 +236,14 @@ export const RULES: RuleSet = {
       '4.3.11: "Shelter Fees = 10% of [(total number of dwelling units) X (minimum EWS dwelling unit carpet area + minimum LIG dwelling unit carpet area) X Circle Rate]". ' +
       '4.3.3 minimum group-housing carpet areas: EWS =>30 – 35 sqm, LIG >35 – 45 sqm. ' +
       '4.4 Note-2: "In such affordable housing schemes, the provisions of paragraph 4.3.1 shall not be applicable, i.e. mandatory EWS and LIG requirements or shelter fee requirements shall not be applicable."',
+    consumes: ['occupancy', 'plotArea', 'affordableScheme', 'dwellingUnits', 'landRate'],
+    produces: ['ewsLigReservation', 'shelterFee'],
+    // Clause 4.3.1 binds "all housing projects … having more than one unit"; Clause 4.4
+    // Note-2 lifts it off a qualifying affordable scheme.
+    appliesWhen: {
+      oneOf: [{ fact: 'occupancy', values: ['res_multi', 'res_group_housing'] }],
+      flags: [{ fact: 'affordableScheme', is: false }],
+    },
     ifWrong:
       'A scheme of four hectares or more would be told it can buy its way out of an obligation the gazette gives it no way to buy out of, and multi-unit plotted development would be exempted from the reservation altogether.',
   },
@@ -127,6 +259,12 @@ export const RULES: RuleSet = {
       'Note-3: "The permissible front setbacks for buildings on bazaar street shall be as follows (also defined in Chapter-5)." ' +
       'Proposed width of road (metres) / Minimum open space in front (metres): 12 → 3.0, 18 → 4.5, 24 → 6.0, 30 → 6.0, 36 → 7.5, 45 → 7.5, 76 → 9.0. ' +
       'Both printings of the table are identical.',
+    consumes: ['occupancy', 'roadWidth', 'plotArea', 'buildingHeight'],
+    produces: ['requiredSetback'],
+    appliesWhen: {
+      oneOf: [{ fact: 'occupancy', values: ['com_bazaar'] }],
+      ranges: [{ fact: 'buildingHeight', max: 15 }],
+    },
     ifWrong:
       'Every bazaar-street plot would be assessed against a table written for ordinary commercial plots, which is keyed on plot area and gives an unrelated answer.',
     challenge: {
@@ -146,6 +284,9 @@ export const RULES: RuleSet = {
     checked: '2026-09-10',
     quote:
       'One BFAR column shared across four road bands, each band carrying its own PFAR, PPFAR and MFAR. Built-up: commercial units up to 100 sqm BFAR 1.5, MFAR 2.1 / 3.0 / 5.25 / UR; units above 100 sqm same base, MFAR 1.5 / 3.0 / 5.25 / UR; shopping malls BFAR 2.0, MFAR 2.0 / 4.0 / 7.0 / UR. Non-built-up: units up to 100 sqm BFAR 1.75, MFAR 2.45 / 3.6 / 6.1 / UR; units above 100 sqm MFAR 1.75 / 3.6 / 6.1 / UR; malls BFAR 3.0, MFAR 3.0 / 6.0 / 10.5 / UR. MFAR = BFAR + PFAR + PPFAR on all 24 band checks.',
+    consumes: ['occupancy', 'roadWidth', 'areaType', 'plotArea', 'affordableScheme', 'baseFar'],
+    produces: ['purchasableSplit'],
+    appliesWhen: { oneOf: [{ fact: 'occupancy', values: PRINTED_SPLIT_ROWS }] },
     ifWrong:
       'The engine treats everything above base FAR as one purchasable lump. Chapter 9 prices purchasable and premium purchasable differently, so the split decides the charge.',
     challenge: {
@@ -167,6 +308,9 @@ export const RULES: RuleSet = {
       'MU Built-up Area: base 2.0; Max FAR Upto 12m 2.0, >12–24m 4.0, >24–45m 5.25 as printed, '
       + '>45m Unrestricted. MU non-built-up Area: base 2.5; Max FAR 2.5 / 5.0 / 6.25 / Unrestricted. '
       + 'Chapter 3\'s matrix prints no mixed-use row at all, so this is the only table for the use.',
+    consumes: ['occupancy', 'roadWidth', 'areaType', 'mixedUseLocation', 'farIncentive'],
+    produces: ['baseFar', 'ceilingFar'],
+    appliesWhen: { oneOf: [{ fact: 'occupancy', values: ['mixed_use'] }] },
     ifWrong:
       'Mixed use was assessed on the commercial ladder written for shops — base 1.5 built-up against the 2.0 Chapter 8 gives it — so every mixed-use project was told it had roughly a quarter less base floor area than the byelaws allow.',
     challenge: {
@@ -188,6 +332,9 @@ export const RULES: RuleSet = {
       'Minimum right of way 12m — 150% of base FAR. >12–24m — 250%. >24–45m — 350%. >45m — Unrestricted. '
       + 'Base FAR in every row is "As per byelaws". Note (2): the charges for purchasable FAR and '
       + 'premium purchasable FAR shall be the same.',
+    consumes: ['roadWidth', 'todZone'],
+    produces: ['ceilingFar'],
+    appliesWhen: { flags: [{ fact: 'todZone', is: true }] },
     ifWrong:
       'Nothing in the app is decided by this yet. The ladder is read and tested; what is missing is any way for a project to say it sits in a TOD zone.',
     challenge: {
@@ -210,6 +357,8 @@ export const RULES: RuleSet = {
       + 'roads with ROW 9m. — and Note 1: In case of residential plotted development, calculation of '
       + 'purchasable FAR is not dependent on the width of the approach road and will be allowed on '
       + 'minimum 9-m /7.5-m or 4.0-m road as the case may be.',
+    consumes: ['roadWidth', 'occupancy', 'areaType'],
+    produces: ['purchaseGateOpen'],
     ifWrong:
       'This decides whether the headroom between base FAR and the ceiling is reachable or dead. Applied '
       + 'too widely it bars purchases the byelaws allow — which is what B-027 found — and applied too '
@@ -228,6 +377,12 @@ export const RULES: RuleSet = {
       + 'Factor coefficients: Commercial 0.50 / 1.0; Mixed Use 0.45 / 0.9; Office Buildings / '
       + 'Institutional 0.45 / 0.9; Hotels 0.40 / 0.8; Residential (Plotted) 0.40 / –; Residential '
       + '(Group Housing) 0.40 / 0.8; Community Facilities and Infrastructure 0.20 / 0.4.',
+    consumes: [
+      'occupancy', 'plotArea', 'roadWidth', 'areaType', 'landRate',
+      'baseFar', 'ceilingFar', 'purchasableSplit', 'purchaseGateOpen', 'greenCertified',
+    ],
+    produces: ['purchaseFee'],
+    appliesWhen: { flags: [{ fact: 'purchaseGateOpen', is: true }] },
     ifWrong:
       'The charge is the whole reason purchasable FAR is a decision rather than an entitlement. The '
       + 'gazette prints its own worked example, which the engine reproduces to the rupee, so the '
@@ -259,6 +414,13 @@ export const RULES: RuleSet = {
       + '7%. Note I: awarded after pre-certification from the empanelled agency; this incentive FAR on '
       + 'Green Buildings shall be over and above the MFAR. Note II: a penalty at 2 times of the land '
       + 'cost as per the circle rates for the additional FAR for the rating not achieved.',
+    // Deliberately NOT consuming `ceilingFar`. Clause 9.3 states the incentive as a
+    // percentage "on availed FAR" and grants it "over and above the MFAR", so the
+    // percentage is knowable without the ceiling. Reading the ceiling here would put a
+    // cycle in the graph — the FAR rules consume the incentive — for no gain in fidelity.
+    consumes: ['greenRating', 'greenCertified'],
+    produces: ['farIncentive'],
+    appliesWhen: { oneOf: [{ fact: 'greenRating', values: ['silver', 'gold', 'platinum'] }] },
     ifWrong:
       'This is the one FAR addition that sits above the maximum permissible FAR rather than inside it, '
       + 'so treating it as part of the ceiling would silently withhold up to 7% of the floor area a '
@@ -286,6 +448,8 @@ export const RULES: RuleSet = {
       + 'facilities with land cover of more than 500 square meters. Chapter 3 restates the same rule '
       + 'and agrees on every figure. Peer review above 50 m (11.3); structural audit in year 10 and '
       + 'every 5 years thereafter for high-rise and special buildings (11.5).',
+    consumes: ['buildingHeight', 'occupancy', 'floorCount', 'groundCoverage'],
+    produces: ['seismicMandatory', 'peerReviewRequired', 'structuralAuditSchedule'],
     ifWrong:
       'Clause 16.3.2(vi) hangs off this: it makes construction non-compoundable where earthquake '
       + 'measures are mandatory. Getting the trigger wrong either bars compounding that the byelaws '
@@ -313,6 +477,9 @@ export const RULES: RuleSet = {
       'These regulations are applicable to all buildings and facilities used by the public such as '
       + 'educational, institutional, assembly, commercial, business, mercantile buildings, multi-units '
       + 'and group housing. It shall not apply to single unit residential dwellings.',
+    consumes: ['occupancy', 'buildingHeight'],
+    produces: ['accessibilityRequired'],
+    appliesWhen: { oneOf: [{ fact: 'occupancy', values: ACCESSIBILITY_SCOPE }] },
     ifWrong:
       'Alone among the three mandatory-measure chapters this one sets no height, floor or area '
       + 'threshold, so it reaches a single-storey shop that neither the fire nor the seismic trigger '
@@ -340,6 +507,8 @@ export const RULES: RuleSet = {
       + 'Engineer: structural details and calculations on plot up to 500 sq.m and up to 5 storeys or '
       + '16.0 m. Structural engineer: all buildings. Landscape architect: 5 hectares and above, 2 in '
       + 'metro cities. One site engineer per 2500 sqm supervised.',
+    consumes: ['plotArea', 'buildingHeight', 'occupancy', 'builtUpArea', 'floorCount'],
+    produces: ['licensedRole', 'siteEngineerRequired'],
     ifWrong:
       'Clause 14.1 makes this a gate — work not planned and supervised by licensed persons is work '
       + 'for which permission cannot be sought. Naming the wrong professional wastes a fee and a '
@@ -368,6 +537,8 @@ export const RULES: RuleSet = {
       + 'power load equivalent to all charging points operating simultaneously at a safety factor '
       + 'of 1.25. Norms of provisions: 4Ws 1 SC each 3 EVs, 1 FC each 10 EVs; 3Ws 1 SC each 2 EVs; '
       + '2Ws 1 SC each 2 EVs; PV (Buses) 1 FC each 10 EVs.',
+    consumes: ['occupancy', 'plotArea', 'parkingRequirement'],
+    produces: ['evChargingProvision'],
     ifWrong:
       'The load figure decides the DISCOM sanction the premises applies for, which is a long-lead '
       + 'item on any commercial project. Reading the EV share as a charger count — which the engine '
@@ -396,6 +567,8 @@ export const RULES: RuleSet = {
       + '465-930 sqm 3.0 x 3.4 m; above 930 sqm an additional room. Min 1.2m x 1.83m per TSP beside '
       + 'the entrance facility; 100 mm encased conduit to the MDF room. No fee will be charged for '
       + 'IBS/FTTx Network.',
+    consumes: ['plotArea', 'builtUpArea', 'ibsCoveredArea'],
+    produces: ['telecomRoomSpace', 'ibsNocRequired', 'occupancyCertificateGate'],
     ifWrong:
       'This is a clearance most applicants do not know exists, gating the same certificate the fire '
       + 'NOC gates, and Clause 18.5.1.1(b) puts the duty to apply on the applicant rather than the '
@@ -417,6 +590,10 @@ export const RULES: RuleSet = {
     clause: 'Chapter 15.3.2 and the occupancy chapters',
     confidence: 'inferred',
     derivedFrom: ['occupancy'],
+    consumes: ['occupancy', 'areaType', 'roadWidth', 'plotArea', 'buildingHeight', 'hotelRooms'],
+    // Clause 4.1.4's limb of V-010 — the ceiling keyed on unit count, not plot size — is
+    // `OccupancyDefinition.maxHeightM`, and this is the rule that reports it.
+    produces: ['useAllowed', 'minRoadWidth', 'minPlotArea', 'maxHeight'],
     ifWrong:
       'The permissibility verdict — the first thing the app says — would be wrong. This is the newest and least sourced part of the engine: sixteen occupancies were defined in one pass to widen coverage.',
     challenge: {
@@ -432,6 +609,8 @@ export const RULES: RuleSet = {
     clause: 'Para 3.3.4.3 (Parking Standards)',
     confidence: 'inferred',
     derivedFrom: ['occupancy'],
+    consumes: ['occupancy', 'builtUpArea', 'dwellingUnits', 'unitCarpetArea'],
+    produces: ['parkingRequirement'],
     ifWrong: 'Parking provision would be misstated, which is a common cause of sanction refusal.',
     challenge: {
       id: 'V-032',
@@ -458,6 +637,9 @@ export const RULES: RuleSet = {
       + 'not mandatory if the rainwater flows into the scheme\'s collective recharge network; '
       + 'above 300 square meters "it shall be mandatory for the building owner to install '
       + 'rainwater harvesting system himself".',
+    consumes: ['plotArea', 'builtUpArea'],
+    produces: ['rainwaterHarvestingRequired'],
+    appliesWhen: { ranges: [{ fact: 'plotArea', min: 300 }] },
     ifWrong:
       'The engine applied "more than 300 m²" against a clause that reads "300 square meters and '
       + 'more area", so a plot standing at exactly 300 m² was excused a mandatory provision — and '
@@ -476,6 +658,9 @@ export const RULES: RuleSet = {
       'All plots having size 500 sqm and above shall install solar photovoltaic power generation '
       + 'system. This should also be encouraged for plots smaller than 500 sqm. The power '
       + 'generated may be used for in-house utilization or for transfer to the grid.',
+    consumes: ['plotArea'],
+    produces: ['solarPvRequired'],
+    appliesWhen: { ranges: [{ fact: 'plotArea', min: 500 }] },
     ifWrong:
       'This is the plot-size trigger the engine used to require solar *water heating* against. '
       + 'Getting it wrong names the wrong system on the wrong buildings — and a photovoltaic '
@@ -498,6 +683,9 @@ export const RULES: RuleSet = {
       + 'buildings (auditorium, community halls, wedding/banquet halls, etc); (e) barracks of '
       + 'armed forces/paramilitary forces and police forces; (f) hostels for schools, colleges, '
       + 'and training centres with more than 100 students.',
+    consumes: ['occupancy'],
+    produces: ['solarWaterHeatingRequired'],
+    appliesWhen: { oneOf: [{ fact: 'occupancy', values: SOLAR_WATER_CATEGORIES }] },
     ifWrong:
       'The trigger is the building category and nothing else — no plot size, no built-up area, no '
       + 'height. Keying it on plot area, as the engine did, exempts a small hotel and burdens a '
@@ -527,6 +715,8 @@ export const RULES: RuleSet = {
       + 'housing) and all non-residential buildings with an area of more than 500 square meters, '
       + 'two types of dustbins (biodegradable and non-biodegradable) shall be provided on the '
       + 'ground floor near the entrance of the plot.',
+    consumes: ['occupancy', 'builtUpArea'],
+    produces: ['solidWasteProvision'],
     ifWrong:
       'Small, and cheap to comply with — but it is a submission item, and the 500 m² qualifier '
       + 'attaches to non-residential buildings only, so reading it across residential as well '
@@ -550,6 +740,8 @@ export const RULES: RuleSet = {
       + 'minimum of 20% of the total area where trees shall be planted at the rate of 125 trees '
       + 'per hectare. Environmental condition, Category-A and above: a minimum of 1 tree for '
       + 'every 80 sqm of land.',
+    consumes: ['plotArea', 'occupancy'],
+    produces: ['treePlantingRequired'],
     ifWrong:
       'The landscape plan is a submission requirement checked again before the completion '
       + 'certificate, and the count is one of the few figures in Chapter 13 an app can compute '
@@ -587,6 +779,8 @@ export const RULES: RuleSet = {
       + 'time to time. If the developer wishes to split the project into phases, developer has to '
       + 'produce Environment Clearance from SEIAA, prior to the approval of first phase of the '
       + 'project." 13.9: "For all buildings above 50,000 sqm built up area".',
+    consumes: ['occupancy', 'plotArea', 'builtUpArea'],
+    produces: ['environmentalCategory', 'treePlantingRequired', 'occupancyCertificateGate'],
     ifWrong:
       'The Environment Clearance is the one thing in Chapter 13 that stops a development '
       + 'permission being issued at all, and it was not modelled: every project above 20,000 m² '
@@ -620,6 +814,8 @@ export const RULES: RuleSet = {
       'educational, institutional, assembly, business, mercantile, industrial, storage and hazardous ' +
       'buildings as defined in National Building Code as amended from time to time. (c) Mixed ' +
       'occupancies with any of the aforesaid occupancies having more than 500 square meter covered area.',
+    consumes: ['buildingHeight', 'occupancy', 'builtUpArea', 'groundCoverage', 'floorCount', 'hasStilt'],
+    produces: ['specialBuilding', 'fireClearanceRequired', 'occupancyCertificateGate'],
     ifWrong:
       'A missing Fire Safety Certificate is one of the thirteen offences at Clause 16.3.2 that cannot be compounded at any price, and without it no occupancy certificate can issue. Under-requiring it builds something that can never be regularised.',
     challenge: {
@@ -642,6 +838,8 @@ export const RULES: RuleSet = {
       'Access to the building shall mean the availability of means of approach to each floor of the ' +
       'building or to nearest point of the building in case of emergency-situation for firefighting ' +
       'and/or rescue operations at least from one side like-road or permanent open space etc.',
+    consumes: ['buildingHeight', 'roadWidth', 'requiredSetback'],
+    produces: ['fireAccessRequirement'],
     ifWrong:
       'The engine previously blocked any building over 15 m on a road under 12 m as non-negotiable, citing a clause that is about mixed-use development. No such rule is in the gazette, and a fabricated block tells someone their project cannot be sanctioned when the byelaws do not say so.',
   },

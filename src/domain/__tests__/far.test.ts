@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { PURCHASABLE_FAR_MIN_ROAD_WIDTH, resolveBaseFar } from '../far';
+import { COMMERCIAL_MAX_FAR, PURCHASABLE_FAR_MIN_ROAD_WIDTH, resolveBaseFar } from '../far';
 
 describe('resolveBaseFar — telescopic residential', () => {
   const far = (plotArea: number, roadWidth = 12) =>
@@ -164,13 +164,48 @@ describe('Max FAR is keyed on area type as well as road width', () => {
   });
 
   // Gazette rows 3(a)/3(b): shops, built-up 2.1 / 3.0 / 5.0, non-built-up 2.45 / 3.5 / 6.0.
+  // Read off the ladder itself, because what `resolveBaseFar` returns is the lower of this
+  // and the per-chapter printed row — see the clamp test below.
   it.each([[12, 2.1, 2.45], [20, 3.0, 3.5], [30, 5.0, 6.0]])(
-    'shops on a %s m road top out at %s built-up and %s in a new layout',
+    'Chapter 3 rows 3(a)/3(b) print %s m → %s built-up and %s in a new layout',
     (road, builtUp, newLayout) => {
       const at = (areaType: 'built_up' | 'non_built_up') =>
-        resolveBaseFar({ occupancy: 'com_shop', plotArea: 800, roadWidth: road, areaType }).ceilingFar;
+        COMMERCIAL_MAX_FAR[areaType].find(
+          (b) => road > b.overMoreThan && road <= b.upToAndIncluding)!.maxFar;
       expect(at('built_up')).toBe(builtUp);
       expect(at('non_built_up')).toBe(newLayout);
     },
   );
+
+  /**
+   * V-053 / B-046 — where the two chapters disagree, the lower governs, in BOTH directions.
+   *
+   * `CROSS_CHAPTER_MAX_FAR_CONFLICTS` enumerates six bands where Chapter 3 is the lower of
+   * the two and the engine keeps it. Nobody had enumerated the bands where Chapter 3 is the
+   * HIGHER one, and there the engine kept it too — so a commercial unit over 100 m² on a
+   * 12 m road was given a ceiling of 2.1 where Clause 5.2.5 prints 1.5, and a bazaar shop
+   * the same, against the engine's own stated policy. The conflict query in
+   * `rules/conflicts.ts` found these; this test pins the direction.
+   */
+  it.each([
+    ['com_shop', 800, 'built_up', 1.5, 2.1],
+    ['com_shop', 800, 'non_built_up', 1.75, 2.45],
+    ['com_bazaar', 400, 'built_up', 1.5, 2.1],
+    ['com_bazaar', 400, 'non_built_up', 1.75, 2.45],
+  ] as const)(
+    '%s on a 12 m road takes the chapter row\'s %s, not Chapter 3\'s %s',
+    (occupancy, plotArea, areaType, printed, chapter3) => {
+      const r = resolveBaseFar({ occupancy, plotArea, roadWidth: 12, areaType });
+      expect(r.ceilingFar).toBe(printed);
+      expect(r.ceilingFar).toBeLessThan(chapter3);
+      expect(r.caveats.join(' ')).toMatch(/V-053/);
+    },
+  );
+
+  it('leaves the ceiling alone where Chapter 3 is already the lower of the two', () => {
+    // >24-45 m built-up: Chapter 3 prints 5.0 and Clause 5.2.5 prints 5.25 (V-016).
+    const r = resolveBaseFar({ occupancy: 'com_shop', plotArea: 800, roadWidth: 30, areaType: 'built_up' });
+    expect(r.ceilingFar).toBe(5.0);
+    expect(r.caveats.join(' ')).not.toMatch(/V-053/);
+  });
 });

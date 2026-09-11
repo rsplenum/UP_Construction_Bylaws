@@ -126,10 +126,39 @@ assertContiguousLadder('INDUSTRIAL_LADDER', INDUSTRIAL_LADDER);
 assertContiguousLadder('HIGH_RISE_LADDER', HIGH_RISE_LADDER);
 assertContiguousLadder('COMMERCIAL_LADDER', COMMERCIAL_LADDER);
 
+/**
+ * Table 3.2.1's own height ceiling, keyed on plot size.
+ *
+ * Clause 3.2.4.1: "for all single/multi-units less than 300 square meters plot size,
+ * three floors with stilts up to 15 meter is allowed and on plots above 300 square
+ * meters, four storeys with stilts up to 17.5-meter height is allowed."
+ *
+ * This is the Chapter 3 limb of V-010, and it is exported because `findings.ts` needs it:
+ * the ceiling reported to the user was `OccupancyDefinition.maxHeightM` alone — Clause
+ * 4.1.4's limb, keyed on unit count — so a multi-unit on a 200 m² plot was cleared to
+ * 17.5 m where this table allows 15 (B-044). Returns null for a use Table 3.2.1 does not
+ * cover, which is every use but plotted residential.
+ */
+export function plottedHeightCeiling(occupancy: OccupancyId, plotArea: number): number | null {
+  if (getOccupancy(occupancy).setbackTable !== 'plotted_residential') return null;
+  const resolved = resolveBand(PLOTTED_RESIDENTIAL_LADDER, Math.max(0, plotArea));
+  return (resolved.ok ? resolved.band : PLOTTED_RESIDENTIAL_LADDER[0]).maxHeight;
+}
+
 /** Height, in metres, at or below which a building is not a high-rise. */
 export const HIGH_RISE_THRESHOLD_M = 15;
 
 export interface RequiredSetbacks extends SetbackSet {
+  /**
+   * The register entry these figures came from.
+   *
+   * Six different tables can answer this question and `findings.ts` used to stamp every
+   * answer with `setback.plotted-residential`, so a 25 m warehouse assessed on the
+   * progressive high-rise ladder was reported at that rule's confidence and carried none
+   * of its own (B-045). Provenance has to travel with the number, not with the code
+   * branch that asked for it.
+   */
+  readonly rule: string;
   readonly isHighRise: boolean;
   readonly bandLabel: string;
   readonly clauseRef: string;
@@ -159,6 +188,7 @@ export function resolveRequiredSetbacks(input: {
   let set: SetbackSet;
   let bandLabel: string;
   let clauseRef: string;
+  let rule = 'setback.plotted-residential';
   let typology = definition.label;
   let maxHeight = definition.maxHeightM;
   let maxFloors = '—';
@@ -182,6 +212,7 @@ export function resolveRequiredSetbacks(input: {
     set = { front: band.front, rear: rest.rear, side1: rest.side1, side2: rest.side2 };
     bandLabel = band.label;
     clauseRef = 'Clause 5.1.5 (bazaar street front open space), with Clause 3.2.4 for the other faces';
+    rule = 'setback.bazaar-street';
     typology = 'Bazaar street';
     if (!resolved.ok) {
       caveats.push(`Road width ${roadWidth} m could not be matched to a bazaar-street band.`);
@@ -200,6 +231,7 @@ export function resolveRequiredSetbacks(input: {
     set = { front: band.front, rear: band.rear, side1: band.side1, side2: band.side2 };
     bandLabel = band.label;
     clauseRef = 'Clause 3.2.4.9 (Progressive High-Rise Setbacks)';
+    rule = 'setback.high-rise';
     maxHeight = band.upToAndIncluding;
     maxFloors = 'Governed by the fire NOC and structural clearance';
     note = 'Continuous fire-tender movement space is required on all four sides. These setbacks cannot be compounded at any fee.';
@@ -208,6 +240,7 @@ export function resolveRequiredSetbacks(input: {
     set = { front: 5, rear: 5, side1: 5, side2: 5 };
     bandLabel = 'Group housing below 15 m';
     clauseRef = 'Clause 3.2.4.2';
+    rule = 'setback.group-housing';
     maxFloors = 'Stilt plus four storeys below the high-rise threshold';
   } else {
     const ladder = AREA_LADDERS[definition.setbackTable] ?? PLOTTED_RESIDENTIAL_LADDER;
@@ -240,6 +273,7 @@ export function resolveRequiredSetbacks(input: {
         : definition.setbackTable === 'healthcare' ? 'Chapter 6 (Healthcare Setbacks)'
         : definition.setbackTable === 'educational' ? 'Chapter 6 (Educational Setbacks)'
         : 'Chapter 7 (Industrial Setbacks)';
+      rule = 'setback.non-residential';
       maxFloors = 'Governed by road width and FAR';
     }
   }
@@ -253,6 +287,7 @@ export function resolveRequiredSetbacks(input: {
 
   return {
     ...set,
+    rule,
     isHighRise,
     bandLabel,
     clauseRef,

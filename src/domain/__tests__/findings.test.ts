@@ -163,3 +163,54 @@ describe('B-031 — the purchasable FAR charge on the finding itself', () => {
     expect(commercial?.money?.amount).toBeGreaterThan(2_500 * 35_000 * 0.4);
   });
 });
+
+/**
+ * B-044 — the height ceiling is the stricter of the two clauses that give one.
+ *
+ * V-010 records that Clause 3.2.4.1 keys the plotted-residential ceiling on plot size and
+ * Clause 4.1.4 on unit count, and that the engine applies the lower. `setbacks.ts` computed
+ * it; `findings.ts` reported `occupancy.maxHeightM` alone and so gave the laxer figure on
+ * every plot under 300 m². Nothing covered a project where the two disagree, which is the
+ * only case V-010 is about.
+ */
+describe('B-044 — two clauses give the height ceiling and the stricter governs', () => {
+  const at = (occupancy: ProjectState['occupancy'], plotArea: number, buildingHeight: number) =>
+    assessProject({
+      ...DEFAULT_PROJECT, occupancy, plotArea, plotFrontage: 10, plotDepth: plotArea / 10,
+      roadWidth: 12, buildingHeight, proposedBuiltUpArea: plotArea,
+    }).findings.find((f) => f.id === 'height');
+
+  it('caps a multi-unit on a 200 m² plot at 15 m, not Clause 4.1.4\'s 17.5', () => {
+    const finding = at('res_multi', 200, 17);
+    expect(finding?.status).toBe('blocked');
+    expect(finding?.required).toBe('≤ 15 m');
+    expect(finding?.detail).toMatch(/Clause 3\.2\.4\.1/);
+    expect(finding?.fix?.patch.buildingHeight).toBe(15);
+  });
+
+  it('caps a single unit on a 400 m² plot at 15 m, which is Clause 4.1.4\'s limb', () => {
+    const finding = at('res_single', 400, 17);
+    expect(finding?.status).toBe('blocked');
+    expect(finding?.required).toBe('≤ 15 m');
+  });
+
+  it('names both clauses whenever they differ, rather than resolving them silently', () => {
+    expect(at('res_multi', 200, 12)?.detail).toMatch(/V-010/);
+    expect(at('res_single', 400, 12)?.detail).toMatch(/V-010/);
+  });
+
+  it('says nothing about a split where the two clauses agree', () => {
+    // A multi-unit above 300 m²: both clauses give 17.5.
+    const finding = at('res_multi', 400, 12);
+    expect(finding?.status).toBe('ok');
+    expect(finding?.detail).not.toMatch(/V-010/);
+    expect(finding?.required).toBe('≤ 17.5 m');
+  });
+
+  it('leaves a use Table 3.2.1 does not cover on its own ceiling', () => {
+    // Group housing has no ceiling at all (Clause 4.2.4) and no plotted-residential band.
+    const finding = at('res_group_housing', 2000, 40);
+    expect(finding?.status).toBe('ok');
+    expect(finding?.required).toBe('Governed by road width and fire clearance');
+  });
+});

@@ -14,7 +14,7 @@
  * Adding a rule means adding a finding here, and it appears everywhere at once.
  */
 
-import { assessSetbackFaces, resolveRequiredSetbacks, HIGH_RISE_THRESHOLD_M, SetbackFace } from './setbacks';
+import { assessSetbackFaces, resolveRequiredSetbacks, plottedHeightCeiling, HIGH_RISE_THRESHOLD_M, SetbackFace } from './setbacks';
 import { PURCHASABLE_FAR_MIN_ROAD_WIDTH, resolveBaseFar } from './far';
 import { assessCompounding, compoundableLimits } from './compounding';
 import { assessPurchaseFee, splitPurchasedFar } from './purchasable-fee';
@@ -232,7 +232,7 @@ export function assessProject(project: ProjectState): Assessment {
       detail: far.caveats.join(' ') || 'The road width falls below every FAR band for this occupancy.',
       clause: far.clauseRef,
       nonNegotiable: true,
-    }, 'far.telescopic-residential'));
+    }, far.rule));
   } else if (proposedArea <= far.effectiveBuiltUpArea + 0.01) {
     findings.push(sourced({
       id: 'far',
@@ -244,7 +244,7 @@ export function assessProject(project: ProjectState): Assessment {
       proposed: `${sqm(proposedArea)} (FAR ${round(proposedFar, 2)})`,
       working: far.workings,
       clause: far.clauseRef,
-    }, 'far.telescopic-residential'));
+    }, far.rule));
   } else if (proposedArea <= far.maxPermissibleBuiltUpArea + 0.01) {
     const extra = proposedArea - far.effectiveBuiltUpArea;
     // Clause 9.2.5 is C = Le × Rc × P, and Le is FP ÷ Base FAR — not FP. Charging the floor
@@ -307,7 +307,7 @@ export function assessProject(project: ProjectState): Assessment {
       clause: 'Chapter 9.2.3 (Ceiling on Aggregate FAR)',
       nonNegotiable: true,
       fix: { label: `Clamp to the ${sqm(far.maxPermissibleBuiltUpArea)} ceiling`, patch: { proposedBuiltUpArea: Math.floor(far.maxPermissibleBuiltUpArea) } },
-    }, 'far.telescopic-residential'));
+    }, far.rule));
   }
 
   if (far.purchasableFar === 0 && roadWidth < PURCHASABLE_FAR_MIN_ROAD_WIDTH && far.baseFar > 0) {
@@ -318,7 +318,7 @@ export function assessProject(project: ProjectState): Assessment {
       headline: `You can't buy extra floor area here — that needs a ${PURCHASABLE_FAR_MIN_ROAD_WIDTH} m road.`,
       detail: `Purchasable FAR is barred below a ${PURCHASABLE_FAR_MIN_ROAD_WIDTH} m right of way; the abutting road is ${roadWidth} m.`,
       clause: 'Chapter 9.2.1',
-    }, 'far.telescopic-residential'));
+    }, 'far.purchase-gate'));
   }
 
   // ---- 3. Where can it sit? -----------------------------------------------------
@@ -361,7 +361,7 @@ export function assessProject(project: ProjectState): Assessment {
       required: `F ${required.front} · R ${required.rear} · S ${required.side1}/${required.side2} m`,
       proposed: `F ${project.frontSetbackProvided} · R ${project.rearSetbackProvided} · S ${project.side1Provided}/${project.side2Provided} m`,
       clause: required.clauseRef,
-    }, 'setback.plotted-residential'));
+    }, required.rule));
   } else {
     const worst = violations.length > 0 ? violations : compoundable;
     const names = worst.map((f) => `${FACE_LABEL[f.face]} short by ${f.deficitM} m`).join(', ');
@@ -388,7 +388,7 @@ export function assessProject(project: ProjectState): Assessment {
           side2Provided: required.side2,
         },
       },
-    }, 'setback.plotted-residential'));
+    }, required.rule));
   }
 
   // Does anything actually fit inside the setbacks?
@@ -405,22 +405,34 @@ export function assessProject(project: ProjectState): Assessment {
       proposed: `${round(Math.max(0, buildableWidth))} m × ${round(Math.max(0, buildableDepth))} m`,
       clause: 'Chapter 3.3 (Room Dimensions)',
       nonNegotiable: true,
-    }, 'setback.plotted-residential'));
+    }, required.rule));
   }
 
   // ---- 4. How tall? -------------------------------------------------------------
+  // V-010: two clauses give this ceiling and they disagree. Clause 4.1.4 keys it on unit
+  // count — `occupancy.maxHeightM` — and Clause 3.2.4.1's Table 3.2.1 keys it on plot
+  // size. A multi-unit on a 200 m² plot is 17.5 m by the first and 15 m by the second.
+  // Standing rule 4 applies and the stricter governs. The engine had been reporting the
+  // occupancy limb alone, which is the laxer one on every plot under 300 m² (B-044).
   const isHighRise = height > HIGH_RISE_THRESHOLD_M;
-  if (Number.isFinite(occupancy.maxHeightM) && height > occupancy.maxHeightM) {
+  const plotBandCeiling = plottedHeightCeiling(project.occupancy, plotArea);
+  const heightCeiling = plotBandCeiling === null
+    ? occupancy.maxHeightM
+    : Math.min(occupancy.maxHeightM, plotBandCeiling);
+  const ceilingSplit = plotBandCeiling !== null && plotBandCeiling !== occupancy.maxHeightM;
+  if (Number.isFinite(heightCeiling) && height > heightCeiling) {
     findings.push(sourced({
       id: 'height',
       topic: 'height',
       status: 'blocked',
-      headline: `A ${noun(occupancy.plain)} can't go above ${occupancy.maxHeightM} m. You've drawn ${height} m.`,
-      detail: `${occupancy.label} carries a statutory height ceiling of ${occupancy.maxHeightM} m.`,
-      required: `≤ ${occupancy.maxHeightM} m`,
+      headline: `A ${noun(occupancy.plain)} can't go above ${heightCeiling} m. You've drawn ${height} m.`,
+      detail: ceilingSplit
+        ? `Two clauses give this ceiling and they disagree. Clause 4.1.4 allows ${occupancy.maxHeightM} m for ${occupancy.label.toLowerCase()}; Clause 3.2.4.1 allows ${plotBandCeiling} m on a ${sqm(plotArea)} plot. The stricter governs (V-010).`
+        : `${occupancy.label} carries a statutory height ceiling of ${heightCeiling} m.`,
+      required: `≤ ${heightCeiling} m`,
       proposed: `${height} m`,
-      clause: 'Chapter 3.2.4',
-      fix: { label: `Cap the height at ${occupancy.maxHeightM} m`, patch: { buildingHeight: occupancy.maxHeightM } },
+      clause: ceilingSplit ? 'Clause 3.2.4.1 and Clause 4.1.4 — the stricter applied' : 'Chapter 3.2.4',
+      fix: { label: `Cap the height at ${heightCeiling} m`, patch: { buildingHeight: heightCeiling } },
     }, 'occupancy.thresholds'));
   } else {
     findings.push(sourced({
@@ -430,12 +442,14 @@ export function assessProject(project: ProjectState): Assessment {
       headline: isHighRise
         ? `At ${height} m this is a high-rise, which is allowed here but brings extra fire rules.`
         : `${height} m is within what this use and road allow.`,
-      detail: Number.isFinite(occupancy.maxHeightM)
-        ? `Ceiling ${occupancy.maxHeightM} m for ${occupancy.label}; proposed ${height} m.`
-        : `No fixed ceiling for ${occupancy.label}; height is governed by road width and fire clearance. Proposed ${height} m.`,
-      required: Number.isFinite(occupancy.maxHeightM) ? `≤ ${occupancy.maxHeightM} m` : 'Governed by road width and fire clearance',
+      detail: !Number.isFinite(heightCeiling)
+        ? `No fixed ceiling for ${occupancy.label}; height is governed by road width and fire clearance. Proposed ${height} m.`
+        : ceilingSplit
+          ? `Ceiling ${heightCeiling} m — the stricter of Clause 4.1.4's ${occupancy.maxHeightM} m and Clause 3.2.4.1's ${plotBandCeiling} m on a ${sqm(plotArea)} plot (V-010). Proposed ${height} m.`
+          : `Ceiling ${heightCeiling} m for ${occupancy.label}; proposed ${height} m.`,
+      required: Number.isFinite(heightCeiling) ? `≤ ${heightCeiling} m` : 'Governed by road width and fire clearance',
       proposed: `${height} m`,
-      clause: 'Chapter 3.2.4',
+      clause: ceilingSplit ? 'Clause 3.2.4.1 and Clause 4.1.4 — the stricter applied' : 'Chapter 3.2.4',
     }, 'occupancy.thresholds'));
   }
 

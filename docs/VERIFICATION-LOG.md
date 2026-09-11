@@ -4,11 +4,17 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: fourteen transcriptions verified exactly right, and forty-three real bugs found.**
+**Headline: fourteen transcriptions verified exactly right, and forty-six real bugs found.**
 
 **All eighteen chapters have now been read against the gazette.** What remains unread is the
 appendices — and Appendices 8, 9, 10, 11 and 14 are already named by the structural and
 licensing rules, so they are not a long tail: they are forms the engine cites and has never seen.
+
+**The rule graph is built** (`docs/RULE-GRAPH-PLAN.md`, outcome section). Three of the
+forty-six bugs — B-044, B-045 and B-046 — were found by it rather than by reading: two from
+the act of declaring what each rule reads and establishes, and one by the conflict query
+itself. That is the first time anything in this log was found by a machine reading the rules
+rather than a person reading the gazette.
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -868,9 +874,182 @@ obligation is on the building plan, not on the hardware.
 
 *Fixed: `src/domain/telecom.ts` and a procedure finding on every assessment.*
 
+### B-044 — The height ceiling reported the laxer of the two clauses that give one
+Found by the rule-graph declaration, before the conflict query ran a line. Declaring
+`produces: ['maxHeight']` on two rules made it a question worth asking which one the app
+actually reported — and it reported only one.
+
+V-010 records that Clause 3.2.4.1 keys the plotted-residential ceiling on **plot size** and
+Clause 4.1.4 on **unit count**, that nothing subordinates either, and that the engine
+therefore applies `Math.min` of the two. It does — in `setbacks.ts`, which computes
+`maxHeight = Math.min(definition.maxHeightM, plotted.maxHeight)` and returns it on
+`RequiredSetbacks`. **`findings.ts` never read it.** The height finding took
+`occupancy.maxHeightM` alone, which is Clause 4.1.4's limb.
+
+That is the laxer figure on every plot under 300 m²:
+
+| | Clause 3.2.4.1 | Clause 4.1.4 | Reported | Should be |
+|---|---|---|---|---|
+| Multi-unit, 200 m² plot | **15 m** | 17.5 m | 17.5 m | 15 m |
+| Single unit, 400 m² plot | 17.5 m | **15 m** | 15 m | 15 m |
+
+A multi-unit on a 200 m² plot — permissible, the minimum being 150 m² — was cleared at
+17.5 m against a ceiling Clause 3.2.4.1 puts at 15. The mirror case was already right, by
+coincidence: Clause 4.1.4 happens to be the stricter limb there.
+
+No test covered it. The suite had cases for both clauses separately and none for a project
+where they disagree, which is the case the whole of V-010 is about.
+
+*Fixed: `plottedHeightCeiling` exported from `src/domain/setbacks.ts`; the height finding
+now takes the stricter and names both clauses when they differ.*
+
+### B-045 — Ten of twenty-nine registered rules never reached a finding
+The register exists so that a figure carries its source. `sourced(finding, ruleId)` attaches
+it — and the rule id was hard-coded per **code branch** rather than taken from the rule that
+actually produced the number. Six tables can answer "what setback?" and four can answer "how
+much floor area?"; every answer was stamped with the first of each.
+
+Counting mechanically against `registry.ts`, **ten rules were never named by any finding**,
+and two of those stampings actively misreported:
+
+- A warehouse's FAR verdict cited `far.telescopic-residential` — confidence `gazette`, no
+  dispute — when the figure came from `far.road-width-commercial`, whose confidence is
+  **`inferred`** and which carries V-003's challenge that ten occupancies read a table
+  written for shops. **V-003 was invisible at runtime on every occupancy it applies to**,
+  which is the opposite of what the V-003 entry claims.
+- A 25 m building assessed on the progressive high-rise ladder at Clause 3.2.4.9 cited
+  `setback.plotted-residential`, Table 3.2.1.
+
+The `clause` string on these findings was right throughout — it comes from the resolver.
+Only the machine-readable provenance was wrong, which is why reading the UI would never
+have shown it.
+
+*Fixed: `BaseFarResult.rule` and `RequiredSetbacks.rule` carry the register entry that
+produced the figures, and `findings.ts` sources from them. Four rules remain unattributed —
+`ev.charging-infrastructure`, `far.green-incentive`, `far.purchasable-commercial` and
+`far.tod` — because their numbers are folded into another rule's finding rather than
+carried by one of their own. A test pins that list so a rule joining it is deliberate.*
+
+### B-046 — The lower ceiling governs, except in the six bands nobody had enumerated
+**Found by the conflict query**, and the first thing it found that no one had.
+
+`CROSS_CHAPTER_MAX_FAR_CONFLICTS` lists six bands where Chapter 3 and a per-chapter table
+disagree on Max FAR, and states the policy plainly: *"the engine keeps the LOWER ceiling,
+so no project is told it may build more than the most restrictive reading allows."* All six
+are bands where Chapter 3 is the lower one.
+
+Nobody had looked for the bands where Chapter 3 is the **higher** one. There are six, and
+in every one the engine kept Chapter 3 — against its own stated policy, and against
+standing rule 4:
+
+| Use | Area type | Band | Chapter 3 | Printed chapter row | |
+|---|---|---|---|---|---|
+| Bazaar street | built-up | ≤12 m | 2.1 | **1.5** (5.1.4) | −0.6 |
+| Commercial units >100 m² | built-up | ≤12 m | 2.1 | **1.5** (5.2.5) | −0.6 |
+| Shopping malls | built-up | ≤12 m | 2.1 | **2.0** (5.2.5) | −0.1 |
+| Hotels | built-up | ≤12 m | 2.1 | **2.0** (5.3.5) | −0.1 |
+| Bazaar street | new layout | ≤12 m | 2.45 | **1.75** (5.1.4) | −0.7 |
+| Commercial units >100 m² | new layout | ≤12 m | 2.45 | **1.75** (5.2.5) | −0.7 |
+
+Every one sits in the ≤12 m band, which is why it survived: below 12 m Clause 9.2.1(ii)
+bars the purchase and the ceiling collapses to base FAR, so nothing reaches the user.
+**At exactly 12 m the gate opens and the ceiling does not collapse** — a 400 m² bazaar plot
+on a 12 m road was offered 0.6 FAR of purchasable headroom, 240 m² of floor area, that the
+stricter reading does not allow.
+
+The per-chapter row is also the *more specific* provision — Clause 5.1.4 is written for
+bazaar streets and Clause 5.2.5 draws a distinction at 100 m² that Chapter 3 does not —
+so lex specialis and standing rule 4 point the same way here.
+
+V-016 had looked at the >100 m² split and set it aside: *"the >100 m² row is a distinction
+Chapter 3 simply does not draw."* True in the >24–45 m band it was checking, where the two
+agree. In the ≤12 m band they differ by 0.6.
+
+*Fixed: `resolveBaseFar` clamps the Chapter 3 ceiling to the printed chapter row wherever
+one exists and is lower, and emits a caveat naming both. The road-width bar caveat is
+computed against the unclamped headroom so it still fires — the bar is a fact about the
+road, not about which ceiling won.*
+
 ---
 
 ## Still open
+
+### V-054 — The rule graph is built, and 45 of its 54 conflicts have nobody's decision on them
+`docs/RULE-GRAPH-PLAN.md` now carries a full outcome section; this is the log's summary of
+it.
+
+**The query re-finds ten of the eleven known conflicts**, and the eleventh — V-038 — is
+found by the threshold-divergence query written for it, because its eight obligations
+produce eight different facts and so never meet in a same-fact comparison. The acceptance
+bar was six of eight.
+
+**54 conflicts in total. Nine carry a recorded disposition; 45 do not.** That is the honest
+state and not a gap to be closed by inventing one: an undisposed conflict is a place where
+the byelaws answer one question two ways and nobody has yet decided which answer governs.
+The 26 on `ceilingFar` are mostly V-003 showing through band by band — the value there is
+that V-003 is no longer a sentence but an enumeration of where the two readings diverge and
+by how much.
+
+**Two schema holes the recall exercise exposed**, both worth more than the hits:
+
+- **The multiplex row of V-016 is not reachable.** `purchasableRowFor` maps no occupancy to
+  Clause 5.4.4's cinema table — `inst_assembly` returns nothing — so no node is generated
+  for it and no conflict can be found against it. The hole is in the occupancy mapping.
+- **Shopping malls are found against the wrong Chapter 3 figure.** V-016 compares Chapter
+  3's own mall row (9.0); the query compares rows 3(a)/3(b) (6.0), because that is what the
+  engine actually reads for a mall. The pair is right and the left-hand number is not the
+  one a reader would pick — V-003 again.
+
+**What the graph now counts that the log was counting by hand.** `unsuppliedDependencies`
+reports every obligation resting on a field `ProjectState` does not have: `floorCount` × 4
+rules, `groundCoverage` × 2, `dwellingUnits` × 2, and one each for `unitCarpetArea`,
+`hotelRooms`, `mixedUseLocation`, `todZone` and `ibsCoveredArea`. V-038's running tally of
+"the fifth obligation blocked on the same missing field" is now a function.
+
+### V-052 — Four of the six setback tables had no register entry at all
+Found while wiring provenance for B-045. `resolveRequiredSetbacks` can answer from six
+tables; the register held two of them — `setback.plotted-residential` (Table 3.2.1) and
+`setback.high-rise` (Clause 3.2.4.9). Clause 3.2.4.2's flat 5 m for group housing and the
+four plot-area ladders for commercial, healthcare, educational and industrial had no entry
+of any kind.
+
+The register's guarantee is that *"anything absent from this register is, by definition,
+unreviewed."* The inverse was unguarded: a figure could be applied on every non-residential
+project below 15 m and appear nowhere a reviewer would look.
+
+Two entries now cover them, both at **`transcribed`** confidence, which is the honest level:
+
+- `setback.group-housing` — Clause 3.2.4.2. Never checked against any source.
+- `setback.non-residential` — the four ladders as one mechanism. `setbacks.ts` records the
+  commercial and healthcare ladders as VERIFIED 2026-09-10; the educational and industrial
+  ladders have never been checked against anything, and none of the four carries a
+  line-anchored citation, so none may claim gazette confidence.
+
+Closing this needs the Chapter 5, 6 and 7 setback tables read against the paginated
+chapters and citations generated, the same treatment the FAR tables have had. B-005 is the
+warning: the commercial >3000 m² band was missing entirely, halving the required front
+setback on the largest commercial plots.
+
+### V-053 — Where two chapters print a ceiling, the lower governs in both directions
+Recorded separately from B-046 because the fix takes a position, and the position is
+arguable.
+
+The engine now clamps Chapter 3's ceiling to the per-chapter printed row wherever that row
+is lower. In the six bands at B-046 this is a reduction of 0.1 to 0.7 FAR; in the six bands
+at `CROSS_CHAPTER_MAX_FAR_CONFLICTS` Chapter 3 is already the lower and nothing changes.
+
+**The argument for it** is standing rule 4 — nothing subordinates either chapter, so the
+stricter reading governs — reinforced by lex specialis, since Clause 5.1.4 is written for
+bazaar streets specifically and Clause 5.2.5 draws a distinction at 100 m² that Chapter 3
+does not.
+
+**The argument against it** is that Clause 9.2.3 Note-2 subordinates the Chapter 9 master
+table to chapters 3–7 and says nothing about chapter 3 against chapter 5, so the direction
+of precedence between them is genuinely unstated. A development authority that reads
+Chapter 3 as the governing summary would sanction the higher figure.
+
+What would settle it: an authority's practice on a bazaar-street or commercial-unit plot on
+a 12 m road. Until then the engine takes the reading that cannot over-permit.
 
 ### V-051 — Two telecom tables captioned one way and keyed another
 Clause 18.5.1.2(n) prints two tables. The first is captioned *"Telecom room space norm for
@@ -1139,6 +1318,15 @@ heights and three more floor counts, none of which line up with the four above:
 **Eight obligations, seven distinct heights, six distinct floor counts, and four words for
 area.** Two of them — 12 m and 15 m — are each used by two different clauses with different
 floor counts attached, so even the shared numbers do not mean the same thing.
+
+*Correction, 2026-09-11.* `thresholdDivergence` in `src/domain/rules/conflicts.ts` now
+computes these from the declared clause nodes. It agrees on **seven heights** exactly —
+7.5, 12, 15, 16, 17.5, 24, 50 — and counts **five** distinct floor counts, not six: 2, 3, 4,
+5, 8. The difference is what is being counted. This entry counted distinct *statements*, and
+Clause 11.8.1's ">3 including ground" and Chapter 2's ">3 storeys" are two statements
+sharing the number 3 on two different bases — which is arguably the more telling count, since
+a floor count including ground and a storey count are not the same quantity. Both readings
+stand; the figure is five distinct numbers across six distinct statements.
 
 The floor-count gap is now costing more than it was. Chapter 14 states **every** competence
 limit as "storeys or height", so the supervisor and engineer verdicts both rest on height
@@ -1589,6 +1777,13 @@ This partly walks back **B-006**, which set `res_single.maxHeightM` to 17.5 on t
 of Chapter 3 alone. B-006's mechanism was right — the ceiling does follow the plot — but
 it is a floor on the answer, not the whole of it. Settling this needs an authority's
 practice, not another reading.
+
+*Correction, 2026-09-11.* The `Math.min` above was true of `setbacks.ts` and not of the app.
+`findings.ts` reported `occupancy.maxHeightM` alone — Clause 4.1.4's limb — so a multi-unit
+on a 200 m² plot was cleared at 17.5 m where Clause 3.2.4.1 allows 15. Recorded as **B-044**
+and fixed; the height finding now names both clauses whenever they differ, rather than
+resolving them silently. Found by declaring `maxHeight` in the rule graph, which made it
+visible that two rules answer this question and only one of them was being reported.
 
 ### V-009 — Chapter 3 confirmed against a second source, and its FAR matrix extracted
 The Chapter 3 PDF (gazette p.37–75) is a reading of the byelaws entirely independent of

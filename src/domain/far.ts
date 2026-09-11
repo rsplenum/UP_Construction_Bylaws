@@ -10,7 +10,7 @@
 import { Band, assertContiguousLadder, resolveBand } from './bands';
 import type { GreenRating } from './project';
 import {
-  asCeiling, bandForRoad, purchasableRowFor,
+  asCeiling, bandForRoad, purchasableRowFor, strictCeiling,
   type PurchasableBand, type PurchasableRow,
 } from './purchasable-far';
 import { PURCHASABLE_SHARE_BY_ROAD } from './purchasable-fee';
@@ -297,6 +297,16 @@ function resolveTranche(input: {
 }
 
 export interface BaseFarResult {
+  /**
+   * The register entry these figures came from.
+   *
+   * Four ladders can answer "how much floor area", and `findings.ts` used to stamp every
+   * answer with `far.telescopic-residential`. A warehouse read off the commercial ladder
+   * — `far.road-width-commercial`, confidence `inferred`, carrying V-003's challenge that
+   * ten occupancies read a table written for shops — was reported as "verified against
+   * the gazette" with no dispute at all (B-045).
+   */
+  readonly rule: string;
   readonly plotArea: number;
   readonly baseFar: number;
   readonly baseBuiltUpArea: number;
@@ -407,6 +417,14 @@ export function resolveBaseFar(input: {
   let ceilingFar = 0;
   let workings = '';
   let clauseRef = '';
+  let rule = 'far.telescopic-residential';
+  /**
+   * The Chapter 3 figure before the clamp below. Kept because the road-width bar on
+   * purchasing is a fact about the road, not about which of two ceilings won: clamping
+   * the ceiling down to base would otherwise silence the "purchasable FAR is barred"
+   * caveat on exactly the narrow roads it exists to explain.
+   */
+  let chapter3Ceiling = 0;
   const slabs: SlabContribution[] = [];
 
   if (plotArea === 0) {
@@ -414,12 +432,14 @@ export function resolveBaseFar(input: {
       plotArea: 0, baseFar: 0, baseBuiltUpArea: 0, effectiveBaseFar: 0, effectiveBuiltUpArea: 0,
       greenBonusFraction, ceilingFar: 0, purchasableFar: 0, purchasableTranche: null, maxPermissibleFar: 0, maxPermissibleBuiltUpArea: 0,
       slabs: [], workings: 'Plot area is zero — no FAR can be derived.',
+      rule: 'far.telescopic-residential',
       clauseRef: 'Chapter 3.2.2', caveats: ['Enter a plot area to compute FAR.'],
     };
   }
 
   if (definition.farBasis === 'telescopic_plotted') {
     clauseRef = 'Section 3.2.2 & 3.2.2.1 (Telescopic ladder), verified against the gazette';
+    rule = 'far.telescopic-residential';
     let remaining = plotArea;
     let totalBuiltUp = 0;
 
@@ -455,6 +475,11 @@ export function resolveBaseFar(input: {
       commercial: 'Section 5.2.5 (Commercial), verified against the gazette',
       mixed_use: 'Clause 8.1.3.1 (Mixed use), verified against the gazette',
     }[key];
+    rule = {
+      group_housing: 'far.road-width-group-housing',
+      commercial: 'far.road-width-commercial',
+      mixed_use: 'far.mixed-use',
+    }[key];
 
     baseFar = BASE_FAR[key][areaType];
 
@@ -465,6 +490,35 @@ export function resolveBaseFar(input: {
       workings = `No FAR band matches a ${roadWidth}m road.`;
     } else {
       ceilingFar = resolved.band.maxFar;
+
+      // V-053 / B-046. Chapter 3 and the per-chapter tables both print a maximum, and
+      // where they differ standing rule 4 says take the lower. `CROSS_CHAPTER_MAX_FAR_CONFLICTS`
+      // enumerates six places Chapter 3 is the lower one and the engine kept it — but
+      // nobody had enumerated the bands where Chapter 3 is the HIGHER one, and there the
+      // engine kept it too, against its own stated policy. On a 12 m road a bazaar shop
+      // or a commercial unit over 100 m² was given a ceiling of 2.1 (built-up) or 2.45
+      // (new layout) where Clauses 5.1.4 and 5.2.5 print 1.5 and 1.75 — 0.6 to 0.7 FAR of
+      // over-permission. Found by the conflict query in `rules/conflicts.ts`.
+      const printedRow = purchasableRowFor({
+        occupancy: input.occupancy,
+        areaType,
+        plotAreaSqm: plotArea,
+        isAffordableHousingScheme: input.isAffordableHousingScheme,
+        roadWidthM: roadWidth,
+      });
+      const printedBand = printedRow ? bandForRoad(printedRow, roadWidth) : undefined;
+      const printedCeiling = printedRow && printedBand ? strictCeiling(printedRow, printedBand) : null;
+      chapter3Ceiling = ceilingFar;
+      if (printedCeiling !== null && printedCeiling < ceilingFar) {
+        caveats.push(
+          `Chapter 3 gives a ceiling of ${resolved.band.maxFar} for a ${roadWidth}m road; `
+          + `${printedRow!.chapter} (gazette p.${printedRow!.gazettePage}), ${printedRow!.useType} `
+          + `prints ${printedCeiling} over the same band. Nothing subordinates either chapter, so `
+          + `the lower governs (V-053).`,
+        );
+        ceilingFar = printedCeiling;
+      }
+
       const ceilingText = Number.isFinite(ceilingFar) ? String(ceilingFar) : 'unrestricted';
       workings = `Base FAR ${baseFar} (${areaType.replace(/_/g, '-')}), ceiling for a ${roadWidth}m road (${resolved.band.label}) is ${ceilingText}`;
       if (ceilingFar === 0) {
@@ -496,7 +550,10 @@ export function resolveBaseFar(input: {
       isAffordableHousingScheme: input.isAffordableHousingScheme,
     })
     : null;
-  if (!canPurchase && headroom > 0) {
+  const headroomBeforeChapterClamp = Number.isFinite(chapter3Ceiling)
+    ? Math.max(0, round(chapter3Ceiling - baseFar))
+    : Infinity;
+  if (!canPurchase && Math.max(headroom, headroomBeforeChapterClamp) > 0) {
     caveats.push(
       `Purchasable FAR is barred: the abutting road is ${roadWidth}m, below the `
       + `${purchaseGate.threshold}m threshold. ${purchaseGate.reason}`,
@@ -532,6 +589,7 @@ export function resolveBaseFar(input: {
   }
 
   return {
+    rule,
     plotArea,
     baseFar,
     purchasableTranche,

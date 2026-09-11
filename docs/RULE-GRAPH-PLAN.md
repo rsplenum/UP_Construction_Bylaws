@@ -1,6 +1,15 @@
 # The rule graph, and the conflict query
 
-**Status: agreed, not started. Resume here after the chapter reading is finished.**
+**Status: BUILT. All four steps done, 2026-09-11.**
+
+`src/domain/rules/schema.ts` (facts, guards), `registry.ts` (31 rules declared),
+`graph.ts` (edges, topological order), `clauses.ts` (87 clause assertions),
+`conflicts.ts` (the query and the dispositions). 72 new tests.
+
+**What it found.** 54 conflicts, of which the eleven known ones are 11 — ten by the
+same-fact query and V-038 by the threshold-divergence query added for it. Three live bugs
+fell out of the declaration before the query ran a line: B-044, B-045 and B-046. The
+outcome section at the end of this document records the whole of it.
 
 This is the execution plan for the *cross-reference graph* named as a cross-cutting
 mechanism in `docs/ARCHITECTURE-RESEARCH.md`, written up in full because it answers a
@@ -259,3 +268,164 @@ be treated as required, not optional.**
 The neuro-symbolic rule stands, and nothing here softens it: **the LLM authors rules, a
 deterministic engine executes them, and there is never a model at runtime.** The conflict
 query is a build-time analysis over declared data. It proposes; it does not decide.
+
+---
+
+# What was built, and what it found
+
+*Appended 2026-09-11, after the work. The plan above is left exactly as it was written so
+that what it predicted can be read against what happened.*
+
+## The shape, as built
+
+| Piece | Where | Size |
+|---|---|---|
+| Facts — a closed vocabulary, given and derived | `rules/schema.ts` | 23 given, 36 derived |
+| Guards — flat conjunctions, decidable | `rules/schema.ts` | `coSatisfiable` in a dozen lines |
+| Rules, with `consumes` / `produces` / `appliesWhen` | `rules/registry.ts` | **31** |
+| Edges, topological order, missing-field reports | `rules/graph.ts` | **35 edges, acyclic** |
+| Clause assertions — what the gazette says, clause by clause | `rules/clauses.ts` | **87** (32 authored, 55 generated) |
+| The conflict query, threshold divergence, dispositions | `rules/conflicts.ts` | **54 conflicts** |
+| Tests | `rules/__tests__/` | 72 |
+
+## One repair the plan needed on contact
+
+**Step 1's sketch could not have produced a single edge.** It typed `consumes` as
+`RuleInput[]` and `produces` as `RuleOutput[]` — two disjoint unions, whose intersection is
+empty by construction, so `A.produces ∩ B.consumes` is empty for every pair. The fix is
+one vocabulary of facts with two halves: `Fact = GivenFact | DerivedFact`, `consumes`
+spanning both, `produces` drawn from the derived half only. `RuleInput` survives as an
+alias, because `derivedFrom` and `Challenge` still mean the given half specifically.
+
+## Two repairs the corpus forced
+
+**The definition needed a third condition.** *"Two nodes that produce the same output,
+whose applicability guards can both be satisfied at once"* reports Clause 10.1.3(a), (b)
+and (c) as three mutual conflicts. They are three limbs of one enumerated list requiring
+one certificate; the gazette joins them itself. So a conflict also requires that the two
+assertions can **disagree** — different answers where both state one, or guards that are
+not equivalent where neither does. `limbOf` carries the exception. Without it the query
+returns a pile in which the signal is invisible.
+
+**A second query was needed, and V-038 is why.** The same-fact query structurally cannot
+see V-038, and this is worth stating plainly because it is the largest single entry in the
+log. Its eight obligations produce **eight different facts** — seismic design, a fire
+certificate, a completion NOC, a peer review, four competence limits — so no two of them
+ever meet in a same-fact comparison. What they share is the *quantity they gate on*.
+`thresholdDivergence` counts that instead, and it is reported separately so the recall
+figure stays meaningful:
+
+```
+buildingHeight   7 distinct →  7.5, 12, 15, 16, 17.5, 24, 50
+floorCount       5 distinct →  2, 3, 4, 5, 8
+roadWidth        5 distinct →  9, 12, 18, 24, 45
+builtUpArea      4 distinct →  465, 500, 2500, 5000
+plotArea         3 distinct →  100, 300, 500
+```
+
+Seven heights is exactly what V-038 counted by hand. **Five floor counts is not six.**
+V-038 says six, and the difference is that it counted distinct *statements* where this
+counts distinct *numbers*: Clause 11.8.1's ">3 including ground" and Chapter 2's ">3
+storeys" are two statements sharing the number 3 on two different bases. Both readings are
+defensible and the log entry has been corrected to say which it means.
+
+## Recall against the benchmark
+
+Eleven conflicts found by people reading. The acceptance bar was six of eight.
+
+| | Conflict | Found by |
+|---|---|---|
+| V-010 | Chapters 3 and 4 give different height ceilings | same-fact ✓ |
+| V-014 | Chapters 3 and 5 print different maximum FARs | same-fact ✓ |
+| V-016 | Six cells conflict between Chapter 3 and the breakdowns | same-fact — **5 of 6** |
+| V-034 | Two definitions of "Special Building", four lists | same-fact ✓ |
+| V-035 | The certificate limb reads 15 m or 17.5 m | same-fact ✓ |
+| V-036 | Three words for area behind the same 500 | same-fact ✓ |
+| V-037 | A fourth fire trigger, on a floor count Chapter 10 lacks | same-fact ✓ |
+| V-038 | Eight obligations, seven heights, six floor counts | **threshold divergence only** |
+| V-044 | Tree plantation twice, two chapters, two bases | same-fact ✓ |
+| V-049 | The EV share as 20% and as 15% | same-fact ✓ |
+| V-051 | Telecom tables captioned one way, keyed another | same-fact ✓ |
+
+**Ten of eleven on the primary query; eleven of eleven across both.**
+
+**The one miss inside V-016 is a schema hole, and it is worth more than the hit would
+have been.** The multiplex row is not found because `purchasableRowFor` maps no occupancy
+to Clause 5.4.4's cinema table — `inst_assembly` returns nothing — so the node was never
+generated. The query cannot see a conflict between a table the engine reads and a table it
+has no path to. The hole is in the occupancy mapping, not in the query.
+
+A second, quieter hole: the V-016 rows for shopping malls are found, but against the wrong
+Chapter 3 figure. V-016 compares Chapter 3's own *mall* row (9.0) against Clause 5.2.5's
+10.5; the query compares rows 3(a)/3(b) (6.0) against 10.5, because rows 3(a)/3(b) are
+what the engine actually reads for a mall. That is V-003 showing through, and the pair is
+right even though the left-hand number is not the one a reader would have picked.
+
+## Precision — what it found that nobody had
+
+**54 conflicts, 11 of them known.** The 43 others are not all news of equal weight — 26 are
+FAR cells, and most of those are V-003 showing through band by band — but the enumeration
+is itself the return. V-003 was known as a sentence: *"ten occupancies read a table written
+for shops."* It is now known as a list of where the two readings diverge and by how much.
+
+**And six of those cells were a live over-permission.** `CROSS_CHAPTER_MAX_FAR_CONFLICTS`
+enumerates six bands where Chapter 3 is the *lower* of the two figures and records the
+engine's policy: *"the engine keeps the LOWER ceiling, so no project is told it may build
+more than the most restrictive reading allows."* Nobody had enumerated the bands where
+Chapter 3 is the **higher** one — and there the engine kept it too, against its own stated
+policy. On a 12 m road a bazaar shop or a commercial unit over 100 m² was given a ceiling
+of 2.1 built-up or 2.45 in a new layout where Clauses 5.1.4 and 5.2.5 print 1.5 and 1.75.
+That is B-046, and the query found it.
+
+## Three bugs found before the query ran
+
+Worth separating from the query's own yield, because they came from the *declaration* —
+from having to write down what each rule reads and establishes, and noticing that two
+rules answered one question.
+
+- **B-044** — declaring `maxHeight` twice made it obvious the engine reported only one of
+  the two. A multi-unit on a 200 m² plot was cleared to 17.5 m where Clause 3.2.4.1 allows
+  15. V-010 said the stricter was applied; `setbacks.ts` computed it and `findings.ts`
+  ignored it.
+- **B-045** — `produces` says which rule answers which question, and checking whether the
+  finding that answers it cites that rule showed **ten of twenty-nine rules never reached a
+  finding at all**. A warehouse's FAR verdict was stamped "verified against the gazette"
+  with no dispute, when the figure came from a rule of `inferred` confidence carrying
+  V-003's challenge.
+- **V-052** — two of the six setback tables had no register entry of any kind, so the
+  register's own guarantee ("anything absent from this register is unreviewed") had an
+  unguarded inverse.
+
+## What is still not detected
+
+**Shape (c) — V-039's shape**, a reading defeated because it would render a neighbouring
+provision inoperative. Unchanged from the plan: it has a disposition name,
+`defeated-by-consequence`, and no detector. A test asserts that no conflict currently
+carries that disposition, so the day one does, it is deliberate.
+
+**Guards have no disjunction.** Where the gazette states a trigger with an "or" — Clause
+2.9.3.2's *"more than four floors or 15-metres and more"* — each limb is its own node.
+That turned out to be the more faithful modelling rather than a compromise, since the
+gazette numbers its limbs separately anyway, but it is a decision and not an accident.
+
+**The query proposes; it does not decide.** 45 of the 54 conflicts have no recorded
+disposition, and that is the honest state rather than a gap to be closed by inventing one.
+
+## On authoring bias
+
+A benchmark is only a benchmark if the nodes were written from the clauses and not from
+the answer sheet. Two disciplines, both testable:
+
+1. No node names another node, and nothing in `clauses.ts` records that any pair
+   disagrees. The dispositions in `conflicts.ts` were written **after** the query ran,
+   against what it returned — and a test fails if a disposition names a pair the query
+   does not produce, so they cannot drift into being the input.
+2. All 55 FAR ceiling nodes are **generated** from the ladders the engine already holds.
+   `CROSS_CHAPTER_MAX_FAR_CONFLICTS` — which already holds V-016's six answers as data —
+   is deliberately not read by `clauses.ts`, because generating from it would be feeding
+   the query its own answer.
+
+The residual risk is in the 32 authored nodes, and it is real: they were written by
+someone who had read the log. The defence is that they are written per clause, with the
+quote, and a reviewer can check any one of them against the gazette without knowing what
+the query does with it.
