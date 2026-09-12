@@ -91,14 +91,30 @@ describe('the graph', () => {
   it('leaves only terminal answers unconsumed', () => {
     expect([...unconsumedFacts()]).toEqual([
       'compoundableLimit', 'compoundingFee', 'environmentalCategory', 'evChargingProvision',
-      'ewsLigReservation', 'fireAccessRequirement', 'ibsNocRequired', 'licensedRole',
+      'ewsLigReservation', 'fireAccessRequirement', 'groundCoverageLimit', 'ibsNocRequired',
+      'impactFee', 'licensedRole',
       'minPlotArea', 'minRoadWidth', 'nonCompoundable', 'occupancyCertificateGate',
       'peerReviewRequired', 'purchaseFee', 'rainwaterHarvestingRequired',
       'sanctionRoute', 'shelterFee',
       'siteEngineerRequired', 'solarPvRequired', 'solarWaterHeatingRequired',
       'solidWasteProvision', 'specialBuilding', 'structuralAuditSchedule',
-      'telecomRoomSpace', 'treePlantingRequired', 'useAllowed',
+      'telecomRoomSpace', 'treePlantingRequired',
     ]);
+  });
+
+  /**
+   * `useAllowed` left that list when Clause 15.4 arrived, and the departure is the point.
+   *
+   * It had been terminal since the permissibility matrix was wired in — the app asked
+   * whether a use was allowed, printed the answer, and nothing read it again. Clause 15.4
+   * is the first rule downstream of it: "Such applications shall be considered subject to
+   * the provisions contained in paragraph 15.3", so the fee for permitting a higher use in
+   * a lower zone cannot be assessed before permissibility has been. A fact that stops being
+   * terminal is a question the engine has learned to carry forward.
+   */
+  it('no longer treats permissibility as an answer nothing reads', () => {
+    expect([...unconsumedFacts()]).not.toContain('useAllowed');
+    expect(RULES['zoning.impact-fee'].consumes).toContain('useAllowed');
   });
 });
 

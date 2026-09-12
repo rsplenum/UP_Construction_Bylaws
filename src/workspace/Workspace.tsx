@@ -101,6 +101,7 @@ export const Workspace: React.FC = () => {
               project={project}
               required={required}
               highlight={hovered ? FACE_OF[hovered.id] ?? null : null}
+              coveragePct={project.zonalCoverageCapPct > 0 ? project.zonalCoverageCapPct : null}
             />
           </div>
 

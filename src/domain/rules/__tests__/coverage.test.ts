@@ -52,7 +52,10 @@ describe('the coverage report', () => {
 
   it('counts what it swept', () => {
     expect(coverageSummary()).toEqual({
-      facts: 38, swept: 12, unswept: 0, uncontested: 25, cumulative: 1,
+      // 40 after Clause 15.4's impact fee and Clause 3.2.2's coverage limit. Both are
+      // uncontested rather than swept: one rule each, and no second clause in the document
+      // answering either, so there is nothing for the conflict query to compare.
+      facts: 40, swept: 12, unswept: 0, uncontested: 27, cumulative: 1,
     });
   });
 
@@ -96,11 +99,12 @@ describe('the coverage report', () => {
     // list is worth keeping stable so that a rule LEAVING it — someone authoring an
     // assertion — and a rule joining it are both visible edits.
     expect(rulesWithoutAssertions()).toEqual([
-      'accessibility.scope', 'compounding.schedule', 'far.green-incentive', 'far.mixed-use',
+      'accessibility.scope', 'compounding.schedule', 'coverage.ground-coverage',
+      'far.green-incentive', 'far.mixed-use',
       'far.purchasable-fee', 'far.purchase-gate', 'far.telescopic-residential', 'far.tod',
       'fire.access', 'parking.ecs-ratios', 'permission.route',
       'services.rainwater-harvesting', 'services.solar-pv', 'services.solar-water-heating',
-      'services.solid-waste', 'social.ews-lig',
+      'services.solid-waste', 'social.ews-lig', 'zoning.impact-fee',
       'zoning.master-plan-names', 'zoning.permissibility',
     ]);
     expect(rulesWithoutAssertions().length).toBeLessThan(Object.keys(RULES).length);

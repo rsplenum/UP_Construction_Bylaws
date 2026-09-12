@@ -4,18 +4,27 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: fourteen transcriptions verified exactly right, and fifty-four real bugs found.**
+**Headline: fourteen transcriptions verified exactly right, and fifty-six real bugs found.**
 
 **All eighteen chapters have now been read against the gazette.** What remains unread is the
 appendices — and Appendices 8, 9, 10, 11 and 14 are already named by the structural and
 licensing rules, so they are not a long tail: they are forms the engine cites and has never seen.
 
-**The rule graph is built** (`docs/RULE-GRAPH-PLAN.md`, outcome section). **Seven of the
-fifty-three bugs were found by it rather than by reading** — B-044, B-045 and B-046 from the
-act of declaring what each rule reads and establishes, and B-050 to B-053 by asking the graph
-where the conflict query had never looked (V-061). That question turned up two setback tables
-the gazette prints and the engine had never held. It is the only part of this log not found
-by a person reading the gazette.
+**The rule graph is built** (`docs/RULE-GRAPH-PLAN.md`, outcome section). **Seven of the bugs
+were found by it rather than by reading** — B-044, B-045 and B-046 from the act of declaring
+what each rule reads and establishes, and B-050 to B-053 by asking the graph where the conflict
+query had never looked (V-061). That question turned up two setback tables the gazette prints
+and the engine had never held. It is the only part of this log not found by a person reading
+the gazette.
+
+**Two were found by an outside reading of the repository.** B-055 (Clause 15.4's impact fee
+computed nowhere, while Chapter 16 already surcharged it) and B-056 (ground coverage had no
+rule at all) were both reached by following up an external review's recommendation to clip the
+buildable envelope against a percentage ground-coverage cap. The recommendation named the right
+clause and the wrong content — Clause 3.2.2 prints no percentage for any use this engine models
+— so the review was right that something was missing and wrong about what. Checking it is what
+found the two real gaps. See V-064 for what an outside instrument can legitimately cap, and
+why this engine does not apply it.
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -1275,6 +1284,156 @@ Note-3 speaks about. The engine takes the front from Clause 5.1.5 and the other 
 from Clause 3.2.4.3, which is what the note says on its face. Disposition: `subordinated`.
 
 Above 15 m the note runs out and the same two tables are in genuine conflict, which is B-053.
+
+### B-055 — Clause 15.4's impact fee was never computed, and Chapter 16 was already surcharging it
+The engine priced two of the three statutory charges. Clause 9.2.5's purchasable FAR fee has
+been computed since `purchasable-fee.ts`, Clause 4.3.11's shelter fee since
+`social-housing.ts`, and **Clause 15.4's impact fee was absent entirely** — no module, no
+rule, no finding. An applicant asking what it costs to put a shop in an agricultural zone got
+silence.
+
+What makes it a bug rather than a gap: `compounding.ts` has carried `impactFee` as an *input*
+since Chapter 16 was read, and Clause 16.3.8 Note-2 charges **10% of the impact fee in
+addition to the impact fee itself**. So the engine could surcharge a number it had no way to
+compute. The surcharge was live on a figure only the user could supply, and nothing said so.
+
+The clause is computable in full and now is:
+
+```
+fee = plot area × circle rate × (coefficient × 0.25)
+```
+
+The coefficient comes from a 7 × 8 matrix — seven activity rows ordered lowest use to
+highest, eight zone columns ordered lowest zone to highest — with 24 payable cells.
+
+**The flattened text cannot give the matrix.** It prints one value per line, so the Traffic
+& Transportation row reads `0.3`, `0.1`, `0.30` with nothing to say which zones those sit
+under; three payable cells in an eight-column row are indistinguishable from the first three.
+`chapter-15.json` keeps cell bboxes and fills, and it settles the mapping two ways at once:
+the coefficients place by x-range against the column heads, and the cells the gazette states
+in colour alone come back too —
+
+| fill | meaning |
+|---|---|
+| `#A8D08D` green | impact fee payable — the cell carries a coefficient |
+| `#0070C0` blue | impact fee not payable — a lower use in a higher zone |
+| unfilled | impact fee not applicable — the use's own zone |
+
+The unfilled cells fall on the **diagonal in all seven rows**, which is the check that the
+column mapping is right: an activity in its own zone is not a change of use at all. A
+coefficient placed one column out would break it. The whole `BU` column is blue, which is the
+clause's own first prose exemption — "for generally permitted activities/uses in the built-up
+area" — restated as colour. Both extraction paths then agree on the per-row coefficient counts
+(2, 3, 4, 4, 5, 6), which is the standard `docs/source/README.md` sets.
+
+The gazette's worked example is reproduced as a test: a nursing home on 350 m² at ₹2,000/m²
+pays ₹43,750, and the engine reaches it.
+
+Two honest gaps, both named on the finding rather than guessed:
+- **Clause 15.3 has sixteen zones; Clause 15.4's matrix has columns for fifteen.** `F`
+  (Facility/Utility) has no column, so a plot in it has no coefficient to read. Borrowing a
+  neighbouring column would be inventing one.
+- **Mixed use is a zone in this table, not an activity** — exactly as in Clause 15.3. There is
+  no row for a building that is residential and commercial at once and no rule for splitting a
+  plot between the two rows, so the row is reported undetermined.
+
+Four of the clause's six prose exemptions turn on facts no drawing carries — who develops the
+facility, whether the use is temporary, whether a State policy covers it, an IT unit's KVA
+rating — and three of the four cell footnotes likewise. They travel as caveats on every
+payable assessment, because an exemption the engine cannot see is the difference between a fee
+and no fee. The one exemption that *is* derivable is applied: Clause 15.4 lifts the fee off
+**hotels** in every land use except six named ones, three of which are zones (`GB`, `RC`,
+`HF`), so a hotel in a residential zone pays nothing where the commercial row would have
+charged 1.0.
+
+### V-063 — The 0.25 in Clause 15.4's formula is read as a constant, and the example cannot settle it
+The formula is printed `(Area of the plot) x (Circle rate) x (Coefficient X 0.25)`. Read one
+way the 0.25 is a constant factor; read the other it belongs to the coefficient. The clause's
+only worked example is `350 x 2000 x 0.25 x 0.25 = Rs 43,750` — and the coefficient for that
+cell (Public & Semi-public Facilities in R/RA) **is itself 0.25**, so the example is consistent
+with both readings and settles neither.
+
+The readings differ by **4× on every impact fee**. The constant reading is applied, because
+the formula states the factor separately from the table it reads the coefficient out of. Both
+are computed in the test and the divergence is pinned, so if a later reading settles it the
+other way there is one test to change. Recorded as the challenge on `zoning.impact-fee`.
+
+### V-065 — Two cells of Clause 15.4 do not follow the ordering the clause is named after
+The clause is titled "Order of land use zones from lowest to highest order and determination
+of Impact fee", and the matrix behaves accordingly almost everywhere: read down a column the
+coefficient rises with the order of the use, in every column; read along a row it falls as the
+zone rises, in five of the six charging rows. Two cells break it.
+
+| Row | A/GB (zone 1) | PSP (2) | TT (3) | SI/LI (4) | R/RA (5) |
+|---|---|---|---|---|---|
+| Traffic & Transportation | 0.3 | 0.1 | *own zone* | — | **0.30** |
+| Industrial | 0.4 | 0.25 | 0.25 | *own zone* | **0.40** |
+
+In both rows the R/RA cell climbs back to the value of the A/GB cell — zone 5 charged at zone
+1's rate, with cheaper cells between them. These are also the **only two cells on the page
+printed with a trailing zero**, "0.30" and "0.40" against "0.3" and "0.4" in the same rows,
+which reads like a second authoring pass rather than a considered figure.
+
+Both were re-derived from the chapter PDF by cell position, independently of the flattened
+text's row order, and both are as printed. The engine charges what the gazette prints. The
+test pins the two values and names them as the exceptions, so that nobody later "fixes" the
+table into the pattern the rest of it follows.
+
+### B-056 — Ground coverage had no rule, and the obvious assumption about it is wrong
+`SitePlan.tsx` drew the setback envelope, labelled it "you can build here", and nothing in
+`src/domain` said what caps ground coverage. `groundCoverage` existed in the graph only as an
+*unsupplied* given fact, consumed by the fire and seismic rules for their 500 m² triggers.
+
+The assumption a reader brings to that silence is that a percentage cap clips the envelope —
+most byelaws have one, and an external review of this repository recommended clipping against
+a 50% or 60% cap citing "Section 3.2.2". Clause 3.2.2 is indeed the right clause. **It prints a
+"Ground Coverage (%)" column in all eight of its tables and puts no percentage in any row this
+engine reads.** Every one says:
+
+> Max. coverage after ensuring setbacks
+
+restated in prose per chapter — 4.2.8, 4.3.5, 4.4.3, 5.1.4, 5.2.5, 6.1.4, 6.2.4. The setback
+envelope *is* the cap.
+
+The decisive evidence is arithmetic the gazette does itself. **Clause 2.1.3.2's worked example**
+takes a 500 m² plot at 20 m × 25 m, says the current byelaws permit "maximum ground coverage
+after ensuring minimum setbacks", and computes the permissible coverage as **76 percent** —
+then charges the owner for the increase from the 45% the plot was auctioned under. An engine
+that clipped at 60% would contradict that sum and under-report the buildable footprint by a
+fifth. **Over-restriction is the same class of defect as over-permission** (B-001, B-029) and
+is harder to notice, because nobody complains that a compliance tool was too strict. The test
+reproduces the 76%.
+
+So `ground-coverage.ts` does three things instead:
+1. **Names the instrument**, with the sub-clause per occupancy. "The setbacks are the cap" is
+   an answer; an unlabelled green rectangle is not.
+2. **Holds the envelope arithmetic once.** It was computed twice — in `SitePlan.tsx` at drawing
+   scale and again in `findings.ts` for the 2.4 m viability check — and the two could drift.
+   Geometry is returned unrounded, because rounding it would move that 2.4 m boundary by up to
+   5 mm, which is the numeric-edge class `bands.ts` exists to prevent.
+3. **Carries the clipping mechanism, dormant and tested.** Where a percentage cap does govern,
+   `SitePlan` draws the envelope as a dashed perimeter and the permissible footprint inside it,
+   so the two constraints are never collapsed into one shape.
+
+`PRINTED_PERCENTAGE_CAPS` records the four caps the gazette *does* print, none of which any
+current occupancy can reach: petrol pump and filling-station-cum-service-station 10%/20%
+(Clause 5.5.5), farmhouse non-farm activities 20% (Clause 3.2.2.7 with 7.2), and monastery,
+ashram or temple within 200 m of the Ganga 35% (Clause 2.11(i)(a)) — the one place in the
+byelaws where a flat percentage replaces the envelope outright.
+
+### V-064 — A master plan may cap coverage tighter, and this engine must not pretend to know it
+`src/data/upGisMasterPlanData.ts` carries zonal coverage figures — "65% Plotted / 40% Group
+Housing", "50% (Shopping Complex) / 40% (Malls)", "35% Max" — against Development Authority
+zones, and a master plan or zonal development plan genuinely can cap coverage below what the
+setbacks leave. Where it does, its figure governs.
+
+Those figures are deliberately **not** read into the coverage computation. That dataset is
+transcribed illustrative zoning with hand-drawn four-point polygons, not a notified plan for
+any particular plot, so applying it would present the engine's guess about which polygon a
+plot sits in as law — and in the restrictive direction, where it will not be questioned. The
+byelaw position is reported and `MASTER_PLAN_CAP_NOTE` travels with every answer saying the
+plan may bind tighter and to check the zonal regulations. `capPct` is the parameter a real
+notified figure goes into, and every consumer already honours it.
 
 ### V-059 — Three rows of Clause 3.2.4.4 have no occupancy, and one row is shared with a cinema
 Both petrol-filling-station rows and the LPG gas godown are uses `OccupancyId` cannot express,

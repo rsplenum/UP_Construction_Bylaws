@@ -2318,6 +2318,168 @@ export const CITATIONS: readonly Citation[] = [
     line: 1358,
     text: 'After issuance of any shortfall (related to map/ document), the applicant/ licensed technical personnel shall resolve the shortfall/correct the map and submit the revised map/document within 15 days. If the shortfall is not resolved within 15 days, the map will be automatically rejected.',
   },
+
+  /* ---- Clause 15.4 — the impact fee. ----------------------------------------------
+   *
+   * Four entries, because the clause states the charge in four places and the engine
+   * rests on all of them: the trigger, the matrix, the rate basis, and the arithmetic.
+   * The worked example is the load-bearing one — it is the drafter's own sum, so it
+   * checks the formula rather than a reading of it.
+   */
+  {
+    id: 'impact-fee.trigger',
+    rule: 'zoning.impact-fee',
+    clause: 'Clause 15.4',
+    supports:
+      'assessImpactFee — that the charge attaches to allowing a HIGHER use in a LOWER zone, which '
+      + 'is what makes the matrix diagonal and its lower triangle unpayable rather than arbitrary.',
+    gazettePage: 155,
+    kind: 'prose',
+    line: 9354,
+    text: 'Under the schemes approved/developed by the Authority or elsewhere in the development area, applications may be received for permission for other activities. Such applications shall be considered subject to the provisions contained in paragraph 15.3. For allowing higher use activities in lower land use zones, “impact fee” shall be payable by the applicant at the time of such permission as per paragraph 15.4.',
+  },
+  {
+    id: 'impact-fee.matrix',
+    rule: 'zoning.impact-fee',
+    clause: 'Clause 15.4 matrix',
+    supports:
+      'IMPACT_FEE_MATRIX — the column order (which the flattened text preserves and which fixes '
+      + 'which zone each coefficient belongs to) and all 22 payable coefficients. The unpayable and '
+      + 'not-applicable cells are stated in the gazette by fill colour alone and so cannot appear '
+      + 'here; they are read from chapter-15.json, where the diagonal of unfilled cells confirms '
+      + 'this column mapping.',
+    gazettePage: 155,
+    kind: 'cells',
+    lines: [10970, 11072],
+    cells: [
+      'Activities/Use category',
+      'BU',
+      'A/GB/R',
+      'C/HF',
+      'PSP',
+      'TT',
+      'SI / LI',
+      'R/ RA',
+      'OB',
+      'MU/',
+      'C1/ C2',
+      '(from lowest to highest)',
+      '1',
+      '2',
+      '3',
+      '4',
+      '5',
+      '6',
+      '7',
+      '1',
+      'Agriculture, Greenbelt,',
+      'Park/ Playground',
+      '2',
+      'Public & Semi-public Facilities',
+      '0.25 (1)',
+      '0.25 (1)',
+      '3',
+      'Traffic & Transportation',
+      '0.3',
+      '0.1',
+      '0.30',
+      '4',
+      'Industrial',
+      '0.4 (2)',
+      '0.25 (2)',
+      '0.25 (2)',
+      '0.40',
+      '5',
+      'Residential, (Incl. rural)',
+      '0.5',
+      '0.4',
+      '0.4',
+      '0.25 (3)',
+      '6',
+      'Office Buildings',
+      '1',
+      '0.75',
+      '0.75',
+      '0.75',
+      '0.5',
+      '7',
+      'Commercial',
+      '1.5',
+      '1.25',
+      '1.25',
+      '1',
+      '1',
+      '0.5',
+    ],
+  },
+  {
+    id: 'impact-fee.circle-rate-basis',
+    rule: 'zoning.impact-fee',
+    clause: 'Clause 15.4 Note',
+    supports:
+      'That the fee is assessed on the circle rate — the same Rc that Clause 9.2.5 prices '
+      + 'purchasable FAR on, so `ProjectState.circleRate` feeds both.',
+    gazettePage: 155,
+    kind: 'prose',
+    line: 11076,
+    text: 'Impact fee shall be assessed based on the current circle rate. The current rate of land refers to the circle rate determined by the District Magistrate, where such rate is not available, the current residential rate determined by the Authority/Awas Vikas Parishad whichever is higher.',
+  },
+  {
+    id: 'impact-fee.worked-example',
+    rule: 'zoning.impact-fee',
+    clause: 'Clause 15.4 example',
+    supports:
+      'IMPACT_FEE_FORMULA_CONSTANT and the whole formula. Reproduced as a test. Note that the '
+      + 'example\'s coefficient is itself 0.25 — a nursing home is a Public & Semi-public Facility '
+      + 'and the R/RA cell reads 0.25 — which is why "0.25 x 0.25" does not by itself settle '
+      + 'whether the trailing factor is a constant. V-063.',
+    gazettePage: 155,
+    kind: 'prose',
+    line: 11080,
+    text: 'The current residential rate of the authority is Rs 2000 per square meter. Impact Fee payable: - (Area of the plot) x (Circle rate) x (Coefficient X 0.25) That means 350 x 2000 x 0.25 x 0.25 = Rs 43,750/-',
+  },
+
+  /* ---- Clause 3.2.2 — ground coverage, and the percentage that is not there. -------
+   *
+   * The citations for an absence have to be the positive statements that fill it, so
+   * these are the two chapters that restate the rule in prose plus the clause that
+   * computes a coverage figure from it. Clause 3.2.2.1's own table cell is already
+   * quoted by `far.telescopic-residential.table`, whose cell sequence opens with
+   * "Max. coverage after ensuring setbacks".
+   */
+  {
+    id: 'coverage.group-housing-prose',
+    rule: 'coverage.ground-coverage',
+    clause: 'Clause 4.2.8',
+    supports:
+      'resolveGroundCoverage — that the setback envelope is the coverage cap, stated in prose '
+      + 'rather than as a table cell.',
+    kind: 'prose',
+    line: 5733,
+    text: 'After ensuring minimum setback and mandatory open space requirements, maximum ground coverage shall be permissible on group housing plots.',
+  },
+  {
+    id: 'coverage.commercial-prose',
+    rule: 'coverage.ground-coverage',
+    clause: 'Clause 5.2.5',
+    supports: 'The same rule for shops, commercial complexes and shopping malls.',
+    kind: 'prose',
+    line: 6359,
+    text: 'Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any, shall be permissible on plots for commercial establishments i.e. shops, commercial complex, shopping malls.',
+  },
+  {
+    id: 'coverage.seventy-six-percent',
+    rule: 'coverage.ground-coverage',
+    clause: 'Clause 2.1.3.2',
+    supports:
+      'The check that "max. coverage after ensuring setbacks" really does mean no percentage cap: '
+      + 'the gazette computes 76% for a 20 m x 25 m plot and charges for the increase from the 45% '
+      + 'the plot was auctioned under. Any engine that clipped coverage at 50% or 60% would '
+      + 'contradict this sum.',
+    kind: 'prose',
+    line: 798,
+    text: 'For example, for a plot size of 500 sqm (20m width x 25m depth), with reserved price Rs. 100/-auctioned in the year 2000 with ground coverage 45 percent and base FAR 1.25, at a price of Rs. 125/-the current byelaws permit a base FAR of 1.75 and maximum ground coverage after ensuring minimum setbacks. Supposing that the plot owner wants to construct up to the entire permissible ground coverage (i.e. 76 percent for the given plot dimensions), the calculation shall be as below:',
+  },
 ];
 
 /** Every rule id that has at least one citation. */

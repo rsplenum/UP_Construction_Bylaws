@@ -31,6 +31,8 @@ import {
 import { assessZoning, ZONE_LABEL, activityFor } from './zoning';
 import { localZoneNames, zonesOfAuthority, authorityNamed } from './master-plan-zones';
 import { assessSocialHousing } from './social-housing';
+import { assessImpactFee } from './impact-fee';
+import { resolveGroundCoverage } from './ground-coverage';
 import {
   assessSustainability, RECHARGE_BORE_PER_BUILT_UP_SQM, RWH_PLOT_AREA_SQM,
   SOLAR_PV_PLOT_AREA_SQM, SOLAR_WATER_HEATER_LITRES_PER_CAPITA,
@@ -265,6 +267,50 @@ export function assessProject(project: ProjectState): Assessment {
     }, 'zoning.permissibility'));
   }
 
+  // Clause 15.4 — the charge for putting a higher use in a lower zone. Reported whatever
+  // the answer is: "nothing is due here" is the half of it an applicant budgets against,
+  // and until now the app could not say either half. Note that `compounding.ts` has always
+  // been able to surcharge 10% on an impact fee under Clause 16.3.8 Note-2 without anything
+  // in the engine being able to compute the fee it surcharges.
+  const impact = assessImpactFee({
+    occupancy: project.occupancy,
+    zone: project.masterPlanZone,
+    plotAreaSqm: plotArea,
+    circleRate: project.circleRate,
+  });
+  if (impact.state !== 'undetermined' || project.masterPlanZone !== 'unknown') {
+    const payable = impact.state === 'payable';
+    findings.push(sourced({
+      id: 'impact-fee',
+      topic: 'permissibility',
+      status: payable ? 'attention' : impact.state === 'undetermined' ? 'info' : 'ok',
+      headline: payable
+        ? `Putting ${noun(occupancy.plain)} in this zone costs ${inr(impact.fee)} in impact fee.`
+        : impact.state === 'exempt'
+          ? 'No impact fee is payable — the byelaws exempt hotels in this land use.'
+          : impact.state === 'not-applicable'
+            ? 'No impact fee: this is the zone\'s own use.'
+            : impact.state === 'not-payable'
+              ? 'No impact fee is payable for this use in this zone.'
+              : 'The impact fee cannot be determined from the zone alone.',
+      detail: `${impact.working}${impact.reason ? ` ${impact.reason}` : ''}`
+        + (impact.use && impact.zoneGroup
+          ? ` Clause 15.4 matrix: ${impact.useLabel} × ${impact.zoneGroupLabel}`
+            + `${impact.coefficient != null ? `, coefficient ${impact.coefficient}` : ''}.`
+          : '')
+        + (impact.caveats.length ? ` ${impact.caveats.join(' ')}` : ''),
+      required: payable
+        ? `${inr(impact.fee)} on permission, before construction`
+        : 'Nothing under Clause 15.4',
+      proposed: impact.zoneGroupLabel
+        ? `${impact.useLabel} in ${impact.zoneGroupLabel}`
+        : `${occupancy.label}, zone not resolved`,
+      working: impact.working,
+      clause: `${impact.clause} (gazette p.${impact.gazettePage})`,
+      money: payable ? { label: 'Impact fee', amount: impact.fee } : undefined,
+    }, 'zoning.impact-fee'));
+  }
+
   if (roadWidth < minRoadWidth) {
     findings.push(sourced({
       id: 'use-road-width',
@@ -486,9 +532,43 @@ export function assessProject(project: ProjectState): Assessment {
     }, required.rule));
   }
 
+  // ---- 3b. How much of the plot may the footprint cover? --------------------------
+  // Clause 3.2.2 prints a "Ground Coverage (%)" column and no percentage in it: the
+  // setbacks are the cap. Said out loud because the opposite is the natural assumption —
+  // and an engine that clipped the envelope to an assumed 50% or 60% would contradict
+  // Clause 2.1.3.2's own worked example, which computes 76% for a 20 m x 25 m plot.
+  const coverage = resolveGroundCoverage({
+    occupancy: project.occupancy,
+    plotAreaSqm: plotArea,
+    plotFrontageM: project.plotFrontage,
+    plotDepthM: depth,
+    required,
+    // Only ever a figure the applicant read off their own notified plan. The engine does
+    // not supply one, and Clause 3.2.2 prints none — V-064.
+    capPct: project.zonalCoverageCapPct > 0 ? project.zonalCoverageCapPct : null,
+  });
+  findings.push(sourced({
+    id: 'ground-coverage',
+    topic: 'envelope',
+    status: 'ok',
+    headline: coverage.restrictedByCap
+      ? `The footprint is capped at ${sqm(coverage.governingSqm)} — ${coverage.governingPct}% of the plot.`
+      : `You may cover the whole ${sqm(coverage.governingSqm)} the setbacks leave — ${coverage.governingPct}% of the plot.`,
+    detail: `${coverage.basisNote} ${coverage.masterPlanCapNote}`,
+    required: coverage.capPct != null
+      ? `≤ ${coverage.capPct}% of the plot (${sqm(coverage.capSqm ?? 0)})`
+      : 'No percentage cap — maximum coverage after ensuring setbacks',
+    proposed: `${round(coverage.envelopeWidthM)} m × ${round(coverage.envelopeDepthM)} m = ${sqm(coverage.envelopeSqm)} inside the setbacks`,
+    working:
+      `${project.plotFrontage} m − ${required.side1} − ${required.side2} = ${round(coverage.envelopeWidthM)} m wide; `
+      + `${round(depth)} m − ${required.front} − ${required.rear} = ${round(coverage.envelopeDepthM)} m deep; `
+      + `${round(coverage.envelopeWidthM)} × ${round(coverage.envelopeDepthM)} = ${sqm(coverage.envelopeSqm)}`,
+    clause: `${coverage.clauseRef} (gazette p.${coverage.gazettePage})`,
+  }, 'coverage.ground-coverage'));
+
   // Does anything actually fit inside the setbacks?
-  const buildableWidth = project.plotFrontage - required.side1 - required.side2;
-  const buildableDepth = depth - required.front - required.rear;
+  const buildableWidth = coverage.envelopeWidthM;
+  const buildableDepth = coverage.envelopeDepthM;
   if (buildableWidth <= 2.4 || buildableDepth <= 2.4) {
     findings.push(sourced({
       id: 'envelope-viability',

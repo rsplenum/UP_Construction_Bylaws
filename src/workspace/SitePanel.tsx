@@ -104,6 +104,15 @@ export const SitePanel: React.FC = () => {
                 label="Circle rate" unit="₹/m²" value={project.circleRate}
                 onChange={(v) => patch({ circleRate: v })} min={0} step={1000}
               />
+              {/* Clause 3.2.2 sets no coverage percentage, so this can only come from the
+                  applicant's own notified zonal plan. Blank means none. See B-056, V-064. */}
+              <NumberField
+                label="Zonal coverage cap" unit="%" value={project.zonalCoverageCapPct}
+                onChange={(v) => patch({ zonalCoverageCapPct: v })} min={0} max={100} step={5}
+                hint={project.zonalCoverageCapPct > 0
+                  ? 'From your zonal plan — this clips the envelope'
+                  : 'Byelaws set none; leave 0 unless your plan does'}
+              />
             </div>
             <label className="mt-3 flex cursor-pointer items-center gap-2 text-[12px] text-slate-700 dark:text-slate-300">
               <input

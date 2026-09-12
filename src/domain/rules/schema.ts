@@ -213,8 +213,16 @@ export type DerivedFact =
   | 'purchasableSplit' | 'purchaseGateOpen' | 'purchaseFee'
   /* envelope and height */
   | 'requiredSetback' | 'maxHeight'
+  /**
+   * What the footprint may cover, and by which instrument. Clause 3.2.2 caps it with the
+   * setbacks rather than a percentage, and until this fact existed nothing in the engine
+   * said so — the envelope was drawn and left to speak for itself.
+   */
+  | 'groundCoverageLimit'
   /* permissibility */
   | 'useAllowed' | 'minRoadWidth' | 'minPlotArea' | 'masterPlanZoneName'
+  /** Clause 15.4 — the charge for putting a higher use in a lower land-use zone. */
+  | 'impactFee'
   /* fire */
   | 'specialBuilding' | 'fireClearanceRequired' | 'fireAccessRequirement'
   /* structure */
@@ -241,8 +249,8 @@ export type DerivedFact =
 /** Every derived fact, for the exhaustiveness check the graph test runs. */
 export const DERIVED_FACTS: readonly DerivedFact[] = [
   'baseFar', 'ceilingFar', 'farIncentive', 'purchasableSplit', 'purchaseGateOpen', 'purchaseFee',
-  'requiredSetback', 'maxHeight',
-  'useAllowed', 'minRoadWidth', 'minPlotArea', 'masterPlanZoneName',
+  'requiredSetback', 'maxHeight', 'groundCoverageLimit',
+  'useAllowed', 'minRoadWidth', 'minPlotArea', 'masterPlanZoneName', 'impactFee',
   'specialBuilding', 'fireClearanceRequired', 'fireAccessRequirement',
   'seismicMandatory', 'peerReviewRequired', 'structuralAuditSchedule',
   'accessibilityRequired',
@@ -297,9 +305,9 @@ export type Combination =
 export const FACT_COMBINATION: Readonly<Record<DerivedFact, Combination>> = {
   baseFar: 'rival', ceilingFar: 'rival', farIncentive: 'rival',
   purchasableSplit: 'rival', purchaseGateOpen: 'rival', purchaseFee: 'rival',
-  requiredSetback: 'rival', maxHeight: 'rival',
+  requiredSetback: 'rival', maxHeight: 'rival', groundCoverageLimit: 'rival',
   useAllowed: 'rival', minRoadWidth: 'rival', minPlotArea: 'rival',
-  masterPlanZoneName: 'rival',
+  masterPlanZoneName: 'rival', impactFee: 'rival',
   specialBuilding: 'rival', fireClearanceRequired: 'rival', fireAccessRequirement: 'rival',
   seismicMandatory: 'rival', peerReviewRequired: 'rival', structuralAuditSchedule: 'rival',
   accessibilityRequired: 'rival',

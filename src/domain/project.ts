@@ -113,6 +113,29 @@ export interface ProjectState {
    */
   circleRate: number;
 
+  /**
+   * A ground coverage cap read off the applicant's own notified master plan or zonal
+   * development plan, as a percentage of plot area. `0` means none stated.
+   *
+   * Clause 3.2.2 prints no coverage percentage for any occupancy this engine models — its
+   * Ground Coverage column reads "Max. coverage after ensuring setbacks", and Clause
+   * 2.1.3.2's worked example puts a 20 m x 25 m plot at 76% (B-056). A zonal plan CAN cap
+   * it lower, and where it does its figure governs.
+   *
+   * The engine will not supply that figure itself. `upGisMasterPlanData.ts` carries zonal
+   * coverage percentages, but they are illustrative zoning against hand-drawn polygons
+   * rather than a notified plan for any particular plot, and applying one would present a
+   * guess about which polygon a plot sits in as law — in the restrictive direction, where
+   * nobody would question it (V-064). The applicant can read their own plan; the engine
+   * cannot. So this is an input.
+   *
+   * `0` rather than `null` as the empty value, because `sanitize()` in `ProjectContext`
+   * types persisted fields against the default and a numeric default keeps a saved project
+   * loading. A zonal plan that permits construction at all does not print 0% coverage; a
+   * zone where nothing may be built is a Clause 15.3 prohibition, not a coverage cap.
+   */
+  zonalCoverageCapPct: number;
+
   /** Which depth of the app the person is working in. */
   mode: Mode;
 
@@ -158,6 +181,7 @@ export const DEFAULT_PROJECT: ProjectState = {
   greenRating: 'none',
 
   circleRate: 35000,
+  zonalCoverageCapPct: 0,
   mode: 'simple',
 };
 

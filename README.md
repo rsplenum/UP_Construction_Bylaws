@@ -87,6 +87,8 @@ src/
     setbacks.ts    Plotted, group housing, commercial, healthcare,
                    educational, industrial and high-rise ladders
     compounding.ts Chapter 16 fee schedule and non-compoundable exclusions
+    ground-coverage.ts  Clause 3.2.2 — the setback envelope as the coverage cap
+    impact-fee.ts  Clause 15.4 — the charge for a higher use in a lower zone
     findings.ts    assessProject() — every rule, applied to one project
     project.ts     The shared project model
   workspace/       The application
@@ -107,6 +109,28 @@ carries what the rule requires, what the project proposes, the arithmetic, the c
 where possible the change that would resolve it. The interface renders findings; it does
 not compute. Adding a rule means adding a finding, and it appears everywhere at once —
 the panel, the report, and the tests.
+
+### The three statutory charges
+
+The byelaws impose three separate charges and the engine computes each from the same circle
+rate held on the project, so none of them asks the user to re-enter it:
+
+| Charge | Clause | Basis |
+| --- | --- | --- |
+| Purchasable and premium purchasable FAR | 9.2.5 | `C = Le × Rc × P` |
+| Shelter fee, in lieu of EWS/LIG units | 4.3.11 | per dwelling unit, below 4 ha |
+| Impact fee, for a higher use in a lower zone | 15.4 | plot area × circle rate × coefficient × 0.25 |
+
+`assessment.totalFees` sums the heads the inputs settle, and the PDF prints them as a charge
+sheet with the clause against each. The shelter fee is quoted per unit and not totalled,
+because the project model carries no dwelling-unit count — the report says so rather than
+leaving a head silently out of a total presented as complete.
+
+Ground coverage is the charge that does not exist, and saying so took reading Clause 3.2.2
+properly: it prints a "Ground Coverage (%)" column and no percentage in any row this engine
+reads, so the setback envelope is the cap. Clause 2.1.3.2's own worked example puts a 20 m ×
+25 m plot at 76% coverage. See B-056 in the verification log for why clipping the envelope to
+an assumed 50% or 60% would be a bug, not a safeguard.
 
 ### The rules engine is the point
 

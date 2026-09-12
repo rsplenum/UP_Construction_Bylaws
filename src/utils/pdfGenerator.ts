@@ -3,6 +3,9 @@ import { Assessment, Finding } from '../domain/findings';
 import { ProjectState } from '../domain/project';
 import { occupancyLabel } from '../domain/project';
 
+/** Indian-format rupees, for the statutory charge sheet. */
+const inr = (n: number): string => `Rs ${Math.round(n).toLocaleString('en-IN')}`;
+
 /** Findings map onto the report's four statuses. */
 const STATUS_LABEL: Record<Finding['status'], string> = {
   ok: 'CLEAR', attention: 'TO SETTLE', blocked: 'BLOCKING', info: 'NOTE',
@@ -206,6 +209,115 @@ export function generateAuditPdfReport(state: ProjectState, assessment: Assessme
     doc.line(14, y, pageWidth - 14, y);
     y += 4;
   };
+
+  /**
+   * Statutory charges, and the route.
+   *
+   * The report listed every finding and never totalled the money in them, so a reader had
+   * to add the fee heads up themselves across three pages — which is the one number a
+   * lender or an equity partner opens the document for. Each head is printed with the
+   * clause that imposes it, because a charge without a clause cannot be checked against
+   * the Authority's own demand.
+   *
+   * Derived from the findings rather than recomputed, so the sheet cannot disagree with the
+   * body of the report.
+   */
+  const charges = auditResults.filter((f) => f.money && f.money.amount > 0);
+  const route = auditResults.find((f) => f.id === 'route');
+  const clock = auditResults.find((f) => f.id === 'permit-clock');
+
+  if (charges.length > 0 || route) {
+    if (y > pageHeight - 60) { doc.addPage(); y = 16; }
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.setTextColor(15, 23, 42);
+    doc.text('STATUTORY CHARGES AND APPROVAL ROUTE', 14, y);
+    y += 5;
+    doc.setDrawColor(226, 232, 240);
+    doc.line(14, y, pageWidth - 14, y);
+    y += 5;
+
+    const amountX = pageWidth - 16;
+
+    if (charges.length > 0) {
+      doc.setFontSize(7.6);
+      for (const item of charges) {
+        if (y > pageHeight - 28) { doc.addPage(); y = 16; }
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(51, 65, 85);
+        doc.text(item.money!.label, 18, y);
+
+        doc.setFontSize(6.8);
+        doc.setTextColor(100, 116, 139);
+        doc.text(item.clause ?? '—', 78, y);
+
+        doc.setFontSize(7.6);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(15, 23, 42);
+        const amount = inr(item.money!.amount);
+        doc.text(amount, amountX - doc.getTextWidth(amount), y);
+        y += 4.6;
+      }
+
+      // The total, on the engine's own figure rather than a re-addition of the lines above.
+      doc.setDrawColor(203, 213, 225);
+      doc.line(18, y - 2, pageWidth - 16, y - 2);
+      y += 2;
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8.6);
+      doc.setTextColor(15, 23, 42);
+      doc.text('Total statutory charges', 18, y);
+      const total = inr(assessment.totalFees);
+      doc.text(total, amountX - doc.getTextWidth(total), y);
+      y += 4.6;
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(6.8);
+      doc.setTextColor(100, 116, 139);
+      writeWrapped(
+        'Charges the byelaws compute on the inputs given. They exclude the ordinary sanction and '
+        + 'development fees, the Authority\'s own scrutiny charges, and any head that turns on a '
+        + 'figure not supplied here — the shelter fee, for instance, is stated per dwelling unit '
+        + 'and cannot be totalled without a unit count.',
+        18,
+        pageWidth - 34,
+        3.2,
+      );
+      y += 1.5;
+    } else {
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(7.6);
+      doc.setTextColor(51, 65, 85);
+      doc.text('No purchasable FAR, impact or compounding charge arises on these inputs.', 18, y);
+      y += 5;
+    }
+
+    if (route) {
+      if (y > pageHeight - 30) { doc.addPage(); y = 16; }
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(7.8);
+      doc.setTextColor(15, 23, 42);
+      doc.text('Route:', 18, y);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(51, 65, 85);
+      writeWrapped(route.headline, 32, pageWidth - 48, 3.4);
+
+      if (clock) {
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(15, 23, 42);
+        doc.text('Clock:', 18, y);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(51, 65, 85);
+        writeWrapped(clock.headline, 32, pageWidth - 48, 3.4);
+      }
+      y += 2;
+    }
+
+    doc.setDrawColor(226, 232, 240);
+    doc.line(14, y, pageWidth - 14, y);
+    y += 5;
+  }
 
   // Findings, in full. The previous version sliced every field to 30–44 characters,
   // so the statutory limit, the proposed value and the entire remediation — the part

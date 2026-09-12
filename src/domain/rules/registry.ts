@@ -811,6 +811,77 @@ export const RULES: RuleSet = {
     },
   },
 
+  'zoning.impact-fee': {
+    id: 'zoning.impact-fee',
+    question: 'What does it cost to put this use in this land-use zone?',
+    clause: 'Clause 15.4 (gazette p. 155)',
+    confidence: 'gazette',
+    derivedFrom: ['occupancy', 'zone', 'plotArea', 'landRate'],
+    checked: '2026-09-12',
+    quote:
+      '15.4: "For allowing higher use activities in lower land use zones, “impact fee” shall be '
+      + 'payable by the applicant at the time of such permission as per paragraph 15.4." '
+      + 'The matrix is 7 activity rows × 8 zone columns; a payable cell carries its coefficient, '
+      + 'and the unpayable cells are stated in colour alone (#A8D08D payable, #0070C0 not payable, '
+      + 'unfilled not applicable). Note: "Impact fee shall be assessed based on the current circle '
+      + 'rate." Worked example: "(Area of the plot) x (Circle rate) x (Coefficient X 0.25) That '
+      + 'means 350 x 2000 x 0.25 x 0.25 = Rs 43,750/-".',
+    consumes: ['occupancy', 'zone', 'plotArea', 'landRate', 'masterPlanZoneName', 'useAllowed'],
+    produces: ['impactFee'],
+    // Clause 15.4 reaches any project whose zone is known. It is not guarded on occupancy,
+    // because the unpayable cells are an answer the applicant needs as much as the payable
+    // ones: "nothing is due here" is the finding that stops them budgeting for a fee.
+    ifWrong:
+      'A whole statutory charge is either invented or missed. At commercial-in-agricultural rates '
+      + 'the coefficient is 1.5, so on a 1000 m² plot at ₹30,000/m² the fee is ₹11.25 lakh — and '
+      + 'Clause 16.3.8 Note-2 then compounds 10% on top of whatever this returns, so an error here '
+      + 'propagates into the compounding total as well.',
+    challenge: {
+      id: 'V-063',
+      summary:
+        'The formula\'s trailing 0.25 is read as a constant, not as part of the coefficient. The '
+        + 'gazette writes "(Coefficient X 0.25)" and its only worked example has a coefficient of '
+        + '0.25 as well, so the example\'s "0.25 x 0.25" is consistent with both readings. Taking '
+        + 'the 0.25 as belonging to the coefficient would make every fee 4× this one. The constant '
+        + 'reading is applied because the formula states it separately from the table, and both are '
+        + 'reproduced in the tests.',
+      maxDivergence: '4× on every impact fee',
+    },
+  },
+
+  'coverage.ground-coverage': {
+    id: 'coverage.ground-coverage',
+    question: 'How much of the plot may the building actually cover?',
+    clause: 'Clause 3.2.2 (gazette pp. 45–49)',
+    confidence: 'gazette',
+    derivedFrom: ['occupancy', 'plotArea', 'plotFrontage'],
+    checked: '2026-09-12',
+    quote:
+      'All eight of Clause 3.2.2’s tables print a "Ground Coverage (%)" column and none of them '
+      + 'prints a percentage for any use this engine models: every row reads "Max. coverage after '
+      + 'ensuring setbacks". Restated in prose per chapter — 4.2.8: "After ensuring minimum setback '
+      + 'and mandatory open space requirements, maximum ground coverage shall be permissible on '
+      + 'group housing plots."; and likewise 4.3.5 and 4.4.3 (plotted and affordable group '
+      + 'housing), 5.1.4 (bazaar street), 5.2.5 (shops, complexes, malls), 6.1.4 (healthcare) '
+      + 'and 6.2.4 (education). Clause 2.1.3.2’s worked '
+      + 'example computes the permissible coverage of a 20 m × 25 m plot as 76 percent.',
+    consumes: ['occupancy', 'plotArea', 'plotFrontage', 'requiredSetback'],
+    produces: ['groundCoverageLimit'],
+    ifWrong:
+      'Reading a percentage cap into Clause 3.2.2 that it does not print would clip the buildable '
+      + 'footprint below what the gazette permits — on the clause’s own 76% example, by a fifth. '
+      + 'Over-restriction is as wrong as over-permission and nobody reports it.',
+    challenge: {
+      id: 'V-064',
+      summary:
+        'A master plan or zonal development plan may cap coverage below the setback envelope, and '
+        + 'where it does its figure governs. `upGisMasterPlanData.ts` carries such figures (65% '
+        + 'plotted, 40% group housing, 35% max) but they are transcribed illustrative zoning rather '
+        + 'than a notified plan for any particular plot, so the engine reports the byelaw position '
+        + 'and says the plan may bind tighter, rather than applying a figure it cannot place.',
+    },
+  },
+
   'occupancy.thresholds': {
     id: 'occupancy.thresholds',
     question: 'What road width, plot size and height does each use require?',
