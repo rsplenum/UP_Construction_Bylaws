@@ -6,3 +6,6 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# personal, machine-local Claude Code permissions
+.claude/settings.local.json
