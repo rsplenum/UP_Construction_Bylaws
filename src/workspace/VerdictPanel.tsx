@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { AlertTriangle, Check, ChevronRight, Info, ShieldQuestion, Wand2, XCircle } from 'lucide-react';
 import { Assessment, Finding, FindingStatus, FindingTopic, TOPIC_LABELS } from '../domain/findings';
-import { CONFIDENCE_LABEL } from '../domain/rules/schema';
+import {
+  CHALLENGE_KIND_BLURB,
+  CHALLENGE_KIND_LABEL,
+  CONFIDENCE_LABEL,
+  ChallengeKind,
+} from '../domain/rules/schema';
 import { useProject } from '../context/ProjectContext';
 
 const STATUS: Record<FindingStatus, { icon: typeof Check; ring: string; text: string; order: number }> = {
@@ -10,6 +15,40 @@ const STATUS: Record<FindingStatus, { icon: typeof Check; ring: string; text: st
   info:      { icon: Info,          ring: 'bg-sky-100 text-sky-800 dark:bg-sky-500/20 dark:text-sky-300',           text: 'text-sky-800 dark:text-sky-300',        order: 2 },
   ok:        { icon: Check,         ring: 'bg-emerald-100 text-emerald-800 dark:bg-emerald-500/20 dark:text-emerald-300', text: 'text-emerald-800 dark:text-emerald-300', order: 3 },
 };
+
+/**
+ * How a caveat looks. Every one of these used to be a violet "rule disputed" pill on the
+ * collapsed row — twelve of them on a plain house — which read as twelve alarms and so
+ * read as none. Twenty-seven of thirty-eight rules carry an open challenge, and that is
+ * honest, but a warning that fires on almost every line carries no information.
+ *
+ * So the row now wears a quiet marker naming the kind of doubt, in the body text colour,
+ * and the substance moves into the opened detail where a reader who wants it will look.
+ */
+const CAVEAT: Record<ChallengeKind, { chip: string; box: string; heading: string }> = {
+  ambiguity: {
+    chip: 'text-violet-700 dark:text-violet-300',
+    box: 'border-violet-200 bg-violet-50/70 dark:border-violet-500/25 dark:bg-violet-950/25',
+    heading: 'The gazette admits two readings',
+  },
+  needs_a_fact: {
+    chip: 'text-sky-700 dark:text-sky-300',
+    box: 'border-sky-200 bg-sky-50/70 dark:border-sky-500/25 dark:bg-sky-950/25',
+    heading: 'This rests on a fact no drawing shows',
+  },
+  source_gap: {
+    chip: 'text-amber-700 dark:text-amber-300',
+    box: 'border-amber-200 bg-amber-50/70 dark:border-amber-500/25 dark:bg-amber-950/25',
+    heading: 'The gazette does not state this case',
+  },
+  not_modelled: {
+    chip: 'text-slate-600 dark:text-slate-400',
+    box: 'border-slate-200 bg-slate-50 dark:border-white/10 dark:bg-white/[0.04]',
+    heading: 'This engine does not cover this case',
+  },
+};
+
+const KIND_ORDER: readonly ChallengeKind[] = ['source_gap', 'needs_a_fact', 'ambiguity', 'not_modelled'];
 
 interface VerdictPanelProps {
   assessment: Assessment;
@@ -38,6 +77,32 @@ export const VerdictPanel: React.FC<VerdictPanelProps> = ({ assessment, onHoverF
   // toggle — the empty column reads as though the app did nothing.
   const nothingOutstanding = needsWork.length === 0;
   const visible = showSettled || nothingOutstanding ? sorted : needsWork;
+
+  // Count the distinct doubts, not the lines they touch: one challenge attached to three
+  // findings is one thing for the reader to know, not three.
+  const caveats = (() => {
+    const byKind = new Map<ChallengeKind, Set<string>>();
+    for (const f of assessment.findings) {
+      if (!f.dispute) continue;
+      (byKind.get(f.dispute.kind) ?? byKind.set(f.dispute.kind, new Set()).get(f.dispute.kind)!)
+        .add(f.dispute.id);
+    }
+    const PHRASE: Record<ChallengeKind, (n: number) => string> = {
+      source_gap: (n) => `${n} where the gazette is silent`,
+      needs_a_fact: (n) => `${n} resting on a fact only you can confirm`,
+      ambiguity: (n) => `${n} where a clause reads two ways`,
+      not_modelled: (n) => `${n} this engine does not cover`,
+    };
+    const parts: string[] = [];
+    let total = 0;
+    for (const kind of KIND_ORDER) {
+      const n = byKind.get(kind)?.size ?? 0;
+      if (n === 0) continue;
+      total += n;
+      parts.push(PHRASE[kind](n));
+    }
+    return { total, parts };
+  })();
 
   const grouped = visible.reduce<Partial<Record<FindingTopic, Finding[]>>>((acc, f) => {
     (acc[f.topic] ??= []).push(f);
@@ -69,12 +134,13 @@ export const VerdictPanel: React.FC<VerdictPanelProps> = ({ assessment, onHoverF
         </p>
         <p className="mt-1 text-[12px] leading-relaxed text-slate-700 dark:text-slate-300">{assessment.subhead}</p>
 
-        {assessment.disputedCount > 0 && (
-          <p className="mt-2.5 flex items-start gap-1.5 rounded-lg bg-white/70 px-2.5 py-1.5 text-[11px] leading-snug text-violet-900 dark:bg-black/25 dark:text-violet-200">
+        {caveats.total > 0 && (
+          <p className="mt-2.5 flex items-start gap-1.5 rounded-lg bg-white/70 px-2.5 py-1.5 text-[11px] leading-snug text-slate-700 dark:bg-black/25 dark:text-slate-300">
             <ShieldQuestion className="mt-px h-3 w-3 flex-shrink-0" aria-hidden="true" />
             <span>
-              {assessment.disputedCount} of these answers rest on a rule that is disputed or
-              unverified against the gazette. Treat this as a working estimate, not a determination.
+              {caveats.total === 1 ? 'One answer carries a caveat' : `${caveats.total} answers carry a caveat`}
+              {': '}
+              {caveats.parts.join(', ')}. Open a line to read it.
             </span>
           </p>
         )}
@@ -134,9 +200,11 @@ export const VerdictPanel: React.FC<VerdictPanelProps> = ({ assessment, onHoverF
                           </span>
                         )}
                         {finding.dispute && (
-                          <span className="ml-1.5 mt-1 inline-flex items-center gap-1 rounded bg-violet-100 px-1.5 py-0.5 text-[10.5px] font-semibold text-violet-800 dark:bg-violet-500/20 dark:text-violet-300">
+                          <span
+                            className={`ml-1.5 mt-1 inline-flex items-center gap-1 text-[10.5px] font-medium ${CAVEAT[finding.dispute.kind].chip}`}
+                          >
                             <ShieldQuestion className="h-2.5 w-2.5" aria-hidden="true" />
-                            rule disputed
+                            {CHALLENGE_KIND_LABEL[finding.dispute.kind]}
                           </span>
                         )}
                       </span>
@@ -173,19 +241,28 @@ export const VerdictPanel: React.FC<VerdictPanelProps> = ({ assessment, onHoverF
                           </p>
                         )}
                         {finding.dispute && (
-                          <div className="rounded-lg border border-violet-300 bg-violet-50 p-2.5 dark:border-violet-500/30 dark:bg-violet-950/30">
-                            <p className="flex items-center gap-1.5 text-[11px] font-bold text-violet-900 dark:text-violet-200">
-                              <ShieldQuestion className="h-3 w-3" aria-hidden="true" />
-                              This rule is disputed ({finding.dispute.id})
+                          <div className={`rounded-lg border p-2.5 ${CAVEAT[finding.dispute.kind].box}`}>
+                            <p className="flex items-center gap-1.5 text-[11px] font-bold text-slate-900 dark:text-slate-100">
+                              <ShieldQuestion className="h-3 w-3 flex-shrink-0" aria-hidden="true" />
+                              {CAVEAT[finding.dispute.kind].heading}
                             </p>
-                            <p className="mt-1 text-[11px] leading-relaxed text-violet-900/85 dark:text-violet-200/85">
+                            <p className="mt-1 text-[11px] font-medium leading-relaxed text-slate-800 dark:text-slate-200">
+                              {CHALLENGE_KIND_BLURB[finding.dispute.kind]}
+                            </p>
+                            <p className="mt-1.5 text-[11px] leading-relaxed text-slate-700 dark:text-slate-300">
                               {finding.dispute.summary}
                             </p>
                             {finding.dispute.divergence && (
-                              <p className="mt-1 text-[11px] font-semibold text-violet-900 dark:text-violet-200">
-                                The two readings differ by {finding.dispute.divergence}.
+                              // Some rules state the gap as a quantity ("0.5 FAR"), others as a
+                              // worked case. A neutral lead-in carries both without reading as
+                              // "differ by A 1,000 m² commercial plot:".
+                              <p className="mt-1 text-[11px] font-semibold text-slate-900 dark:text-slate-100">
+                                How far apart: {finding.dispute.divergence.replace(/\.+$/, '')}.
                               </p>
                             )}
+                            <p className="mt-1.5 font-mono text-[10px] text-slate-500 dark:text-slate-400">
+                              {finding.dispute.id} · docs/VERIFICATION-LOG.md
+                            </p>
                           </div>
                         )}
 

@@ -40,7 +40,15 @@ import {
 import { forArea, getOccupancy } from './occupancy';
 import { ProjectState, derivePlotDepth } from './project';
 import { RULES } from './rules/registry';
-import { CONFIDENCE_LABEL, Confidence, isContested } from './rules/schema';
+import {
+  CHALLENGE_KIND_BLURB,
+  CHALLENGE_KIND_LABEL,
+  CONFIDENCE_LABEL,
+  ChallengeContext,
+  ChallengeKind,
+  Confidence,
+  isContested,
+} from './rules/schema';
 
 export type FindingStatus = 'ok' | 'attention' | 'blocked' | 'info';
 
@@ -101,7 +109,12 @@ export interface Finding {
   rule?: string;
   confidence?: Confidence;
   /** Present when the rule behind this finding is under active challenge. */
-  dispute?: { id: string; summary: string; divergence?: string };
+  dispute?: {
+    id: string;
+    summary: string;
+    divergence?: string;
+    kind: ChallengeKind;
+  };
 }
 
 export interface Assessment {
@@ -156,8 +169,67 @@ function sourced(finding: Finding, ruleId: string): Finding {
       id: meta.challenge.id,
       summary: meta.challenge.summary,
       divergence: meta.challenge.maxDivergence,
+      kind: meta.challenge.kind,
     },
   };
+}
+
+/**
+ * Drop the caveats that do not bear on this project.
+ *
+ * Twenty-seven of the thirty-eight registered rules carry an open challenge, so before
+ * this pass existed every finding on screen wore the same "rule disputed" chip — fourteen
+ * of them on a plain single-family house, including doubts about petrol-station setbacks
+ * and a seismic-zone table for licensing engineers. A warning that fires on everything
+ * tells the reader nothing except that the engine is unsure of itself, which is the
+ * opposite of what the verification work earned.
+ *
+ * A challenge declares `bites` only where the gazette states the boundary — the three
+ * authorities Appendix-15 omits, the 465 m² split in the telecom tables, the ten
+ * occupancies that borrow the shops ladder. Where the scope is unclear the guard is
+ * omitted and the caveat still shows, because a caveat shown needlessly is noise but a
+ * caveat withheld wrongly is a false assurance.
+ */
+function scopeChallenges(findings: Finding[], project: ProjectState): Finding[] {
+  const context: ChallengeContext = {
+    occupancy: project.occupancy,
+    plotArea: project.plotArea,
+    roadWidth: project.roadWidth,
+    proposedBuiltUpArea: project.proposedBuiltUpArea,
+    buildingHeight: project.buildingHeight,
+    cityName: project.cityName,
+  };
+  const strip = (finding: Finding): Finding => {
+    const { dispute: _dropped, ...rest } = finding;
+    return rest;
+  };
+
+  return findings.map((finding) => {
+    if (!finding.dispute) return finding;
+
+    // Out of scope for this project, where the gazette states the boundary.
+    const challenge = RULES[finding.rule ?? '']?.challenge;
+    if (challenge?.bites && !challenge.bites(context)) return strip(finding);
+
+    // An ambiguity cannot unsettle a check that already passes. Standing rule: where the
+    // gazette admits two readings the engine applies the stricter one — so if the strict
+    // reading clears this check, the permissive reading clears it too, and the doubt
+    // cannot change the reader's answer. The other kinds are not safe this way: a gap in
+    // the source or a missing fact can mean the wrong row was read altogether, and a pass
+    // on the wrong row is exactly the failure worth flagging.
+    if (finding.status === 'ok' && finding.dispute.kind === 'ambiguity') return strip(finding);
+
+    return finding;
+  });
+}
+
+/** How a caveat is worded, given what kind of doubt it is. */
+export function challengeLabel(kind: ChallengeKind): string {
+  return CHALLENGE_KIND_LABEL[kind];
+}
+
+export function challengeBlurb(kind: ChallengeKind): string {
+  return CHALLENGE_KIND_BLURB[kind];
 }
 
 export function assessProject(project: ProjectState): Assessment {
@@ -1233,10 +1305,14 @@ export function assessProject(project: ProjectState): Assessment {
   }
 
   // ---- Roll up -------------------------------------------------------------------
-  const blocked = findings.filter((f) => f.status === 'blocked').length;
-  const attention = findings.filter((f) => f.status === 'attention').length;
-  const ok = findings.filter((f) => f.status === 'ok').length;
-  const totalFees = findings.reduce((sum, f) => sum + (f.money?.amount ?? 0), 0);
+  // Scope the caveats before counting them: the banner must report the doubts that bear
+  // on this project, not every doubt the registry holds.
+  const scoped = scopeChallenges(findings, project);
+
+  const blocked = scoped.filter((f) => f.status === 'blocked').length;
+  const attention = scoped.filter((f) => f.status === 'attention').length;
+  const ok = scoped.filter((f) => f.status === 'ok').length;
+  const totalFees = scoped.reduce((sum, f) => sum + (f.money?.amount ?? 0), 0);
 
   const headline = blocked > 0
     ? `This can't be built as drawn — ${blocked} thing${blocked === 1 ? '' : 's'} must change.`
@@ -1245,13 +1321,13 @@ export function assessProject(project: ProjectState): Assessment {
       : `You can build this. ${sqm(far.effectiveBuiltUpArea)} on a ${sqm(plotArea)} plot.`;
 
   const subhead = blocked > 0
-    ? findings.find((f) => f.status === 'blocked')?.headline ?? ''
+    ? scoped.find((f) => f.status === 'blocked')?.headline ?? ''
     : totalFees > 0
       ? `About ${inr(totalFees)} in charges, on top of the standard sanction fee.`
       : `No purchasable FAR or compounding charges at these figures.`;
 
   return {
-    findings,
+    findings: scoped,
     headline,
     subhead,
     canBuild: blocked === 0,
@@ -1261,6 +1337,6 @@ export function assessProject(project: ProjectState): Assessment {
     totalFees,
     permissibleArea: far.effectiveBuiltUpArea,
     proposedArea,
-    disputedCount: findings.filter((f) => f.dispute).length,
+    disputedCount: scoped.filter((f) => f.dispute).length,
   };
 }

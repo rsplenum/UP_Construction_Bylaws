@@ -40,15 +40,74 @@ export const CONFIDENCE_LABEL: Readonly<Record<Confidence, string>> = {
  */
 export type RuleInput = GivenFact;
 
+/**
+ * What kind of doubt this is. Twenty-seven of thirty-eight rules carry a challenge, and
+ * presenting all of them with the same words — "rule disputed" — made the warning
+ * meaningless: a reader who sees it on every line learns to see none of them. They are not
+ * the same kind of doubt, and naming the kind is what lets the UI say something useful.
+ */
+export type ChallengeKind =
+  /** The gazette admits two readings. The engine applies the stricter; the other may permit more. */
+  | 'ambiguity'
+  /** Settling it needs a fact about this project that no drawing carries. */
+  | 'needs_a_fact'
+  /** The source has no row for some cases, and yours may be one of them. */
+  | 'source_gap'
+  /** The engine does not model this case, and says so rather than guessing. */
+  | 'not_modelled';
+
+export const CHALLENGE_KIND_LABEL: Readonly<Record<ChallengeKind, string>> = {
+  ambiguity: 'two readings',
+  needs_a_fact: 'needs a fact',
+  source_gap: 'gap in the source',
+  not_modelled: 'not modelled',
+};
+
+/**
+ * What the reader should do about it. The kind says what the doubt is; this says whether
+ * it changes their answer, which is the only thing most readers want to know.
+ */
+export const CHALLENGE_KIND_BLURB: Readonly<Record<ChallengeKind, string>> = {
+  ambiguity: 'The stricter reading is applied here. The other reading may permit more.',
+  needs_a_fact: 'This rests on something only you can confirm.',
+  source_gap: 'The gazette does not state this case; the nearest rule is applied.',
+  not_modelled: 'This engine does not cover this case, and has not guessed.',
+};
+
+/**
+ * The project facts a challenge may test to decide whether it bears on the reader.
+ *
+ * Structurally a subset of `ProjectState`, declared here rather than imported so the
+ * schema stays the base of the domain and depends on nothing.
+ */
+export interface ChallengeContext {
+  readonly occupancy: string;
+  readonly plotArea: number;
+  readonly roadWidth: number;
+  readonly proposedBuiltUpArea: number;
+  readonly buildingHeight: number;
+  readonly cityName: string;
+}
+
 export interface Challenge {
   /** Entry in docs/VERIFICATION-LOG.md. */
   id: string;
   /** What the challenge says the rule should be. */
   summary: string;
+  /** What kind of doubt it is, which decides how the UI words it. */
+  kind: ChallengeKind;
   /** The inputs the challenger says it is really derived from. */
   derivedFromInstead?: RuleInput[];
   /** How far apart the two readings can be, in the rule's own unit. */
   maxDivergence?: string;
+  /**
+   * When this challenge actually bears on the project in front of the reader. Omitted
+   * means always, which is the safe default: a caveat shown needlessly is noise, but a
+   * caveat withheld wrongly is a false assurance, so a guard goes here only where the
+   * gazette or the challenge itself states the boundary. A doubt about ten commercial
+   * occupancies must not caveat a house; a doubt whose scope is unclear must.
+   */
+  bites?: (project: ChallengeContext) => boolean;
 }
 
 export interface RuleMeta {

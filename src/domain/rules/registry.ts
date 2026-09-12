@@ -190,6 +190,9 @@ export const RULES: RuleSet = {
       'The envelope is wrong on every non-residential project below the high-rise threshold, and the error scales with plot size — B-005 found the commercial >3000 m² band missing entirely, giving 6 m of front setback where the gazette requires 12.',
     challenge: {
       id: 'V-052',
+      kind: 'source_gap',
+      /** The commercial and healthcare ladders were checked; the educational and industrial ones never were. */
+      bites: (p) => ['inst_education', 'ind_light', 'ind_general', 'ind_warehouse'].includes(p.occupancy),
       summary:
         'Two of the four ladders — commercial and healthcare — were checked against the gazette on 2026-09-10 and carry that note in `setbacks.ts`. The educational and industrial ladders have never been checked against any source, and neither of the two that were carries a line-anchored citation, so none of the four may claim gazette confidence.',
       derivedFromInstead: ['plotArea', 'occupancy', 'roadWidth'],
@@ -229,6 +232,7 @@ export const RULES: RuleSet = {
       + 'the plot-area ladder demanded 12.',
     challenge: {
       id: 'V-059',
+      kind: 'not_modelled',
       summary:
         'Three of the five printed rows — both petrol filling station rows and the LPG gas godown — '
         + 'have no occupancy in this engine, and the mall row is shared with multiplexes while the '
@@ -263,6 +267,9 @@ export const RULES: RuleSet = {
       + 'and the one most likely to decide whether the building fits on the plot at all.',
     challenge: {
       id: 'V-060',
+      kind: 'source_gap',
+      /** Clause 3.2.4.7 is silent below 1,000 m2; at or above it the printed rows govern. */
+      bites: (p) => p.plotArea < 1_000,
       summary:
         'Four printed rows across two building types and one occupancy covering both, so above '
         + '3,000 m² the engine takes the auditorium\'s 12/6/6/6 over the hall\'s 12/5/5/5 and names '
@@ -322,6 +329,10 @@ export const RULES: RuleSet = {
       'Rows 3(a) and 3(b) — shops, convenience shopping and commercial units — are now read from the gazette. The same two ladders are still applied by analogy to ten other occupancies, from hotels to warehouses, each of which the gazette gives its own row.',
     challenge: {
       id: 'V-003',
+      kind: 'source_gap',
+      /** These are the ten occupancies that borrow the shops ladder; 3(a)/3(b) are read from the gazette. */
+      bites: (p) => ['com_complex', 'com_mall', 'com_hotel', 'office', 'inst_health', 'inst_education',
+       'inst_assembly', 'ind_light', 'ind_general', 'ind_warehouse'].includes(p.occupancy),
       summary:
         'The gazette carries a per-occupancy, per-area-type FAR matrix running roughly 1,400 lines and forty-odd rows: commercial complexes and malls start at 12 m and 18 m roads rather than 9 m, hotels, cinemas, petrol stations, hospitals, schools, auditoria, guest houses, industry, flatted factories and data centres each have their own ceilings. Only rows 3(a) and 3(b) have been transcribed. Every other occupancy currently reads a table written for shops.',
       derivedFromInstead: ['occupancy', 'roadWidth', 'areaType'],
@@ -347,6 +358,7 @@ export const RULES: RuleSet = {
       'Every rupee figure the app shows would be wrong, and a deviation the byelaws bar outright could be presented as purchasable.',
     challenge: {
       id: 'V-004b',
+      kind: 'ambiguity',
       summary:
         'One quantity in the schedule remains ambiguous. Item 10 charges "per running meter of height (measured as per periphery of existing building) per floor". Read as the building perimeter over its floors, or as the metres of excess height? The readings differ by orders of magnitude. The engine charges the larger and says so on the line item.',
       maxDivergence: 'orders of magnitude on the height head only',
@@ -398,6 +410,7 @@ export const RULES: RuleSet = {
       'Every bazaar-street plot would be assessed against a table written for ordinary commercial plots, which is keyed on plot area and gives an unrelated answer.',
     challenge: {
       id: 'V-012',
+      kind: 'ambiguity',
       summary:
         'The gazette lists discrete road widths, not bands, and says nothing about a road between two of them. The engine rounds up to the next listed width, which is the stricter reading; taking the largest listed width at or below the actual road would give a smaller setback.',
       maxDivergence: '1.5 m of front setback',
@@ -420,6 +433,9 @@ export const RULES: RuleSet = {
       'The engine treats everything above base FAR as one purchasable lump. Chapter 9 prices purchasable and premium purchasable differently, so the split decides the charge.',
     challenge: {
       id: 'V-014',
+      kind: 'ambiguity',
+      /** The six disagreeing cells are in group housing, commercial units, malls and multiplexes. */
+      bites: (p) => ['res_group_housing', 'com_shop', 'com_complex', 'com_mall'].includes(p.occupancy),
       summary:
         'Six cells disagree between Chapter 3 and the per-occupancy breakdowns, across group housing, commercial units, shopping malls and multiplexes. The breakdown figure decomposes exactly into its own published components in every case and Chapter 3\'s does not, which suggests Chapter 3 is a rounded summary — but nothing subordinates either chapter, so the engine keeps Chapter 3\'s lower ceiling. A further five bands are printed in the breakdowns and absent from Chapter 3.',
       maxDivergence: '1.5 FAR, on a non-built-up shopping mall or multiplex above a 24 m road',
@@ -444,6 +460,9 @@ export const RULES: RuleSet = {
       'Mixed use was assessed on the commercial ladder written for shops — base 1.5 built-up against the 2.0 Chapter 8 gives it — so every mixed-use project was told it had roughly a quarter less base floor area than the byelaws allow.',
     challenge: {
       id: 'V-025',
+      kind: 'ambiguity',
+      /** Clause 8.1.3.1's table is read only for mixed use. */
+      bites: (p) => p.occupancy === 'mixed_use',
       summary:
         'Two of the table\'s eight cells contradict themselves, and in opposite directions: the built-up 24–45 m band prints a maximum of 5.25 where its own components sum to 4.5, and the new-layout band prints 6.25 where they sum to 8.75. Standing rule 4 resolves each to the lower figure. With no Chapter 3 row to fall back on, there is no independent reading to check either against.',
       maxDivergence: '2.5 FAR, on a new layout above a 24 m road',
@@ -468,6 +487,7 @@ export const RULES: RuleSet = {
       'Nothing in the app is decided by this yet. The ladder is read and tested; what is missing is any way for a project to say it sits in a TOD zone.',
     challenge: {
       id: 'V-026',
+      kind: 'needs_a_fact',
       summary:
         'TOD FAR is a multiplier on whatever base FAR the underlying use carries, so it cannot be resolved without first resolving that use — and it applies only inside a notified TOD zone, which is a fact about the plot that `ProjectState` has no field for. The ladder is modelled and unused rather than guessed at.',
     },
@@ -518,6 +538,7 @@ export const RULES: RuleSet = {
       + 'arithmetic is checked against the drafter rather than against a reading of the drafter.',
     challenge: {
       id: 'V-014',
+      kind: 'ambiguity',
       summary:
         'The formula, the coefficients and the tranche split are all read from the gazette, and '
         + 'the app reproduces Clause 9.2.5\'s worked example to the rupee. What is unresolved is '
@@ -556,6 +577,7 @@ export const RULES: RuleSet = {
       + 'rated building has earned.',
     challenge: {
       id: 'V-031',
+      kind: 'needs_a_fact',
       summary:
         'The 3/5/7% is applied on a self-declared rating. Note I awards it only after pre-certification '
         + 'from an empanelled agency and Note II reverses it at twice the circle-rate land cost if the '
@@ -585,6 +607,7 @@ export const RULES: RuleSet = {
       + 'allow or quotes a fee for work no fee can regularise.',
     challenge: {
       id: 'V-038',
+      kind: 'ambiguity',
       summary:
         'The four obligations that key on height and floor count — seismic design, the fire '
         + 'certificate, the completion-stage fire NOC and the structural completion certificate — use '
@@ -615,6 +638,7 @@ export const RULES: RuleSet = {
       + 'touches. Clause 16.3.2(xii) makes a breach of it non-compoundable.',
     challenge: {
       id: 'V-041',
+      kind: 'ambiguity',
       summary:
         'Clause 12.2(a) applies to buildings "used by the public such as" six named categories, and '
         + 'industrial, storage and hazardous are not among them — though Clause 10.1.3(b) names all '
@@ -644,6 +668,7 @@ export const RULES: RuleSet = {
       + 'submission cycle; missing one means the application is not competently signed at all.',
     challenge: {
       id: 'V-046',
+      kind: 'ambiguity',
       summary:
         'The three experience tables at 14.4 are keyed on six seismic zones where IS 1893 — which '
         + 'Chapter 11.1 itself adopts — defines four, numbered II to V. Zone-6 is a real empty cell '
@@ -674,6 +699,7 @@ export const RULES: RuleSet = {
       + 'did — over-states the charger requirement threefold and omits fast chargers entirely.',
     challenge: {
       id: 'V-050',
+      kind: 'not_modelled',
       summary:
         'Clause 17.1.2.1 states ratios for two- and three-wheelers as well as cars, and Note (i) '
         + 'plans bays at 20% of the capacity of all vehicles "including 2Ws". The parking standard '
@@ -704,6 +730,9 @@ export const RULES: RuleSet = {
       + 'Authority. Discovering it at completion means the building is finished and cannot be occupied.',
     challenge: {
       id: 'V-051',
+      kind: 'ambiguity',
+      /** The two tables split at 465 m2 built-up; below it both readings land in the same one. */
+      bites: (p) => p.proposedBuiltUpArea >= 465,
       summary:
         'Both telecom-room tables are captioned by built-up area and keyed by "area to be covered by '
         + 'IBS", and the chapter nowhere says the two are the same — so a building over 465 m² whose '
@@ -735,6 +764,7 @@ export const RULES: RuleSet = {
       + '2.1.2(v), with the owner, applicant and licensed technical person each personally liable.',
     challenge: {
       id: 'V-053',
+      kind: 'needs_a_fact',
       summary:
         'Both lighter routes turn on facts no drawing shows — whether the plot is in a layout approved '
         + 'by the Authority, in a mela area, or in an unauthorised colony. Assuming them favourably is '
@@ -767,6 +797,7 @@ export const RULES: RuleSet = {
       + 'in the permissive direction sends a project to design on a plot it can never be built on.',
     challenge: {
       id: 'V-054',
+      kind: 'ambiguity',
       summary:
         'Fifteen of the sixteen occupancies resolve to a row, and five of those resolve to the '
         + 'stricter of two rows because the row turns on a fact the project model does not carry — '
@@ -804,6 +835,9 @@ export const RULES: RuleSet = {
       + 'gives a confident verdict about a different zone.',
     challenge: {
       id: 'V-056',
+      kind: 'source_gap',
+      /** Appendix-15 covers 22 authorities and omits exactly these three. */
+      bites: (p) => /lucknow|noida|ghaziabad/i.test(p.cityName),
       summary:
         'The appendix covers 22 authorities and omits Lucknow, Noida and Ghaziabad — the state '
         + 'capital and the two largest NCR authorities. For a plot in any of them the translation '
@@ -838,6 +872,7 @@ export const RULES: RuleSet = {
       + 'propagates into the compounding total as well.',
     challenge: {
       id: 'V-063',
+      kind: 'ambiguity',
       summary:
         'The formula\'s trailing 0.25 is read as a constant, not as part of the coefficient. The '
         + 'gazette writes "(Coefficient X 0.25)" and its only worked example has a coefficient of '
@@ -873,6 +908,7 @@ export const RULES: RuleSet = {
       + 'Over-restriction is as wrong as over-permission and nobody reports it.',
     challenge: {
       id: 'V-064',
+      kind: 'needs_a_fact',
       summary:
         'A master plan or zonal development plan may cap coverage below the setback envelope, and '
         + 'where it does its figure governs. `upGisMasterPlanData.ts` carries such figures (65% '
@@ -903,6 +939,7 @@ export const RULES: RuleSet = {
       'The permissibility verdict — the first thing the app says — would be wrong. This is the newest and least sourced part of the engine: sixteen occupancies were defined in one pass to widen coverage.',
     challenge: {
       id: 'V-005',
+      kind: 'source_gap',
       summary:
         'The sixteen-occupancy taxonomy was written to widen coverage from four. Minimum road widths, plot sizes, height caps and parking ratios were set by reasoning from the four that existed, not from the byelaws.',
     },
@@ -919,6 +956,7 @@ export const RULES: RuleSet = {
     ifWrong: 'Parking provision would be misstated, which is a common cause of sanction refusal.',
     challenge: {
       id: 'V-032',
+      kind: 'source_gap',
       summary:
         'The rule cited "Chapter 10 (Table 10.1)" and Chapter 10 is Fire Prevention and Life Safety — three pages, no tables. The parking standards are at Para 3.3.4.3, and opening it shows the engine reading the wrong basis for residential and the wrong figure for three commercial uses.',
       derivedFromInstead: ['occupancy', 'plotArea'],
@@ -997,6 +1035,7 @@ export const RULES: RuleSet = {
       + 'large house with an obligation the chapter does not place on it.',
     challenge: {
       id: 'V-042',
+      kind: 'needs_a_fact',
       summary:
         'The clause binds a building of these categories "in which there is a system of '
         + 'installation for supplying hot water". ProjectState records no hot water system, so '
@@ -1053,6 +1092,7 @@ export const RULES: RuleSet = {
       + 'exactly.',
     challenge: {
       id: 'V-044',
+      kind: 'ambiguity',
       summary:
         'Chapter 3\'s landscape plan states the same obligation on a different base — 50 trees '
         + 'per hectare of the 20% of open space in a commercial scheme, against Chapter 13\'s '
@@ -1094,6 +1134,9 @@ export const RULES: RuleSet = {
       + 'renewable 1%, the DG exhaust, the compensatory 1:3 plantation.',
     challenge: {
       id: 'V-043',
+      kind: 'ambiguity',
+      /** The printed bands first overlap at 20,000 m2; below that only one category applies. */
+      bites: (p) => p.plotArea >= 20_000,
       summary:
         'The printed bands overlap: 20,000 m² is inside both Category-A and Category-B, 50,000 '
         + 'inside both B and C. And Category-D appears in only one of the seven tables, so read '
@@ -1125,6 +1168,7 @@ export const RULES: RuleSet = {
       'A missing Fire Safety Certificate is one of the thirteen offences at Clause 16.3.2 that cannot be compounded at any price, and without it no occupancy certificate can issue. Under-requiring it builds something that can never be regularised.',
     challenge: {
       id: 'V-034',
+      kind: 'ambiguity',
       summary:
         'Clause 1.2(q) defines "Special Building" over a different list and gates it at 500 sqm of built-up area. The engine takes the union of the two, which is the stricter reading; on the Clause 1.2(q) reading alone a school, an office or a shop below 500 sqm would need no certificate.',
       derivedFromInstead: ['occupancy'],
