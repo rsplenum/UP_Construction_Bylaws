@@ -61,6 +61,58 @@ export type Citation = ProseCitation | CellsCitation;
 
 export const CITATIONS: readonly Citation[] = [
   {
+    id: 'setback.other-commercial.table',
+    rule: 'setback.other-commercial',
+    clause: 'Clause 3.2.4.4',
+    supports:
+      'OTHER_COMMERCIAL_SETBACKS and OTHER_COMMERCIAL_UNMAPPED — the whole table, including '
+      + 'the three rows no occupancy in this engine maps onto. Note the key column is headed '
+      + '"Building Height (m)" and holds building types: the header is carried over from the '
+      + 'group housing table above it, and nothing in this table is keyed on height at all.',
+    gazettePage: 58,
+    kind: 'cells',
+    lines: [4582, 4623],
+    cells: [
+      'Building Height (m)', 'Setback (meter)', 'Front', 'Rear', 'Side-1', 'Side-2',
+      'Hotels/ Single screen cinema/', 'Miniplex', '5', '3', '3', '3',
+      'Multiplex/ Shopping Malls', '9', '6', '6', '6',
+      'Petrol filling station w/o Service Station', '3', '-', '-', '-',
+      'Petrol filling station with Service', 'Station', '6', '-', '-', '-', 'LPG Gas Godown',
+      '6', '3', '3', '3',
+    ],
+  },
+  {
+    id: 'setback.public-amenity.table',
+    rule: 'setback.public-amenity',
+    clause: 'Clause 3.2.4.7',
+    supports:
+      'PUBLIC_AMENITY_LADDER. Four printed rows across two building types, which one '
+      + 'occupancy covers; the engine takes the stricter above 3,000 sqm. Nothing is printed '
+      + 'below 1,000 sqm for a hall or 1,500 sqm for an auditorium.',
+    gazettePage: 59,
+    kind: 'cells',
+    lines: [4708, 4753],
+    cells: [
+      'Plot Area (sqm)', 'Setback (meter)', 'Front', 'Rear', 'Side-1', 'Side-2',
+      'Marriage/ Banquet/ Multipurpose Hall', '1000 – 3000', '12', '4.5', '4.5', '3',
+      'More than 3000', '12', '5', '5', '5', 'Auditorium / Convention Centre', '1500 – 3000',
+      '12', '4.5', '4.5', '3', 'More than 3000', '12', '6', '6', '6',
+    ],
+  },
+  {
+    id: 'setback.high-rise.scope',
+    rule: 'setback.high-rise',
+    clause: 'Clause 3.2.4.9',
+    supports:
+      'The exclusion that was in no guard and no branch until B-052 — the progressive '
+      + 'fire-tender ladder does not reach a plotted house, which leaves Table 3.2.1 governing '
+      + 'to the 17.5 m Clause 3.2.4.1 allows it.',
+    gazettePage: 59,
+    kind: 'prose',
+    line: 4802,
+    text: 'For use occupancies with building height more than 15m (other than single/multi units), the minimum setback requirement shall be as follows.',
+  },
+  {
     id: 'setback.plotted-residential.scope',
     rule: 'setback.plotted-residential',
     clause: 'Para 3.2.4.1',

@@ -129,7 +129,8 @@ describe('findings.ts evaluates in an order the graph permits', () => {
       'far.road-width-commercial', 'far.mixed-use', 'far.purchasable-commercial']],
     [/\bassessPurchaseFee\(/, ['far.purchasable-fee']],
     [/\bresolveRequiredSetbacks\(/, ['setback.plotted-residential', 'setback.high-rise',
-      'setback.bazaar-street', 'setback.group-housing', 'setback.non-residential']],
+      'setback.bazaar-street', 'setback.group-housing', 'setback.non-residential',
+      'setback.other-commercial', 'setback.public-amenity']],
     [/\bassessEvCharging\(/, ['ev.charging-infrastructure']],
     [/\bassessFireSafety\(/, ['fire.safety-certificate']],
     [/\bassessStructuralSafety\(/, ['structural.seismic-applicability']],
@@ -232,7 +233,8 @@ describe('provenance reaches the findings', () => {
   const named = new Set([...source.matchAll(/\}\s*,\s*'([a-z][a-z0-9.-]*)'\s*\)/g)].map((m) => m[1]));
   const viaResolver = new Set(['far.telescopic-residential', 'far.road-width-group-housing',
     'far.road-width-commercial', 'far.mixed-use', 'setback.plotted-residential',
-    'setback.high-rise', 'setback.bazaar-street', 'setback.group-housing', 'setback.non-residential']);
+    'setback.high-rise', 'setback.bazaar-street', 'setback.group-housing',
+    'setback.non-residential', 'setback.other-commercial', 'setback.public-amenity']);
 
   it('still has rules that never reach one, and they are these', () => {
     const orphans = Object.keys(RULES).filter((id) => !named.has(id) && !viaResolver.has(id)).sort();

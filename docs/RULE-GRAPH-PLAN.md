@@ -1,15 +1,18 @@
 # The rule graph, and the conflict query
 
-**Status: BUILT. All four steps done, 2026-09-11.**
+**Status: BUILT. All four steps done, 2026-09-11. A fifth was needed, 2026-09-12.**
 
-`src/domain/rules/schema.ts` (facts, guards), `registry.ts` (31 rules declared),
-`graph.ts` (edges, topological order), `clauses.ts` (87 clause assertions),
-`conflicts.ts` (the query and the dispositions). 72 new tests.
+`src/domain/rules/schema.ts` (facts, guards), `registry.ts` (36 rules declared),
+`graph.ts` (edges, topological order), `clauses.ts` (101 clause assertions),
+`conflicts.ts` (the query and the dispositions), `coverage.ts` (**where the query has not
+looked** — added after the four steps, and the section at the end of this document says
+why it had to be).
 
-**What it found.** 54 conflicts, of which the eleven known ones are 11 — ten by the
-same-fact query and V-038 by the threshold-divergence query added for it. Three live bugs
-fell out of the declaration before the query ran a line: B-044, B-045 and B-046. The
-outcome section at the end of this document records the whole of it.
+**What it found.** 57 conflicts, of which the eleven known ones are 11 — ten by the
+same-fact query and V-038 by the threshold-divergence query added for it. **Seven live bugs**
+have come out of it: B-044, B-045 and B-046 from the act of declaring what each rule reads
+and establishes, and B-050 to B-053 from step 5's question — where has the query never
+looked. The two outcome sections at the end of this document record the whole of it.
 
 This is the execution plan for the *cross-reference graph* named as a cross-cutting
 mechanism in `docs/ARCHITECTURE-RESEARCH.md`, written up in full because it answers a
@@ -429,3 +432,113 @@ The residual risk is in the 32 authored nodes, and it is real: they were written
 someone who had read the log. The defence is that they are written per clause, with the
 quote, and a reviewer can check any one of them against the gazette without knowing what
 the query does with it.
+
+
+---
+
+# Step 5, which the plan did not contain
+
+*Appended 2026-09-12. Everything above is left as written.*
+
+## The question the four steps could not answer
+
+The outcome section above ends on a number: **54 conflicts, every one disposed.** Read on
+its own that is a claim about the document — that the byelaws were swept and this is what
+came back.
+
+It is not that claim, and the four steps as designed had no way of saying so. The query
+runs over `clauses.ts`; the graph runs over `registry.ts`; **nothing checked either file
+against the other.** So when the query said nothing about a fact, that silence had two
+completely different possible meanings and no way to tell them apart:
+
+- nobody has written an assertion about this fact, or
+- assertions exist and none of them disagree.
+
+Counted honestly, the sweep covered **eleven of the thirty-eight facts the engine
+establishes** — and, worse for a benchmark, the eleven the verification log had already
+pointed at. A detector aimed only where a person has already looked cannot find what a
+person missed.
+
+## `coverage.ts`
+
+For every derived fact: how many rules establish it, whether any two of those can speak to
+one project at once, and whether the clause layer holds anything to compare. Four verdicts,
+one of which is a gap.
+
+| Verdict | Meaning | Count on the first run |
+|---|---|---|
+| `swept` | rivals, and assertions the query can compare | 11 |
+| `uncontested` | one producer, or producers whose guards can never both hold | 25 |
+| `cumulative` | the producers do not compete | 1 |
+| **`unswept`** | **rivals that can meet, and nothing to compare** | **1** |
+
+`cumulative` is a new declaration on the schema and it earns its place. Fire, telecom and
+environment each close the occupancy certificate; the building needs all three and none of
+them contradicts the others. Without the distinction the query has only two things it can
+do with such a fact and both are wrong — report three independent clearances as a
+three-way conflict, or stay silent in a way that means nothing.
+
+## What the one unswept fact held
+
+`requiredSetback`: **five rules establishing it and not one assertion in the clause layer.**
+The whole of Chapter 3's setback machinery had never been put in front of the query.
+Fourteen assertions later:
+
+- **B-050** — Clause 3.2.4.4, *"Other Commercial"*, a table the gazette prints and the
+  engine had never held. A mall on a 400 m² plot was being given 4.5/3/1.5/1.5 where it
+  requires 9/6/6/6.
+- **B-051** — Clause 3.2.4.7, *"Public Amenity"*, the second missing table. A banquet hall
+  on a 2,000 m² plot was given 6 m at the front against a required 12.
+- **B-052** — Clause 3.2.4.9 opens *"(other than single/multi units)"*. That exclusion was
+  in no guard and no branch, so every plotted house between 15 and 17.5 m was assessed on
+  the progressive ladder: 5 m of side setback on a 400 m² plot, and a metre too little at
+  the front above 1,200 m².
+- **B-053** — above 15 m, Clause 5.1.5's bazaar-street front and Clause 3.2.4.9 both speak
+  and neither yields. The engine took the smaller on any bazaar street wider than 30 m.
+
+And three conflicts the query now reports and someone has had to decide: the bazaar front
+against the table it is printed under (`subordinated` — Note-3 is the subordination, in
+typography), the same two tables again above 15 m where that note cannot reach
+(`stricter`), and Clause 3.2.4.7 disagreeing with itself across two building types one
+occupancy covers (`stricter`).
+
+## One thing the declaration exercise found without the query
+
+`useAllowed` had three rules producing it and only one of them answered the question.
+
+`zoning.master-plan-names` is the Appendix-15 translation table. It decides nothing about
+whether a use is permitted; it says what an applicant's own master plan calls the zone
+Clause 15.3 codes. Declaring it as a rival of the permissibility matrix did two kinds of
+damage at once: **it invented a conflict that does not exist, and it hid a real
+dependency** — the matrix cannot be read until the translation has been made. It now
+produces `masterPlanZoneName`, `zoning.permissibility` consumes it, and the graph carries
+the edge it should have had since the appendix was read.
+
+`occupancy.thresholds` was the same mistake in the other direction: a project refused for a
+too-narrow road is refused for a reason Clause 15.3 knows nothing about.
+
+## The granularity rule this forced
+
+The FAR nodes are one per **cell** and have to be: Chapter 3's ladder and the per-occupancy
+printed tables are keyed identically, so the two sources meet cell by cell and enumerating
+where they diverge is the information.
+
+The setback tables are keyed on four different quantities — plot area, road width, height,
+and what the building is. Two tables keyed differently share no cells, so a per-row
+generation emits the **cartesian product** of their rows: forty pairs for the bazaar ladder
+against the commercial one, every pair restating the single fact that both fix a front
+setback and disagree. So:
+
+> **Rows where the rival tables share a key; one node per table where they do not.**
+
+The exception proves it. Clause 3.2.4.7's two building types are keyed the same way and
+disagree above 3,000 m², so they get a node each — and the query finds exactly the one
+disagreement, not four.
+
+## What is still not swept
+
+Twenty-five facts are `uncontested`, and that is a fact about this engine rather than about
+the gazette. Chapter 16's compounding fees have one rule each and no assertion anywhere;
+nothing contradicts them because nothing has been written down that could. `unswept` is
+zero today, which means only that every fact with a **known** rival has assertions to
+compare. Recorded at V-061.

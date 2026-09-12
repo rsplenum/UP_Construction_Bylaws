@@ -134,8 +134,10 @@ Two invariants keep it that way:
   derived from those declarations rather than authored, the graph is asserted acyclic, and
   `findings.ts` is checked to evaluate in an order the graph permits. A build-time query
   over the same data enumerates every place the byelaws answer one question two ways; it
-  re-finds all eleven conflicts people had found by reading, and found three bugs they had
-  not. See `docs/RULE-GRAPH-PLAN.md`.
+  re-finds all eleven conflicts people had found by reading, and found seven bugs they had
+  not. A second query reports where it has *not* looked — a fact two rules answer with
+  nothing written down to compare — which is what turned up two setback tables the gazette
+  prints and the engine had never held. See `docs/RULE-GRAPH-PLAN.md`.
 
 If a figure here disagrees with the gazette, fix it in `src/domain` — one edit changes
 every screen, the PDF exports and the tests together.

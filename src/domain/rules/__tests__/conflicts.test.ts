@@ -3,7 +3,7 @@ import {
   RESOLUTION_FAMILIES, RESOLUTIONS, familyFor, findConflicts, resolutionFor, resolutionKey,
   thresholdDivergence, undisposed,
 } from '../conflicts';
-import { CLAUSE_NODES } from '../clauses';
+import { CLAUSE_NODE, CLAUSE_NODES } from '../clauses';
 
 const CONFLICTS = findConflicts();
 const pairs = new Set(CONFLICTS.map(resolutionKey));
@@ -90,6 +90,64 @@ describe('recall — the query re-finds what people found by reading', () => {
     const byFact = Object.fromEntries(thresholdDivergence().map((d) => [d.fact, d.values]));
     expect(byFact.buildingHeight).toEqual([7.5, 12, 15, 16, 17.5, 24, 50]);
     expect(byFact.floorCount).toEqual([2, 3, 4, 5, 8]);
+  });
+});
+
+/**
+ * WHAT THE SWEEP FOUND.
+ *
+ * Everything above is recall against conflicts a person had already found. This is the
+ * other half, and the only half that can produce news: `requiredSetback` was reported
+ * unswept by `coverage.ts` — five rules answering it and not one assertion to compare —
+ * and authoring the assertions is what turned these up. They were not in the log before
+ * the query ran over them.
+ */
+describe('the setback sweep', () => {
+  it('finds the bazaar street front against the commercial table it is printed under', () => {
+    expect(found('c3.2.4.3.setback.commercial', 'c5.1.5.setback.bazaar-front')).toBe(true);
+  });
+
+  it('finds the same two tables disagreeing again above 15 m, where the note cannot reach', () => {
+    expect(found('c3.2.4.9.setback.high-rise', 'c5.1.5.setback.bazaar-front')).toBe(true);
+  });
+
+  it('finds one table disagreeing with itself across two building types', () => {
+    // Clause 3.2.4.7 above 3,000 m²: a hall 12/5/5/5, an auditorium 12/6/6/6, and one
+    // occupancy covering both.
+    expect(found(
+      'c3.2.4.7.setback.public-amenity.hall.over-3000',
+      'c3.2.4.7.setback.public-amenity.auditorium.over-3000',
+    )).toBe(true);
+  });
+
+  it('does not find the two rows that agree', () => {
+    expect(found(
+      'c3.2.4.7.setback.public-amenity.hall.1000-3000',
+      'c3.2.4.7.setback.public-amenity.auditorium.1500-3000',
+    )).toBe(false);
+  });
+
+  /**
+   * B-052, stated as the absence it now is.
+   *
+   * Table 3.2.1 and the progressive ladder looked like rivals between 15 and 17.5 m, and
+   * the engine resolved the overlap by applying the progressive ladder to plotted houses.
+   * There was never an overlap: Clause 3.2.4.9 opens "other than single/multi units". Once
+   * that is in the guard the two tables cannot meet, and the query says so.
+   */
+  it('reports no conflict between Table 3.2.1 and the progressive ladder', () => {
+    expect(found('c3.2.4.1.setback.plotted', 'c3.2.4.9.setback.high-rise')).toBe(false);
+    expect(CLAUSE_NODE['c3.2.4.9.setback.high-rise'].appliesWhen.oneOf?.[0].values)
+      .not.toContain('res_single');
+  });
+
+  it('keeps each per-use table to itself, which is why there are three and not forty', () => {
+    // Tables keyed on different quantities have no cells in common, so nodes are one per
+    // TABLE. Per-row nodes would emit the cartesian product of two ladders and restate one
+    // fact forty times.
+    const setbacks = CONFLICTS.filter((c) => c.fact === 'requiredSetback');
+    expect(setbacks).toHaveLength(3);
+    for (const c of setbacks) expect(resolutionFor(c)).toBeDefined();
   });
 });
 

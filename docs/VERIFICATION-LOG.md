@@ -4,17 +4,18 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: fourteen transcriptions verified exactly right, and forty-nine real bugs found.**
+**Headline: fourteen transcriptions verified exactly right, and fifty-three real bugs found.**
 
 **All eighteen chapters have now been read against the gazette.** What remains unread is the
 appendices — and Appendices 8, 9, 10, 11 and 14 are already named by the structural and
 licensing rules, so they are not a long tail: they are forms the engine cites and has never seen.
 
-**The rule graph is built** (`docs/RULE-GRAPH-PLAN.md`, outcome section). Three of the
-forty-six bugs — B-044, B-045 and B-046 — were found by it rather than by reading: two from
-the act of declaring what each rule reads and establishes, and one by the conflict query
-itself. That is the first time anything in this log was found by a machine reading the rules
-rather than a person reading the gazette.
+**The rule graph is built** (`docs/RULE-GRAPH-PLAN.md`, outcome section). **Seven of the
+fifty-three bugs were found by it rather than by reading** — B-044, B-045 and B-046 from the
+act of declaring what each rule reads and establishes, and B-050 to B-053 by asking the graph
+where the conflict query had never looked (V-061). That question turned up two setback tables
+the gazette prints and the engine had never held. It is the only part of this log not found
+by a person reading the gazette.
 
 The plan for reading the remaining chapters is in `docs/VERIFICATION-STRATEGY.md`.
 
@@ -1083,9 +1084,166 @@ real distinction. Only four cells in the whole appendix actually wrap, and each 
 itself: the continuation starts with a slash, or the line before ends with one, or it is a
 bare lowercase word. `unwrap()` joins on exactly those and leaves everything else alone.
 
+### B-050 — A setback table the gazette prints and the engine never held: Clause 3.2.4.4
+Chapter 3 prints **eight** setback tables below the high-rise threshold, numbered 3.2.4.1 to
+3.2.4.8. The engine carried **six**. Clause 3.2.4.4, *"Other Commercial"*, is the first of the
+two it did not, and it is the only setback table in the byelaws **keyed on what the building
+is** rather than on how big its plot is:
+
+| Row | Front | Rear | Side-1 | Side-2 |
+|---|---|---|---|---|
+| Hotels / Single screen cinema / Miniplex | 5 | 3 | 3 | 3 |
+| Multiplex / Shopping Malls | **9** | **6** | **6** | **6** |
+| Petrol filling station w/o service station | 3 | – | – | – |
+| Petrol filling station with service station | 6 | – | – | – |
+| LPG Gas Godown | 6 | 3 | 3 | 3 |
+
+Malls and hotels were reading the plot-area ladder at Clause 3.2.4.3 instead. That is not a
+rounding error. **A mall on a 400 m² plot was given 4.5 / 3 / 1.5 / 1.5 where this table
+requires 9 / 6 / 6 / 6** — less than half the front setback and a quarter of the sides, on
+the building type most likely to have a crowd inside it. On a 2,000 m² plot it was 6 / 3 / 3
+/ 3 against the same 9 / 6 / 6 / 6. The error runs the other way for a large hotel, which
+this table seats 5 m back where the plot-area ladder demanded 12.
+
+The table's key column is headed *"Building Height (m)"* and contains building types — a
+header carried over from the group housing table printed above it. Nothing in the table is
+keyed on height at all.
+
+*Fixed: `OTHER_COMMERCIAL_SETBACKS` in `src/domain/setbacks.ts`, a new `other_commercial`
+routing for `com_mall` and `com_hotel`, and `setback.other-commercial` in the register with a
+cell-anchored citation. The three rows no occupancy maps onto are kept as
+`OTHER_COMMERCIAL_UNMAPPED` rather than dropped.*
+
+### B-051 — And the second: Clause 3.2.4.7, Public Amenity
+Marriage halls, banquet halls, multipurpose halls, auditoria and convention centres have
+their own table, and **its front setback is 12 m at every plot size** — the largest in
+Chapter 3 outside the high-rise ladder, and the one most likely to decide whether the
+building fits on the plot at all. `inst_assembly` was reading Clause 3.2.4.3 and being given
+**6 m on a 2,000 m² plot**, half of what the gazette requires.
+
+*Fixed: `PUBLIC_AMENITY_LADDER`, a `public_amenity` routing for `inst_assembly`, and
+`setback.public-amenity` in the register. The open questions the table leaves are V-060.*
+
+### B-052 — Clause 3.2.4.9 excludes plotted houses in its opening line, and nothing read it
+> *"For use occupancies with building height more than 15m **(other than single/multi
+> units)**, the minimum setback requirement shall be as follows."*
+
+The parenthesis is the clause's first sentence. It was in no guard, no branch and no comment,
+and the engine applied the progressive fire-tender ladder to every use above 15 m including
+plotted residential. Clause 3.2.4.1 lets a plot above 300 m² build *"four storeys with stilts
+up to 17.5-meter height"*, so the band between 15 and 17.5 m is not hypothetical — it is the
+ordinary large plotted house.
+
+**The engine was wrong in both directions at once inside that band.**
+
+| Plot | Table 3.2.1 (governs) | What the engine applied |
+|---|---|---|
+| >300–500 m² | 3 / 3 / 0 / 0 | 5 / 5 / 5 / 5 — **5 m of side setback on a 400 m² plot** |
+| >500–1200 m² | 4.5 / 4.5 / 1.5 / 0 | 5 / 5 / 5 / 5 |
+| >1200 m² | **6** / 6 / 1.5 / 1.5 | 5 / 5 / 5 / 5 — **a metre less at the front** |
+
+Over-restrictive to the point of unbuildability on a 400 m² plot, and under-restrictive at
+the front above 1,200 m². Above 17.5 m the progressive ladder is applied again, because
+nothing else in the byelaws speaks to a plotted house at that height and the height itself is
+reported against the ceiling separately.
+
+*Fixed: `resolveRequiredSetbacks` in `src/domain/setbacks.ts`, the guards on
+`setback.plotted-residential` (now to 17.5 m) and `setback.high-rise` (now carrying the
+clause's own occupancy exclusion), and a prose citation anchored on the sentence.*
+
+### B-053 — The bazaar street front, under-applied above 15 m
+Clause 5.1.3 says in terms that there is **no height restriction on a bazaar street**, and
+Clause 5.1.5's front-setback ladder carries no height limb. So above 15 m both that ladder
+and Clause 3.2.4.9 speak, and neither yields — the Note-3 subordination that settles the
+question below 15 m (V-062) is printed under a table captioned *"up to 15-meter height"* and
+cannot reach up.
+
+The engine took Clause 3.2.4.9's front unconditionally, which is **the smaller figure on any
+bazaar street wider than 30 m**: a building in the 17.5–21 m band on a 36 m bazaar street was
+given 6 m where Clause 5.1.5 requires 7.5. Standing rule 4 says the larger governs.
+
+*Fixed: the high-rise branch of `resolveRequiredSetbacks` now takes the greater of the two
+fronts, keeps Clause 3.2.4.9 for the other three faces, and names whichever clause governed.*
+
 ---
 
 ## Still open
+
+### V-061 — The conflict query had swept eleven of thirty-eight facts, and nobody could tell
+This is a finding about the method rather than about the byelaws, and it is the one that
+produced B-050 to B-053.
+
+`docs/RULE-GRAPH-PLAN.md` closed with *"54 conflicts, 45 of them undisposed"*, later *"every
+one disposed"*. Read on its own that sounds like a sweep of the document. It was a sweep of
+**eleven of the thirty-eight facts the engine establishes** — and of the eleven the
+verification log had already pointed at. The query ran over `clauses.ts`, the graph over
+`registry.ts`, and **nothing checked either file against the other**, so a fact with five
+rules answering it and no assertion anywhere looked exactly like a fact with nothing to say.
+
+`src/domain/rules/coverage.ts` joins the two and classifies every fact four ways:
+`cumulative` (the producers do not compete), `uncontested` (one producer, or producers whose
+guards can never both hold), `swept` (rivals, and assertions to compare) and **`unswept`** —
+rivals that can meet, and nothing for the query to compare. Only the last is a gap.
+
+The first run returned:
+
+| | |
+|---|---|
+| `requiredSetback` | **5 rules, 0 assertions** — the whole of Chapter 3's setback machinery |
+| `useAllowed` | 3 rules, and two of them were mis-declared (below) |
+| `occupancyCertificateGate` | 3 rules, and they do not compete — now declared `cumulative` |
+| `baseFar` | 4 rules whose guards can never both hold — not a gap |
+
+Sweeping `requiredSetback` cost fourteen clause assertions and found **two tables the gazette
+prints and the engine had never held, a clause exclusion it had been ignoring in both
+directions, and a front setback it was under-applying above 15 m.**
+
+**Two declaration errors, both on `useAllowed`, both in the same place and opposite
+directions.** `zoning.master-plan-names` — the Appendix-15 translation table — was declared to
+produce `useAllowed`, which made it a rival of the permissibility matrix. It decides nothing
+about a use; it says what an applicant's own master plan calls the zone Clause 15.3 codes.
+Declaring it as a rival did two kinds of damage at once: it invented a conflict that does not
+exist, **and it hid the real dependency** — the matrix cannot be read until the translation
+has been made. It now produces `masterPlanZoneName`, which `zoning.permissibility` consumes,
+and the graph carries the edge. `occupancy.thresholds` was the same mistake the other way: a
+project refused for a too-narrow road is refused for a reason Clause 15.3 knows nothing
+about, so the two are cumulative conditions on lawfulness, not two answers to one question.
+
+**What stays open is the other 25.** A fact reported `uncontested` is one where no second rule
+exists to disagree — which is a fact about this engine, not about the gazette. Chapter 16's
+compounding fees have one rule each and no assertion anywhere, and the reason nothing
+contradicts them is that nothing has been written down to try.
+
+### V-062 — The bazaar street front is subordinated below 15 m and contested above it
+The cleanest subordination in the document is typographic. Clause 5.1.5's road-width ladder
+is **printed as Note-3 to the commercial setback table at Clause 3.2.4.3** — the table that
+otherwise governs a bazaar-street shop. A table that prints another table under its own rows,
+for a class of plot it covers, has yielded, and it has yielded exactly the front, which is all
+Note-3 speaks about. The engine takes the front from Clause 5.1.5 and the other three faces
+from Clause 3.2.4.3, which is what the note says on its face. Disposition: `subordinated`.
+
+Above 15 m the note runs out and the same two tables are in genuine conflict, which is B-053.
+
+### V-059 — Three rows of Clause 3.2.4.4 have no occupancy, and one row is shared with a cinema
+Both petrol-filling-station rows and the LPG gas godown are uses `OccupancyId` cannot express,
+and they are recorded in `OTHER_COMMERCIAL_UNMAPPED` rather than dropped. The sharper problem
+is the hotel row: it reads *"Hotels / Single screen cinema / Miniplex"*, and a cinema in this
+engine is `inst_assembly`, which reads Clause 3.2.4.7 and its **12 m** front — against this
+row's 5 m. One building, two tables, seven metres apart, and the distinguishing fact is
+whether the hall has one screen. The engine applies the stricter and names the alternative.
+
+### V-060 — Clause 3.2.4.7 states four rows for two building types, and is silent below 1,000 m²
+| Row | 1000–3000 | >3000 |
+|---|---|---|
+| Marriage / Banquet / Multipurpose Hall | 12 / 4.5 / 4.5 / 3 | 12 / 5 / 5 / 5 |
+| Auditorium / Convention Centre | *(from 1500)* 12 / 4.5 / 4.5 / 3 | 12 / **6** / **6** / **6** |
+
+`inst_assembly` covers both, so above 3,000 m² the engine applies the auditorium row and
+names the hall's figures on the finding — the shape V-054 already records for the zoning
+matrix. Below 1,000 m² — 1,500 for an auditorium — **the table states nothing at all**. That
+is the gazette's silence, not the engine's: the smallest stated row is applied and the caveat
+says so, rather than a row being invented.
+
 
 ### V-058 — The completion-certificate forms leave a hole, and an ordinary house falls in it
 The question "are the appendices needed" was answered by scanning them rather than reading

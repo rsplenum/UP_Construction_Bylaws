@@ -214,7 +214,7 @@ export type DerivedFact =
   /* envelope and height */
   | 'requiredSetback' | 'maxHeight'
   /* permissibility */
-  | 'useAllowed' | 'minRoadWidth' | 'minPlotArea'
+  | 'useAllowed' | 'minRoadWidth' | 'minPlotArea' | 'masterPlanZoneName'
   /* fire */
   | 'specialBuilding' | 'fireClearanceRequired' | 'fireAccessRequirement'
   /* structure */
@@ -242,7 +242,7 @@ export type DerivedFact =
 export const DERIVED_FACTS: readonly DerivedFact[] = [
   'baseFar', 'ceilingFar', 'farIncentive', 'purchasableSplit', 'purchaseGateOpen', 'purchaseFee',
   'requiredSetback', 'maxHeight',
-  'useAllowed', 'minRoadWidth', 'minPlotArea',
+  'useAllowed', 'minRoadWidth', 'minPlotArea', 'masterPlanZoneName',
   'specialBuilding', 'fireClearanceRequired', 'fireAccessRequirement',
   'seismicMandatory', 'peerReviewRequired', 'structuralAuditSchedule',
   'accessibilityRequired',
@@ -261,6 +261,73 @@ const DERIVED_SET: ReadonlySet<string> = new Set<string>(DERIVED_FACTS);
 export function isDerived(fact: Fact): fact is DerivedFact {
   return DERIVED_SET.has(fact);
 }
+
+/**
+ * What it means for two rules to establish the same fact.
+ *
+ * The conflict query rests on one premise: two rules answering the same question is a
+ * disagreement. That is true of a height ceiling and false of a certificate gate. Fire,
+ * telecom and environment each close the occupancy certificate, and none of them
+ * contradicts the others — the building needs all three. Without the distinction the
+ * query has only two things it can do with such a fact, and both are wrong: report three
+ * independent clearances as a three-way conflict, or stay silent, in which case the
+ * silence is indistinguishable from the silence over a fact nobody has looked at.
+ *
+ * Declaring it per fact is what makes `coverage.ts` able to say which silences are
+ * answers. It is also the cheapest place to be honest: a reviewer deciding this for a new
+ * fact has to say, in one word, whether a second rule answering it would be news.
+ */
+export type Combination =
+  /**
+   * Rivals. The producers answer one question, and different answers are a conflict —
+   * which is the ordinary case, and the default for anything not obviously otherwise.
+   */
+  | 'rival'
+  /**
+   * Cumulative. Each producer adds an independent condition and they all hold at once, so
+   * there is nothing for two producers to disagree about.
+   */
+  | 'cumulative';
+
+/**
+ * Every derived fact, and how its producers combine.
+ *
+ * Exhaustive by type, deliberately: a new fact cannot be added without answering this.
+ */
+export const FACT_COMBINATION: Readonly<Record<DerivedFact, Combination>> = {
+  baseFar: 'rival', ceilingFar: 'rival', farIncentive: 'rival',
+  purchasableSplit: 'rival', purchaseGateOpen: 'rival', purchaseFee: 'rival',
+  requiredSetback: 'rival', maxHeight: 'rival',
+  useAllowed: 'rival', minRoadWidth: 'rival', minPlotArea: 'rival',
+  masterPlanZoneName: 'rival',
+  specialBuilding: 'rival', fireClearanceRequired: 'rival', fireAccessRequirement: 'rival',
+  seismicMandatory: 'rival', peerReviewRequired: 'rival', structuralAuditSchedule: 'rival',
+  accessibilityRequired: 'rival',
+  licensedRole: 'rival', siteEngineerRequired: 'rival',
+  parkingRequirement: 'rival', evChargingProvision: 'rival',
+  telecomRoomSpace: 'rival', ibsNocRequired: 'rival',
+  rainwaterHarvestingRequired: 'rival', solarPvRequired: 'rival',
+  solarWaterHeatingRequired: 'rival', solidWasteProvision: 'rival',
+  /**
+   * Chapter 13's per-plot rate and Chapter 3's landscape rate are two obligations meeting
+   * on one site, and the disposition for them says so — but they are still rivals here,
+   * because a project plants ONE number of trees and the engine has to choose it. The
+   * test is not whether the duties are independent; it is whether their answers can be in
+   * tension. Here they can.
+   */
+  treePlantingRequired: 'rival',
+  environmentalCategory: 'rival',
+  ewsLigReservation: 'rival', shelterFee: 'rival',
+  compoundableLimit: 'rival', compoundingFee: 'rival', nonCompoundable: 'rival',
+  sanctionRoute: 'rival',
+  /**
+   * The one cumulative fact, and the reason the distinction exists. Clause 18.5.1.1 makes
+   * the telecom installation a condition of the occupancy certificate, Clause 13.8 makes
+   * the Environment Clearance one, and Clause 2.9.3.2 the fire NOC. Three clauses, three
+   * duties, one certificate — and no disagreement anywhere in it.
+   */
+  occupancyCertificateGate: 'cumulative',
+};
 
 /**
  * Facts the graph names that `ProjectState` cannot supply. A rule consuming one of these

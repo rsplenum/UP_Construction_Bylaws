@@ -8,6 +8,7 @@
  */
 
 import { RuleSet } from './schema';
+import { OCCUPANCIES, type OccupancyId } from '../occupancy';
 
 /* ---- Occupancy sets the applicability guards key on. -------------------------------
  *
@@ -29,6 +30,40 @@ const NON_RESIDENTIAL = [
   'inst_health', 'inst_education', 'inst_assembly',
   'ind_light', 'ind_general', 'ind_warehouse',
 ] as const;
+
+/**
+ * The uses the plot-area setback ladders cover — Clause 3.2.4.3 for shops, commercial
+ * units and mixed use, 3.2.4.5 for healthcare, 3.2.4.6 for education, 3.2.4.8 for
+ * industry.
+ *
+ * Deliberately NOT `NON_RESIDENTIAL`, which this guard used to borrow. That list is a claim
+ * about which occupancies read Chapter 3's FAR rows 3(a)/3(b), and reusing it for setbacks
+ * silently asserted that the same twelve uses read one setback table — which put malls,
+ * hotels and assembly halls on a ladder the gazette gives them their own tables away from
+ * (B-050, B-051). `mixed_use` is here and was missing from the borrowed list, though the
+ * heading of Clause 3.2.4.3 names it in terms.
+ */
+const AREA_LADDER_SETBACKS = [
+  'com_shop', 'com_complex', 'office', 'mixed_use',
+  'inst_health', 'inst_education',
+  'ind_light', 'ind_general', 'ind_warehouse',
+  // Clause 3.2.4.3's Note-3 displaces the FRONT for a bazaar street and says nothing about
+  // the other three faces, so this table still speaks to them.
+  'com_bazaar',
+] as const;
+
+/** Clause 3.2.4.4's two rows this engine has an occupancy for. */
+const OTHER_COMMERCIAL = ['com_mall', 'com_hotel'] as const;
+
+/**
+ * Clause 3.2.4.9's scope, in its own words: "For use occupancies with building height more
+ * than 15m (other than single/multi units)."
+ *
+ * Computed as the complement rather than typed out, so an occupancy added later is inside
+ * the clause unless someone decides it is a single or multi unit.
+ */
+const HIGH_RISE_SCOPE = (Object.keys(OCCUPANCIES) as OccupancyId[])
+  .filter((id) => id !== 'res_single' && id !== 'res_multi');
 
 /**
  * Clause 12.2(a)'s scope — NBC groups B, C, D, E and F, plus multi-units and group
@@ -74,7 +109,15 @@ export const RULES: RuleSet = {
     // is the Chapter 3 limb of V-010, and declaring it here is what puts two producers of
     // `maxHeight` in the graph.
     produces: ['requiredSetback', 'maxHeight'],
-    appliesWhen: { oneOf: [{ fact: 'occupancy', values: PLOTTED_RESIDENTIAL }], ranges: [{ fact: 'buildingHeight', max: 15 }] },
+    // 17.5, not 15. The guard used to carry the threshold the CODE branched on rather than
+    // the scope the clause claims, and the difference is B-052: Clause 3.2.4.1's own
+    // preamble lets a plot above 300 m² build "four storeys with stilts up to 17.5-meter
+    // height", and Clause 3.2.4.9 excludes single and multi units in terms. Between 15 and
+    // 17.5 m this table is the only one that speaks, and the engine was applying another.
+    appliesWhen: {
+      oneOf: [{ fact: 'occupancy', values: PLOTTED_RESIDENTIAL }],
+      ranges: [{ fact: 'buildingHeight', max: 17.5 }],
+    },
     ifWrong:
       'Every front setback the engine reports is derived from the wrong input. The error is largest on small plots facing wide roads, and on large plots facing narrow ones.',
   },
@@ -85,11 +128,21 @@ export const RULES: RuleSet = {
     clause: 'Clause 3.2.4.9',
     confidence: 'gazette',
     checked: '2026-09-10',
-    quote: '>15–17.5: 5 all round. >17.5–21: 6. >21–27: 7. >27–33: 8. >33–39: 9. >39–45: 10. >45–51: 11. >51: 15 front, 12 others.',
+    quote:
+      'For use occupancies with building height more than 15m (other than single/multi units), '
+      + 'the minimum setback requirement shall be as follows. '
+      + '>15–17.5: 5 all round. >17.5–21: 6. >21–27: 7. >27–33: 8. >33–39: 9. >39–45: 10. '
+      + '>45–51: 11. >51: 15 front, 12 others.',
     derivedFrom: ['buildingHeight'],
-    consumes: ['buildingHeight'],
+    consumes: ['buildingHeight', 'occupancy'],
     produces: ['requiredSetback'],
-    appliesWhen: { ranges: [{ fact: 'buildingHeight', min: 15, minInclusive: false }] },
+    // "(other than single/multi units)" is in the clause's opening line and was in no guard
+    // and no branch (B-052). Without it this rule claimed every use above 15 m, and the
+    // graph could not see that Table 3.2.1 and this one have nothing to argue about.
+    appliesWhen: {
+      oneOf: [{ fact: 'occupancy', values: HIGH_RISE_SCOPE }],
+      ranges: [{ fact: 'buildingHeight', min: 15, minInclusive: false }],
+    },
     ifWrong:
       'Fire tender access would be assessed against the wrong figure. These setbacks are non-compoundable, so an error here cannot be corrected by a fee later.',
   },
@@ -130,7 +183,7 @@ export const RULES: RuleSet = {
     consumes: ['plotArea', 'occupancy', 'buildingHeight', 'cornerPlot'],
     produces: ['requiredSetback'],
     appliesWhen: {
-      oneOf: [{ fact: 'occupancy', values: NON_RESIDENTIAL }],
+      oneOf: [{ fact: 'occupancy', values: AREA_LADDER_SETBACKS }],
       ranges: [{ fact: 'buildingHeight', max: 15 }],
     },
     ifWrong:
@@ -140,6 +193,82 @@ export const RULES: RuleSet = {
       summary:
         'Two of the four ladders — commercial and healthcare — were checked against the gazette on 2026-09-10 and carry that note in `setbacks.ts`. The educational and industrial ladders have never been checked against any source, and neither of the two that were carries a line-anchored citation, so none of the four may claim gazette confidence.',
       derivedFromInstead: ['plotArea', 'occupancy', 'roadWidth'],
+    },
+  },
+
+  /**
+   * Clause 3.2.4.4, which this register did not hold and the engine did not apply (B-050).
+   *
+   * The coverage query in `rules/coverage.ts` is what found it: `requiredSetback` had five
+   * rules and not one clause assertion, so nothing in the repository could be asked which
+   * tables answer it. The gazette prints eight below the high-rise threshold and this
+   * engine carried six.
+   */
+  'setback.other-commercial': {
+    id: 'setback.other-commercial',
+    question: 'How far back must a hotel, a mall or a cinema sit?',
+    clause: 'Clause 3.2.4.4',
+    confidence: 'gazette',
+    derivedFrom: ['occupancy'],
+    checked: '2026-09-12',
+    quote:
+      'Other Commercial – building height up to 15-meters. Hotels/ Single screen cinema/ Miniplex: '
+      + '5 / 3 / 3 / 3. Multiplex/ Shopping Malls: 9 / 6 / 6 / 6. Petrol filling station w/o Service '
+      + 'Station: 3 / - / - / -. Petrol filling station with Service Station: 6 / - / - / -. LPG Gas '
+      + 'Godown: 6 / 3 / 3 / 3.',
+    consumes: ['occupancy', 'buildingHeight', 'cornerPlot'],
+    produces: ['requiredSetback'],
+    appliesWhen: {
+      oneOf: [{ fact: 'occupancy', values: OTHER_COMMERCIAL }],
+      ranges: [{ fact: 'buildingHeight', max: 15 }],
+    },
+    ifWrong:
+      'A mall was reading the plot-area ladder at Clause 3.2.4.3, which gives it 4.5/3/1.5/1.5 on a '
+      + '400 m² plot against this table\'s 9/6/6/6 — less than half the front and a quarter of the '
+      + 'sides. The error runs the other way for a large hotel, which this table seats 5 m back where '
+      + 'the plot-area ladder demanded 12.',
+    challenge: {
+      id: 'V-059',
+      summary:
+        'Three of the five printed rows — both petrol filling station rows and the LPG gas godown — '
+        + 'have no occupancy in this engine, and the mall row is shared with multiplexes while the '
+        + 'hotel row is shared with single screen cinemas and miniplexes. A cinema is `inst_assembly` '
+        + 'here, which reads Clause 3.2.4.7 instead and is the stricter of the two by 7 m at the front.',
+    },
+  },
+
+  /**
+   * Clause 3.2.4.7 — the other table the coverage query found missing (B-051).
+   */
+  'setback.public-amenity': {
+    id: 'setback.public-amenity',
+    question: 'How far back must a marriage hall, banquet hall or auditorium sit?',
+    clause: 'Clause 3.2.4.7',
+    confidence: 'gazette',
+    derivedFrom: ['plotArea', 'occupancy'],
+    checked: '2026-09-12',
+    quote:
+      'Community Facilities – Public Amenity buildings height up to 15-meters. Marriage/ Banquet/ '
+      + 'Multipurpose Hall: 1000 – 3000 → 12 / 4.5 / 4.5 / 3; More than 3000 → 12 / 5 / 5 / 5. '
+      + 'Auditorium / Convention Centre: 1500 – 3000 → 12 / 4.5 / 4.5 / 3; More than 3000 → 12 / 6 / 6 / 6.',
+    consumes: ['plotArea', 'occupancy', 'buildingHeight', 'cornerPlot'],
+    produces: ['requiredSetback'],
+    appliesWhen: {
+      oneOf: [{ fact: 'occupancy', values: ['inst_assembly'] }],
+      ranges: [{ fact: 'buildingHeight', max: 15 }],
+    },
+    ifWrong:
+      'A banquet hall was reading Clause 3.2.4.3 and given 6 m at the front on a 2,000 m² plot where '
+      + 'this table requires 12 — the largest front setback in Chapter 3 outside the high-rise ladder, '
+      + 'and the one most likely to decide whether the building fits on the plot at all.',
+    challenge: {
+      id: 'V-060',
+      summary:
+        'Four printed rows across two building types and one occupancy covering both, so above '
+        + '3,000 m² the engine takes the auditorium\'s 12/6/6/6 over the hall\'s 12/5/5/5 and names '
+        + 'the alternative. Below 1,000 m² — 1,500 for an auditorium — the table states nothing at '
+        + 'all, and the engine applies the smallest stated row rather than inventing one.',
+      derivedFromInstead: ['plotArea'],
     },
   },
 
@@ -626,7 +755,11 @@ export const RULES: RuleSet = {
       '53 activities against 16 land-use zones — 847 verdicts, stated as cell fill: green '
       + 'permitted, red prohibited, green carrying a number permitted subject to that condition. '
       + 'Read from the chapter PDF by fill colour, because the flattened text carries none of it.',
-    consumes: ['occupancy', 'zone', 'areaType', 'plotArea'],
+    // `masterPlanZoneName` is the edge the graph was missing. Clause 15.3 is keyed on
+    // sixteen codes no master plan prints, so the zone this rule reads is one Appendix-15
+    // had to translate first. Declaring it says the matrix cannot be answered before the
+    // appendix has been.
+    consumes: ['occupancy', 'zone', 'areaType', 'plotArea', 'masterPlanZoneName'],
     produces: ['useAllowed'],
     ifWrong:
       'This is the first question and it is prior to every dimensional one: a use prohibited in '
@@ -656,7 +789,15 @@ export const RULES: RuleSet = {
       + 'use-zone rows Clause 15.3 prints as columns, giving the local name each authority\'s plan '
       + 'uses, or NIL where it has no zone of that kind.',
     consumes: ['zone'],
-    produces: ['useAllowed'],
+    /**
+     * NOT `useAllowed`, which is what this said until the coverage query asked what three
+     * rules were doing answering one question. Appendix-15 decides nothing about whether a
+     * use is permitted; it says what the applicant's own master plan calls the zone Clause
+     * 15.3 codes. Declaring it as a rival of the permissibility matrix did two kinds of
+     * damage at once: it invented a conflict that does not exist, and it hid the real
+     * dependency — the matrix cannot be read until this translation has been made.
+     */
+    produces: ['masterPlanZoneName'],
     ifWrong:
       'Clause 15.3 is keyed on codes no applicant\'s master plan uses. Without this table the '
       + 'engine asks a question the user cannot answer about their own plot, and a wrong column '
@@ -679,7 +820,14 @@ export const RULES: RuleSet = {
     consumes: ['occupancy', 'areaType', 'roadWidth', 'plotArea', 'buildingHeight', 'hotelRooms'],
     // Clause 4.1.4's limb of V-010 — the ceiling keyed on unit count, not plot size — is
     // `OccupancyDefinition.maxHeightM`, and this is the rule that reports it.
-    produces: ['useAllowed', 'minRoadWidth', 'minPlotArea', 'maxHeight'],
+    /**
+     * `useAllowed` was here too, and it was the same mistake in the other direction: this
+     * rule establishes what a use needs — a road width, a plot size, a height ceiling —
+     * and a project failing one of those is refused for a reason Clause 15.3 knows nothing
+     * about. The two are cumulative conditions on lawfulness, not two answers to one
+     * question, and the finding that reports a too-narrow road already cites this rule.
+     */
+    produces: ['minRoadWidth', 'minPlotArea', 'maxHeight'],
     ifWrong:
       'The permissibility verdict — the first thing the app says — would be wrong. This is the newest and least sourced part of the engine: sixteen occupancies were defined in one pass to widen coverage.',
     challenge: {

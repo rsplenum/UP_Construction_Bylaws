@@ -251,6 +251,39 @@ export const RESOLUTIONS: Readonly<Record<string, Resolution>> = {
     logEntry: 'V-049',
     why: 'Clause 17.5.1 sits in the explanatory annexure and reads as a projection about 2020, resolving to 20% for the cities the byelaws govern. The engine applies 20% without a caveat.',
   },
+  'c3.2.4.3.setback.commercial|c5.1.5.setback.bazaar-front': {
+    disposition: 'subordinated',
+    logEntry: 'V-062',
+    why:
+      'The cleanest subordination in the document, and it is typographic: Clause 5.1.5\'s '
+      + 'road-width ladder is PRINTED AS NOTE-3 to the commercial setback table itself. A table '
+      + 'that prints another table under its own rows, for a class of plot it otherwise covers, '
+      + 'has yielded — and it has yielded exactly the front, which is all Note-3 speaks about. '
+      + 'The engine takes the front from Clause 5.1.5 and the other three faces from this table, '
+      + 'which is what the note says on its face.',
+  },
+  'c3.2.4.7.setback.public-amenity.auditorium.over-3000|c3.2.4.7.setback.public-amenity.hall.over-3000': {
+    disposition: 'stricter',
+    logEntry: 'V-060',
+    why:
+      'One table, two building types, and above 3,000 m² they differ by a metre on the rear and '
+      + 'both sides — a marriage hall 12/5/5/5, an auditorium 12/6/6/6. `inst_assembly` covers '
+      + 'both and nothing in the project model distinguishes them, so the engine applies the '
+      + 'auditorium row and names the hall figures on the finding. Same shape as V-054: not a '
+      + 'defect in the gazette, a fact this engine cannot see.',
+  },
+  'c3.2.4.9.setback.high-rise|c5.1.5.setback.bazaar-front': {
+    disposition: 'stricter',
+    logEntry: 'V-062',
+    why:
+      'Above 15 m the subordination above runs out: Note-3 is printed under a table captioned '
+      + '"up to 15-meter height" and cannot reach Clause 3.2.4.9, while Clause 5.1.5 carries no '
+      + 'height limb at all and Clause 5.1.3 says in terms that a bazaar street has no height '
+      + 'restriction. Both tables therefore speak and neither yields. The engine used to take '
+      + 'Clause 3.2.4.9\'s front unconditionally, which is the SMALLER figure on any bazaar '
+      + 'street wider than 30 m — 6 m against 7.5 for a building in the 17.5–21 m band. It now '
+      + 'takes the larger, which is standing rule 4 (B-053).',
+  },
   'c18.5.1.2n.telecom-room.built-up|c18.5.1.2n.telecom-room.ibs-covered': {
     disposition: 'stricter',
     logEntry: 'V-051',

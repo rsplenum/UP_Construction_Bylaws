@@ -119,6 +119,80 @@ export const INDUSTRIAL_LADDER: readonly CommercialSetbackBand[] = [
   { label: '>10000 sqm',         overMoreThan: 10000, upToAndIncluding: Infinity, front: 12.0, rear: 9.0, side1: 9.0, side2: 9.0 },
 ];
 
+/**
+ * Clause 3.2.4.4 — "Other Commercial", the one setback table keyed on what the building
+ * IS rather than on how big its plot is.
+ *
+ * The engine did not hold this table at all, and routed hotels and malls to the ordinary
+ * commercial ladder at Clause 3.2.4.3 (B-050). The error is not a rounding: a mall on a
+ * 2,000 m² plot was given 6/3/3/3 where this table requires 9/6/6/6, and one on a 400 m²
+ * plot was given 4.5/3/1.5/1.5 against the same 9/6/6/6 — less than half the front and a
+ * quarter of the sides. It runs the other way for a large hotel, which this table lets sit
+ * 5 m back where the plot-area ladder demanded 12.
+ *
+ * Found by `rules/coverage.ts`, which asked which tables answer `requiredSetback` and got
+ * a list two short of the gazette's.
+ */
+export interface OtherCommercialSetback extends SetbackSet {
+  readonly row: string;
+}
+
+export const OTHER_COMMERCIAL_SETBACKS = {
+  /** "Hotels/ Single screen cinema/ Miniplex". */
+  hotel: { row: 'Hotels / Single screen cinema / Miniplex', front: 5, rear: 3, side1: 3, side2: 3 },
+  /** "Multiplex/ Shopping Malls". */
+  mall: { row: 'Multiplex / Shopping Malls', front: 9, rear: 6, side1: 6, side2: 6 },
+} as const satisfies Readonly<Record<string, OtherCommercialSetback>>;
+
+/**
+ * Rows of Clause 3.2.4.4 that no occupancy in this engine maps onto.
+ *
+ * Recorded rather than dropped, on the same principle as every other unmapped row: a table
+ * this engine holds three-fifths of is a table someone has to be told the rest of. A
+ * petrol pump is not a use `OccupancyId` can express, and pretending the table has three
+ * rows would make that invisible.
+ */
+export const OTHER_COMMERCIAL_UNMAPPED: readonly OtherCommercialSetback[] = [
+  { row: 'Petrol filling station without service station', front: 3, rear: 0, side1: 0, side2: 0 },
+  { row: 'Petrol filling station with service station', front: 6, rear: 0, side1: 0, side2: 0 },
+  { row: 'LPG Gas Godown', front: 6, rear: 3, side1: 3, side2: 3 },
+];
+
+/**
+ * Clause 3.2.4.7 — "Community Facilities – Public Amenity buildings height up to
+ * 15-meters". The second table the coverage query found missing (B-051).
+ *
+ * The gazette prints four rows across two building types:
+ *
+ *   Marriage / Banquet / Multipurpose Hall    1000–3000 → 12/4.5/4.5/3   >3000 → 12/5/5/5
+ *   Auditorium / Convention Centre            1500–3000 → 12/4.5/4.5/3   >3000 → 12/6/6/6
+ *
+ * `inst_assembly` covers both, so above 3,000 m² the two rows disagree by 1 m on the rear
+ * and both sides and the stricter governs, with the alternative named on the finding. This
+ * is the shape V-054 already records for the zoning matrix: one occupancy, two rows, and
+ * the distinguishing fact not in the project model.
+ *
+ * Below 1,000 m² the table states nothing. That is the gazette's silence, not this
+ * engine's, and it is reported as a caveat rather than filled in.
+ */
+export const PUBLIC_AMENITY_LADDER: readonly CommercialSetbackBand[] = [
+  { label: '1000 to 3000 sqm', overMoreThan: 1000, upToAndIncluding: 3000,     front: 12, rear: 4.5, side1: 4.5, side2: 3 },
+  { label: '>3000 sqm',        overMoreThan: 3000, upToAndIncluding: Infinity, front: 12, rear: 6,   side1: 6,   side2: 6 },
+];
+
+/**
+ * The tallest a plotted house can be and still read Table 3.2.1.
+ *
+ * Clause 3.2.4.9 opens "For use occupancies with building height more than 15m (other than
+ * single/multi units)" — it excludes plotted residential in terms. Clause 3.2.4.1's own
+ * preamble says plots above 300 m² may build "four storeys with stilts up to 17.5-meter
+ * height", so between 15 and 17.5 m a plotted house is inside Table 3.2.1 and outside the
+ * progressive ladder. The engine applied the progressive ladder to it in both directions
+ * at once (B-052): 5 m on every side where Table 3.2.1 asks 3/3/0/0 on a 400 m² plot, and
+ * a 5 m front where it asks 6 on a plot over 1,200 m².
+ */
+export const PLOTTED_MAX_HEIGHT_M = 17.5;
+
 assertContiguousLadder('PLOTTED_RESIDENTIAL_LADDER', PLOTTED_RESIDENTIAL_LADDER);
 assertContiguousLadder('HEALTHCARE_LADDER', HEALTHCARE_LADDER);
 assertContiguousLadder('EDUCATIONAL_LADDER', EDUCATIONAL_LADDER);
@@ -202,6 +276,13 @@ export function resolveRequiredSetbacks(input: {
     industrial: INDUSTRIAL_LADDER,
   };
 
+  /**
+   * Clause 3.2.4.9 excludes single/multi units in terms, and Table 3.2.1 reaches 17.5 m.
+   * A plotted house between the two therefore stays on its own table (B-052).
+   */
+  const plottedBelowItsOwnCeiling = definition.setbackTable === 'plotted_residential'
+    && isHighRise && buildingHeight <= PLOTTED_MAX_HEIGHT_M;
+
   if (definition.setbackTable === 'bazaar_street' && !isHighRise) {
     // Clause 5.1.5 gives a front open space only, keyed on the road. The other three
     // faces fall back to the commercial ladder at Clause 3.2.4.
@@ -221,8 +302,9 @@ export function resolveRequiredSetbacks(input: {
       'Clause 5.1.5 lists discrete road widths rather than bands. A road between two listed '
       + 'widths is taken here at the next width up, which is the stricter reading (V-012).',
     );
-  } else if (isHighRise) {
-    // Progressive fire-tender setbacks override every area-based ladder above 15 m.
+  } else if (isHighRise && !plottedBelowItsOwnCeiling) {
+    // Progressive fire-tender setbacks override every area-based ladder above 15 m —
+    // every one but Table 3.2.1's, which Clause 3.2.4.9 excludes by name.
     const resolved = resolveBand(HIGH_RISE_LADDER, buildingHeight);
     const band = resolved.ok ? resolved.band : HIGH_RISE_LADDER[0];
     if (!resolved.ok) {
@@ -232,10 +314,93 @@ export function resolveRequiredSetbacks(input: {
     bandLabel = band.label;
     clauseRef = 'Clause 3.2.4.9 (Progressive High-Rise Setbacks)';
     rule = 'setback.high-rise';
+    if (definition.setbackTable === 'bazaar_street') {
+      /**
+       * Clause 5.1 puts no height limit on a bazaar street — 5.1.3 says so in terms — and
+       * Clause 5.1.5 carries no height limb, so above 15 m both tables speak and they
+       * disagree about the front. Note-3's subordination is printed under a table captioned
+       * "up to 15-meter height" and does not reach up here.
+       *
+       * Standing rule 4: both readings stand and the stricter governs. The engine used to
+       * take Clause 3.2.4.9's front unconditionally, which is the LAXER figure on any
+       * bazaar street wider than 30 m — 6 m against 7.5 on a 16-storey-band building
+       * (B-053).
+       */
+      const bazaar = resolveBand(BAZAAR_STREET_FRONT_LADDER, roadWidth);
+      const bazaarFront = (bazaar.ok ? bazaar.band : BAZAAR_STREET_FRONT_LADDER[0]).front;
+      if (bazaarFront > set.front) {
+        caveats.push(
+          `Clause 5.1.5 requires ${bazaarFront} m at the front on a ${roadWidth} m bazaar street `
+          + `and Clause 3.2.4.9 requires ${set.front} m at this height. Neither yields to the other `
+          + 'above 15 m, so the larger governs (B-053).',
+        );
+        set = { ...set, front: bazaarFront };
+        clauseRef = 'Clause 5.1.5 (bazaar street front open space), with Clause 3.2.4.9 for the other faces';
+        rule = 'setback.bazaar-street';
+      } else {
+        caveats.push(
+          `Clause 5.1.5 would require ${bazaarFront} m at the front on a ${roadWidth} m bazaar `
+          + `street. Clause 3.2.4.9's ${set.front} m is the larger at this height and governs.`,
+        );
+      }
+    }
+    if (definition.setbackTable === 'plotted_residential') {
+      caveats.push(
+        `Clause 3.2.4.9 excludes single and multi units, and Table 3.2.1 reaches only `
+        + `${PLOTTED_MAX_HEIGHT_M} m. At ${buildingHeight} m this building is above the height `
+        + 'Clause 3.2.4.1 allows a plotted house at all, so the progressive ladder is applied '
+        + 'for want of any other table.',
+      );
+    }
     maxHeight = band.upToAndIncluding;
     maxFloors = 'Governed by the fire NOC and structural clearance';
     note = 'Continuous fire-tender movement space is required on all four sides. These setbacks cannot be compounded at any fee.';
     typology = 'High rise';
+  } else if (definition.setbackTable === 'other_commercial') {
+    // Clause 3.2.4.4 is keyed on the building, not the plot, so there is no band to
+    // resolve — and a hotel's figures do not move with plot size at all.
+    const row = definition.id === 'com_mall'
+      ? OTHER_COMMERCIAL_SETBACKS.mall
+      : OTHER_COMMERCIAL_SETBACKS.hotel;
+    set = { front: row.front, rear: row.rear, side1: row.side1, side2: row.side2 };
+    bandLabel = row.row;
+    clauseRef = 'Clause 3.2.4.4 (Other Commercial)';
+    rule = 'setback.other-commercial';
+    maxFloors = 'Governed by road width and FAR';
+    if (definition.id === 'com_mall') {
+      caveats.push(
+        'Clause 3.2.4.4 gives one row to multiplexes and shopping malls together. A single '
+        + 'screen cinema or miniplex is on the hotel row at 5/3/3/3, which this occupancy '
+        + 'cannot distinguish.',
+      );
+    }
+  } else if (definition.setbackTable === 'public_amenity') {
+    const resolved = resolveBand(PUBLIC_AMENITY_LADDER, plotArea);
+    const band = resolved.ok ? resolved.band : PUBLIC_AMENITY_LADDER[0];
+    set = { front: band.front, rear: band.rear, side1: band.side1, side2: band.side2 };
+    bandLabel = band.label;
+    clauseRef = 'Clause 3.2.4.7 (Public Amenity)';
+    rule = 'setback.public-amenity';
+    maxFloors = 'Governed by road width and FAR';
+    if (!resolved.ok) {
+      caveats.push(
+        `Clause 3.2.4.7 states no row below 1,000 sqm for a hall and none below 1,500 sqm for `
+        + `an auditorium. At ${plotArea} sqm the smallest stated row is applied, which is the `
+        + 'stricter reading; the gazette is simply silent here.',
+      );
+    }
+    if (plotArea > 3000) {
+      caveats.push(
+        'Above 3,000 sqm Clause 3.2.4.7 gives a marriage or banquet hall 12/5/5/5 and an '
+        + 'auditorium or convention centre 12/6/6/6. This occupancy covers both, so the '
+        + 'stricter row governs and a hall may argue for 5 m on the rear and sides.',
+      );
+    }
+    caveats.push(
+      'Clause 3.2.4.4 puts a single screen cinema or miniplex on the "Other Commercial" table '
+      + 'at 5/3/3/3. This occupancy covers cinemas as well as halls, and the Public Amenity '
+      + 'figures are the stricter of the two.',
+    );
   } else if (definition.setbackTable === 'group_housing') {
     set = { front: 5, rear: 5, side1: 5, side2: 5 };
     bandLabel = 'Group housing below 15 m';
@@ -267,12 +432,25 @@ export function resolveRequiredSetbacks(input: {
       maxHeight = Math.min(definition.maxHeightM, plotted.maxHeight);
       maxFloors = plotted.maxFloors;
       note = plotted.note;
+      if (plottedBelowItsOwnCeiling) {
+        caveats.push(
+          buildingHeight > plotted.maxHeight
+            ? 'Clause 3.2.4.9 opens "For use occupancies with building height more than 15m '
+              + '(other than single/multi units)", and Table 3.2.1 allows only '
+              + `${plotted.maxHeight} m on a plot of this size. At ${buildingHeight} m no setback `
+              + 'table in the byelaws speaks to this building; its own row is applied and the '
+              + 'height is reported against the ceiling separately.'
+            : 'Clause 3.2.4.9 opens "For use occupancies with building height more than 15m '
+              + '(other than single/multi units)", so the progressive fire-tender ladder does not '
+              + `reach a plotted house. Table 3.2.1 governs to ${plotted.maxHeight} m here (B-052).`,
+        );
+      }
     } else {
       clauseRef =
-        definition.setbackTable === 'commercial' ? 'Chapter 5 (Commercial Setbacks)'
-        : definition.setbackTable === 'healthcare' ? 'Chapter 6 (Healthcare Setbacks)'
-        : definition.setbackTable === 'educational' ? 'Chapter 6 (Educational Setbacks)'
-        : 'Chapter 7 (Industrial Setbacks)';
+        definition.setbackTable === 'commercial' ? 'Clause 3.2.4.3 (Commercial — shops, commercial units, mixed use)'
+        : definition.setbackTable === 'healthcare' ? 'Clause 3.2.4.5 (Community Facilities — healthcare)'
+        : definition.setbackTable === 'educational' ? 'Clause 3.2.4.6 (Community Facilities — educational)'
+        : 'Clause 3.2.4.8 (Industrial buildings)';
       rule = 'setback.non-residential';
       maxFloors = 'Governed by road width and FAR';
     }
@@ -325,6 +503,9 @@ export const BAZAAR_STREET_FRONT_LADDER: readonly (Band & { label: string; front
 ];
 
 assertContiguousLadder('BAZAAR_STREET_FRONT_LADDER', BAZAAR_STREET_FRONT_LADDER);
+// Clause 3.2.4.7 states no row below 1,000 sqm, so this ladder deliberately does not
+// start at zero; `resolveBand` reports `below-first-band` and the caveat says so.
+assertContiguousLadder('PUBLIC_AMENITY_LADDER', PUBLIC_AMENITY_LADDER);
 
 export type SetbackFace = 'front' | 'rear' | 'side1' | 'side2';
 

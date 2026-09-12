@@ -35,9 +35,14 @@
 import {
   COMMERCIAL_MAX_FAR, GROUP_HOUSING_MAX_FAR, type AreaType, type RoadFarBand,
 } from '../far';
+import {
+  BAZAAR_STREET_FRONT_LADDER, COMMERCIAL_LADDER, EDUCATIONAL_LADDER, HEALTHCARE_LADDER,
+  HIGH_RISE_LADDER, INDUSTRIAL_LADDER, OTHER_COMMERCIAL_SETBACKS, PLOTTED_MAX_HEIGHT_M,
+  PLOTTED_RESIDENTIAL_LADDER, PUBLIC_AMENITY_LADDER, type SetbackSet,
+} from '../setbacks';
 import { asCeiling, baseFarApplies, purchasableRowFor, type PurchasableBand, type PurchasableRow } from '../purchasable-far';
-import { OCCUPANCIES, type OccupancyId } from '../occupancy';
-import type { DerivedFact, Guard } from './schema';
+import { OCCUPANCIES, type OccupancyId, type SetbackTable } from '../occupancy';
+import type { DerivedFact, Guard, RangeTerm } from './schema';
 
 export interface ClauseNode {
   readonly id: string;
@@ -649,11 +654,276 @@ function printedChapterNodes(): ClauseNode[] {
   return out;
 }
 
+
+/* ====================================================================================
+ * GENERATED NODES — the setback tables, one node per TABLE.
+ *
+ * `requiredSetback` was the one fact `coverage.ts` reported as unswept: five rules
+ * establishing it and not a single assertion for the query to compare. Authoring these
+ * found two tables the gazette prints and the engine did not hold (B-050, B-051) and one
+ * clause whose scope the engine had been ignoring (B-052).
+ *
+ * ---- Why one node per table and not one per row -------------------------------------
+ *
+ * The FAR nodes above are one per CELL, and they have to be: Chapter 3's ladder and the
+ * per-occupancy printed tables are keyed the same way, on the same road bands, so the two
+ * sources meet cell by cell and enumerating where they diverge is the information.
+ *
+ * The setback tables are not like that. Clause 3.2.4.3 is keyed on plot area, Clause 5.1.5
+ * on road width, Clause 3.2.4.9 on height, Clause 3.2.4.4 on what the building is. Two
+ * tables keyed on different quantities have no cells in common, so a per-row generation
+ * would emit the CARTESIAN PRODUCT of their rows — forty pairs for the bazaar street
+ * against the commercial ladder alone — and every one of those pairs would be restating
+ * the same single fact, that the two tables both fix a front setback and disagree.
+ *
+ * So: rows where the rival tables share a key, one node per table where they do not. The
+ * exception is Clause 3.2.4.7, whose two building types are keyed the same way and
+ * disagree above 3,000 m², which is exactly the case per-row nodes exist for.
+ * ================================================================================== */
+
+const faces = (set: SetbackSet): string =>
+  `${set.front} / ${set.rear} / ${set.side1} / ${set.side2}`;
+
+const ladderPhrase = (bands: readonly (SetbackSet & { label: string })[]): string =>
+  bands.map((b) => `${b.label}: ${faces(b)}`).join('; ');
+
+const readingTable = (table: SetbackTable): OccupancyId[] =>
+  (Object.keys(OCCUPANCIES) as OccupancyId[]).filter((id) => OCCUPANCIES[id].setbackTable === table);
+
+/** Clause 3.2.4.9's scope in its own words — every use but a single or multi unit. */
+const NOT_PLOTTED = (Object.keys(OCCUPANCIES) as OccupancyId[])
+  .filter((id) => !(PLOTTED as readonly string[]).includes(id));
+
+const upTo15: readonly RangeTerm[] = [{ fact: 'buildingHeight', max: 15 }];
+
+function setbackNodes(): ClauseNode[] {
+  return [
+    {
+      id: 'c3.2.4.1.setback.plotted',
+      clause: 'Clause 3.2.4.1 (Table 3.2.1)',
+      asks: 'How far back must a plotted house sit from each boundary?',
+      produces: 'requiredSetback',
+      asserts: ladderPhrase(PLOTTED_RESIDENTIAL_LADDER),
+      // To 17.5 m, not to 15: the table's own preamble allows "four storeys with stilts up
+      // to 17.5-meter height" above 300 m², and Clause 3.2.4.9 excludes this use by name.
+      appliesWhen: {
+        oneOf: [{ fact: 'occupancy', values: PLOTTED }],
+        ranges: [{ fact: 'buildingHeight', max: PLOTTED_MAX_HEIGHT_M }],
+      },
+      applied: true,
+      implements: 'setback.plotted-residential',
+      quote:
+        'Under plotted development, for all single/multi-units less than 300 square meters plot '
+        + 'size, three floors with stilts up to 15 meter is allowed and on plots above 300 square '
+        + 'meters, four storeys with stilts up to 17.5-meter height is allowed. The set-back shall '
+        + 'be as follows:',
+    },
+    {
+      id: 'c3.2.4.2.setback.group-housing',
+      clause: 'Clause 3.2.4.2',
+      asks: 'How far back must a group housing block below 15 m sit?',
+      produces: 'requiredSetback',
+      asserts: '5 / 5 / 5 / 5',
+      appliesWhen: {
+        oneOf: [{ fact: 'occupancy', values: readingTable('group_housing') }],
+        ranges: upTo15,
+      },
+      applied: true,
+      implements: 'setback.group-housing',
+      quote: 'Residential – Group Housing up to 15-meter height. Group Housing up to 15-meters: 5 / 5 / 5 / 5.',
+    },
+    {
+      id: 'c3.2.4.3.setback.commercial',
+      clause: 'Clause 3.2.4.3',
+      asks: 'How far back must a shop, commercial unit or mixed-use building below 15 m sit?',
+      produces: 'requiredSetback',
+      asserts: ladderPhrase(COMMERCIAL_LADDER),
+      // `com_bazaar` is inside this guard although the engine routes it to Clause 5.1.5:
+      // Note-3 to THIS table is where the bazaar-street ladder is printed, which is the
+      // table saying in its own voice that it speaks to bazaar-street plots and yields only
+      // the front. The other three faces are still its own.
+      appliesWhen: {
+        oneOf: [{ fact: 'occupancy', values: [...readingTable('commercial'), 'com_bazaar'] }],
+        ranges: upTo15,
+      },
+      applied: true,
+      implements: 'setback.non-residential',
+      quote:
+        'Commercial – Shops/commercial units, Mixed use buildings up to 15-meter height. '
+        + 'Up to 100: 1.5 / - / - / -. >100 - 300: 3 / - / - / -. >300 - 1000: 4.5 / 3 / 1.5 / 1.5. '
+        + '>1000 - 3000: 6 / 3 / 3 / 3. >3000: 12 / 6 / 6 / 6.',
+    },
+    {
+      id: 'c3.2.4.4.setback.other-commercial.hotel',
+      clause: 'Clause 3.2.4.4',
+      asks: 'How far back must a hotel, single-screen cinema or miniplex below 15 m sit?',
+      produces: 'requiredSetback',
+      asserts: faces(OTHER_COMMERCIAL_SETBACKS.hotel),
+      appliesWhen: {
+        oneOf: [{ fact: 'occupancy', values: ['com_hotel'] }],
+        ranges: upTo15,
+      },
+      applied: true,
+      implements: 'setback.other-commercial',
+      quote: 'Other Commercial. Hotels/ Single screen cinema/ Miniplex: 5 / 3 / 3 / 3.',
+      note:
+        'One of two rows in this table that map onto an occupancy this engine has. The table is '
+        + 'keyed on what the building is, and its key column is headed "Building Height (m)" — a '
+        + 'header carried over from the group housing table above it.',
+    },
+    {
+      id: 'c3.2.4.4.setback.other-commercial.mall',
+      clause: 'Clause 3.2.4.4',
+      asks: 'How far back must a shopping mall or multiplex below 15 m sit?',
+      produces: 'requiredSetback',
+      asserts: faces(OTHER_COMMERCIAL_SETBACKS.mall),
+      appliesWhen: {
+        oneOf: [{ fact: 'occupancy', values: ['com_mall'] }],
+        ranges: upTo15,
+      },
+      applied: true,
+      implements: 'setback.other-commercial',
+      quote: 'Other Commercial. Multiplex/ Shopping Malls: 9 / 6 / 6 / 6.',
+    },
+    {
+      id: 'c3.2.4.5.setback.healthcare',
+      clause: 'Clause 3.2.4.5',
+      asks: 'How far back must a hospital or nursing home below 15 m sit?',
+      produces: 'requiredSetback',
+      asserts: ladderPhrase(HEALTHCARE_LADDER),
+      appliesWhen: {
+        oneOf: [{ fact: 'occupancy', values: readingTable('healthcare') }],
+        ranges: upTo15,
+      },
+      applied: true,
+      implements: 'setback.non-residential',
+    },
+    {
+      id: 'c3.2.4.6.setback.educational',
+      clause: 'Clause 3.2.4.6',
+      asks: 'How far back must a school or college below 15 m sit?',
+      produces: 'requiredSetback',
+      asserts: ladderPhrase(EDUCATIONAL_LADDER),
+      appliesWhen: {
+        oneOf: [{ fact: 'occupancy', values: readingTable('educational') }],
+        ranges: upTo15,
+      },
+      applied: true,
+      implements: 'setback.non-residential',
+    },
+    {
+      id: 'c3.2.4.7.setback.public-amenity.hall.1000-3000',
+      clause: 'Clause 3.2.4.7',
+      asks: 'How far back must a marriage or banquet hall of 1,000 to 3,000 m² sit?',
+      produces: 'requiredSetback',
+      asserts: '12 / 4.5 / 4.5 / 3',
+      appliesWhen: {
+        oneOf: [{ fact: 'occupancy', values: ['inst_assembly'] }],
+        ranges: [{ fact: 'plotArea', min: 1000, minInclusive: false }, { fact: 'plotArea', max: 3000 }, ...upTo15],
+      },
+      applied: true,
+      implements: 'setback.public-amenity',
+      quote: 'Marriage/ Banquet/ Multipurpose Hall. 1000 – 3000: 12 / 4.5 / 4.5 / 3.',
+    },
+    {
+      id: 'c3.2.4.7.setback.public-amenity.hall.over-3000',
+      clause: 'Clause 3.2.4.7',
+      asks: 'How far back must a marriage or banquet hall above 3,000 m² sit?',
+      produces: 'requiredSetback',
+      asserts: '12 / 5 / 5 / 5',
+      appliesWhen: {
+        oneOf: [{ fact: 'occupancy', values: ['inst_assembly'] }],
+        ranges: [{ fact: 'plotArea', min: 3000, minInclusive: false }, ...upTo15],
+      },
+      applied: false,
+      quote: 'Marriage/ Banquet/ Multipurpose Hall. More than 3000: 12 / 5 / 5 / 5.',
+      note: 'Not applied: one occupancy covers both building types and the engine takes the stricter row.',
+    },
+    {
+      id: 'c3.2.4.7.setback.public-amenity.auditorium.1500-3000',
+      clause: 'Clause 3.2.4.7',
+      asks: 'How far back must an auditorium or convention centre of 1,500 to 3,000 m² sit?',
+      produces: 'requiredSetback',
+      asserts: '12 / 4.5 / 4.5 / 3',
+      appliesWhen: {
+        oneOf: [{ fact: 'occupancy', values: ['inst_assembly'] }],
+        ranges: [{ fact: 'plotArea', min: 1500, minInclusive: false }, { fact: 'plotArea', max: 3000 }, ...upTo15],
+      },
+      applied: true,
+      implements: 'setback.public-amenity',
+      quote: 'Auditorium / Convention Centre. 1500 – 3000: 12 / 4.5 / 4.5 / 3.',
+    },
+    {
+      id: 'c3.2.4.7.setback.public-amenity.auditorium.over-3000',
+      clause: 'Clause 3.2.4.7',
+      asks: 'How far back must an auditorium or convention centre above 3,000 m² sit?',
+      produces: 'requiredSetback',
+      asserts: '12 / 6 / 6 / 6',
+      appliesWhen: {
+        oneOf: [{ fact: 'occupancy', values: ['inst_assembly'] }],
+        ranges: [{ fact: 'plotArea', min: 3000, minInclusive: false }, ...upTo15],
+      },
+      applied: true,
+      implements: 'setback.public-amenity',
+      quote: 'Auditorium / Convention Centre. More than 3000: 12 / 6 / 6 / 6.',
+    },
+    {
+      id: 'c3.2.4.8.setback.industrial',
+      clause: 'Clause 3.2.4.8',
+      asks: 'How far back must a factory or warehouse below 15 m sit?',
+      produces: 'requiredSetback',
+      asserts: ladderPhrase(INDUSTRIAL_LADDER),
+      appliesWhen: {
+        oneOf: [{ fact: 'occupancy', values: readingTable('industrial') }],
+        ranges: upTo15,
+      },
+      applied: true,
+      implements: 'setback.non-residential',
+    },
+    {
+      id: 'c3.2.4.9.setback.high-rise',
+      clause: 'Clause 3.2.4.9',
+      asks: 'How much clear space must a building over 15 m keep on every side?',
+      produces: 'requiredSetback',
+      asserts: ladderPhrase(HIGH_RISE_LADDER),
+      appliesWhen: {
+        oneOf: [{ fact: 'occupancy', values: NOT_PLOTTED }],
+        ranges: [{ fact: 'buildingHeight', min: 15, minInclusive: false }],
+      },
+      applied: true,
+      implements: 'setback.high-rise',
+      quote:
+        'For use occupancies with building height more than 15m (other than single/multi units), '
+        + 'the minimum setback requirement shall be as follows.',
+    },
+    {
+      id: 'c5.1.5.setback.bazaar-front',
+      clause: 'Clause 5.1.5, printed again at Clause 3.2.4.3 Note-3',
+      asks: 'How far back from the road must a shop on a bazaar street sit?',
+      produces: 'requiredSetback',
+      asserts: `front only, by road width — ${BAZAAR_STREET_FRONT_LADDER.map((b) => `${b.label}: ${b.front}`).join('; ')}`,
+      // No height limb anywhere in Clause 5.1. Clause 5.1.3 says in terms that there is no
+      // height restriction on a bazaar street, so this table speaks above 15 m as well —
+      // where Clause 3.2.4.9 also speaks, and says something else.
+      appliesWhen: { oneOf: [{ fact: 'occupancy', values: ['com_bazaar'] }] },
+      applied: true,
+      implements: 'setback.bazaar-street',
+      quote:
+        'Based on the proposed road width, the minimum front setback for plots on the bazaar street '
+        + 'shall be as follows: 12 → 3.0, 18 → 4.5, 24 → 6.0, 30 → 6.0, 36 → 7.5, 45 → 7.5, 76 → 9.0.',
+      note:
+        'The engine applies this below 15 m only; above it the progressive ladder takes over, which '
+        + 'is a choice this clause does not obviously authorise.',
+    },
+  ];
+}
+
 /** Every assertion the query runs over. */
 export const CLAUSE_NODES: readonly ClauseNode[] = [
   ...AUTHORED,
   ...chapter3Nodes(),
   ...printedChapterNodes(),
+  ...setbackNodes(),
 ];
 
 export const CLAUSE_NODE = Object.fromEntries(CLAUSE_NODES.map((n) => [n.id, n]));

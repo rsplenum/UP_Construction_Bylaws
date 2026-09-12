@@ -45,10 +45,24 @@ export type FarBasis =
   /** Clause 8.1.3.1 — mixed use has its own base and ceilings, not the commercial ones. */
   | 'road_width_mixed_use';
 
-/** Which setback ladder applies below the high-rise threshold. */
+/**
+ * Which setback ladder applies below the high-rise threshold.
+ *
+ * Clause 3.2.4 prints EIGHT tables below the threshold, numbered 3.2.4.1 to 3.2.4.8, and
+ * this engine carried six of them. The two it did not — Clause 3.2.4.4 "Other Commercial"
+ * and Clause 3.2.4.7 "Public Amenity" — were found by the coverage query in `rules/
+ * coverage.ts`, which asked which tables answer `requiredSetback` and got a list two short
+ * (B-050, B-051). A mall was reading the ordinary commercial ladder and a banquet hall was
+ * reading it too.
+ */
 export type SetbackTable =
   | 'plotted_residential' | 'group_housing' | 'commercial'
-  | 'healthcare' | 'educational' | 'industrial'
+  /** Clause 3.2.4.4 — keyed on what the building IS, not on how big the plot is. */
+  | 'other_commercial'
+  | 'healthcare' | 'educational'
+  /** Clause 3.2.4.7 — marriage halls, banquet halls, auditoria and convention centres. */
+  | 'public_amenity'
+  | 'industrial'
   /** Clause 5.1.5 — the one setback table keyed on road width rather than plot area. */
   | 'bazaar_street';
 
@@ -226,7 +240,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     label: 'Shopping mall / multiplex',
     plain: 'A mall or cinema complex',
     note: 'Needs an 18 m road and a 6 m fire driveway all round.',
-    farBasis: 'road_width_commercial', setbackTable: 'commercial',
+    farBasis: 'road_width_commercial', setbackTable: 'other_commercial',
     activityId: 'act-shopping-mall', purchasableFarCategory: 'Commercial',
     compoundingUse: 'commercial',
     parkingEcsPer100Sqm: 3.0, minRoadWidthM: 18, minPlotAreaSqm: 3000, maxHeightM: Infinity,
@@ -237,7 +251,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     label: 'Hotel / motel / resort',
     plain: 'A hotel or guest house',
     note: 'Up to 20 rooms needs a 9 m road; beyond that, 12 m.',
-    farBasis: 'road_width_commercial', setbackTable: 'commercial',
+    farBasis: 'road_width_commercial', setbackTable: 'other_commercial',
     activityId: 'act-hotels-large', purchasableFarCategory: 'Hotels',
     compoundingUse: 'commercial',
     parkingEcsPer100Sqm: 2.0, minRoadWidthM: 12, minPlotAreaSqm: 500, maxHeightM: Infinity,
@@ -299,7 +313,7 @@ export const OCCUPANCIES: Readonly<Record<OccupancyId, OccupancyDefinition>> = {
     label: 'Assembly — marriage hall, cinema, place of worship',
     plain: 'A hall where people gather',
     note: 'Assembly occupancy: 2 m staircases and the widest road requirement in the code.',
-    farBasis: 'road_width_commercial', setbackTable: 'commercial',
+    farBasis: 'road_width_commercial', setbackTable: 'public_amenity',
     activityId: 'act-marriage-hall', purchasableFarCategory: 'Community Facilities & Infrastructure',
     compoundingUse: 'facilities',
     parkingEcsPer100Sqm: 3.0,
