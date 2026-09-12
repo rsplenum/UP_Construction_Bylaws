@@ -11,6 +11,7 @@ import { Footer } from './components/Footer';
 // The workspace ships with the app; reference material loads only when opened.
 const MapServerExplorer = lazy(() => import('./components/MapServerExplorer').then((m) => ({ default: m.MapServerExplorer })));
 const ByelawsNavigator = lazy(() => import('./components/ByelawsNavigator').then((m) => ({ default: m.ByelawsNavigator })));
+const OfficialPdfViewer = lazy(() => import('./components/OfficialPdfViewer').then((m) => ({ default: m.OfficialPdfViewer })));
 const StatutoryRationaleGuide = lazy(() => import('./components/StatutoryRationaleGuide').then((m) => ({ default: m.StatutoryRationaleGuide })));
 const FormsAndAppendices = lazy(() => import('./components/FormsAndAppendices').then((m) => ({ default: m.FormsAndAppendices })));
 const AiAssistant = lazy(() => import('./components/AiAssistant').then((m) => ({ default: m.AiAssistant })));
@@ -89,6 +90,7 @@ function AppShell() {
               <Suspense fallback={<PanelSkeleton />}>
                 {view === 'maps' && <MapServerExplorer />}
                 {view === 'navigator' && <ByelawsNavigator searchQuery={searchQuery} />}
+                {view === 'gazette' && <OfficialPdfViewer />}
                 {view === 'rationale' && <StatutoryRationaleGuide />}
                 {view === 'forms' && <FormsAndAppendices />}
                 {view === 'ask' && <AiAssistant />}

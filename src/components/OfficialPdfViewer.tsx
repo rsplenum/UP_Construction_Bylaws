@@ -1,264 +1,257 @@
-import React, { useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import {
-  FileText,
+  AlertCircle,
+  BookOpen,
+  ChevronRight,
   Download,
   ExternalLink,
-  BookOpen,
+  FileText,
   Search,
   ShieldCheck,
-  Building,
-  Layers,
-  ChevronRight,
-  Maximize2,
-  FileCheck2,
-  Printer,
-  Sparkles,
-  CheckCircle2,
-  AlertCircle
 } from 'lucide-react';
-import { DOCUMENT_METADATA, BYELAW_CHAPTERS } from '../data/byelawsData';
+import { DOCUMENT_METADATA } from '../data/byelawsData';
+import {
+  GAZETTE_DOCUMENTS,
+  GAZETTE_TOTAL_BYTES,
+  GAZETTE_TOTAL_PAGES,
+  GazetteDocument,
+  documentLabel,
+  formatBytes,
+  gazetteRange,
+} from '../data/gazetteDocuments';
 
+/**
+ * The source text, as supplied — one chapter at a time.
+ *
+ * This reads the same per-chapter PDFs under docs/source/gazette/pdf/ that every rule in
+ * the engine is verified against, so a finding's citation and the page you open here are
+ * the same bytes. Nothing on this screen is asserted: page counts, sizes and checksums
+ * are measured by tools/build-gazette-manifest.py from the files themselves.
+ */
 export const OfficialPdfViewer: React.FC = () => {
-  const [selectedChapter, setSelectedChapter] = useState<number | null>(null);
-  const [filterText, setFilterText] = useState<string>('');
+  const [selectedId, setSelectedId] = useState<string>(GAZETTE_DOCUMENTS[0]?.id ?? '');
+  const [filterText, setFilterText] = useState('');
+  const viewerRef = useRef<HTMLDivElement>(null);
 
-  const pdfUrl = '/UP_Building_Byelaws_2025.pdf';
-
-  const keyChaptersList = [
-    { num: 1, title: 'Short Title and Definitions (102 Terms)', pages: 'pp. 7 - 18', tag: 'Statutory Core' },
-    { num: 2, title: 'Permission for Land Development & Self-Certification', pages: 'pp. 19 - 36', tag: 'Approvals & NOCs' },
-    { num: 3, title: 'Standards for Land Development, Setbacks & FAR', pages: 'pp. 37 - 75', tag: 'Tables 3.2.4 & FAR' },
-    { num: 4, title: 'Residential Buildings (Plotted, Group Housing, EWS/LIG)', pages: 'pp. 76 - 83', tag: 'Plotted & Housing' },
-    { num: 5, title: 'Commercial Buildings (Bazaar Street, Malls, Hotels)', pages: 'pp. 84 - 93', tag: 'Commercial' },
-    { num: 6, title: 'Institutional Buildings & Community Facilities', pages: 'pp. 94 - 100', tag: 'Hospitals & Schools' },
-    { num: 7, title: 'Industrial and Agricultural Use Buildings', pages: 'pp. 101 - 103', tag: 'MSME & Flatted' },
-    { num: 8, title: 'Mixed-Use and Transit-Oriented Development (TOD)', pages: 'pp. 104 - 107', tag: 'TOD Zones' },
-    { num: 9, title: 'Additional Floor Area Ratio (Purchasable & Green FAR)', pages: 'pp. 108 - 112', tag: 'FAR Calculations' },
-    { num: 10, title: 'Fire Prevention and Life Safety (Fire Act 2022)', pages: 'pp. 113 - 115', tag: 'Fire Safety' },
-    { num: 11, title: 'Structural Safety & SDBR (Earthquake Resistant)', pages: 'pp. 116 - 122', tag: 'Structural Codes' },
-    { num: 12, title: 'Provisions for Differently Abled, Elderly & Children', pages: 'pp. 123 - 126', tag: 'Accessibility' },
-    { num: 13, title: 'Environmental Sustainability (RWH, Solar & STP)', pages: 'pp. 127 - 133', tag: 'Green Norms' },
-    { num: 14, title: 'Qualifications & Competence of Licensed Persons (LTP)', pages: 'pp. 134 - 137', tag: 'Professional Roles' },
-    { num: 15, title: 'Zoning Regulations & Matrix of Permissibility', pages: 'pp. 138 - 156', tag: '16 Land Use Zones' },
-    { num: 16, title: 'Compounding of Building Construction (Section 32)', pages: 'pp. 157 - 163', tag: 'Compounding Fees' },
-    { num: 17, title: 'Provision of Electric Charging Infrastructure (EVCI)', pages: 'pp. 164 - 174', tag: 'EV Charging' },
-    { num: 18, title: 'In-Building Solutions for Common Telecom (CTI)', pages: 'pp. 175 - 180', tag: 'Fiber & Telecom' },
-  ];
-
-  const filteredChapters = keyChaptersList.filter(
-    (c) =>
-      c.title.toLowerCase().includes(filterText.toLowerCase()) ||
-      c.tag.toLowerCase().includes(filterText.toLowerCase()) ||
-      c.num.toString() === filterText.trim()
+  const selected: GazetteDocument | undefined = useMemo(
+    () => GAZETTE_DOCUMENTS.find((d) => d.id === selectedId),
+    [selectedId],
   );
 
-  return (
-    <div className="space-y-6 animate-fade-in">
-      {/* Top Banner Card */}
-      <div className="apple-card p-6 sm:p-8 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 text-white relative overflow-hidden">
-        <div className="absolute right-0 top-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+  const filtered = useMemo(() => {
+    const q = filterText.trim().toLowerCase();
+    if (!q) return GAZETTE_DOCUMENTS;
+    return GAZETTE_DOCUMENTS.filter((d) =>
+      d.title.toLowerCase().includes(q)
+      || d.summary.toLowerCase().includes(q)
+      || documentLabel(d).toLowerCase().includes(q)
+      || String(d.number) === q,
+    );
+  }, [filterText]);
 
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="space-y-3 max-w-2xl">
+  const open = (doc: GazetteDocument) => {
+    setSelectedId(doc.id);
+    // On a phone the list sits above the reader, so the page has to follow the choice.
+    if (window.matchMedia('(max-width: 1023px)').matches) {
+      viewerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* What this is, and what it is not */}
+      {/* Not .apple-card: that class sets a flat background and, being unlayered CSS,
+          beats Tailwind's gradient utility — which left this panel white-on-white. */}
+      <div className="relative overflow-hidden rounded-[1.25rem] border border-white/10 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 p-6 text-white shadow-[0_8px_32px_rgba(0,0,0,0.25)] sm:p-8">
+        <div className="pointer-events-none absolute right-0 top-0 h-96 w-96 rounded-full bg-emerald-500/10 blur-3xl" />
+
+        <div className="relative z-10 flex flex-col justify-between gap-6 md:flex-row md:items-start">
+          <div className="max-w-2xl space-y-3">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                Repository Part • Official Gazette
+              <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-300">
+                <ShieldCheck className="h-3.5 w-3.5 text-emerald-400" />
+                Source document, as supplied
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-white/10 text-slate-300 text-xs font-mono">
+              <span className="rounded-full bg-white/10 px-2.5 py-0.5 font-mono text-xs text-slate-300">
                 {DOCUMENT_METADATA.version} • {DOCUMENT_METADATA.date}
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-blue-500/20 text-blue-300 text-xs font-medium">
-                {DOCUMENT_METADATA.totalPages} Pages Document
+              <span className="rounded-full bg-blue-500/20 px-2.5 py-0.5 text-xs font-medium text-blue-300">
+                {GAZETTE_DOCUMENTS.length} documents • {GAZETTE_TOTAL_PAGES} pages
               </span>
             </div>
 
-            <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight">
+            <h2 className="text-xl font-bold tracking-tight sm:text-2xl lg:text-3xl">
               {DOCUMENT_METADATA.title}
-            </h1>
+            </h2>
 
-            <p className="text-sm text-slate-300 leading-relaxed">
-              The official gazetted PDF is integrated directly into this repository as a first-class document.
-              Access all 18 chapters, 102 statutory definitions, master plan use zones for all 22 UP Development Authorities,
-              and complete schedules for setbacks, FAR, and compounding fees.
+            <p className="text-sm leading-relaxed text-slate-300">
+              These are the pages every rule in this app was checked against. When a finding
+              cites a clause, this is the document it was read from — not a summary of it.
+              Choose a chapter to open it.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 pt-1">
-              <span className="flex items-center gap-1">
-                <Building className="w-4 h-4 text-emerald-400" />
-                Housing & Urban Planning Dept, UP
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <Layers className="w-4 h-4 text-teal-400" />
-                18 Chapters + 15 Appendices
-              </span>
-              <span>•</span>
-              <span className="flex items-center gap-1">
-                <CheckCircle2 className="w-4 h-4 text-blue-400" />
-                Available Offline & in Repository
-              </span>
+            <div className="flex items-start gap-2 rounded-xl border border-amber-400/20 bg-amber-400/10 p-3 text-xs leading-relaxed text-amber-100">
+              <AlertCircle className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-400" />
+              <p>
+                <span className="font-semibold">Provenance, stated plainly.</span>{' '}
+                The supplied file is labelled <span className="font-mono">4/9/25 Version TMPR8</span>{' '}
+                from the {DOCUMENT_METADATA.department}. TMPR8 reads as a revision marker rather
+                than a gazette notification number, and the file carries no notification number
+                or date of publication. Verify against the notified byelaws before relying on
+                any figure for a submission.
+              </p>
             </div>
           </div>
 
-          {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row md:flex-col gap-3 flex-shrink-0">
-            <a
-              href={pdfUrl}
-              download="UP_Building_Construction_and_Development_Byelaws_2025.pdf"
-              className="inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold shadow-lg shadow-emerald-500/25 transition-all transform active:scale-95"
-            >
-              <Download className="w-4 h-4" />
-              <span>Download Official PDF (72 KB)</span>
-            </a>
-
-            <a
-              href={pdfUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/15 text-white text-xs font-semibold border border-white/20 transition-all active:scale-95"
-            >
-              <ExternalLink className="w-4 h-4" />
-              <span>Open in New Browser Window</span>
-            </a>
-
-            <button
-              onClick={() => window.print()}
-              className="inline-flex items-center justify-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium border border-slate-700 transition-all"
-            >
-              <Printer className="w-4 h-4" />
-              <span>Print Document</span>
-            </button>
-          </div>
+          <dl className="flex-shrink-0 space-y-2 text-xs text-slate-400 md:text-right">
+            <div>
+              <dt className="uppercase tracking-wide text-[10px] text-slate-500">Governing act</dt>
+              <dd className="text-slate-300">{DOCUMENT_METADATA.governingAct}</dd>
+            </div>
+            <div>
+              <dt className="uppercase tracking-wide text-[10px] text-slate-500">Held in repository</dt>
+              <dd className="font-mono text-slate-300">{formatBytes(GAZETTE_TOTAL_BYTES)}, checksummed</dd>
+            </div>
+          </dl>
         </div>
       </div>
 
-      {/* Main Grid: PDF Viewer + Chapter Index */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Column: Interactive Chapter Index & Search (1 col) */}
-        <div className="lg:col-span-1 space-y-4">
-          <div className="apple-card p-5 space-y-4">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        {/* Index */}
+        <div className="space-y-4 lg:col-span-1">
+          <div className="apple-card space-y-4 p-5">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <BookOpen className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                  Document Index
-                </h3>
+                <BookOpen className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                <h3 className="text-sm font-bold text-slate-900 dark:text-white">Contents</h3>
               </div>
-              <span className="text-[11px] font-mono text-slate-400">
-                18 Chapters • 15 Appendices
+              <span className="font-mono text-[11px] text-slate-400">
+                {GAZETTE_DOCUMENTS.filter((d) => d.kind === 'chapter').length} chapters
               </span>
             </div>
 
-            {/* Quick Search */}
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
+              <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-slate-400" />
               <input
-                type="text"
+                type="search"
                 value={filterText}
                 onChange={(e) => setFilterText(e.target.value)}
-                placeholder="Search chapters or topics..."
-                className="w-full h-8 pl-8 pr-3 bg-slate-50 dark:bg-white/[0.05] border border-black/[0.08] dark:border-white/[0.1] rounded-lg text-xs text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-emerald-500"
+                placeholder="Search chapters or topics…"
+                aria-label="Search chapters"
+                className="h-8 w-full rounded-lg border border-black/[0.08] bg-slate-50 pl-8 pr-3 text-xs text-slate-900 placeholder-slate-400 focus:border-emerald-500 focus:outline-none dark:border-white/[0.1] dark:bg-white/[0.05] dark:text-white"
               />
             </div>
 
-            {/* Chapter List */}
-            <div className="space-y-1.5 max-h-[640px] overflow-y-auto pr-1 text-xs">
-              {filteredChapters.map((ch) => (
-                <div
-                  key={ch.num}
-                  onClick={() => setSelectedChapter(ch.num)}
-                  className={`p-2.5 rounded-xl border transition-all cursor-pointer ${
-                    selectedChapter === ch.num
-                      ? 'bg-emerald-500/10 border-emerald-500/40 text-emerald-900 dark:text-emerald-200'
-                      : 'bg-white dark:bg-[#161617] border-black/[0.04] dark:border-white/[0.06] hover:bg-slate-50 dark:hover:bg-white/[0.03] text-slate-700 dark:text-slate-300'
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-bold text-[11px] text-emerald-600 dark:text-emerald-400">
-                      Chapter {ch.num}
-                    </span>
-                    <span className="text-[10px] font-mono text-slate-400">
-                      {ch.pages}
-                    </span>
-                  </div>
-                  <div className="font-medium text-xs text-slate-900 dark:text-white mt-0.5 leading-snug">
-                    {ch.title}
-                  </div>
-                  <div className="flex items-center justify-between mt-1.5 text-[10px]">
-                    <span className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-white/[0.08] text-slate-500 dark:text-slate-400">
-                      {ch.tag}
-                    </span>
-                    <span className="text-emerald-600 dark:text-emerald-400 flex items-center font-medium">
-                      View <ChevronRight className="w-3 h-3 ml-0.5" />
-                    </span>
-                  </div>
-                </div>
-              ))}
+            <div className="max-h-[640px] space-y-1.5 overflow-y-auto pr-1 text-xs">
+              {filtered.map((doc) => {
+                const isOpen = doc.id === selectedId;
+                return (
+                  <button
+                    key={doc.id}
+                    type="button"
+                    onClick={() => open(doc)}
+                    aria-current={isOpen ? 'true' : undefined}
+                    className={`w-full rounded-xl border p-2.5 text-left transition-all ${
+                      isOpen
+                        ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-900 dark:text-emerald-200'
+                        : 'border-black/[0.04] bg-white text-slate-700 hover:bg-slate-50 dark:border-white/[0.06] dark:bg-[#161617] dark:text-slate-300 dark:hover:bg-white/[0.03]'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-emerald-600 dark:text-emerald-400">
+                        {documentLabel(doc)}
+                      </span>
+                      <span className="font-mono text-[10px] text-slate-400">
+                        {gazetteRange(doc)}
+                      </span>
+                    </div>
+                    <div className="mt-0.5 text-xs font-medium leading-snug text-slate-900 dark:text-white">
+                      {doc.title}
+                    </div>
+                    <div className="mt-1.5 flex items-center justify-between text-[10px]">
+                      <span className="rounded bg-slate-100 px-1.5 py-0.5 text-slate-500 dark:bg-white/[0.08] dark:text-slate-400">
+                        {doc.pdfPages} {doc.pdfPages === 1 ? 'page' : 'pages'} • {formatBytes(doc.bytes)}
+                      </span>
+                      <span className="flex items-center font-medium text-emerald-600 dark:text-emerald-400">
+                        {isOpen ? 'Open' : 'Read'}
+                        <ChevronRight className="ml-0.5 h-3 w-3" />
+                      </span>
+                    </div>
+                  </button>
+                );
+              })}
 
-              {/* Appendices Summary Card */}
-              <div className="p-3 rounded-xl bg-slate-100 dark:bg-white/[0.04] border border-black/[0.06] dark:border-white/[0.08]">
-                <div className="flex items-center space-x-1.5 text-slate-900 dark:text-white font-bold text-xs">
-                  <FileCheck2 className="w-3.5 h-3.5 text-blue-500" />
-                  <span>Appendices 1 through 15</span>
-                </div>
-                <p className="text-[10px] text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                  Contains all 4 statutory completion certificate forms (Form A, B, C, D),
-                  Appendix-12 plinth affidavit, Appendix-14 SDBR earthquake format, and
-                  Appendix-15 use-zone mapping across all 22 UP Development Authorities.
+              {filtered.length === 0 && (
+                <p className="px-1 py-6 text-center text-xs text-slate-500 dark:text-slate-400">
+                  Nothing matches “{filterText}”.
                 </p>
-              </div>
+              )}
             </div>
           </div>
         </div>
 
-        {/* Right Column: Embedded PDF Viewer (2 cols) */}
-        <div className="lg:col-span-2 space-y-4">
-          <div className="apple-card overflow-hidden flex flex-col h-[760px] border border-black/[0.08] dark:border-white/[0.1]">
-            {/* Viewer Header */}
-            <div className="p-3.5 bg-slate-50 dark:bg-[#161617] border-b border-black/[0.06] dark:border-white/[0.08] flex items-center justify-between">
-              <div className="flex items-center space-x-2">
-                <FileText className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                <span className="font-semibold text-xs text-slate-800 dark:text-slate-200">
-                  Document Stream: UP_Building_Byelaws_2025.pdf
+        {/* Reader */}
+        <div ref={viewerRef} className="space-y-4 lg:col-span-2">
+          <div className="apple-card flex h-[760px] flex-col overflow-hidden border border-black/[0.08] dark:border-white/[0.1]">
+            <div className="flex items-center justify-between border-b border-black/[0.06] bg-slate-50 p-3.5 dark:border-white/[0.08] dark:bg-[#161617]">
+              <div className="flex min-w-0 items-center space-x-2">
+                <FileText className="h-4 w-4 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
+                <span className="truncate text-xs font-semibold text-slate-800 dark:text-slate-200">
+                  {selected ? `${documentLabel(selected)} — ${selected.title}` : 'Choose a chapter'}
                 </span>
               </div>
 
-              <div className="flex items-center space-x-2 text-xs">
-                <a
-                  href={pdfUrl}
-                  download="UP_Building_Construction_and_Development_Byelaws_2025.pdf"
-                  className="px-3 py-1 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-medium flex items-center gap-1 transition-colors"
-                >
-                  <Download className="w-3.5 h-3.5" />
-                  <span>Download</span>
-                </a>
-                <a
-                  href={pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-3 py-1 rounded-lg bg-slate-200 dark:bg-white/10 hover:bg-slate-300 dark:hover:bg-white/15 text-slate-700 dark:text-slate-300 font-medium flex items-center gap-1 transition-colors"
-                >
-                  <Maximize2 className="w-3.5 h-3.5" />
-                  <span>Expand</span>
-                </a>
+              {selected && (
+                <div className="flex flex-shrink-0 items-center space-x-2 text-xs">
+                  <a
+                    href={`/${selected.file}`}
+                    download={`UP-Byelaws-2025-${selected.id}.pdf`}
+                    className="flex items-center gap-1 rounded-lg bg-emerald-500/10 px-3 py-1 font-medium text-emerald-700 transition-colors hover:bg-emerald-500/20 dark:text-emerald-300"
+                  >
+                    <Download className="h-3.5 w-3.5" />
+                    <span>Download</span>
+                  </a>
+                  <a
+                    href={`/${selected.file}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 rounded-lg bg-slate-200 px-3 py-1 font-medium text-slate-700 transition-colors hover:bg-slate-300 dark:bg-white/10 dark:text-slate-300 dark:hover:bg-white/15"
+                  >
+                    <ExternalLink className="h-3.5 w-3.5" />
+                    <span>Open</span>
+                  </a>
+                </div>
+              )}
+            </div>
+
+            <div className="relative flex-1 bg-slate-200 dark:bg-black/80">
+              {selected ? (
+                <iframe
+                  // Remount on change so the browser's PDF plugin reloads rather than
+                  // keeping the previous chapter's scroll position and page count.
+                  key={selected.id}
+                  src={`/${selected.file}#toolbar=1&navpanes=1&statusbar=1`}
+                  title={`${documentLabel(selected)} — ${selected.title}`}
+                  className="h-full w-full border-0"
+                />
+              ) : (
+                <p className="flex h-full items-center justify-center text-sm text-slate-500">
+                  Choose a chapter from the list.
+                </p>
+              )}
+            </div>
+
+            {selected && (
+              <div className="flex flex-wrap items-center justify-between gap-2 border-t border-black/[0.06] bg-slate-50 px-4 py-2.5 text-[11px] text-slate-500 dark:border-white/[0.08] dark:bg-[#161617] dark:text-slate-400">
+                <span>
+                  Gazette {gazetteRange(selected)} • {selected.pdfPages}{' '}
+                  {selected.pdfPages === 1 ? 'page' : 'pages'} • {formatBytes(selected.bytes)}
+                </span>
+                <span className="font-mono" title="md5 of this file, as checked into the repository">
+                  md5 {selected.md5.slice(0, 12)}…
+                </span>
               </div>
-            </div>
-
-            {/* Embedded PDF iframe */}
-            <div className="flex-1 bg-slate-200 dark:bg-black/80 relative">
-              <iframe
-                src={`${pdfUrl}#toolbar=1&navpanes=1&statusbar=1`}
-                title="Uttar Pradesh Building Construction and Development Byelaws 2025"
-                className="w-full h-full border-0"
-              />
-            </div>
-
-            {/* Viewer Footer */}
-            <div className="p-2.5 bg-slate-50 dark:bg-[#161617] border-t border-black/[0.06] dark:border-white/[0.08] flex flex-wrap items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 px-4">
-              <span>Housing & Urban Planning Department • Government of Uttar Pradesh</span>
-              <span className="font-mono">Document Hash / Version: TMPR8-2025</span>
-            </div>
+            )}
           </div>
         </div>
       </div>

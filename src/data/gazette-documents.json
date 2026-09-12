@@ -1,0 +1,215 @@
+{
+  "generatedBy": "tools/build-gazette-manifest.py",
+  "source": "docs/source/gazette/pdf/",
+  "documents": [
+    {
+      "id": "chapter-01",
+      "kind": "chapter",
+      "number": 1,
+      "file": "gazette/chapter-01.pdf",
+      "pdfPages": 12,
+      "gazetteFrom": 7,
+      "gazetteTo": 18,
+      "bytes": 300129,
+      "md5": "a436592ab2cd8be701ea058ac669d4b8"
+    },
+    {
+      "id": "chapter-02",
+      "kind": "chapter",
+      "number": 2,
+      "file": "gazette/chapter-02.pdf",
+      "pdfPages": 18,
+      "gazetteFrom": 19,
+      "gazetteTo": 36,
+      "bytes": 408499,
+      "md5": "e56e50774783a925a1c0693db6edb82a"
+    },
+    {
+      "id": "chapter-03",
+      "kind": "chapter",
+      "number": 3,
+      "file": "gazette/chapter-03.pdf",
+      "pdfPages": 39,
+      "gazetteFrom": 37,
+      "gazetteTo": 75,
+      "bytes": 826793,
+      "md5": "54b717db0dd7677bd8a4899fa55cfa53"
+    },
+    {
+      "id": "chapter-04",
+      "kind": "chapter",
+      "number": 4,
+      "file": "gazette/chapter-04.pdf",
+      "pdfPages": 8,
+      "gazetteFrom": 76,
+      "gazetteTo": 83,
+      "bytes": 375217,
+      "md5": "c846df42d919f46f1d09eee28b5e0794"
+    },
+    {
+      "id": "chapter-05",
+      "kind": "chapter",
+      "number": 5,
+      "file": "gazette/chapter-05.pdf",
+      "pdfPages": 10,
+      "gazetteFrom": 84,
+      "gazetteTo": 93,
+      "bytes": 304372,
+      "md5": "4ae5a0edc42625188d65b82c034c73b7"
+    },
+    {
+      "id": "chapter-06",
+      "kind": "chapter",
+      "number": 6,
+      "file": "gazette/chapter-06.pdf",
+      "pdfPages": 7,
+      "gazetteFrom": 94,
+      "gazetteTo": 100,
+      "bytes": 245729,
+      "md5": "9c633d13fe909405ffd4e49740f13edd"
+    },
+    {
+      "id": "chapter-07",
+      "kind": "chapter",
+      "number": 7,
+      "file": "gazette/chapter-07.pdf",
+      "pdfPages": 4,
+      "gazetteFrom": 100,
+      "gazetteTo": 103,
+      "bytes": 253153,
+      "md5": "0def0da7e82602caad0d52801b1b321e"
+    },
+    {
+      "id": "chapter-08",
+      "kind": "chapter",
+      "number": 8,
+      "file": "gazette/chapter-08.pdf",
+      "pdfPages": 4,
+      "gazetteFrom": 104,
+      "gazetteTo": 107,
+      "bytes": 267479,
+      "md5": "e509e57c9eb413d12a2489965a5317e2"
+    },
+    {
+      "id": "chapter-09",
+      "kind": "chapter",
+      "number": 9,
+      "file": "gazette/chapter-09.pdf",
+      "pdfPages": 5,
+      "gazetteFrom": 108,
+      "gazetteTo": 112,
+      "bytes": 214757,
+      "md5": "1009a3a0fb74ccdb25d83cdbe0dc6bc6"
+    },
+    {
+      "id": "chapter-10",
+      "kind": "chapter",
+      "number": 10,
+      "file": "gazette/chapter-10.pdf",
+      "pdfPages": 3,
+      "gazetteFrom": 113,
+      "gazetteTo": 115,
+      "bytes": 199982,
+      "md5": "a4831eceb4e284949ddefe7724f94a87"
+    },
+    {
+      "id": "chapter-11",
+      "kind": "chapter",
+      "number": 11,
+      "file": "gazette/chapter-11.pdf",
+      "pdfPages": 7,
+      "gazetteFrom": 116,
+      "gazetteTo": 122,
+      "bytes": 288583,
+      "md5": "9cf608fc6009e888843e8d0e7ec3e84d"
+    },
+    {
+      "id": "chapter-12",
+      "kind": "chapter",
+      "number": 12,
+      "file": "gazette/chapter-12.pdf",
+      "pdfPages": 4,
+      "gazetteFrom": 123,
+      "gazetteTo": 126,
+      "bytes": 206919,
+      "md5": "49e761272a1448c031dc12c00ab2edea"
+    },
+    {
+      "id": "chapter-13",
+      "kind": "chapter",
+      "number": 13,
+      "file": "gazette/chapter-13.pdf",
+      "pdfPages": 7,
+      "gazetteFrom": 127,
+      "gazetteTo": 133,
+      "bytes": 386309,
+      "md5": "468477cec474ecad710dcbf6569feec6"
+    },
+    {
+      "id": "chapter-14",
+      "kind": "chapter",
+      "number": 14,
+      "file": "gazette/chapter-14.pdf",
+      "pdfPages": 4,
+      "gazetteFrom": 134,
+      "gazetteTo": 137,
+      "bytes": 273512,
+      "md5": "8ca3333a1b6fc0139426b5595f24b23d"
+    },
+    {
+      "id": "chapter-15",
+      "kind": "chapter",
+      "number": 15,
+      "file": "gazette/chapter-15.pdf",
+      "pdfPages": 19,
+      "gazetteFrom": 138,
+      "gazetteTo": 156,
+      "bytes": 414991,
+      "md5": "de2f1e41005e9a317c6dc5702d863f91"
+    },
+    {
+      "id": "chapter-16",
+      "kind": "chapter",
+      "number": 16,
+      "file": "gazette/chapter-16.pdf",
+      "pdfPages": 7,
+      "gazetteFrom": 157,
+      "gazetteTo": 163,
+      "bytes": 318414,
+      "md5": "f6a8e82b10fb9297c0940bf9d458644f"
+    },
+    {
+      "id": "chapter-17",
+      "kind": "chapter",
+      "number": 17,
+      "file": "gazette/chapter-17.pdf",
+      "pdfPages": 11,
+      "gazetteFrom": 164,
+      "gazetteTo": 174,
+      "bytes": 321333,
+      "md5": "6169d5f5818b87e231e981e49114ad0c"
+    },
+    {
+      "id": "chapter-18",
+      "kind": "chapter",
+      "number": 18,
+      "file": "gazette/chapter-18.pdf",
+      "pdfPages": 6,
+      "gazetteFrom": 175,
+      "gazetteTo": 180,
+      "bytes": 208256,
+      "md5": "f3524b65ed9590bd37bf2ae076077662"
+    },
+    {
+      "id": "appendix-15",
+      "kind": "appendix",
+      "number": 15,
+      "file": "gazette/appendix-15.pdf",
+      "pdfPages": 5,
+      "gazetteFrom": 214,
+      "gazetteTo": 218,
+      "bytes": 278612,
+      "md5": "aeaa63a63e92e6edc300f28d947635db"
+    }
+  ]
+}

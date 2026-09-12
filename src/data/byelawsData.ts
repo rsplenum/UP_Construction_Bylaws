@@ -29,6 +29,8 @@ export const DOCUMENT_METADATA = {
   department: "Housing & Urban Planning Department, Government of Uttar Pradesh",
   date: "4/9/25",
   version: "TMPR8",
+  // Unverified: the supplied document carries no page count. The highest page
+  // this repository has read is 218 (Appendix-15). Do not present as measured.
   totalPages: 224,
   governingAct: "Uttar Pradesh Urban Planning and Development Act, 1973 (Section 15, 15A, 53)",
 };
@@ -290,7 +292,7 @@ export const BYELAW_CHAPTERS: ByelawChapter[] = [
     id: 7,
     chapterNumber: "Chapter 7",
     title: "Industrial and Agricultural Use Buildings",
-    pageRange: "pp. 101-104",
+    pageRange: "pp. 100-103",
     summary: "Industrial plants, Flatted factories, Data centres, MSME units, Farmhouses, and Dairy farms.",
     sections: [
       {
@@ -317,7 +319,7 @@ export const BYELAW_CHAPTERS: ByelawChapter[] = [
     id: 8,
     chapterNumber: "Chapter 8",
     title: "Mixed-Use and Transit-Oriented Development (TOD)",
-    pageRange: "pp. 104-108",
+    pageRange: "pp. 104-107",
     summary: "Mixed use zones, roadside mixed use on >=24m roads, TOD corridors, FAR multipliers, and mixing restrictions.",
     sections: [
       {
@@ -416,7 +418,7 @@ export const BYELAW_CHAPTERS: ByelawChapter[] = [
     id: 11,
     chapterNumber: "Chapter 11",
     title: "Structural Safety and Quality Control",
-    pageRange: "pp. 116-123",
+    pageRange: "pp. 116-122",
     summary: "Mandatory Indian Standards (IS 456, IS 800, IS 1893, IS 13920), 4-Part Structural Design Basis Report (SDBR), peer review for >50m height, 10-year structural audits, and qualification matrices.",
     sections: [
       {
@@ -449,7 +451,7 @@ export const BYELAW_CHAPTERS: ByelawChapter[] = [
     id: 12,
     chapterNumber: "Chapter 12",
     title: "Provisions for Differently Abled, Elderly and Children",
-    pageRange: "pp. 123-127",
+    pageRange: "pp. 123-126",
     summary: "Barrier-free access, wheelchair dimensions (1050x750mm), 1800mm walkways, 1:12 ramps, accessible toilets (1500x1750mm), tactile guiding floor, and accessible lifts.",
     sections: [
       {
@@ -527,7 +529,7 @@ export const BYELAW_CHAPTERS: ByelawChapter[] = [
     id: 14,
     chapterNumber: "Chapter 14",
     title: "Qualifications and Competence of Licensed Technical Persons (LTP)",
-    pageRange: "pp. 134-138",
+    pageRange: "pp. 134-137",
     summary: "Architects, Engineers, Structural Engineers, Supervisors, Town Planners, Landscape Architects, Urban Designers, and Utility Service Engineers.",
     sections: [
       {
@@ -629,7 +631,7 @@ export const BYELAW_CHAPTERS: ByelawChapter[] = [
     id: 18,
     chapterNumber: "Chapter 18",
     title: "In-Building Solutions for Common Telecom Infrastructure (CTI)",
-    pageRange: "pp. 175-181",
+    pageRange: "pp. 175-180",
     summary: "Digital infrastructure readiness, mandatory telecom ducts, sharing of CTI on non-discriminatory basis, and telecom room space norms as per NBC 2016.",
     sections: [
       {

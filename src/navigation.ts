@@ -1,4 +1,4 @@
-import { BookOpen, Bot, FileCheck2, Globe, Sparkles } from 'lucide-react';
+import { BookOpen, Bot, FileCheck2, FileText, Globe, Sparkles } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 /**
@@ -8,7 +8,8 @@ import type { LucideIcon } from 'lucide-react';
  * answered the question on its own. They are supporting material, so they sit behind a
  * single menu and the workspace is what you land on.
  */
-export type ViewId = 'workspace' | 'maps' | 'navigator' | 'rationale' | 'forms' | 'ask';
+export type ViewId =
+  | 'workspace' | 'maps' | 'navigator' | 'gazette' | 'rationale' | 'forms' | 'ask';
 
 export interface ReferenceView {
   id: Exclude<ViewId, 'workspace'>;
@@ -25,6 +26,10 @@ export const REFERENCE_VIEWS: readonly ReferenceView[] = [
   {
     id: 'navigator', label: 'Read the byelaws', icon: BookOpen,
     description: 'All 18 chapters, definitions and statutory tables',
+  },
+  {
+    id: 'gazette', label: 'The source text', icon: FileText,
+    description: 'The supplied PDFs themselves, the pages every rule was checked against',
   },
   {
     id: 'rationale', label: 'Why these rules', icon: Sparkles,

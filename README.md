@@ -32,10 +32,15 @@ drawing needs — plot shape, each setback, provisions, circle rate. Both write 
 project and run the same engine, so switching never loses work and never changes the
 answer, only how much of it you are shown.
 
-Behind the workspace sits a **Reference** shelf: the byelaws text, the master-plan map,
-the planning rationale, the statutory forms, and an assistant. These are supporting
-material you open when a finding raises a question — not places you have to visit to
-assemble an answer yourself.
+Behind the workspace sits a **Reference** shelf: the byelaws text, the source PDFs
+themselves, the master-plan map, the planning rationale, the statutory forms, and an
+assistant. These are supporting material you open when a finding raises a question — not
+places you have to visit to assemble an answer yourself.
+
+*The source text* opens the per-chapter PDFs under `docs/source/gazette/pdf/` — the same
+files every rule was verified against, served unaltered and shown with their measured page
+counts and checksums. When a finding cites Clause 16.3, you can read that page rather than
+a paraphrase of it.
 
 ### Why it is shaped this way
 
