@@ -20,17 +20,23 @@ stops you, what it costs, and what to change — on one screen.
   ─────────          ─────────────            ────────────────────
   What are you   →   plot drawn to scale  →   ✗ 5 blocking
   building?          setbacks shaded          ⚠ 3 to settle
-  How big?           buildable area           ✓ 7 clear
-  Which road?
-  How much           605 m² permitted         each one expands to the
-  floor area?        450 m² drawn             rule, the arithmetic,
-  How tall?                                   and a one-click fix
+  Built yet?         buildable area           ✓ 7 clear
+  How big?
+  Which road?        605 m² permitted         each one expands to the
+  How much           450 m² drawn             rule, the arithmetic,
+  floor area?                                 and a one-click fix
+  How tall?
 ```
 
-**Simple** mode asks five questions in plain words. **Advanced** mode adds the fields a
+**Simple** mode asks six questions in plain words. **Advanced** mode adds the fields a
 drawing needs — plot shape, each setback, provisions, circle rate. Both write to the same
 project and run the same engine, so switching never loses work and never changes the
 answer, only how much of it you are shown.
+
+*Built yet?* is the one question that looks optional and is not. Chapter 16 prices a
+deviation that exists; a drawing that breaks a rule is redrawn, not fined. Asked of a
+proposal, the engine offers to sell the floor area; asked of a building already standing,
+it prices both buying and compounding and bills the cheaper (V-066).
 
 Behind the workspace sits a **Reference** shelf: the byelaws text, the source PDFs
 themselves, the master-plan map, the planning rationale, the statutory forms, and an

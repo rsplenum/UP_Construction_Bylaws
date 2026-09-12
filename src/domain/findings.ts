@@ -1490,12 +1490,6 @@ export function assessProject(project: ProjectState): Assessment {
   const blocked = scoped.filter((f) => f.status === 'blocked').length;
   const attention = scoped.filter((f) => f.status === 'attention').length;
   const ok = scoped.filter((f) => f.status === 'ok').length;
-  const totalFees = scoped.reduce((sum, f) => sum + (f.money?.amount ?? 0), 0);
-
-  // A per-unit rate is not an amount until someone counts the units, so it is listed but
-  // not summed. Everything the engine cannot compute is named rather than quietly omitted:
-  // a bottom line read as the cost of approval, when it leaves out the sanction fee and the
-  // connection charges, misleads more than no bottom line would.
   // Where two lines are routes to the same outcome, the cheaper one is what this project
   // actually pays; the other is shown so the reader can see the choice and why it was made.
   const cheapestOf = new Map<string, ChargeLine>();
@@ -1528,6 +1522,11 @@ export function assessProject(project: ProjectState): Assessment {
       'stamp duty and registration on any purchase',
     ],
   };
+
+  // One number, computed once. This used to sum every finding's `money`, which double
+  // counted the moment two findings offered alternative routes to the same excess: the
+  // headline read "About ₹6,31,815 in charges" while the bill beside it totalled ₹1,84,199.
+  const totalFees = ledger.total;
 
   const headline = blocked > 0
     ? `This can't be built as drawn — ${blocked} thing${blocked === 1 ? '' : 's'} must change.`

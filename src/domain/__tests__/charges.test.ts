@@ -26,9 +26,22 @@ describe('the ledger states the whole bill', () => {
     }
   });
 
-  it('agrees with the total the findings carry', () => {
-    const a = at({ proposedBuiltUpArea: 630 });
-    expect(Math.round(a.ledger.total)).toBe(Math.round(a.totalFees));
+  it('is the one number, so the headline and the bill cannot disagree', () => {
+    // totalFees used to sum every finding's money. The moment two findings offered
+    // alternative routes to the same excess that double counted, and the headline read
+    // "About ₹6,31,815 in charges" beside a bill totalling ₹1,84,199.
+    for (const over of [
+      { proposedBuiltUpArea: 630 },
+      { proposedBuiltUpArea: 630, buildingStage: 'built' as const },
+      { proposedBuiltUpArea: 700, buildingStage: 'built' as const },
+    ]) {
+      const a = at(over);
+      expect(Math.round(a.ledger.total), JSON.stringify(over)).toBe(Math.round(a.totalFees));
+      const billed = a.ledger.lines
+        .filter((l) => !l.perUnit && !l.supersededBy)
+        .reduce((n, l) => n + l.amount, 0);
+      expect(Math.round(a.totalFees), JSON.stringify(over)).toBe(Math.round(billed));
+    }
   });
 
   it('lists a per-unit rate without summing it, because nothing counts the units', () => {

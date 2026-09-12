@@ -13,7 +13,7 @@ import { BUILDING_STAGE_LABEL, BuildingStage, derivePlotDepth } from '../domain/
 /**
  * What you have and what you want to build.
  *
- * Simple mode asks five questions in plain words. Advanced mode adds the fields a
+ * Simple mode asks six questions in plain words. Advanced mode adds the fields a
  * drawing needs. Both write to the same project, so switching modes never loses work
  * and never changes the answer — only how much of the input you are shown.
  */
@@ -31,7 +31,7 @@ export const SitePanel: React.FC = () => {
       <div>
         <h2 className="text-[13px] font-semibold text-slate-900 dark:text-white">Your site</h2>
         <p className="mt-0.5 text-[11.5px] text-slate-600 dark:text-slate-400">
-          {simple ? 'Five questions. Everything else is worked out for you.' : 'Full specification.'}
+          {simple ? 'Six questions. Everything else is worked out for you.' : 'Full specification.'}
         </p>
       </div>
 
@@ -62,7 +62,44 @@ export const SitePanel: React.FC = () => {
         <p className="mt-1.5 text-[10.5px] leading-snug text-slate-600 dark:text-slate-400">{occupancy.note}</p>
       </div>
 
-      {/* 2-3. The plot */}
+      {/* 2. Has it been built? — asked of everyone, because it changes what the rest means.
+             Chapter 16 prices a deviation that exists; a drawing that breaks a rule is
+             redrawn, not fined, and an applicant who is asked nothing gets the wrong one. */}
+      <div>
+        <p className="mb-1 block text-[11px] font-medium text-slate-600 dark:text-slate-400">
+          Has it been built?
+        </p>
+        <div className="space-y-1.5">
+          {(Object.keys(BUILDING_STAGE_LABEL) as BuildingStage[]).map((stage) => (
+            <label
+              key={stage}
+              className="flex cursor-pointer items-start gap-2 text-[12px] text-slate-700 dark:text-slate-300"
+            >
+              <input
+                type="radio"
+                name="building-stage"
+                checked={project.buildingStage === stage}
+                onChange={() => patch({ buildingStage: stage })}
+                className="mt-0.5 text-emerald-700 focus:ring-emerald-500"
+              />
+              <span>{BUILDING_STAGE_LABEL[stage]}</span>
+            </label>
+          ))}
+        </div>
+        <p className="mt-1.5 text-[10.5px] leading-snug text-slate-600 dark:text-slate-400">
+          {project.buildingStage === 'proposed'
+            ? simple
+              ? 'Nothing is built yet, so anything that breaks a rule can simply be redrawn.'
+              : 'A drawing that breaks a rule is redrawn, not fined — so Chapter 16 compounding does not apply.'
+            : simple
+              ? 'Where you have built more than you were entitled to, you can pay to keep it — '
+                + 'either by buying the floor area or by compounding it. The cheaper one is used.'
+              : 'Chapter 16 applies. Where floor area exceeds the entitlement you may buy it or '
+                + 'compound it; the cheaper route is used and the other is shown.'}
+        </p>
+      </div>
+
+      {/* 3-4. The plot */}
       <div className="grid grid-cols-2 gap-3">
         <NumberField
           label="Plot area" unit="m²" value={project.plotArea}
@@ -75,7 +112,7 @@ export const SitePanel: React.FC = () => {
         />
       </div>
 
-      {/* 4-5. The building */}
+      {/* 5-6. The building */}
       <div className="grid grid-cols-2 gap-3">
         <NumberField
           label="Floor area you want" unit="m²" value={project.proposedBuiltUpArea}
@@ -90,35 +127,6 @@ export const SitePanel: React.FC = () => {
 
       {!simple && (
         <>
-          <div className="border-t border-slate-200 pt-4 dark:border-white/10">
-            <h3 className="mb-2.5 text-[11px] font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
-              Has it been built?
-            </h3>
-            <div className="space-y-1.5">
-              {(Object.keys(BUILDING_STAGE_LABEL) as BuildingStage[]).map((stage) => (
-                <label
-                  key={stage}
-                  className="flex cursor-pointer items-start gap-2 text-[12px] text-slate-700 dark:text-slate-300"
-                >
-                  <input
-                    type="radio"
-                    name="building-stage"
-                    checked={project.buildingStage === stage}
-                    onChange={() => patch({ buildingStage: stage })}
-                    className="mt-0.5 text-emerald-700 focus:ring-emerald-500"
-                  />
-                  <span>{BUILDING_STAGE_LABEL[stage]}</span>
-                </label>
-              ))}
-            </div>
-            <p className="mt-2 text-[10.5px] leading-snug text-slate-600 dark:text-slate-400">
-              {project.buildingStage === 'proposed'
-                ? 'A drawing that breaks a rule is redrawn, not fined — so Chapter 16 compounding does not apply.'
-                : 'Chapter 16 applies. Where floor area exceeds the entitlement you may buy it or compound it; '
-                  + 'the cheaper route is used and the other is shown.'}
-            </p>
-          </div>
-
           <div className="border-t border-slate-200 pt-4 dark:border-white/10">
             <h3 className="mb-2.5 text-[11px] font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
               Plot shape
