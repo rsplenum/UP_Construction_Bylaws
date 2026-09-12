@@ -24,7 +24,10 @@ import { assessAccessibility, ACCESSIBILITY_REQUIREMENTS, ACCESSIBILITY_NON_COMP
 import { assessLicensing, LICENSED_ROLE_LABEL, SITE_ENGINEER_PER_SQM } from './licensing';
 import { assessEvCharging, EV_SHARE_OF_PARKING } from './ev-charging';
 import { assessTelecom, TERM_CELL_STAGES, TSP_SPACE_PER_PROVIDER_M } from './telecom';
-import { assessSanctionRoute, completionFormFor, SELF_CERTIFICATION_FEE_RUPEES } from './permission';
+import {
+  assessSanctionRoute, completionFormFor, PERMIT_CLOCKS, REVIVAL_TERMS,
+  SELF_CERTIFICATION_FEE_RUPEES,
+} from './permission';
 import { assessZoning, ZONE_LABEL, activityFor } from './zoning';
 import { localZoneNames, zonesOfAuthority, authorityNamed } from './master-plan-zones';
 import { assessSocialHousing } from './social-housing';
@@ -1055,6 +1058,30 @@ export function assessProject(project: ProjectState): Assessment {
     proposed: `${occupancy.label}, ${sqm(plotArea)} plot, ${height} m`,
     clause: 'Clause 2.9 with Appendix-4 and Appendix-7',
   }, 'permission.route'));
+
+  // Clause 2.7.3 — the deadlines. Two run against the applicant and two in their favour, and
+  // the one that matters most needs the applicant to act to claim it.
+  if (route.route !== 'exempt') {
+    const deemed = PERMIT_CLOCKS.find((c) => c.clause === 'Clause 2.7.3.2(iii)')!;
+    findings.push(sourced({
+      id: 'permit-clock',
+      topic: 'procedure',
+      status: 'info',
+      headline: `The Authority has ${deemed.days} days — after that the plan is deemed sanctioned, `
+        + 'but only if you write and say so.',
+      detail:
+        PERMIT_CLOCKS.map((c) => `${c.clause}: ${c.what}`).join(' ')
+        + ` ${deemed.actionRequired}`
+        + ' If an application is auto-rejected for non-payment it may be revived once within '
+        + `${REVIVAL_TERMS.revivalWindowMonths} months. On a fresh application after rejection no `
+        + 'permit fee is payable again within six months, 20% from six months to a year, 50% after '
+        + 'a year and the full fee after two (Clause 2.7.3.1(iv)).',
+      required: PERMIT_CLOCKS.filter((c) => c.against === 'applicant')
+        .map((c) => `${c.days} days — ${c.clause}`).join('; '),
+      proposed: route.clause,
+      clause: 'Clause 2.7.3 with 2.2.3(v)',
+    }, 'permission.route'));
+  }
 
   // ---- 10. What the deviations cost -----------------------------------------------
   const frontage = Math.max(1, project.plotFrontage);

@@ -268,3 +268,76 @@ export const LAYOUT_COMPLETION_FORM: CompletionFormChoice = {
   form: 'D', appendix: 'Appendix-4 Form-D',
   title: 'Completion certificate for a layout plan',
 };
+
+/**
+ * Clause 2.7.3 — the procedural clock.
+ *
+ * Every deadline in the sanction process, and the engine had none of them. They were found
+ * by checking a feature suggestion that claimed a "15-day deemed sanction" against Clause
+ * 2.1.2, where no such period exists (B-047 removed exactly that claim). It does exist — at
+ * **Clause 2.7.3.2(iii)**, on the formal route, and it is the most valuable single deadline
+ * in Chapter 2 because it runs in the applicant's favour.
+ *
+ * Two of these cut against the applicant and two for, which is why listing them together
+ * matters more than any one of them.
+ */
+export interface PermitClock {
+  readonly clause: string;
+  readonly days: number;
+  readonly what: string;
+  /** Who the clock runs against. */
+  readonly against: 'applicant' | 'authority';
+  /** What the applicant must do, where the rule does not operate on its own. */
+  readonly actionRequired?: string;
+}
+
+export const PERMIT_CLOCKS: readonly PermitClock[] = [
+  {
+    clause: 'Clause 2.7.3.2(iii)', days: 15, against: 'authority',
+    what: 'If the Authority does not intimate refusal or sanction in writing within 15 days of '
+      + 'receiving the application, the plan is DEEMED SANCTIONED.',
+    actionRequired: 'The deeming is not automatic. It applies only "provided the fact is '
+      + 'immediately brought to the notice of the Authority in writing" by the applicant. An '
+      + 'applicant who simply waits has not been deemed sanctioned.',
+  },
+  {
+    clause: 'Clause 2.7.3.1(i)', days: 15, against: 'applicant',
+    what: 'A shortfall raised against the map or documents must be resolved and the revised map '
+      + 'submitted within 15 days, or the map is AUTO-REJECTED.',
+  },
+  {
+    clause: 'Clause 2.7.3.1(ii)', days: 30, against: 'applicant',
+    what: 'Fees must be deposited within 30 days of the fee demand, or the map is AUTO-REJECTED.',
+  },
+  {
+    clause: 'Clause 2.2.3(v)', days: DEEMED_NOC_DAYS, against: 'authority',
+    what: 'A departmental NOC neither queried nor refused with reasons in writing is deemed given '
+      + 'on the 30th day, or earlier where the departmental table specifies fewer days.',
+  },
+];
+
+/**
+ * Clause 2.7.3.1(iii)–(iv) — what an auto-rejected application costs to restart.
+ *
+ * Worth stating because the ladder is steep and the first rung is free: an applicant who
+ * re-applies inside six months pays no permit fee again.
+ */
+export const REVIVAL_TERMS = {
+  /** (iii) An application auto-rejected for non-payment may be revived once, within 6 months. */
+  revivalWindowMonths: 6,
+  revivalPaymentDays: 30,
+  revivalAvailableTimes: 1,
+  /** (iv) Fee payable on a fresh application after rejection, by elapsed time. */
+  reapplicationFee: [
+    { withinMonths: 6, fractionOfFee: 0 },
+    { withinMonths: 12, fractionOfFee: 0.20 },
+    { withinMonths: 24, fractionOfFee: 0.50 },
+    { withinMonths: Infinity, fractionOfFee: 1.00 },
+  ],
+} as const;
+
+/** Clause 2.7.3.1(iv) — the fee payable on re-applying this many months after rejection. */
+export function reapplicationFeeFraction(monthsSinceRejection: number): number {
+  const m = Math.max(0, Number(monthsSinceRejection) || 0);
+  return REVIVAL_TERMS.reapplicationFee.find((r) => m <= r.withinMonths)?.fractionOfFee ?? 1;
+}

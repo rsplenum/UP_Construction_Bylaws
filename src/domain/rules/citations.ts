@@ -2298,6 +2298,26 @@ export const CITATIONS: readonly Citation[] = [
       'Khurja',
     ],
   },
+  {
+    id: 'permission.deemed-sanction-15-day',
+    rule: 'permission.route',
+    clause: 'Clause 2.7.3.2(iii)',
+    supports:
+      'PERMIT_CLOCKS — the 15-day deemed sanction, and the condition that the applicant must bring the failure to the Authority in writing for it to operate. B-052 found it by checking a claim that placed 15 days at Clause 2.1.2, where it is not.',
+    kind: 'prose',
+    line: 1365,
+    text: 'If, within 15 days of the receipt of application/notice under paragraph 2.2.1 of the Bye-Laws, the Authority fails to intimate in writing to the person who has given the application/notice, of its refusal or sanction to the application/notice with its plans and statements, the same shall be deemed to have been sanctioned provided the fact is immediately brought to the notice of the Authority in writing by the person who has given application/notice and having not received any intimation from the Authority within 15 days of giving such application/notice subject to the conditions mentioned in these Bye-Laws, nothing shall be construed to authorize any person to do anything in contravention or against the terms of the lease or title of the land or against any regulations, Bye-Laws or laws operating at the time of execution of the work at site.',
+  },
+  {
+    id: 'permission.auto-rejection',
+    rule: 'permission.route',
+    clause: 'Clause 2.7.3.1(i)',
+    supports:
+      'The 15-day shortfall clock that runs the other way: an unresolved shortfall auto-rejects the map.',
+    kind: 'prose',
+    line: 1358,
+    text: 'After issuance of any shortfall (related to map/ document), the applicant/ licensed technical personnel shall resolve the shortfall/correct the map and submit the revised map/document within 15 days. If the shortfall is not resolved within 15 days, the map will be automatically rejected.',
+  },
 ];
 
 /** Every rule id that has at least one citation. */

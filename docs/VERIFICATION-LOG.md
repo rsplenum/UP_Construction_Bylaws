@@ -4,7 +4,7 @@ Every figure in `src/domain` was transcribed without access to the gazette. On
 2026-09-10 the authoritative document arrived (TMPR8, 4/9/25 version, Housing & Urban
 Planning Department). This records what was checked against it and what came back.
 
-**Headline: fourteen transcriptions verified exactly right, and fifty-three real bugs found.**
+**Headline: fourteen transcriptions verified exactly right, and fifty-four real bugs found.**
 
 **All eighteen chapters have now been read against the gazette.** What remains unread is the
 appendices — and Appendices 8, 9, 10, 11 and 14 are already named by the structural and
@@ -1174,6 +1174,48 @@ Standing rule 4 says the greater of the two applies either way.
 
 *Fixed: the high-rise branch of `resolveRequiredSetbacks` now takes the greater of the two
 fronts, keeps Clause 3.2.4.9 for the other three faces, and names whichever clause governed.*
+
+---
+
+### B-054 — The deemed sanction exists, and removing it from the wrong clause left it nowhere
+B-047 removed a claim that Clause 2.1.2(iii) carried "a 15-day deemed-sanction limit". That
+removal was right: 2.1.2(iii) gives *instant* approval and states no period at all. What it
+did not do was ask whether fifteen days lived somewhere else in Chapter 2.
+
+**It does.** Clause 2.7.3.2(iii):
+
+> If, within **15 days** of the receipt of application/notice under paragraph 2.2.1, the
+> Authority fails to intimate in writing to the person who has given the application/notice,
+> of its refusal or sanction … the same shall be **deemed to have been sanctioned** provided
+> the fact is immediately brought to the notice of the Authority in writing by the person who
+> has given application/notice.
+
+So the engine had been quoting a 15-day clock at the wrong clause, then quoting none at all.
+The second state is the more defensible and it is still wrong: this is the most valuable
+deadline in Chapter 2, because it runs **in the applicant's favour**, and it was invisible.
+
+**And it does not operate on its own.** The deeming applies only *"provided the fact is
+immediately brought to the notice of the Authority in writing"*. An applicant who simply waits
+out the fifteen days has not been deemed sanctioned — the same shape as Chapter 18's IBS NOC,
+where the Authority liaises and the applicant must still apply separately.
+
+Reading Clause 2.7.3 for that one sentence found that **the whole procedural clock was
+missing**:
+
+| Clause | Days | Runs against | |
+|---|---:|---|---|
+| 2.7.3.2(iii) | 15 | Authority | Deemed sanction, on written notice from the applicant |
+| 2.7.3.1(i) | 15 | Applicant | Shortfall unresolved → map **auto-rejected** |
+| 2.7.3.1(ii) | 30 | Applicant | Fee undeposited → map **auto-rejected** |
+| 2.2.3(v) | 30 | Authority | Departmental NOC deemed given |
+
+Plus the revival terms at 2.7.3.1(iii)–(iv): an auto-rejected application may be revived
+**once** within six months, and a fresh application after rejection pays **no** permit fee
+within six months, 20% to a year, 50% after a year, and the full fee after two.
+
+*Found by checking a feature suggestion rather than accepting it. The suggestion placed a
+15-day clock at Clause 2.1.2(iv), which was wrong — and chasing why it was wrong turned up a
+real clause the engine had nothing for.*
 
 ---
 
