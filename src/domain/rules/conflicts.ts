@@ -280,9 +280,11 @@ export const RESOLUTIONS: Readonly<Record<string, Resolution>> = {
       + '"up to 15-meter height" and cannot reach Clause 3.2.4.9, while Clause 5.1.5 carries no '
       + 'height limb at all and Clause 5.1.3 says in terms that a bazaar street has no height '
       + 'restriction. Both tables therefore speak and neither yields. The engine used to take '
-      + 'Clause 3.2.4.9\'s front unconditionally, which is the SMALLER figure on any bazaar '
-      + 'street wider than 30 m — 6 m against 7.5 for a building in the 17.5–21 m band. It now '
-      + 'takes the larger, which is standing rule 4 (B-053).',
+      + 'Clause 3.2.4.9\'s front unconditionally, which is the SMALLER of the two over a '
+      + 'definite region — a road over 18 m for a building up to 17.5 m, over 30 m up to 27 m, '
+      + 'over 45 m up to 33 m — so a building in the 17.5–21 m band on a 36 m bazaar street was '
+      + 'given 6 m against Clause 5.1.5\'s 7.5. It now takes the greater either way, which is '
+      + 'standing rule 4 (B-053).',
   },
   'c18.5.1.2n.telecom-room.built-up|c18.5.1.2n.telecom-room.ibs-covered': {
     disposition: 'stricter',

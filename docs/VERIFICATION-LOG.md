@@ -1158,9 +1158,19 @@ and Clause 3.2.4.9 speak, and neither yields — the Note-3 subordination that s
 question below 15 m (V-062) is printed under a table captioned *"up to 15-meter height"* and
 cannot reach up.
 
-The engine took Clause 3.2.4.9's front unconditionally, which is **the smaller figure on any
-bazaar street wider than 30 m**: a building in the 17.5–21 m band on a 36 m bazaar street was
-given 6 m where Clause 5.1.5 requires 7.5. Standing rule 4 says the larger governs.
+The engine took Clause 3.2.4.9's front unconditionally, and that is the **smaller** of the two
+across a definite region of the two ladders — not everywhere, which is why it is worth stating
+exactly:
+
+| Bazaar street road | Clause 5.1.5 front | Larger than the height ladder for buildings of |
+|---|---|---|
+| >18 to 30 m | 6.0 | 15 – 17.5 m |
+| >30 to 45 m | 7.5 | 15 – 27 m |
+| >45 m | 9.0 | 15 – 33 m |
+
+A building in the 17.5–21 m band on a 36 m bazaar street was given 6 m where Clause 5.1.5
+requires 7.5. Above those bands the progressive ladder is the larger and already governed.
+Standing rule 4 says the greater of the two applies either way.
 
 *Fixed: the high-rise branch of `resolveRequiredSetbacks` now takes the greater of the two
 fronts, keeps Clause 3.2.4.9 for the other three faces, and names whichever clause governed.*
