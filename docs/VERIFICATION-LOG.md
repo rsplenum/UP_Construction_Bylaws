@@ -1252,7 +1252,7 @@ Floor area within the purchasable ceiling is **bought**, not compounded — (vi)
 for a building already standing. Measured from `maxPermissibleBuiltUpArea` instead, and
 pinned by eight tests.
 
-### V-066 — Compounding assumes a building that may not have been built yet
+### V-066 — Compounding assumed a building that may not have been built yet — CLOSED
 The fix above holds under either reading of who is asking, but it exposes the question
 underneath it, which the engine cannot currently answer: **`ProjectState` has no field for
 whether this building exists.**
@@ -1273,8 +1273,30 @@ Two further consequences are unresolved and are not touched here:
    the ceiling is not among them; (v) sits elsewhere in the chapter. Adding it to that list
    would misattribute it, so the cap needs its own check.
 
-Both need a `buildingStage` fact — proposed, under construction, or built — which is a
-change to what the app asks the user, not a number to correct. Recorded rather than guessed.
+Both needed a `buildingStage` fact — proposed, under construction, or built — which is a
+change to what the app asks the user, not a number to correct.
+
+**Closed.** `ProjectState.buildingStage` now carries it, defaulting to `proposed` because
+that is what someone opening this app is almost always holding. Three consequences follow:
+
+1. **A proposal has nothing to regularise.** Chapter 16 is silent on it entirely: no
+   schedule is run, no fee quoted, no finding raised. A drawing that breaks a rule is
+   redrawn. The purchasable-FAR route is untouched, so a proposal 25 m² over its
+   entitlement is still told it can buy that density — the answer it always should have got.
+2. **A building that exists has two routes, and they are alternatives, not a sum.** Clause
+   16.3.8(vi) — "Purchasable and Premium Purchasable FAR shall be applicable in already
+   constructed buildings submitted for compounding" — means the owner may buy the density
+   or compound it. Both are priced; `ChargeLine.alternativeKey` pairs them, the cheaper
+   governs the total, and the dearer is shown struck through with the reason. On the
+   320 m² house that is ₹1,84,199 to buy against ₹4,47,616 to compound.
+3. **Clause 16.3.8(v) is now enforced as a hard cap.** The compoundable excess is clipped
+   at the maximum permissible FAR, so a building 95 m² over its base but 60 m² over the
+   ceiling compounds 34.9 m² and no more — the figure no longer grows with the overshoot.
+   The remainder raises its own blocked, non-negotiable finding quoting the clause:
+   demolition, not a price. This also matches the clause's own sequencing, which requires
+   removal "before considering the permission of purchasable FAR".
+
+Nine tests cover the three stages above and below the ceiling.
 
 
 ### V-061 — The conflict query had swept eleven of thirty-eight facts, and nobody could tell

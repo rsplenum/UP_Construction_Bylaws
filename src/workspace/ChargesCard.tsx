@@ -43,7 +43,7 @@ export const ChargesCard: React.FC<ChargesCardProps> = ({ ledger }) => {
 
   if (ledger.lines.length === 0) return null;
 
-  const payable = ledger.lines.filter((l) => !l.free && !l.perUnit && l.amount > 0);
+  const payable = ledger.lines.filter((l) => !l.free && !l.perUnit && !l.supersededBy && l.amount > 0);
   const groups = (['entitlement', 'density', 'charge'] as const)
     .map((group) => ({ group, lines: ledger.lines.filter((l) => l.group === group) }))
     .filter((g) => g.lines.length > 0);
@@ -84,7 +84,13 @@ export const ChargesCard: React.FC<ChargesCardProps> = ({ ledger }) => {
                       aria-hidden="true"
                     />
                     <span className="min-w-0 flex-1">
-                      <span className="block text-[12px] font-medium text-slate-900 dark:text-white">
+                      <span
+                        className={`block text-[12px] font-medium ${
+                          line.supersededBy
+                            ? 'text-slate-500 dark:text-slate-500'
+                            : 'text-slate-900 dark:text-white'
+                        }`}
+                      >
                         {line.label}
                       </span>
                       {line.basis && (
@@ -92,12 +98,20 @@ export const ChargesCard: React.FC<ChargesCardProps> = ({ ledger }) => {
                           {line.basis}
                         </span>
                       )}
+                      {line.supersededBy && (
+                        <span className="mt-0.5 block text-[10.5px] font-medium leading-snug text-emerald-700 dark:text-emerald-400">
+                          The other route for the same floor area — {line.supersededBy} is cheaper,
+                          so this is not counted
+                        </span>
+                      )}
                     </span>
                     <span
                       className={`flex-shrink-0 text-[12px] font-semibold tabular-nums ${
                         line.free
                           ? 'text-emerald-700 dark:text-emerald-400'
-                          : 'text-slate-900 dark:text-white'
+                          : line.supersededBy
+                            ? 'text-slate-500 line-through decoration-slate-400 dark:text-slate-500'
+                            : 'text-slate-900 dark:text-white'
                       }`}
                     >
                       {line.free ? 'nil' : inr(line.amount)}

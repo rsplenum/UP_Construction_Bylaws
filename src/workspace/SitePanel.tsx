@@ -8,7 +8,7 @@ import {
   forArea, getOccupancy,
   occupanciesInGroup,
 } from '../domain/occupancy';
-import { derivePlotDepth } from '../domain/project';
+import { BUILDING_STAGE_LABEL, BuildingStage, derivePlotDepth } from '../domain/project';
 
 /**
  * What you have and what you want to build.
@@ -90,6 +90,35 @@ export const SitePanel: React.FC = () => {
 
       {!simple && (
         <>
+          <div className="border-t border-slate-200 pt-4 dark:border-white/10">
+            <h3 className="mb-2.5 text-[11px] font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+              Has it been built?
+            </h3>
+            <div className="space-y-1.5">
+              {(Object.keys(BUILDING_STAGE_LABEL) as BuildingStage[]).map((stage) => (
+                <label
+                  key={stage}
+                  className="flex cursor-pointer items-start gap-2 text-[12px] text-slate-700 dark:text-slate-300"
+                >
+                  <input
+                    type="radio"
+                    name="building-stage"
+                    checked={project.buildingStage === stage}
+                    onChange={() => patch({ buildingStage: stage })}
+                    className="mt-0.5 text-emerald-700 focus:ring-emerald-500"
+                  />
+                  <span>{BUILDING_STAGE_LABEL[stage]}</span>
+                </label>
+              ))}
+            </div>
+            <p className="mt-2 text-[10.5px] leading-snug text-slate-600 dark:text-slate-400">
+              {project.buildingStage === 'proposed'
+                ? 'A drawing that breaks a rule is redrawn, not fined — so Chapter 16 compounding does not apply.'
+                : 'Chapter 16 applies. Where floor area exceeds the entitlement you may buy it or compound it; '
+                  + 'the cheaper route is used and the other is shown.'}
+            </p>
+          </div>
+
           <div className="border-t border-slate-200 pt-4 dark:border-white/10">
             <h3 className="mb-2.5 text-[11px] font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
               Plot shape

@@ -26,6 +26,23 @@ export const LEGACY_OCCUPANCY: Readonly<Record<string, OccupancyId>> = {
   commercial: 'com_complex',
 };
 
+/**
+ * How far along the building is. Compounding under Chapter 16 exists for construction that
+ * has happened; a drawing that breaches a setback is redrawn, not fined.
+ */
+export type BuildingStage = 'proposed' | 'under_construction' | 'built';
+
+export const BUILDING_STAGE_LABEL: Readonly<Record<BuildingStage, string>> = {
+  proposed: 'Not built yet — this is a proposal',
+  under_construction: 'Under construction',
+  built: 'Already built',
+};
+
+/** True where Chapter 16 has something to regularise. */
+export function isExistingConstruction(stage: BuildingStage): boolean {
+  return stage !== 'proposed';
+}
+
 export interface ProjectState {
   /** Free-text label used in reports and saved sessions. */
   projectName: string;
@@ -75,6 +92,24 @@ export interface ProjectState {
    * a guess.
    */
   masterPlanZone: ZoneCode | 'unknown';
+
+  /**
+   * Whether this building exists yet.
+   *
+   * Chapter 16 regularises construction already carried out. The workspace models a
+   * proposal — "can I build this" — and until this field existed the engine ran the
+   * compounding schedule over every project and quoted a price to regularise deviations
+   * nobody had committed: a house drawn 25 m² over its entitlement was told it could be
+   * regularised for ₹4.4 lakh when the honest answer was to redraw it, or buy the density
+   * for a quarter of that (V-066, B-057).
+   *
+   * It also decides which route out of an excess is open. Clause 16.3.8(vi) — "Purchasable
+   * and Premium Purchasable FAR shall be applicable in already constructed buildings
+   * submitted for compounding" — means an owner of a standing building may buy the density
+   * or compound it, and the engine should price both. Someone still at the drawing board
+   * has only the first.
+   */
+  buildingStage: BuildingStage;
 
   /** Clause 4.4 Note-2 exempts a qualifying affordable-housing scheme from EWS/LIG. */
   isAffordableHousingScheme: boolean;
@@ -167,6 +202,8 @@ export const DEFAULT_PROJECT: ProjectState = {
   hasStilt: true,
   areaType: 'built_up',
   masterPlanZone: 'unknown',
+  // A proposal, because that is what someone opening this app is almost always holding.
+  buildingStage: 'proposed',
   isAffordableHousingScheme: false,
 
   frontSetbackProvided: 3.5,

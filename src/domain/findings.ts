@@ -31,6 +31,7 @@ import {
 import { assessZoning, ZONE_LABEL, activityFor } from './zoning';
 import { localZoneNames, zonesOfAuthority, authorityNamed } from './master-plan-zones';
 import { assessSocialHousing } from './social-housing';
+import { BUILDING_STAGE_LABEL, isExistingConstruction } from './project';
 import { assessImpactFee } from './impact-fee';
 import { resolveGroundCoverage } from './ground-coverage';
 import {
@@ -151,6 +152,15 @@ export interface ChargeLine {
    * decides the quantity. A shelter fee is per dwelling unit and nothing here counts units.
    */
   readonly perUnit?: boolean;
+  /**
+   * Lines sharing a key are routes to the same outcome, not charges that add up. An owner
+   * of a standing building may buy the density under Clause 9.2.5 or compound it under
+   * 16.3.8 Item 3; they do not do both for the same square metre. Only the cheapest line
+   * in a key counts toward the total, and the rest are marked `supersededBy`.
+   */
+  readonly alternativeKey?: string;
+  /** Set on the dearer routes of an `alternativeKey`, naming the one that governs. */
+  readonly supersededBy?: string;
 }
 
 export interface ChargeLedger {
@@ -298,6 +308,10 @@ export function assessProject(project: ProjectState): Assessment {
   // ---- 1. Is this use allowed here at all? -------------------------------------
   // Clause 4.1.3 and 4.2.3: these thresholds differ between a built-up area and a new
   // layout, and the built-up figure is the laxer one.
+  // Chapter 16 regularises construction already carried out. A drawing that breaches a
+  // setback is redrawn, not fined, so the whole schedule is silent on a proposal.
+  const existing = isExistingConstruction(project.buildingStage);
+
   const areaType = project.areaType ?? 'built_up';
   const minRoadWidth = forArea(occupancy.minRoadWidthM, areaType);
   const minPlotArea = forArea(occupancy.minPlotAreaSqm, areaType);
@@ -574,6 +588,10 @@ export function assessProject(project: ProjectState): Assessment {
         basis: `+${sqm(line.additionalFloorAreaSqm)} at FAR ${round(line.farAvailed, 2)}`,
         working: line.working,
         clause: fee.clauseRef,
+        // On a building already standing, Clause 16.3.8(vi) makes purchasable FAR available
+        // to a compounding case, so buying and compounding are two routes to the same
+        // square metres. On a proposal only this one exists, and there is nothing to pair.
+        alternativeKey: existing ? 'excess-floor-area' : undefined,
       });
     }
     findings.push(sourced({
@@ -1341,6 +1359,12 @@ export function assessProject(project: ProjectState): Assessment {
     return f && f.deficitM > 0 ? f.deficitM * edge : 0;
   };
 
+  // Split the excess at the ceiling. Below it Chapter 16 can regularise; above it Clause
+  // 16.3.8(v) forbids compounding at any price and requires removal.
+  const excessOverBase = Math.max(0, proposedArea - far.effectiveBuiltUpArea);
+  const excessOverCeiling = Math.max(0, proposedArea - far.maxPermissibleBuiltUpArea);
+  const compoundableExcessFar = existing ? Math.max(0, excessOverBase - excessOverCeiling) : 0;
+
   const compounding = assessCompounding({
     use: occupancy.compoundingUse,
     residentialLandRate: project.circleRate,
@@ -1381,9 +1405,16 @@ export function assessProject(project: ProjectState): Assessment {
     // Floor area within the purchasable ceiling is bought, not compounded. Only what
     // exceeds that ceiling is a deviation — and (v) says it cannot be compounded at all,
     // which the non-compoundable check upstream already reports.
-    excessFarSqm: Math.max(0, proposedArea - far.maxPermissibleBuiltUpArea),
+    // Item 3 compounds floor area beyond the sanctioned entitlement, and Clause 16.3.8(v)
+    // caps the whole thing at the maximum permissible FAR: "The authority shall not permit
+    // or compound any construction beyond the limit of maximum permissible FAR. They shall
+    // ensure demolition and removal of extra construction beyond maximum permissible FAR."
+    // So the compoundable quantity is the excess over base, clipped at the ceiling — never
+    // the part above it, which has to come down. The clipped remainder is reported
+    // separately as non-compoundable rather than silently dropped.
+    excessFarSqm: compoundableExcessFar,
     excessFarFraction: far.maxPermissibleBuiltUpArea > 0
-      ? Math.max(0, proposedArea - far.maxPermissibleBuiltUpArea) / far.maxPermissibleBuiltUpArea
+      ? compoundableExcessFar / far.maxPermissibleBuiltUpArea
       : 0,
     heightDeviationM: Number.isFinite(occupancy.maxHeightM) ? Math.max(0, height - occupancy.maxHeightM) : 0,
     heightDeviationFraction: Number.isFinite(occupancy.maxHeightM) && occupancy.maxHeightM > 0
@@ -1395,13 +1426,34 @@ export function assessProject(project: ProjectState): Assessment {
     floors: Math.max(1, Math.ceil(height / 3)),
   });
 
-  if (compounding.lineItems.length > 0) {
+  // Clause 16.3.8(v) — the part above the ceiling is not a price, it is a demolition.
+  if (existing && excessOverCeiling > 0) {
+    findings.push(sourced({
+      id: 'compounding-ceiling',
+      topic: 'procedure',
+      status: 'blocked',
+      headline: `${sqm(excessOverCeiling)} of this building is above the maximum permissible FAR `
+        + 'and cannot be regularised at any price.',
+      detail: 'Clause 16.3.8(v): "The authority shall not permit or compound any construction '
+        + 'beyond the limit of maximum permissible FAR. They shall ensure demolition and removal '
+        + 'of extra construction beyond maximum permissible FAR, if any, before considering the '
+        + 'permission of purchasable FAR." Compounding and purchasable FAR are both available '
+        + 'below that ceiling; neither reaches above it.',
+      required: `≤ ${sqm(far.maxPermissibleBuiltUpArea)} built-up`,
+      proposed: sqm(proposedArea),
+      clause: 'Clause 16.3.8(v)',
+      nonNegotiable: true,
+    }, 'compounding.schedule'));
+  }
+
+  if (existing && compounding.lineItems.length > 0) {
     if (compounding.isCompoundable) {
       charges.push({
         group: 'charge',
         label: 'Compounding fee',
         amount: compounding.totalPayable,
         basis: `${compounding.lineItems.length} deviation${compounding.lineItems.length === 1 ? '' : 's'} regularised`,
+        alternativeKey: compoundableExcessFar > 0 ? 'excess-floor-area' : undefined,
         working: compounding.lineItems
           .map((i) => `${i.label}: ${inr(i.amount)}`)
           .join('; '),
@@ -1444,14 +1496,31 @@ export function assessProject(project: ProjectState): Assessment {
   // not summed. Everything the engine cannot compute is named rather than quietly omitted:
   // a bottom line read as the cost of approval, when it leaves out the sanction fee and the
   // connection charges, misleads more than no bottom line would.
+  // Where two lines are routes to the same outcome, the cheaper one is what this project
+  // actually pays; the other is shown so the reader can see the choice and why it was made.
+  const cheapestOf = new Map<string, ChargeLine>();
+  for (const line of charges) {
+    if (!line.alternativeKey) continue;
+    const best = cheapestOf.get(line.alternativeKey);
+    if (!best || line.amount < best.amount) cheapestOf.set(line.alternativeKey, line);
+  }
+  const resolved: ChargeLine[] = charges.map((line) => {
+    if (!line.alternativeKey) return line;
+    const best = cheapestOf.get(line.alternativeKey)!;
+    return best === line ? line : { ...line, supersededBy: best.label };
+  });
+
   const GROUP_ORDER: Record<ChargeGroup, number> = { entitlement: 0, density: 1, charge: 2 };
   const ledger: ChargeLedger = {
-    lines: [...charges].sort(
+    lines: [...resolved].sort(
       (a, b) => GROUP_ORDER[a.group] - GROUP_ORDER[b.group]
         // A rate the reader must multiply out sits below the amounts that are settled.
         || Number(a.perUnit ?? false) - Number(b.perUnit ?? false),
     ),
-    total: charges.reduce((sum, line) => sum + (line.perUnit ? 0 : line.amount), 0),
+    total: resolved.reduce(
+      (sum, line) => sum + (line.perUnit || line.supersededBy ? 0 : line.amount),
+      0,
+    ),
     excludes: [
       'the sanction fee and scrutiny charges the Authority sets by its own schedule',
       'labour cess, development and external development charges',
