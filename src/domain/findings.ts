@@ -117,6 +117,54 @@ export interface Finding {
   };
 }
 
+/**
+ * One line of what the government charges for this building.
+ *
+ * The engine has been able to compute these since the fee work landed, but they only ever
+ * surfaced one at a time, hanging off whichever finding raised them, with the sum reduced
+ * to half a sentence in the subhead: "About ₹9,00,000 in charges." Anyone deciding whether
+ * to buy a plot needs the bill itemised, and needs to see the zero lines too — "the base
+ * FAR costs nothing" is the line that tells them what they get by right.
+ */
+/**
+ * Where a line belongs in the bill. Charges are accumulated wherever each is computed,
+ * which is not the order anyone reads a bill in: what you hold by right, then what you
+ * buy, then what you are charged for.
+ */
+export type ChargeGroup = 'entitlement' | 'density' | 'charge';
+
+export interface ChargeLine {
+  readonly group: ChargeGroup;
+  /** What the byelaws call it. */
+  readonly label: string;
+  /** ₹. Zero is a real answer and is shown. */
+  readonly amount: number;
+  /** What it buys, in whatever unit makes it legible: "+150 m² of floor area". */
+  readonly basis?: string;
+  /** The arithmetic behind the amount. */
+  readonly working?: string;
+  readonly clause: string;
+  /** A statutory entitlement rather than a charge — priced at nothing, by right. */
+  readonly free?: boolean;
+  /**
+   * Stated as a rate rather than a total, because a fact the project does not carry
+   * decides the quantity. A shelter fee is per dwelling unit and nothing here counts units.
+   */
+  readonly perUnit?: boolean;
+}
+
+export interface ChargeLedger {
+  readonly lines: readonly ChargeLine[];
+  /** Sum of the lines that are a determinate amount. Excludes per-unit rates. */
+  readonly total: number;
+  /**
+   * What the total leaves out. Required, not optional: a bottom line presented as the
+   * cost of approval, when it omits the sanction fee and the connection charges, is a
+   * more expensive error than no bottom line at all.
+   */
+  readonly excludes: readonly string[];
+}
+
 export interface Assessment {
   findings: Finding[];
   /** The single sentence that answers the user's question. */
@@ -134,6 +182,8 @@ export interface Assessment {
   proposedArea: number;
   /** How many findings rest on a disputed or unverified rule. */
   disputedCount: number;
+  /** Every government charge this project attracts, itemised. */
+  ledger: ChargeLedger;
 }
 
 const round = (n: number, dp = 1): number => Number(n.toFixed(dp));
@@ -235,6 +285,9 @@ export function challengeBlurb(kind: ChallengeKind): string {
 export function assessProject(project: ProjectState): Assessment {
   const occupancy = getOccupancy(project.occupancy);
   const findings: Finding[] = [];
+  // Filled where each charge is already computed for its finding, so the bill and the
+  // findings can never disagree: there is one calculation, read twice.
+  const charges: ChargeLine[] = [];
 
   const plotArea = Math.max(0, project.plotArea);
   const roadWidth = Math.max(0, project.roadWidth);
@@ -352,6 +405,17 @@ export function assessProject(project: ProjectState): Assessment {
   });
   if (impact.state !== 'undetermined' || project.masterPlanZone !== 'unknown') {
     const payable = impact.state === 'payable';
+    if (impact.state !== 'undetermined') {
+      charges.push({
+        group: 'charge',
+        label: 'Impact fee',
+        amount: payable ? impact.fee : 0,
+        basis: payable ? impact.zoneGroupLabel : (impact.cellNote ?? 'not payable in this zone'),
+        working: impact.working,
+        clause: impact.clause,
+        free: !payable,
+      });
+    }
     findings.push(sourced({
       id: 'impact-fee',
       topic: 'permissibility',
@@ -436,6 +500,20 @@ export function assessProject(project: ProjectState): Assessment {
   const proposedFar = plotArea > 0 ? proposedArea / plotArea : 0;
   const headroom = far.effectiveBuiltUpArea - proposedArea;
 
+  // The first line of the bill is the one that costs nothing. An applicant reading only
+  // the charges cannot tell how much floor area they already hold by right.
+  if (far.baseFar > 0) {
+    charges.push({
+      group: 'entitlement',
+      label: 'Base floor area',
+      amount: 0,
+      basis: `${sqm(far.effectiveBuiltUpArea)} at FAR ${round(far.effectiveBaseFar, 2)}`,
+      working: `Yours by right at a ${roadWidth} m road: ${sqm(plotArea)} × ${round(far.effectiveBaseFar, 2)} = ${sqm(far.effectiveBuiltUpArea)}`,
+      clause: 'Clause 9.2.3 (Base FAR)',
+      free: true,
+    });
+  }
+
   if (far.baseFar === 0) {
     findings.push(sourced({
       id: 'far',
@@ -488,6 +566,16 @@ export function assessProject(project: ProjectState): Assessment {
       premiumPurchasableFarAvailed: tranches.premiumPurchasable,
     });
     const charge = fee.totalCharge;
+    for (const line of fee.lines) {
+      charges.push({
+        group: 'density',
+        label: line.kind === 'premiumPurchasable' ? 'Premium purchasable FAR' : 'Purchasable FAR',
+        amount: line.charge,
+        basis: `+${sqm(line.additionalFloorAreaSqm)} at FAR ${round(line.farAvailed, 2)}`,
+        working: line.working,
+        clause: fee.clauseRef,
+      });
+    }
     findings.push(sourced({
       id: 'far',
       topic: 'bulk',
@@ -1131,6 +1219,17 @@ export function assessProject(project: ProjectState): Assessment {
   });
 
   if (social.applies) {
+    if (social.shelterFeeAvailable) {
+      charges.push({
+        group: 'charge',
+        label: 'Shelter fee, in lieu of EWS/LIG units',
+        amount: social.shelterFeePerUnit,
+        basis: 'per dwelling unit — this project does not record a unit count',
+        working: `Clause 4.3.11: 10% × (30 m² EWS + 35 m² LIG carpet) × ₹${project.circleRate.toLocaleString('en-IN')}/m²`,
+        clause: social.clause,
+        perUnit: true,
+      });
+    }
     findings.push(sourced({
       id: 'ews-lig',
       topic: 'social',
@@ -1267,9 +1366,24 @@ export function assessProject(project: ProjectState): Assessment {
     setbackDeficitM: Object.fromEntries(
       faces.map((f) => [f.face, f.deficitM]),
     ) as Partial<Record<SetbackFace, number>>,
-    excessFarSqm: Math.max(0, proposedArea - far.effectiveBuiltUpArea),
+    // Item 3 is "floor area beyond the PERMISSIBLE FAR", and permissible means the ceiling
+    // after purchasable and premium purchasable FAR — not the base entitlement. Measuring
+    // it from the base charged the same square metre twice: once at Clause 9.2.5 to buy the
+    // density lawfully, and again at 16.3.8 Item 3 to regularise it as a deviation. On a
+    // 320 m² house drawn 24.9 m² over base that was ₹1,84,199 bought plus ₹4,47,616
+    // compounded, a bill 3.4 times the true one.
+    //
+    // Chapter 16 settles it twice over, at gazette page 163:
+    //   "v. The authority shall not permit or compound any construction beyond the limit
+    //    of maximum permissible FAR."
+    //   "vi. Purchasable and Premium Purchasable FAR shall be applicable in already
+    //    constructed buildings submitted for compounding."
+    // Floor area within the purchasable ceiling is bought, not compounded. Only what
+    // exceeds that ceiling is a deviation — and (v) says it cannot be compounded at all,
+    // which the non-compoundable check upstream already reports.
+    excessFarSqm: Math.max(0, proposedArea - far.maxPermissibleBuiltUpArea),
     excessFarFraction: far.maxPermissibleBuiltUpArea > 0
-      ? Math.max(0, proposedArea - far.effectiveBuiltUpArea) / far.maxPermissibleBuiltUpArea
+      ? Math.max(0, proposedArea - far.maxPermissibleBuiltUpArea) / far.maxPermissibleBuiltUpArea
       : 0,
     heightDeviationM: Number.isFinite(occupancy.maxHeightM) ? Math.max(0, height - occupancy.maxHeightM) : 0,
     heightDeviationFraction: Number.isFinite(occupancy.maxHeightM) && occupancy.maxHeightM > 0
@@ -1282,6 +1396,18 @@ export function assessProject(project: ProjectState): Assessment {
   });
 
   if (compounding.lineItems.length > 0) {
+    if (compounding.isCompoundable) {
+      charges.push({
+        group: 'charge',
+        label: 'Compounding fee',
+        amount: compounding.totalPayable,
+        basis: `${compounding.lineItems.length} deviation${compounding.lineItems.length === 1 ? '' : 's'} regularised`,
+        working: compounding.lineItems
+          .map((i) => `${i.label}: ${inr(i.amount)}`)
+          .join('; '),
+        clause: 'Chapter 16 (Compounding)',
+      });
+    }
     findings.push(sourced({
       id: 'compounding',
       topic: 'procedure',
@@ -1314,6 +1440,26 @@ export function assessProject(project: ProjectState): Assessment {
   const ok = scoped.filter((f) => f.status === 'ok').length;
   const totalFees = scoped.reduce((sum, f) => sum + (f.money?.amount ?? 0), 0);
 
+  // A per-unit rate is not an amount until someone counts the units, so it is listed but
+  // not summed. Everything the engine cannot compute is named rather than quietly omitted:
+  // a bottom line read as the cost of approval, when it leaves out the sanction fee and the
+  // connection charges, misleads more than no bottom line would.
+  const GROUP_ORDER: Record<ChargeGroup, number> = { entitlement: 0, density: 1, charge: 2 };
+  const ledger: ChargeLedger = {
+    lines: [...charges].sort(
+      (a, b) => GROUP_ORDER[a.group] - GROUP_ORDER[b.group]
+        // A rate the reader must multiply out sits below the amounts that are settled.
+        || Number(a.perUnit ?? false) - Number(b.perUnit ?? false),
+    ),
+    total: charges.reduce((sum, line) => sum + (line.perUnit ? 0 : line.amount), 0),
+    excludes: [
+      'the sanction fee and scrutiny charges the Authority sets by its own schedule',
+      'labour cess, development and external development charges',
+      'water, sewer and electricity connection charges',
+      'stamp duty and registration on any purchase',
+    ],
+  };
+
   const headline = blocked > 0
     ? `This can't be built as drawn — ${blocked} thing${blocked === 1 ? '' : 's'} must change.`
     : attention > 0
@@ -1338,5 +1484,6 @@ export function assessProject(project: ProjectState): Assessment {
     permissibleArea: far.effectiveBuiltUpArea,
     proposedArea,
     disputedCount: scoped.filter((f) => f.dispute).length,
+    ledger,
   };
 }

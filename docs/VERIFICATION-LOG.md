@@ -1230,6 +1230,53 @@ real clause the engine had nothing for.*
 
 ## Still open
 
+### B-057 — The same floor area was charged twice, to buy it and to regularise it — FIXED
+The itemised charges card put the two lines next to each other for the first time, and the
+double charge was visible in a glance: a 320 m² house drawn 24.9 m² over its base
+entitlement was billed **₹1,84,199** under Clause 9.2.5 to buy that floor area and
+**₹4,47,616** under Clause 16.3.8 Item 3 to regularise the very same square metres. The
+true bill is the first figure; the engine was reporting 3.4 times it.
+
+`findings.ts` passed `excessFarSqm` as the excess over the **base** entitlement. Item 3's
+own contract says "floor area beyond **permissible** FAR", and Chapter 16 settles what that
+means twice over, at gazette page 163:
+
+> v. The authority shall not permit or compound any construction beyond the limit of maximum
+> permissible FAR. They shall ensure demolition and removal of extra construction beyond
+> maximum permissible FAR, if any, before considering the permission of purchasable FAR.
+>
+> vi. Purchasable and Premium Purchasable FAR shall be applicable in already constructed
+> buildings submitted for compounding.
+
+Floor area within the purchasable ceiling is **bought**, not compounded — (vi) says so even
+for a building already standing. Measured from `maxPermissibleBuiltUpArea` instead, and
+pinned by eight tests.
+
+### V-066 — Compounding assumes a building that may not have been built yet
+The fix above holds under either reading of who is asking, but it exposes the question
+underneath it, which the engine cannot currently answer: **`ProjectState` has no field for
+whether this building exists.**
+
+Chapter 16 regularises construction already carried out. The workspace models a proposal —
+"can I build this" — and yet every assessment runs the compounding schedule over it and
+offers a price to regularise deviations that have not been committed. For a proposal the
+honest answer is that the FAR limb of compounding is unreachable: you buy the density under
+Clause 9.2.5 and it is sanctioned.
+
+Two further consequences are unresolved and are not touched here:
+
+1. Beyond the ceiling the engine still prices an Item 3 charge, which Clause 16.3.8(v)
+   forbids outright — that construction must be demolished, not compounded. The project is
+   correctly blocked and marked non-negotiable, so the figure is not offered as a way
+   through, but it should not be computed at all.
+2. Clause 16.3.2's thirteen non-compoundable grounds are a closed list from the gazette and
+   the ceiling is not among them; (v) sits elsewhere in the chapter. Adding it to that list
+   would misattribute it, so the cap needs its own check.
+
+Both need a `buildingStage` fact — proposed, under construction, or built — which is a
+change to what the app asks the user, not a number to correct. Recorded rather than guessed.
+
+
 ### V-061 — The conflict query had swept eleven of thirty-eight facts, and nobody could tell
 This is a finding about the method rather than about the byelaws, and it is the one that
 produced B-050 to B-053.

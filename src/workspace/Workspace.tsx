@@ -5,6 +5,7 @@ import { assessProject } from '../domain/findings';
 import { resolveRequiredSetbacks } from '../domain/setbacks';
 import { getOccupancy } from '../domain/occupancy';
 import { Finding } from '../domain/findings';
+import { ChargesCard } from './ChargesCard';
 import { SitePanel } from './SitePanel';
 import { SitePlan } from './SitePlan';
 import { VerdictPanel } from './VerdictPanel';
@@ -132,6 +133,8 @@ export const Workspace: React.FC = () => {
               </p>
             </div>
           </div>
+
+          <ChargesCard ledger={assessment.ledger} />
 
           <p className="mt-4 text-[10.5px] text-slate-600 dark:text-slate-400">
             {lastSavedLabel ? `Saved ${lastSavedLabel} on this device` : 'Saved on this device'}
