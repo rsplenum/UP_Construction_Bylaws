@@ -1,0 +1,1591 @@
+=== chapter 03 · gazette page 37 · pdf page 1 ===
+3 Standards for Land Development and Building Construction
+3.1 General Land Development Requirements
+3.1.1 Layout map:
+A layout map shall be prepared and submitted to obtain development permit for development or
+redevelopment of any tract of land.
+3.1.1.1 Contents of the proposed layout map:
+Every layout map shall contain sub-plots being formed after sub-division, means of access thereto,
+parks and open spaces, if any, required under paragraph 3.1.2 (including 3.1.2.4 landscape plan), spaces
+for community facilities, if any, required under paragraph 3.1.4 (including services plan), along with
+other mandatory compliances required as per the Master Plan/ Zonal Development Plan/ byelaws.
+3.1.1.2 Minimum plot sizes in a layout map:
+The minimum plot sizes for different use categories shall be as given in paragraph 3.2 of this byelaws
+relating to minimum plot sizes for buildings across use categories.
+3.1.1.3 Means of Access:
+The means of access to the land proposed for a layout shall be from a public street/road as required in
+these byelaws. Such access road shall be free from encroachment, encumbrances, and obstructions. The
+minimum width of existing access road to the proposed layout shall be as follows.
+Note:
+(a) For a residential layout comprising of group housing projects, the minimum width of access road
+shall be 12m. For plot sizes up to 1000 sqm in built-up area, this requirement shall be relaxed to 9m.
+(b) For buildings permissible in agricultural land use, such as single factory unit, the minimum width
+of access road shall be 7.0 m.
+3.1.1.4 Sub-division/amalgamation of plots in layouts approved/developed by the Authority
+3.1.1.4.1 Sub-division
+(i) Sub-division shall be permissible on minimum road width of 9-meters (for residential) and 12-
+meters (for non-residential).
+(ii) The size of each plot after sub-division shall not be less than 100 square meters (for residential).
+(iii) The use of the sub-divided plot shall be the same as of the original plot.
+37
+
+--- table 0 (8 rows × 6 cols) ---
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1]
+[#DBE5F1] | Layout – Use Type | [#DBE5F1] | Minimum Width of | [#DBE5F1] | Minimum Width of Access
+Sl. |  |  |  |  | 
+ |  |  | Access Road (Built-up) |  | Road (Non-Built-up)
+[#DBE5F1] |  |  |  |  | 
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1]
+1 | Residential | 6m |  |  | 9m up to 10 acres 12m from >10 to 25 acres 18m above 25 acres
+2 | Non-Residential (Commercial & Institutional) | 12m |  |  | 12m up to 10 acres 18m from >10 to 25 acres 24m above 25 acres
+
+=== chapter 03 · gazette page 38 · pdf page 2 ===
+(iv) Ground Coverage, FAR and setback of the original plot shall be applicable to each sub-divided
+plot.
+(v) The development fee and sub-division charges shall be applicable for sub-division of plots.
+3.1.1.4.2 Amalgamation
+(i) Amalgamation shall be permissible on minimum road width of 9-meters (for residential) and 12-
+meters (for non-residential).
+(ii) Amalgamation of maximum four plots shall be allowed at one time.
+(iii) Ground coverage, FAR and setback of the amalgamated plot shall be applicable as per
+amalgamated plot size.
+(iv) The use of the amalgamated plot shall generally be the same as the original plot.
+(v) In plots where construction has been done a revised map shall have to be submitted and charges
+shall also be applicable.
+(vi) The development fee and amalgamation charges shall be applicable for amalagamation of plots.
+3.1.2 Parks and Open Spaces
+3.1.2.1 Open Spaces earmarked in Zonal Development Plan
+To ensure environmental and ecological balance, a minimum of 5 percent land of the total area of the
+zone shall be reserved as park and open space/green area under the Zonal Development Plan.
+3.1.2.2 Parks and Open Spaces in Residential and Non-Residential Land use
+(i) Under the layout plan of area more than 3000 square meters, a minimum prescribed percent of
+land (as given in the table below) of the total area of the layout shall be reserved for parks and
+open spaces, which shall be developed as tot-lot, park and playground.
+(ii) Parks and Open Spaces proposed in the Master Plan/ Zonal Plan falling within the layout shall
+be counted towards the above requirement up to a limit of 50 percent. Swapping of open spaces
+proposed in the Master Plan (except green areas along the roadside) with other land use within a
+layout area shall be permitted with the prior approval of the land use change by the Competent
+Authority. Above provision shall not be applicable to the already sanctioned DPRs, already
+developed colonies and colonies where construction has already commenced.
+(iii) If land has been reserved for park and open space as per the standards in the layout plan of any
+scheme, then it will not be necessary to make separate provision for park and open space again
+in relation to the group housing plot in that scheme.
+(iv) Calculation of the requirement of open spaces for layouts above 3000 sqm shall be done on
+telescopic basis. For example, for a layout of 6000 sqm, requirement shall be 15 percent of (6000
+sqm minus 3000 sqm), i.e. 15 percent of 3000 sqm which is 450 sqm.
+38
+
+--- table 0 (7 rows × 7 cols) ---
+Layout Area | Mandatory open spaces (%) in Residential Layouts with ZDP | Mandatory open spaces (%) in Residential Layouts without ZDP | Mandatory open spaces (%) Non- residential Layouts with ZDP | [#D9E2F3] | Mandatory open | [#D9E2F3]
+ |  |  |  |  | spaces (%) in | 
+ |  |  |  |  | Non-residential | 
+ |  |  |  |  | Layouts without | 
+ |  |  |  |  | ZDP | 
+Up to 3000 sqm. | Not Mandatory | Not Mandatory | Not Mandatory | Not Mandatory |  | 
+More than 3000 sqm. | 10% | 15% | 5% | 10% |  | 
+
+=== chapter 03 · gazette page 39 · pdf page 3 ===
+3.1.2.3 Parks and Open Space Standards
+(i) The minimum average width of the open space shall be 6.0 metres, and the minimum area of
+open space shall be 200 square meters. Keeping in view the physical shape of the site, open
+spaces of different sizes may be permitted by the authority with the restriction that they ensure
+fulfillment of the needs of the community.
+(ii) The limit of open space shall be valid up to the boundary of the plot/building line, as the case
+may be, provided that the space up to 3.0 meters from the boundary of the plot shall be kept as a
+pathway to enable physical separation of plots and parks. Such pathways shall necessarily be
+made of perforated blocks/material.
+(iii) Parking shall be allowed beneath parks and open areas of group housing and non-residential plots
+up to a limit of 70 percent. The remaining 30 percent shall be planted with dense vegetation
+(Miyawaki) and shall allow seepage of rainwater for ground water recharge. However, the
+mandatory requirements for tree plantation shall be ensured in the remaining 30 percent land.
+3.1.2.4 Landscape Plan
+At the time of map approval by competent authority, the landscape plan shall be submitted, which shall
+comply with the following provisions. Prior to issuing the completion certificate, such compliance of
+landscape plan at the site shall also be confirmed:
+(i) Trees shall be planted on one side of road of width 9-meters to 12-meters and shall be planted on
+both sides of roads of width over 12-meters at a maximum distance of 10-10 meters. Tree
+plantation shall be done on the vacant land within the right of way.
+(ii) In industrial layouts, approval of landscape plan shall also be necessary in which trees shall be
+planted at the rate of 125 trees per hectare in the total open space portion.
+(iii) Large polluting industries shall be separated from residential areas by dense plantation which
+shall be 15 percent of the industrial area.
+(iv) Minimum 20 percent of the total open space in the commercial scheme shall have trees planted
+at the rate of minimum 50 trees per hectare.
+(v) Minimum 20 percent of the institutional, community facilities, playgrounds/open areas and parks
+shall have trees planted at the rate of minimum 125 trees per hectare.
+(vi) Under the Economically Weaker Section, Slum Improvement Scheme, trees shall be planted in
+groups on a site with a minimum area of 100 square meters per 50 families.
+3.1.3 Internal roads and pathways
+3.1.3.1 Internal Roads in layouts for residential and non-residential land use
+In the development of layouts, the requirements of internal roads shall be done as follows:
+39
+
+--- table 0 (8 rows × 6 cols) ---
+Min. road width (m) – Built-up area | Min. road width (m) – Non-built-up area | Length of internal roads in layouts for residential use (m) | [#D9E2F3] | Length of internal | [#D9E2F3]
+ |  |  |  | roads in layouts for | 
+ |  |  |  | non-residential use | 
+ |  |  |  | (m) | 
+4 | 7.5 | Up to 150 | - |  | 
+6 | 9 | >150 to 300 | Up to 150 |  | 
+7.5 | 12 | >300 to 600 | >150 to 300 |  | 
+9 | 15 | >600 to 900 | >300 to 600 |  | 
+
+=== chapter 03 · gazette page 40 · pdf page 4 ===
+Note:
+(i) The minimum width of 'Loop Street' shall be 7.5 meters and maximum length shall be 300 meters.
+For ‘Loop Streets’ of length up to 600 meters, the minimum width shall be 9 meters.
+(ii) The minimum width of the road adjacent to the park/open space and the roads with abutting plots
+proposed only on one side shall be 6.0 meters up to 150-meter length and shall be 7.5 meters up
+to 300-meter length.
+(iii) In a 9 m-wide-road which is straight and closed at one end (dead-end street), adequate area with
+minimum semi-diameter of 7.5 meters shall be provided for the node and the maximum length
+of such road shall be 100 meters. But cul-de-sac shall not be required in dead-end streets up to
+25 meters long.
+(iv) In case of EWS/LIG housing schemes, the internal roads (motorable) shall be a minimum 6-
+meter-wide. The maximum length of a 3-meter-wide road shall be 50 meters and the maximum
+length of a 4.5-meter-wide road shall be 80 meters. No residential unit shall be located farther
+than 150 meters from a 9-meter-wide access road.
+(v) The width of other roads shall be as prescribed in the master plan/zonal plan.
+3.1.3.2 Intersection of roads
+(i) As far as possible, the roads shall be joined at right angles and the alignment of the center lines
+of all the roads at the junction shall be in a straight line.
+(ii) Proposed roads at an angle of less than 30 degrees shall be permitted only when proper
+arrangement for traffic movement is ensured and the required weaving length is available.
+(iii) Road junctions shall be as per Indian Road Congress /other applicable standards.
+(iv) The minimum distance between two T-junctions on roads less than 18 meters wide shall be two
+and a half times the width of the wider road meeting at the junction.
+(v) The minimum distance between two junctions on roads wider than 18 meters shall be as follows:
+(vi) 150 meters for roads of width 18 to 24 meters,
+(vii) 300 meters for roads wider than 24 meters.
+3.1.3.3 Calculation of road length
+The length of the road shall be calculated from the meeting point of the road which is wider than that
+road.
+3.1.3.4 Block length
+In plot development, the maximum length of the block shall be 300 meters.
+3.1.3.5 Drainage system
+For drainage system, drains shall be an integral part of the road and they shall have sufficient slope so
+that water can drain automatically.
+40
+
+--- table 0 (3 rows × 4 cols) ---
+9 | 18 | >900 to 1200 | >600 to 1200
+9 | 24 | >1200 to 1500 | >1200 to 1500
+9 | 30 | >1500 | >1500
+
+=== chapter 03 · gazette page 41 · pdf page 5 ===
+3.1.3.6 Other requirements
+The road margins shall be kept as unpaved as possible, or provision of pathways shall be made.
+Such pathways shall be made of perforated material or provision of ‘brick-on-edge’/ ‘loose-
+stone pavement’ shall be made, to ensure maximum groundwater recharge.
+3.1.3.7 Specifications/provisions of cycle track construction
+In the layout of the schemes, provision for cycle tracks may be made on roads 18.0 meters wide and
+above to promote usage of sustainable modes of transport such as bicycles. The
+specifications/provisions of cycle track construction shall be as per IRC code (IRC-11-1962) as
+amended from time to time.
+3.1.4 Standards for community and other uses/activities
+3.1.4.1 Standards for community facilities
+41
+
+--- table 0 (21 rows × 4 cols) ---
+Sl. | Category | Standards | Minimum plot area
+1. | Education Facilities | [#F2F2F2] | [#F2F2F2]
+(a) | Nursery School | Per 2500 population - 1 | 500 square meters
+(b) | Primary school | Per 5000 population - 1 | 1000 square meters
+(c) | Junior High School / High School | On 7500 population - 1 | 2000 square meters
+(d) | Inter College | Per 10000 population - 1 | 2000 square meters
+(e) | Degree College/Post Graduate College/ Technical Education | For population 80,000 to 1,00,000 - 1 | Urban area – 5000 square meters;
+(f) | Engineering College/ Universities | Per 10,00,000 population - 1 | 2.0 hectares.
+(g) | Dental College | Per 10,00,000 population - 1 | 2.0 hectares
+2. | Medical Services | [#F2F2F2] | [#F2F2F2]
+(a) | Non-Bedded Medical Establishments (Diagnostic Centre / OPD clinics / dispensary / Pathology Lab / Veterinary Clinics) | Per 15000 population - 1 | 100 square meters
+(b) | Nursing Homes / Maternity Hospitals/ Small Hospitals/ (Up to 50 beds)/ Veterinary Hospitals | Per 45000 population - 1 | 300 square meters
+(c) | Hospitals (>50 beds) | Per 100000 population - 1 | 3000 square meters
+(d) | Medical College | Per 10,00,000 population - 1 | As per MCI/ NMC norms
+3 | Other services | [#F2F2F2] | [#F2F2F2]
+(c) | Police Station (including staff accommodation) | Per 50,000 population - 1 | 4000 square meters of which 800 square meters shall be built up area.
+(d) | Police post (including staff quarters) | Per 15000 population - 1 | 1500 square meters which shall have built up area as per requirement.
+(e) | Fire station (including staff accommodation) |  | 
+ | (i) Category-A cities | 4 lakh population and 10 square km area. | 12400 square meters of which there shall be 5600 square meters of built-up area.
+ | (ii) Category-B cities | 2.5 lakh population and 10 square km area. | 10000 sq.m. of which there shall be 4200 sq.m. built up area.
+ | (iii) Category-C cities | 2 lakh population and 10 square km area. | 8000 sq.m. of which 3500 sq.m. shall be built up area.
+
+=== chapter 03 · gazette page 42 · pdf page 6 ===
+Note 1: The minimum plot area for the above-mentioned community facilities are indicative and governed by the norms
+prescribed from time to time by the concerned department.
+Note 2: Areas earmarked for other services (such as police station / fire station etc.) if not used for 20 years, then it shall be
+returned back and converted to any other public use.
+Note 3: For non-residential layouts, 5 percent area to be provided as common parking provision.
+Note 4: For Education facilities, the provision of primary and nursery school can be included under high school/inter college,
+in view of which it will not be necessary to reserve a separate plot for each level of school as per the population standards.
+Note 5: For Electric Sub-stations, in cases where depending upon the technology type of the sub-station, the requirement of
+the land is less than the prescribed standards prior consent of the concerned department shall have to be obtained.
+Note 6: For Sports activities, the provision for neighbourhood sports centre and sports centre in residential units can be made
+within the area of proposed parks/open spaces at the layout plan level.
+42
+
+--- table 0 (24 rows × 7 cols) ---
+Sl. | Category | Standards | Minimum plot area |  |  | 
+ | (iv) Tehsil and other towns | For 1 lakh population and 3.00 square km area. | 6000 square meters of which there shall be 2800 square meters of built-up area. |  |  | 
+(g) | Electric Sub-station |  | 11 KVA 33 KVA 132 KVA 220 KVA | Per 15000 population - 1 | 500 square meters | 
+ |  |  |  | - | 1.0 acre | 
+ |  |  |  | - | 5.0 acre | 
+ |  |  |  | Per 500000 population - 1 | 10.0 acre | 
+4. | Social and cultural facilities | [#F2F2F2] | [#F2F2F2] |  |  | 
+(a) | Marriage Hall/ Community centre | Per 25000 population – 1 | 750 square meters |  |  | 
+ |  |  |  |  |  | 
+5. | Commercial | [#F2F2F2] | [#F2F2F2] |  |  | 
+(a) | Commercial Use | For every 500 population – 1 shop For every 500 population – 1 informal sector kiosk/booth | Minimum 10 square meters per each shop Maximum 10% of total area (including office use) as per Chapter-5 |  |  | 
+6. | Mixed Use |  | Maximum 10% of total area may be used as mixed-use plots as per Chapter-8 |  |  | 
+7. | Sports activities | [#F2F2F2] | [#F2F2F2] |  |  | 
+(a) | Neighbourhood Sports Centre | For every 15000 population - 1 | 1.5 hectare |  |  | 
+(b) | Sports centres in residential units | For every 5000 population - 1 | 5000 square meters |  |  | 
+ |  |  |  |  |  | 
+8. | Waste segregation space | Per 500 persons - 1 | 15 square meters |  |  | 
+ | Public Toilet - WC seat | Per 50 persons -1 | 0.675 square meters (0.75x0.90) |  |  | 
+ | Public Toilet - Urinal Unit | Per 200 to 300 persons -1 | 0.30 square meters (0,50x0.60) |  |  | 
+ | City Bus Stop | Per 800 to 1000 m distance -1 | 50.40 square meters (3.6 x 14) |  |  | 
+ | Foot Over Bridge | As per local requirement |  |  |  | 
+ | Vending Zone | Per 10000 persons -1 (500-1000 m distance) | 1000 square meters |  |  | 
+ | Solid Waste Transfer Station | Per 200000 persons - 1 | 5000 square meters |  |  | 
+ | Sanitary Landfill Site | Per 100000 persons -1 | 10000 square meters |  |  | 
+
+=== chapter 03 · gazette page 43 · pdf page 7 ===
+3.1.4.2 Population Estimation
+The population shall be estimated on the basis of the standard of 5 persons for one residential unit
+(including group-housing/multi-units). Under plot development, population shall be estimated on the
+basis of 1 unit on a plot up to 50 square meters, 2 units on a plot of more than 50 and up to 150 square
+meters, 4 units on plots of area more than 150 and up to 300 square meters, one unit per 100 square
+meters but maximum 15 units on plots of area more than 300 square meters and up to 1500 square
+meters. This is only for estimation of population and shall not determine the number of units allowed
+on a particular plot size.
+3.2 Development Standards (Plot Size, FAR, Building Height, Setbacks)
+3.2.1 Plot sizes and requirements
+The plot size and requirements for various use occupancies shall be as follows.
+43
+
+--- table 0 (24 rows × 4 cols) ---
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] | Min. Existing
+Sl. | Use Occupancies | Min. Plot Size (sq.m.) | 
+ |  |  | Road width (m)
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] | 
+I | Residential |  | See Chapter-4 for details
+1 | Plotted – Single/Multi Unit | 40 (Row Housing – Single Unit) No minimum plot size in built-up area | 7.5 (plots on one side) 9 (plots on both sides) 4.0 m (Built-up area)
+ |  | 150 (Row Housing – Multi Unit) | 9
+ |  | 500 (Semi-detached) | 9
+ |  | 1200 (Detached) | 9
+2 | Group Housing | 1000 (Built-up) 1500 (Non-built-up) | 9 (Built-up area) 12 (Non-Built-up area)
+ | Commercial/ Office |  | 
+II |  |  | See Chapter-5 for details
+ | Buildings |  | 
+ |  |  | 
+1a | Retail Shops | >10 to 100 | 6 (Built-up) 9 (Non-built-up)
+1b | Convenient Shopping / Commercial Units | >100 - 300 | 12
+2 | Commercial Complex | >300 - 3000 | 12
+3 | Shopping mall | > 3000 | 18
+4a | Hotels (<20 rooms) | Not defined | 6 (Built-up) 9 (Non-built-up)
+4b | Hotels (>20 rooms) | 500 | 12
+5a | Single Screen Cinema | 500 | 12
+5b | Miniplex | 700 | 12
+5c | Multiplex | 3000 | 18
+6a | Petrol Pump/ Filling Station without service station | 224 (16 x 14) -2w/3w 510 (30 x 17) | 12 (Built-up) 24 (Non-Built-up)
+
+=== chapter 03 · gazette page 44 · pdf page 8 ===
+44
+
+--- table 0 (31 rows × 4 cols) ---
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] | Min. Existing
+Sl. | Use Occupancies | Min. Plot Size (sq.m.) | 
+ |  |  | Road width (m)
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] | 
+ | (CNG/PNG/EV) |  | 
+6b | Petrol Pump/ Filling Station with service station (CNG/PNG/EV) | 1080 (36 x 30) | 12 (Built-up) 24 (Non-Built-up)
+7 | LPG / Gas Godown | 520 (26 x20) | 18
+8 | Service Apartment | Not defined | 12
+9 | Cold Storage | 1000 | 18
+10 | Warehousing/ Storage Godown | Not defined | 12
+11 | Wholesale Market | Not defined | 12
+12 | Office Buildings | Not defined | 12
+13 | Other Commercial | Not defined | 9m (Built-up area) 12m (Non-built-up area)
+ | Community Facilities/ |  | 
+III |  |  | See Chapter-6 for details
+ | PSP |  | 
+ |  |  | 
+A | Healthcare Facilities |  | 
+1 | Non-Bedded Medical Establishments (Diagnostic Centre/ OPD clinics/ dispensary/ Pathology Lab/ Veterinary Clinics) | 100 | 9
+2 | Nursing Homes / Veterinary Hospitals / Maternity Hospitals/ Small Hospitals (Up to 50 beds) | 300 | 12
+3 | Hospitals (> 50 beds) | 3000 | 18
+4 | Nursing Institutes | 2000 | 18
+5 | Medical College | As per NMC/ MCI norms | 24
+B | Education Facilities |  | 
+1 | Nursery | 500 | 9
+2 | Primary | 1000 | 9m (Built-up area) 12m (Non-built-up area)
+3 | Secondary/High School/Inter College | 2000 | 12
+4 | Degree College/Technical Institution | 5000 | 18
+5 | Universities | 20000 | 24
+C | Public Amenity buildings |  | 
+1 |  | 750 (Built-up area) | 18
+
+=== chapter 03 · gazette page 45 · pdf page 9 ===
+Note: For Petrol Pump/Filling Station, in case any amendment is issued by MoPNG or any competent
+authority, it shall automatically prevail.
+3.2.2 Ground Coverage and Floor Area Ratio (FAR)
+The calculation of floor area shall be conducted telescopically, beginning from one level below the area
+of the proposed plot.
+Illustrative Example:
+For example, for a plot size of 100 square meters, permissible FAR is 2.0 and for plot size 100 -300
+sqm, the permissible FAR is 1.75.
+45
+
+--- table 0 (33 rows × 4 cols) ---
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] | Min. Existing
+Sl. | Use Occupancies | Min. Plot Size (sq.m.) | 
+ |  |  | Road width (m)
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] | 
+ | Marriage Hall/ Banquet/ Multipurpose Hall | 1000 - 3000 (Non-built up area) | 18
+ |  | >3000 | 24
+2 | Auditorium / Convention Centre | 1500 | 18
+ |  | 2000 | 24
+ | Other Community |  | 
+D |  |  | 
+ | Facilities |  | 
+ |  |  | 
+1 | Religious Buildings | Not defined | 12
+2 | Guest House | 400 | 12
+3 | Utilities & Services | Not defined | 12
+4 | Other institutional | Not defined | 12
+IV | Agriculture |  | 
+1 | Farmhouse | 4000 | 7
+2 | Dairy Farms | 2000 | 7
+V | Industrial |  | 
+1 | Industrial Buildings | Not defined | 9
+2 | Flatted factories | Not defined | 12
+3 | Data Centers | Not defined | 12
+4 | MSME | Not defined | 9
+VI | Mixed Use | Refer Chapter-8 | 24
+VII | Recreational |  | 
+1 | Stadium/ Sports Complex | Not defined | 18
+2 | Amusement Park | Not defined | 18
+3 | Memorial | Not defined | 9
+VIII | Transportation |  | 
+1 | Multi-level Parking | 800 for built-up area 1000 for non-built-up area | 12
+2 | Bus Terminal | Not defined | 12
+3 | Transportation Hub | Not defined | 12
+
+=== chapter 03 · gazette page 46 · pdf page 10 ===
+Calculation of FAR for a plot size of 280 square meters, shall be done as below:
+a. Plot area of 280 square meters to be divided into two parts, i.e. 100 sqm + 180 sqm
+b. For 100 sqm, as per applicable FAR, allowable floor area shall be 100*2.0 = 200 sqm
+c. For remaining 180 sqm, as per applicable FAR, allowable floor area shall be 180*1.75 = 315
+sqm
+d. Hence, total allowable floor area shall be 515 sqm
+The ground coverage and FAR for various use occupancies shall be as follows.
+3.2.2.1 Residential – Plotted Development including EWS/ LIG/ Affordable Housing
+Note: Maximum Permissible FAR (MFAR) is calculated as per the provisions of purchasable FAR in Chapter-9.
+3.2.2.2 Residential – Group Housing including EWS/ LIG/ Affordable Housing
+Note: Maximum Permissible FAR (MFAR) is calculated as per the provisions of purchasable FAR in Chapter-9
+3.2.2.3 Commercial – Shops / Convenience Shopping / Other Commercial
+46
+
+--- table 0 (8 rows × 6 cols) ---
+Sl. | [#DBE5F1] | Ground Coverage (%) | Plot Area (sq.m.) | Base FAR | Max. FAR
+ | Use Types |  |  |  | 
+ | [#DBE5F1] |  |  |  | 
+1 | Plotted Development – Single Unit/Multi-Unit (Built-up/Non-Built-up) | Max. coverage after ensuring setbacks | Up to 150 | 2.0 | 2.0
+ |  |  | >150 to 300 | 1.8 | 2.0
+ |  |  | >300 to 500 | 1.75 | 2.0
+ |  |  | >500 to 1200 | 1.5 | 2.0
+ |  |  | >1200 | 1.25 | 2.0
+
+--- table 1 (12 rows × 6 cols) ---
+[#DBE5F1] | Use Types | Ground Coverage (%) | Road Width (m) | Base FAR | [#DBE5F1]
+Sl. |  |  |  |  | Max. FAR
+[#DBE5F1] |  |  |  |  | [#DBE5F1]
+2(a) | Group Housing (Built up) | Max. coverage after ensuring setbacks | 9 – 12m | 1.5 | 2.0
+ |  |  | >12 – 18m | 1.5 | 3.0
+ |  |  | >18 – 24m | 1.5 | 3.0
+ |  |  | >24 – 45m | 1.5 | 5.25
+ |  |  | > 45m | 1.5 | Unrestricted
+2(b) | Group Housing (Non-Built up) | Max. coverage after ensuring setbacks | >12 – 18m | 2.5 | 5.0
+ |  |  | >18 – 24m | 2.5 | 5.0
+ |  |  | >24 – 45m | 2.5 | 8.75
+ |  |  | > 45m | 2.5 | Unrestricted
+
+--- table 2 (6 rows × 7 cols) ---
+Sl. | Use Types | Ground Coverage (%) | [#DBE5F1] | Road Width | Base FAR | Max. FAR
+ |  |  |  | (m) |  | 
+3(a) | Shops / Convenience Shopping / Commercial Units (Built-up) | Max. coverage after ensuring setbacks | Up to 12m |  | 1.5 | 2.1
+ |  |  | >12 – 24m |  | 1.5 | 3
+ |  |  | >24 – 45m |  | 1.5 | 5
+ |  |  | >45m |  | 1.5 | Unrestricted
+
+=== chapter 03 · gazette page 47 · pdf page 11 ===
+47
+
+--- table 0 (26 rows × 12 cols) ---
+Sl. | Use Types | [#DBE5F1] | Ground | [#DBE5F1] | [#DBE5F1] | Road Width | [#DBE5F1] | [#DBE5F1] | Base | [#DBE5F1] | Max. FAR
+ |  |  | Coverage (%) |  |  | (m) |  |  | FAR |  | 
+3(b) | Shops / Convenience Shopping / Commercial Units (Non-Built up) | Max. coverage after ensuring setbacks |  |  | Up to 12m |  |  | 1.75 |  |  | 2.45
+ |  |  |  |  | >12 – 24m |  |  | 1.75 |  |  | 3.5
+ |  |  |  |  | >24 – 45m |  |  | 1.75 |  |  | 6
+ |  |  |  |  | >45m |  |  | 1.75 |  |  | Unrestricted
+4(a) | Commercial Complex (Built up) | Max. coverage after ensuring setbacks |  |  | =>12 – 24m |  |  | 1.5 |  |  | 3
+ |  |  |  |  | >24 – 45m |  |  | 1.5 |  |  | 5
+ |  |  |  |  | >45m |  |  | 1.5 |  |  | Unrestricted
+4(b) | Commercial Complex (Non-Built up) | Max. coverage after ensuring setbacks |  |  | =>12 – 24m |  |  | 1.75 |  |  | 3.5
+ |  |  |  |  | >24 – 45m |  |  | 1.75 |  |  | 6
+ |  |  |  |  | > 45m |  |  | 1.75 |  |  | Unrestricted
+5(a) | Shopping malls (Built up) | Max. coverage after ensuring setbacks |  |  | =>18 – 24m |  |  | 2 |  |  | 4
+ |  |  |  |  | >24 – 45m |  |  | 2 |  |  | 7
+ |  |  |  |  | > 45m |  |  | 2 |  |  | Unrestricted
+5(b) | Shopping malls (Non-Built up) | Max. coverage after ensuring setbacks |  |  | =>18 – 24m |  |  | 3 |  |  | 6
+ |  |  |  |  | >24 – 45m |  |  | 3 |  |  | 9
+ |  |  |  |  | > 45m |  |  | 3 |  |  | Unrestricted
+6(a) | Hotels (Built up) | Max. coverage after ensuring setbacks |  |  | =>12 – 24m |  |  | 2 |  |  | 4
+ |  |  |  |  | >24 – 45m |  |  | 2 |  |  | 7
+ |  |  |  |  | > 45m |  |  | 2 |  |  | Unrestricted
+6(b) | Hotels (Non-Built up) | Max. coverage after ensuring setbacks |  |  | =>12 – 24m |  |  | 2.5 |  |  | 5
+ |  |  |  |  | >24 – 45m |  |  | 2.5 |  |  | 8.75
+ |  |  |  |  | > 45m |  |  | 2.5 |  |  | Unrestricted
+7 (a) | Single Screen Cinema (Built-up/Non-built up) | Max. coverage after ensuring setbacks |  |  | =>12 – 24m |  |  | 2 |  |  | 4
+ |  |  |  |  | >24 – 45m |  |  | 2 |  |  | 7
+
+=== chapter 03 · gazette page 48 · pdf page 12 ===
+48
+
+--- table 0 (24 rows × 12 cols) ---
+Sl. | Use Types | [#DBE5F1] | Ground | [#DBE5F1] | [#DBE5F1] | Road Width | [#DBE5F1] | [#DBE5F1] | Base | [#DBE5F1] | Max. FAR
+ |  |  | Coverage (%) |  |  | (m) |  |  | FAR |  | 
+ |  |  |  |  | > 45m |  |  | 2 |  |  | Unrestricted
+7 (b) | Miniplex (Built-up/Non- built up) | Max. coverage after ensuring setbacks |  |  | =>12 – 24m |  |  | 2 |  |  | 4
+ |  |  |  |  | >24 – 45m |  |  | 2 |  |  | 7
+ |  |  |  |  | > 45m |  |  | 2 |  |  | Unrestricted
+7(c) | Multiplex (Built up) | Max. coverage after ensuring setbacks |  |  | =>18 – 24m |  |  | 2 |  |  | 4
+ |  |  |  |  | >24 – 45m |  |  | 2 |  |  | 7
+ |  |  |  |  | > 45m |  |  | 2 |  |  | Unrestricted
+7(d) | Multiplex (Non-Built up) | Max. coverage after ensuring setbacks |  |  | =>18 – 24m |  |  | 3 |  |  | 6
+ |  |  |  |  | >24 – 45m |  |  | 3 |  |  | 9
+ |  |  |  |  | > 45m |  |  | 3 |  |  | Unrestricted
+8(a) | Petrol Filling Station w/o service station (Built up) | 10% |  |  | =>12m |  |  | 0.1 |  |  | -
+8 (b) | Petrol Filling Station w/o service station (Non Built up) | 10% |  |  | =>24m |  |  | 0.15 |  |  | 
+8(c) | Petrol Filling Station with service station (Built up) | 20% |  |  | =>12m |  |  | 0.2 |  |  | -
+8 (d) | Petrol Filling Station with service station (Non-Built up) | 10% |  |  | =>24m |  |  | 0.1 |  |  | 
+9 | LPG / Gas Go down | 25% |  |  | =>18m |  |  | 0.25 |  |  | 0.25
+10 (a) | Service Apartment (Built- up) | Max. coverage after ensuring setbacks |  |  | =>12 – 24m |  |  | 2 |  |  | 4
+ |  |  |  |  | >24 – 45m |  |  | 2 |  |  | 7
+ |  |  |  |  | > 45m |  |  | 2 |  |  | Unrestricted
+10 (b) | Service Apartment (Non- Built up) | Max. coverage after ensuring setbacks |  |  | =>12 – 24m |  |  | 2.5 |  |  | 5
+ |  |  |  |  | >24 – 45m |  |  | 2.5 |  |  | 8.75
+ |  |  |  |  | > 45m |  |  | 2.5 |  |  | Unrestricted
+11 | Cold Storage |  |  |  | 18m |  |  |  |  |  | 
+
+=== chapter 03 · gazette page 49 · pdf page 13 ===
+Note: Maximum Permissible FAR (MFAR) is calculated as per the provisions of purchasable FAR in Chapter-9
+49
+
+--- table 0 (20 rows × 12 cols) ---
+Sl. | Use Types | [#DBE5F1] | Ground | [#DBE5F1] | [#DBE5F1] | Road Width | [#DBE5F1] | [#DBE5F1] | Base | [#DBE5F1] | Max. FAR
+ |  |  | Coverage (%) |  |  | (m) |  |  | FAR |  | 
+12 (a) | Storage/Warehousing (Built up) | Max. coverage after ensuring setbacks |  |  | 12m |  |  | 0.8 |  |  | 0.8
+12 (b) | Storage/Warehousing (Non-Built up) | Max. coverage after ensuring setbacks |  |  | 12m |  |  | 1.2 |  |  | 1.2
+13 | Fruit & Vegetable Market | Max. coverage after ensuring setbacks |  |  | 12m |  |  | 1 |  |  | 1
+14 (a) | Wholesale Business (Built) | Max. coverage after ensuring setbacks |  |  | 12m |  |  | 1.2 |  |  | 1.2
+14 (b) | Wholesale Business (Non- Built) | Max. coverage after ensuring setbacks |  |  | 12m |  |  | 1.5 |  |  | 1.5
+15 (a) | Office Buildings (Built up) | Max. coverage after ensuring setbacks |  |  | =>18 – 24m |  |  | 2 |  |  | 4
+ |  |  |  |  | >24 – 45m |  |  | 2 |  |  | 7
+ |  |  |  |  | > 45m |  |  | 2 |  |  | Unrestricted
+15 (b) | Office Buildings (Non- Built up) | Max. coverage after ensuring setbacks |  |  | =>18 – 24m |  |  | 2.5 |  |  | 5
+ |  |  |  |  | >24 – 45m |  |  | 2.5 |  |  | 8.75
+ |  |  |  |  | > 45m |  |  | 2.5 |  |  | Unrestricted
+16 (a) | Other Commercial (Built up) | Max. coverage after ensuring setbacks |  |  | Up to 12m |  |  | 1.5 |  |  | 2.1
+ |  |  |  |  | >12 – 24m |  |  | 1.5 |  |  | 3.0
+ |  |  |  |  | >24 – 45m |  |  | 1.5 |  |  | 5.0
+ |  |  |  |  | >45m |  |  | 1.5 |  |  | Unrestricted
+16 (b) | Other Commercial (Non- Built) | Max. coverage after ensuring setbacks |  |  | =>12 -24m |  |  | 1.75 |  |  | 3.5
+ |  |  |  |  | >24 -45m |  |  | 1.75 |  |  | 6.0
+ |  |  |  |  | >45m |  |  | 1.75 |  |  | Unrestricted
+
+=== chapter 03 · gazette page 50 · pdf page 14 ===
+3.2.2.4 Community Facilities – Healthcare Buildings
+Note: Maximum Permissible FAR (MFAR) is calculated as per the provisions of purchasable FAR in Chapter-9
+50
+
+--- table 0 (27 rows × 6 cols) ---
+Sl. | Use Types | Ground Coverage (%) | Road Width (m) | Base FAR | Max. FAR
+1 | Non-Bedded Medical Establishments (Diagnostic Centre / OPD clinics / dispensary / Pathology Lab / Veterinary Clinics) | Max. coverage after ensuring setbacks | Up to 12m | 1.5 | 2.1
+ |  |  | >12 – 24m | 1.5 | 3.0
+ |  |  | >24 – 45m | 1.5 | 5.25
+ |  |  | > 45m | 1.5 | Unrestricted
+2(a) | Nursing Homes / Veterinary Hospitals / Maternity Hospitals / Small Hospitals (Up to 50 beds) (Built up) | Max. coverage after ensuring setbacks | =>12 – 24m | 1.5 | 3.0
+ |  |  | >24 – 45m | 1.5 | 5.25
+ |  |  | > 45m | 1.5 | Unrestricted
+2(b) | Nursing Homes / Veterinary Hospitals / Maternity Hospitals / Small Hospitals (Up to 50 beds) (Non-Built up) | Max. coverage after ensuring setbacks | =>12 – 24m | 2.0 | 4.0
+ |  |  | >24 – 45m | 2.0 | 7.0
+ |  |  | > 45m | 2.0 | Unrestricted
+3(a) | Hospital > 50 beds (Built up) | Max. coverage after ensuring setbacks | =>18 – 24m | 1.5 | 3.0
+ |  |  | >24 – 45m | 1.5 | 5.25
+ |  |  | > 45m | 1.5 | Unrestricted
+4(b) | Hospital > 50 beds (Non-Built up) | Max. coverage after ensuring setbacks | =>18 – 24m | 2.5 | 5.0
+ |  |  | >24 – 45m | 2.5 | 8.75
+ |  |  | > 45m | 2.5 | Unrestricted
+5(a) | Nursing college (Built up) | Max. coverage after ensuring setbacks | =>18 – 24m | 1.5 | 3.0
+ |  |  | >24 – 45m | 1.5 | 5.25
+ |  |  | > 45m | 1.5 | Unrestricted
+5(b) | Nursing college (Non-Built up) | Max. coverage after ensuring setbacks | =>18 – 24m | 2.0 | 4.0
+ |  |  | >24 – 45m | 2.0 | 7.0
+ |  |  | > 45m | 2.0 | Unrestricted
+6(a) | Medical College (Built up) | Max. coverage after ensuring setbacks | =>24 – 45m | 1.5 | 5.25
+ |  |  | > 45m | 1.5 | Unrestricted
+6(b) | Medical College (Non-Built up) | Max. coverage after ensuring setbacks | =>24 – 45m | 2.5 | 8.75
+ |  |  | > 45m | 2.5 | Unrestricted
+
+=== chapter 03 · gazette page 51 · pdf page 15 ===
+3.2.2.5 Community Facilities – Education Buildings
+Note: Maximum Permissible FAR (MFAR) is calculated as per the provisions of purchasable FAR in Chapter-9
+3.2.2.6 Community Facilities – Public Amenities
+51
+
+--- table 0 (15 rows × 6 cols) ---
+[#DBE5F1] | Use Types | Ground Coverage (%) | Road Width (m) | Base FAR | Max. FAR
+1(a) | Schools (Nursery/Primary) (Built up) | Max. coverage after ensuring setbacks | Up to 12m | 1.0 | 1.4
+ |  |  | >12 - 24 m | 1.0 | 2.0
+ |  |  | >24 - 45 m | 1.0 | 3.0
+ |  |  | > 45 m | 1.0 | 3.0
+2(b) | Schools (Nursery/Primary) (Non-Built up) | Max. coverage after ensuring setbacks | Up to 12m | 1.2 | 1.4
+ |  |  | >12 - 24 m | 1.2 | 2.4
+ |  |  | >24 - 45 m | 1.2 | 3.6
+ |  |  | > 45 m | 1.2 | 3.6
+3(a) | Secondary/Intercollege/Degree Colleges / Universities (Built up) | Max. coverage after ensuring setbacks | =>12 - 24 m | 1.0 | 2.0
+ |  |  | >24 - 45 m | 1.0 | 3.5
+ |  |  | > 45 m | 1.0 | Unrestricted
+3(b) | Secondary/Intercollege/Degree Colleges / Universities (Non-Built up) | Max. coverage after ensuring setbacks | =>12 - 24 m | 2.0 | 4.0
+ |  |  | >24 - 45 m | 2.0 | 7.0
+ |  |  | > 45 m | 2.0 | Unrestricted
+
+--- table 1 (12 rows × 6 cols) ---
+Sl. | Use Types | Ground | Road Width (m) | Base FAR | Max. FAR
+ |  | Coverage (%) |  |  | 
+1(a) | Marriage Hall/ Banquet/ Multipurpose Hall/ Religious Building (Built up) | Max. coverage after ensuring setbacks | =>18 – 24m | 2.0 | 4.0
+ |  |  | >24 – 45m | 2.0 | 7.0
+ |  |  | More than 45m | 2.0 | Unrestricted
+1(b) | Marriage Hall/ Banquet/ Multipurpose Hall/ Religious Building (Non-Built up) | Max. coverage after ensuring setbacks | =>18 – 24m | 3.0 | 6.0
+ |  |  | =>24 – 45m | 3.0 | 10.5
+ |  |  | More than 45m | 3.0 | Unrestricted
+2 (a) | Auditorium / Convention Centre (Built-up) | Max. coverage after ensuring setbacks | =>18 – 24m | 2.0 | 4.0
+ |  |  | >24 – 45m | 2.0 | 7.0
+ |  |  | More than 45m | 2.0 | Unrestricted
+2 (b) |  |  | =>24 – 45m | 3.0 | 10.5
+
+=== chapter 03 · gazette page 52 · pdf page 16 ===
+Note: Maximum Permissible FAR (MFAR) is calculated as per the provisions of purchasable FAR in Chapter-9
+3.2.2.7 Other Uses
+52
+
+--- table 0 (10 rows × 6 cols) ---
+Sl. | Use Types | Ground | Road Width (m) | Base FAR | Max. FAR
+ |  | Coverage (%) |  |  | 
+ | Auditorium / Convention Centre (Non-built-up area) | Max. coverage after ensuring setbacks | More than 45m | 3.0 | Unrestricted
+3 | Guest House | Max. coverage after ensuring setbacks | =>12 – 24m >24 – 45m More than 45m | 1.5 | 3.0
+ |  |  |  | 1.5 | 5.25
+ |  |  |  | 1.5 | Unrestricted
+4 | Utilities & Services | 10% |  | 0.1 | 
+5 | Other institutional/ PSP |  | =>12 – 24m >24 – 45m More than 45m | 2.0 | 4.0
+ |  |  |  | 2.0 | 7.0
+ |  |  |  | 2.0 | Unrestricted
+
+--- table 1 (23 rows × 6 cols) ---
+Sl. | Use Types | Ground Coverage (%) | Road width | Base FAR | Max. FAR
+ |  |  | (m) |  | 
+ | Agriculture |  |  |  | 
+1 | Farmhouse | 20% for non- farm activities | =>7 | 0.2 | 0.2
+2 | Dairy Farms | 20% | =>7 | 0.2 | 0.2
+ | Industrial |  |  |  | 
+1 | Industrial Buildings | Max. coverage after ensuring setbacks | Up to 12m | 1.5 | 1.5
+ |  |  | >12 - 24 m | 2.5 | 5.0
+ |  |  | >24 - 45 m | 2.5 | 8.75
+ |  |  | > 45 m | 2.5 | Unrestricted
+2 | Flatted factories/ MSME | Max. coverage after ensuring setbacks | Up to 12m | 3.0 | 3.0
+ |  |  | >12 - 24 m | 3.0 | 6.0
+ |  |  | >24 - 45 m | 3.0 | 9.0
+ |  |  | > 45 m | 3.0 | Unrestricted
+3 | Data Centers | Max. coverage after ensuring setbacks | Up to 12m | 3.0 | 3.0
+ |  |  | >12 - 24 m | 3.0 | 6.0
+ |  |  | >24 - 45 m | 3.0 | 9.0
+ |  |  | > 45 m | 3.0 | Unrestricted
+ | Mixed Use | As per 8.1 | As per 8.1 | As per 8.1 | As per 8.1
+ | Recreational |  |  |  | 
+1 | Stadium/ Sports Complex | 20% | 12m | 0.4 | 0.4
+2 | Amusement Park | 20% | 12m | 1.0 | 1.0
+ | Transportation |  |  |  | 
+
+=== chapter 03 · gazette page 53 · pdf page 17 ===
+Note: Maximum Permissible FAR (MFAR) is calculated as per the provisions of purchasable FAR in Chapter-9
+*Note: Only for ancillary use.
+3.2.2.8 Exemptions from FAR calculations
+53
+
+--- table 0 (7 rows × 6 cols) ---
+Sl. | Use Types | Ground Coverage (%) | Road width (m) | Base FAR | Max. FAR
+1 | Multi-level Parking/ Bus Terminal/ Transportation Hub | Max. coverage after ensuring setbacks | =>12 - 24 m | 1.5 | 3.0
+ |  |  | >24 - 45 m | 1.5 | 5.25
+ |  |  | > 45 m | 1.5 | Unrestricted
+ | Parks and Open Spaces |  |  |  | 
+ | Open spaces (Built-up area) | 5% |  | 0.1* | 
+ | Open spaces (Non-Built-up area) | 5% |  | 0.1* | 
+
+--- table 1 (20 rows × 16 cols) ---
+Sl. | Q: Is the structure included in FAR calculation? Key: Y= Yes, included in calculation N = No, not included in calculation NA = Not permitted thus not applicable | Residential – Single/Multi-unit | [#D9E2F3] | Residential – Group Housing | [#D9E2F3] | Commercial/ Mixed Use | [#D9E2F3] | Office Buildings | [#D9E2F3] | Institutional | [#D9E2F3] | Industrial | [#D9E2F3] | Other | [#D9E2F3]
+[#D9E2F3] |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+1 | Mezzanine | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+2 | Pergola (if closed from three or more sides) | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+3a | Lift Machine Room | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+3b | Lift Shafts (to be counted as covered area only once i.e. on ground floor) | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+3c | Lift Lobby up to 10 square meters | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+4 | Meter Room (as per electricity authority norms) | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+5 | Cantilever projection at any level (in setbacks) 0.75m width (no construction of any type or any material shall be permitted over projections) | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+6 | Porch/ Portico (Maximum 4-meter x 8 meter). It shall not interfere with Fire tender movement. | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+7 | Basement(s) within the setback line, if used for: |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+7a | Parking lot and garages | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+7b | Air conditioning equipment and other machines | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+7c | DG set room, meter room and electric panel room, Effluent Treatment Plant, suction tank, pump room | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+7d | Storage of household goods or other goods or ordinarily non-combustible material incidental to principal use | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+7e | Storage not incidental to principal use. | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+7f | Non-combustible storage rooms (stacking rooms) of libraries | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+7g | Strong rooms, bank lockers, safe deposit vaults, laundry room, radio/laser therapy, post-mortem room, mortuary, medical shop and cold storage for hospital building etc. | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+7h | Offices and commercial uses (if air-conditioned) | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+7i | Commercial use in first basement in case of shopping center/ shopping malls. | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+
+=== chapter 03 · gazette page 54 · pdf page 18 ===
+54
+
+--- table 0 (32 rows × 16 cols) ---
+Sl. | Q: Is the structure included in FAR calculation? | Residential – Single/Multi-unit | [#D9E2F3] | Residential – Group Housing | [#D9E2F3] | Commercial/ Mixed Use | [#D9E2F3] | Office Buildings | [#D9E2F3] | Institutional | [#D9E2F3] | Industrial | [#D9E2F3] | Other | [#D9E2F3]
+ | [#D9E2F3] |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Key: |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Y= Yes, included in calculation |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | N = No, not included in calculation |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | NA = Not permitted thus not applicable |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | [#D9E2F3] |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+7j | Nursing quarters as ancillary use to hospital in first basement, if proper ventilation is ensured. | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+7k | Any other use related to ancillary use, e.g. toilets, if proper requirements of lighting, ventilation and fire safety are adhered to | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+7l | In mixed use buildings, uses other than ancillary uses shall also be allowed after meeting lighting, ventilation and fire safety requirements. | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+8a | Stilt floor used for parking | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+8b | Stilt Floor used for any purpose other than parking | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+9 | Podium Parking (with max. 10% of permissible land cover utilized for Driver Restroom, Store, Sanitary Block and other similar services) | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+10 | Separate Parking Block for Plot Area above 4000 sqm. | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+11 | Locked Garages in Rear Setback | N |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+12a | Balconies up to 2.0 metres | N |  | N |  | Y |  | Y |  | Y |  | Y |  | Y | 
+12b | Balconies beyond 2.0 metres | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+13a | Staircase | Y |  | Y |  | Y |  | Y |  | Y |  | Y |  | Y | 
+13b | Fire Escape/ External Staircase | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+14 | Planters and Sun Control Devices | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+15 | Jali of any material to cover AC/cooler units | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+16 | Rockery, well & well structures, water pool, uncovered swimming pool, tree platform, tank, fountain, bench, open-top & unenclosed chabutra, compound wall, gate, slide, swing, underground water tanks, overhead water tanks on top of buildings, open shafts, culverts on drain | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+17 | Open ramps with no area enclosed below it of usable height. If used for approach to the entrance of the building, then the height as per requirement may be considered. The space under the ramp shall not be used for any commercial purpose, however it can be landscaped with approval of the Authority on case-to-case basis. | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+18 | Open ramps for movement of vehicles in side setback only | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+19a | Atriums in Commercial/ Office & PSP above 3000 sqm Plot Area | NA |  | NA |  | N |  | N |  | N |  | NA |  | NA | 
+19b | Temporary Counters maximum up to 20% of the area of Atrium | NA |  | NA |  | N |  | N |  | N |  | NA |  | NA | 
+20 | Service Floors (max. up to 3 floors), allowed on every 4th floor in a multistorey building | NA |  | NA |  | N |  | N |  | N |  | N |  | N | 
+21 | Any other feature purely ornamental in nature and not enclosing or covering space of commercial use may be permitted by Vice Chairman on case-to-case basis. | NA |  | N |  | N |  | N |  | N |  | N |  | N | 
+22 | Loft up to 30% of room area (max. 1.5 metre height) | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+23 | Mumty | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+24 | Bay Windows and Almirahs/ Niche | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+25 | Refuge Area (As per fire norms) | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+
+=== chapter 03 · gazette page 55 · pdf page 19 ===
+Note: A maximum of 5.0 percent of the permissible FAR shall be availed for various types of services like air-
+conditioned plants, in front of the lift (except corridor outside the lift), up to10 square meters shall be allowed for
+lobby, machine room for lift, Mumty, shelves and windows (maximum 0.60-meter depth and 1.80-meters length),
+refuse area (as per NBC), service duct and community centre.
+3.2.3 Building Height
+The maximum building height for various use occupancies shall be as follows.
+55
+
+--- table 0 (9 rows × 16 cols) ---
+Sl. | Q: Is the structure included in FAR calculation? | Residential – Single/Multi-unit | [#D9E2F3] | Residential – Group Housing | [#D9E2F3] | Commercial/ Mixed Use | [#D9E2F3] | Office Buildings | [#D9E2F3] | Institutional | [#D9E2F3] | Industrial | [#D9E2F3] | Other | [#D9E2F3]
+ | [#D9E2F3] |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Key: |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Y= Yes, included in calculation |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | N = No, not included in calculation |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | NA = Not permitted thus not applicable |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | [#D9E2F3] |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+26 | Service Duct | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+27 | Services such as air conditioning equipment and other machines, DG set room, meter room and electric panel room, Effluent Treatment Plant, suction tank, pump room – maximum up to 5% of permissible FAR or 50sqm (incase of Plot Area <= 4000 sqm) / 100 sqm (in case of Plot Area > 4000 sqm) | N |  | N |  | N |  | N |  | N |  | N |  | N | 
+
+--- table 1 (16 rows × 3 cols) ---
+Sl. | Use Occupancies | Max. Building Height (m)
+I | Residential (Built-up/ Non-Built-up) | 
+1 | Plotted – Single-Unit | 15
+2 | Plotted – Multi-unit | 17.5
+3 | Group Housing | No Restriction
+II | Commercial | 
+1 | Shops / Convenient Shopping / Commercial Units | No Restriction
+2 | Commercial Complex | No Restriction
+3 | Shopping mall | No Restriction
+4 | Hotels | No Restriction
+5 | Single screen cinema/ Miniplex/ Multiplex | No Restriction
+6 | Petrol Pump / Filling Station | 6
+t7 | LPG / Gas Go down | 6
+III | Community Facilities | 
+A | Healthcare Buildings | 
+1 | Non-Bedded Medical Establishments (Diagnostic Centre / OPD clinics / dispensary / Pathology Lab / Veterinary Clinics) | No Restriction
+
+=== chapter 03 · gazette page 56 · pdf page 20 ===
+Note:
+(i) The maximum height of buildings shall be measured above the surrounding average road level
+and following supporting structures shall not be included in the height of the building: -
+(ii) Rooftop tanks and their supporting structures not exceeding 2.0 m in height, rooftop structures
+required to capture alternative solar energy, ventilation, air conditioning equipment, lift rooms
+not exceeding 4.5 m in height and such other service equipment, ladders covered by mumty slab
+and not exceeding 3.0 m in height. Chimney, parapet wall and structures for enhancing the
+aesthetics of the building which are not more than 1.5 m height provided the total area of such
+structures including the ‘barsati’ do not exceed one third of the area of the roof of the building
+56
+
+--- table 0 (29 rows × 3 cols) ---
+2 | Nursing Homes / Veterinary Hospitals / Maternity Hospitals / Small Hospitals (Up to 50 beds) | No Restriction
+3 | Hospitals (> 50 beds) | No Restriction
+4 | Nursing Institutes | No Restriction
+5 | Medical College | No Restriction
+B | Educational Buildings | No Restriction
+1 | Nursery | No Restriction
+2 | Primary | No Restriction
+3 | High School | No Restriction
+4 | Technical Institution | No Restriction
+5 | Universities | No Restriction
+C | Public Amenity buildings | 
+1 | Marriage / Festival Hall | No Restriction
+2 | Auditorium / Convention Centre | No Restriction
+IV | Agriculture | 
+1 | Farmhouse | No restriction
+2 | Dairy Farms | No restriction
+V | Industrial | 
+1 | Industrial buildings | No Restriction
+2 | Flatted factories | No Restriction
+3 | Data Centers | No Restriction
+VI | Mixed Use | No Restriction
+VII | Recreational | 
+1 | Stadium/ Sports Complex | No Restriction
+2 | Amusement Park | No Restriction
+3 | Memorial | No Restriction
+VIII | Transportation | 
+1 | Multi-level Parking | No Restriction
+2 | Bus Terminal | No Restriction
+3 | Transportation Hub | No Restriction
+
+=== chapter 03 · gazette page 57 · pdf page 21 ===
+on which it is constructed.
+(iii) The height of buildings adjacent to the aerodrome/air-force stations shall be in accordance with
+the orders issued by the Government of India/ Ministry of Civil Aviation/ Ministry of Defence,
+Airport Authority of India, from time to time.
+(iv) The maximum height of the building shall also be governed by the distance from the protected
+monument / heritage site, airport funnel zone and other statutory restrictions.
+3.2.4 Building Setbacks
+All occupancy buildings with height less than 15 meters
+3.2.4.1 Residential – Plotted Development (Single/Multi-units up to 15-meter height)
+Under plotted development, for all single/multi-units less than 300 square meters plot size, three floors
+with stilts up to 15 meter is allowed and on plots above 300 square meters, four storeys with stilts up to
+17.5-meter height is allowed. The set-back shall be as follows:
+Note-1: Construction shall be permitted on 40 percent of the rear setback up to 7 meter height, in semi-
+detached buildings. But in corner plots the said covering shall be permissible only after leaving the side
+set back. In case of stilt floor, construction on 40 percent area of the rear setback shall not be allowed.
+Note-2: The side setback in a corner plot in the new layouts shall be the same as the front setback of the
+concerned plot. In already approved layouts, if setback is not prescribed in the layout plan, the minimum
+side set-back in corner plots up to 500 square meters shall be 1.5 meters and in corner plots having area
+more than 500 square meters, the side set-back shall be as per the above table.
+Note-3: If the number of plots in a block is odd, then in view of the need to leave a setback on both
+sides, in plots larger than 1200 square metres, the width of the corner plot shall be kept larger
+accordingly. The front and rear setbacks for corner plots shall be the same as prescribed for other plots
+in that scheme so that there is uniformity in the 'building block'.
+Note-4: In case sub-division of any plot is permissible in a planned developed area/scheme, the set-back
+in the sub-divided plots shall be as per the original plot.
+Note-5: The setbacks specified in the table at paragraph 3.2.4.1 shall be applicable in the new sub-
+division/layout plan. But in non-built up areas, the residential plots within layouts in which set-back is
+not prescribed shall also have set-back as per the above paragraph 3.2.4.1.
+3.2.4.2 Residential – Group Housing up to 15-meter height
+57
+
+--- table 0 (10 rows × 15 cols) ---
+[#DBE5F1] | Plot Area (sqm) | [#DBE5F1] | [#DBE5F1] | Setback (meter) |  |  |  |  |  |  |  |  |  | [#DBE5F1]
+ | [#DBE5F1] |  | [#DBE5F1] | Front | [#DBE5F1] | [#DBE5F1] | Rear | [#DBE5F1] | [#DBE5F1] | Side-1 | [#DBE5F1] | [#DBE5F1] | Side-2 | [#DBE5F1]
+ | (a) Row-housing |  |  |  |  |  |  |  |  |  |  |  |  | «band #F2F2F2»
+Up to 150 |  |  | 1 |  |  | 0 |  |  | 0 |  |  | 0 |  | 
+>150 to 300 |  |  | 3 |  |  | 1.5 |  |  | 0 |  |  | 0 |  | 
+>300 to 500 |  |  | 3 |  |  | 3 |  |  | 0 |  |  | 0 |  | 
+ | (b) Semi-detached |  |  |  |  |  |  |  |  |  |  |  |  | «band #F2F2F2»
+>500 to 1200 |  |  | 4.5 |  |  | 4.5 |  |  | 1.5 |  |  | 0 |  | 
+ | (c) Detached |  |  |  |  |  |  |  |  |  |  |  |  | «band #F2F2F2»
+>1200 |  |  | 6 |  |  | 6 |  |  | 1.5 |  |  | 1.5 |  | 
+
+--- table 1 (3 rows × 15 cols) ---
+[#DBE5F1] | Building Height | [#DBE5F1] | [#DBE5F1] | Setback (meter) |  |  |  |  |  |  |  |  |  | [#DBE5F1]
+ | (m) |  | [#DBE5F1] | Front | [#DBE5F1] | [#DBE5F1] | Rear | [#DBE5F1] | [#DBE5F1] | Side-1 | [#DBE5F1] | [#DBE5F1] | Side-2 | [#DBE5F1]
+Group Housing up to 15-meters |  |  | 5 |  |  | 5 |  |  | 5 |  |  | 5 |  | 
+
+=== chapter 03 · gazette page 58 · pdf page 22 ===
+3.2.4.3 Commercial – Shops/commercial units, Mixed use buildings up to 15-meter height
+Note-1: In commercial building with covered area on ground floor up to 500 sqm, if lighting and
+ventilation requirements are ensured, then setbacks shall not be mandatory along the rear and the side
+edges, whereas in the corner plots, side setback equal to the front set-back shall be mandatory.
+Note-2: Under plot development, sector / neighbourhood / local level shopping centres shall be allowed
+in the form of lined shops, in which provision of a maximum 3-meter-wide covered corridor (arcade)
+in the front shall be allowed.
+Note-3: The permissible front setbacks for buildings on bazaar street shall be as follows (also defined
+in Chapter-5).
+Note-4: The side setback in a corner plot in the new layouts shall be the same as the front setback of the
+concerned plot. In already approved layouts, if setback is not prescribed in the layout plan, the minimum
+side set-back in corner plots up to 500 square meters shall be 1.5 meters and in corner plots having area
+more than 500 square meters, the side set-back shall be as per the above table.
+3.2.4.4 Other Commercial – building height up to 15-meters
+3.2.4.5 Community Facilities – Healthcare buildings height up to 15-meters
+58
+
+--- table 0 (7 rows × 13 cols) ---
+Plot Area (sqm) | [#DBE5F1] | Setback (meter) |  |  |  |  |  |  |  |  |  | [#DBE5F1]
+ | [#DBE5F1] | Front | [#DBE5F1] | [#DBE5F1] | Rear | [#DBE5F1] | [#DBE5F1] | Side-1 | [#DBE5F1] | [#DBE5F1] | Side-2 | [#DBE5F1]
+Up to 100 | 1.5 |  |  | - |  |  | - |  |  | - |  | 
+>100 - 300 | 3 |  |  | - |  |  | - |  |  | - |  | 
+>300 - 1000 | 4.5 |  |  | 3 |  |  | 1.5 |  |  | 1.5 |  | 
+>1000 - 3000 | 6 |  |  | 3 |  |  | 3 |  |  | 3 |  | 
+>3000 | 12 |  |  | 6 |  |  | 6 |  |  | 6 |  | 
+
+--- table 1 (8 rows × 2 cols) ---
+Proposed width of road (metres) | Minimum open space in front (metres)
+12 | 3.0
+18 | 4.5
+24 | 6.0
+30 | 6.0
+36 | 7.5
+45 | 7.5
+76 | 9.0
+
+--- table 2 (7 rows × 12 cols) ---
+[#DBE5F1] | Building Height (m) | Setback (meter) |  |  |  |  |  |  |  |  | 
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] | Front | [#DBE5F1] | [#DBE5F1] | Rear | [#DBE5F1] | [#DBE5F1] | Side-1 | Side-2 | [#DBE5F1]
+Hotels/ Single screen cinema/ Miniplex |  | 5 |  |  | 3 |  |  | 3 |  | 3 | 
+Multiplex/ Shopping Malls |  | 9 |  |  | 6 |  |  | 6 |  | 6 | 
+Petrol filling station w/o Service Station |  | 3 |  |  | - |  |  | - |  | - | 
+Petrol filling station with Service Station |  | 6 |  |  | - |  |  | - |  | - | 
+LPG Gas Godown |  | 6 |  |  | 3 |  |  | 3 |  | 3 | 
+
+--- table 3 (5 rows × 10 cols) ---
+Plot Area (sqm) | Setback (meter) |  |  |  |  |  |  |  | [#DBE5F1]
+ | Front | [#DBE5F1] | [#DBE5F1] | Rear | [#DBE5F1] | [#DBE5F1] | Side-1 | Side-2 | [#DBE5F1]
+=>100 – 300 | 3 |  | 1.5 |  |  | 0 |  | 0 | 
+>300 – 1000 | 4.5 |  | 3 |  |  | 3 |  | 0 | 
+>1000 – 2000 | 6 |  | 3 |  |  | 3 |  | 3 | 
+
+=== chapter 03 · gazette page 59 · pdf page 23 ===
+3.2.4.6 Community Facilities – Educational buildings height up to 15-meters
+3.2.4.7 Community Facilities – Public Amenity buildings height up to 15-meters
+3.2.4.8 Industrial Buildings – height up to 15-meters
+3.2.4.9 All occupancy buildings with height more than 15 meters
+For use occupancies with building height more than 15m (other than single/multi units), the minimum
+setback requirement shall be as follows.
+59
+
+--- table 0 (2 rows × 5 cols) ---
+>2000 – 4000 | 7.5 | 4.5 | 4.5 | 4.5
+> 4000 | 9 | 6 | 6 | 6
+
+--- table 1 (7 rows × 12 cols) ---
+Plot Area (sqm) | Setback (meter) |  |  |  |  |  |  |  |  |  | [#DBE5F1]
+ | Front | [#DBE5F1] | [#DBE5F1] | Rear | [#DBE5F1] | [#DBE5F1] | Side-1 | [#DBE5F1] | [#DBE5F1] | Side-2 | [#DBE5F1]
+Up to 1000 | 6 |  | 3 |  |  | 3 |  |  | - |  | 
+>1000 – 2000 | 6 |  | 3 |  |  | 3 |  |  | 3 |  | 
+>2000 – 4000 | 9 |  | 3 |  |  | 3 |  |  | 3 |  | 
+>4000 – 30000 | 9 |  | 4.5 |  |  | 3 |  |  | 3 |  | 
+> 30000 | 15 |  | 6 |  |  | 6 |  |  | 6 |  | 
+
+--- table 2 (8 rows × 12 cols) ---
+Plot Area (sqm) | Setback (meter) |  |  |  |  |  |  |  |  |  | [#DBE5F1]
+ | Front | [#DBE5F1] | [#DBE5F1] | Rear | [#DBE5F1] | [#DBE5F1] | Side-1 | [#DBE5F1] | [#DBE5F1] | Side-2 | [#DBE5F1]
+Marriage/ Banquet/ Multipurpose Hall |  |  |  |  |  |  |  |  |  |  | 
+1000 – 3000 | 12 |  | 4.5 |  |  | 4.5 |  |  | 3 |  | 
+More than 3000 | 12 |  | 5 |  |  | 5 |  |  | 5 |  | 
+Auditorium / Convention Centre |  |  |  |  |  |  |  |  |  |  | 
+1500 – 3000 | 12 |  | 4.5 |  |  | 4.5 |  |  | 3 |  | 
+More than 3000 | 12 |  | 6 |  |  | 6 |  |  | 6 |  | 
+
+--- table 3 (8 rows × 12 cols) ---
+Plot Area (sqm) | Setback (meter) |  |  |  |  |  |  |  |  |  | [#DBE5F1]
+ | Front | [#DBE5F1] | [#DBE5F1] | Rear | [#DBE5F1] | [#DBE5F1] | Side-1 | [#DBE5F1] | [#DBE5F1] | Side-2 | [#DBE5F1]
+Up to 150 | 3 |  | 0 |  |  | 0 |  |  | 0 |  | 
+>150 -300 | 3 |  | 3 |  |  | 0 |  |  | 0 |  | 
+>300 - 500 | 4.5 |  | 3 |  |  | 3 |  |  | 0 |  | 
+>500 - 2000 | 6 |  | 3 |  |  | 3 |  |  | 3 |  | 
+>2000 - 6000 | 7.5 |  | 6 |  |  | 4.5 |  |  | 4.5 |  | 
+>6000 | 9 |  | 6 |  |  | 6 |  |  | 6 |  | 
+
+--- table 4 (9 rows × 5 cols) ---
+ |  |  |  | «band #DBE5F1»
+Building Height (in meters) | Front (m) | Rear (m) | Side-1 (m) | Side-2 (m)
+ |  |  |  | «band #DBE5F1»
+>15 – 17.5 | 5 | 5 | 5 | 5
+>17.5 - 21 | 6 | 6 | 6 | 6
+>21 - 27 | 7 | 7 | 7 | 7
+>27 - 33 | 8 | 8 | 8 | 8
+>33 - 39 | 9 | 9 | 9 | 9
+>39 - 45 | 10 | 10 | 10 | 10
+
+=== chapter 03 · gazette page 60 · pdf page 24 ===
+Note-1: For buildings situated on two or more roads of different road widths, then the side of the
+building towards the wider road shall be considered as the front.
+Note-2: In alternative to the above-mentioned table of paragraph 3.2.4.9, following setbacks shall be
+allowed.
+a. Up to height of 33m, with one setback on the subsequent floors, the minimum setback
+on all fours sides on ground floor shall be 6m.
+b. For building height between 33m to 45m, with one setback on subsequent floors, the
+minimum setback on all four sides on ground floor shall be 8m.
+c. For building height more than 45m to 51m, with two setbacks on subsequent floors, the
+minimum setback on all four sides on ground floor shall be 10m.
+d. The shortfall of setbacks mentioned in the table of paragraph 3.2.4.9 shall be
+compensated by the setback provided on the subsequent floors.
+Note-3: The margin between two blocks shall be the required setback based on the height of the higher
+block or 6m whichever is higher. Here 'Block' means a building structure which is divided into different
+rooms, flats / apartments or offices are in continuity, wherein the block length shall be a maximum of
+100 meter and shall also cover total length of built structures joined through expansion joint.
+Note-4: In plots comprising of building block of varying heights, the setbacks to be left along the edges
+of the plots shall be based on the height of the higher building block along that edge.
+3.2.4.10 Exemption in setback
+Following relaxations in the setbacks are provided.
+(i) In residential buildings, terrace / balcony of maximum width up to 2.0 meters can be constructed
+in the setback open space, which shall not be more than the half of the width of the setback open
+space, which shall not be counted in the FAR. Above mentioned terrace / balcony shall be
+permissible to a maximum extent of 10% of the area of the entire open space. No construction of
+any kind shall be allowed on the mentioned terrace / balcony.
+(ii) Construction of maximum 6m length and 3m wide portico either projected or supported on pillars
+shall be permitted on the driveway near the entrance in the setback area. No construction shall be
+allowed above the portion covered by the Portico.
+(iii) Pergola of maximum 6 sqm area and height 2.3m, with the minimum open space area of 40%
+shall be permitted.
+(iv) In case of island plot, the front of the plot will be the side abutting the widest approach road. The
+setbacks shall be as applicable for normal plot. Entrance for such plot shall be allowed through
+widest approach road as defined above.
+(v) In special circumstances, the side set-back of a corner plot may be relaxed by the Authority
+Board.
+(vi) Fire escape shall be permissible in the set-back area provided the fire prevention norms are
+adhered to.
+(vii) Construction of ramp in slope is allowed for basements and podium in setbacks provided that
+unhindered movement of fire tender is not blocked.
+60
+
+--- table 0 (2 rows × 5 cols) ---
+>45 - 51 | 11 | 11 | 11 | 11
+>51 | 15 | 12 | 12 | 12
+
+=== chapter 03 · gazette page 61 · pdf page 25 ===
+3.2.5 Distance from electric line
+As per Indian Electricity Rules, minimum distance for permission for construction/reconstruction of
+building:
+(i) On low and medium voltage lines and service lines, vertical distance of 2.5 meters and horizontal
+distance of 1.2 meters shall be provided.
+(ii) High voltage lines such as 33,000 voltages shall be provided vertically at 3.7 meters and
+horizontally at 2.0 meters.
+(iii) From 33,000 voltage lines, 0.3 meter for every additional 33,000 voltage or part thereof of 3.7
+meter vertically and 0.3 meter for every additional 33,000 voltage or part thereof of 2.0-meter
+horizontal shall be allowed from the uninterrupted hard voltage line.
+3.3 Requirements of Parts of Building
+3.3.1 Room Sizes and Dimensions
+3.3.1.1 Habitable rooms
+(i) Minimum requirements of habitable rooms shall be as specified in table below.
+(ii) Additional minimum requirements for habitable rooms shall be as follows:
+61
+
+--- table 0 (15 rows × 15 cols) ---
+Sl. |  |  | Room Types |  |  | [#D9E2F3] | Min. Floor | [#D9E2F3] | [#D9E2F3] | Min. | [#D9E2F3] | [#D9E2F3] | Min. Room | [#D9E2F3]
+ |  |  |  |  |  |  | Area (sqm) |  |  | Width (m) |  |  | Height (m) | 
+[#D9E2F3] | (1) | [#D9E2F3] | [#D9E2F3] | (2) | [#D9E2F3] | [#D9E2F3] | (3) | [#D9E2F3] | [#D9E2F3] | (4) | [#D9E2F3] | [#D9E2F3] | (5) | [#D9E2F3]
+ | i) |  |  | Only one room |  |  |  |  |  |  |  |  |  | 
+a) |  |  | Single room |  |  | 9.5 |  |  | 2.4 |  |  | 2.75 |  | 
+b) |  |  | EWS/LIG unit with 1 multipurpose room |  |  | 12.5 |  |  | 2.4 |  |  | 2.75 |  | 
+ | ii) |  |  | Two rooms |  |  |  |  |  |  |  |  |  | 
+a) |  |  | First room |  |  | 9.5 |  |  | 2.4 |  |  | 2.75 |  | 
+b) |  |  | Second room |  |  | 7.5 |  |  | 2.1 |  |  | 2.75 |  | 
+ | c) |  |  | EWS/LIG units |  |  |  |  |  |  |  |  |  | 
+1) |  |  | First room |  |  | 9 |  |  | 2.4 |  |  | 2.75 |  | 
+2) |  |  | Second room |  |  | 6.5 |  |  | 2.1 |  |  | 2.75 |  | 
+ | d) |  |  | Hostels |  |  |  |  |  |  |  |  |  | 
+1) |  |  | Single bedded room |  |  | 7.5 |  |  | 2.4 |  |  | 2.75 |  | 
+2) |  |  | Double bedded room |  |  | 12.5 |  |  | 3 |  |  | 2.75 |  | 
+
+=== chapter 03 · gazette page 62 · pdf page 26 ===
+a. The minimum clear head room under a beam, folded plates or eaves shall be 2.4 m. In
+the case of air-conditioned rooms, a height of not less than 2.4 m measured from the
+surface of the floor to soffit of air-conditioning duct or the false ceiling shall be
+provided.
+b. Multipurpose habitable rooms in low income housing shall be provided with an alcove
+for cooking space.
+c. A minimum door width of 900 mm shall be provided for all rooms in public buildings.
+d. Maximum height of habitable room shall be according to the requirement and
+occupancy. The minimum height of habitable room in commercial, institutional and
+assembly buildings shall be 3.00 meters.
+3.3.1.2 Kitchen
+Minimum requirements of kitchen shall be as specified in Table below.
+3.3.1.3 Bathrooms and Water Closet
+(i) Minimum area of an independent bathroom shall be 1.5 square meters, and its minimum width
+shall be 1.0 meters
+(ii) Minimum area of an independent water closet/powder room shall be 1.1 square meter, and its
+minimum width shall be 0.9 meters .
+(iii) The height of a bathroom or water closet measured from floor surface to the bottom of ceiling
+shall not be less than 2.2 meter .
+(iv) Minimum floor area of a combined bathroom and water closet shall be at least 2.8 square meters,
+and its minimum width shall be at least 1.2 meters.
+62
+
+--- table 0 (9 rows × 15 cols) ---
+Sl. |  |  | Room Types |  |  | Min. Floor Area (sqm) |  |  | [#D9E2F3] | Min. Width | [#D9E2F3] | [#D9E2F3] | Min. Height | [#D9E2F3]
+ |  |  |  |  |  |  |  |  |  | (m) |  |  | (m) | 
+[#D9E2F3] | (1) | [#D9E2F3] | [#D9E2F3] | (2) | [#D9E2F3] | [#D9E2F3] | (3) | [#D9E2F3] | [#D9E2F3] | (4) | [#D9E2F3] | [#D9E2F3] | (5) | [#D9E2F3]
+i) |  |  | Kitchen with dining |  |  | 7.50 |  |  | 2.10 |  |  | 2.75 |  | 
+ii) |  |  | Kitchen without dining |  |  | 5.00 |  |  | 1.80 |  |  | 2.75 |  | 
+iii) |  |  | Kitchen without a separate store |  |  | 4.50 |  |  | 1.80 |  |  | 2.75 |  | 
+iv) |  |  | Kitchen in an EWS/LIG unit |  |  | 3.30 |  |  | 1.80 |  |  | 2.75 |  | 
+v) |  |  | Pantry |  |  | 3.00 |  |  | 1.40 |  |  | 2.40 |  | 
+vi) |  |  | Commercial kitchen |  |  | 50 sqm or 25 percent of floor area whichever is minimum. |  |  | - |  |  | - |  | 
+
+=== chapter 03 · gazette page 63 · pdf page 27 ===
+3.3.1.4 Loft
+Lofts may be provided over kitchen, habitable rooms, bathrooms, water closets, and corridor within a
+tenement in all buildings. Loft area shall not be counted in FAR, provided that the maximum coverage
+of loft in the room area shall be 30 percent subject to following restrictions.
+(i) The maximum height of loft shall be1.5 metres.
+(ii) The clear head room under the loft shall not be less than 2.0 metres.
+(iii) Loft in commercial/industrial buildings shall be located 2.0 meters away from the entrance.
+(iv) Loft shall not interfere with the ventilation of the room under any circumstances.
+3.3.1.5 Mezzanine floor
+(i) The minimum area of a mezzanine floor shall be 9.5 square meters.
+(ii) The aggregate area of mezzanine floor shall be a maximum 33 percent of the plinth area of the
+building.
+(iii) The head room under mezzanine floor shall not be less than 2.2 meters.
+(iv) Mezzanine floor area shall be counted in the calculation of FAR.
+(v) The lighting and ventilation system for the mezzanine floor shall be as per the standards.
+3.3.1.6 Parapet
+Parapet wall shall be provided on the edges of terraces, balconies, verandah or any opening at floor
+level to external open space. The height of the parapet wall shall be minimum 1.0 m and maximum 1.50
+m from the finished floor level.
+3.3.1.7 Roof
+The roof of a building shall be designed and constructed with sloping gradient to effectively drain water
+by means of rainwater pipes of adequate size. This rainwater shall be carried away from the building
+without causing dampness in any part of the walls, roof or foundations of the building or an adjacent
+building. Rain-water pipes shall be affixed to the outside of the external walls of the building or in
+recesses or chases cut or formed in such external walls, with screens at rainwater pipe inlets. The
+rainwater pipes shall be connected to a drain or a road gutter or rainwater harvesting structure.
+3.3.1.8 Balcony
+(i) Depth of an unenclosed balcony shall be between 0.90 m to 2.0 m.
+(ii) In residential buildings, balcony of maximum width up to 2.0 meters can be constructed in the
+setback open space, which shall not be more than the half of the width of the setback open space,
+which shall not be counted in the FAR. Above mentioned terrace / balcony shall be permissible
+to a maximum extent of 10% of the area of the entire open space. No construction of any kind
+shall be allowed on the mentioned balcony.
+(iii) For group housing, balcony (is permitted above 6m height to enable fire tender movement), up
+to 2 meters balcony is free from FAR, and remaining 25 percent of additional area (beyond 2m)
+shall be counted in FAR. For distance between buildings less than 9m, 2 meters wide balcony
+shall not be allowed.
+3.3.1.9 Porch/Portico
+Porch/Porticos shall be permitted within the boundary line of the plot subject to the following minimum
+requirements: a) Porch/portico shall be minimum 3 m wide (and maximum dimension shall be 6m x
+3m), b) Porch/porticos shall be used as open terrace only, c) Spaces under porch/portico shall be paved
+and channelled, and d) Porch/porticos in high rise buildings shall not interfere with the fire tender
+movement.
+63
+
+=== chapter 03 · gazette page 64 · pdf page 28 ===
+3.3.1.10 Verandah
+Verandah in non-residential building shall have a parapet wall or railing of 1.20 m on the open side. It
+may be covered by grill, trellis or jolly works, without reducing the effect of natural lighting and
+ventilation.
+3.3.1.11 Parking garage
+(i) The minimum size of parking garage in individual residential building shall not be less than 2.5
+meters x 5.5 meters and not more than 3.0 meters x 6.0 meters (per each ECS).
+(ii) The minimum height of the parking garage shall be 2.40 metres and maximum height shall be
+2.75 meters.
+3.3.1.12 Atrium
+(i) Definition - Atrium means the internal court / entrance hall of a building, which is sky lighted or
+covered with a transparent temporary structure on the terrace floor.
+(ii) Applicability - The atrium shall be used for the purpose of natural lighting, internal circulation
+and landscaping in the building.
+(iii) Permissibility - Atrium is allowed for commercial purposes (shopping mall, multiplex, hotel etc.).
+It shall be permissible in offices and public and semi-public establishments, mixed use whose
+minimum area is 3000 square meters.
+(iv) Minimum width - The internal width of the atrium shall be half of its total height or 7.5 metres,
+whichever is greater.
+(v) Other requirements - (a) The atrium can be covered with a transparent fibre sheet on the terrace
+floor to provide protection from rain, dust, heat, etc., and also to provide natural light during
+daytime to the area covered by the atrium.. (b) Construction of any kind of permanent structure
+shall not be allowed under the atrium, but a maximum of 20 percent of the total area of the atrium
+can be used as temporary counters for commercial activities. Temporary counters shall be
+installed at such places so that circulation is not disrupted.
+3.3.1.13 Exit Requirements
+For safe evacuation of buildings, the provisions of Section 4.5 of Part 4 of the National Building Code
+of India – 2016 as amended time to time shall be applicable.
+3.3.1.14 Corridors and Passages
+The provision of corridors and passages in buildings shall of minimum width 1.5 meters, and the
+provisions of Section 4.8 of Part 4 of the National Building Code of India – 2016 as amended time to
+time shall be applicable.
+Staircase
+3.3.1.15
+(i) The internal staircase of all buildings except residential buildings up to three storeys high shall
+be made of non-combustible material.
+(ii) No staircase shall be located around a lift unless the lift is surrounded by fire retardant material.
+(iii) The minimum width of internal staircase shall be 1.0 meter in residential buildings with group
+housing (up to three floors), 1.5 meter in guest houses and 1.5 meter in non-residential buildings
+and other multi-storey buildings. The minimum width of staircase in group housing buildings
+more than three storeys high shall be 1.5 metres, but in single residential buildings up to two
+storeys, the minimum width of internal staircase can be kept at 75 centimetres.
+(iv) Under the row housing system in plotted development, provision of a common staircase between
+two residential units shall be permitted.
+(v) The minimum width of tread (without nosing) for an internal staircase in residential buildings
+64
+
+=== chapter 03 · gazette page 65 · pdf page 29 ===
+shall be 25 centimetres. In case of other buildings, the minimum tread of stairs shall be 30
+centimetres.
+(vi) The maximum height of the riser shall be 19 centimetres, in the case of residential buildings and
+15 centimetres in case of other buildings.
+(vii) In residential buildings, there shall be a maximum of 12 risers in one flight, and in other buildings
+there can be up to 15 risers per flight.
+(viii) The minimum height of the handrail shall be 85 centimetres from the center of the tread.
+(ix) The minimum width of staircase for different occupancy type shall be as given below:
+Note: The width of stairs may be accepted to be 1.50 m in case of assembly occupancy having less
+than 150 persons.
+3.3.1.16 Fire escape or external staircase.
+All buildings having height more than one storey shall have provision of at least one staircase. The
+special buildings shall have two staircases out of which one shall be fire escape staircase. Fire escape
+shall be on external walls of buildings and shall open directly in the external open space.
+(i) Fire escape shall not be counted in ground coverage and FAR.
+(ii) All fire escapes/ external stairs shall be directly connected to ground.
+(iii) Entrance to the external stairs shall be separate and remote from the internal staircase.
+(iv) Care shall be taken to ensure that no wall opening, or window opens on to or close to an external
+stair.
+(v) The route to external stairs shall be free of obstructions at all times.
+(vi) The external stairs shall be constructed of non-combustible materials, and any doorway leading
+to it shall have the required fire resistance.
+(vii) Fire escape/ external stairs shall have straight flight not less than 125 centimetre wide with 28
+centimetre treads and risers not more than 19 centimetres. The number of risers in a flight shall
+be limited to 16 per flight.
+(viii) Handrails shall be of a height not less than 100 centimetres.
+65
+
+--- table 0 (9 rows × 9 cols) ---
+[#D9E2F3] | Sl. | [#D9E2F3] | [#D9E2F3] | Occupancy Type | [#D9E2F3] | [#D9E2F3] | Width (m) | [#D9E2F3]
+1 |  |  | Residential (single units) |  |  | 1.00 |  | 
+2 |  |  | Residential (lodging houses, apartments up to 15m height) |  |  | 1.25 |  | 
+3 |  |  | Residential (hotels and starred hotels) |  |  | 1.50 |  | 
+4 |  |  | High-rise residential |  |  | 1.50 |  | 
+5 |  |  | Assembly (see note) |  |  | 2.00 |  | 
+6 |  |  | Educational |  |  | 1.50 |  | 
+7 |  |  | Institutional |  |  | 2.00 |  | 
+8 |  |  | All other occupancies |  |  | 1.50 |  | 
+
+=== chapter 03 · gazette page 66 · pdf page 30 ===
+3.3.1.17 Ramp
+Ramps shall comply with all the relevant provisions applicable to stairways.
+(i) Ramps shall be normally provided with a slope of 1:10. In certain cases, steeper slopes may be
+permitted.
+permitted in special cases as applicable, but in no case greater than 1:8 shall be
+(ii) If there is a need for a slope of more than 1:10, ramps shall be surfaced with approved non-
+slipping material. Provided that in the case of public offices, hospitals, assembly halls, etc., the
+slope of the ramp shall not be more than 1:12.
+(iii) Minimum width of the ramps in hospitals shall be 2.40 meters.
+(iv) Minimum width of parking ramps shall be 3.0 meters (single side/one way entry or exit) and 6.0
+meters for (two sides/two-way entry-exit).
+3.3.1.18 Lifts and Escalators
+Provision of Lift: Lift shall be provided for buildings above 15 meters height in case of apartments,
+group housing, commercial, institutional and office buildings. The number and capacity of lift shall be
+provided as specified in the National Building Code. Notwithstanding anything contained in these
+byelaws, in case of building with 21 meters or more height, at least two lifts shall be provided.
+Provision of Escalator: Escalators may be provided where large number of people move at a controlled
+rate in minimum space such as airports, railway stations, transportation hubs, shopping centres/malls.
+Horizontal moving walks may be provided where medium to long distance travel is involved such as
+airports, metro stations and exhibition halls. The number, type, capacity, planning, designing and
+specification for safety devices of escalators and moving walks shall be in accordance with the relevant
+provisions of Part 8 ‘Building Services’, Section 5B ‘Escalators and Moving Walks’ of NBC 2016.
+For the purpose of installation of lifts and/or escalators and the operation and maintenance of the same,
+the building owner shall adhere to the provisions of the Uttar Pradesh Lifts and Escalators Act, 2024
+and corresponding rules.
+3.3.1.19 Service Floor
+(i) Service floor shall be allowed in group housing, commercial office, industrial, hotel, hospital and
+mixed-use multi-storey buildings for the use of pipes, service ducts, etc. related to the building,
+which shall not be counted in the FAR.
+(ii) Maximum height of a service floor shall be 2.1 meters from floor surface to soffit of the beam,
+provided further that a service floor with height exceeding 2.1 meters may be allowed in a
+building of medical use or in building having height more than 70 meters with special permission
+of Authority with reasons recorded in writing.
+(iii) In multi-storey buildings, one service floor shall be allowed on every four floors, but a maximum
+of 3 service floors shall be allowed in a building with the restriction that two service floors shall
+not be provided continuously in two subsequent floors.
+3.3.1.20 Boundary wall
+(i) The maximum height of the front compound wall shall be permitted up to 2.40 meters, provided
+a minimum 0.90 meters of the upper portion shall be mesh/grilled.
+(ii) The maximum height of the rear and side compound walls shall be 2.40 meters.
+(iii) In corner plots, the height of the compound wall on the roadside shall not exceed 1.65 metres.
+(iv) Where any specific provision relating to the height of the boundary wall has been made for a
+category of buildings like jail, sanatorium, factories, etc., for safety and security purposes, those
+provisions shall prevail.
+66
+
+=== chapter 03 · gazette page 67 · pdf page 31 ===
+3.3.1.21 Plinth
+(i) The plinth shall be so located with respected to surrounding ground level that adequate drainage
+of the site is assured. The minimum plinth height shall be 0.30 meters from the surrounding
+ground level.
+(ii) Inner courtyard, covered parking at ground level and stilt floor shall have minimum plinth height
+of 0.15 meter from the surrounding ground level.
+3.3.2 Lighting and ventilation
+3.3.2.1 Lighting and ventilation of a room - Adequacy and manner of provision
+(i) A habitable room shall have one or more openings in the form of windows, skylights etc., for
+light and ventilation, which shall open towards an open space or verandah with a minimum width
+of 3-meters.
+(ii) The minimum aggregate area of openings of habitable rooms (eg. windows, skylights), excluding
+doors, shall not be less than 10 percent of the floor area of the room.
+(iii) No portion of a room room shall be considered illuminated, if it is more than 7.5-meters away
+from the openings considered for light and ventilation. However, this restriction shall not be
+mandatory in case requisite provisions are made for air conditioning system.
+(iv) In residential buildings, if light and ventilation of the habitable room is from internal open space,
+then the area of such open space shall be minimum 7.5 square meters and the minimum width
+shall be 2.5 meters for buildings up to 17.5 meters height. For buildings taller than 17.5 meters,
+the minimum width of the internal open space shall be 3-meters and the area of internal open
+space shall be equal to the multiplication of 1/5 times minimum width to 1/5 times of the height
+of the tallest wall adjacent to it, i.e. if the height of the tallest adjacent wall is 30 meters, then the
+area of internal open space shall be (30 x 1/5) x (3 x 1/5) = 36 sq.m.
+(v) For rooms in residential buildings, if provision for light and ventilation is given from setbacks
+then the requirements of minimum area and minimum width for internal open space mentioned
+in the above-mentioned paragraph (iv) shall be exempted.
+3.3.2.2 Kitchen, bathroom, water closet or storeroom
+Kitchen shall have an opening (or window) of minimum area of 1.0 square meter or 10 percent of the
+floor area, whichever is higher, and which shall open directly towards the indoor or outdoor open space.
+A bathroom, water closet powder room or a storeroom shall have an opening of minimum 0.30 square
+meter with one dimension of 0.30 meter, for adequate lighting and ventilation.
+3.3.2.3 Ventilation Shaft
+For ventilating the spaces for bathrooms and water closets, if not opening on front, rear & side or interior
+open spaces (such as a verandah of less than 3-meter width) for ventilation, these shall open on the
+ventilation shaft, the size of which shall not be less than the values given in the table below:
+Note:
+(i) For buildings above 15 meters height, ventilation shafts shall be provided, and arrangements shall
+67
+
+--- table 0 (7 rows × 7 cols) ---
+Building Height (meter) | [#D9E2F3] | Size of ventilation shaft (square | [#D9E2F3] | [#D9E2F3] | Minimum width of shaft | [#D9E2F3]
+ |  | meter) |  |  | (meter) | 
+Up to 15 | 1.2 |  |  | 0.9 |  | 
+Up to 17.5 | 2.4 |  |  | 1.2 |  | 
+Up to 24 | 5.4 |  |  | 1.8 |  | 
+Up to 30 | 8.0 |  |  | 2.4 |  | 
+More than 30 | 9.0 |  |  | 3.0 |  | 
+
+=== chapter 03 · gazette page 68 · pdf page 32 ===
+be made to enter the shaft for cleaning and maintenance.
+(ii) For buildings above 30 meters height, mechanical ventilation system shall also be installed
+besides the provisions of minimum ventilation shaft. These provisions shall be relaxed in
+buildings with fully air-conditioned systems, where ventilation shafts shall be as per design.
+3.3.3 Basement
+3.3.3.1 Structure/Purpose
+(i) Basement shall generally be constructed within the prescribed setbacks with maximum up to
+three levels.
+(ii) Construction of internal open space (courtyard) and basement below the shaft shall be
+permissible.
+(iii) Construction of basement shall be permitted only after leaving a minimum of 2 meters from all
+boundaries of the plot while ensuring the structural safety of the adjacent properties.
+(iv) Following uses shall be permissible and free of FAR.
+a. Air conditioning equipment and other machines which are installed for the essential
+safety of the building.
+b. Parking lots and garages.
+c. DG set room, meter room and electric panel room (which shall conform to required
+safety requirements), Effluent Treatment Plant, suction tank, pump room.
+d. Storage of household goods or other goods or ordinarily non-combustible material
+incidental to principal use.
+(v) Following uses shall be permissible and counted in FAR:
+a. Strong rooms, bank lockers, safe deposit vaults, laundry room, radio/laser therapy,
+post-mortem room, mortuary, medical shop and cold storage for hospital building etc.
+b. Storage not incidental to principal use.
+c. Commercial use in first basement in case of shopping centre/ shopping malls.
+d. Non-combustible storage rooms (stacking rooms) of libraries.
+e. Offices and commercial uses (if air-conditioned).
+f. Nursing quarters as ancillary use to hospital in first basement, if proper ventilation is
+ensured.
+(vi) Any other use related to ancillary use, e.g. toilets, if proper requirements of lighting, ventilation,
+waste disposal through pumping, and fire safety are adhered to. In mixed use buildings, uses
+other than ancillary uses shall also be allowed after meeting lighting, ventilation and fire safety
+requirements.
+(vii) It is also clarified that disallowance of basement uses shall be limited to hazardous/combustible
+use.
+3.3.3.2 Requirements for basement
+(i) Every basement shall be in every part at least of 2.4 meters in height (and a maximum of 4.5
+meters in height) from the floor surface to the soffit of beam, but in case mechanized parking is
+proposed in the basement, the height of the basement shall be based on the actual design.
+(ii) Adequate ventilation shall be provided for the basement with a ventilation area not less than 2.5
+percent of the area of the basement. Any deficiency shall be compensated by providing adequate
+68
+
+=== chapter 03 · gazette page 69 · pdf page 33 ===
+mechanical ventilation in the form of blowers, exhaust fans or air conditioning systems.
+(iii) The minimum height of the ceiling of any basement shall be minimum 0.9 meters and maximum
+shall 1.2 meters above the adjacent road level. However, it does not apply to the mechanically
+ventilated basements. In such cases, basement may also be allowed flushing to the average
+ground level.
+(iv) Adequate arrangements shall have to be made to ensure that surface water does not enter the
+basement.
+(v) Keeping in mind the surrounding soil and moisture, arrangements for damp proofing treatment
+shall also have to be made.
+(vi) Adequate number of doors shall have to be provisioned in the basement for office and commercial
+use so that one does not have to walk more than 15 meters.
+(vii) If provision of basement for parking is made below the stilt floor or provision of extended
+basement is made for parking outside the building for the purposes mentioned in paragraph
+3.3.3.1 (iv) and 3.3.3.1 (v), and the proposed basement flushes the ground floor level, then
+mechanical ventilation shall have to be arranged and the slab of the basement shall be designed
+to withstand the pressure of fire-fighting vehicle.
+3.3.3.3 Basement provisions
+(i) Construction of basement in buildings of different nature shall be permissible as per the following
+table:-
+(ii) Construction of basement for parking in plots of high-rise building with area of 1000 square
+meters in built-up area and 1500 square meters in non-built-up area and more shall be permitted
+in the residual area after leaving an area of 6.0 meters around the boundaries of the plot.
+(iii) For the area reserved as park /open space area, basement for parking purposes may be constructed
+up to 70 percent of the area identified as open space area.
+(iv) In group housing or other multi-storey buildings (with an area of 1500 square meters and more),
+the height of the basement between the ground cover and the boundary of the building envelope
+shall be at the ground level so that construction of a road or landscaping can be possible.
+(v) Construction of ramp under the set-back to reach the basement shall be permissible provided that
+unhindered movement of fire tender is not blocked.
+(vi) The above provisions shall be applicable in built-up areas also.
+69
+
+--- table 0 (9 rows × 6 cols) ---
+[#D9E2F3] | Sl. | [#D9E2F3] | Plot Area (Sq.M) | Nature of land use | Basement provisions
+1 |  |  | Up to 100 | 1.1 Residential/ other non- commercial | Not permitted
+ |  |  |  | 1.2 Office and commercial | 50 percent of building envelope
+2 |  |  | 100 to 500 | 2.1 Residential | Equal to building envelope
+ |  |  |  | 2.2 Non-residential | Equal to building envelope
+3 |  |  | 500 to 1000 | 3.1 Residential | 1 basement up to building envelope line
+ |  |  |  | 3.2 Non-residential | 2 basements up to building envelope line
+4 |  |  | More than 1000 | 4.1 Residential/ group housing, commercial, Office, community facilities and other multi-storey buildings | Permitted basements up to building envelope line. • 1000 -2000 sq.m. – 2 basements • >2000 sq.m. – 3 basements
+ |  |  |  | 4.2 Industrial | 3 basements up to building envelope line
+
+=== chapter 03 · gazette page 70 · pdf page 34 ===
+3.3.4 Parking places for vehicles
+3.3.4.1 Equivalent Car Space (ECS)
+Depending on the nature of parking, each "Equivalent Car Space (ECS)" shall have following standards
+including circulation area:
+Note: Double and triple stacking shall be allowed in basement and other areas.
+3.3.4.2 Parking Plan
+Parking Plan shall be submitted separately for approval along with group housing, commercial
+institutional office and other multi-storey building maps, in which parking area for all types of vehicles
+along with proper circulation arrangements for their entry and exit shall be shown.
+3.3.4.3 Parking standards
+The standards of parking arrangement for buildings of different uses/occupancies shall be as follows:
+(1) Residential – Plotted (Multi-family dwelling)/ Group Housing
+Note: In group housing, additional 10% parking shall also be provided for visitors.
+(2) Commercial
+70
+
+--- table 0 (7 rows × 2 cols) ---
+(a) Single/ Multi-units (Plotted) | 13.75 square meters
+(b) Parking in open area | 23 square meters
+(c) Covered parking | 28 square meters
+(d) Parking in basement | 32 square meters
+(e) Mechanized parking (double stacking) | 16 square meters or based on actual design
+(f) Mechanized parking (triple stacking) | 8 square meters or based on actual design
+(g) Two wheelers (including bicycles) | 2.00 square meters
+
+--- table 1 (14 rows × 4 cols) ---
+[#DBE5F1] | [#DBE5F1] | Area of Dwelling Unit | [#DBE5F1]
+[#DBE5F1] | Residential Use Type |  | Parking Requirement in ECS/ DU
+ |  | (sq.m.) | 
+[#DBE5F1] | [#DBE5F1] |  | [#DBE5F1]
+1 | Plotted Development (Single / multi-unit) | Up to 100 | 1.00
+ |  | >100 - 150 | 1.25
+ |  | >150 | 1.50
+2 | Group Housing | < =50 | 2.00 sqm
+ |  | >50 - 100 | 1.00
+ |  | >100 - 150 | 1.25
+ |  | > 150 | 1.50
+3 | EWS | - | 2.0 sqm / DU
+4 | LIG | - | 4.0 sqm / DU
+5 | Affordable | - | 1 per DU + 10% Visitor Parking for DU > 60 sqm
+
+--- table 2 (4 rows × 3 cols) ---
+Sl. | Commercial Use Type | Parking Requirements in ECS/ unit area
+1 | Shops / Convenient Shopping / Commercial Units | 1 / 100 sqm of floor area
+2 | Commercial Complex | 2 / 100 sqm of floor area
+3 | Shopping mall | 3 / 100 sqm of floor area
+
+=== chapter 03 · gazette page 71 · pdf page 35 ===
+(3) Community Facilities
+Note:
+(4) Industrial Buildings
+71
+
+--- table 0 (10 rows × 3 cols) ---
+4 | Hotels | 1.5 / 100 sqm of floor area
+5 | Multiplex | 2 / 100 sqm of covered area
+6 | Petrol Pump / Filling Station | Minimum 80 sqm (with service station)
+7 | LPG / Gas Go down | 1 / 100 sqm of floor area
+8 | Bazaar Street | 1.25 per 100 sqm (metros) and 1.00 per 100 sqm in other than metros.
+9 | Wholesale Market | 2.5 per 100 sqm of floor area
+10 | Market | 25 percent of market area
+11 | Freight Complex/ Cold Storage | 2.0 per 100 sqm of floor area
+12 | Office Buildings | 2.0 per 100 sqm (metros) and 1.50 per 100 sqm in other than metros.
+13 | Other Commercial | 1.25 per 100 sqm (metros) and 1.00 per 100 sqm in other than metros.
+
+--- table 1 (16 rows × 3 cols) ---
+Sl. | Community Facility Use Type | Parking Requirements in ECS
+A | Healthcare Buildings | [#F2F2F2]
+1 | Non-Bedded Medical Establishments (Diagnostic Centre/ OPD clinics/ dispensary/ Pathology Lab/ Veterinary Clinics) | 1.5 / 125 sqm of floor area + 1 ambulance parking 10 m x 5 m (50 sqm or 2 ECS open parking) for hospitals up to 50 beds + one additional ambulance parking space for every 50 beds thereafter
+2 | Nursing Homes / Veterinary Hospitals / Maternity Hospitals/ Small Hospitals (Up to 50 beds) | 
+3 | Hospitals (> 50 beds) | 
+4 | Nursing Institutes | 
+5 | Medical College | 
+B | Educational Buildings | Parking Requirements in ECS
+1 | Nursery | 1 / 125 sqm of built-up area + 1 bus parking 10 m x 5 m (50 sqm or 2 ECS open parking) space for every 120 students
+2 | Primary | 
+3 | High School | 
+4 | Technical Institution | 
+5 | Universities | 
+C | Public Amenity Buildings | [#F2F2F2]
+1 | Marriage Hall/ Banquet/ Multipurpose Hall | 2 / 100 sqm of permissible floor area or proposed FAR whichever is higher
+2 | Auditorium / Convention Centre | 1 / 10 seats + 2 / 100 sqm of floor area (attached ancillary commercial activities)
+
+=== chapter 03 · gazette page 72 · pdf page 36 ===
+(5) Recreation Buildings
+3.3.4.4 Basement parking provisions
+Refer paragraph 3.3.3.
+3.3.4.5 Off-street parking
+Arrangements shall be made to park vehicles separate from the road with provision for proper exit.
+3.3.4.6 Locked garages
+Locked garages for parking shall be included in the calculation of FAR. In a plotted development, if
+locked garages are proposed/constructed at the rear of the side set-back of the building, they shall not
+be included in the FAR.
+3.3.4.7 Parking on building setbacks
+(i) Parking shall be allowed in the front set back in non-residential plots up to 300 square meters, in
+which construction of maximum height of 15 meters is proposed.
+(ii) 50 percent of the set-back area can be used as parking with the restriction that a minimum distance
+of 6.0 meters around the building shall be kept motorable and completely free from obstructions
+for firefighting purposes and construction of ramp shall not be allowed in this.
+(iii) It shall be mandatory to submit the parking plan separately for approval along with the map, in
+which the parking area for all types of vehicles along with proper circulation arrangements for
+their entry and exit shall be shown.
+3.3.4.8 Stilt Parking
+Stilt Parking is mandatory for multi-units, while it is optional for single units. Construction of stilts for
+parking shall be permissible in all types of buildings, which shall not be calculated in the FAR, but shall
+be calculated in the height of the building.
+In case covered parking on stilts is used for any purpose other than parking, the same shall be calculated
+in the FAR.
+3.3.4.9 Podium Parking
+Construction of podium for parking purpose shall be permissible up to the building envelope line subject
+to the following restrictions:
+72
+
+--- table 0 (4 rows × 3 cols) ---
+Sl. | Industrial Use Type | Parking Requirements in ECS
+1 | Industrial Buildings | 1 per 300 sqm
+2 | Flatted Factories | 1 per 200 sqm
+3 | Data Centres | 1 per 300 sqm
+
+--- table 1 (3 rows × 3 cols) ---
+Sl. | Recreation Use Type | Parking Requirements in ECS
+1 | Stadium | 1 per 20 seats
+2 | Amusement Park/ Other recreational areas | 30 percent of plot area
+
+--- table 2 (2 rows × 2 cols) ---
+(i) | The minimum area of the plot shall be 1500 square meters.
+(ii) | The minimum width of the road shall be 12 meters.
+
+=== chapter 03 · gazette page 73 · pdf page 37 ===
+Note: Driver restroom, store, sanitary block and other similar services shall be allowed within the
+maximum limit of 10 percent of the permissible land cover in podium parking.
+3.3.4.10 Group Housing, Commercial/ Office Complexes and Institutional Buildings
+In addition to provisions outlined in paragraphs 3.3.4.1 to 3.3.4.9 above, the following parking
+arrangements shall also be permissible in group housing, commercial and office complexes and
+institutional buildings:
+i. Parking on subsequent floors with stilt floor shall be permitted subject to the following
+provisions: (a) Construction of ramp shall be permissible in the set-back area (except podium
+parking) provided ample space is provided for movement of fire tender, (b) The open side of
+the parking floors can be closed with a grill (grill) of maximum one meter high but shall not be
+closed with walls. Open parking on the terrace shall be permitted with the condition that a wall
+of maximum one meter high and a net of one meter high shall be installed on all four sides and
+shall not be closed by walls.
+ii. For plots above 4000 sqm in area, a separate block for parking is permissible. Within the
+parking block, 10% of Ground Floor shall be utilized for ancillary purposes (free from FAR)
+incidental to the principal use.
+iii. The height and area of the mechanized multi-level parking shall be based on the actual design,
+which shall have to be attached along with the map submitted for approval.
+iv. Maximum 03 basements shall be allowed in multi-level parking and in case the parking block
+is above the ground, there shall be no restriction on the maximum height of the block, but proper
+distance shall have to be maintained from the main building as per rules.
+3.3.4.11 Space for Common Parking
+While planning and designing the city centre, zonal shopping centre and office complex, in addition to
+the required parking for individual plots, separate parking complexes shall have to be arranged on 05
+percent of the total area of the scheme.
+3.3.4.12 Multi-level parking
+Under the parking spaces prescribed in the master plan / zonal plan / layout plan or under residential,
+commercial and office, public and semi-public facilities, traffic and transportation nodes, etc.,
+Multilevel parking shall be developed as per the following parameters-
+i. The minimum size of the plot for multi-level parking facility shall be 1000 square meters. In
+case of built-up area, the facility may be provided in 750 square meters.
+ii. The place selected for parking shall be located on a minimum 9-meter-wide road in the built-
+up area and on a minimum 12-meter-wide road in the non-built-up area.
+iii. FAR of 3.0 shall be allowed.
+iv. If the height of the parking block is up to 15 meters, the minimum set-back shall be 3 meters
+and if it is more than this, the set-back shall be as per paragraph 3.2.4.9 of the Building
+Construction and Development Byelaws.
+73
+
+--- table 0 (7 rows × 3 cols) ---
+(iii) | Height of the podium shall be at least 2.4 meters from the floor to soffit of beam | 
+(iv) | Construction of ramp for the use of podium parking shall not be permissible under set-back. | 
+(v) | The area of parks & open areas/green areas should not be reduced due to podium construction. | 
+(vi) | Recreational open space may be permitted on podium up to 50 percent in built-up areas. | 
+(vii) | Requirements related to fire safety should be ensured. | 
+(viii) | Podium shall be designed to take load of the fire engine, if required. | 
+(ix) | Number of floors in the Podium Parking shall be as per design | 
+
+=== chapter 03 · gazette page 74 · pdf page 38 ===
+v. In multi-level parking, a maximum of two basements shall be permitted subject to structural
+and safety conditions.
+vi. To meet the cost/ensure feasibility of multi-level parking, a maximum of 25 percent of the total
+floor area can be used for commercial/office and entertainment purposes.
+Note: Specific proposals requiring relaxation in the above parameters can be presented to the Authority
+Board for consideration and a decision can be taken.
+3.3.5 Fire and life safety requirements.
+Provisions for Fire and life safety requirements are detailed out in Chapter-10.
+3.3.6 Requirements for earthquake resistant construction
+Buildings more than 3 floors including the ground floor or more than 12 meters high and buildings
+related to important infrastructure facilities with more than 500 square meters of ground cover shall be
+planned, designed and constructed as per the requirements of Chapter-11 while ensuring earthquake-
+resistant arrangements.
+3.3.7 Requirements for physically handicapped persons
+Provisions shall be made as per the requirements given in Chapter-12 for creating barrier-free premises
+for the needs, safety and security of physically challenged persons in all public utility buildings and
+public facilities.
+3.3.8 Environmental sustainability requirements
+Provisions on various requirements highlighted below towards ensuring environmental sustainability
+are detailed out in Chapter-13.
+i. Rainwater Harvesting - Except in the areas suffering from the problem of waterlogging, the
+rainwater received from the roofs and open spaces in the all-purpose plots of 300 square meters
+and more area and in all group housing schemes, in other areas, shall be diverted through
+suitable recharging structures. Necessary provision shall be made for ground water recharging
+and underground or above-ground storage as per local conditions. Additional requirements are
+given in paragraph 13.1.2 of these byelaws.
+ii. Solar Water Heating Plant - In any proposed building construction relating to (i) hospitals
+and nursing homes, (ii) hotels, (iii) guest houses, rest houses (iv) hostels, (v) colleges,
+universities, technical institutions, training centres, (vi) barracks of armed forces/paramilitary
+forces and police forces, (vii) community centres, banquet halls, wedding processions and other
+similar buildings, and (viii) residential buildings of area 500 square meters and more,
+installation of solar water heater plant for heating water shall be ensured as per the requirements
+given in paragraph 13.2.3.2 of these byelaws.
+iii. Rooftop Solar Photovoltaic Plant - In government institutions/ semi-government institutions/
+government voluntary institutions/ aided institutions/ establishments and in office, housing and
+commercial complexes and other buildings with area of 5000 square meters and more, rooftop
+solar photovoltaic power plant shall be mandatorily established on a minimum of 25 percent
+rooftop area of the plinth area of the building. Additional requirements are given in paragraph
+13.2.3.1 of these byelaws.
+Environmental Protection - In view of environmental protection, in buildings with built-up
+area of 5000 square meters to 150000 square meters, it shall be mandatory to comply with the
+environmental conditions mentioned in relevant sections under Chapter-13.
+74
+
+=== chapter 03 · gazette page 75 · pdf page 39 ===
+3.3.9 Other requirements
+All other requirements of the building shall be ensured as per the National Building Code of Bureau of
+Indian Standards (BIS).
+75

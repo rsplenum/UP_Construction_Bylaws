@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { PURCHASABLE_FAR_MIN_ROAD_WIDTH, resolveBaseFar } from '../far';
+import { COMMERCIAL_MAX_FAR, PURCHASABLE_FAR_MIN_ROAD_WIDTH, resolveBaseFar } from '../far';
 
 describe('resolveBaseFar — telescopic residential', () => {
   const far = (plotArea: number, roadWidth = 12) =>
-    resolveBaseFar({ occupancy: 'single_unit', plotArea, roadWidth });
+    resolveBaseFar({ occupancy: 'res_single', plotArea, roadWidth });
 
   it('applies a flat FAR inside the first slab', () => {
     expect(far(100).baseFar).toBe(2.0);
@@ -49,39 +49,71 @@ describe('resolveBaseFar — telescopic residential', () => {
 
 describe('resolveBaseFar — purchasable FAR gate', () => {
   it('bars purchasable FAR below the road-width threshold', () => {
-    const narrow = resolveBaseFar({ occupancy: 'single_unit', plotArea: 400, roadWidth: PURCHASABLE_FAR_MIN_ROAD_WIDTH - 0.01 });
+    // res_single used to be the example here, but Clause 9.2.3 Note-1 exempts plotted
+    // residential from the road-width test entirely (B-027). A shop is the general case.
+    const narrow = resolveBaseFar({
+      occupancy: 'com_shop', plotArea: 400, roadWidth: PURCHASABLE_FAR_MIN_ROAD_WIDTH - 0.01,
+    });
     expect(narrow.purchasableFar).toBe(0);
     expect(narrow.caveats.join(' ')).toMatch(/barred/i);
     expect(narrow.maxPermissibleFar).toBe(narrow.effectiveBaseFar);
   });
 
+  it('exempts plotted residential from the road-width test altogether', () => {
+    // Clause 9.2.3 Note-1: "calculation of purchasable FAR is not dependent on the width
+    // of the approach road and will be allowed on minimum 9-m /7.5-m or 4.0-m road".
+    const narrow = resolveBaseFar({ occupancy: 'res_single', plotArea: 400, roadWidth: 4 });
+    expect(narrow.purchasableFar).toBeGreaterThan(0);
+    expect(narrow.maxPermissibleFar).toBe(2.0);        // the flat plotted ceiling
+  });
+
   it('permits purchasable FAR at exactly the threshold', () => {
-    const ok = resolveBaseFar({ occupancy: 'single_unit', plotArea: 400, roadWidth: PURCHASABLE_FAR_MIN_ROAD_WIDTH });
+    const ok = resolveBaseFar({ occupancy: 'res_single', plotArea: 400, roadWidth: PURCHASABLE_FAR_MIN_ROAD_WIDTH });
     expect(ok.purchasableFar).toBeGreaterThan(0);
   });
 });
 
 describe('resolveBaseFar — road-width matrices', () => {
-  it('resolves group housing without falling through at a band edge', () => {
-    // The old matrix had a hole between 12.0 and 12.01 that dropped to the widest band.
-    expect(resolveBaseFar({ occupancy: 'group_housing', plotArea: 5000, roadWidth: 12.005 }).baseFar).toBe(2.0);
-    expect(resolveBaseFar({ occupancy: 'group_housing', plotArea: 5000, roadWidth: 18.005 }).baseFar).toBe(2.25);
-    expect(resolveBaseFar({ occupancy: 'group_housing', plotArea: 5000, roadWidth: 24.005 }).baseFar).toBe(2.5);
+  it('holds group housing Base FAR flat and lets road width set the ceiling', () => {
+    // Gazette: Base FAR is 1.5 for built-up group housing at every road width; the road
+    // determines Max FAR (9-12m 2.0, >12-18m 3.0, >18-24m 3.0, >24-45m 5.25).
+    const at = (roadWidth: number) => resolveBaseFar({ occupancy: 'res_group_housing', plotArea: 5000, roadWidth });
+    for (const w of [12.005, 18.005, 24.005, 40]) expect(at(w).baseFar).toBe(1.5);
+    // A 10 m road clears the 9 m minimum, and Clause 9.2.1(ii) lets built-up group
+    // housing purchase from 9 m, so the headroom up to the 2.0 ceiling is buyable.
+    expect(at(10).baseFar).toBe(1.5);
+    expect(at(10).purchasableFar).toBe(0.5);
+    expect(at(10).maxPermissibleFar).toBe(2.0);
+    expect(at(15).maxPermissibleFar).toBe(3.0);
+    expect(at(30).maxPermissibleFar).toBe(5.25);
+  });
+
+  it('never permits plotted residential above the gazette ceiling of 2.0', () => {
+    for (const area of [100, 150, 280, 400, 900, 2000]) {
+      const r = resolveBaseFar({ occupancy: 'res_single', plotArea: area, roadWidth: 12 });
+      expect(r.maxPermissibleFar, `${area} m²`).toBeLessThanOrEqual(2.0 + 1e-9);
+    }
   });
 
   it('reports nil FAR on a road below the minimum right-of-way', () => {
-    const r = resolveBaseFar({ occupancy: 'group_housing', plotArea: 5000, roadWidth: 6 });
+    const r = resolveBaseFar({ occupancy: 'res_group_housing', plotArea: 5000, roadWidth: 6 });
     expect(r.baseFar).toBe(0);
     expect(r.caveats.join(' ')).toMatch(/no FAR is sanctionable/i);
   });
 });
 
 describe('resolveBaseFar — green incentive', () => {
-  it('uplifts base FAR by the rated fraction and nothing else', () => {
-    const plain = resolveBaseFar({ occupancy: 'single_unit', plotArea: 400, roadWidth: 12 });
-    const platinum = resolveBaseFar({ occupancy: 'single_unit', plotArea: 400, roadWidth: 12, greenRating: 'platinum' });
-    expect(platinum.effectiveBaseFar).toBeCloseTo(plain.baseFar * 1.07, 3);
+  it('grants the green incentive above the ceiling, not inside it', () => {
+    // Gazette 9.3: "additional FAR on availed FAR ... over and above the MFAR".
+    const plain = resolveBaseFar({ occupancy: 'res_single', plotArea: 400, roadWidth: 12 });
+    const platinum = resolveBaseFar({ occupancy: 'res_single', plotArea: 400, roadWidth: 12, greenRating: 'platinum' });
+
+    // It must not alter the base, and must not consume purchasable headroom.
+    expect(platinum.effectiveBaseFar).toBe(plain.effectiveBaseFar);
     expect(platinum.purchasableFar).toBe(plain.purchasableFar);
+    // It lifts the absolute ceiling by 7% of what was availed.
+    expect(platinum.maxPermissibleFar).toBeCloseTo(plain.maxPermissibleFar * 1.07, 2);
+    expect(platinum.maxPermissibleFar).toBeGreaterThan(2.0);
   });
 });
 
@@ -90,10 +122,90 @@ describe('the presentation adapter agrees with the resolver', () => {
     const { calculateTelescopicResidentialFAR } = await import('../../data/byelawsData');
     for (const area of [80, 150, 151, 320, 500, 900, 1200, 4000]) {
       const adapter = calculateTelescopicResidentialFAR(area);
-      const engine = resolveBaseFar({ occupancy: 'single_unit', plotArea: area, roadWidth: 12 });
+      const engine = resolveBaseFar({ occupancy: 'res_single', plotArea: area, roadWidth: 12 });
       expect(adapter.effectiveBaseFAR).toBe(engine.baseFar);
       expect(adapter.totalBaseBuiltUpArea).toBe(engine.baseBuiltUpArea);
       expect(adapter.slabs).toHaveLength(engine.slabs.length);
     }
+  });
+});
+
+/**
+ * B-013. The gazette prints a separate FAR row for every occupancy in each of
+ * "(Built up)" and "(Non-Built up)", and the ceilings differ. The engine applied the
+ * built-up ceilings to both.
+ */
+describe('Max FAR is keyed on area type as well as road width', () => {
+  const gh = (roadWidth: number, areaType: 'built_up' | 'non_built_up') =>
+    resolveBaseFar({ occupancy: 'res_group_housing', plotArea: 5_000, roadWidth, areaType });
+
+  // Gazette row 2(a): base 1.5, max 2.0 / 3.0 / 3.0 / 5.25 / unrestricted.
+  it.each([[10, 2.0], [15, 3.0], [20, 3.0], [30, 5.25]])(
+    'built-up group housing on a %s m road tops out at %s',
+    (road, ceiling) => expect(gh(road, 'built_up').ceilingFar).toBe(ceiling),
+  );
+
+  // Gazette row 2(b): base 2.5, max 5.0 / 5.0 / 8.75 / unrestricted.
+  it.each([[15, 5.0], [20, 5.0], [30, 8.75]])(
+    'non-built-up group housing on a %s m road tops out at %s',
+    (road, ceiling) => expect(gh(road, 'non_built_up').ceilingFar).toBe(ceiling),
+  );
+
+  it('carries the higher base FAR in a new layout', () => {
+    expect(gh(30, 'built_up').baseFar).toBe(1.5);
+    expect(gh(30, 'non_built_up').baseFar).toBe(2.5);
+  });
+
+  it('does not permit group housing below a 12 m road in a new layout', () => {
+    // Row 2(b) starts at ">12 - 18m". Row 2(a) has a 9-12 m band; row 2(b) does not.
+    expect(gh(10, 'built_up').baseFar).toBe(1.5);
+    expect(gh(10, 'non_built_up').baseFar).toBe(0);
+    expect(gh(10, 'non_built_up').caveats.join(' ')).toMatch(/non-built-up/);
+  });
+
+  // Gazette rows 3(a)/3(b): shops, built-up 2.1 / 3.0 / 5.0, non-built-up 2.45 / 3.5 / 6.0.
+  // Read off the ladder itself, because what `resolveBaseFar` returns is the lower of this
+  // and the per-chapter printed row — see the clamp test below.
+  it.each([[12, 2.1, 2.45], [20, 3.0, 3.5], [30, 5.0, 6.0]])(
+    'Chapter 3 rows 3(a)/3(b) print %s m → %s built-up and %s in a new layout',
+    (road, builtUp, newLayout) => {
+      const at = (areaType: 'built_up' | 'non_built_up') =>
+        COMMERCIAL_MAX_FAR[areaType].find(
+          (b) => road > b.overMoreThan && road <= b.upToAndIncluding)!.maxFar;
+      expect(at('built_up')).toBe(builtUp);
+      expect(at('non_built_up')).toBe(newLayout);
+    },
+  );
+
+  /**
+   * V-053 / B-046 — where the two chapters disagree, the lower governs, in BOTH directions.
+   *
+   * `CROSS_CHAPTER_MAX_FAR_CONFLICTS` enumerates six bands where Chapter 3 is the lower of
+   * the two and the engine keeps it. Nobody had enumerated the bands where Chapter 3 is the
+   * HIGHER one, and there the engine kept it too — so a commercial unit over 100 m² on a
+   * 12 m road was given a ceiling of 2.1 where Clause 5.2.5 prints 1.5, and a bazaar shop
+   * the same, against the engine's own stated policy. The conflict query in
+   * `rules/conflicts.ts` found these; this test pins the direction.
+   */
+  it.each([
+    ['com_shop', 800, 'built_up', 1.5, 2.1],
+    ['com_shop', 800, 'non_built_up', 1.75, 2.45],
+    ['com_bazaar', 400, 'built_up', 1.5, 2.1],
+    ['com_bazaar', 400, 'non_built_up', 1.75, 2.45],
+  ] as const)(
+    '%s on a 12 m road takes the chapter row\'s %s, not Chapter 3\'s %s',
+    (occupancy, plotArea, areaType, printed, chapter3) => {
+      const r = resolveBaseFar({ occupancy, plotArea, roadWidth: 12, areaType });
+      expect(r.ceilingFar).toBe(printed);
+      expect(r.ceilingFar).toBeLessThan(chapter3);
+      expect(r.caveats.join(' ')).toMatch(/V-053/);
+    },
+  );
+
+  it('leaves the ceiling alone where Chapter 3 is already the lower of the two', () => {
+    // >24-45 m built-up: Chapter 3 prints 5.0 and Clause 5.2.5 prints 5.25 (V-016).
+    const r = resolveBaseFar({ occupancy: 'com_shop', plotArea: 800, roadWidth: 30, areaType: 'built_up' });
+    expect(r.ceilingFar).toBe(5.0);
+    expect(r.caveats.join(' ')).not.toMatch(/V-053/);
   });
 });

@@ -1,0 +1,2983 @@
+{
+ "source": "docs/source/gazette/pdf/chapter-15.pdf",
+ "zones": [
+  "BU",
+  "R",
+  "MU",
+  "C-1",
+  "C-2",
+  "SI",
+  "LI",
+  "OB",
+  "PSP",
+  "TT",
+  "F",
+  "RC",
+  "GB",
+  "RA",
+  "A",
+  "HF"
+ ],
+ "clause": "15.3",
+ "rows": [
+  {
+   "gazettePage": 149,
+   "activity": "1.1(a)",
+   "label": "Single Dwelling / Multi-Dwelling (Built-up area), Homestay, Paying Guest",
+   "zones": {
+    "BU": {
+     "verdict": "conditional",
+     "condition": "9"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "prohibited"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 149,
+   "activity": "1.1(b)",
+   "label": "Single Dwelling / Multi-Dwelling (Non-Built-up area), Homestay, Paying Guest",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "conditional",
+     "condition": "7"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "conditional",
+     "condition": "5"
+    },
+    "LI": {
+     "verdict": "conditional",
+     "condition": "5"
+    },
+    "OB": {
+     "verdict": "conditional",
+     "condition": "5"
+    },
+    "PSP": {
+     "verdict": "prohibited"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 150,
+   "activity": "1.2(a)",
+   "label": "Group Housing (Built-up area)",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "prohibited"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 150,
+   "activity": "1.2(b)",
+   "label": "Group Housing (Non-Built-up area)",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "conditional",
+     "condition": "8"
+    },
+    "C-1": {
+     "verdict": "conditional",
+     "condition": "8"
+    },
+    "C-2": {
+     "verdict": "conditional",
+     "condition": "8"
+    },
+    "SI": {
+     "verdict": "conditional",
+     "condition": "5"
+    },
+    "LI": {
+     "verdict": "conditional",
+     "condition": "5"
+    },
+    "OB": {
+     "verdict": "conditional",
+     "condition": "5"
+    },
+    "PSP": {
+     "verdict": "prohibited"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 150,
+   "activity": "1.3",
+   "label": "Related Workers/ Employees/ Staff Accommodation, Watchmen/ Guard Accommodations",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "conditional",
+     "condition": "4"
+    },
+    "C-2": {
+     "verdict": "conditional",
+     "condition": "4"
+    },
+    "SI": {
+     "verdict": "conditional",
+     "condition": "7"
+    },
+    "LI": {
+     "verdict": "conditional",
+     "condition": "7"
+    },
+    "OB": {
+     "verdict": "conditional",
+     "condition": "7"
+    },
+    "PSP": {
+     "verdict": "conditional",
+     "condition": "4"
+    },
+    "TT": {
+     "verdict": "conditional",
+     "condition": "4"
+    },
+    "F": {
+     "verdict": "conditional",
+     "condition": "4"
+    },
+    "RC": {
+     "verdict": "conditional",
+     "condition": "4"
+    },
+    "GB": {
+     "verdict": "conditional",
+     "condition": "4a"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "conditional",
+     "condition": "4"
+    },
+    "HF": {
+     "verdict": "conditional",
+     "condition": "5"
+    }
+   }
+  },
+  {
+   "gazettePage": 150,
+   "activity": "2.1",
+   "label": "Shops / Convenient Shopping / Commercial Units < 100 sqm PA: Retail Shops, Daily Use Shops, PCO/ Cellular Mobile Service, Showroom (other than motor vehicle), R",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "permitted"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 150,
+   "activity": "2.2",
+   "label": "Shops / Convenient Shopping /Commercial Complex Commercial Units >100: Motor Vehicle Showroom (Automobile Sales / Purchase, Workshop, Accessories Centre), Shops",
+   "zones": {
+    "BU": {
+     "verdict": "conditional",
+     "condition": "3"
+    },
+    "R": {
+     "verdict": "conditional",
+     "condition": "3"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "conditional",
+     "condition": "3"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 150,
+   "activity": "2.3",
+   "label": "Shopping Centre, Cinema/ Miniplex",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 150,
+   "activity": "2.4",
+   "label": "Shopping mall, Multiplex",
+   "zones": {
+    "BU": {
+     "verdict": "conditional",
+     "condition": "2"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 150,
+   "activity": "2.5",
+   "label": "Hotels up to 20 rooms: Budget Hotel, Heritage Hotels, Permanent Tented Accommodation",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 150,
+   "activity": "2.6",
+   "label": "Hotels above 20 rooms: Hotel, Resort, Motel, Service Apartments, Wellness Centre/ Resort, Eco Tourism Resorts",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 150,
+   "activity": "2.7",
+   "label": "Wholesale Market / Trade/ Wholesale business, Auction Market, Wholesale centres for Agriculture produce",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "conditional",
+     "condition": "3"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 150,
+   "activity": "2.8(a)",
+   "label": "Petrol Pump / Filling Stations: Stations (Petrol/Diesel/CNG/ Bio-Diesel/ Biogas/ EV Charging Stations), Kisan Seva Kendra, Way-side Amenities/ Dhaba (Built-up a",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "permitted"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 150,
+   "activity": "2.8(b)",
+   "label": "Petrol Pump / Filling Stations: Stations (Petrol/Diesel/CNG/ Bio-Diesel/ Biogas/ EV Charging Stations), Kisan Seva Kendra, Way-side Amenities/ Dhaba (Non-Built-",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "permitted"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 150,
+   "activity": "2.9",
+   "label": "Gas Godown/ Combustion, Emergency Stock, Junkyard",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "prohibited"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "prohibited"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 150,
+   "activity": "2.10",
+   "label": "Cold storage, Store / Godown",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "conditional",
+     "condition": "2"
+    },
+    "HF": {
+     "verdict": "conditional",
+     "condition": "2"
+    }
+   }
+  },
+  {
+   "gazettePage": 151,
+   "activity": "3.1",
+   "label": "Small Scale Industry, Service / Cottage Industry, Flour Mill, Milk Collection Centre",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "prohibited"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "conditional",
+     "condition": "1"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 151,
+   "activity": "3.2",
+   "label": "Labourer/ Worker Housing / Dormitory",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "conditional",
+     "condition": "7"
+    },
+    "C-1": {
+     "verdict": "conditional",
+     "condition": "7"
+    },
+    "C-2": {
+     "verdict": "conditional",
+     "condition": "7"
+    },
+    "SI": {
+     "verdict": "conditional",
+     "condition": "7"
+    },
+    "LI": {
+     "verdict": "conditional",
+     "condition": "7"
+    },
+    "OB": {
+     "verdict": "conditional",
+     "condition": "7"
+    },
+    "PSP": {
+     "verdict": "conditional",
+     "condition": "7"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 151,
+   "activity": "3.3",
+   "label": "Warehouse / Logistic Park",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "conditional",
+     "condition": "2"
+    },
+    "HF": {
+     "verdict": "conditional",
+     "condition": "2"
+    }
+   }
+  },
+  {
+   "gazettePage": 151,
+   "activity": "3.4",
+   "label": "Data Processing Centre, Software / Information Technology Park",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 151,
+   "activity": "3.5",
+   "label": "Large Scale Industry, Sugar Mill, Rice Cellar, Pasteurizing Plant, Meat Processing Plant, Mining Related Industries, Brick / Lime Kiln, Crusher, Oil Depot, LPG ",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "prohibited"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "prohibited"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "prohibited"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "conditional",
+     "condition": "2"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 151,
+   "activity": "4.1",
+   "label": "Govt. / Local Body / Semi Government Office, Corporation office, Commercial / Business Office, Business Park, Bio-tech Park, Research & Development Centre / Res",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "conditional",
+     "condition": "3"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 151,
+   "activity": "4.2",
+   "label": "Private/ Agent Office, Bank, Cyber Caf\u00e9, Call Centre, BPO",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "conditional",
+     "condition": "6"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 151,
+   "activity": "5.1",
+   "label": "Education: Primary Educational Institute, Sewing, Knitting, Embroidery, Painting, Computer Training, etc., Library, Reading Room, Creche and Day Care Centre and",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 151,
+   "activity": "5.2",
+   "label": "Education: Higher Secondary / Inter School, Music / Dance and Drama Arts Training Centre, Indoor Sports Training Centre, Arts Gallery / Exhibition Centre, Yoga,",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "conditional",
+     "condition": "2"
+    },
+    "HF": {
+     "verdict": "conditional",
+     "condition": "2"
+    }
+   }
+  },
+  {
+   "gazettePage": 151,
+   "activity": "5.3",
+   "label": "Education: College / Degree College",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "prohibited"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 152,
+   "activity": "5.4",
+   "label": "Education: Polytechnic / Engineering, Higher Technical/ Management Institutes, General / Specialized Educational Institute, Nursing Institute, Cottage / Industr",
+   "zones": {
+    "BU": {
+     "verdict": "conditional",
+     "condition": "3"
+    },
+    "R": {
+     "verdict": "conditional",
+     "condition": "3"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "prohibited"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 152,
+   "activity": "5.5",
+   "label": "Education: University",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "prohibited"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 152,
+   "activity": "5.6",
+   "label": "Healthcare: Non-Bedded Medical Establishments, Dispensary, Health Club / Gymnasium, Clinics / Polyclinics, Dental Clinic, Clinical Laboratory, Medical Store / P",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 152,
+   "activity": "5.7",
+   "label": "Healthcare: Nursing Home, Primary / Community Health Centre, Small Hospital (Upto 50 beds), Night Shelter, Orphanage, Reformatory, Health Centre / Family Welfar",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 152,
+   "activity": "5.8",
+   "label": "Healthcare: Hospital (> 50 beds), Trauma Centre, Nursing Institutes",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "prohibited"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 152,
+   "activity": "5.9",
+   "label": "Healthcare: Medical College/ Dental College",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "prohibited"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 152,
+   "activity": "5.10",
+   "label": "Marriage hall / Banquet Hall, Meeting Hall / Community Hall, Public Facilities Centre, Community Welfare Centre, Community Guidance Centre, Public Convenience C",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 152,
+   "activity": "5.11",
+   "label": "Auditorium, Theatre, Open Air Theatre, Convention Centre, Museum",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 152,
+   "activity": "5.12(a)",
+   "label": "Natural Therapy Centre, Dharamshala / Ashram, Boarding / Lodging House, Hostel, Working women\u2019s hostel, Dormitory, Guest Houses / Inspection House / Circuit Hou",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 152,
+   "activity": "5.12(b)",
+   "label": "Natural Therapy Centre, Dharamshala / Ashram, Boarding / Lodging House, Hostel, Working women\u2019s hostel, Dormitory, Guest Houses / Inspection House / Circuit Hou",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 152,
+   "activity": "5.13",
+   "label": "Public Utilities: Post office, Post and Telegraph Office, Telephone Office / Centre, Radio and Television Centre, Police Station / Chowki, Fire Station, ATM Roo",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 152,
+   "activity": "5.14",
+   "label": "Public Utilities: Electric Crematorium / Crematorium, Cemetery / Burial Ground",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "prohibited"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 153,
+   "activity": "5.15",
+   "label": "Prison",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "prohibited"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "prohibited"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 153,
+   "activity": "5.16",
+   "label": "Public Utilities: Tubewell, Overhead Reservoir, Electricity Station/ Substation, Water Works, Microwave and Wireless Centre, Sewage Treatment Plant, Dustbin / G",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 153,
+   "activity": "5.17",
+   "label": "Public Utilities: Compost plant, Scientific Landfill Sites, Dumping Ground, MRF Facilities, Bio-Medical Waste Treatment Facility, Slaughterhouses",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "prohibited"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "prohibited"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 153,
+   "activity": "6.1",
+   "label": "Parking Lot, Taxi / Tempo Rickshaw Stand, Bus Stop",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "permitted"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 153,
+   "activity": "6.2",
+   "label": "Motor Garage, Service Garage / Workshop, Motor Driving School, Vehicle Scrapping Facility/ Automatic Testing Stations/ Driver Training Institutes",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 153,
+   "activity": "6.3",
+   "label": "Transport Nagar, Bus Depot, Bus Terminal, Weighbridge / Dharmkanta, Loading-Unloading related Facility",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "prohibited"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 153,
+   "activity": "6.4",
+   "label": "Airport/ Flying club",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "prohibited"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "prohibited"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "prohibited"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 153,
+   "activity": "7.1",
+   "label": "Park, Playground / Sports Ground, Multipurpose Open Spaces, Swimming Pool",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "permitted"
+    },
+    "GB": {
+     "verdict": "permitted"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 153,
+   "activity": "8.1",
+   "label": "Shooting Range",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "prohibited"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "prohibited"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "prohibited"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "permitted"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 153,
+   "activity": "8.2",
+   "label": "Golf Course, Club",
+   "zones": {
+    "BU": {
+     "verdict": "permitted"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "permitted"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  },
+  {
+   "gazettePage": 153,
+   "activity": "8.3",
+   "label": "Helipad",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "permitted"
+    },
+    "GB": {
+     "verdict": "permitted"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 153,
+   "activity": "8.4",
+   "label": "Racecourse, Stadium, Sports College/ Training Centre, Caravan Park, Picnic Site / Camping Site, Traffic Park, Amusement Park, Aquarium, Zoo / Museum, Bird / Wil",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "permitted"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "permitted"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "prohibited"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "permitted"
+    },
+    "GB": {
+     "verdict": "permitted"
+    },
+    "RA": {
+     "verdict": "prohibited"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 153,
+   "activity": "9.1",
+   "label": "Farmhouse, Repair and Servicing Centre for Agricultural Equipment, Farm Stay",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "prohibited"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "prohibited"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "prohibited"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 154,
+   "activity": "9.2",
+   "label": "Farmhouse: Horticulture, Nursery, Forest, Garden, Botanical Garden, Laundry Bay (Dhobi ghat)",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "permitted"
+    },
+    "C-1": {
+     "verdict": "permitted"
+    },
+    "C-2": {
+     "verdict": "permitted"
+    },
+    "SI": {
+     "verdict": "permitted"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "permitted"
+    },
+    "PSP": {
+     "verdict": "permitted"
+    },
+    "TT": {
+     "verdict": "permitted"
+    },
+    "F": {
+     "verdict": "permitted"
+    },
+    "RC": {
+     "verdict": "permitted"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "permitted"
+    }
+   }
+  },
+  {
+   "gazettePage": 154,
+   "activity": "9.3",
+   "label": "Dairy Farm, Pasture, Cattle Colony, Pig / Fish/ Poultry Farm/ Beekeeping, Animal Breeding Centre",
+   "zones": {
+    "BU": {
+     "verdict": "prohibited"
+    },
+    "R": {
+     "verdict": "prohibited"
+    },
+    "MU": {
+     "verdict": "prohibited"
+    },
+    "C-1": {
+     "verdict": "prohibited"
+    },
+    "C-2": {
+     "verdict": "prohibited"
+    },
+    "SI": {
+     "verdict": "prohibited"
+    },
+    "LI": {
+     "verdict": "prohibited"
+    },
+    "OB": {
+     "verdict": "prohibited"
+    },
+    "PSP": {
+     "verdict": "prohibited"
+    },
+    "TT": {
+     "verdict": "prohibited"
+    },
+    "F": {
+     "verdict": "prohibited"
+    },
+    "RC": {
+     "verdict": "prohibited"
+    },
+    "GB": {
+     "verdict": "prohibited"
+    },
+    "RA": {
+     "verdict": "permitted"
+    },
+    "A": {
+     "verdict": "permitted"
+    },
+    "HF": {
+     "verdict": "prohibited"
+    }
+   }
+  }
+ ]
+}

@@ -1,0 +1,1336 @@
+{
+ "source": "docs/source/derived/chapters/appendix-15.json",
+ "clause": "Appendix-15",
+ "authorities": [
+  "Agra",
+  "Aligarh",
+  "Ayodhya",
+  "Bareilly",
+  "Basti",
+  "Bulandshahr",
+  "Firozabad-Shikohabad",
+  "Gorakhpur",
+  "Hapur",
+  "Jhansi",
+  "Kanpur",
+  "Khurja",
+  "Mathura-Vrindavan",
+  "Meerut",
+  "Mirzapur-Vindhyachal",
+  "Moradabad",
+  "Muzaffarnagar",
+  "Prayagraj",
+  "Rampur",
+  "Saharanpur",
+  "Varanasi-1",
+  "Varanasi-2"
+ ],
+ "rows": [
+  {
+   "serial": 1,
+   "zone": "BU",
+   "label": "Built up",
+   "authorities": {
+    "Ayodhya": [
+     "Built-up"
+    ],
+    "Bareilly": [
+     "Built-up"
+    ],
+    "Muzaffarnagar": [
+     "Built-up"
+    ],
+    "Gorakhpur": [
+     "Built-up"
+    ],
+    "Khurja": [
+     "Built-up"
+    ],
+    "Bulandshahr": [
+     "Built-up"
+    ],
+    "Basti": [
+     "Built-up"
+    ],
+    "Meerut": [
+     "Built-up"
+    ],
+    "Saharanpur": [
+     "Built-up"
+    ],
+    "Moradabad": [
+     "Built-up"
+    ],
+    "Mathura-Vrindavan": [
+     "Built-up"
+    ],
+    "Aligarh": [
+     "Built-up"
+    ],
+    "Jhansi": [
+     "Built-up"
+    ],
+    "Rampur": [
+     "Built-up"
+    ],
+    "Firozabad-Shikohabad": [
+     "Built-up"
+    ],
+    "Varanasi-1": [
+     "Built-up"
+    ],
+    "Varanasi-2": [
+     "Built-up"
+    ],
+    "Agra": [
+     "Built-up"
+    ],
+    "Hapur": [
+     "Built-up"
+    ],
+    "Kanpur": [
+     "Built-up"
+    ],
+    "Mirzapur-Vindhyachal": [
+     "Built-up"
+    ],
+    "Prayagraj": [
+     "Built-up"
+    ]
+   }
+  },
+  {
+   "serial": 2,
+   "zone": "R",
+   "label": "Residential",
+   "authorities": {
+    "Ayodhya": [
+     "Residential"
+    ],
+    "Bareilly": [
+     "Residential"
+    ],
+    "Muzaffarnagar": [
+     "Residential"
+    ],
+    "Gorakhpur": [
+     "Residential"
+    ],
+    "Khurja": [
+     "Residential"
+    ],
+    "Bulandshahr": [
+     "Residential"
+    ],
+    "Basti": [
+     "Residential"
+    ],
+    "Meerut": [
+     "Residential"
+    ],
+    "Saharanpur": [
+     "Residential"
+    ],
+    "Moradabad": [
+     "Residential"
+    ],
+    "Mathura-Vrindavan": [
+     "Residential"
+    ],
+    "Aligarh": [
+     "Residential"
+    ],
+    "Jhansi": [
+     "Residential"
+    ],
+    "Rampur": [
+     "Residential"
+    ],
+    "Firozabad-Shikohabad": [
+     "Residential"
+    ],
+    "Varanasi-1": [
+     "Residential"
+    ],
+    "Varanasi-2": [
+     "Residential"
+    ],
+    "Agra": [
+     "Residential"
+    ],
+    "Hapur": [
+     "Residential"
+    ],
+    "Kanpur": [
+     "Residential"
+    ],
+    "Mirzapur-Vindhyachal": [
+     "Residential"
+    ],
+    "Prayagraj": [
+     "Residential"
+    ]
+   }
+  },
+  {
+   "serial": 3,
+   "zone": "MU",
+   "label": "Mixed Use 1&2",
+   "authorities": {
+    "Ayodhya": [
+     "Mixed Use"
+    ],
+    "Bareilly": null,
+    "Muzaffarnagar": null,
+    "Gorakhpur": null,
+    "Khurja": null,
+    "Bulandshahr": null,
+    "Basti": null,
+    "Meerut": [
+     "Mixed Use"
+    ],
+    "Saharanpur": null,
+    "Moradabad": null,
+    "Mathura-Vrindavan": null,
+    "Aligarh": null,
+    "Jhansi": null,
+    "Rampur": null,
+    "Firozabad-Shikohabad": null,
+    "Varanasi-1": [
+     "Mixed Use"
+    ],
+    "Varanasi-2": [
+     "Mixed Use"
+    ],
+    "Agra": null,
+    "Hapur": null,
+    "Kanpur": null,
+    "Mirzapur-Vindhyachal": null,
+    "Prayagraj": null
+   }
+  },
+  {
+   "serial": 4,
+   "zone": "C-1",
+   "label": "Commercial 1-Retail /CBD /Sub- CBD /Bazaar Street",
+   "authorities": {
+    "Ayodhya": [
+     "Commercial"
+    ],
+    "Bareilly": [
+     "C1- City Centre/ Sub- City Centre",
+     "C3 -Bazaar Marg"
+    ],
+    "Muzaffarnagar": [
+     "Commercial Bazaar Marg"
+    ],
+    "Gorakhpur": [
+     "C1- Bazaar Marg/ Commercial Centre",
+     "C2- City Centre/ Sub- City Centre"
+    ],
+    "Khurja": [
+     "Commercial",
+     "Bazaar Street"
+    ],
+    "Bulandshahr": [
+     "Commercial",
+     "Bazaar Street"
+    ],
+    "Basti": [
+     "C1- Bazaar Marg/ Commercial Centre",
+     "C2- City Centre/ Sub- City Centre"
+    ],
+    "Meerut": [
+     "Commercial",
+     "Bazaar Street",
+     "Saghan Bazar"
+    ],
+    "Saharanpur": [
+     "Bazaar Street/ Bazaar Area",
+     "City Centre/ Sub- City Centre"
+    ],
+    "Moradabad": [
+     "(C-1)- City Centre/ Central Commercial",
+     "(C-2)-Sub City Centre/Sub Central Commercial",
+     "(C-4) -Bazaar Street"
+    ],
+    "Mathura-Vrindavan": [
+     "City Centre",
+     "Sub- City Centre",
+     "Bazaar Street"
+    ],
+    "Aligarh": [
+     "Commercial",
+     "Bazaar Street"
+    ],
+    "Jhansi": [
+     "Bazar Street",
+     "Commercial, Retail shops",
+     "Sector/Neighbour Hood"
+    ],
+    "Rampur": [
+     "(C-1) - City Centre",
+     "(C-2) - Sub-City Centre",
+     "(C-3) - Zonal Commercial",
+     "(C-5) - Bazaar Street"
+    ],
+    "Firozabad-Shikohabad": [
+     "Bazaar Street",
+     "City Centre",
+     "Sub city Centre"
+    ],
+    "Varanasi-1": [
+     "City Centre",
+     "Sub- City Centre",
+     "Bazaar Street",
+     "Other Commercial"
+    ],
+    "Varanasi-2": [
+     "City Centre",
+     "Sub- City Centre",
+     "Bazaar Street"
+    ],
+    "Agra": [
+     "Bazaar Street",
+     "City Centre/ CBD",
+     "Sub-city centre/Sub-CBD",
+     "Neighbourhood, Tourism"
+    ],
+    "Hapur": [
+     "Commercial/ Leather",
+     "Mandi/ Business Centre",
+     "Bazaar Street"
+    ],
+    "Kanpur": [
+     "City Centre/ CBD",
+     "Sub-city centre",
+     "Bazaar Street"
+    ],
+    "Mirzapur-Vindhyachal": [
+     "Zonal Centre, City Centre",
+     "Bazaar Street"
+    ],
+    "Prayagraj": [
+     "District Centre, City Centre",
+     "General Business, Bazaar Street"
+    ]
+   }
+  },
+  {
+   "serial": 5,
+   "zone": "C-2",
+   "label": "Commercial 2-Wholesale/ Godown",
+   "authorities": {
+    "Ayodhya": null,
+    "Bareilly": [
+     "C2- Wholesale / Storage"
+    ],
+    "Muzaffarnagar": null,
+    "Gorakhpur": [
+     "C3- Wholesale / Storage/godown/Warehousing"
+    ],
+    "Khurja": [
+     "Warehouse/Mandi"
+    ],
+    "Bulandshahr": [
+     "Warehouse/Wholesale"
+    ],
+    "Basti": [
+     "C3- Wholesale / Storage"
+    ],
+    "Meerut": [
+     "Wholesale Mkt/Mandi",
+     "Warehouse"
+    ],
+    "Saharanpur": [
+     "Wholesale",
+     "Other commercial"
+    ],
+    "Moradabad": [
+     "(C-3)- Wholesale / Storage"
+    ],
+    "Mathura-Vrindavan": [
+     "Wholesale"
+    ],
+    "Aligarh": [
+     "District Business",
+     "Wholesale Business Centre"
+    ],
+    "Jhansi": [
+     "Wholesale/ Storage"
+    ],
+    "Rampur": [
+     "(C-4) - Wholesale/ Storage"
+    ],
+    "Firozabad-Shikohabad": [
+     "Wholesale Business"
+    ],
+    "Varanasi-1": [
+     "Wholesale/ Warehousing/ Mandi"
+    ],
+    "Varanasi-2": [
+     "Wholesale/ Warehousing/ Mandi"
+    ],
+    "Agra": [
+     "Wholesale Business"
+    ],
+    "Hapur": null,
+    "Kanpur": [
+     "Warehousing/ Agricultural Produce Mandi"
+    ],
+    "Mirzapur-Vindhyachal": [
+     "Wholesale/ Storage Godown/ Warehouse"
+    ],
+    "Prayagraj": [
+     "Wholesale/ Storage"
+    ]
+   }
+  },
+  {
+   "serial": 6,
+   "zone": "SI",
+   "label": "Small Industries",
+   "authorities": {
+    "Ayodhya": [
+     "Industries"
+    ],
+    "Bareilly": [
+     "Small Industries"
+    ],
+    "Muzaffarnagar": [
+     "IT Park"
+    ],
+    "Gorakhpur": [
+     "Small Industries"
+    ],
+    "Khurja": null,
+    "Bulandshahr": [
+     "Small Industries"
+    ],
+    "Basti": [
+     "Small Industries"
+    ],
+    "Meerut": [
+     "Small Industries"
+    ],
+    "Saharanpur": null,
+    "Moradabad": [
+     "(M-1)-Small Industries",
+     "(M-3)-Handicrafts/Cottage/Home Industries"
+    ],
+    "Mathura-Vrindavan": [
+     "Small Industries",
+     "IT industries"
+    ],
+    "Aligarh": [
+     "Small Industries"
+    ],
+    "Jhansi": [
+     "Small Industries"
+    ],
+    "Rampur": [
+     "Small Industries"
+    ],
+    "Firozabad-Shikohabad": [
+     "Small & Service Industries"
+    ],
+    "Varanasi-1": [
+     "Small & Service Industries"
+    ],
+    "Varanasi-2": [
+     "Small & Service Industries"
+    ],
+    "Agra": [
+     "Non polluting industries"
+    ],
+    "Kanpur": [
+     "Small & Service Industries",
+     "Cottage Industries"
+    ],
+    "Mirzapur-Vindhyachal": [
+     "Small Industries"
+    ],
+    "Prayagraj": [
+     "Small Industries/Cottage"
+    ]
+   }
+  },
+  {
+   "serial": 7,
+   "zone": "LI",
+   "label": "Large Industries",
+   "authorities": {
+    "Ayodhya": null,
+    "Bareilly": [
+     "Large Industries"
+    ],
+    "Muzaffarnagar": [
+     "Industries"
+    ],
+    "Gorakhpur": [
+     "Medium/Large Industries"
+    ],
+    "Khurja": [
+     "Industries"
+    ],
+    "Bulandshahr": [
+     "Heavy Industries"
+    ],
+    "Basti": [
+     "Large Industries"
+    ],
+    "Meerut": [
+     "Large Industries",
+     "Industries (Light/Med/Heavy)",
+     "Logistic Park"
+    ],
+    "Saharanpur": [
+     "Industries"
+    ],
+    "Moradabad": [
+     "Large Industries"
+    ],
+    "Mathura-Vrindavan": [
+     "Large Industries"
+    ],
+    "Aligarh": [
+     "Large Industries",
+     "Defence Industrial Corridor"
+    ],
+    "Jhansi": [
+     "Large / Medium Industries",
+     "Logistic Park, Technology park; Crusher Zone"
+    ],
+    "Rampur": [
+     "Large Industries"
+    ],
+    "Firozabad-Shikohabad": [
+     "Large Industries"
+    ],
+    "Varanasi-1": [
+     "Medium/Large Industries"
+    ],
+    "Varanasi-2": [
+     "Medium/Large Industries"
+    ],
+    "Agra": [
+     "Non polluting industries"
+    ],
+    "Hapur": null,
+    "Kanpur": [
+     "Medium/Large Industries"
+    ],
+    "Mirzapur-Vindhyachal": null,
+    "Prayagraj": [
+     "Medium Industries",
+     "Large Industries"
+    ]
+   }
+  },
+  {
+   "serial": 8,
+   "zone": "OB",
+   "label": "Office Buildings",
+   "authorities": {
+    "Ayodhya": [
+     "Offices"
+    ],
+    "Bareilly": [
+     "Offices"
+    ],
+    "Muzaffarnagar": [
+     "Offices"
+    ],
+    "Gorakhpur": [
+     "Offices"
+    ],
+    "Khurja": [
+     "Offices"
+    ],
+    "Bulandshahr": [
+     "Offices"
+    ],
+    "Basti": [
+     "Offices; Jail"
+    ],
+    "Meerut": [
+     "Offices; CPRI"
+    ],
+    "Saharanpur": [
+     "Offices"
+    ],
+    "Moradabad": [
+     "Govt Semi-govt and other Offices"
+    ],
+    "Mathura-Vrindavan": [
+     "Offices, Police Lines"
+    ],
+    "Aligarh": [
+     "Offices"
+    ],
+    "Jhansi": [
+     "Offices"
+    ],
+    "Rampur": [
+     "Govt Semi-govt and other Offices"
+    ],
+    "Firozabad-Shikohabad": [
+     "Offices"
+    ],
+    "Varanasi-1": [
+     "Govt Semi-govt and other Offices"
+    ],
+    "Varanasi-2": [
+     "Govt Semi-govt and other Offices"
+    ],
+    "Agra": [
+     "Offices"
+    ],
+    "Hapur": [
+     "Offices"
+    ],
+    "Kanpur": [
+     "Offices"
+    ],
+    "Mirzapur-Vindhyachal": [
+     "Govt Semi-Govt and Local Offices",
+     "Private Offices/ Agent Offices",
+     "Banks"
+    ],
+    "Prayagraj": [
+     "Govt Semi-Govt and Local Offices",
+     "Private Offices/ Agent Offices",
+     "Banks"
+    ]
+   }
+  },
+  {
+   "serial": 9,
+   "zone": "PSP",
+   "label": "Public & Semi-public",
+   "authorities": {
+    "Ayodhya": [
+     "Public & Semi-public Facilities",
+     "Historical Places",
+     "Religious Places"
+    ],
+    "Bareilly": [
+     "Community Facilities / Utilities",
+     "Educational Institution",
+     "Hospital",
+     "Water works /Power Station",
+     "Radio Station /Doordarshan",
+     "Treatment Plant / Dumping Ground",
+     "Sewage Farm"
+    ],
+    "Muzaffarnagar": [
+     "Public Facilities",
+     "Public Utilities",
+     "Ganna Shodh Kendra",
+     "Medical/ Medicity",
+     "Vidyut Kendra",
+     "Landfill"
+    ],
+    "Gorakhpur": [
+     "1-Public & Semi-public Facilities",
+     "(Educational, Healthcare Facilities, Hospital)",
+     "2-Social & Religious Institution-Community",
+     "Facilities, Radio Station /Doordarshan",
+     "3-Public utilities & services-Sewage Farm,",
+     "SWM, Electrical sub station"
+    ],
+    "Khurja": [
+     "Public Semi-Public Facilities & Utilities"
+    ],
+    "Bulandshahr": [
+     "Public and Semi-Public Facility &",
+     "Utilities"
+    ],
+    "Basti": [
+     "Community Facilities / Utilities",
+     "Fire Station, Police station, Post office,",
+     "Water works, Sewage Farm"
+    ],
+    "Meerut": [
+     "Public Facility",
+     "Public Utility"
+    ],
+    "Saharanpur": [
+     "Public Facility",
+     "Public Utility"
+    ],
+    "Moradabad": [
+     "(F1)-Community Facilities /Utilities and Services",
+     "(F2)-electrical substation",
+     "(F3)- Sewage Farm/Solid Waste Disposal Centre",
+     "(F4)-Proposed Sewage Treatment Plant",
+     "(F5)-Slaughter house; (F6)-STP; (F7)-SWM"
+    ],
+    "Mathura-Vrindavan": [
+     "Public Semi-Public",
+     "Facilities",
+     "Amusement park",
+     "Knowledge park",
+     "Medical & Health Care",
+     "Tourist Facilitation Centre"
+    ],
+    "Aligarh": [
+     "Community Facilities",
+     "Inter college; Graduate / Post Graduate",
+     "College; Pravidhik sansthan",
+     "Aligarh Muslim university",
+     "Utilities & Services",
+     "Police Station/ Thana",
+     "Fire Station, Phone Booth",
+     "Post Office, Sewage Farm/Treatment Plant",
+     "Healthcare",
+     "District Hospital; Other Main Hospitals"
+    ],
+    "Jhansi": [
+     "Public Semi-Public Facilities",
+     "Dumping Ground",
+     "Sewage Farm/ STP",
+     "Regional/ Historical Place",
+     "Shamshan / Kabristan",
+     "Flood Area"
+    ],
+    "Rampur": [
+     "(F1) - Community Facilities /Utilities, Public",
+     "Services and Utilities",
+     "(F2) - Electrical Sub-station",
+     "(F3) - Sewerage Treatment Plant",
+     "(F4) - Solid Waste Disposal Centre",
+     "(F5) -Sewage Farm"
+    ],
+    "Firozabad-Shikohabad": [
+     "Inter College; Degree College",
+     "Technical Institutes",
+     "Hospital",
+     "Police/Fire Station",
+     "Post Office/ Telecom Centre",
+     "Electric Station",
+     "Water Works",
+     "Sewage Treatment Plant",
+     "Religious Place",
+     "Knowledge Park"
+    ],
+    "Varanasi-1": [
+     "Public Semi-Public Facilities",
+     "Services and Utilities"
+    ],
+    "Varanasi-2": [
+     "Public Semi-Public Facilities and",
+     "Services and Utilities"
+    ],
+    "Agra": [
+     "Community Facilities"
+    ],
+    "Kanpur": [
+     "1. Public Semi-Public Facilities and Services and Utilities",
+     "2. Educational Institution, Healthcare Services,",
+     "Knowledge Park, Technical/Specialized institutes",
+     "3. Jalkal, Power house, HT Line, Dumping Ground, STP,",
+     "Fire Station, Police Station, Telecom"
+    ],
+    "Mirzapur-Vindhyachal": [
+     "School, College",
+     "University, Technical, Hitech,",
+     "General Hospital",
+     "Medical College",
+     "Jalkal, Power, Sewage Farm"
+    ],
+    "Prayagraj": [
+     "School, College",
+     "University, Technical, Hitech,",
+     "General Hospital",
+     "Medical College",
+     "Jalkal, Power, Sewage Farm"
+    ]
+   }
+  },
+  {
+   "serial": 10,
+   "zone": "TT",
+   "label": "Transport 1&2, Parking",
+   "authorities": {
+    "Ayodhya": [
+     "Transport Facility",
+     "Bus Stand"
+    ],
+    "Bareilly": [
+     "T1 - Bus terminal/Truck terminal",
+     "T2 - Marg",
+     "Parking Areas"
+    ],
+    "Muzaffarnagar": [
+     "Bust Station",
+     "Transport Nagar",
+     "Railways"
+    ],
+    "Gorakhpur": [
+     "Transport centre/Bus terminal/ Truck terminal"
+    ],
+    "Khurja": [
+     "Bus Terminal /Truck Terminal"
+    ],
+    "Bulandshahr": [
+     "Bus Terminal/Truck Terminal",
+     "Railway Yard/Railway Line"
+    ],
+    "Basti": [
+     "Transport 1 - Bus terminal/Truck terminal",
+     "Marg"
+    ],
+    "Meerut": [
+     "Bus terminal",
+     "Air Strip/ Airport",
+     "Transport Nagar",
+     "Cargo Centre",
+     "RRTS Depot"
+    ],
+    "Saharanpur": [
+     "Bus Terminal",
+     "Truck Terminal",
+     "Railway Area"
+    ],
+    "Moradabad": [
+     "(T-1) - Bus terminal",
+     "(T-2)-Truck terminal",
+     "(T-3)-Railway Notified Area",
+     "(T-4)-Existing Road; (T-5)-Proposed Road",
+     "(T-6)-Railway Line",
+     "(T-9)-Proposed fly over"
+    ],
+    "Mathura-Vrindavan": [
+     "Transport Nagar",
+     "Parking & Camping Area",
+     "Bus Terminal"
+    ],
+    "Aligarh": [
+     "Transport 1 - (Bus terminal)",
+     "Transport 2 - (Truck terminal)",
+     "Parking Areas, Air Strip",
+     "Existing roads, Proposed roads",
+     "Railway lines/ Railway campus",
+     "Dedicated Freight Corridor"
+    ],
+    "Jhansi": [
+     "T1 - (Bus terminal",
+     "T2 - (Transport Nagar / Truck terminal)"
+    ],
+    "Rampur": [
+     "(T-1) - Bus Terminal and Workshop",
+     "(T-2) - Truck Terminal / Transport Nagar",
+     "(T-3) - Existing Road, (T-4) - Proposed Road",
+     "(T-5) - Railway Line",
+     "(T-6) - Proposed Flyover",
+     "(T-7) - Railway Notified Area"
+    ],
+    "Firozabad-Shikohabad": [
+     "Truck Terminal",
+     "Bus Terminal",
+     "Railway Line/ Railway Compound",
+     "Over Head Bridge"
+    ],
+    "Varanasi-1": [
+     "Transport Services",
+     "Airport/ Water Transport Terminal",
+     "Railway Yard/ Railway Land"
+    ],
+    "Varanasi-2": [
+     "Transport Services",
+     "Airport/ Water Transport Terminal",
+     "Railway Yard/ Railway Land"
+    ],
+    "Agra": [
+     "Transport Nagar",
+     "Bus stand"
+    ],
+    "Hapur": [
+     "Traffic and Transportation"
+    ],
+    "Kanpur": [
+     "Transport Services",
+     "Airstrip/ Airport/ Water Transport/ ISBT",
+     "Bus Terminal/ Railway Yard/ Railway land/ Truck",
+     "Terminal/ Multi-modal logistic park"
+    ],
+    "Mirzapur-Vindhyachal": [
+     "Transport Nagar",
+     "Bus Terminal",
+     "Truck Terminal",
+     "Water Transport"
+    ],
+    "Prayagraj": [
+     "Transport Nagar",
+     "Bus Terminal ;",
+     "Truck Terminal",
+     "Water Transport"
+    ]
+   }
+  },
+  {
+   "serial": 11,
+   "zone": "F",
+   "label": "Forest",
+   "authorities": {
+    "Ayodhya": null,
+    "Bareilly": [
+     "Garden",
+     "Forest"
+    ],
+    "Muzaffarnagar": null,
+    "Gorakhpur": null,
+    "Khurja": [
+     "Forest"
+    ],
+    "Bulandshahr": null,
+    "Basti": null,
+    "Meerut": [
+     "Forest"
+    ],
+    "Saharanpur": null,
+    "Moradabad": [
+     "Garden; Forest"
+    ],
+    "Mathura-Vrindavan": [
+     "Forest"
+    ],
+    "Aligarh": [
+     "Garden"
+    ],
+    "Jhansi": [
+     "Forest"
+    ],
+    "Rampur": null,
+    "Firozabad-Shikohabad": [
+     "Forest"
+    ],
+    "Varanasi-1": [
+     "Garden"
+    ],
+    "Varanasi-2": [
+     "Garden"
+    ],
+    "Agra": [
+     "Forest area"
+    ],
+    "Hapur": null,
+    "Kanpur": [
+     "Reserved Forest, Afforestation",
+     "Bird Sanctuary"
+    ],
+    "Mirzapur-Vindhyachal": [
+     "Protected Forests"
+    ],
+    "Prayagraj": [
+     "Afforestation",
+     "Grassland and Dairy Farm"
+    ]
+   }
+  },
+  {
+   "serial": 12,
+   "zone": "RC",
+   "label": "Recreational 1&2",
+   "authorities": {
+    "Ayodhya": [
+     "Park and Open Spaces",
+     "Fair Ground and Garden"
+    ],
+    "Bareilly": [
+     "P1 - Recreational Park / Zonal Park",
+     "P2 - Park / District Park / Exhibition",
+     "Park / Mela / Rally Ground"
+    ],
+    "Muzaffarnagar": [
+     "Park and Open Areas",
+     "Baagh & Udyaan",
+     "Regional Park",
+     "Stadium"
+    ],
+    "Gorakhpur": [
+     "Park / Open Spaces/Recreational Area"
+    ],
+    "Khurja": [
+     "Park & Open Spaces"
+    ],
+    "Bulandshahr": [
+     "Park & Open Spaces"
+    ],
+    "Basti": [
+     "Park/open spaces and playground"
+    ],
+    "Meerut": [
+     "Park and Open Area/ Stadium",
+     "Regional Park",
+     "Amusement Park"
+    ],
+    "Saharanpur": [
+     "Regional Park",
+     "Park and Open Area"
+    ],
+    "Moradabad": [
+     "(P-1)-District Park",
+     "(P-2)-Zonal Park; (P-3)-Park",
+     "(P-4)-Riverfront Development",
+     "(P-6)-non-conforming developed green area."
+    ],
+    "Mathura-Vrindavan": [
+     "Park/ Sector Park",
+     "District Park",
+     "Zonal Park",
+     "Sanrakshit sthal"
+    ],
+    "Aligarh": [
+     "Park and Open spaces",
+     "Regional Park, River Buffer",
+     "Exhibition ground",
+     "Shekha Lake Eco Sensitive Zone",
+     "Lake Zone"
+    ],
+    "Jhansi": [
+     "Recreational 1 - Theme Park",
+     "Recreational 2 - Regional Park/ Prakhandiy",
+     "Park/Nagar Park and Playground",
+     "Water bodies/Pond, Pahad"
+    ],
+    "Rampur": [
+     "(P1) - Park",
+     "(P2) - Zonal Park",
+     "(P4) - River Front Development",
+     "(P5) - Non-Conforming Developed Green"
+    ],
+    "Firozabad-Shikohabad": null,
+    "Varanasi-1": [
+     "Park"
+    ],
+    "Varanasi-2": [
+     "Park"
+    ],
+    "Agra": [
+     "Sector Park, Regional Park, District Park, Zonal Park,",
+     "Amusement Park, National Park,",
+     "Riverfront Development"
+    ],
+    "Hapur": [
+     "Recreational area"
+    ],
+    "Kanpur": [
+     "1. Parks and Open Spaces",
+     "2. Stadium/ Playground/ District Park/ Regional Park/Amusement Park, Ecological Park/ Mela ground",
+     "3. Riverfront Development"
+    ],
+    "Mirzapur-Vindhyachal": [
+     "Park",
+     "City level Park",
+     "Exhibition Ground/ Tourism",
+     "Socio-cultural and Religious area"
+    ],
+    "Prayagraj": [
+     "Parks/Open spaces; District Park, Local",
+     "Park",
+     "Kumbh mela",
+     "Umsam Riverfront Development",
+     "Cultural and religious site"
+    ]
+   }
+  },
+  {
+   "serial": 13,
+   "zone": "GB",
+   "label": "Green belt",
+   "authorities": {
+    "Ayodhya": [
+     "Green Belt"
+    ],
+    "Bareilly": [
+     "Green Belt"
+    ],
+    "Muzaffarnagar": [
+     "Green Belt"
+    ],
+    "Gorakhpur": [
+     "Green Belt"
+    ],
+    "Khurja": [
+     "Green Belt"
+    ],
+    "Bulandshahr": [
+     "Green Belt"
+    ],
+    "Basti": [
+     "Green Belt"
+    ],
+    "Meerut": [
+     "Green Belt"
+    ],
+    "Saharanpur": [
+     "Green Belt"
+    ],
+    "Moradabad": [
+     "Green Belt"
+    ],
+    "Mathura-Vrindavan": [
+     "Green Belt"
+    ],
+    "Aligarh": [
+     "Green Belt"
+    ],
+    "Jhansi": [
+     "Green Belt"
+    ],
+    "Rampur": [
+     "Green Belt"
+    ],
+    "Firozabad-Shikohabad": [
+     "Green Belt"
+    ],
+    "Varanasi-1": [
+     "Green Belt"
+    ],
+    "Varanasi-2": [
+     "Green Belt"
+    ],
+    "Agra": [
+     "Green Belt"
+    ],
+    "Hapur": [
+     "Green Belt"
+    ],
+    "Kanpur": [
+     "Green Belt"
+    ],
+    "Mirzapur-Vindhyachal": [
+     "Green Belt"
+    ],
+    "Prayagraj": [
+     "Green Belt"
+    ]
+   }
+  },
+  {
+   "serial": 14,
+   "zone": "RA",
+   "label": "Rural Abadi",
+   "authorities": {
+    "Ayodhya": [
+     "Rural Abadi"
+    ],
+    "Bareilly": [
+     "Rural Abadi"
+    ],
+    "Muzaffarnagar": [
+     "Rural Abadi"
+    ],
+    "Gorakhpur": [
+     "Rural Abadi"
+    ],
+    "Khurja": [
+     "Rural Abadi; Future expansion"
+    ],
+    "Bulandshahr": [
+     "Rural Abadi; Future expansion"
+    ],
+    "Basti": [
+     "Rural Abadi"
+    ],
+    "Meerut": [
+     "Rural Abadi"
+    ],
+    "Saharanpur": [
+     "Rural Abadi; Future expansion"
+    ],
+    "Moradabad": [
+     "Rural Abadi"
+    ],
+    "Mathura-Vrindavan": [
+     "Rural Abadi"
+    ],
+    "Aligarh": [
+     "Rural Abadi"
+    ],
+    "Jhansi": [
+     "Rural Abadi, Future expansion"
+    ],
+    "Rampur": [
+     "Rural Abadi"
+    ],
+    "Firozabad-Shikohabad": [
+     "Rural Abadi"
+    ],
+    "Varanasi-1": [
+     "Rural Abadi"
+    ],
+    "Varanasi-2": [
+     "Rural Abadi"
+    ],
+    "Agra": [
+     "Rural Abadi"
+    ],
+    "Hapur": [
+     "Rural Abadi"
+    ],
+    "Kanpur": [
+     "Rural Abadi"
+    ],
+    "Mirzapur-Vindhyachal": [
+     "Rural Abadi"
+    ],
+    "Prayagraj": [
+     "Rural Abadi"
+    ]
+   }
+  },
+  {
+   "serial": 15,
+   "zone": "A",
+   "label": "Agriculture",
+   "authorities": {
+    "Ayodhya": [
+     "Agriculture"
+    ],
+    "Bareilly": [
+     "Agriculture"
+    ],
+    "Muzaffarnagar": [
+     "Agriculture"
+    ],
+    "Gorakhpur": [
+     "Agriculture"
+    ],
+    "Khurja": [
+     "Agriculture"
+    ],
+    "Bulandshahr": [
+     "Agriculture"
+    ],
+    "Basti": [
+     "Agriculture"
+    ],
+    "Meerut": [
+     "Agriculture"
+    ],
+    "Saharanpur": [
+     "Agriculture"
+    ],
+    "Moradabad": [
+     "Agriculture"
+    ],
+    "Mathura-Vrindavan": [
+     "Agriculture"
+    ],
+    "Aligarh": [
+     "Agriculture"
+    ],
+    "Jhansi": [
+     "Agriculture"
+    ],
+    "Rampur": [
+     "Agriculture"
+    ],
+    "Firozabad-Shikohabad": [
+     "Agriculture"
+    ],
+    "Varanasi-1": [
+     "Agriculture"
+    ],
+    "Varanasi-2": [
+     "Agriculture"
+    ],
+    "Agra": [
+     "Agriculture"
+    ],
+    "Hapur": [
+     "Agriculture"
+    ],
+    "Kanpur": [
+     "Agriculture"
+    ],
+    "Mirzapur-Vindhyachal": [
+     "Agriculture"
+    ],
+    "Prayagraj": [
+     "Agriculture"
+    ]
+   }
+  },
+  {
+   "serial": 16,
+   "zone": "HF",
+   "label": "Highway Facilities",
+   "authorities": {
+    "Ayodhya": [
+     "Highway Facility Zone"
+    ],
+    "Bareilly": [
+     "Highway Facility Zone"
+    ],
+    "Muzaffarnagar": [
+     "Highway Facility Zone"
+    ],
+    "Gorakhpur": [
+     "Highway Facility Zone"
+    ],
+    "Khurja": [
+     "Highway Facility Zone"
+    ],
+    "Bulandshahr": [
+     "Highway Facility Zone"
+    ],
+    "Basti": [
+     "Highway Facility Zone"
+    ],
+    "Meerut": [
+     "Highway Facility Zone"
+    ],
+    "Saharanpur": [
+     "Highway Facility Zone"
+    ],
+    "Moradabad": [
+     "Highway Facility Zone"
+    ],
+    "Mathura-Vrindavan": [
+     "Highway Facility Zone"
+    ],
+    "Aligarh": [
+     "Highway Facility Zone"
+    ],
+    "Jhansi": [
+     "Highway Facility Zone"
+    ],
+    "Rampur": [
+     "Highway Facility Zone"
+    ],
+    "Firozabad-Shikohabad": null,
+    "Varanasi-1": [
+     "Highway Facility Zone"
+    ],
+    "Varanasi-2": [
+     "Highway Facility Zone"
+    ],
+    "Agra": [
+     "Highway Facility Zone"
+    ],
+    "Hapur": [
+     "Highway Facility Zone"
+    ],
+    "Kanpur": [
+     "Highway Facility Zone"
+    ],
+    "Mirzapur-Vindhyachal": [
+     "Highway Facility Zone"
+    ],
+    "Prayagraj": [
+     "Highway Facility Zone"
+    ]
+   }
+  },
+  {
+   "serial": 17,
+   "zone": null,
+   "label": "Additional Land use",
+   "authorities": {}
+  }
+ ]
+}

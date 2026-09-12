@@ -1,0 +1,302 @@
+=== chapter 11 · gazette page 116 · pdf page 1 ===
+11 Structural Safety and Quality Control
+11.1 Structural Design and Safety
+For any building under the jurisdiction of these regulations, the structural design shall be carried out
+by registered/ licensed engineer/ structural engineer as specified in Chapter-14 of these regulations.
+The structural design of different building elements shall conform to the relevant Indian Standards
+provided in Part 6 ‘Structural Design’ of NBC 2016 comprising of the following sections:
+a) Section 1- Loads, forces and effects
+b) Section 2- Soils and foundations
+c) Section 3- Timber and bamboo
+d) Section 4- Masonry
+e) Section 5- Concrete
+f) Section 6- Steel
+g) Section 7- Prefabrication systems, building and mixed/composite construction.
+h) Section 8- Glass and glazing
+Requirements specified in the following Indian Standards, Codes and guidelines and other documents
+needs to be observed for structural safety and natural hazard protection of buildings etc:
+a) For General Structural Safety
+1) IS: 456:2000 “Code of Practice for Plain and Reinforced Concrete.
+2) IS: 800-2007 “Code of Practice for General Construction in Steel.
+3) IS: 801-1975 “Code of Practice for Use of Cold Formal Light Gauge Steel Structural
+Members in General Building Construction.
+4) IS 875 (Part 2):1987 Design loads (other than earthquake) for buildings and structures Part2
+Imposed Loads.
+5) (Reference to Table 4.1- “Occupant Load” may be considered for design load) 5) IS 875 (Part
+3):1987 Design loads (other than earthquake) for buildings and structures Part 3 Wind Loads.
+6) IS 875 (Part 4):1987 Design loads (other than earthquake) for buildings and structures Part 4
+Snow Loads.
+7) IS 875 (Part 5):1987 Design loads (other than earthquake) for buildings and structures Part 5
+special loads and load combination.
+8) IS: 883:1994 “Code of Practice for Design of Structural Timber in Building.
+9) IS: 1904:1986 (R 2005) “Code of Practice for Structural Safety of Buildings: Foundation”
+10) IS 1905:1987 “Code of Practice for Structural Safety of Buildings: Masonry Walls.
+11) IS 2911(Part 1): Section 1: 2010 “Code of Practice for Design and Construction of Pile
+Foundation Section 1.
+(b) For Cyclone/ Wind-storm Protection
+12) IS 875 (3):1987 "Code of Practice for Design Loads (other than Earthquake) for Buildings
+and Structures, Part 3, Wind Loads"
+13) Guidelines (Based on IS 875 (3)-1987) for improving the Cyclonic Resistance of Low-rise
+houses and other building.
+(c) For Earthquake Protection
+14) IS: 1893 (Part 1,2,3,4) "Criteria for Earthquake Resistant Design of Structures"
+116
+
+=== chapter 11 · gazette page 117 · pdf page 2 ===
+15) IS:13920-2016 "Ductile Detailing of Reinforced Concrete Structures subjected to Seismic
+Forces - Code of Practice"
+16) IS:4326-2013 "Earthquake Resistant Design and Construction of Buildings - Code of Practice
+(Second Revision)"
+17) IS:13828-1993 "Improving Earthquake Resistance of Low Strength Masonry Buildings -
+Guidelines"
+18) IS:138271993 "Improving Earthquake Resistance of Earthen Buildings- Guidelines"
+19) IS:13935-2009 "Seismic Evaluation, Repair and Seismic Strengthening of Buildings -
+Guidelines”
+(d) For Protection of Landslide Hazard (for protection of earth at different levels)
+20) IS 14458 (Part 1): 1998 Guidelines for retaining wall for hill area: Part 1 Selection of type of
+wall.
+21) IS 14458 (Part 2): 1997 Guidelines for retaining wall for hill area: Part 2 Design of
+retaining/breast walls.
+22) IS 14458 (Part 3): 1998 Guidelines for retaining wall for hill area: Part 3 Construction of dry
+stone walls.
+23) IS 14496 (Part 2): 1998 Guidelines for preparation of landslide – Hazard zonation maps in
+mountainous terrains: Part 2 Macro-zonation.
+Note:
+Whenever an Indian Standard including those referred in the National Building Code, the latest
+revision of the same shall be followed except specific criteria, if any, mentioned above against the
+provisions of that code.
+11.2 Structural Design Basis Report (SDBR)
+The SDBR (Appendix-14) consists of basis for designing the building. It includes four parts as provided
+below:
+a) Part 1: General information/data
+b) Part 2: Load bearing masonry buildings
+c) Part 3: Reinforced concrete buildings
+d) Part 4: Steel buildings
+In compliance of the design with the relevant Indian Standards mentioned in NBC 2016, the registered/
+licensed engineer/ structural engineer/ principal design consultant shall submit a SDBR for structures
+of different complexities, as given in paragraph 11.3 of this guidelines, along with the drawings and
+documents to be submitted with the application. The SDBR shall include the parts as detailed below:
+a) Part 1
+b) Part 2, Part 3 or Part 4 (whichever is applicable)
+SDBR shall be submitted to the LTP in accordance with Chapter-14 of these byelaws.
+11.3 Review of Structural Design
+The Authority shall empanel structural engineers for peer reviewing/proof checking and certifying the
+design of buildings with height above 50 m, important service and community buildings or structures,
+lifeline and emergency buildings and/or large assembly buildings. The owner may also decide to carry
+117
+
+=== chapter 11 · gazette page 118 · pdf page 3 ===
+out proof checking of structural design for other buildings, provisions of IS 18299:2023 shall be
+adopted.
+NOTE — Important service and community buildings or structures may include critical governance buildings,
+schools, signature buildings, monument buildings. Lifeline and emergency buildings may include hospitals,
+telecommunication buildings, bus stations, railway stations/buildings, airports, ports, food storage, power stations,
+fuel stations, fire stations, etc.
+The peer reviewer/proof checker shall have the minimum qualification, experience, and competence as
+per IS 18299:2023:
+The submission of the structural design by the structural engineer to the peer reviewer/proof checker
+shall be done in three stages as given below, and the succeeding stage submission shall be made only
+after obtaining concurrence for the preceding stage:
+a) SDBR
+b) Preliminary design, related drawings and documents
+c) Detailed design, related drawings and documents
+11.4 Quality Control and Safety during Construction
+All material shall be of good quality conforming to relevant Indian Standards (BIS certified) as given
+in Part 5 ‘Building Materials’ of NBC 2016. All workmanship shall also be of good quality conforming
+to relevant Indian Standards as given in Part 7 ‘Construction Management, Practices and Safety’ of
+NBC 2016. Alternative building materials and construction technology may also be adopted with the
+approval of the authority in compliance with NBC 2016.
+There should be a clearly defined competence requirement for the workers based on the work-related
+peculiarities. Workers in a project should be adequately qualified, trained, experienced and competent.
+A formal training or a certified course undertaken should be a preferred selection criterion for the
+workers. All efforts should also be made to impart on site skilling/training of construction workers for
+specific tasks. A periodic review of the performance may be made to establish the nature of training
+required and methods for imparting training.
+Safety during construction shall be ensured in accordance with Part 7 ‘Construction Management,
+Practices and Safety’ of NBC 2016.
+11.5 Periodic Evaluation of Buildings
+In case of high-rise buildings and special buildings, the owner of the building shall get the building
+structural audit/ inspection done by the registered/ licensed structural engineer/empanelled expert
+structural engineer first in the tenth year from the date of grant of occupancy permit, and thereafter in
+every 5 years. Findings shall be submitted to the Authority for record. In case the building shows signs
+of distress such as structural cracks, etc the owner may opt for conducting such evaluation immediately.
+For buildings of height more than 50 m and special structures, the evaluation shall be done by expert
+structural engineer only.
+If any action for ensuring the structural safety and stability of the building is to be taken, as
+recommended by the registered/ licensed structural engineer/ empanelled expert structural engineer, it
+shall be completed within the time period as stipulated by the Authority to maintain the occupancy.
+The owner on the advice of the Authority shall carry out such repair/restoration and strengthening/
+retrofitting of the building found necessary as per paragraph 11.6 (seismic strengthening/retrofitting)
+of these regulations, so as to comply with the safety standards.
+In case, the owner does not carry out such action, the Authority or any agency authorized by the
+Authority may carry out such action at the cost of the owner.
+118
+
+=== chapter 11 · gazette page 119 · pdf page 4 ===
+11.6 Seismic Strengthening/Retrofitting
+If as per periodic evaluation, the seismic resistance is assessed to be less than the specified minimum
+seismic resistance as given in the concerned Indian Standards listed in table below, action shall be
+initiated to carry out the upgrading of the seismic resistance and other structural requirements of the
+building as per the provisions of standards given in the table.
+Table - Indian Standards for Seismic Evaluation and Strengthening of Buildings
+Provisions in the Indian Standard, IS 18289 ’Post - earthquake safety assessment of buildings –
+Guidelines’ should be followed for the following building typologies to ascertain whether or not a
+building affected during an earthquake can be occupied immediately after the earthquake:
+a) Unreinforced masonry load-bearing buildings; and
+b) RC moment frame buildings with unreinforced masonry infill walls.
+11.7 Format for Structural Design Basis Report (SDBR)
+a) This report shall accompany the application for Building Permit.
+b) In case information on items (iii), (x), (xviii), (xix) and (xx) of Part 1 of SDBR cannot be
+given at this time, it should be submitted at least one week before commencement of
+construction.
+c) In case of reinforced concrete framed buildings, a certificate to the effect that the Part-3 of the
+report will be completed and submitted at least one month before commencement of
+construction, shall be submitted with the application for Building Permit. In addition to the
+completed report, the following additional information shall be submitted, at the latest, one
+month before the commencement of construction.
+1) Foundations
+i. In case raft foundation has been adopted, indicate K value used for analysis
+of the raft.
+ii. In case pile foundations have been used, give full particulars of the piles,
+type, diameter, length, capacity.
+iii. In case of high-water table, indicate system of countering water pressure, and
+indicate the existing water table, and that assumed to design foundations.
+2) Idealization for earthquake analysis
+i. In case of a composite system of shear walls and rigid frames, give
+distribution of base shear in the two systems on the basis of analysis, and that
+used for design of each system.
+ii. Indicate the idealization of frames and shear walls adopted in the analysis
+with the help of sketches.
+119
+
+--- table 0 (5 rows × 9 cols) ---
+[#D9E2F3] | Sl. | [#D9E2F3] | [#D9E2F3] | Type of Buildings | [#D9E2F3] | [#D9E2F3] | Indian Standards | [#D9E2F3]
+1 |  |  | Masonry Buildings |  |  | IS 13935 ‘Seismic evaluation, repair and strengthening of masonry buildings’ |  | 
+2 |  |  | Concreter Buildings and Structures |  |  | IS 15988 ‘Seismic evaluation and strengthening of existing RCC buildings - Guidelines’ |  | 
+3 |  |  | Low strength masonry buildings |  |  | IS 13828 ‘Improving earthquake resistance of low strength masonry buildings – Guidelines’ |  | 
+4 |  |  | Earthen Buildings |  |  | IS 13827 ‘Improving earthquake resistance of earthen buildings – Guidelines’ |  | 
+
+=== chapter 11 · gazette page 120 · pdf page 5 ===
+3) Submit framing plans of each floor and in case of basements, indicate the system used
+to contain earth pressures.
+d) The latest version of the Indian Standards with their amendments as indicated in the SDBR
+template given in Appendix-14, shall be referred for the preparation of the report.
+11.8 Requirements for earthquake resistant construction
+11.8.1 Applicability
+(i) Earthquake-proof construction requirements will be applicable to buildings with more than 3 floors
+including ground floor or more than 12 meters in height and all infrastructure facilities with land cover
+of more than 500 square meters. (Such as water works and overhead tanks, telephone exchanges, bridges
+and culverts, power generation centres and power sub-stations and power towers, hospitals, photo
+galleries, auditoriums, assembly halls, educational institutions, bus terminals, etc.)
+(ii) For the development of buildings and important infrastructure facilities mentioned in paragraph (I)
+above, it will be mandatory to adopt 100% of the provisions of Code of Practice of BIS, National
+Building Code, other relevant guidelines and records mentioned in Chapter-11.1 of the byelaws.
+11.8.2 Certificate required for construction permit.
+(i) To get the map approved for building construction, architectural plan as per the pre-determined
+procedure, along with which the relevant parts of the details (related to the drawing) mentioned in the
+“Building Information Schedule” will be marked on the map in the form of a table on the format given
+in Appendix-8 and a certificate to this effect will be submitted on the format given in Appendix-9 with
+the joint signatures of the land owner/builder, the architect who prepared the map and the structural
+engineer who prepared the structural design of the foundation and superstructure of the building that in
+the building plan and design of foundation and superstructure, all the provisions related to earthquake
+resistance, the provisions of the above mentioned codes, guidelines and other relevant records have
+been 100 percent complied with. Apart from this, complete calculations and structural maps of the
+foundation and superstructure design of the building signed by the structural engineer will also be
+submitted along with the forms related to map approval. Also, the maps which will be sent to the
+authority appointed for the construction of the building, on all those plans, a certificate of earthquake
+resistant design will be submitted in the format mentioned in Appendix-10 with the full name and sealed
+signature of the land owner/builder, registered/ licensed architect as well as the structural engineer doing
+the structural design and the service engineer preparing the service design.
+(ii) If any changes/additions are made in the building map presented for approval after testing by the
+designated authority, then necessary changes in the anti-earthquake provisions in the structural and
+services design will be made again by the structural engineer and the map will be presented again for
+approval.
+In which the relevant part of the certificate and building information schedule will be mentioned as per
+above and the execution of building construction works will be ensured as per the finally approved map.
+11.8.3 Conditions for construction permission
+Approval for building construction will be issued subject to the following conditions:
+(a)
+The proposed construction will be as per the design certified by the Civil Engineer and Architect in
+accordance with the provisions of the relevant Indian Standards Institute and National Building Code.
+(b)
+The supervision of the construction will also be done under the supervision and responsibility of the
+architect/engineer and the developer so that compliance with the following safety related arrangements
+can be ensured:-
+120
+
+=== chapter 11 · gazette page 121 · pdf page 6 ===
+I. A site civil engineer with prescribed experience will be assigned to supervise the construction of the
+building. During supervision, it will be specifically ensured that the building is being constructed as per
+the design approved by the structural engineer for making all the arrangements for structural safety and
+anti-earthquake.
+II. To ensure the quality of the main construction materials cement, steel, stone grit, brick coarse sand
+and mortar and concrete mix, etc. that will be used in the construction of the building, it will be
+necessary to have the facility to test them at the work site itself. Also, by regularly sampling the
+construction materials, their quality should be physically and chemically tested by authorized
+laboratories/institutions and their test results should be available at the site itself, so that whenever an
+expert goes to the site to inspect the works, so can see these test results too.
+III. Random technical inspection of the construction work will also be done by an independent expert.
+The construction work can also be inspected from time to time by experts appointed by the
+buyer/allottees. In this regard, action will be taken as per the instructions issued from time to time.
+(c)
+If any of the conditions of approval are not followed or the report of the inspecting technical expert
+is not satisfactory, then further construction work will be stopped and the construction work will be
+considered unauthorized and may also be sealed. In such a case, completion certificate will not be
+issued, and the builder and his assistants will be considered guilty of criminal laxity and legal action
+will be taken accordingly.
+(d)
+A board of size 4 feet x 3 feet shall be installed at a prominent place at the work place. On which
+the name of the builder and owner, the name of the architect, structural engineer, service design engineer
+and supervision engineer will be mentioned in such a way that it can be clearly read from the main road
+adjacent to the building. The following records will also be available at the work site related to
+construction work: -
+(I)
+Signed and sealed copy of the map approved by the appointed authority.
+(II)
+Complete report of soil testing done by the approved laboratory/institute and recommendations
+regarding provisions of the proposed foundation.
+(III)
+Calculations of foundation, superstructure and all maps and structural details related to structural
+safety to make the building earthquake resistant, signed and sealed by an authorized structural engineer.
+(IV)
+All working drawings including sections and elevations and services details etc. signed and sealed
+by the authorized architect.
+(V)
+Details of all T&P required for the construction of the building.
+(VI)
+Site Engineer Inspection Report Register.
+(VII)
+Material testing report and related register.
+(e)
+After completion of construction, no use of the building or its part will be made, nor will it be
+allowed, without obtaining the completion certificate.
+Note:
+In addition to the above, the appointed authority may prescribe other conditions as necessary.
+11.8.4 Completion Certificate
+(I) To obtain completion certificate from the land owner/builder, along with the application form to be
+submitted to the competent authority, a certificate to this effect will be given jointly by the concerned
+architect, site engineer, land owner/builder on Appendix-11 that the building has been constructed with
+121
+
+=== chapter 11 · gazette page 122 · pdf page 7 ===
+the specifications, quality and structural design approved by the structural engineer based on the Indian
+Standards Institute code, National Building Code and relevant guidelines mentioned in Chapter-11.1 of
+the byelaws as per the approved map and with all anti-earthquake provisions and the building is safe
+for use in every way. The officer issuing the completion certificate will ensure that along with all other
+formalities related to issuing the completion certificate, the security related certificate is also available
+in the prescribed format. Only after this, completion certificate will be issued.
+(II) If any building or any part thereof is put into unauthorized use or is likely to be used without
+obtaining completion certificate, such construction will be sealed and strict action will be taken against
+the building owner/builder as per rules.
+11.8.5 Determination of qualifications
+a) On the basis of construction work and earthquake resistant zone, the qualifications of Structural
+Engineers, Site Civil Engineers for site supervision and Expert Inspectional Civil Engineers for
+surprise inspection of work during construction work will be as per paragraph 14.7 (Chapter-
+14) of these regulations.
+b) Post Graduate Structural Engineer mentioned in the said Appendices means, Graduate Degree
+in Civil Engineering from a recognized Technical Institute/University with Graduate Civil
+Engineer with Post Graduate Degree in Structural Engineer means Graduate Degree in Civil
+Engineering from a recognized technical institute/university or equivalent recognized technical
+qualification. And Diploma Civil Engineering means Diploma in Civil Engineering from a
+recognized technical institute/university.
+122

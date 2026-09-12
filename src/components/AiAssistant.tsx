@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Bot, RefreshCw, Send, Sparkles, SquareStop, User } from 'lucide-react';
 import { Markdown } from './ui/Markdown';
 import { useProject } from '../context/ProjectContext';
-import { OCCUPANCY_LABELS } from '../domain';
+import { occupancyLabel } from '../domain';
 
 interface Message {
   id: string;
@@ -79,12 +79,12 @@ export const AiAssistant: React.FC = () => {
     () =>
       [
         'Context — the site the user currently has loaded in this portal:',
-        `- Occupancy: ${OCCUPANCY_LABELS[project.occupancy]}`,
+        `- Occupancy: ${occupancyLabel(project.occupancy)}`,
         `- Plot area: ${project.plotArea} sqm, frontage ${project.plotFrontage} m`,
         `- Abutting road: ${project.roadWidth} m${project.isCornerPlot ? ' (corner plot)' : ''}`,
         `- Proposed height: ${project.buildingHeight} m, built-up ${project.proposedBuiltUpArea} sqm`,
         `- Setbacks provided: front ${project.frontSetbackProvided} m, rear ${project.rearSetbackProvided} m, sides ${project.side1Provided} / ${project.side2Provided} m`,
-        `- Parking: ${project.parkingBaysProvided} ECS; RWH ${project.hasRWH ? 'yes' : 'no'}; solar ${project.hasSolarHeating ? 'yes' : 'no'}; green rating ${project.greenRating}`,
+        `- Parking: ${project.parkingBaysProvided} ECS; RWH ${project.hasRWH ? 'yes' : 'no'}; solar PV ${project.hasSolarPv ? 'yes' : 'no'}; solar water heating ${project.hasSolarHeating ? 'yes' : 'no'}; green rating ${project.greenRating}`,
         'Answer with reference to these figures when the question is about "my plot" or "this project".',
       ].join('\n'),
     [project],

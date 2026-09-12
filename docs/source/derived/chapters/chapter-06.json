@@ -1,0 +1,9982 @@
+{
+ "chapter": "06",
+ "source": "docs/source/gazette/pdf/chapter-06.pdf",
+ "sourceMd5": "9c633d13fe909405ffd4e49740f13edd",
+ "gazettePages": [
+  94,
+  100
+ ],
+ "pageCount": 7,
+ "tableCount": 11,
+ "fillCounts": {
+  "#DBE5F1": 187,
+  "#DDEBF7": 98,
+  "#DCDDDF": 94,
+  "#FFF2CC": 42,
+  "#DEEAF6": 36,
+  "#D9E2F3": 19
+ },
+ "colourOnlyCells": 165,
+ "colourCodedTableRows": 0,
+ "warnings": [],
+ "pages": [
+  {
+   "pdfPage": 1,
+   "gazettePage": 94,
+   "prose": "6 Institutional Buildings & Community Facilities\n6.1 Hospitals and healthcare Buildings\n6.1.1 Permissibility\nPermission for construction of hospitals and healthcare buildings shall be provided as per the master\nplan/ zoning regulations.\n6.1.2 Minimum Plot Size\nThe minimum plot area for construction of a hospital/healthcare buildings shall be as follows:\n6.1.3 Means of Access\nThe minimum width of the existing approach road shall be as follows:\n6.1.4 Ground Coverage and FAR\nMaximum ground coverage after ensuring minimum setbacks and open space requirements, if any, shall\nbe permissible on plots for healthcare buildings.\nPurchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter 9.\nBasis approach road width, the maximum permissible FAR (including Base FAR) for healthcare\nbuildings in built-up areas and the non-built-up areas shall be as follows:\n94",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "6 Institutional Buildings & Community Facilities"
+    },
+    {
+     "y": 99,
+     "text": "6.1 Hospitals and healthcare Buildings"
+    },
+    {
+     "y": 122,
+     "text": "6.1.1 Permissibility"
+    },
+    {
+     "y": 141,
+     "text": "Permission for construction of hospitals and healthcare buildings shall be provided as per the master"
+    },
+    {
+     "y": 154,
+     "text": "plan/ zoning regulations."
+    },
+    {
+     "y": 175,
+     "text": "6.1.2 Minimum Plot Size"
+    },
+    {
+     "y": 194,
+     "text": "The minimum plot area for construction of a hospital/healthcare buildings shall be as follows:"
+    },
+    {
+     "y": 397,
+     "text": "6.1.3 Means of Access"
+    },
+    {
+     "y": 416,
+     "text": "The minimum width of the existing approach road shall be as follows:"
+    },
+    {
+     "y": 601,
+     "text": "6.1.4 Ground Coverage and FAR"
+    },
+    {
+     "y": 620,
+     "text": "Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any, shall"
+    },
+    {
+     "y": 633,
+     "text": "be permissible on plots for healthcare buildings."
+    },
+    {
+     "y": 659,
+     "text": "Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter 9."
+    },
+    {
+     "y": 672,
+     "text": "Basis approach road width, the maximum permissible FAR (including Base FAR) for healthcare"
+    },
+    {
+     "y": 684,
+     "text": "buildings in built-up areas and the non-built-up areas shall be as follows:"
+    },
+    {
+     "y": 775,
+     "text": "94"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.5,
+      220.3,
+      523.0,
+      375.0
+     ],
+     "rows": [
+      [
+       {
+        "text": "Sl.",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.5,
+         220.3,
+         99.2,
+         237.0
+        ]
+       },
+       {
+        "text": "Healthcare facility",
+        "fill": "#D9E2F3",
+        "bbox": [
+         99.2,
+         220.3,
+         371.7,
+         237.0
+        ]
+       },
+       {
+        "text": "Min. Plot area (sqm)",
+        "fill": "#D9E2F3",
+        "bbox": [
+         371.7,
+         220.3,
+         523.0,
+         237.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": "1",
+        "bbox": [
+         72.5,
+         237.0,
+         99.2,
+         270.3
+        ]
+       },
+       {
+        "text": "Non-Bedded Medical Establishments (Diagnostic Centre/\nOPD clinics/ dispensary/ Pathology Lab/ Veterinary Clinics)",
+        "bbox": [
+         99.2,
+         237.0,
+         371.7,
+         270.3
+        ]
+       },
+       {
+        "text": "100",
+        "bbox": [
+         371.7,
+         237.0,
+         523.0,
+         270.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "2",
+        "bbox": [
+         72.5,
+         270.3,
+         99.2,
+         302.4
+        ]
+       },
+       {
+        "text": "Nursing Homes / Veterinary Hospitals / Maternity Hospitals/\nSmall Hospitals (Up to 50 beds)",
+        "bbox": [
+         99.2,
+         270.3,
+         371.7,
+         302.4
+        ]
+       },
+       {
+        "text": "300",
+        "bbox": [
+         371.7,
+         270.3,
+         523.0,
+         302.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "3",
+        "bbox": [
+         72.5,
+         302.4,
+         99.2,
+         326.5
+        ]
+       },
+       {
+        "text": "Hospitals (> 50 beds)",
+        "bbox": [
+         99.2,
+         302.4,
+         371.7,
+         326.5
+        ]
+       },
+       {
+        "text": "3000",
+        "bbox": [
+         371.7,
+         302.4,
+         523.0,
+         326.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "4",
+        "bbox": [
+         72.5,
+         326.5,
+         99.2,
+         350.7
+        ]
+       },
+       {
+        "text": "Nursing Institutes",
+        "bbox": [
+         99.2,
+         326.5,
+         371.7,
+         350.7
+        ]
+       },
+       {
+        "text": "2000",
+        "bbox": [
+         371.7,
+         326.5,
+         523.0,
+         350.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "5",
+        "bbox": [
+         72.5,
+         350.7,
+         99.2,
+         375.0
+        ]
+       },
+       {
+        "text": "Medical College",
+        "bbox": [
+         99.2,
+         350.7,
+         371.7,
+         375.0
+        ]
+       },
+       {
+        "text": "As per NMC / MCI norms",
+        "bbox": [
+         371.7,
+         350.7,
+         523.0,
+         375.0
+        ]
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      72.5,
+      442.2,
+      523.0,
+      579.3
+     ],
+     "rows": [
+      [
+       {
+        "text": "Sl.",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.5,
+         442.2,
+         99.2,
+         459.9
+        ]
+       },
+       {
+        "text": "Healthcare facility",
+        "fill": "#D9E2F3",
+        "bbox": [
+         99.2,
+         442.2,
+         371.7,
+         459.9
+        ]
+       },
+       {
+        "text": "Min. Road Width (m)",
+        "fill": "#D9E2F3",
+        "bbox": [
+         371.7,
+         442.2,
+         523.0,
+         459.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "1",
+        "bbox": [
+         72.5,
+         459.9,
+         99.2,
+         490.1
+        ]
+       },
+       {
+        "text": "Non-Bedded Medical Establishments (Diagnostic Centre/\nOPD clinics/ dispensary/ Pathology Lab/ Veterinary Clinics)",
+        "bbox": [
+         99.2,
+         459.9,
+         371.7,
+         490.1
+        ]
+       },
+       {
+        "text": "9",
+        "bbox": [
+         371.7,
+         459.9,
+         523.0,
+         490.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "2",
+        "bbox": [
+         72.5,
+         490.1,
+         99.2,
+         522.7
+        ]
+       },
+       {
+        "text": "Nursing Homes / Veterinary Hospitals / Maternity Hospitals/\nSmall Hospitals (Up to 50 beds)",
+        "bbox": [
+         99.2,
+         490.1,
+         371.7,
+         522.7
+        ]
+       },
+       {
+        "text": "12",
+        "bbox": [
+         371.7,
+         490.1,
+         523.0,
+         522.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "3",
+        "bbox": [
+         72.5,
+         522.7,
+         99.2,
+         540.2
+        ]
+       },
+       {
+        "text": "Hospitals (> 50 beds)",
+        "bbox": [
+         99.2,
+         522.7,
+         371.7,
+         540.2
+        ]
+       },
+       {
+        "text": "18",
+        "bbox": [
+         371.7,
+         522.7,
+         523.0,
+         540.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": "4",
+        "bbox": [
+         72.5,
+         540.2,
+         99.2,
+         557.8
+        ]
+       },
+       {
+        "text": "Nursing Institutes",
+        "bbox": [
+         99.2,
+         540.2,
+         371.7,
+         557.8
+        ]
+       },
+       {
+        "text": "18",
+        "bbox": [
+         371.7,
+         540.2,
+         523.0,
+         557.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "5",
+        "bbox": [
+         72.5,
+         557.8,
+         99.2,
+         579.3
+        ]
+       },
+       {
+        "text": "Medical College",
+        "bbox": [
+         99.2,
+         557.8,
+         371.7,
+         579.3
+        ]
+       },
+       {
+        "text": "24",
+        "bbox": [
+         371.7,
+         557.8,
+         523.0,
+         579.3
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 2,
+   "gazettePage": 95,
+   "prose": "Note-1: BFAR-Base FAR; PFAR-Purchasable FAR; PPFAR-Premium Purchasable FAR; MFAR-Maximum Permissible FAR (including\nBFAR); UR-Unrestricted FAR\nNote-2: No purchasable or premium purchasable FAR shall be allowed for non-bedded medical establishments permissible on roads up to 12\nmeters. Base FAR shall be the maximum permissible FAR.\nNote-3: Non-Bedded Medical Establishments include Diagnostic Centre/ OPD clinics/ dispensary/ Pathology Lab/ Veterinary Clinics.\nNote-4: Hospitals up to 50 beds include Nursing Homes, Maternity Hospitals, Veterinary Hospitals\nNote-5: In case green building, additional FAR shall be over and above permissible FAR shall be permissible as per paragraph 9.3 of the\nbuilding byelaws.\n6.1.5 Maximum Building height\nThere is no restriction on the maximum building height. However, the maximum height of the building\nshall be governed by its distance from the protected monument/heritage site, airport funnel zone and\nother statutory restrictions.\n6.1.6 Minimum Setback\nMinimum setbacks for hospital/ healthcare buildings shall be per paragraph 3.2.4.\n.\n6.1.7 Parking Requirements\n(i) Parking requirements shall be as per paragraph 3.3.4 of the building byelaws.\n(ii) Standard parking spaces for hospitals and healthcare buildings shall be 1.5 ECS per 125 sqm of\nfloor area and \u2018one parking space\u2019 for ambulance parking i.e., 10 m x 5 m (50 sqm or 2 ECS open\nparking) for hospitals up to 50 beds and \u2018one additional ambulance parking space\u2019 for every 50 beds\nthereafter shall be provided.\nIn case of hospitals constructed in plots of area more than 4000 sqm, a separate building block for\nparking is permissible. Within the block, 10% of the ground floor is permissible to be utilized for\nancillary activities (free from FAR) incidental to hospital activities (principal use).\n95",
+   "proseLines": [
+    {
+     "y": 376,
+     "text": "Note-1: BFAR-Base FAR; PFAR-Purchasable FAR; PPFAR-Premium Purchasable FAR; MFAR-Maximum Permissible FAR (including"
+    },
+    {
+     "y": 385,
+     "text": "BFAR); UR-Unrestricted FAR"
+    },
+    {
+     "y": 404,
+     "text": "Note-2: No purchasable or premium purchasable FAR shall be allowed for non-bedded medical establishments permissible on roads up to 12"
+    },
+    {
+     "y": 413,
+     "text": "meters. Base FAR shall be the maximum permissible FAR."
+    },
+    {
+     "y": 423,
+     "text": "Note-3: Non-Bedded Medical Establishments include Diagnostic Centre/ OPD clinics/ dispensary/ Pathology Lab/ Veterinary Clinics."
+    },
+    {
+     "y": 432,
+     "text": "Note-4: Hospitals up to 50 beds include Nursing Homes, Maternity Hospitals, Veterinary Hospitals"
+    },
+    {
+     "y": 442,
+     "text": "Note-5: In case green building, additional FAR shall be over and above permissible FAR shall be permissible as per paragraph 9.3 of the"
+    },
+    {
+     "y": 451,
+     "text": "building byelaws."
+    },
+    {
+     "y": 468,
+     "text": "6.1.5 Maximum Building height"
+    },
+    {
+     "y": 488,
+     "text": "There is no restriction on the maximum building height. However, the maximum height of the building"
+    },
+    {
+     "y": 500,
+     "text": "shall be governed by its distance from the protected monument/heritage site, airport funnel zone and"
+    },
+    {
+     "y": 513,
+     "text": "other statutory restrictions."
+    },
+    {
+     "y": 534,
+     "text": "6.1.6 Minimum Setback"
+    },
+    {
+     "y": 553,
+     "text": "Minimum setbacks for hospital/ healthcare buildings shall be per paragraph 3.2.4."
+    },
+    {
+     "y": 566,
+     "text": "."
+    },
+    {
+     "y": 587,
+     "text": "6.1.7 Parking Requirements"
+    },
+    {
+     "y": 606,
+     "text": "(i) Parking requirements shall be as per paragraph 3.3.4 of the building byelaws."
+    },
+    {
+     "y": 625,
+     "text": "(ii) Standard parking spaces for hospitals and healthcare buildings shall be 1.5 ECS per 125 sqm of"
+    },
+    {
+     "y": 638,
+     "text": "floor area and \u2018one parking space\u2019 for ambulance parking i.e., 10 m x 5 m (50 sqm or 2 ECS open"
+    },
+    {
+     "y": 651,
+     "text": "parking) for hospitals up to 50 beds and \u2018one additional ambulance parking space\u2019 for every 50 beds"
+    },
+    {
+     "y": 664,
+     "text": "thereafter shall be provided."
+    },
+    {
+     "y": 689,
+     "text": "In case of hospitals constructed in plots of area more than 4000 sqm, a separate building block for"
+    },
+    {
+     "y": 702,
+     "text": "parking is permissible. Within the block, 10% of the ground floor is permissible to be utilized for"
+    },
+    {
+     "y": 715,
+     "text": "ancillary activities (free from FAR) incidental to hospital activities (principal use)."
+    },
+    {
+     "y": 775,
+     "text": "95"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      78.4,
+      71.8,
+      521.6,
+      374.4
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         78.4,
+         71.8,
+         82.7,
+         104.9
+        ]
+       },
+       {
+        "text": "FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         82.7,
+         71.8,
+         189.0,
+         89.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         189.0,
+         71.8,
+         193.2,
+         104.9
+        ]
+       },
+       {
+        "text": "BFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         193.2,
+         71.8,
+         224.1,
+         104.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         224.1,
+         71.8,
+         228.5,
+         89.2
+        ]
+       },
+       {
+        "text": "Road Width (>12 -24m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         228.5,
+         71.8,
+         319.2,
+         89.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         319.2,
+         71.8,
+         323.2,
+         89.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.2,
+         71.8,
+         327.7,
+         89.2
+        ]
+       },
+       {
+        "text": "Road Width (>24 - 45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         327.7,
+         71.8,
+         418.4,
+         89.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         418.4,
+         71.8,
+         422.4,
+         89.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         422.4,
+         71.8,
+         426.9,
+         89.2
+        ]
+       },
+       {
+        "text": "Road Width (>45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.9,
+         71.8,
+         517.5,
+         89.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         517.5,
+         71.8,
+         521.6,
+         89.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "Healthcare Facilities",
+        "fill": "#DBE5F1",
+        "bbox": [
+         82.7,
+         89.2,
+         189.0,
+         104.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         224.1,
+         89.2,
+         228.5,
+         104.9
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         228.5,
+         89.2,
+         253.1,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         253.1,
+         89.2,
+         257.3,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         257.3,
+         89.2,
+         261.6,
+         104.9
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         261.6,
+         89.2,
+         286.1,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         286.1,
+         89.2,
+         290.4,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         290.4,
+         89.2,
+         294.6,
+         104.9
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         294.6,
+         89.2,
+         319.2,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         319.2,
+         89.2,
+         323.2,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.2,
+         89.2,
+         327.7,
+         104.9
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         327.7,
+         89.2,
+         352.3,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         352.3,
+         89.2,
+         356.4,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         356.4,
+         89.2,
+         360.8,
+         104.9
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         360.8,
+         89.2,
+         385.3,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         385.3,
+         89.2,
+         389.6,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         389.6,
+         89.2,
+         393.8,
+         104.9
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         393.8,
+         89.2,
+         418.4,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         418.4,
+         89.2,
+         422.4,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         422.4,
+         89.2,
+         426.9,
+         104.9
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.9,
+         89.2,
+         451.4,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         451.4,
+         89.2,
+         455.7,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         455.7,
+         89.2,
+         459.9,
+         104.9
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         459.9,
+         89.2,
+         484.5,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         484.5,
+         89.2,
+         488.7,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         488.7,
+         89.2,
+         492.9,
+         104.9
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         492.9,
+         89.2,
+         517.5,
+         104.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         517.5,
+         89.2,
+         521.6,
+         104.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         78.4,
+         104.9,
+         82.7,
+         121.7
+        ]
+       },
+       {
+        "text": "Built-up Area",
+        "fill": "#DCDDDF",
+        "bbox": [
+         82.7,
+         104.9,
+         189.0,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         189.0,
+         104.9,
+         193.2,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         193.2,
+         104.9,
+         197.4,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         197.4,
+         104.9,
+         220.0,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         220.0,
+         104.9,
+         224.1,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         224.1,
+         104.9,
+         228.5,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         228.5,
+         104.9,
+         253.1,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         253.1,
+         104.9,
+         257.3,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         257.3,
+         104.9,
+         261.6,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         261.6,
+         104.9,
+         286.1,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         286.1,
+         104.9,
+         290.4,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         290.4,
+         104.9,
+         294.6,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         294.6,
+         104.9,
+         319.2,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         319.2,
+         104.9,
+         323.2,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         323.2,
+         104.9,
+         327.7,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         327.7,
+         104.9,
+         352.3,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         352.3,
+         104.9,
+         356.4,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         356.4,
+         104.9,
+         360.8,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         360.8,
+         104.9,
+         385.3,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         385.3,
+         104.9,
+         389.6,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         389.6,
+         104.9,
+         393.8,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         393.8,
+         104.9,
+         418.4,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         418.4,
+         104.9,
+         422.4,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         422.4,
+         104.9,
+         426.9,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         426.9,
+         104.9,
+         451.4,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         451.4,
+         104.9,
+         455.7,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         455.7,
+         104.9,
+         459.9,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         459.9,
+         104.9,
+         484.5,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         484.5,
+         104.9,
+         488.7,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         488.7,
+         104.9,
+         492.9,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         492.9,
+         104.9,
+         517.5,
+         121.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         517.5,
+         104.9,
+         521.6,
+         121.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Non-Bedded Medical\nEstablishments",
+        "bbox": [
+         78.4,
+         121.7,
+         193.2,
+         149.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.50",
+        "fill": "#FFF2CC",
+        "bbox": [
+         193.2,
+         121.7,
+         224.1,
+         149.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "0.75",
+        "bbox": [
+         224.1,
+         121.7,
+         257.3,
+         149.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "0.75",
+        "bbox": [
+         257.3,
+         121.7,
+         290.4,
+         149.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "3.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         290.4,
+         121.7,
+         323.2,
+         149.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         323.2,
+         121.7,
+         356.4,
+         149.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "2.25",
+        "bbox": [
+         356.4,
+         121.7,
+         389.6,
+         149.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "5.25",
+        "fill": "#DDEBF7",
+        "bbox": [
+         389.6,
+         121.7,
+         422.4,
+         149.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         422.4,
+         121.7,
+         455.7,
+         149.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         455.7,
+         121.7,
+         488.7,
+         149.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         488.7,
+         121.7,
+         521.6,
+         149.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Nursing Homes /Hospitals\n(Up to 50 beds)",
+        "bbox": [
+         78.4,
+         149.1,
+         193.2,
+         176.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.50",
+        "fill": "#FFF2CC",
+        "bbox": [
+         193.2,
+         149.1,
+         224.1,
+         176.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "0.75",
+        "bbox": [
+         224.1,
+         149.1,
+         257.3,
+         176.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "0.75",
+        "bbox": [
+         257.3,
+         149.1,
+         290.4,
+         176.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "3.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         290.4,
+         149.1,
+         323.2,
+         176.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         323.2,
+         149.1,
+         356.4,
+         176.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "2.25",
+        "bbox": [
+         356.4,
+         149.1,
+         389.6,
+         176.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "5.25",
+        "fill": "#DDEBF7",
+        "bbox": [
+         389.6,
+         149.1,
+         422.4,
+         176.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         422.4,
+         149.1,
+         455.7,
+         176.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         455.7,
+         149.1,
+         488.7,
+         176.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         488.7,
+         149.1,
+         521.6,
+         176.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Hospitals > 50 beds",
+        "bbox": [
+         78.4,
+         176.8,
+         193.2,
+         197.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         193.2,
+         176.8,
+         197.4,
+         197.5
+        ]
+       },
+       {
+        "text": "1.50",
+        "fill": "#FFF2CC",
+        "bbox": [
+         197.4,
+         176.8,
+         220.0,
+         197.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         220.0,
+         176.8,
+         224.1,
+         197.5
+        ]
+       },
+       {
+        "text": "0.75",
+        "bbox": [
+         224.1,
+         176.8,
+         257.3,
+         197.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "0.75",
+        "bbox": [
+         257.3,
+         176.8,
+         290.4,
+         197.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         290.4,
+         176.8,
+         294.6,
+         197.5
+        ]
+       },
+       {
+        "text": "3.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         294.6,
+         176.8,
+         319.2,
+         197.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         319.2,
+         176.8,
+         323.2,
+         197.5
+        ]
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         323.2,
+         176.8,
+         356.4,
+         197.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "2.25",
+        "bbox": [
+         356.4,
+         176.8,
+         389.6,
+         197.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         389.6,
+         176.8,
+         393.8,
+         197.5
+        ]
+       },
+       {
+        "text": "5.25",
+        "fill": "#DDEBF7",
+        "bbox": [
+         393.8,
+         176.8,
+         418.4,
+         197.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         418.4,
+         176.8,
+         422.4,
+         197.5
+        ]
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         422.4,
+         176.8,
+         455.7,
+         197.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         455.7,
+         176.8,
+         488.7,
+         197.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         488.7,
+         176.8,
+         492.9,
+         197.5
+        ]
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         492.9,
+         176.8,
+         517.5,
+         197.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         517.5,
+         176.8,
+         521.6,
+         197.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Nursing college",
+        "bbox": [
+         78.4,
+         197.5,
+         193.2,
+         218.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         193.2,
+         197.5,
+         197.4,
+         218.7
+        ]
+       },
+       {
+        "text": "1.50",
+        "fill": "#FFF2CC",
+        "bbox": [
+         197.4,
+         197.5,
+         220.0,
+         218.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         220.0,
+         197.5,
+         224.1,
+         218.7
+        ]
+       },
+       {
+        "text": "0.75",
+        "bbox": [
+         224.1,
+         197.5,
+         257.3,
+         218.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "0.75",
+        "bbox": [
+         257.3,
+         197.5,
+         290.4,
+         218.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         290.4,
+         197.5,
+         294.6,
+         218.7
+        ]
+       },
+       {
+        "text": "3.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         294.6,
+         197.5,
+         319.2,
+         218.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         319.2,
+         197.5,
+         323.2,
+         218.7
+        ]
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         323.2,
+         197.5,
+         356.4,
+         218.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "2.25",
+        "bbox": [
+         356.4,
+         197.5,
+         389.6,
+         218.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         389.6,
+         197.5,
+         393.8,
+         218.7
+        ]
+       },
+       {
+        "text": "5.25",
+        "fill": "#DDEBF7",
+        "bbox": [
+         393.8,
+         197.5,
+         418.4,
+         218.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         418.4,
+         197.5,
+         422.4,
+         218.7
+        ]
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         422.4,
+         197.5,
+         455.7,
+         218.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         455.7,
+         197.5,
+         488.7,
+         218.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         488.7,
+         197.5,
+         492.9,
+         218.7
+        ]
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         492.9,
+         197.5,
+         517.5,
+         218.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         517.5,
+         197.5,
+         521.6,
+         218.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Medical College",
+        "bbox": [
+         78.4,
+         218.7,
+         193.2,
+         239.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         193.2,
+         218.7,
+         197.4,
+         239.8
+        ]
+       },
+       {
+        "text": "1.50",
+        "fill": "#FFF2CC",
+        "bbox": [
+         197.4,
+         218.7,
+         220.0,
+         239.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         220.0,
+         218.7,
+         224.1,
+         239.8
+        ]
+       },
+       {
+        "text": "0.75",
+        "bbox": [
+         224.1,
+         218.7,
+         257.3,
+         239.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "0.75",
+        "bbox": [
+         257.3,
+         218.7,
+         290.4,
+         239.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         290.4,
+         218.7,
+         294.6,
+         239.8
+        ]
+       },
+       {
+        "text": "3.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         294.6,
+         218.7,
+         319.2,
+         239.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         319.2,
+         218.7,
+         323.2,
+         239.8
+        ]
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         323.2,
+         218.7,
+         356.4,
+         239.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "2.25",
+        "bbox": [
+         356.4,
+         218.7,
+         389.6,
+         239.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         389.6,
+         218.7,
+         393.8,
+         239.8
+        ]
+       },
+       {
+        "text": "5.25",
+        "fill": "#DDEBF7",
+        "bbox": [
+         393.8,
+         218.7,
+         418.4,
+         239.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         418.4,
+         218.7,
+         422.4,
+         239.8
+        ]
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         422.4,
+         218.7,
+         455.7,
+         239.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         455.7,
+         218.7,
+         488.7,
+         239.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         488.7,
+         218.7,
+         492.9,
+         239.8
+        ]
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         492.9,
+         218.7,
+         517.5,
+         239.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         517.5,
+         218.7,
+         521.6,
+         239.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         78.4,
+         239.8,
+         82.7,
+         256.7
+        ]
+       },
+       {
+        "text": "Non-Built-up Area",
+        "fill": "#DCDDDF",
+        "bbox": [
+         82.7,
+         239.8,
+         189.0,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         189.0,
+         239.8,
+         193.2,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         193.2,
+         239.8,
+         197.4,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         197.4,
+         239.8,
+         220.0,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         220.0,
+         239.8,
+         224.1,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         224.1,
+         239.8,
+         228.5,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         228.5,
+         239.8,
+         253.1,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         253.1,
+         239.8,
+         257.3,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         257.3,
+         239.8,
+         261.6,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         261.6,
+         239.8,
+         286.1,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         286.1,
+         239.8,
+         290.4,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         290.4,
+         239.8,
+         294.6,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         294.6,
+         239.8,
+         319.2,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         319.2,
+         239.8,
+         323.2,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         323.2,
+         239.8,
+         327.7,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         327.7,
+         239.8,
+         352.3,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         352.3,
+         239.8,
+         356.4,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         356.4,
+         239.8,
+         360.8,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         360.8,
+         239.8,
+         385.3,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         385.3,
+         239.8,
+         389.6,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         389.6,
+         239.8,
+         393.8,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         393.8,
+         239.8,
+         418.4,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         418.4,
+         239.8,
+         422.4,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         422.4,
+         239.8,
+         426.9,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         426.9,
+         239.8,
+         451.4,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         451.4,
+         239.8,
+         455.7,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         455.7,
+         239.8,
+         459.9,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         459.9,
+         239.8,
+         484.5,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         484.5,
+         239.8,
+         488.7,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         488.7,
+         239.8,
+         492.9,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         492.9,
+         239.8,
+         517.5,
+         256.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         517.5,
+         239.8,
+         521.6,
+         256.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Non-Bedded Medical\nEstablishments",
+        "bbox": [
+         78.4,
+         256.7,
+         193.2,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.50",
+        "fill": "#FFF2CC",
+        "bbox": [
+         193.2,
+         256.7,
+         224.1,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "0.75",
+        "bbox": [
+         224.1,
+         256.7,
+         257.3,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "0.75",
+        "bbox": [
+         257.3,
+         256.7,
+         290.4,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "3.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         290.4,
+         256.7,
+         323.2,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         323.2,
+         256.7,
+         356.4,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "2.25",
+        "bbox": [
+         356.4,
+         256.7,
+         389.6,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "5.25",
+        "fill": "#DDEBF7",
+        "bbox": [
+         389.6,
+         256.7,
+         422.4,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         422.4,
+         256.7,
+         455.7,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         455.7,
+         256.7,
+         488.7,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         488.7,
+         256.7,
+         521.6,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Nursing Homes /Hospitals\n(Up to 50 beds)",
+        "bbox": [
+         78.4,
+         284.0,
+         193.2,
+         311.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "2.00",
+        "fill": "#FFF2CC",
+        "bbox": [
+         193.2,
+         284.0,
+         224.1,
+         311.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         224.1,
+         284.0,
+         257.3,
+         311.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         257.3,
+         284.0,
+         290.4,
+         311.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "4.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         290.4,
+         284.0,
+         323.2,
+         311.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "2.00",
+        "bbox": [
+         323.2,
+         284.0,
+         356.4,
+         311.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "3.00",
+        "bbox": [
+         356.4,
+         284.0,
+         389.6,
+         311.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "7.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         389.6,
+         284.0,
+         422.4,
+         311.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "2.00",
+        "bbox": [
+         422.4,
+         284.0,
+         455.7,
+         311.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         455.7,
+         284.0,
+         488.7,
+         311.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         488.7,
+         284.0,
+         521.6,
+         311.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Hospitals > 50 beds",
+        "bbox": [
+         78.4,
+         311.6,
+         193.2,
+         332.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         193.2,
+         311.6,
+         197.4,
+         332.4
+        ]
+       },
+       {
+        "text": "2.50",
+        "fill": "#FFF2CC",
+        "bbox": [
+         197.4,
+         311.6,
+         220.0,
+         332.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         220.0,
+         311.6,
+         224.1,
+         332.4
+        ]
+       },
+       {
+        "text": "1.25",
+        "bbox": [
+         224.1,
+         311.6,
+         257.3,
+         332.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.25",
+        "bbox": [
+         257.3,
+         311.6,
+         290.4,
+         332.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         290.4,
+         311.6,
+         294.6,
+         332.4
+        ]
+       },
+       {
+        "text": "5.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         294.6,
+         311.6,
+         319.2,
+         332.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         319.2,
+         311.6,
+         323.2,
+         332.4
+        ]
+       },
+       {
+        "text": "2.50",
+        "bbox": [
+         323.2,
+         311.6,
+         356.4,
+         332.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "3.75",
+        "bbox": [
+         356.4,
+         311.6,
+         389.6,
+         332.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         389.6,
+         311.6,
+         393.8,
+         332.4
+        ]
+       },
+       {
+        "text": "8.75",
+        "fill": "#DDEBF7",
+        "bbox": [
+         393.8,
+         311.6,
+         418.4,
+         332.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         418.4,
+         311.6,
+         422.4,
+         332.4
+        ]
+       },
+       {
+        "text": "2.50",
+        "bbox": [
+         422.4,
+         311.6,
+         455.7,
+         332.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         455.7,
+         311.6,
+         488.7,
+         332.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         488.7,
+         311.6,
+         492.9,
+         332.4
+        ]
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         492.9,
+         311.6,
+         517.5,
+         332.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         517.5,
+         311.6,
+         521.6,
+         332.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Nursing college",
+        "bbox": [
+         78.4,
+         332.4,
+         193.2,
+         353.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         193.2,
+         332.4,
+         197.4,
+         353.6
+        ]
+       },
+       {
+        "text": "2.00",
+        "fill": "#FFF2CC",
+        "bbox": [
+         197.4,
+         332.4,
+         220.0,
+         353.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         220.0,
+         332.4,
+         224.1,
+         353.6
+        ]
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         224.1,
+         332.4,
+         257.3,
+         353.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         257.3,
+         332.4,
+         290.4,
+         353.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         290.4,
+         332.4,
+         294.6,
+         353.6
+        ]
+       },
+       {
+        "text": "4.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         294.6,
+         332.4,
+         319.2,
+         353.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         319.2,
+         332.4,
+         323.2,
+         353.6
+        ]
+       },
+       {
+        "text": "2.00",
+        "bbox": [
+         323.2,
+         332.4,
+         356.4,
+         353.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "3.00",
+        "bbox": [
+         356.4,
+         332.4,
+         389.6,
+         353.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         389.6,
+         332.4,
+         393.8,
+         353.6
+        ]
+       },
+       {
+        "text": "7.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         393.8,
+         332.4,
+         418.4,
+         353.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         418.4,
+         332.4,
+         422.4,
+         353.6
+        ]
+       },
+       {
+        "text": "2.00",
+        "bbox": [
+         422.4,
+         332.4,
+         455.7,
+         353.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         455.7,
+         332.4,
+         488.7,
+         353.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         488.7,
+         332.4,
+         492.9,
+         353.6
+        ]
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         492.9,
+         332.4,
+         517.5,
+         353.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         517.5,
+         332.4,
+         521.6,
+         353.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Medical College",
+        "bbox": [
+         78.4,
+         353.6,
+         193.2,
+         374.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         193.2,
+         353.6,
+         197.4,
+         374.4
+        ]
+       },
+       {
+        "text": "2.50",
+        "fill": "#FFF2CC",
+        "bbox": [
+         197.4,
+         353.6,
+         220.0,
+         374.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         220.0,
+         353.6,
+         224.1,
+         374.4
+        ]
+       },
+       {
+        "text": "1.25",
+        "bbox": [
+         224.1,
+         353.6,
+         257.3,
+         374.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "1.25",
+        "bbox": [
+         257.3,
+         353.6,
+         290.4,
+         374.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         290.4,
+         353.6,
+         294.6,
+         374.4
+        ]
+       },
+       {
+        "text": "5.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         294.6,
+         353.6,
+         319.2,
+         374.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         319.2,
+         353.6,
+         323.2,
+         374.4
+        ]
+       },
+       {
+        "text": "2.50",
+        "bbox": [
+         323.2,
+         353.6,
+         356.4,
+         374.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "3.75",
+        "bbox": [
+         356.4,
+         353.6,
+         389.6,
+         374.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         389.6,
+         353.6,
+         393.8,
+         374.4
+        ]
+       },
+       {
+        "text": "8.75",
+        "fill": "#DDEBF7",
+        "bbox": [
+         393.8,
+         353.6,
+         418.4,
+         374.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         418.4,
+         353.6,
+         422.4,
+         374.4
+        ]
+       },
+       {
+        "text": "2.50",
+        "bbox": [
+         422.4,
+         353.6,
+         455.7,
+         374.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         455.7,
+         353.6,
+         488.7,
+         374.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         488.7,
+         353.6,
+         492.9,
+         374.4
+        ]
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         492.9,
+         353.6,
+         517.5,
+         374.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         517.5,
+         353.6,
+         521.6,
+         374.4
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 3,
+   "gazettePage": 96,
+   "prose": "6.1.8 Basement\nThe permissibility of basement in hospital and healthcare building shall be as per paragraph 3.3.3 of the\nbuilding byelaws.\n6.2 Educational Institutions\n6.2.1 Permissibility\nPermission for construction of schools and educational institutions shall be as per the master plan zoning\nregulations.\n6.2.2 Minimum Plot Size\nThe minimum plot area (in layouts or in cases where plot area norms are not specified) for construction\nof educational institutions such as schools, colleges, technical institutions and university buildings shall\nbe as follows:\nHowever, in case of spatial norms (for minimum plot areas and land requirements based on student\nintake and specializations covered, minimum standards for play areas, playground and open spaces) for\nconstruction of schools, colleges and universities prescribed by Central Public Works Department\n(CPWD) or affiliated institutions like Uttar Pradesh State Education Board (UPSEB)/ Central Board for\nSchool Education (CBSE), Indian Certificate for Secondary Education (ICSE), All India Council for\nTechnical Education (AICTE), University Grants Commission (UGC), etc., differ from the above norms\nas defined by regulatory/affiliated agencies shall prevail. For example, minimum playground area (for\nClass 1-8 / 10 / 12) of 1000 sqm as prescribed by CBSE norms (amended time to time) shall prevail.\n6.2.3 Means of Access\nThe minimum width of the access road shall be as follows:\nNote: Nursery/Creche shall be permissible within 25 percent FAR in residential buildings.\n96",
+   "proseLines": [
+    {
+     "y": 74,
+     "text": "6.1.8 Basement"
+    },
+    {
+     "y": 93,
+     "text": "The permissibility of basement in hospital and healthcare building shall be as per paragraph 3.3.3 of the"
+    },
+    {
+     "y": 105,
+     "text": "building byelaws."
+    },
+    {
+     "y": 146,
+     "text": "6.2 Educational Institutions"
+    },
+    {
+     "y": 169,
+     "text": "6.2.1 Permissibility"
+    },
+    {
+     "y": 188,
+     "text": "Permission for construction of schools and educational institutions shall be as per the master plan zoning"
+    },
+    {
+     "y": 201,
+     "text": "regulations."
+    },
+    {
+     "y": 221,
+     "text": "6.2.2 Minimum Plot Size"
+    },
+    {
+     "y": 240,
+     "text": "The minimum plot area (in layouts or in cases where plot area norms are not specified) for construction"
+    },
+    {
+     "y": 253,
+     "text": "of educational institutions such as schools, colleges, technical institutions and university buildings shall"
+    },
+    {
+     "y": 266,
+     "text": "be as follows:"
+    },
+    {
+     "y": 433,
+     "text": "However, in case of spatial norms (for minimum plot areas and land requirements based on student"
+    },
+    {
+     "y": 446,
+     "text": "intake and specializations covered, minimum standards for play areas, playground and open spaces) for"
+    },
+    {
+     "y": 459,
+     "text": "construction of schools, colleges and universities prescribed by Central Public Works Department"
+    },
+    {
+     "y": 472,
+     "text": "(CPWD) or affiliated institutions like Uttar Pradesh State Education Board (UPSEB)/ Central Board for"
+    },
+    {
+     "y": 484,
+     "text": "School Education (CBSE), Indian Certificate for Secondary Education (ICSE), All India Council for"
+    },
+    {
+     "y": 497,
+     "text": "Technical Education (AICTE), University Grants Commission (UGC), etc., differ from the above norms"
+    },
+    {
+     "y": 510,
+     "text": "as defined by regulatory/affiliated agencies shall prevail. For example, minimum playground area (for"
+    },
+    {
+     "y": 523,
+     "text": "Class 1-8 / 10 / 12) of 1000 sqm as prescribed by CBSE norms (amended time to time) shall prevail."
+    },
+    {
+     "y": 544,
+     "text": "6.2.3 Means of Access"
+    },
+    {
+     "y": 563,
+     "text": "The minimum width of the access road shall be as follows:"
+    },
+    {
+     "y": 724,
+     "text": "Note: Nursery/Creche shall be permissible within 25 percent FAR in residential buildings."
+    },
+    {
+     "y": 775,
+     "text": "96"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.5,
+      280.1,
+      523.0,
+      419.2
+     ],
+     "rows": [
+      [
+       {
+        "text": "Sl.",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.5,
+         280.1,
+         98.7,
+         296.8
+        ]
+       },
+       {
+        "text": "Educational facility",
+        "fill": "#D9E2F3",
+        "bbox": [
+         98.7,
+         280.1,
+         367.1,
+         296.8
+        ]
+       },
+       {
+        "text": "Min. Plot area (sqm)",
+        "fill": "#D9E2F3",
+        "bbox": [
+         367.1,
+         280.1,
+         523.0,
+         296.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "1",
+        "bbox": [
+         72.5,
+         296.8,
+         98.7,
+         322.3
+        ]
+       },
+       {
+        "text": "Nursery",
+        "bbox": [
+         98.7,
+         296.8,
+         367.1,
+         322.3
+        ]
+       },
+       {
+        "text": "500",
+        "bbox": [
+         367.1,
+         296.8,
+         523.0,
+         322.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "2",
+        "bbox": [
+         72.5,
+         322.3,
+         98.7,
+         346.5
+        ]
+       },
+       {
+        "text": "Primary",
+        "bbox": [
+         98.7,
+         322.3,
+         367.1,
+         346.5
+        ]
+       },
+       {
+        "text": "1000",
+        "bbox": [
+         367.1,
+         322.3,
+         523.0,
+         346.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "3",
+        "bbox": [
+         72.5,
+         346.5,
+         98.7,
+         370.7
+        ]
+       },
+       {
+        "text": "Secondary / High School / Intercollege",
+        "bbox": [
+         98.7,
+         346.5,
+         367.1,
+         370.7
+        ]
+       },
+       {
+        "text": "2000",
+        "bbox": [
+         367.1,
+         346.5,
+         523.0,
+         370.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "4",
+        "bbox": [
+         72.5,
+         370.7,
+         98.7,
+         394.9
+        ]
+       },
+       {
+        "text": "Degree College / Technical Institution",
+        "bbox": [
+         98.7,
+         370.7,
+         367.1,
+         394.9
+        ]
+       },
+       {
+        "text": "5000",
+        "bbox": [
+         367.1,
+         370.7,
+         523.0,
+         394.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "5",
+        "bbox": [
+         72.5,
+         394.9,
+         98.7,
+         419.2
+        ]
+       },
+       {
+        "text": "Universities",
+        "bbox": [
+         98.7,
+         394.9,
+         367.1,
+         419.2
+        ]
+       },
+       {
+        "text": "20000",
+        "bbox": [
+         367.1,
+         394.9,
+         523.0,
+         419.2
+        ]
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      72.5,
+      589.7,
+      510.4,
+      722.9
+     ],
+     "rows": [
+      [
+       {
+        "text": "Sl.",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.5,
+         589.7,
+         98.7,
+         607.3
+        ]
+       },
+       {
+        "text": "Educational building",
+        "fill": "#D9E2F3",
+        "bbox": [
+         98.7,
+         589.7,
+         367.1,
+         607.3
+        ]
+       },
+       {
+        "text": "Min. Road Width (m)",
+        "fill": "#D9E2F3",
+        "bbox": [
+         367.1,
+         589.7,
+         510.4,
+         607.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "1",
+        "bbox": [
+         72.5,
+         607.3,
+         98.7,
+         629.8
+        ]
+       },
+       {
+        "text": "Nursery",
+        "bbox": [
+         98.7,
+         607.3,
+         367.1,
+         629.8
+        ]
+       },
+       {
+        "text": "9",
+        "bbox": [
+         367.1,
+         607.3,
+         510.4,
+         629.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "2",
+        "bbox": [
+         72.5,
+         629.8,
+         98.7,
+         658.9
+        ]
+       },
+       {
+        "text": "Primary School",
+        "bbox": [
+         98.7,
+         629.8,
+         367.1,
+         658.9
+        ]
+       },
+       {
+        "text": "9 \u2013 Built-up area\n12 \u2013 Non-Built-up area",
+        "bbox": [
+         367.1,
+         629.8,
+         510.4,
+         658.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "3",
+        "bbox": [
+         72.5,
+         658.9,
+         98.7,
+         680.2
+        ]
+       },
+       {
+        "text": "Secondary/ High School",
+        "bbox": [
+         98.7,
+         658.9,
+         367.1,
+         680.2
+        ]
+       },
+       {
+        "text": "12",
+        "bbox": [
+         367.1,
+         658.9,
+         510.4,
+         680.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": "4",
+        "bbox": [
+         72.5,
+         680.2,
+         98.7,
+         701.5
+        ]
+       },
+       {
+        "text": "Degree College/ Technical Institution",
+        "bbox": [
+         98.7,
+         680.2,
+         367.1,
+         701.5
+        ]
+       },
+       {
+        "text": "18",
+        "bbox": [
+         367.1,
+         680.2,
+         510.4,
+         701.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "5",
+        "bbox": [
+         72.5,
+         701.5,
+         98.7,
+         722.9
+        ]
+       },
+       {
+        "text": "Universities",
+        "bbox": [
+         98.7,
+         701.5,
+         367.1,
+         722.9
+        ]
+       },
+       {
+        "text": "24",
+        "bbox": [
+         367.1,
+         701.5,
+         510.4,
+         722.9
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 4,
+   "gazettePage": 97,
+   "prose": "6.2.4 Ground Coverage and FAR\nMaximum ground coverage after ensuring minimum setbacks and open space requirements, if any, shall\nbe permissible on plots for educational buildings.\nPurchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter 9.\nBasis approach road width, the maximum permissible FAR (including Base FAR) for education\nbuildings in built-up areas and the non-built-up areas shall be as follows:\nNote-1: BFAR-Base FAR; PFAR-Purchasable FAR; PPFAR-Premium Purchasable FAR; MFAR-Maximum Permissible FAR (including\nBFAR); UR-Unrestricted FAR.\nNote-2: In green buildings, additional FAR over and above the maximum permissible FAR shall be provided as per paragraph 9.3 of the\nbuilding byelaws.\n6.2.5 Maximum Building height\nThere is no restriction on the maximum building height. However, the maximum height of the building\nshall be governed by its distance from the protected monument/heritage site, airport funnel zone and\nother statutory restrictions.\n6.2.6 Minimum Setback\nMinimum setbacks for educational buildings shall be as per paragraph 3.2.4 of the building byelaws.\n6.2.7 Parking\n(i) Parking arrangements shall be as per paragraph 3.3.4 of the building byelaws.\n(ii) Standard parking provisions for education facilities shall be one ECS per 125 sqm of built-up area\nand 1 bus parking space i.e., 10 m x 5 m (50 sqm or 2 ECS open parking) for every 120 students.\nFurther, a designated place shall be earmarked for pick-up and drop-zones for cars and buses within the\ncampus plan.\nFor plots of area above 4000 sqm, a separate block for parking is permissible, within the campus.\nWithin the parking block, 10% of ground floor may be utilized for ancillary purposes (free from FAR)\nincidental to principal use.\n6.2.8 Basement\nThe permissibility of basement in educational buildings shall be as per paragraph 3.3.3 of the building\nbyelaws.\n97",
+   "proseLines": [
+    {
+     "y": 74,
+     "text": "6.2.4 Ground Coverage and FAR"
+    },
+    {
+     "y": 93,
+     "text": "Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any, shall"
+    },
+    {
+     "y": 105,
+     "text": "be permissible on plots for educational buildings."
+    },
+    {
+     "y": 131,
+     "text": "Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter 9."
+    },
+    {
+     "y": 144,
+     "text": "Basis approach road width, the maximum permissible FAR (including Base FAR) for education"
+    },
+    {
+     "y": 157,
+     "text": "buildings in built-up areas and the non-built-up areas shall be as follows:"
+    },
+    {
+     "y": 383,
+     "text": "Note-1: BFAR-Base FAR; PFAR-Purchasable FAR; PPFAR-Premium Purchasable FAR; MFAR-Maximum Permissible FAR (including"
+    },
+    {
+     "y": 393,
+     "text": "BFAR); UR-Unrestricted FAR."
+    },
+    {
+     "y": 411,
+     "text": "Note-2: In green buildings, additional FAR over and above the maximum permissible FAR shall be provided as per paragraph 9.3 of the"
+    },
+    {
+     "y": 421,
+     "text": "building byelaws."
+    },
+    {
+     "y": 451,
+     "text": "6.2.5 Maximum Building height"
+    },
+    {
+     "y": 470,
+     "text": "There is no restriction on the maximum building height. However, the maximum height of the building"
+    },
+    {
+     "y": 483,
+     "text": "shall be governed by its distance from the protected monument/heritage site, airport funnel zone and"
+    },
+    {
+     "y": 496,
+     "text": "other statutory restrictions."
+    },
+    {
+     "y": 517,
+     "text": "6.2.6 Minimum Setback"
+    },
+    {
+     "y": 536,
+     "text": "Minimum setbacks for educational buildings shall be as per paragraph 3.2.4 of the building byelaws."
+    },
+    {
+     "y": 570,
+     "text": "6.2.7 Parking"
+    },
+    {
+     "y": 589,
+     "text": "(i) Parking arrangements shall be as per paragraph 3.3.4 of the building byelaws."
+    },
+    {
+     "y": 608,
+     "text": "(ii) Standard parking provisions for education facilities shall be one ECS per 125 sqm of built-up area"
+    },
+    {
+     "y": 621,
+     "text": "and 1 bus parking space i.e., 10 m x 5 m (50 sqm or 2 ECS open parking) for every 120 students."
+    },
+    {
+     "y": 633,
+     "text": "Further, a designated place shall be earmarked for pick-up and drop-zones for cars and buses within the"
+    },
+    {
+     "y": 646,
+     "text": "campus plan."
+    },
+    {
+     "y": 665,
+     "text": "For plots of area above 4000 sqm, a separate block for parking is permissible, within the campus."
+    },
+    {
+     "y": 678,
+     "text": "Within the parking block, 10% of ground floor may be utilized for ancillary purposes (free from FAR)"
+    },
+    {
+     "y": 691,
+     "text": "incidental to principal use."
+    },
+    {
+     "y": 712,
+     "text": "6.2.8 Basement"
+    },
+    {
+     "y": 731,
+     "text": "The permissibility of basement in educational buildings shall be as per paragraph 3.3.3 of the building"
+    },
+    {
+     "y": 744,
+     "text": "byelaws."
+    },
+    {
+     "y": 775,
+     "text": "97"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.7,
+      183.2,
+      522.4,
+      372.8
+     ],
+     "rows": [
+      [
+       {
+        "text": "FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         183.2,
+         165.6,
+         199.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         165.6,
+         183.2,
+         193.5,
+         199.1
+        ]
+       },
+       {
+        "text": "Road Width (Upto 12m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         193.5,
+         183.2,
+         275.7,
+         199.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (12 -24m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         275.7,
+         183.2,
+         358.0,
+         199.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (24 - 45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         358.0,
+         183.2,
+         440.3,
+         199.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         440.3,
+         183.2,
+         522.4,
+         199.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         199.1,
+         165.6,
+         212.8
+        ]
+       },
+       {
+        "text": "BFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         165.6,
+         199.1,
+         193.5,
+         212.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         193.5,
+         199.1,
+         221.2,
+         204.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         221.2,
+         199.1,
+         248.7,
+         204.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         248.7,
+         199.1,
+         275.7,
+         204.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         275.7,
+         199.1,
+         303.5,
+         204.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         303.5,
+         199.1,
+         331.0,
+         204.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         331.0,
+         199.1,
+         358.0,
+         204.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         358.0,
+         199.1,
+         385.8,
+         204.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         385.8,
+         199.1,
+         413.4,
+         204.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         413.4,
+         199.1,
+         440.3,
+         204.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         440.3,
+         199.1,
+         468.1,
+         204.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         468.1,
+         199.1,
+         495.6,
+         204.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.6,
+         199.1,
+         522.4,
+         204.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         193.5,
+         204.3,
+         221.2,
+         218.3
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         221.2,
+         204.3,
+         248.7,
+         218.3
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         248.7,
+         204.3,
+         275.7,
+         218.3
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         275.7,
+         204.3,
+         303.5,
+         218.3
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         303.5,
+         204.3,
+         331.0,
+         218.3
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         331.0,
+         204.3,
+         358.0,
+         218.3
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         358.0,
+         204.3,
+         385.8,
+         218.3
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         385.8,
+         204.3,
+         413.4,
+         218.3
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         413.4,
+         204.3,
+         440.3,
+         218.3
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         440.3,
+         204.3,
+         468.1,
+         218.3
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         468.1,
+         204.3,
+         495.6,
+         218.3
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.6,
+         204.3,
+         522.4,
+         218.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Education Facilities",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         212.8,
+         165.6,
+         223.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         165.6,
+         212.8,
+         193.5,
+         223.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         193.5,
+         218.3,
+         221.2,
+         223.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         221.2,
+         218.3,
+         248.7,
+         223.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         248.7,
+         218.3,
+         275.7,
+         223.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         275.7,
+         218.3,
+         303.5,
+         223.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         303.5,
+         218.3,
+         331.0,
+         223.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         331.0,
+         218.3,
+         358.0,
+         223.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         358.0,
+         218.3,
+         385.8,
+         223.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         385.8,
+         218.3,
+         413.4,
+         223.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         413.4,
+         218.3,
+         440.3,
+         223.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         440.3,
+         218.3,
+         468.1,
+         223.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         468.1,
+         218.3,
+         495.6,
+         223.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.6,
+         218.3,
+         522.4,
+         223.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Built-up Area",
+        "fill": "#DCDDDF",
+        "bbox": [
+         72.7,
+         223.3,
+         165.6,
+         238.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         165.6,
+         223.3,
+         193.5,
+         238.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         193.5,
+         223.3,
+         221.2,
+         238.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         221.2,
+         223.3,
+         248.7,
+         238.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         248.7,
+         223.3,
+         275.7,
+         238.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         275.7,
+         223.3,
+         303.5,
+         238.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         303.5,
+         223.3,
+         331.0,
+         238.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         331.0,
+         223.3,
+         358.0,
+         238.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         358.0,
+         223.3,
+         385.8,
+         238.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         385.8,
+         223.3,
+         413.4,
+         238.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         413.4,
+         223.3,
+         440.3,
+         238.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         440.3,
+         223.3,
+         468.1,
+         238.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         468.1,
+         223.3,
+         495.6,
+         238.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         495.6,
+         223.3,
+         522.4,
+         238.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Schools (primary / nursery)",
+        "bbox": [
+         72.7,
+         238.9,
+         165.6,
+         254.7
+        ]
+       },
+       {
+        "text": "1.00",
+        "fill": "#FFF2CC",
+        "bbox": [
+         165.6,
+         238.9,
+         193.5,
+         254.7
+        ]
+       },
+       {
+        "text": "0.20",
+        "bbox": [
+         193.5,
+         238.9,
+         221.2,
+         254.7
+        ]
+       },
+       {
+        "text": "0.20",
+        "bbox": [
+         221.2,
+         238.9,
+         248.7,
+         254.7
+        ]
+       },
+       {
+        "text": "1.40",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         238.9,
+         275.7,
+         254.7
+        ]
+       },
+       {
+        "text": "0.50",
+        "bbox": [
+         275.7,
+         238.9,
+         303.5,
+         254.7
+        ]
+       },
+       {
+        "text": "0.50",
+        "bbox": [
+         303.5,
+         238.9,
+         331.0,
+         254.7
+        ]
+       },
+       {
+        "text": "2.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         238.9,
+         358.0,
+         254.7
+        ]
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         358.0,
+         238.9,
+         385.8,
+         254.7
+        ]
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         385.8,
+         238.9,
+         413.4,
+         254.7
+        ]
+       },
+       {
+        "text": "3.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.4,
+         238.9,
+         440.3,
+         254.7
+        ]
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         440.3,
+         238.9,
+         468.1,
+         254.7
+        ]
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         468.1,
+         238.9,
+         495.6,
+         254.7
+        ]
+       },
+       {
+        "text": "3.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         238.9,
+         522.4,
+         254.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Secondary / High School/\nIntercollege/ Technical\nInstitutes/ Degree Colleges\n/ Universities",
+        "bbox": [
+         72.7,
+         254.7,
+         165.6,
+         298.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         165.6,
+         254.7,
+         193.5,
+         268.8
+        ]
+       },
+       {
+        "text": "NA",
+        "bbox": [
+         193.5,
+         254.7,
+         221.2,
+         298.2
+        ]
+       },
+       {
+        "text": "NA",
+        "bbox": [
+         221.2,
+         254.7,
+         248.7,
+         298.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         254.7,
+         275.7,
+         268.8
+        ]
+       },
+       {
+        "text": "0.50",
+        "bbox": [
+         275.7,
+         254.7,
+         303.5,
+         298.2
+        ]
+       },
+       {
+        "text": "0.50",
+        "bbox": [
+         303.5,
+         254.7,
+         331.0,
+         298.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         254.7,
+         358.0,
+         268.8
+        ]
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         358.0,
+         254.7,
+         385.8,
+         298.2
+        ]
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         385.8,
+         254.7,
+         413.4,
+         298.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.4,
+         254.7,
+         440.3,
+         268.8
+        ]
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         440.3,
+         254.7,
+         468.1,
+         298.2
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         468.1,
+         254.7,
+         495.6,
+         298.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         254.7,
+         522.4,
+         268.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "1.00",
+        "fill": "#FFF2CC",
+        "bbox": [
+         165.6,
+         268.8,
+         193.5,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "NA",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         268.8,
+         275.7,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "2.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         268.8,
+         358.0,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "3.50",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.4,
+         268.8,
+         440.3,
+         284.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         268.8,
+         522.4,
+         284.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         165.6,
+         284.0,
+         193.5,
+         298.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         284.0,
+         275.7,
+         298.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         284.0,
+         358.0,
+         298.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.4,
+         284.0,
+         440.3,
+         298.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         284.0,
+         522.4,
+         298.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Non-Built-up Area",
+        "fill": "#DCDDDF",
+        "bbox": [
+         72.7,
+         298.2,
+         165.6,
+         313.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         165.6,
+         298.2,
+         193.5,
+         313.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         193.5,
+         298.2,
+         221.2,
+         313.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         221.2,
+         298.2,
+         248.7,
+         313.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         248.7,
+         298.2,
+         275.7,
+         313.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         275.7,
+         298.2,
+         303.5,
+         313.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         303.5,
+         298.2,
+         331.0,
+         313.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         331.0,
+         298.2,
+         358.0,
+         313.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         358.0,
+         298.2,
+         385.8,
+         313.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         385.8,
+         298.2,
+         413.4,
+         313.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         413.4,
+         298.2,
+         440.3,
+         313.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         440.3,
+         298.2,
+         468.1,
+         313.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         468.1,
+         298.2,
+         495.6,
+         313.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         495.6,
+         298.2,
+         522.4,
+         313.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Schools (primary / nursery)",
+        "bbox": [
+         72.7,
+         313.6,
+         165.6,
+         329.3
+        ]
+       },
+       {
+        "text": "1.20",
+        "fill": "#FFF2CC",
+        "bbox": [
+         165.6,
+         313.6,
+         193.5,
+         329.3
+        ]
+       },
+       {
+        "text": "0.20",
+        "bbox": [
+         193.5,
+         313.6,
+         221.2,
+         329.3
+        ]
+       },
+       {
+        "text": "0.20",
+        "bbox": [
+         221.2,
+         313.6,
+         248.7,
+         329.3
+        ]
+       },
+       {
+        "text": "1.40",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         313.6,
+         275.7,
+         329.3
+        ]
+       },
+       {
+        "text": "0.60",
+        "bbox": [
+         275.7,
+         313.6,
+         303.5,
+         329.3
+        ]
+       },
+       {
+        "text": "0.60",
+        "bbox": [
+         303.5,
+         313.6,
+         331.0,
+         329.3
+        ]
+       },
+       {
+        "text": "2.40",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         313.6,
+         358.0,
+         329.3
+        ]
+       },
+       {
+        "text": "1.20",
+        "bbox": [
+         358.0,
+         313.6,
+         385.8,
+         329.3
+        ]
+       },
+       {
+        "text": "1.20",
+        "bbox": [
+         385.8,
+         313.6,
+         413.4,
+         329.3
+        ]
+       },
+       {
+        "text": "3.60",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.4,
+         313.6,
+         440.3,
+         329.3
+        ]
+       },
+       {
+        "text": "1.20",
+        "bbox": [
+         440.3,
+         313.6,
+         468.1,
+         329.3
+        ]
+       },
+       {
+        "text": "1.20",
+        "bbox": [
+         468.1,
+         313.6,
+         495.6,
+         329.3
+        ]
+       },
+       {
+        "text": "3.60",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         313.6,
+         522.4,
+         329.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Secondary / High School/\nIntercollege/ Technical\nInstitutes/ Degree Colleges\n/ Universities",
+        "bbox": [
+         72.7,
+         329.3,
+         165.6,
+         372.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         165.6,
+         329.3,
+         193.5,
+         343.4
+        ]
+       },
+       {
+        "text": "NA",
+        "bbox": [
+         193.5,
+         329.3,
+         221.2,
+         372.8
+        ]
+       },
+       {
+        "text": "NA",
+        "bbox": [
+         221.2,
+         329.3,
+         248.7,
+         372.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         329.3,
+         275.7,
+         343.4
+        ]
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         275.7,
+         329.3,
+         303.5,
+         372.8
+        ]
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         303.5,
+         329.3,
+         331.0,
+         372.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         329.3,
+         358.0,
+         343.4
+        ]
+       },
+       {
+        "text": "2.00",
+        "bbox": [
+         358.0,
+         329.3,
+         385.8,
+         372.8
+        ]
+       },
+       {
+        "text": "3.00",
+        "bbox": [
+         385.8,
+         329.3,
+         413.4,
+         372.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.4,
+         329.3,
+         440.3,
+         343.4
+        ]
+       },
+       {
+        "text": "2.00",
+        "bbox": [
+         440.3,
+         329.3,
+         468.1,
+         372.8
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         468.1,
+         329.3,
+         495.6,
+         372.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         329.3,
+         522.4,
+         343.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "2.00",
+        "fill": "#FFF2CC",
+        "bbox": [
+         165.6,
+         343.4,
+         193.5,
+         358.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "NA",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         343.4,
+         275.7,
+         358.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "4.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         343.4,
+         358.0,
+         358.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "7.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.4,
+         343.4,
+         440.3,
+         358.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         343.4,
+         522.4,
+         358.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         165.6,
+         358.6,
+         193.5,
+         372.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         248.7,
+         358.6,
+         275.7,
+         372.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         331.0,
+         358.6,
+         358.0,
+         372.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         413.4,
+         358.6,
+         440.3,
+         372.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.6,
+         358.6,
+         522.4,
+         372.8
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 5,
+   "gazettePage": 98,
+   "prose": "6.3 Marriage Hall / Banquet/ Multi-purpose Hall\n6.3.1 Permissibility\nConstruction of Marriage Hall/ Banquet/ Multi-purpose Hall shall be permitted as per the Master Plan\nZoning Regulations.\n6.3.2 Minimum Plot Size\nMinimum plot size for the construction of marriage hall, banquet or a multi-purpose hall shall be 750\nsquare meters for built-up area and 1000 square meters for non-built-up area.\n6.3.3 Means of Access\nMinimum width of existing approach road for the construction of a marriage hall, banquet, multi-\npurpose hall or a banquet hall shall be based on plot size as follows:\n6.3.4 Ground Coverage and FAR\nMaximum ground coverage after ensuring minimum setbacks and open space requirements, if any, shall\nbe permissible on plots for educational buildings.\nPurchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter 9.\nBasis approach road width, the maximum permissible FAR (including Base FAR) for marriage\nhall/banquet/ multipurpose hall buildings in built-up areas and the non-built-up areas shall be as follows:\nNote-1: (i) BFAR \u2013 Base FAR, PFAR \u2013 Purchasable FAR, PPFAR \u2013 Premium Purchasable FAR, MFAR \u2013\nMaximum Permissible FAR including Base FAR, UR \u2013 Unrestricted\nNote-2: Within the permissible FAR limit, construction of rooms shall be allowed.\nIn green building, additional FAR over and above maximum permissible FAR shall be provided\nNote-3:\nas per paragraph 9.3 of the building byelaws.\n6.3.5 Maximum Building Height\nThere is no restriction on the maximum building height. However, the maximum height of the building\nshall be governed by its distance from the protected monument/heritage site, airport funnel zone and\nother statutory restrictions.\n98",
+   "proseLines": [
+    {
+     "y": 93,
+     "text": "6.3 Marriage Hall / Banquet/ Multi-purpose Hall"
+    },
+    {
+     "y": 116,
+     "text": "6.3.1 Permissibility"
+    },
+    {
+     "y": 135,
+     "text": "Construction of Marriage Hall/ Banquet/ Multi-purpose Hall shall be permitted as per the Master Plan"
+    },
+    {
+     "y": 148,
+     "text": "Zoning Regulations."
+    },
+    {
+     "y": 169,
+     "text": "6.3.2 Minimum Plot Size"
+    },
+    {
+     "y": 188,
+     "text": "Minimum plot size for the construction of marriage hall, banquet or a multi-purpose hall shall be 750"
+    },
+    {
+     "y": 201,
+     "text": "square meters for built-up area and 1000 square meters for non-built-up area."
+    },
+    {
+     "y": 221,
+     "text": "6.3.3 Means of Access"
+    },
+    {
+     "y": 240,
+     "text": "Minimum width of existing approach road for the construction of a marriage hall, banquet, multi-"
+    },
+    {
+     "y": 253,
+     "text": "purpose hall or a banquet hall shall be based on plot size as follows:"
+    },
+    {
+     "y": 357,
+     "text": "6.3.4 Ground Coverage and FAR"
+    },
+    {
+     "y": 377,
+     "text": "Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any, shall"
+    },
+    {
+     "y": 390,
+     "text": "be permissible on plots for educational buildings."
+    },
+    {
+     "y": 415,
+     "text": "Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter 9."
+    },
+    {
+     "y": 428,
+     "text": "Basis approach road width, the maximum permissible FAR (including Base FAR) for marriage"
+    },
+    {
+     "y": 441,
+     "text": "hall/banquet/ multipurpose hall buildings in built-up areas and the non-built-up areas shall be as follows:"
+    },
+    {
+     "y": 592,
+     "text": "Note-1: (i) BFAR \u2013 Base FAR, PFAR \u2013 Purchasable FAR, PPFAR \u2013 Premium Purchasable FAR, MFAR \u2013"
+    },
+    {
+     "y": 604,
+     "text": "Maximum Permissible FAR including Base FAR, UR \u2013 Unrestricted"
+    },
+    {
+     "y": 622,
+     "text": "Note-2: Within the permissible FAR limit, construction of rooms shall be allowed."
+    },
+    {
+     "y": 641,
+     "text": "In green building, additional FAR over and above maximum permissible FAR shall be provided"
+    },
+    {
+     "y": 642,
+     "text": "Note-3:"
+    },
+    {
+     "y": 654,
+     "text": "as per paragraph 9.3 of the building byelaws."
+    },
+    {
+     "y": 693,
+     "text": "6.3.5 Maximum Building Height"
+    },
+    {
+     "y": 712,
+     "text": "There is no restriction on the maximum building height. However, the maximum height of the building"
+    },
+    {
+     "y": 725,
+     "text": "shall be governed by its distance from the protected monument/heritage site, airport funnel zone and"
+    },
+    {
+     "y": 738,
+     "text": "other statutory restrictions."
+    },
+    {
+     "y": 775,
+     "text": "98"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.6,
+      279.5,
+      522.6,
+      336.0
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.6,
+         279.5,
+         77.7,
+         294.2
+        ]
+       },
+       {
+        "text": "Plot Size (sqm)",
+        "fill": "#D9E2F3",
+        "bbox": [
+         77.7,
+         279.5,
+         358.5,
+         294.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         358.5,
+         279.5,
+         366.0,
+         294.2
+        ]
+       },
+       {
+        "text": "Min. Road Width (m)",
+        "fill": "#D9E2F3",
+        "bbox": [
+         366.0,
+         279.5,
+         517.8,
+         294.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         517.8,
+         279.5,
+         522.6,
+         294.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": "750 - 3000",
+        "bbox": [
+         72.6,
+         294.2,
+         358.5,
+         314.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "18",
+        "bbox": [
+         358.5,
+         294.2,
+         522.6,
+         314.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "> 3000",
+        "bbox": [
+         72.6,
+         314.9,
+         358.5,
+         336.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "24",
+        "bbox": [
+         358.5,
+         314.9,
+         522.6,
+         336.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      72.6,
+      454.1,
+      522.6,
+      585.5
+     ],
+     "rows": [
+      [
+       {
+        "text": "FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.6,
+         454.1,
+         186.4,
+         474.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.4,
+         454.1,
+         220.4,
+         459.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         454.1,
+         323.3,
+         459.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.3,
+         454.1,
+         426.4,
+         459.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.4,
+         454.1,
+         522.6,
+         459.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.4,
+         459.7,
+         220.4,
+         474.8
+        ]
+       },
+       {
+        "text": "Road Width (=>18 - 24m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         459.7,
+         323.3,
+         474.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>24 - 45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.3,
+         459.7,
+         426.4,
+         474.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.4,
+         459.7,
+         522.6,
+         474.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.6,
+         474.8,
+         186.4,
+         482.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.4,
+         474.8,
+         220.4,
+         482.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         474.8,
+         254.8,
+         482.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         254.8,
+         474.8,
+         289.3,
+         482.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         289.3,
+         474.8,
+         323.3,
+         482.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.3,
+         474.8,
+         358.5,
+         482.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         358.5,
+         474.8,
+         392.3,
+         482.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         392.3,
+         474.8,
+         426.4,
+         482.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.4,
+         474.8,
+         460.9,
+         482.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         460.9,
+         474.8,
+         495.4,
+         482.0
+        ]
+       },
+       {
+        "text": "MFA",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.4,
+         474.8,
+         522.6,
+         487.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Community Buildings",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.6,
+         482.0,
+         186.4,
+         496.6
+        ]
+       },
+       {
+        "text": "BFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.4,
+         482.0,
+         220.4,
+         496.6
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         482.0,
+         254.8,
+         496.6
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         254.8,
+         482.0,
+         289.3,
+         496.6
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         289.3,
+         482.0,
+         323.3,
+         496.6
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.3,
+         482.0,
+         358.5,
+         496.6
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         358.5,
+         482.0,
+         392.3,
+         496.6
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         392.3,
+         482.0,
+         426.4,
+         496.6
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.4,
+         482.0,
+         460.9,
+         496.6
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         460.9,
+         482.0,
+         495.4,
+         496.6
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "R",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.4,
+         487.0,
+         522.6,
+         496.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         72.6,
+         496.6,
+         186.4,
+         502.9
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.4,
+         496.6,
+         220.4,
+         502.9
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         496.6,
+         254.8,
+         502.9
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         496.6,
+         289.3,
+         502.9
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.3,
+         496.6,
+         323.3,
+         502.9
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.3,
+         496.6,
+         358.5,
+         502.9
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         358.5,
+         496.6,
+         392.3,
+         502.9
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         496.6,
+         426.4,
+         502.9
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.4,
+         496.6,
+         460.9,
+         502.9
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         496.6,
+         495.4,
+         502.9
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         496.6,
+         522.6,
+         502.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Built-up Area",
+        "bbox": [
+         72.6,
+         502.9,
+         186.4,
+         512.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.4,
+         502.9,
+         220.4,
+         512.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         502.9,
+         254.8,
+         512.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         502.9,
+         289.3,
+         512.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.3,
+         502.9,
+         323.3,
+         512.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.3,
+         502.9,
+         358.5,
+         512.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         358.5,
+         502.9,
+         392.3,
+         512.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         502.9,
+         426.4,
+         512.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.4,
+         502.9,
+         460.9,
+         512.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         502.9,
+         495.4,
+         512.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         502.9,
+         522.6,
+         512.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         72.6,
+         512.5,
+         186.4,
+         517.6
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.4,
+         512.5,
+         220.4,
+         517.6
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         512.5,
+         254.8,
+         517.6
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         512.5,
+         289.3,
+         517.6
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.3,
+         512.5,
+         323.3,
+         517.6
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.3,
+         512.5,
+         358.5,
+         517.6
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         358.5,
+         512.5,
+         392.3,
+         517.6
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         512.5,
+         426.4,
+         517.6
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.4,
+         512.5,
+         460.9,
+         517.6
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         512.5,
+         495.4,
+         517.6
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         512.5,
+         522.6,
+         517.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Marriage hall/ Banquet\nHall/ Multipurpose Hall",
+        "bbox": [
+         72.6,
+         517.6,
+         186.4,
+         541.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.4,
+         517.6,
+         220.4,
+         524.4
+        ]
+       },
+       {
+        "text": "1.0",
+        "bbox": [
+         220.4,
+         517.6,
+         254.8,
+         541.7
+        ]
+       },
+       {
+        "text": "1.0",
+        "bbox": [
+         254.8,
+         517.6,
+         289.3,
+         541.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.3,
+         517.6,
+         323.3,
+         524.4
+        ]
+       },
+       {
+        "text": "2.0",
+        "bbox": [
+         323.3,
+         517.6,
+         358.5,
+         541.7
+        ]
+       },
+       {
+        "text": "3.0",
+        "bbox": [
+         358.5,
+         517.6,
+         392.3,
+         541.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         517.6,
+         426.4,
+         524.4
+        ]
+       },
+       {
+        "text": "2.0",
+        "bbox": [
+         426.4,
+         517.6,
+         460.9,
+         541.7
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         460.9,
+         517.6,
+         495.4,
+         541.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         517.6,
+         522.6,
+         524.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "2.0",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.4,
+         524.4,
+         220.4,
+         535.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "4.0",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.3,
+         524.4,
+         323.3,
+         535.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "7.0",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         524.4,
+         426.4,
+         535.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         524.4,
+         522.6,
+         535.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.4,
+         535.0,
+         220.4,
+         541.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.3,
+         535.0,
+         323.3,
+         541.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         535.0,
+         426.4,
+         541.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         535.0,
+         522.6,
+         541.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         72.6,
+         541.7,
+         186.4,
+         546.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.4,
+         541.7,
+         220.4,
+         546.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         541.7,
+         254.8,
+         546.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         541.7,
+         289.3,
+         546.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.3,
+         541.7,
+         323.3,
+         546.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.3,
+         541.7,
+         358.5,
+         546.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         358.5,
+         541.7,
+         392.3,
+         546.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         541.7,
+         426.4,
+         546.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.4,
+         541.7,
+         460.9,
+         546.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         541.7,
+         495.4,
+         546.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         541.7,
+         522.6,
+         546.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Non-Built-up Area",
+        "bbox": [
+         72.6,
+         546.7,
+         186.4,
+         556.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.4,
+         546.7,
+         220.4,
+         556.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         546.7,
+         254.8,
+         556.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         546.7,
+         289.3,
+         556.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.3,
+         546.7,
+         323.3,
+         556.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.3,
+         546.7,
+         358.5,
+         556.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         358.5,
+         546.7,
+         392.3,
+         556.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         546.7,
+         426.4,
+         556.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.4,
+         546.7,
+         460.9,
+         556.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         546.7,
+         495.4,
+         556.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         546.7,
+         522.6,
+         556.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         72.6,
+         556.3,
+         186.4,
+         561.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.4,
+         556.3,
+         220.4,
+         561.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         556.3,
+         254.8,
+         561.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         556.3,
+         289.3,
+         561.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.3,
+         556.3,
+         323.3,
+         561.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.3,
+         556.3,
+         358.5,
+         561.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         358.5,
+         556.3,
+         392.3,
+         561.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         556.3,
+         426.4,
+         561.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.4,
+         556.3,
+         460.9,
+         561.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         556.3,
+         495.4,
+         561.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         556.3,
+         522.6,
+         561.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Marriage hall/ Banquet\nHall/ Multipurpose Hall",
+        "bbox": [
+         72.6,
+         561.4,
+         186.4,
+         585.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.4,
+         561.4,
+         220.4,
+         568.2
+        ]
+       },
+       {
+        "text": "1.5",
+        "bbox": [
+         220.4,
+         561.4,
+         254.8,
+         585.5
+        ]
+       },
+       {
+        "text": "1.5",
+        "bbox": [
+         254.8,
+         561.4,
+         289.3,
+         585.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.3,
+         561.4,
+         323.3,
+         568.2
+        ]
+       },
+       {
+        "text": "3.0",
+        "bbox": [
+         323.3,
+         561.4,
+         358.5,
+         585.5
+        ]
+       },
+       {
+        "text": "4.5",
+        "bbox": [
+         358.5,
+         561.4,
+         392.3,
+         585.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         561.4,
+         426.4,
+         568.2
+        ]
+       },
+       {
+        "text": "3.0",
+        "bbox": [
+         426.4,
+         561.4,
+         460.9,
+         585.5
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         460.9,
+         561.4,
+         495.4,
+         585.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         561.4,
+         522.6,
+         568.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "3.0",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.4,
+         568.2,
+         220.4,
+         578.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "6.0",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.3,
+         568.2,
+         323.3,
+         578.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "10.5",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         568.2,
+         426.4,
+         578.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         568.2,
+         522.6,
+         578.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.4,
+         578.8,
+         220.4,
+         585.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.3,
+         578.8,
+         323.3,
+         585.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         578.8,
+         426.4,
+         585.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         578.8,
+         522.6,
+         585.5
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 6,
+   "gazettePage": 99,
+   "prose": "6.3.6 Minimum Setback\nMinimum setbacks for of marriage hall/ banquet hall/ multipurpose hall up shall be as per paragraph\n3.2.4 of the building byelaws.\n6.3.7 Parking Requirements\n(i) Parking requirements for marriage hall/ banquet hall/ multipurpose hall shall be as per paragraph\n3.3.4 of the building byelaws.\n(ii) The parking requirement for marriage hall/ banquet hall/ multipurpose hall shall be 2.0 Equivalent\nCar Space per 100 sqm of the floor area. Parking shall be calculated on the maximum permissible floor\narea of the plot.\n6.3.8 Basement\nThe permissibility of basement shall be as per paragraph 3.3.3 of the building byelaws.\n6.4 Auditorium and Convention Centre\n6.4.1 Permissibility\nAuditoriums and convention centres shall be permitted as per the master plan zoning regulations.\n6.4.2 Means of Access\nThe proposed site for auditorium or a convention centre shall be located on a minimum 18-meter-wide\nexisting road in the built-up area and on a minimum 24-meter-wide existing road in the non-built-up\narea.\n6.4.3 Minimum Plot Area\nMinimum plot area for the construction of auditorium or a convention centre shall be based on width\nof the approach road as follows:\n6.4.4 Ground Coverage and FAR\n(i) Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any,\nshall be permissible on plots for auditorium and convention centre.\n(ii) Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter\n9. Basis approach road width, the maximum permissible FAR (including Base FAR) for Auditorium\nand Convention centres in built-up areas and the non-built-up areas shall be as follows:\n99",
+   "proseLines": [
+    {
+     "y": 74,
+     "text": "6.3.6 Minimum Setback"
+    },
+    {
+     "y": 93,
+     "text": "Minimum setbacks for of marriage hall/ banquet hall/ multipurpose hall up shall be as per paragraph"
+    },
+    {
+     "y": 105,
+     "text": "3.2.4 of the building byelaws."
+    },
+    {
+     "y": 126,
+     "text": "6.3.7 Parking Requirements"
+    },
+    {
+     "y": 145,
+     "text": "(i) Parking requirements for marriage hall/ banquet hall/ multipurpose hall shall be as per paragraph"
+    },
+    {
+     "y": 158,
+     "text": "3.3.4 of the building byelaws."
+    },
+    {
+     "y": 177,
+     "text": "(ii) The parking requirement for marriage hall/ banquet hall/ multipurpose hall shall be 2.0 Equivalent"
+    },
+    {
+     "y": 190,
+     "text": "Car Space per 100 sqm of the floor area. Parking shall be calculated on the maximum permissible floor"
+    },
+    {
+     "y": 203,
+     "text": "area of the plot."
+    },
+    {
+     "y": 224,
+     "text": "6.3.8 Basement"
+    },
+    {
+     "y": 243,
+     "text": "The permissibility of basement shall be as per paragraph 3.3.3 of the building byelaws."
+    },
+    {
+     "y": 277,
+     "text": "6.4 Auditorium and Convention Centre"
+    },
+    {
+     "y": 300,
+     "text": "6.4.1 Permissibility"
+    },
+    {
+     "y": 319,
+     "text": "Auditoriums and convention centres shall be permitted as per the master plan zoning regulations."
+    },
+    {
+     "y": 340,
+     "text": "6.4.2 Means of Access"
+    },
+    {
+     "y": 359,
+     "text": "The proposed site for auditorium or a convention centre shall be located on a minimum 18-meter-wide"
+    },
+    {
+     "y": 372,
+     "text": "existing road in the built-up area and on a minimum 24-meter-wide existing road in the non-built-up"
+    },
+    {
+     "y": 385,
+     "text": "area."
+    },
+    {
+     "y": 419,
+     "text": "6.4.3 Minimum Plot Area"
+    },
+    {
+     "y": 438,
+     "text": "Minimum plot area for the construction of auditorium or a convention centre shall be based on width"
+    },
+    {
+     "y": 450,
+     "text": "of the approach road as follows:"
+    },
+    {
+     "y": 562,
+     "text": "6.4.4 Ground Coverage and FAR"
+    },
+    {
+     "y": 581,
+     "text": "(i) Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any,"
+    },
+    {
+     "y": 594,
+     "text": "shall be permissible on plots for auditorium and convention centre."
+    },
+    {
+     "y": 613,
+     "text": "(ii) Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter"
+    },
+    {
+     "y": 625,
+     "text": "9. Basis approach road width, the maximum permissible FAR (including Base FAR) for Auditorium"
+    },
+    {
+     "y": 638,
+     "text": "and Convention centres in built-up areas and the non-built-up areas shall be as follows:"
+    },
+    {
+     "y": 775,
+     "text": "99"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.6,
+      476.3,
+      522.7,
+      540.2
+     ],
+     "rows": [
+      [
+       {
+        "text": "Road Width (m)",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.6,
+         476.3,
+         236.2,
+         497.3
+        ]
+       },
+       {
+        "text": "Min. Plot Area (sqm)",
+        "fill": "#D9E2F3",
+        "bbox": [
+         236.2,
+         476.3,
+         522.7,
+         497.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "18",
+        "bbox": [
+         72.6,
+         497.3,
+         236.2,
+         518.3
+        ]
+       },
+       {
+        "text": "1500",
+        "bbox": [
+         236.2,
+         497.3,
+         522.7,
+         518.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "24",
+        "bbox": [
+         72.6,
+         518.3,
+         236.2,
+         540.2
+        ]
+       },
+       {
+        "text": "2000",
+        "bbox": [
+         236.2,
+         518.3,
+         522.7,
+         540.2
+        ]
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      72.6,
+      658.8,
+      522.7,
+      756.6
+     ],
+     "rows": [
+      [
+       {
+        "text": "FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.6,
+         658.8,
+         186.3,
+         673.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.3,
+         658.8,
+         220.4,
+         673.0
+        ]
+       },
+       {
+        "text": "Road Width (=>18 -24m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         658.8,
+         323.4,
+         673.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>24 - 45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.4,
+         658.8,
+         426.5,
+         673.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.5,
+         658.8,
+         522.7,
+         673.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.6,
+         673.0,
+         186.3,
+         679.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.3,
+         673.0,
+         220.4,
+         679.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         673.0,
+         323.4,
+         679.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.4,
+         673.0,
+         426.5,
+         679.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.5,
+         673.0,
+         522.7,
+         679.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Auditorium/",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.6,
+         679.2,
+         186.3,
+         686.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.3,
+         679.2,
+         220.4,
+         686.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         679.2,
+         254.8,
+         686.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         254.8,
+         679.2,
+         289.2,
+         686.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         289.2,
+         679.2,
+         323.4,
+         686.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.4,
+         679.2,
+         357.9,
+         686.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         357.9,
+         679.2,
+         392.3,
+         686.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         392.3,
+         679.2,
+         426.5,
+         686.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.5,
+         679.2,
+         460.9,
+         686.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         460.9,
+         679.2,
+         495.4,
+         686.1
+        ]
+       },
+       {
+        "text": "MFA",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.4,
+         679.2,
+         522.7,
+         686.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Convention Centre",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.6,
+         686.1,
+         186.3,
+         699.9
+        ]
+       },
+       {
+        "text": "BFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.3,
+         686.1,
+         220.4,
+         699.9
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         686.1,
+         254.8,
+         699.9
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         254.8,
+         686.1,
+         289.2,
+         699.9
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         289.2,
+         686.1,
+         323.4,
+         699.9
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.4,
+         686.1,
+         357.9,
+         699.9
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         357.9,
+         686.1,
+         392.3,
+         699.9
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         392.3,
+         686.1,
+         426.5,
+         699.9
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.5,
+         686.1,
+         460.9,
+         699.9
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         460.9,
+         686.1,
+         495.4,
+         699.9
+        ]
+       },
+       {
+        "text": "R",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.4,
+         686.1,
+         522.7,
+         699.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         72.6,
+         699.9,
+         186.3,
+         706.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.3,
+         699.9,
+         220.4,
+         706.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         699.9,
+         254.8,
+         706.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         699.9,
+         289.2,
+         706.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.2,
+         699.9,
+         323.4,
+         706.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.4,
+         699.9,
+         357.9,
+         706.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         357.9,
+         699.9,
+         392.3,
+         706.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         699.9,
+         426.5,
+         706.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.5,
+         699.9,
+         460.9,
+         706.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         699.9,
+         495.4,
+         706.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         699.9,
+         522.7,
+         706.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         72.6,
+         706.1,
+         186.3,
+         715.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.3,
+         706.1,
+         220.4,
+         715.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         706.1,
+         254.8,
+         715.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         706.1,
+         289.2,
+         715.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.2,
+         706.1,
+         323.4,
+         715.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.4,
+         706.1,
+         357.9,
+         715.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         357.9,
+         706.1,
+         392.3,
+         715.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         706.1,
+         426.5,
+         715.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.5,
+         706.1,
+         460.9,
+         715.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         706.1,
+         495.4,
+         715.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         706.1,
+         522.7,
+         715.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         72.6,
+         715.8,
+         186.3,
+         720.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.3,
+         715.8,
+         220.4,
+         720.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         715.8,
+         254.8,
+         720.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         715.8,
+         289.2,
+         720.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.2,
+         715.8,
+         323.4,
+         720.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.4,
+         715.8,
+         357.9,
+         720.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         357.9,
+         715.8,
+         392.3,
+         720.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         715.8,
+         426.5,
+         720.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.5,
+         715.8,
+         460.9,
+         720.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         715.8,
+         495.4,
+         720.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         715.8,
+         522.7,
+         720.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Auditorium or a\nConvention Centre\n(Built-up area)",
+        "bbox": [
+         72.6,
+         720.8,
+         186.3,
+         756.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.3,
+         720.8,
+         220.4,
+         733.5
+        ]
+       },
+       {
+        "text": "1.0",
+        "bbox": [
+         220.4,
+         720.8,
+         254.8,
+         756.6
+        ]
+       },
+       {
+        "text": "1.0",
+        "bbox": [
+         254.8,
+         720.8,
+         289.2,
+         756.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.2,
+         720.8,
+         323.4,
+         733.5
+        ]
+       },
+       {
+        "text": "2.0",
+        "bbox": [
+         323.4,
+         720.8,
+         357.9,
+         756.6
+        ]
+       },
+       {
+        "text": "3.0",
+        "bbox": [
+         357.9,
+         720.8,
+         392.3,
+         756.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         720.8,
+         426.5,
+         733.5
+        ]
+       },
+       {
+        "text": "2.0",
+        "bbox": [
+         426.5,
+         720.8,
+         460.9,
+         756.6
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         460.9,
+         720.8,
+         495.4,
+         756.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         720.8,
+         522.7,
+         733.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "2.0",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.3,
+         733.5,
+         220.4,
+         744.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "4.0",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.2,
+         733.5,
+         323.4,
+         744.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "7.0",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         733.5,
+         426.5,
+         744.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         733.5,
+         522.7,
+         744.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.3,
+         744.0,
+         220.4,
+         756.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.2,
+         744.0,
+         323.4,
+         756.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         744.0,
+         426.5,
+         756.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         744.0,
+         522.7,
+         756.6
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 7,
+   "gazettePage": 100,
+   "prose": "Note-1:\nBFAR \u2013 Base FAR, PFAR \u2013 Purchasable FAR, PPFAR \u2013 Premium Purchasable FAR, MFAR \u2013\nMaximum Permissible FAR including Base FAR, UR \u2013 Unrestricted\nNote-2: Other ancillary uses such as commercial, hotel, office, entertainment, training centre,\ncommunity facilities, etc., are permissible.\nIn green building, additional FAR over and above maximum permissible FAR shall be provided\nNote-3:\nas per paragraph 9.3 of the building byelaws.\n6.4.5 Minimum Setback\nMinimum setbacks for auditorium or a convention centre shall be as per paragraph 3.2.4 of the building\nbyelaws.\n6.4.6 Parking Requirements\n(i) Parking requirements for auditorium or a convention centre shall be as per paragraph 3.3.4 of the\nbuilding byelaws.\n(ii) The parking requirement for auditorium or convention centre shall be 1 ECS / 10 seat for the\nauditorium space and additional parking requirement for attached ancillary commercial activities shall\nbe 2 ECS / 100 sqm of utilized floor area.\nFor plots of area above 4000 sqm, a separate block for parking is permissible, within the campus. Within\nthe parking block, 10% of ground floor may be utilized for commercial purposes (free from FAR)\nincidental to principal use.\n6.4.7 Basement\nThe permissibility of basement in auditorium or convention centre shall be as per paragraph 3.3.3 of\nthe building byelaws.\n100",
+   "proseLines": [
+    {
+     "y": 178,
+     "text": "Note-1:"
+    },
+    {
+     "y": 179,
+     "text": "BFAR \u2013 Base FAR, PFAR \u2013 Purchasable FAR, PPFAR \u2013 Premium Purchasable FAR, MFAR \u2013"
+    },
+    {
+     "y": 191,
+     "text": "Maximum Permissible FAR including Base FAR, UR \u2013 Unrestricted"
+    },
+    {
+     "y": 208,
+     "text": "Note-2: Other ancillary uses such as commercial, hotel, office, entertainment, training centre,"
+    },
+    {
+     "y": 221,
+     "text": "community facilities, etc., are permissible."
+    },
+    {
+     "y": 240,
+     "text": "In green building, additional FAR over and above maximum permissible FAR shall be provided"
+    },
+    {
+     "y": 241,
+     "text": "Note-3:"
+    },
+    {
+     "y": 253,
+     "text": "as per paragraph 9.3 of the building byelaws."
+    },
+    {
+     "y": 274,
+     "text": "6.4.5 Minimum Setback"
+    },
+    {
+     "y": 293,
+     "text": "Minimum setbacks for auditorium or a convention centre shall be as per paragraph 3.2.4 of the building"
+    },
+    {
+     "y": 306,
+     "text": "byelaws."
+    },
+    {
+     "y": 340,
+     "text": "6.4.6 Parking Requirements"
+    },
+    {
+     "y": 359,
+     "text": "(i) Parking requirements for auditorium or a convention centre shall be as per paragraph 3.3.4 of the"
+    },
+    {
+     "y": 371,
+     "text": "building byelaws."
+    },
+    {
+     "y": 390,
+     "text": "(ii) The parking requirement for auditorium or convention centre shall be 1 ECS / 10 seat for the"
+    },
+    {
+     "y": 403,
+     "text": "auditorium space and additional parking requirement for attached ancillary commercial activities shall"
+    },
+    {
+     "y": 416,
+     "text": "be 2 ECS / 100 sqm of utilized floor area."
+    },
+    {
+     "y": 435,
+     "text": "For plots of area above 4000 sqm, a separate block for parking is permissible, within the campus. Within"
+    },
+    {
+     "y": 448,
+     "text": "the parking block, 10% of ground floor may be utilized for commercial purposes (free from FAR)"
+    },
+    {
+     "y": 461,
+     "text": "incidental to principal use."
+    },
+    {
+     "y": 482,
+     "text": "6.4.7 Basement"
+    },
+    {
+     "y": 501,
+     "text": "The permissibility of basement in auditorium or convention centre shall be as per paragraph 3.3.3 of"
+    },
+    {
+     "y": 514,
+     "text": "the building byelaws."
+    },
+    {
+     "y": 775,
+     "text": "100"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      73.0,
+      71.4,
+      522.3,
+      170.9
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         73.0,
+         71.4,
+         186.3,
+         76.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.3,
+         71.4,
+         220.4,
+         76.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         71.4,
+         323.4,
+         76.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.4,
+         71.4,
+         426.5,
+         76.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.5,
+         71.4,
+         522.3,
+         76.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         73.0,
+         76.7,
+         186.3,
+         87.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.3,
+         76.7,
+         220.4,
+         87.3
+        ]
+       },
+       {
+        "text": "Road Width (=>18 -24m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         76.7,
+         323.4,
+         87.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>24 - 45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.4,
+         76.7,
+         426.5,
+         87.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.5,
+         76.7,
+         522.3,
+         87.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         73.0,
+         87.3,
+         186.3,
+         93.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.3,
+         87.3,
+         220.4,
+         93.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         87.3,
+         323.4,
+         93.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.4,
+         87.3,
+         426.5,
+         93.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.5,
+         87.3,
+         522.3,
+         93.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Auditorium/",
+        "fill": "#DBE5F1",
+        "bbox": [
+         73.0,
+         93.5,
+         186.3,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.3,
+         93.5,
+         220.4,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         93.5,
+         254.8,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         254.8,
+         93.5,
+         289.2,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         289.2,
+         93.5,
+         323.4,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.4,
+         93.5,
+         357.9,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         357.9,
+         93.5,
+         392.3,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         392.3,
+         93.5,
+         426.5,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.5,
+         93.5,
+         460.9,
+         100.3
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         460.9,
+         93.5,
+         495.4,
+         100.3
+        ]
+       },
+       {
+        "text": "MFA",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.4,
+         93.5,
+         522.3,
+         100.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Convention Centre",
+        "fill": "#DBE5F1",
+        "bbox": [
+         73.0,
+         100.3,
+         186.3,
+         114.1
+        ]
+       },
+       {
+        "text": "BFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         186.3,
+         100.3,
+         220.4,
+         114.1
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         220.4,
+         100.3,
+         254.8,
+         114.1
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         254.8,
+         100.3,
+         289.2,
+         114.1
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         289.2,
+         100.3,
+         323.4,
+         114.1
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         323.4,
+         100.3,
+         357.9,
+         114.1
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         357.9,
+         100.3,
+         392.3,
+         114.1
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         392.3,
+         100.3,
+         426.5,
+         114.1
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         426.5,
+         100.3,
+         460.9,
+         114.1
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         460.9,
+         100.3,
+         495.4,
+         114.1
+        ]
+       },
+       {
+        "text": "R",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.4,
+         100.3,
+         522.3,
+         114.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         73.0,
+         114.1,
+         186.3,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.3,
+         114.1,
+         220.4,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         114.1,
+         254.8,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         114.1,
+         289.2,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.2,
+         114.1,
+         323.4,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.4,
+         114.1,
+         357.9,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         357.9,
+         114.1,
+         392.3,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         114.1,
+         426.5,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.5,
+         114.1,
+         460.9,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         114.1,
+         495.4,
+         120.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         114.1,
+         522.3,
+         120.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         73.0,
+         120.4,
+         186.3,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.3,
+         120.4,
+         220.4,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         120.4,
+         254.8,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         120.4,
+         289.2,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.2,
+         120.4,
+         323.4,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.4,
+         120.4,
+         357.9,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         357.9,
+         120.4,
+         392.3,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         120.4,
+         426.5,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.5,
+         120.4,
+         460.9,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         120.4,
+         495.4,
+         130.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         120.4,
+         522.3,
+         130.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         73.0,
+         130.0,
+         186.3,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         186.3,
+         130.0,
+         220.4,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         220.4,
+         130.0,
+         254.8,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         254.8,
+         130.0,
+         289.2,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         289.2,
+         130.0,
+         323.4,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         323.4,
+         130.0,
+         357.9,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         357.9,
+         130.0,
+         392.3,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         392.3,
+         130.0,
+         426.5,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         426.5,
+         130.0,
+         460.9,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         460.9,
+         130.0,
+         495.4,
+         135.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         495.4,
+         130.0,
+         522.3,
+         135.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Auditorium or a\nConvention Centre\n(Non-built-up area)",
+        "bbox": [
+         73.0,
+         135.1,
+         186.3,
+         170.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.3,
+         135.1,
+         220.4,
+         147.8
+        ]
+       },
+       {
+        "text": "1.5",
+        "bbox": [
+         220.4,
+         135.1,
+         254.8,
+         170.9
+        ]
+       },
+       {
+        "text": "1.5",
+        "bbox": [
+         254.8,
+         135.1,
+         289.2,
+         170.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.2,
+         135.1,
+         323.4,
+         147.8
+        ]
+       },
+       {
+        "text": "3.0",
+        "bbox": [
+         323.4,
+         135.1,
+         357.9,
+         170.9
+        ]
+       },
+       {
+        "text": "4.5",
+        "bbox": [
+         357.9,
+         135.1,
+         392.3,
+         170.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         135.1,
+         426.5,
+         147.8
+        ]
+       },
+       {
+        "text": "3.0",
+        "bbox": [
+         426.5,
+         135.1,
+         460.9,
+         170.9
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         460.9,
+         135.1,
+         495.4,
+         170.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         135.1,
+         522.3,
+         147.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "3.0",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.3,
+         147.8,
+         220.4,
+         158.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "6.0",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.2,
+         147.8,
+         323.4,
+         158.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "10.5",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         147.8,
+         426.5,
+         158.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         147.8,
+         522.3,
+         158.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         186.3,
+         158.3,
+         220.4,
+         170.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         289.2,
+         158.3,
+         323.4,
+         170.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         392.3,
+         158.3,
+         426.5,
+         170.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         495.4,
+         158.3,
+         522.3,
+         170.9
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  }
+ ]
+}

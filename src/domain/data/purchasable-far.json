@@ -1,0 +1,1736 @@
+{
+ "identity": "MFAR = BFAR + PFAR + PPFAR",
+ "clauses": "4.2.8, 4.4, 5.1.4, 5.2.5, 5.3.5, 5.4.4",
+ "generatedBy": "tools/extract-purchasable-far.py",
+ "rows": [
+  {
+   "id": "ch04-p78-group-housing-built_up",
+   "chapter": "04",
+   "gazettePage": 78,
+   "useType": "Group Housing",
+   "areaType": "built_up",
+   "baseFar": 1.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": 0.3,
+     "premiumPurchasable": 0.3,
+     "maxFar": 2.1
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.75,
+     "premiumPurchasable": 0.75,
+     "maxFar": 3.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 2.25,
+     "maxFar": 5.25
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch04-p78-group-housing-non_built_up",
+   "chapter": "04",
+   "gazettePage": 78,
+   "useType": "Group Housing",
+   "areaType": "non_built_up",
+   "baseFar": 2.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": 0.5,
+     "premiumPurchasable": 0.5,
+     "maxFar": 3.5
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.25,
+     "premiumPurchasable": 1.25,
+     "maxFar": 5.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.5,
+     "premiumPurchasable": 3.75,
+     "maxFar": 8.75
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch04-p82-group-housing-built-up-area-built_up-lt18m",
+   "chapter": "04",
+   "gazettePage": 82,
+   "useType": "Group Housing (Built-up Area)",
+   "areaType": "built_up",
+   "baseFar": 2.0,
+   "baseFarAppliesWhen": "<18m",
+   "bands": [
+    {
+     "label": "< 18m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 18.0,
+     "purchasable": 0.2,
+     "premiumPurchasable": 0.2,
+     "maxFar": 2.4
+    },
+    {
+     "label": "\u226518 -24m",
+     "overMoreThan": 18.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.0,
+     "maxFar": 2.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.0,
+     "premiumPurchasable": 3.0,
+     "maxFar": 7.0
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch04-p82-group-housing-built-up-area-built_up-ge18m",
+   "chapter": "04",
+   "gazettePage": 82,
+   "useType": "Group Housing (Built-up Area)",
+   "areaType": "built_up",
+   "baseFar": 2.25,
+   "baseFarAppliesWhen": "\u226518m",
+   "bands": [
+    {
+     "label": "< 18m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 18.0,
+     "purchasable": 0.23,
+     "premiumPurchasable": 0.23,
+     "maxFar": 2.71
+    },
+    {
+     "label": "\u226518 -24m",
+     "overMoreThan": 18.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.125,
+     "premiumPurchasable": 1.125,
+     "maxFar": 4.5
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.25,
+     "premiumPurchasable": 3.38,
+     "maxFar": 7.88
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.25,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch04-p82-group-housing-non-built-up-area-non_built_up",
+   "chapter": "04",
+   "gazettePage": 82,
+   "useType": "Group Housing (Non-Built-up Area)",
+   "areaType": "non_built_up",
+   "baseFar": 3.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "< 18m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 18.0,
+     "purchasable": 0.3,
+     "premiumPurchasable": 0.3,
+     "maxFar": 3.6
+    },
+    {
+     "label": "\u226518 -24m",
+     "overMoreThan": 18.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 1.5,
+     "maxFar": 6.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 3.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 3.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch05-p84-bazaar-street-built_up",
+   "chapter": "05",
+   "gazettePage": 84,
+   "useType": "Bazaar Street",
+   "areaType": "built_up",
+   "baseFar": 1.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Up to 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 1.5
+    },
+    {
+     "label": ">12 \u2013 24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.75,
+     "premiumPurchasable": 0.75,
+     "maxFar": 3.0
+    },
+    {
+     "label": ">24 \u2013 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 2.25,
+     "maxFar": 5.25
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch05-p84-bazaar-street-non_built_up",
+   "chapter": "05",
+   "gazettePage": 84,
+   "useType": "Bazaar Street",
+   "areaType": "non_built_up",
+   "baseFar": 1.75,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Up to 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 1.75
+    },
+    {
+     "label": ">12 \u2013 24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.9,
+     "premiumPurchasable": 0.9,
+     "maxFar": 3.6
+    },
+    {
+     "label": ">24 \u2013 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.75,
+     "premiumPurchasable": 2.6,
+     "maxFar": 6.1
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.75,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch05-p86-comm-units-up-to100-sqm-built_up",
+   "chapter": "05",
+   "gazettePage": 86,
+   "useType": "Comm. Units up to100 sqm",
+   "areaType": "built_up",
+   "baseFar": 1.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": 0.3,
+     "premiumPurchasable": 0.3,
+     "maxFar": 2.1
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.75,
+     "premiumPurchasable": 0.75,
+     "maxFar": 3.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 2.25,
+     "maxFar": 5.25
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch05-p86-comm-units-gt100-sqm-built_up",
+   "chapter": "05",
+   "gazettePage": 86,
+   "useType": "Comm. Units >100 sqm",
+   "areaType": "built_up",
+   "baseFar": 1.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 1.5
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.75,
+     "premiumPurchasable": 0.75,
+     "maxFar": 3.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 2.25,
+     "maxFar": 5.25
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch05-p86-shopping-malls-built_up",
+   "chapter": "05",
+   "gazettePage": 86,
+   "useType": "Shopping malls",
+   "areaType": "built_up",
+   "baseFar": 2.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 2.0
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.0,
+     "maxFar": 4.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.0,
+     "premiumPurchasable": 3.0,
+     "maxFar": 7.0
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch05-p86-commercial-units-up-to100-sqm-non_built_up",
+   "chapter": "05",
+   "gazettePage": 86,
+   "useType": "Commercial Units* up to100 sqm",
+   "areaType": "non_built_up",
+   "baseFar": 1.75,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": 0.35,
+     "premiumPurchasable": 0.35,
+     "maxFar": 2.45
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.9,
+     "premiumPurchasable": 0.9,
+     "maxFar": 3.6
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.75,
+     "premiumPurchasable": 2.6,
+     "maxFar": 6.1
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.75,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch05-p86-commercial-units-gt100-sqm-non_built_up",
+   "chapter": "05",
+   "gazettePage": 86,
+   "useType": "Commercial Units* >100 sqm",
+   "areaType": "non_built_up",
+   "baseFar": 1.75,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 1.75
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.9,
+     "premiumPurchasable": 0.9,
+     "maxFar": 3.6
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.75,
+     "premiumPurchasable": 2.6,
+     "maxFar": 6.1
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.75,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch05-p86-shopping-malls-non_built_up",
+   "chapter": "05",
+   "gazettePage": 86,
+   "useType": "Shopping malls",
+   "areaType": "non_built_up",
+   "baseFar": 3.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 3.0
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 1.5,
+     "maxFar": 6.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 3.0,
+     "premiumPurchasable": 4.5,
+     "maxFar": 10.5
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 3.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch05-p87-hotels-built_up",
+   "chapter": "05",
+   "gazettePage": 87,
+   "useType": "Hotels",
+   "areaType": "built_up",
+   "baseFar": 2.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 2.0
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.0,
+     "maxFar": 4.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.0,
+     "premiumPurchasable": 3.0,
+     "maxFar": 7.0
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch05-p88-hotels-non_built_up",
+   "chapter": "05",
+   "gazettePage": 88,
+   "useType": "Hotels",
+   "areaType": "non_built_up",
+   "baseFar": 2.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 2.5
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.25,
+     "premiumPurchasable": 1.25,
+     "maxFar": 5.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.5,
+     "premiumPurchasable": 3.75,
+     "maxFar": 8.75
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch05-p90-cinema-miniplex-multiplex-built_up",
+   "chapter": "05",
+   "gazettePage": 90,
+   "useType": "Cinema, Miniplex, Multiplex",
+   "areaType": "built_up",
+   "baseFar": 2.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": "not available"
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.0,
+     "maxFar": 4.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.0,
+     "premiumPurchasable": 3.0,
+     "maxFar": 7.0
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch05-p90-cinema-miniplex-non_built_up",
+   "chapter": "05",
+   "gazettePage": 90,
+   "useType": "Cinema, Miniplex",
+   "areaType": "non_built_up",
+   "baseFar": 2.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": "not available"
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.0,
+     "maxFar": 4.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.0,
+     "premiumPurchasable": 3.0,
+     "maxFar": 7.0
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch05-p90-multiplex-non_built_up",
+   "chapter": "05",
+   "gazettePage": 90,
+   "useType": "Multiplex",
+   "areaType": "non_built_up",
+   "baseFar": 3.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": "not available"
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 1.5,
+     "maxFar": 6.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 3.0,
+     "premiumPurchasable": 4.5,
+     "maxFar": 10.5
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 3.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p95-non-bedded-medical-establishments-built_up",
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Non-Bedded Medical Establishments",
+   "areaType": "built_up",
+   "baseFar": 1.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.75,
+     "premiumPurchasable": 0.75,
+     "maxFar": 3.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 2.25,
+     "maxFar": 5.25
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p95-nursing-homes-hospitals-up-to-50-beds-built_up",
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing Homes /Hospitals (Up to 50 beds)",
+   "areaType": "built_up",
+   "baseFar": 1.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.75,
+     "premiumPurchasable": 0.75,
+     "maxFar": 3.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 2.25,
+     "maxFar": 5.25
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p95-hospitals-gt-50-beds-built_up",
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Hospitals > 50 beds",
+   "areaType": "built_up",
+   "baseFar": 1.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.75,
+     "premiumPurchasable": 0.75,
+     "maxFar": 3.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 2.25,
+     "maxFar": 5.25
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p95-nursing-college-built_up",
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing college",
+   "areaType": "built_up",
+   "baseFar": 1.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.75,
+     "premiumPurchasable": 0.75,
+     "maxFar": 3.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 2.25,
+     "maxFar": 5.25
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p95-medical-college-built_up",
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Medical College",
+   "areaType": "built_up",
+   "baseFar": 1.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.75,
+     "premiumPurchasable": 0.75,
+     "maxFar": 3.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 2.25,
+     "maxFar": 5.25
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p95-non-bedded-medical-establishments-non_built_up",
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Non-Bedded Medical Establishments",
+   "areaType": "non_built_up",
+   "baseFar": 1.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.75,
+     "premiumPurchasable": 0.75,
+     "maxFar": 3.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 2.25,
+     "maxFar": 5.25
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p95-nursing-homes-hospitals-up-to-50-beds-non_built_up",
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing Homes /Hospitals (Up to 50 beds)",
+   "areaType": "non_built_up",
+   "baseFar": 2.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.0,
+     "maxFar": 4.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.0,
+     "premiumPurchasable": 3.0,
+     "maxFar": 7.0
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p95-hospitals-gt-50-beds-non_built_up",
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Hospitals > 50 beds",
+   "areaType": "non_built_up",
+   "baseFar": 2.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.25,
+     "premiumPurchasable": 1.25,
+     "maxFar": 5.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.5,
+     "premiumPurchasable": 3.75,
+     "maxFar": 8.75
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p95-nursing-college-non_built_up",
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Nursing college",
+   "areaType": "non_built_up",
+   "baseFar": 2.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.0,
+     "maxFar": 4.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.0,
+     "premiumPurchasable": 3.0,
+     "maxFar": 7.0
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p95-medical-college-non_built_up",
+   "chapter": "06",
+   "gazettePage": 95,
+   "useType": "Medical College",
+   "areaType": "non_built_up",
+   "baseFar": 2.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.25,
+     "premiumPurchasable": 1.25,
+     "maxFar": 5.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.5,
+     "premiumPurchasable": 3.75,
+     "maxFar": 8.75
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p97-schools-primary-nursery-built_up",
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Schools (primary / nursery)",
+   "areaType": "built_up",
+   "baseFar": 1.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": 0.2,
+     "premiumPurchasable": 0.2,
+     "maxFar": 1.4
+    },
+    {
+     "label": "12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.5,
+     "premiumPurchasable": 0.5,
+     "maxFar": 2.0
+    },
+    {
+     "label": "24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.0,
+     "maxFar": 3.0
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.0,
+     "maxFar": 3.0
+    }
+   ]
+  },
+  {
+   "id": "ch06-p97-secondary-high-school-intercollege-technical-institutes-degree-colleges-universities-built_up",
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Secondary / High School/ Intercollege/ Technical Institutes/ Degree Colleges / Universities",
+   "areaType": "built_up",
+   "baseFar": 1.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": "not available"
+    },
+    {
+     "label": "12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.5,
+     "premiumPurchasable": 0.5,
+     "maxFar": 2.0
+    },
+    {
+     "label": "24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.5,
+     "maxFar": 3.5
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p97-schools-primary-nursery-non_built_up",
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Schools (primary / nursery)",
+   "areaType": "non_built_up",
+   "baseFar": 1.2,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": 0.2,
+     "premiumPurchasable": 0.2,
+     "maxFar": 1.4
+    },
+    {
+     "label": "12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.6,
+     "premiumPurchasable": 0.6,
+     "maxFar": 2.4
+    },
+    {
+     "label": "24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.2,
+     "premiumPurchasable": 1.2,
+     "maxFar": 3.6
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.2,
+     "premiumPurchasable": 1.2,
+     "maxFar": 3.6
+    }
+   ]
+  },
+  {
+   "id": "ch06-p97-secondary-high-school-intercollege-technical-institutes-degree-colleges-universities-non_built_up",
+   "chapter": "06",
+   "gazettePage": 97,
+   "useType": "Secondary / High School/ Intercollege/ Technical Institutes/ Degree Colleges / Universities",
+   "areaType": "non_built_up",
+   "baseFar": 2.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": "not available"
+    },
+    {
+     "label": "12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.0,
+     "maxFar": 4.0
+    },
+    {
+     "label": "24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.0,
+     "premiumPurchasable": 3.0,
+     "maxFar": 7.0
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p98-marriage-hall-banquet-hall-multipurpose-hall-built_up",
+   "chapter": "06",
+   "gazettePage": 98,
+   "useType": "Marriage hall/ Banquet Hall/ Multipurpose Hall",
+   "areaType": "built_up",
+   "baseFar": 2.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "=>18 - 24m",
+     "overMoreThan": 18.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.0,
+     "maxFar": 4.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.0,
+     "premiumPurchasable": 3.0,
+     "maxFar": 7.0
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p98-marriage-hall-banquet-hall-multipurpose-hall-non_built_up",
+   "chapter": "06",
+   "gazettePage": 98,
+   "useType": "Marriage hall/ Banquet Hall/ Multipurpose Hall",
+   "areaType": "non_built_up",
+   "baseFar": 3.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "=>18 - 24m",
+     "overMoreThan": 18.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 1.5,
+     "maxFar": 6.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 3.0,
+     "premiumPurchasable": 4.5,
+     "maxFar": 10.5
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 3.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p99-auditorium-or-a-convention-centre-built-up-area-built_up",
+   "chapter": "06",
+   "gazettePage": 99,
+   "useType": "Auditorium or a Convention Centre (Built-up area)",
+   "areaType": "built_up",
+   "baseFar": 2.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "=>18 -24m",
+     "overMoreThan": 18.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.0,
+     "maxFar": 4.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.0,
+     "premiumPurchasable": 3.0,
+     "maxFar": 7.0
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch06-p100-auditorium-or-a-convention-centre-non-built-up-area-non_built_up",
+   "chapter": "06",
+   "gazettePage": 100,
+   "useType": "Auditorium or a Convention Centre (Non-built-up area)",
+   "areaType": "non_built_up",
+   "baseFar": 3.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "=>18 -24m",
+     "overMoreThan": 18.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 1.5,
+     "maxFar": 6.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 3.0,
+     "premiumPurchasable": 4.5,
+     "maxFar": 10.5
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 3.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch07-p100-auditorium-or-a-convention-centre-non-built-up-area-non_built_up",
+   "chapter": "07",
+   "gazettePage": 100,
+   "useType": "Auditorium or a Convention Centre (Non-built-up area)",
+   "areaType": "non_built_up",
+   "baseFar": 3.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "=>18 -24m",
+     "overMoreThan": 18.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 1.5,
+     "maxFar": 6.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 3.0,
+     "premiumPurchasable": 4.5,
+     "maxFar": 10.5
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 3.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch07-p101-industrial-buildings-None-le12m",
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "Industrial Buildings",
+   "areaType": null,
+   "baseFar": 1.5,
+   "baseFarAppliesWhen": "\u226412m",
+   "bands": [
+    {
+     "label": "Upto 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 1.5
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.25,
+     "premiumPurchasable": 1.25,
+     "maxFar": 5.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.5,
+     "premiumPurchasable": 3.75,
+     "maxFar": 8.75
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch07-p101-industrial-buildings-None-gt12m",
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "Industrial Buildings",
+   "areaType": null,
+   "baseFar": 2.5,
+   "baseFarAppliesWhen": ">12m",
+   "bands": [
+    {
+     "label": "Upto 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 1.5
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.25,
+     "premiumPurchasable": 1.25,
+     "maxFar": 5.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.5,
+     "premiumPurchasable": 3.75,
+     "maxFar": 8.75
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch07-p101-msme-units-None",
+   "chapter": "07",
+   "gazettePage": 101,
+   "useType": "MSME units",
+   "areaType": null,
+   "baseFar": 3.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 3.0
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.5,
+     "premiumPurchasable": 1.5,
+     "maxFar": 6.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 3.0,
+     "premiumPurchasable": 4.5,
+     "maxFar": 10.5
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 3.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch07-p102-flatted-factories-data-centres-None",
+   "chapter": "07",
+   "gazettePage": 102,
+   "useType": "Flatted Factories, Data Centres",
+   "areaType": null,
+   "baseFar": 3.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto 12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": "not available"
+    },
+    {
+     "label": ">12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 0.5,
+     "premiumPurchasable": 0.5,
+     "maxFar": 2.0
+    },
+    {
+     "label": ">24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.5,
+     "maxFar": 3.5
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.0,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch08-p105-mu-built-up-area-built_up",
+   "chapter": "08",
+   "gazettePage": 105,
+   "useType": "MU Built-up Area",
+   "areaType": "built_up",
+   "baseFar": 2.0,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 2.0
+    },
+    {
+     "label": "12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.0,
+     "maxFar": 4.0
+    },
+    {
+     "label": "24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 1.0,
+     "premiumPurchasable": 1.5,
+     "maxFar": 5.25
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 1.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  },
+  {
+   "id": "ch08-p105-mu-non-built-up-area-non_built_up",
+   "chapter": "08",
+   "gazettePage": 105,
+   "useType": "MU non-built-up Area",
+   "areaType": "non_built_up",
+   "baseFar": 2.5,
+   "baseFarAppliesWhen": null,
+   "bands": [
+    {
+     "label": "Upto12m",
+     "overMoreThan": 0.0,
+     "upToAndIncluding": 12.0,
+     "purchasable": "not available",
+     "premiumPurchasable": "not available",
+     "maxFar": 2.5
+    },
+    {
+     "label": "12 -24m",
+     "overMoreThan": 12.0,
+     "upToAndIncluding": 24.0,
+     "purchasable": 1.25,
+     "premiumPurchasable": 1.25,
+     "maxFar": 5.0
+    },
+    {
+     "label": "24 - 45m",
+     "overMoreThan": 24.0,
+     "upToAndIncluding": 45.0,
+     "purchasable": 2.5,
+     "premiumPurchasable": 3.75,
+     "maxFar": 6.25
+    },
+    {
+     "label": ">45m",
+     "overMoreThan": 45.0,
+     "upToAndIncluding": null,
+     "purchasable": 2.5,
+     "premiumPurchasable": "unrestricted",
+     "maxFar": "unrestricted"
+    }
+   ]
+  }
+ ]
+}

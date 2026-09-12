@@ -1,0 +1,275 @@
+=== chapter 13 · gazette page 127 · pdf page 1 ===
+13 Environmental Sustainability
+The general principles for sustainability in buildings shall be in accordance with Part 11- ‘Approach to
+Sustainability’ of NBC 2016.
+13.1 Water Conservation
+13.1.1 Water management during construction
+Water from authorized sources shall be used for construction. Where ground water is used for
+construction, permission from the concerned ground water authority shall be taken. Less water
+intensive construction methods may be employed using prefabricated members, pre-mix concrete,
+curing agents, etc.
+On construction sites, potable water shall be used only for drinking, human activities and concrete
+works. Use of potable water for any other construction activity may not be allowed. Treated wastewater
+from appropriate sources should be used in such construction activities after complying with all the
+required parameters for water use.
+13.1.2 Rainwater Harvesting
+Rainwater harvesting shall be achieved by adopting the techniques given below:
+a) storage of rainwater on surface for future use; and
+b) recharge to ground water
+All public open spaces and recreational area shall make provisions for rainwater harvesting.
+Requirements of Layout/Sub-division Plan for Development Permission
+(a) Before making a new plan, geological /hydrological /hydrogeological survey of the area should be
+conducted and appropriate method should be adopted as per local requirement for recharging of ground
+water.
+(b) In the layout plans of schemes having an area of more than 10 acres (>4 hectares), reservoir(s) shall
+be constructed at suitable places within the land proposed for parks and open areas, wherein such area
+shall be a minimum 01 percent of total scheme area. Prior to building such reservoir(s) in such scheme,
+while identifying natural rainwater catchment areas, the size and depth of such reservoir shall be
+determined, after study/assessment of envisaged volume of rainwater, hydrogeological, topography,
+lithology, soil properties of the area, possible retention and ‘stagnation’ of rainwater in the proposed
+reservoir and the feasibility thereof. However, the maximum depth of the reservoir should be kept at 02
+meters. Apart from this, arrangements should be made to dispose only the ‘surface-run-off’ of that
+scheme in the reservoir; polluted water and effluent should not be mixed in it. Recharge pit/recharge
+shaft should be made in one corner of the park and open area as per the prescribed standards. Such
+recharge pits/recharge shafts and reservoirs should be constructed in the direction of the slope in
+accordance with the regional hydrogeology.
+(c) Concrete construction in parks should not be more than 5 percent, including concrete pavement and
+footpaths and tracks, and should be made using ‘permeable’ or semi-permeable perforated blocks as
+much as possible. Maximum underground seepage of rainwater should be encouraged in parks and open
+areas.
+(d) Such trees and plants shall be planted on roads, parks and open spaces which require minimum water
+and which can absorb less water and remain green even in summer.
+(e) In the layout plans of new schemes, in addition to infrastructure facilities like water supply, drainage
+and sewerage network, other separate networks shall be provided for collective recharge of ground
+water through roof-top rainwater harvesting with an arrangement for recharging pits for individual
+plots/ buildings and recharging structures at other suitable places.
+127
+
+=== chapter 13 · gazette page 128 · pdf page 2 ===
+(f) In the layout plans of new schemes, for plots of areas from 100-300 square meters, it shall not be
+mandatory to establish rainwater harvesting system in individual buildings if the rainwater from group
+of buildings flows into the network of the collective recharge of the scheme. However, in relation to
+buildings constructed on plots of area more than 300 square meters, then it shall be mandatory for the
+building owner to install rainwater harvesting system himself.
+Requirements of Building Plan submitted along with application for permission.
+In case of no collective recharge network, roof top rainwater harvesting system in plots of all uses of
+300 square meters and more area (including group housing) except waterlogged areas. Construction of
+rainwater harvesting structures shall be ensured as per standard technology and rainwater shall be
+allowed to penetrate the soil to the minimum required depth so that the problem of pollution of ground
+water sources does not arise. Ground water recharging system should not be adopted in areas with water
+logging problem, but arrangements can be made to collect rainwater received from the roofs of
+buildings.
+Environmental Conditions required for buildings (amended from time to time):
+13.2 Energy Conservation
+For all public buildings or building complexes with a connected load of 100 kW or greater or having a
+contract demand of 120 KV or greater and intended to be used for commercial purpose, Energy
+Conservation Building Code (ECBC) standards, as amended from time to time, shall be applicable.
+Occupancy sensors, movement sensors, lux level sensors, etc, may also be considered as switching
+options for lights, fans, TV, etc, for different closed spaces.
+13.2.1 Energy Conservation through Efficient Lighting
+A substantial portion of the energy consumed on lighting may be saved by utilization of daylight and
+rational design of supplementary artificial lights. In common areas, cost effective and energy saving
+LED/solar lights may be provided.
+All exterior lighting may use solar-powered lighting and be fitted with automatic controls so that the
+lights do not operate during daylight hours.
+13.2.2 Energy Conservation through Efficient HVAC
+Maximum possible use shall be made of wind induced natural ventilation. An adequate number of
+circulating fans shall be installed to serve all the rooms during summer months in hot and warm regions
+and dry and humid conditions.
+128
+
+--- table 0 (5 rows × 6 cols) ---
+[#D9E2F3] | Built-up area | [#D9E2F3] | [#D9E2F3] | Requirements | [#D9E2F3]
+Category-A (5000-20000 sqm) |  |  | • A rainwater harvesting plan needs to be designed where the recharge bores (minimum one per 5000 sqm of built-up area) shall be provided. The rainwater harvested should be stored in a tank for reuse in household through a provision of separate water tank and pipeline to avoid mixing with potable municipal water supply. The excess rainwater harvested be linked to the tube well bore in the premise through a pipeline after filtration in the installed filters. • The unpaved area shall be more than or equal to 20% of the recreational open spaces. |  | 
+Category-B (20000 -50000 sqm) |  |  |  |  | 
+Category-C (50000-150000 sqm) |  |  |  |  | 
+Additional Conditions Category-C (50000-150000 sqm) |  |  | • The ground water shall not be withdrawn without approval from the competent authority. • Use of potable water in construction should be minimized. • Low flow fixtures and sensors must be used to promote water conservation. • Separation of grey and black water should be done by the use of dual plumbing system. |  | 
+
+=== chapter 13 · gazette page 129 · pdf page 3 ===
+13.2.3 Solar Energy
+All efforts shall be made towards optimum and efficient use of renewable energy in buildings and,
+thereby reduce the building’s dependency on fuels derived from conventional sources. This may be
+achieved by installing solar water heater and Solar Photovoltaic (SPV) systems. To facilitate the
+installation of such a solar system, at least 25-50 percent of roof area may be utilized for installation of
+solar water heater and SPV system in new buildings.
+13.2.3.1 Solar Photovoltaic Power Generation System
+All plots having size 500 sqm and above shall install solar photovoltaic power generation system. This
+should also be encouraged for plots smaller than 500 sqm. The power generated may be used for in-
+house utilization or for transfer to the grid.
+13.2.3.2 Solar Water Heating System
+No new building in the following categories in which there is a system of installation for supplying hot
+water shall be built unless the system of the installation is also having an auxiliary solar assisted water
+heating system. Solar water heating systems shall be provided in the following buildings:
+a) hotels, lodges, guest houses, service apartments;
+b) institutional buildings (hospitals and nursing home);
+c) schools, colleges, universities, technical institutions, training centres;
+d) assembly buildings (auditorium, community halls, wedding/banquet halls, etc);
+e) barracks of armed forces/paramilitary forces and police forces;
+f) hostels for schools, colleges, and training centres with more than 100 students.
+13.2.4 Energy Efficiency Compliance
+Environmental Conditions required for buildings (amended from time to time):
+129
+
+--- table 0 (5 rows × 6 cols) ---
+[#D9E2F3] | Built-up area | [#D9E2F3] | [#D9E2F3] | Requirement | [#D9E2F3]
+Category-A (5000-20000 sqm) |  |  | • In common areas, LED/ solar lights must be provided. |  | 
+Category-B (20000 -50000 sqm) |  |  | • In common areas, LED/ solar lights must be provided. • At least 1% of connected applied load generated from renewable energy source such as photovoltaic cells or windmills or hybrid should be provided. • As per the provisions of the Ministry of New and Renewable energy solar water heater of minimum capacity 10 litres/4 persons (2.5 litres per capita) shall be installed. • Use of fly ash bricks: Fly ash should be used as building material in the construction as per the provisions of Fly Ash Notification of September 1999 and as amended from time to time. |  | 
+Category-C (50000-150000 sqm) |  |  |  |  | 
+Category-C (50000-150000 sqm) |  |  | • Use of concept of passive solar design of buildings using architectural design approaches that minimize energy consumption in buildings by integrating conventional energy-efficient devices, such as mechanical and electric pumps, fans, lighting fixtures and other equipment, with the passive design elements, such as building orientation, landscaping, efficient building envelope, appropriate fenestration, increased day lighting design and thermal mass. • Optimize use of energy systems in buildings that should maintain a specific indoor environment conducive to the functional requirements of the building by following mandatory compliance measures (for all applicable buildings) as recommended in the Energy Conservation Building Code (ECBC) 2007 of the Bureau of Energy Efficiency, Government of India. |  | 
+
+=== chapter 13 · gazette page 130 · pdf page 4 ===
+13.3 Natural Drainage
+Environmental Conditions required for buildings (amended from time to time):
+13.4 Solid Waste Management
+All buildings shall provide facilities for solid waste management with segregation of dry and wet waste
+at source. For waste management in residential buildings (including group housing) and all non-
+residential buildings with an area of more than 500 square meters, two types of dustbins (biodegradable
+and non-biodegradable) shall be provided on the ground floor near the entrance of the plot so that it
+becomes easy for the local body to collect garbage from dustbins every day, de-process it at ward or
+sector level and prepare fuel cake, fertilizer, paper etc.
+Environmental Conditions required for buildings (amended from time to time):
+13.5 Wastewater Recycling
+Wastewater generated from residential, industrial, medical, commercial and wastewater generated from
+garbage shall be treated as per the guidelines given by the state pollution control board.
+A wastewater recycling facility shall be installed wherever the minimum estimated water discharge
+from the building(s) on a plot exceeds 10,000 liters per day.
+The applicant shall, along with their application for obtaining necessary development permit/ building
+permit, submit as part of the services plans, a plan showing the location of wastewater treatment plant,
+furnishing details of calculations, references, implementation, etc. This plan shall accompany the
+applicant’s commitment to monitor the system periodically from the date of occupation of the respective
+building.
+Provisions of recycling system
+The applicant shall along with his application submit the designs, plans, calculations and the references
+used for the calculations etc. to provide the system to recycle the grey water. Such system shall include
+the provisions to facilitate the following:
+(i) Treated grey water is pumped to a separate tank on the roof from where grey water will be
+supplied to water closets, garden taps, car washing taps etc.
+(ii) Only water from water closets should be let in to sewerage system.
+130
+
+--- table 0 (4 rows × 6 cols) ---
+[#D9E2F3] | Built-up area | [#D9E2F3] | [#D9E2F3] | Requirement | [#D9E2F3]
+Category-A (5000-20000 sqm) |  |  | The inlet and outlet point of natural drain system should be maintained with adequate size of channel for ensuring unrestricted flow of water. |  | 
+Category-B (20000 -50000 sqm) |  |  |  |  | 
+Category-C (50000-150000 sqm) |  |  |  |  | 
+
+--- table 1 (5 rows × 6 cols) ---
+[#D9E2F3] | Built-up area | [#D9E2F3] | [#D9E2F3] | Requirement | [#D9E2F3]
+Category-A (5000-20000 sqm) |  |  | • Separate wet and dry bins must be provided at the ground level for facilitating segregation of waste. |  | 
+Category-B (20000 -50000 sqm) |  |  |  |  | 
+Category-C (50000-150000 sqm) |  |  |  |  | 
+Category-C (50000-150000 sqm) |  |  | • All non-biodegradable waste shall be handed over to authorized recyclers for which a written tie-up must be done with the authorized recyclers. • Organic waste composter/vermiculture pit with a minimum capacity of 0.3 Kg/tenement/day must be installed wherein the STP sludge may be used to be converted to manure which could be used at the site or handed over to authorized recyclers for which a written tie-up must be done with the authorized recyclers. |  | 
+
+=== chapter 13 · gazette page 131 · pdf page 5 ===
+(iii) Wherever arrangements for reuse of recycled water is provided, additional arrangements for
+carrying the excess grey water to the sewerage system may also be provided.
+(iv) The recycled water shall be used for non-potable, no contact purposes within premises and shall
+not be connected to sewage/wastewater system of local authority. However, the waste generated
+by the recycle plant can be connected to local authority sewer network if it is of the accepted
+quality as mentioned in the guidelines of competent authority.
+(v) Separation of grey water:
+(a) The wastes from toilets in the premises will be separated from grey water that is of
+bathroom and kitchen wastes by means of separate down take discharge system.
+(b) The grey water shall be recycled by providing recycling plant and shall be reused for
+non-potable purposes after storing the same in distinctly separate tank by means of
+purple coloured down take pipes.
+(c) The water quality shall conform to standards of non-potable water. The recycled water
+shall be tested once in six months and results shall be made available to competent
+authority whenever demanded.
+(d) The make‐up connection to the system will be done at the collection tank of the treated
+water, through a free fall if from Municipal water connection.
+(e) Separate plumbing for grey water: Every developer/owner shall provide the newly
+constructed building with the provision of down take plumbing for grey water,
+recycling water plant, storage and reuse fitting before selling the building.
+(vi) Reuse of water strictly for not potable non‐contact use.
+a. The reuse of water will be strictly for not potable use by means of providing a distinctly
+separate reuse system coloured in purple. The non‐contact uses shall be restricted to
+toilet flushing, drip irrigation of trees/shrubs, sub surface irrigation of lawns and
+recharge of ground water.
+b. There shall not be cross‐connection of fitting of the potable and not potable water at
+any point. The recycled water system shall be maintained at a lower operating pressure
+that of the potable water system. Precautions should be taken to prevent cross
+contamination.
+Quality of Water and Treatment
+(i) The water generated after treatment should be safe for its use for flushing toilets, gardening etc.
+(ii) The company or the agency engaged for installation of system for recycling of wastewater shall
+preferably confirm ISO:14000.
+(iii) Provision may be made for checking the quality of recycled water with Water testing laboratory
+with Municipal Corporation or Jal Nigam.
+(iv) The testing of wastes and the submission of the results shall be done in a manner in accordance
+with the terms and conditions prescribed by the Municipal Commissioner or Uttar Pradesh
+Pollution Control Board (UPPCB) / Competent authority.
+13.6 Air Quality & Noise
+Environmental Conditions required for buildings (amended from time to time):
+131
+
+--- table 0 (4 rows × 6 cols) ---
+[#D9E2F3] | Built-up area | [#D9E2F3] | [#D9E2F3] | Requirement | [#D9E2F3]
+Category-A (5000-20000 sqm) |  |  | • Dust, smoke and debris prevention measures such as screens, barricading shall be installed at the site during construction. Plastic/ tarpaulin sheet covers must be used for trucks bringing in sand and material at the site. |  | 
+Category-B (20000 -50000 sqm) |  |  |  |  | 
+Category-C (50000-150000 sqm) |  |  |  |  | 
+
+=== chapter 13 · gazette page 132 · pdf page 6 ===
+13.7 Green Cover/ Tree Plantation
+In alignment with National Mission for Sustainable Habitat, the Authority encourages augmentation of
+green cover in the city/plot by implementing relevant provisions of the Urban Greening Guidelines,
+2014 circulated by Ministry of Housing and Urban Affairs, Government of India.
+Landscape Plan submitted along with Site Plan for Building Permission
+Landscape plan showing plantation of trees while keeping the circulation area free from obstructions.
+(a) In residential plots
+i. One tree on a plot of area less than 200 square meters.
+ii. Two trees on a plot of 200 to 300 square meters area.
+iii. Four trees on a plot of area 301 to 500 square meters.
+iv. One tree per 100 square meter area or part thereof in a plot of area more than 500 square meter.
+v. 50 trees per hectare in group housing scheme.
+(b) In industrial plots
+One tree per 80 square meter plot of land.
+(c) In commercial plots
+One tree per 100 square meter area.
+(d) Institutional/community facilities, playgrounds, open areas and parks
+There shall be greenery on a minimum of 20% of the total area where trees shall be planted at the rate
+of 125 trees per hectare.
+Environmental Conditions required for buildings (amended from time to time):
+(i) Trees shall be planted without causing obstruction to the easy movement of fire fighting vehicles
+in case of fire emergency.
+(ii) The requirement of trees shall be reduced on the basis of the number of grown existing trees that
+are conserved and not affected by the proposed development.
+(iii) A person applying for permission to carry out any development shall have to pay tree plantation
+deposit along with his application to the Competent Authority at the rates decided by the Competent
+Authority from time to time. This deposit shall be refundable after the period of five years with the
+condition that trees planted on the site shall be grown‐up and maintained properly, otherwise the
+deposit shall be forfeited and shall be utilised only for tree plantation and maintenance by the
+Competent Authority.
+132
+
+--- table 0 (1 rows × 2 cols) ---
+ | • The exhaust pipe of the DG set, if installed, must be minimum 10m away from the building. In case it is less than 10m away, the exhaust pipe shall be taken up to 3m above the building.
+
+--- table 1 (4 rows × 6 cols) ---
+[#D9E2F3] | Built-up area | [#D9E2F3] | [#D9E2F3] | Requirement | [#D9E2F3]
+Category-A (5000-20000 sqm) |  |  | • A minimum of 1 tree for every 80 sqm of land shall be planted and maintained. The existing trees will be counted for this purpose. Preference should be given to planting native species. The Trees shall preferably be shade‐giving. • Where the trees need to be cut, compensatory plantation in the ratio of 1:3 (i.e. planting of 3 trees for every 1 tree that is cut) shall be done with the obligation to provide continued maintenance for such plantations. |  | 
+Category-B (20000 -50000 sqm) |  |  |  |  | 
+Category-C (50000-150000 sqm) |  |  |  |  | 
+
+=== chapter 13 · gazette page 133 · pdf page 7 ===
+(iv) Competent Authority may consult Forest and Environment Department for tree typology, plantation
+and maintenance, etc. if required.
+13.8 Environment Impact Assessment
+Environmental Conditions required for buildings (amended from time to time):
+13.9 Environment Management Plan
+For all buildings above 50,000 sqm built up area:
+Environmental Conditions required for buildings (amended from time to time):
+133
+
+--- table 0 (5 rows × 6 cols) ---
+[#D9E2F3] | Built-up area | [#D9E2F3] | [#D9E2F3] | Requirement | [#D9E2F3]
+Category-A (5000-20000 sqm) |  |  | - |  | 
+Category-B (20000 -50000 sqm) |  |  | No development permission shall be given to the Building and Construction projects, until getting Environment Clearance from SEIAA (State Level Environment Impact Assessment Authority) as required under the Environmental Impact Assessment notification‐ 2006 and amended from time to time. If the developer wishes to split the project into phases, developer has to produce Environment Clearance from SEIAA, prior to the approval of first phase of the project. |  | 
+Category-C (50000-150000 sqm) |  |  |  |  | 
+Category-D (>150000 sqm or Site Area >50 Ha) |  |  | No development permission shall be given to the Townships and Area Development projects until getting Environment Clearance from SEIAA (State Level Environment Impact Assessment Authority) as required under the Environmental Impact Assessment notification‐ 2006 and amended from time to time. If the developer wishes to split the project into phases, developer has to produce Environment Clearance from SEIAA, prior to the approval of first phase of the project. |  | 
+
+--- table 1 (4 rows × 6 cols) ---
+[#D9E2F3] | Built-up area | [#D9E2F3] | [#D9E2F3] | Requirement | [#D9E2F3]
+Category-A (5000-20000 sqm) |  |  | - |  | 
+Category-B (20000 -50000 sqm) |  |  | - |  | 
+Category-C (50000-150000 sqm) |  |  | The environment infrastructure like Sewage Treatment Plant, Landscaping, Rainwater Harvesting, Power backup for environment, Infrastructure, Environment Monitoring, Solid Waste Management and Solar and Energy conservation, should be kept operational through Environment Monitoring Committee with defined functions and responsibility |  |

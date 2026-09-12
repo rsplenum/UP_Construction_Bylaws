@@ -1,24 +1,17 @@
 import { jsPDF } from 'jspdf';
-import { AuditEngineState } from './auditStorage';
-import { RegulatoryConflict } from './constraintEngine';
+import { Assessment, Finding } from '../domain/findings';
+import { ProjectState } from '../domain/project';
+import { occupancyLabel } from '../domain/project';
 
-export interface AuditItem {
-  id: string;
-  chapterRef: string;
-  ruleTitle: string;
-  category: string;
-  status: 'compliant' | 'conditional' | 'non_compliant' | 'exempt';
-  statutoryLimit: string;
-  proposedValue: string;
-  mathExplanation: string;
-  remediation?: string;
-}
+/** Indian-format rupees, for the statutory charge sheet. */
+const inr = (n: number): string => `Rs ${Math.round(n).toLocaleString('en-IN')}`;
 
-export function generateAuditPdfReport(
-  state: AuditEngineState,
-  auditResults: AuditItem[],
-  conflicts: RegulatoryConflict[]
-): void {
+/** Findings map onto the report's four statuses. */
+const STATUS_LABEL: Record<Finding['status'], string> = {
+  ok: 'CLEAR', attention: 'TO SETTLE', blocked: 'BLOCKING', info: 'NOTE',
+};
+
+export function generateAuditPdfReport(state: ProjectState, assessment: Assessment): void {
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
@@ -29,10 +22,12 @@ export function generateAuditPdfReport(
   const pageHeight = doc.internal.pageSize.getHeight();
   let y = 14;
 
-  const compliantCount = auditResults.filter((i) => i.status === 'compliant' || i.status === 'exempt').length;
-  const conditionalCount = auditResults.filter((i) => i.status === 'conditional').length;
-  const nonCompliantCount = auditResults.filter((i) => i.status === 'non_compliant').length;
-  const totalCount = auditResults.length;
+  const auditResults = assessment.findings;
+  const conflicts = assessment.findings.filter((f) => f.status === 'blocked');
+  const compliantCount = assessment.ok;
+  const conditionalCount = assessment.attention;
+  const nonCompliantCount = assessment.blocked;
+  const totalCount = auditResults.length || 1;
   const scorePercent = Math.round(((compliantCount + conditionalCount * 0.5) / totalCount) * 100);
 
   // A reference derived from the inputs, so re-running the same project reproduces the
@@ -97,7 +92,7 @@ export function generateAuditPdfReport(
   doc.setFont('helvetica', 'bold');
   doc.text('Occupancy:', col1X, py);
   doc.setFont('helvetica', 'normal');
-  doc.text(state.occupancy.replace('_', ' ').toUpperCase(), col1X + 22, py);
+  doc.text(occupancyLabel(state.occupancy).toUpperCase(), col1X + 22, py);
 
   doc.setFont('helvetica', 'bold');
   doc.text('Plot Area:', col2X, py);
@@ -157,7 +152,7 @@ export function generateAuditPdfReport(
   doc.setFont('helvetica', 'bold');
   doc.text('RWH / Solar:', col3X, py);
   doc.setFont('helvetica', 'normal');
-  doc.text(`${state.hasRWH ? 'RWH' : 'No RWH'} | ${state.hasSolarHeating ? 'Solar' : 'No Solar'}`, col3X + 22, py);
+  doc.text(`${state.hasRWH ? 'RWH' : 'No RWH'} | ${state.hasSolarPv ? 'Solar PV' : 'No PV'} | ${state.hasSolarHeating ? 'Solar HW' : 'No solar HW'}`, col3X + 22, py);
 
   y += 48;
 
@@ -215,6 +210,115 @@ export function generateAuditPdfReport(
     y += 4;
   };
 
+  /**
+   * Statutory charges, and the route.
+   *
+   * The report listed every finding and never totalled the money in them, so a reader had
+   * to add the fee heads up themselves across three pages — which is the one number a
+   * lender or an equity partner opens the document for. Each head is printed with the
+   * clause that imposes it, because a charge without a clause cannot be checked against
+   * the Authority's own demand.
+   *
+   * Derived from the findings rather than recomputed, so the sheet cannot disagree with the
+   * body of the report.
+   */
+  const charges = auditResults.filter((f) => f.money && f.money.amount > 0);
+  const route = auditResults.find((f) => f.id === 'route');
+  const clock = auditResults.find((f) => f.id === 'permit-clock');
+
+  if (charges.length > 0 || route) {
+    if (y > pageHeight - 60) { doc.addPage(); y = 16; }
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(10);
+    doc.setTextColor(15, 23, 42);
+    doc.text('STATUTORY CHARGES AND APPROVAL ROUTE', 14, y);
+    y += 5;
+    doc.setDrawColor(226, 232, 240);
+    doc.line(14, y, pageWidth - 14, y);
+    y += 5;
+
+    const amountX = pageWidth - 16;
+
+    if (charges.length > 0) {
+      doc.setFontSize(7.6);
+      for (const item of charges) {
+        if (y > pageHeight - 28) { doc.addPage(); y = 16; }
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(51, 65, 85);
+        doc.text(item.money!.label, 18, y);
+
+        doc.setFontSize(6.8);
+        doc.setTextColor(100, 116, 139);
+        doc.text(item.clause ?? '—', 78, y);
+
+        doc.setFontSize(7.6);
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(15, 23, 42);
+        const amount = inr(item.money!.amount);
+        doc.text(amount, amountX - doc.getTextWidth(amount), y);
+        y += 4.6;
+      }
+
+      // The total, on the engine's own figure rather than a re-addition of the lines above.
+      doc.setDrawColor(203, 213, 225);
+      doc.line(18, y - 2, pageWidth - 16, y - 2);
+      y += 2;
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8.6);
+      doc.setTextColor(15, 23, 42);
+      doc.text('Total statutory charges', 18, y);
+      const total = inr(assessment.totalFees);
+      doc.text(total, amountX - doc.getTextWidth(total), y);
+      y += 4.6;
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(6.8);
+      doc.setTextColor(100, 116, 139);
+      writeWrapped(
+        'Charges the byelaws compute on the inputs given. They exclude the ordinary sanction and '
+        + 'development fees, the Authority\'s own scrutiny charges, and any head that turns on a '
+        + 'figure not supplied here — the shelter fee, for instance, is stated per dwelling unit '
+        + 'and cannot be totalled without a unit count.',
+        18,
+        pageWidth - 34,
+        3.2,
+      );
+      y += 1.5;
+    } else {
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(7.6);
+      doc.setTextColor(51, 65, 85);
+      doc.text('No purchasable FAR, impact or compounding charge arises on these inputs.', 18, y);
+      y += 5;
+    }
+
+    if (route) {
+      if (y > pageHeight - 30) { doc.addPage(); y = 16; }
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(7.8);
+      doc.setTextColor(15, 23, 42);
+      doc.text('Route:', 18, y);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(51, 65, 85);
+      writeWrapped(route.headline, 32, pageWidth - 48, 3.4);
+
+      if (clock) {
+        doc.setFont('helvetica', 'bold');
+        doc.setTextColor(15, 23, 42);
+        doc.text('Clock:', 18, y);
+        doc.setFont('helvetica', 'normal');
+        doc.setTextColor(51, 65, 85);
+        writeWrapped(clock.headline, 32, pageWidth - 48, 3.4);
+      }
+      y += 2;
+    }
+
+    doc.setDrawColor(226, 232, 240);
+    doc.line(14, y, pageWidth - 14, y);
+    y += 5;
+  }
+
   // Findings, in full. The previous version sliced every field to 30–44 characters,
   // so the statutory limit, the proposed value and the entire remediation — the part
   // that tells the applicant what to do — never reached the page.
@@ -234,8 +338,8 @@ export function generateAuditPdfReport(
       y = 16;
     }
 
-    const isPass = item.status === 'compliant' || item.status === 'exempt';
-    const isWarn = item.status === 'conditional';
+    const isPass = item.status === 'ok';
+    const isWarn = item.status === 'attention' || item.status === 'info';
 
     // Status chip
     const chipColor: [number, number, number] = isPass ? [5, 150, 105] : isWarn ? [217, 119, 6] : [220, 38, 38];
@@ -245,19 +349,19 @@ export function generateAuditPdfReport(
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(8.5);
     doc.setTextColor(15, 23, 42);
-    doc.text(`${index + 1}. ${item.ruleTitle}`, 20, y);
+    doc.text(`${index + 1}. ${item.headline}`, 20, y);
 
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(7);
     doc.setTextColor(...chipColor);
-    const statusLabel = item.status.replace('_', '-').toUpperCase();
+    const statusLabel = STATUS_LABEL[item.status];
     doc.text(statusLabel, pageWidth - 14 - doc.getTextWidth(statusLabel), y);
     y += 4;
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(6.8);
     doc.setTextColor(100, 116, 139);
-    writeWrapped(`${item.category} · ${item.chapterRef}`, 20, contentWidth - 6, 3.2);
+    writeWrapped(`${item.topic} · ${item.clause ?? '—'}`, 20, contentWidth - 6, 3.2);
     y += 0.8;
 
     doc.setFontSize(7.4);
@@ -265,25 +369,25 @@ export function generateAuditPdfReport(
     doc.setFont('helvetica', 'bold');
     doc.text('Required:', 20, y);
     doc.setFont('helvetica', 'normal');
-    writeWrapped(item.statutoryLimit, 36, contentWidth - 22, 3.4);
+    writeWrapped(item.required ?? '—', 36, contentWidth - 22, 3.4);
 
     doc.setFont('helvetica', 'bold');
     doc.text('Proposed:', 20, y);
     doc.setFont('helvetica', 'normal');
-    writeWrapped(item.proposedValue, 36, contentWidth - 22, 3.4);
+    writeWrapped(item.proposed ?? '—', 36, contentWidth - 22, 3.4);
 
     doc.setFont('helvetica', 'bold');
     doc.text('Working:', 20, y);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(100, 116, 139);
-    writeWrapped(item.mathExplanation, 36, contentWidth - 22, 3.4);
+    writeWrapped(item.working ?? item.detail, 36, contentWidth - 22, 3.4);
 
-    if (item.remediation) {
+    if (item.fix) {
       doc.setFont('helvetica', 'bold');
       doc.setTextColor(...chipColor);
       doc.text('Action:', 20, y);
       doc.setFont('helvetica', 'normal');
-      writeWrapped(item.remediation, 36, contentWidth - 22, 3.4);
+      writeWrapped(item.fix.label, 36, contentWidth - 22, 3.4);
     }
 
     y += 2.5;
@@ -308,20 +412,20 @@ export function generateAuditPdfReport(
       doc.setFont('helvetica', 'bold');
       doc.setFontSize(8.5);
       doc.setTextColor(185, 28, 28);
-      writeWrapped(`${index + 1}. [${conflict.code}] ${conflict.title}`, 16, contentWidth, 4);
+      writeWrapped(`${index + 1}. ${conflict.headline}`, 16, contentWidth, 4);
 
       doc.setFont('helvetica', 'normal');
       doc.setFontSize(7);
       doc.setTextColor(100, 116, 139);
-      writeWrapped(`${conflict.chapterRef} — ${conflict.byelawClause}`, 20, contentWidth - 6, 3.2);
+      writeWrapped(conflict.clause ?? '—', 20, contentWidth - 6, 3.2);
 
       doc.setFontSize(7.4);
       doc.setTextColor(51, 65, 85);
-      writeWrapped(conflict.description, 20, contentWidth - 6, 3.4);
+      writeWrapped(conflict.detail, 20, contentWidth - 6, 3.4);
 
       doc.setFont('helvetica', 'bold');
       doc.setTextColor(5, 150, 105);
-      writeWrapped(`Remedy: ${conflict.remedyActionTitle}`, 20, contentWidth - 6, 3.4);
+      if (conflict.fix) writeWrapped(`Remedy: ${conflict.fix.label}`, 20, contentWidth - 6, 3.4);
 
       y += 3;
     });
@@ -355,6 +459,4 @@ export function generateAuditPdfReport(
   doc.save(filename);
 }
 
-// Re-export Modular Architectural Setback Blueprint Generator
-export type { SetbackPdfOptions } from './setbackPdfBlueprint';
-export { generateSetbackBlueprintPdfReport } from './setbackPdfBlueprint';
+

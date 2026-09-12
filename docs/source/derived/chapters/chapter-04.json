@@ -1,0 +1,6030 @@
+{
+ "chapter": "04",
+ "source": "docs/source/gazette/pdf/chapter-04.pdf",
+ "sourceMd5": "c846df42d919f46f1d09eee28b5e0794",
+ "gazettePages": [
+  76,
+  83
+ ],
+ "pageCount": 8,
+ "tableCount": 8,
+ "fillCounts": {
+  "#DBE5F1": 104,
+  "#D9E2F3": 68,
+  "#DEEAF6": 24,
+  "#DCDDDF": 14,
+  "#DDEBF7": 12,
+  "#FFF2CC": 9
+ },
+ "colourOnlyCells": 118,
+ "colourCodedTableRows": 0,
+ "warnings": [],
+ "pages": [
+  {
+   "pdfPage": 1,
+   "gazettePage": 76,
+   "prose": "4 Residential Buildings\n4.1 Plotted Development - Single/ Multi-units.\n4.1.1 General Requirements\n(i) Permission for residential plotted development (single/ multi-units) shall be given:\na. On all plots in residential areas proposed in the master plan/ zonal development plan.\nb. In all layouts approved or developed by the Authority.\n(ii) Single-unit refers to residential building having one independent residential unit on each floor or\ncombination of floors with three or less storeys and height not exceeding 15-meters.\n(iii) Multi-unit refers to residential building having one or more independent residential units on each\nfloor with four or less storeys and height not exceeding 17.5-meters (including mandatory stilt).\n4.1.2 Minimum Plot Size\n(i) The minimum plot size for single units shall be 40 square meters for non-built-up area and there\nshall be no restriction on plot size for built-up area.\n(ii) The minimum plot size for multi units shall be 150 square meters.\n(iii) In case of a multi unit, the minimum carpet area of each independent residential unit shall be 60\nsquare meters.\n4.1.3 Means of Access\n(i) For single units, the minimum width of the road shall be 4.0 meters in built-up areas and 9-meters\nin in non-built-up areas. However, for non-built-up area, 7.5-meter-wide access road is\npermissible in case plots are located only on one side of the road.\n(ii) For multi-units, the minimum width of road shall be 9-meters.\n4.1.4 Maximum height of building\nThe maximum height of the building shall be 15-m including stilt for single unit and 17.5 meters\nincluding mandatory stilt floor for multi-unit.\n4.1.5 Minimum Setback\nMinimum setbacks for residential buildings in plotted development for single/multi-units shall be as\nper paragraph 3.2.4 of the building byelaws.\n4.1.6 Ground Coverage and FAR\nThe ground coverage and FAR of the buildings shall be as follows:\n76",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "4 Residential Buildings"
+    },
+    {
+     "y": 99,
+     "text": "4.1 Plotted Development - Single/ Multi-units."
+    },
+    {
+     "y": 122,
+     "text": "4.1.1 General Requirements"
+    },
+    {
+     "y": 141,
+     "text": "(i) Permission for residential plotted development (single/ multi-units) shall be given:"
+    },
+    {
+     "y": 160,
+     "text": "a. On all plots in residential areas proposed in the master plan/ zonal development plan."
+    },
+    {
+     "y": 179,
+     "text": "b. In all layouts approved or developed by the Authority."
+    },
+    {
+     "y": 197,
+     "text": "(ii) Single-unit refers to residential building having one independent residential unit on each floor or"
+    },
+    {
+     "y": 210,
+     "text": "combination of floors with three or less storeys and height not exceeding 15-meters."
+    },
+    {
+     "y": 229,
+     "text": "(iii) Multi-unit refers to residential building having one or more independent residential units on each"
+    },
+    {
+     "y": 242,
+     "text": "floor with four or less storeys and height not exceeding 17.5-meters (including mandatory stilt)."
+    },
+    {
+     "y": 282,
+     "text": "4.1.2 Minimum Plot Size"
+    },
+    {
+     "y": 301,
+     "text": "(i) The minimum plot size for single units shall be 40 square meters for non-built-up area and there"
+    },
+    {
+     "y": 314,
+     "text": "shall be no restriction on plot size for built-up area."
+    },
+    {
+     "y": 333,
+     "text": "(ii) The minimum plot size for multi units shall be 150 square meters."
+    },
+    {
+     "y": 352,
+     "text": "(iii) In case of a multi unit, the minimum carpet area of each independent residential unit shall be 60"
+    },
+    {
+     "y": 365,
+     "text": "square meters."
+    },
+    {
+     "y": 386,
+     "text": "4.1.3 Means of Access"
+    },
+    {
+     "y": 405,
+     "text": "(i) For single units, the minimum width of the road shall be 4.0 meters in built-up areas and 9-meters"
+    },
+    {
+     "y": 417,
+     "text": "in in non-built-up areas. However, for non-built-up area, 7.5-meter-wide access road is"
+    },
+    {
+     "y": 430,
+     "text": "permissible in case plots are located only on one side of the road."
+    },
+    {
+     "y": 449,
+     "text": "(ii) For multi-units, the minimum width of road shall be 9-meters."
+    },
+    {
+     "y": 470,
+     "text": "4.1.4 Maximum height of building"
+    },
+    {
+     "y": 489,
+     "text": "The maximum height of the building shall be 15-m including stilt for single unit and 17.5 meters"
+    },
+    {
+     "y": 502,
+     "text": "including mandatory stilt floor for multi-unit."
+    },
+    {
+     "y": 523,
+     "text": "4.1.5 Minimum Setback"
+    },
+    {
+     "y": 542,
+     "text": "Minimum setbacks for residential buildings in plotted development for single/multi-units shall be as"
+    },
+    {
+     "y": 555,
+     "text": "per paragraph 3.2.4 of the building byelaws."
+    },
+    {
+     "y": 595,
+     "text": "4.1.6 Ground Coverage and FAR"
+    },
+    {
+     "y": 614,
+     "text": "The ground coverage and FAR of the buildings shall be as follows:"
+    },
+    {
+     "y": 775,
+     "text": "76"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.3,
+      632.5,
+      523.2,
+      725.8
+     ],
+     "rows": [
+      [
+       {
+        "text": "Plot Area (sqm)",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.3,
+         632.5,
+         159.9,
+         658.6
+        ]
+       },
+       {
+        "text": "Ground Coverage (%)",
+        "fill": "#D9E2F3",
+        "bbox": [
+         159.9,
+         632.5,
+         353.0,
+         658.6
+        ]
+       },
+       {
+        "text": "Base FAR",
+        "fill": "#D9E2F3",
+        "bbox": [
+         353.0,
+         632.5,
+         413.2,
+         658.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         413.2,
+         632.5,
+         418.6,
+         658.6
+        ]
+       },
+       {
+        "text": "Max. Permissible",
+        "fill": "#D9E2F3",
+        "bbox": [
+         418.6,
+         632.5,
+         517.8,
+         645.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         517.8,
+         632.5,
+         523.2,
+         658.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "FAR",
+        "fill": "#D9E2F3",
+        "bbox": [
+         418.6,
+         645.5,
+         517.8,
+         658.6
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "\u226540 to 150",
+        "bbox": [
+         72.3,
+         658.6,
+         159.9,
+         672.1
+        ]
+       },
+       {
+        "text": "Max. coverage after ensuring setbacks",
+        "bbox": [
+         159.9,
+         658.6,
+         353.0,
+         672.1
+        ]
+       },
+       {
+        "text": "2.00",
+        "bbox": [
+         353.0,
+         658.6,
+         413.2,
+         672.1
+        ]
+       },
+       {
+        "text": "2.0",
+        "bbox": [
+         413.2,
+         658.6,
+         523.2,
+         672.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ">150 to 300",
+        "bbox": [
+         72.3,
+         672.1,
+         159.9,
+         685.5
+        ]
+       },
+       {
+        "text": "Max. coverage after ensuring setbacks",
+        "bbox": [
+         159.9,
+         672.1,
+         353.0,
+         685.5
+        ]
+       },
+       {
+        "text": "1.80",
+        "bbox": [
+         353.0,
+         672.1,
+         413.2,
+         685.5
+        ]
+       },
+       {
+        "text": "2.0",
+        "bbox": [
+         413.2,
+         672.1,
+         523.2,
+         685.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ">300 to 500",
+        "bbox": [
+         72.3,
+         685.5,
+         159.9,
+         698.9
+        ]
+       },
+       {
+        "text": "Max. coverage after ensuring setbacks",
+        "bbox": [
+         159.9,
+         685.5,
+         353.0,
+         698.9
+        ]
+       },
+       {
+        "text": "1.75",
+        "bbox": [
+         353.0,
+         685.5,
+         413.2,
+         698.9
+        ]
+       },
+       {
+        "text": "2.0",
+        "bbox": [
+         413.2,
+         685.5,
+         523.2,
+         698.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ">500 to1200",
+        "bbox": [
+         72.3,
+         698.9,
+         159.9,
+         712.3
+        ]
+       },
+       {
+        "text": "Max. coverage after ensuring setbacks",
+        "bbox": [
+         159.9,
+         698.9,
+         353.0,
+         712.3
+        ]
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         353.0,
+         698.9,
+         413.2,
+         712.3
+        ]
+       },
+       {
+        "text": "2.0",
+        "bbox": [
+         413.2,
+         698.9,
+         523.2,
+         712.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ">1200",
+        "bbox": [
+         72.3,
+         712.3,
+         159.9,
+         725.8
+        ]
+       },
+       {
+        "text": "Max. coverage after ensuring setbacks",
+        "bbox": [
+         159.9,
+         712.3,
+         353.0,
+         725.8
+        ]
+       },
+       {
+        "text": "1.25",
+        "bbox": [
+         353.0,
+         712.3,
+         413.2,
+         725.8
+        ]
+       },
+       {
+        "text": "2.0",
+        "bbox": [
+         413.2,
+         712.3,
+         523.2,
+         725.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 2,
+   "gazettePage": 77,
+   "prose": "Note-1: For all housing projects having more than one unit, a 10% each of the total units shall be\nmandatorily reserved for Economically Weaker Section (EWS) and Lower Income Group (LIG)\nhousing respectively. For plots less than 4 Ha, provision to deposit shelter fee shall be applicable. The\nmandatory EWS/LIG plots/units to be built as per the government policy shall be treated free of FAR\nand the corresponding incentive FAR (as calculated on carpet area of EWS/LIG units) shall also be\npermissible. For plots less than 4 Ha, in case EWS/LIG plots/units are not constructed and shelter fee\nis deposited, then in lieu of the same, the proportionate incentive FAR shall be allowed.\n4.1.7 Parking Requirements\nParking requirements for residential plotted development shall be as per paragraph 3.3.4 of the\nbuilding byelaws.\n4.1.8 Other requirements\n(i) Before multi- units are allowed on the above mentioned plots, development fee shall be deposited\nby the applicant as per the provisions of Uttar Pradesh Urban Planning and Development\n(Determination, Levy and Collection of Development Fee) Rules, 2014 as amended time to time.\n(ii) The provisions of Uttar Pradesh Apartment (Promotion of Construction, Ownership and\nMaintenance) Act, 2010 and the rules and bye-laws made thereunder shall be effective in case of\nmulti-units.\n4.2 Group Housing\n4.2.1 General Requirements\n(i) The development of group housing shall be done as per the provisions of the master plan, zonal\ndevelopment plan and layout plan.\n(ii) In group housing schemes of four hectares and more area, it shall be mandatory to get the layout\napproved, wherein the layout plan and building plan can be submitted together for approval.\n(iii) In group housing schemes less than four hectares, only building plan approval shall be required\nwith provision of proper circulation area.\n4.2.2 Minimum Plot Size\nThe minimum area of the plot for group housing schemes in built-up area shall be 1000 square meters\nand 1500 square meters in non-built-up areas.\n4.2.3 Means of access\nThe proposed plot for group housing shall be located on road of minimum 12-meter width in non-built-\nup areas and the minimum road width for group housing plots in built-up area shall be 9-meters. The\nspecifications for internal roads and pathways shall be as per paragraph 3.1.3 of these byelaws.\n4.2.4 Maximum Building Height\nThere shall be no restriction on the maximum permissible building height for group housing schemes.\nThe height of the building in group housing project shall be governed by its distance from the protected\nmonument/heritage site, airport funnel zone and other statutory restrictions if any.\n4.2.5 Parking Requirements\n(i) Stilt Floor - Stilt floors shall be permissible for parking purposes in group housing buildings.\nProvisions for stilt parking shall be provided as per paragraph 3.3.4.8 of the byelaws.\n(ii) Podium Parking - Podium parking shall be permissible for parking purposes in group housing\nbuildings. Provisions for podium parking shall be provided as per paragraph 3.3.4.9 of the\nbyelaws.\n77",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "Note-1: For all housing projects having more than one unit, a 10% each of the total units shall be"
+    },
+    {
+     "y": 85,
+     "text": "mandatorily reserved for Economically Weaker Section (EWS) and Lower Income Group (LIG)"
+    },
+    {
+     "y": 97,
+     "text": "housing respectively. For plots less than 4 Ha, provision to deposit shelter fee shall be applicable. The"
+    },
+    {
+     "y": 110,
+     "text": "mandatory EWS/LIG plots/units to be built as per the government policy shall be treated free of FAR"
+    },
+    {
+     "y": 123,
+     "text": "and the corresponding incentive FAR (as calculated on carpet area of EWS/LIG units) shall also be"
+    },
+    {
+     "y": 136,
+     "text": "permissible. For plots less than 4 Ha, in case EWS/LIG plots/units are not constructed and shelter fee"
+    },
+    {
+     "y": 149,
+     "text": "is deposited, then in lieu of the same, the proportionate incentive FAR shall be allowed."
+    },
+    {
+     "y": 170,
+     "text": "4.1.7 Parking Requirements"
+    },
+    {
+     "y": 189,
+     "text": "Parking requirements for residential plotted development shall be as per paragraph 3.3.4 of the"
+    },
+    {
+     "y": 202,
+     "text": "building byelaws."
+    },
+    {
+     "y": 223,
+     "text": "4.1.8 Other requirements"
+    },
+    {
+     "y": 242,
+     "text": "(i) Before multi- units are allowed on the above mentioned plots, development fee shall be deposited"
+    },
+    {
+     "y": 255,
+     "text": "by the applicant as per the provisions of Uttar Pradesh Urban Planning and Development"
+    },
+    {
+     "y": 268,
+     "text": "(Determination, Levy and Collection of Development Fee) Rules, 2014 as amended time to time."
+    },
+    {
+     "y": 286,
+     "text": "(ii) The provisions of Uttar Pradesh Apartment (Promotion of Construction, Ownership and"
+    },
+    {
+     "y": 299,
+     "text": "Maintenance) Act, 2010 and the rules and bye-laws made thereunder shall be effective in case of"
+    },
+    {
+     "y": 312,
+     "text": "multi-units."
+    },
+    {
+     "y": 333,
+     "text": "4.2 Group Housing"
+    },
+    {
+     "y": 357,
+     "text": "4.2.1 General Requirements"
+    },
+    {
+     "y": 376,
+     "text": "(i) The development of group housing shall be done as per the provisions of the master plan, zonal"
+    },
+    {
+     "y": 389,
+     "text": "development plan and layout plan."
+    },
+    {
+     "y": 407,
+     "text": "(ii) In group housing schemes of four hectares and more area, it shall be mandatory to get the layout"
+    },
+    {
+     "y": 420,
+     "text": "approved, wherein the layout plan and building plan can be submitted together for approval."
+    },
+    {
+     "y": 439,
+     "text": "(iii) In group housing schemes less than four hectares, only building plan approval shall be required"
+    },
+    {
+     "y": 452,
+     "text": "with provision of proper circulation area."
+    },
+    {
+     "y": 473,
+     "text": "4.2.2 Minimum Plot Size"
+    },
+    {
+     "y": 492,
+     "text": "The minimum area of the plot for group housing schemes in built-up area shall be 1000 square meters"
+    },
+    {
+     "y": 505,
+     "text": "and 1500 square meters in non-built-up areas."
+    },
+    {
+     "y": 526,
+     "text": "4.2.3 Means of access"
+    },
+    {
+     "y": 545,
+     "text": "The proposed plot for group housing shall be located on road of minimum 12-meter width in non-built-"
+    },
+    {
+     "y": 558,
+     "text": "up areas and the minimum road width for group housing plots in built-up area shall be 9-meters. The"
+    },
+    {
+     "y": 571,
+     "text": "specifications for internal roads and pathways shall be as per paragraph 3.1.3 of these byelaws."
+    },
+    {
+     "y": 592,
+     "text": "4.2.4 Maximum Building Height"
+    },
+    {
+     "y": 611,
+     "text": "There shall be no restriction on the maximum permissible building height for group housing schemes."
+    },
+    {
+     "y": 623,
+     "text": "The height of the building in group housing project shall be governed by its distance from the protected"
+    },
+    {
+     "y": 636,
+     "text": "monument/heritage site, airport funnel zone and other statutory restrictions if any."
+    },
+    {
+     "y": 657,
+     "text": "4.2.5 Parking Requirements"
+    },
+    {
+     "y": 676,
+     "text": "(i) Stilt Floor - Stilt floors shall be permissible for parking purposes in group housing buildings."
+    },
+    {
+     "y": 689,
+     "text": "Provisions for stilt parking shall be provided as per paragraph 3.3.4.8 of the byelaws."
+    },
+    {
+     "y": 708,
+     "text": "(ii) Podium Parking - Podium parking shall be permissible for parking purposes in group housing"
+    },
+    {
+     "y": 721,
+     "text": "buildings. Provisions for podium parking shall be provided as per paragraph 3.3.4.9 of the"
+    },
+    {
+     "y": 734,
+     "text": "byelaws."
+    },
+    {
+     "y": 775,
+     "text": "77"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 3,
+   "gazettePage": 78,
+   "prose": "4.2.6 Parks and open areas and landscaping\nIn the plots of area of 3000 square meters or more which are part of zonal development plan, provision\nfor parks and open areas shall be made at the rate of 10% of the total plot area. The plots where zonal\ndevelopment plan is not effective, provision of parks and open spaces shall be made at the rate of 15%\nof the net plot area. The provisions shall be as per paragraph 3.1.2.2.\n4.2.7 Minimum Setback\nMinimum setbacks for residential buildings in plotted development for group housing shall be as per\nparagraph 3.2.4 of the building byelaw.\n4.2.8 Ground Coverage and FAR\nAfter ensuring minimum setback and mandatory open space requirements, maximum ground coverage\nshall be permissible on group housing plots.\nMaximum permissible FAR for group housing project in built-up and in non-built-up areas based on\nthe road width shall be as per paragraph 3.2.2.2, as follows:\nNote-1: BFAR \u2013 Base FAR, PFAR \u2013 Purchasable FAR, PPFAR \u2013 Premium Purchasable FAR, MFAR\n\u2013 Maximum Permissible FAR including Base FAR, UR \u2013 Unrestricted\nNote-2: In green building, additional FAR over and above maximum permissible FAR shall be provided\nas per Chapter 9.3 of the building byelaws.\nNote-3: A maximum of 5 percent of the availed FAR (which includes Purchasable and Premium\nPurchasable FAR) will be allowed for commercial purposes within a group housing project. If the\ncommercial use is situated in the same building as residential, the commercial use shall be limited to\nground floor only. Commercial space developed as a separated building within group housing project,\nshall have a separate entry and exit.\nNote-4: A maximum of 5 percent of the permissible FAR shall be availed for various types of services\nlike air-conditioned plants, in front of the lift (except corridor outside the lift), up to 10 square meters\nshall be allowed for lobby, machine room for lift, mumty, almirahs and bay-windows (maximum 0.60\nm depth and 1.80 m length), refuse area (as per NBC), service duct and community centre.\nNote-5: Provision of community facilities shall be made as per the standards prescribed in paragraph\n3.1.4 of the byelaws.\nNote-6: Security room measuring 7.5 square meters shall be allowed at the entrance, but in any case,\nconstruction within the minimum setback required for firefighting shall not be allowed.\nNote-7: Balconies up to 2-meter width shall not be included in FAR. Wherever the distance between\ntwo buildings is less than 9-meters, a balcony more than 2.0 meters wide shall not be allowed up to a\nheight of 6-meters. Fire norms shall not be violated in this regard.\n78",
+   "proseLines": [
+    {
+     "y": 74,
+     "text": "4.2.6 Parks and open areas and landscaping"
+    },
+    {
+     "y": 93,
+     "text": "In the plots of area of 3000 square meters or more which are part of zonal development plan, provision"
+    },
+    {
+     "y": 105,
+     "text": "for parks and open areas shall be made at the rate of 10% of the total plot area. The plots where zonal"
+    },
+    {
+     "y": 118,
+     "text": "development plan is not effective, provision of parks and open spaces shall be made at the rate of 15%"
+    },
+    {
+     "y": 131,
+     "text": "of the net plot area. The provisions shall be as per paragraph 3.1.2.2."
+    },
+    {
+     "y": 165,
+     "text": "4.2.7 Minimum Setback"
+    },
+    {
+     "y": 184,
+     "text": "Minimum setbacks for residential buildings in plotted development for group housing shall be as per"
+    },
+    {
+     "y": 197,
+     "text": "paragraph 3.2.4 of the building byelaw."
+    },
+    {
+     "y": 231,
+     "text": "4.2.8 Ground Coverage and FAR"
+    },
+    {
+     "y": 250,
+     "text": "After ensuring minimum setback and mandatory open space requirements, maximum ground coverage"
+    },
+    {
+     "y": 263,
+     "text": "shall be permissible on group housing plots."
+    },
+    {
+     "y": 282,
+     "text": "Maximum permissible FAR for group housing project in built-up and in non-built-up areas based on"
+    },
+    {
+     "y": 294,
+     "text": "the road width shall be as per paragraph 3.2.2.2, as follows:"
+    },
+    {
+     "y": 467,
+     "text": "Note-1: BFAR \u2013 Base FAR, PFAR \u2013 Purchasable FAR, PPFAR \u2013 Premium Purchasable FAR, MFAR"
+    },
+    {
+     "y": 480,
+     "text": "\u2013 Maximum Permissible FAR including Base FAR, UR \u2013 Unrestricted"
+    },
+    {
+     "y": 499,
+     "text": "Note-2: In green building, additional FAR over and above maximum permissible FAR shall be provided"
+    },
+    {
+     "y": 512,
+     "text": "as per Chapter 9.3 of the building byelaws."
+    },
+    {
+     "y": 531,
+     "text": "Note-3: A maximum of 5 percent of the availed FAR (which includes Purchasable and Premium"
+    },
+    {
+     "y": 544,
+     "text": "Purchasable FAR) will be allowed for commercial purposes within a group housing project. If the"
+    },
+    {
+     "y": 557,
+     "text": "commercial use is situated in the same building as residential, the commercial use shall be limited to"
+    },
+    {
+     "y": 570,
+     "text": "ground floor only. Commercial space developed as a separated building within group housing project,"
+    },
+    {
+     "y": 583,
+     "text": "shall have a separate entry and exit."
+    },
+    {
+     "y": 602,
+     "text": "Note-4: A maximum of 5 percent of the permissible FAR shall be availed for various types of services"
+    },
+    {
+     "y": 615,
+     "text": "like air-conditioned plants, in front of the lift (except corridor outside the lift), up to 10 square meters"
+    },
+    {
+     "y": 628,
+     "text": "shall be allowed for lobby, machine room for lift, mumty, almirahs and bay-windows (maximum 0.60"
+    },
+    {
+     "y": 640,
+     "text": "m depth and 1.80 m length), refuse area (as per NBC), service duct and community centre."
+    },
+    {
+     "y": 659,
+     "text": "Note-5: Provision of community facilities shall be made as per the standards prescribed in paragraph"
+    },
+    {
+     "y": 672,
+     "text": "3.1.4 of the byelaws."
+    },
+    {
+     "y": 691,
+     "text": "Note-6: Security room measuring 7.5 square meters shall be allowed at the entrance, but in any case,"
+    },
+    {
+     "y": 704,
+     "text": "construction within the minimum setback required for firefighting shall not be allowed."
+    },
+    {
+     "y": 723,
+     "text": "Note-7: Balconies up to 2-meter width shall not be included in FAR. Wherever the distance between"
+    },
+    {
+     "y": 736,
+     "text": "two buildings is less than 9-meters, a balcony more than 2.0 meters wide shall not be allowed up to a"
+    },
+    {
+     "y": 749,
+     "text": "height of 6-meters. Fire norms shall not be violated in this regard."
+    },
+    {
+     "y": 775,
+     "text": "78"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      78.5,
+      313.3,
+      520.1,
+      460.6
+     ],
+     "rows": [
+      [
+       {
+        "text": "FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         78.5,
+         313.3,
+         137.2,
+         332.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         137.2,
+         313.3,
+         166.5,
+         317.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         166.5,
+         313.3,
+         255.0,
+         317.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         255.0,
+         313.3,
+         343.5,
+         317.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         343.5,
+         313.3,
+         431.9,
+         317.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         431.9,
+         313.3,
+         520.1,
+         317.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         137.2,
+         317.0,
+         166.5,
+         332.0
+        ]
+       },
+       {
+        "text": "Road Width (Upto 12m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         166.5,
+         317.0,
+         255.0,
+         332.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>12 -24m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         255.0,
+         317.0,
+         343.5,
+         332.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>24 - 45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         343.5,
+         317.0,
+         431.9,
+         332.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         431.9,
+         317.0,
+         520.1,
+         332.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         78.5,
+         332.0,
+         137.2,
+         348.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         137.2,
+         332.0,
+         166.5,
+         336.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         166.5,
+         332.0,
+         255.0,
+         336.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         255.0,
+         332.0,
+         343.5,
+         336.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         343.5,
+         332.0,
+         431.9,
+         336.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         431.9,
+         332.0,
+         520.1,
+         336.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         137.2,
+         336.4,
+         166.5,
+         344.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         166.5,
+         336.4,
+         196.2,
+         344.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         196.2,
+         336.4,
+         225.8,
+         344.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         225.8,
+         336.4,
+         255.0,
+         344.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         255.0,
+         336.4,
+         284.6,
+         344.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         284.6,
+         336.4,
+         314.2,
+         344.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         314.2,
+         336.4,
+         343.5,
+         344.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         343.5,
+         336.4,
+         373.1,
+         344.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         373.1,
+         336.4,
+         402.7,
+         344.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         402.7,
+         336.4,
+         431.9,
+         344.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         431.9,
+         336.4,
+         461.6,
+         344.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         461.6,
+         336.4,
+         491.1,
+         344.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         491.1,
+         336.4,
+         520.1,
+         344.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "BFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         137.2,
+         344.2,
+         166.5,
+         358.3
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         166.5,
+         344.2,
+         196.2,
+         358.3
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         196.2,
+         344.2,
+         225.8,
+         358.3
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         225.8,
+         344.2,
+         255.0,
+         358.3
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         255.0,
+         344.2,
+         284.6,
+         358.3
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         284.6,
+         344.2,
+         314.2,
+         358.3
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         314.2,
+         344.2,
+         343.5,
+         358.3
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         343.5,
+         344.2,
+         373.1,
+         358.3
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         373.1,
+         344.2,
+         402.7,
+         358.3
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         402.7,
+         344.2,
+         431.9,
+         358.3
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         431.9,
+         344.2,
+         461.6,
+         358.3
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         461.6,
+         344.2,
+         491.1,
+         358.3
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         491.1,
+         344.2,
+         520.1,
+         358.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "G. Housing",
+        "fill": "#DBE5F1",
+        "bbox": [
+         78.5,
+         348.5,
+         137.2,
+         366.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         137.2,
+         358.3,
+         166.5,
+         366.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         166.5,
+         358.3,
+         196.2,
+         366.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         196.2,
+         358.3,
+         225.8,
+         366.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         225.8,
+         358.3,
+         255.0,
+         366.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         255.0,
+         358.3,
+         284.6,
+         366.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         284.6,
+         358.3,
+         314.2,
+         366.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         314.2,
+         358.3,
+         343.5,
+         366.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         343.5,
+         358.3,
+         373.1,
+         366.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         373.1,
+         358.3,
+         402.7,
+         366.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         402.7,
+         358.3,
+         431.9,
+         366.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         431.9,
+         358.3,
+         461.6,
+         366.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         461.6,
+         358.3,
+         491.1,
+         366.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         491.1,
+         358.3,
+         520.1,
+         366.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         78.5,
+         366.2,
+         137.2,
+         370.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         137.2,
+         366.2,
+         166.5,
+         370.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         166.5,
+         366.2,
+         196.2,
+         370.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         196.2,
+         366.2,
+         225.8,
+         370.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         225.8,
+         366.2,
+         255.0,
+         370.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         255.0,
+         366.2,
+         284.6,
+         370.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         284.6,
+         366.2,
+         314.2,
+         370.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         314.2,
+         366.2,
+         343.5,
+         370.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         343.5,
+         366.2,
+         373.1,
+         370.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         373.1,
+         366.2,
+         402.7,
+         370.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         402.7,
+         366.2,
+         431.9,
+         370.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         431.9,
+         366.2,
+         461.6,
+         370.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         461.6,
+         366.2,
+         491.1,
+         370.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         491.1,
+         366.2,
+         520.1,
+         370.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Built-up Area",
+        "bbox": [
+         78.5,
+         370.2,
+         137.2,
+         385.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         137.2,
+         370.2,
+         166.5,
+         385.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         166.5,
+         370.2,
+         196.2,
+         385.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         196.2,
+         370.2,
+         225.8,
+         385.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         225.8,
+         370.2,
+         255.0,
+         385.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         255.0,
+         370.2,
+         284.6,
+         385.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         284.6,
+         370.2,
+         314.2,
+         385.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         314.2,
+         370.2,
+         343.5,
+         385.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         343.5,
+         370.2,
+         373.1,
+         385.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         373.1,
+         370.2,
+         402.7,
+         385.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         402.7,
+         370.2,
+         431.9,
+         385.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         431.9,
+         370.2,
+         461.6,
+         385.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         461.6,
+         370.2,
+         491.1,
+         385.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         491.1,
+         370.2,
+         520.1,
+         385.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         78.5,
+         385.4,
+         137.2,
+         389.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         137.2,
+         385.4,
+         166.5,
+         389.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         166.5,
+         385.4,
+         196.2,
+         389.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         196.2,
+         385.4,
+         225.8,
+         389.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         225.8,
+         385.4,
+         255.0,
+         389.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         255.0,
+         385.4,
+         284.6,
+         389.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         284.6,
+         385.4,
+         314.2,
+         389.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         314.2,
+         385.4,
+         343.5,
+         389.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         343.5,
+         385.4,
+         373.1,
+         389.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         373.1,
+         385.4,
+         402.7,
+         389.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         402.7,
+         385.4,
+         431.9,
+         389.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         431.9,
+         385.4,
+         461.6,
+         389.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         461.6,
+         385.4,
+         491.1,
+         389.3
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         491.1,
+         385.4,
+         520.1,
+         389.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Group Housing",
+        "bbox": [
+         78.5,
+         389.3,
+         137.2,
+         412.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         137.2,
+         389.3,
+         166.5,
+         393.3
+        ]
+       },
+       {
+        "text": "0.3",
+        "bbox": [
+         166.5,
+         389.3,
+         196.2,
+         412.7
+        ]
+       },
+       {
+        "text": "0.3",
+        "bbox": [
+         196.2,
+         389.3,
+         225.8,
+         412.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         225.8,
+         389.3,
+         255.0,
+         393.3
+        ]
+       },
+       {
+        "text": "0.75",
+        "bbox": [
+         255.0,
+         389.3,
+         284.6,
+         412.7
+        ]
+       },
+       {
+        "text": "0.75",
+        "bbox": [
+         284.6,
+         389.3,
+         314.2,
+         412.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         314.2,
+         389.3,
+         343.5,
+         393.3
+        ]
+       },
+       {
+        "text": "1.5",
+        "bbox": [
+         343.5,
+         389.3,
+         373.1,
+         412.7
+        ]
+       },
+       {
+        "text": "2.25",
+        "bbox": [
+         373.1,
+         389.3,
+         402.7,
+         412.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         402.7,
+         389.3,
+         431.9,
+         393.3
+        ]
+       },
+       {
+        "text": "1.5",
+        "bbox": [
+         431.9,
+         389.3,
+         461.6,
+         412.7
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         461.6,
+         389.3,
+         491.1,
+         412.7
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         491.1,
+         389.3,
+         520.1,
+         393.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "1.5",
+        "fill": "#FFF2CC",
+        "bbox": [
+         137.2,
+         393.3,
+         166.5,
+         408.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "2.1",
+        "fill": "#DEEAF6",
+        "bbox": [
+         225.8,
+         393.3,
+         255.0,
+         408.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "3",
+        "fill": "#DEEAF6",
+        "bbox": [
+         314.2,
+         393.3,
+         343.5,
+         408.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "5.25",
+        "fill": "#DEEAF6",
+        "bbox": [
+         402.7,
+         393.3,
+         431.9,
+         408.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DEEAF6",
+        "bbox": [
+         491.1,
+         393.3,
+         520.1,
+         408.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         137.2,
+         408.6,
+         166.5,
+         412.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         225.8,
+         408.6,
+         255.0,
+         412.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         314.2,
+         408.6,
+         343.5,
+         412.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         402.7,
+         408.6,
+         431.9,
+         412.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         491.1,
+         408.6,
+         520.1,
+         412.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Non-Built-up",
+        "bbox": [
+         78.5,
+         412.7,
+         137.2,
+         428.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         137.2,
+         412.7,
+         166.5,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         166.5,
+         412.7,
+         196.2,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         196.2,
+         412.7,
+         225.8,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         225.8,
+         412.7,
+         255.0,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         255.0,
+         412.7,
+         284.6,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         284.6,
+         412.7,
+         314.2,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         314.2,
+         412.7,
+         343.5,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         343.5,
+         412.7,
+         373.1,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         373.1,
+         412.7,
+         402.7,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         402.7,
+         412.7,
+         431.9,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         431.9,
+         412.7,
+         461.6,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         461.6,
+         412.7,
+         491.1,
+         417.5
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         491.1,
+         412.7,
+         520.1,
+         417.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "bbox": [
+         137.2,
+         417.5,
+         166.5,
+         432.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         166.5,
+         417.5,
+         196.2,
+         432.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         196.2,
+         417.5,
+         225.8,
+         432.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         225.8,
+         417.5,
+         255.0,
+         432.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         255.0,
+         417.5,
+         284.6,
+         432.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         284.6,
+         417.5,
+         314.2,
+         432.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         314.2,
+         417.5,
+         343.5,
+         432.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         343.5,
+         417.5,
+         373.1,
+         432.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         373.1,
+         417.5,
+         402.7,
+         432.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         402.7,
+         417.5,
+         431.9,
+         432.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         431.9,
+         417.5,
+         461.6,
+         432.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         461.6,
+         417.5,
+         491.1,
+         432.7
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         491.1,
+         417.5,
+         520.1,
+         432.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Area",
+        "bbox": [
+         78.5,
+         428.0,
+         137.2,
+         437.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "bbox": [
+         137.2,
+         432.7,
+         166.5,
+         437.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         166.5,
+         432.7,
+         196.2,
+         437.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         196.2,
+         432.7,
+         225.8,
+         437.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         225.8,
+         432.7,
+         255.0,
+         437.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         255.0,
+         432.7,
+         284.6,
+         437.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         284.6,
+         432.7,
+         314.2,
+         437.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         314.2,
+         432.7,
+         343.5,
+         437.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         343.5,
+         432.7,
+         373.1,
+         437.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         373.1,
+         432.7,
+         402.7,
+         437.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         402.7,
+         432.7,
+         431.9,
+         437.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         431.9,
+         432.7,
+         461.6,
+         437.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         461.6,
+         432.7,
+         491.1,
+         437.4
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         491.1,
+         432.7,
+         520.1,
+         437.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Group Housing",
+        "bbox": [
+         78.5,
+         437.4,
+         137.2,
+         460.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         137.2,
+         437.4,
+         166.5,
+         441.5
+        ]
+       },
+       {
+        "text": "0.5",
+        "bbox": [
+         166.5,
+         437.4,
+         196.2,
+         460.6
+        ]
+       },
+       {
+        "text": "0.5",
+        "bbox": [
+         196.2,
+         437.4,
+         225.8,
+         460.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         225.8,
+         437.4,
+         255.0,
+         441.5
+        ]
+       },
+       {
+        "text": "1.25",
+        "bbox": [
+         255.0,
+         437.4,
+         284.6,
+         460.6
+        ]
+       },
+       {
+        "text": "1.25",
+        "bbox": [
+         284.6,
+         437.4,
+         314.2,
+         460.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         314.2,
+         437.4,
+         343.5,
+         441.5
+        ]
+       },
+       {
+        "text": "2.5",
+        "bbox": [
+         343.5,
+         437.4,
+         373.1,
+         460.6
+        ]
+       },
+       {
+        "text": "3.75",
+        "bbox": [
+         373.1,
+         437.4,
+         402.7,
+         460.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         402.7,
+         437.4,
+         431.9,
+         441.5
+        ]
+       },
+       {
+        "text": "2.5",
+        "bbox": [
+         431.9,
+         437.4,
+         461.6,
+         460.6
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         461.6,
+         437.4,
+         491.1,
+         460.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         491.1,
+         437.4,
+         520.1,
+         441.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "2.5",
+        "fill": "#FFF2CC",
+        "bbox": [
+         137.2,
+         441.5,
+         166.5,
+         456.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "3.5",
+        "fill": "#DEEAF6",
+        "bbox": [
+         225.8,
+         441.5,
+         255.0,
+         456.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "5",
+        "fill": "#DEEAF6",
+        "bbox": [
+         314.2,
+         441.5,
+         343.5,
+         456.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "8.75",
+        "fill": "#DEEAF6",
+        "bbox": [
+         402.7,
+         441.5,
+         431.9,
+         456.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "UR",
+        "fill": "#DEEAF6",
+        "bbox": [
+         491.1,
+         441.5,
+         520.1,
+         456.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#FFF2CC",
+        "bbox": [
+         137.2,
+         456.7,
+         166.5,
+         460.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         225.8,
+         456.7,
+         255.0,
+         460.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         314.2,
+         456.7,
+         343.5,
+         460.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         402.7,
+         456.7,
+         431.9,
+         460.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DEEAF6",
+        "bbox": [
+         491.1,
+         456.7,
+         520.1,
+         460.6
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 4,
+   "gazettePage": 79,
+   "prose": "Note-8: For all housing projects (except affordable housing schemes) having more than one unit, a 10%\neach of the total units shall be mandatorily reserved for Economically Weaker Section (EWS) and\nLower Income Group (LIG) housing respectively. For plots less than 4 Ha, provision to deposit shelter\nfee shall be applicable. The mandatory EWS/LIG plots/units to be built as per the government policy\nshall be treated free of FAR and the corresponding incentive FAR (as calculated on carpet area of\nEWS/LIG units) shall also be permissible. For plots less than 4 Ha, in case EWS/LIG plots/units are\nnot constructed and shelter fee is deposited, then in lieu of the same, the proportionate incentive FAR\nshall be allowed.\n4.2.9 Parking Requirements\nParking standards in group housing plots shall be as per paragraph 3.3.4 of these byelaws.\nNote: For plots above 4000 sqm in area, a separate block for parking is permissible. Within the parking\nblock, 10% of Ground Floor shall be utilized for ancillary purposes (free from FAR) incidental to the\nprincipal use.\n4.2.10 Basement\nThe permissibility of basement in group housing project shall be as per paragraph 3.3.3 of the building\nbyelaws.\n4.2.11 Other requirements\n(i) Telecom wiring arrangement in group housing, hotel and multi-storey commercial/office\nbuildings as per the standards prescribed by the Department of Telecommunications.\n(ii) Provision of duct for optical fibre as per the standards in all categories of newly constructed\nbuilding complexes.\n(iii) Provision of piped natural gas, wherever required.\n(iv) Provisions for electrical vehicle charging stations shall be as per Chapter-17.\n4.3 EWS and LIG housing requirements\n4.3.1 Requirements\nFor all housing projects (except affordable housing schemes) having more than one unit, a 10% each of\nthe total units shall be mandatorily reserved for Economically Weaker Section (EWS) and Lower\nIncome Group (LIG) housing respectively. For plots less than 4 Ha, provision to deposit shelter fee\nshall be applicable.\n4.3.2 Eligibility of EWS and LIG\nEligibility of EWS and LIG shall be determined based on annual income limit. For being eligible under\nEWS, the current limit is an annual income of rupees 3 lakhs and for being eligible under LIG, the\ncurrent limit is an annual income of rupees 3-6 lakhs or as amended by State Government as per the\nguidelines issued from time to time.\n4.3.3 Minimum Plot Size\nThe minimum plot size for EWS and LIG housing (in plotted development) and minimum carpet area\n(in group housing) shall be as follows.\n79",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "Note-8: For all housing projects (except affordable housing schemes) having more than one unit, a 10%"
+    },
+    {
+     "y": 85,
+     "text": "each of the total units shall be mandatorily reserved for Economically Weaker Section (EWS) and"
+    },
+    {
+     "y": 97,
+     "text": "Lower Income Group (LIG) housing respectively. For plots less than 4 Ha, provision to deposit shelter"
+    },
+    {
+     "y": 110,
+     "text": "fee shall be applicable. The mandatory EWS/LIG plots/units to be built as per the government policy"
+    },
+    {
+     "y": 123,
+     "text": "shall be treated free of FAR and the corresponding incentive FAR (as calculated on carpet area of"
+    },
+    {
+     "y": 136,
+     "text": "EWS/LIG units) shall also be permissible. For plots less than 4 Ha, in case EWS/LIG plots/units are"
+    },
+    {
+     "y": 149,
+     "text": "not constructed and shelter fee is deposited, then in lieu of the same, the proportionate incentive FAR"
+    },
+    {
+     "y": 162,
+     "text": "shall be allowed."
+    },
+    {
+     "y": 183,
+     "text": "4.2.9 Parking Requirements"
+    },
+    {
+     "y": 202,
+     "text": "Parking standards in group housing plots shall be as per paragraph 3.3.4 of these byelaws."
+    },
+    {
+     "y": 228,
+     "text": "Note: For plots above 4000 sqm in area, a separate block for parking is permissible. Within the parking"
+    },
+    {
+     "y": 241,
+     "text": "block, 10% of Ground Floor shall be utilized for ancillary purposes (free from FAR) incidental to the"
+    },
+    {
+     "y": 254,
+     "text": "principal use."
+    },
+    {
+     "y": 274,
+     "text": "4.2.10 Basement"
+    },
+    {
+     "y": 293,
+     "text": "The permissibility of basement in group housing project shall be as per paragraph 3.3.3 of the building"
+    },
+    {
+     "y": 306,
+     "text": "byelaws."
+    },
+    {
+     "y": 327,
+     "text": "4.2.11 Other requirements"
+    },
+    {
+     "y": 346,
+     "text": "(i) Telecom wiring arrangement in group housing, hotel and multi-storey commercial/office"
+    },
+    {
+     "y": 359,
+     "text": "buildings as per the standards prescribed by the Department of Telecommunications."
+    },
+    {
+     "y": 378,
+     "text": "(ii) Provision of duct for optical fibre as per the standards in all categories of newly constructed"
+    },
+    {
+     "y": 391,
+     "text": "building complexes."
+    },
+    {
+     "y": 410,
+     "text": "(iii) Provision of piped natural gas, wherever required."
+    },
+    {
+     "y": 429,
+     "text": "(iv) Provisions for electrical vehicle charging stations shall be as per Chapter-17."
+    },
+    {
+     "y": 469,
+     "text": "4.3 EWS and LIG housing requirements"
+    },
+    {
+     "y": 492,
+     "text": "4.3.1 Requirements"
+    },
+    {
+     "y": 511,
+     "text": "For all housing projects (except affordable housing schemes) having more than one unit, a 10% each of"
+    },
+    {
+     "y": 524,
+     "text": "the total units shall be mandatorily reserved for Economically Weaker Section (EWS) and Lower"
+    },
+    {
+     "y": 537,
+     "text": "Income Group (LIG) housing respectively. For plots less than 4 Ha, provision to deposit shelter fee"
+    },
+    {
+     "y": 550,
+     "text": "shall be applicable."
+    },
+    {
+     "y": 571,
+     "text": "4.3.2 Eligibility of EWS and LIG"
+    },
+    {
+     "y": 590,
+     "text": "Eligibility of EWS and LIG shall be determined based on annual income limit. For being eligible under"
+    },
+    {
+     "y": 603,
+     "text": "EWS, the current limit is an annual income of rupees 3 lakhs and for being eligible under LIG, the"
+    },
+    {
+     "y": 615,
+     "text": "current limit is an annual income of rupees 3-6 lakhs or as amended by State Government as per the"
+    },
+    {
+     "y": 628,
+     "text": "guidelines issued from time to time."
+    },
+    {
+     "y": 649,
+     "text": "4.3.3 Minimum Plot Size"
+    },
+    {
+     "y": 668,
+     "text": "The minimum plot size for EWS and LIG housing (in plotted development) and minimum carpet area"
+    },
+    {
+     "y": 681,
+     "text": "(in group housing) shall be as follows."
+    },
+    {
+     "y": 775,
+     "text": "79"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.0,
+      693.9,
+      522.7,
+      755.7
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.0,
+         693.9,
+         326.8,
+         697.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         326.8,
+         693.9,
+         424.6,
+         697.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         424.6,
+         693.9,
+         522.7,
+         697.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.0,
+         697.6,
+         326.8,
+         710.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         326.8,
+         697.6,
+         333.9,
+         710.5
+        ]
+       },
+       {
+        "text": "EWS",
+        "fill": "#D9E2F3",
+        "bbox": [
+         333.9,
+         697.6,
+         417.4,
+         710.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         417.4,
+         697.6,
+         424.6,
+         710.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         424.6,
+         697.6,
+         431.8,
+         710.5
+        ]
+       },
+       {
+        "text": "LIG",
+        "fill": "#D9E2F3",
+        "bbox": [
+         431.8,
+         697.6,
+         515.5,
+         710.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         515.5,
+         697.6,
+         522.7,
+         710.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.0,
+         710.5,
+         326.8,
+         714.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         326.8,
+         710.5,
+         424.6,
+         714.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         424.6,
+         710.5,
+         522.7,
+         714.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Plotted (Plot size in sqm)",
+        "bbox": [
+         72.0,
+         714.2,
+         326.8,
+         735.0
+        ]
+       },
+       {
+        "text": "=>35 \u2013 40",
+        "bbox": [
+         326.8,
+         714.2,
+         424.6,
+         735.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ">40 \u2013 50",
+        "bbox": [
+         424.6,
+         714.2,
+         522.7,
+         735.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Group Housing (Carpet area in sqm)",
+        "bbox": [
+         72.0,
+         735.0,
+         326.8,
+         755.7
+        ]
+       },
+       {
+        "text": "=>30 \u2013 35",
+        "bbox": [
+         326.8,
+         735.0,
+         424.6,
+         755.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ">35 \u2013 45",
+        "bbox": [
+         424.6,
+         735.0,
+         522.7,
+         755.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 5,
+   "gazettePage": 80,
+   "prose": "4.3.4 Means of Access\nFor EWS and LIG housing in plotted development, the minimum width of the access road shall be 4.0\nmeters in built-up areas and 6-meters in in non-built-up areas. For EWS and LIG housing in group\nhousing, the minimum width of the access road shall be 9.0 meters.\n4.3.5 Ground Coverage and FAR\n(i) After ensuring minimum setback and mandatory open space requirements, maximum ground\ncoverage shall be permissible on plotted development and group housing.\n(ii) The maximum permissible FAR for EWS and LIG housing in plotted development shall be 2.0.\n(iii) The maximum permissible FAR for EWS and LIG housing in group housing shall be the same\nas in paragraph 4.2.8. The FAR consumed in mandatory EWS/LIG units in group housing shall\nnot be counted in the overall FAR which can be consumed in the rest of the scheme.\n(iv) For plots less than 4 Ha, in case EWS/LIG plots/units are not constructed and shelter fee is\ndeposited, then in lieu of the same, equivalent FAR in proportion to the number of units\ncorresponding to which the shelter fee has been deposited can be consumed in the rest of the\nscheme.\n4.3.6 Minimum Setback\nThe minimum setbacks for EWS and LIG housing in plotted development and group housing shall be\nas per paragraph 3.2.4 of the building byelaws.\n4.3.7 Maximum Building Height\n(i) For plotted development, the maximum height of the building shall be 17.5 meters including stilt\nfloor for multi-unit. Construction of stilts and three floors shall be permissible. Further, the height of a\nresidential building in plotted development shall be governed by its distance from the protected\nmonument/ heritage site, airport funnel zone and other statutory restrictions, if any.\n(ii) For EWS and LIG in group housing scheme, there shall be no restriction on building height in non-\nbuilt-up area, however, in built-up area the maximum building height shall be 17.5 meters. However,\nthe height of the building in group housing project shall be governed by its distance from the protected\nmonument/heritage site, airport funnel zone and other statutory restrictions if any.\n4.3.8 Parking Requirements\n(i) The parking requirements for EWS and LIG housing shall be as follows.\n(ii) In both group housing and plotted development projects, stilts shall be permissible for parking\narrangements as per paragraph 3.3.4 of the building byelaws, which shall not be counted in FAR.\nOnly open parking shall be allowed on stilts, if covered parking is made (covered on more than\ntwo sides), it shall be counted in FAR.\n(iii) For plots of area above 4000 sqm, a separate block for parking is permissible, within the plot.\nWithin the parking block, 10% of ground floor may be utilized for ancillary purposes (free from\nFAR) incidental to the principal use.\n(iv) If separate parking block is built above the ground level, then the distance between the main\nbuilding and seperate parking block shall be the minimum setback required as per the height of\n80",
+   "proseLines": [
+    {
+     "y": 92,
+     "text": "4.3.4 Means of Access"
+    },
+    {
+     "y": 111,
+     "text": "For EWS and LIG housing in plotted development, the minimum width of the access road shall be 4.0"
+    },
+    {
+     "y": 124,
+     "text": "meters in built-up areas and 6-meters in in non-built-up areas. For EWS and LIG housing in group"
+    },
+    {
+     "y": 137,
+     "text": "housing, the minimum width of the access road shall be 9.0 meters."
+    },
+    {
+     "y": 158,
+     "text": "4.3.5 Ground Coverage and FAR"
+    },
+    {
+     "y": 177,
+     "text": "(i) After ensuring minimum setback and mandatory open space requirements, maximum ground"
+    },
+    {
+     "y": 190,
+     "text": "coverage shall be permissible on plotted development and group housing."
+    },
+    {
+     "y": 209,
+     "text": "(ii) The maximum permissible FAR for EWS and LIG housing in plotted development shall be 2.0."
+    },
+    {
+     "y": 228,
+     "text": "(iii) The maximum permissible FAR for EWS and LIG housing in group housing shall be the same"
+    },
+    {
+     "y": 241,
+     "text": "as in paragraph 4.2.8. The FAR consumed in mandatory EWS/LIG units in group housing shall"
+    },
+    {
+     "y": 254,
+     "text": "not be counted in the overall FAR which can be consumed in the rest of the scheme."
+    },
+    {
+     "y": 273,
+     "text": "(iv) For plots less than 4 Ha, in case EWS/LIG plots/units are not constructed and shelter fee is"
+    },
+    {
+     "y": 286,
+     "text": "deposited, then in lieu of the same, equivalent FAR in proportion to the number of units"
+    },
+    {
+     "y": 298,
+     "text": "corresponding to which the shelter fee has been deposited can be consumed in the rest of the"
+    },
+    {
+     "y": 311,
+     "text": "scheme."
+    },
+    {
+     "y": 332,
+     "text": "4.3.6 Minimum Setback"
+    },
+    {
+     "y": 351,
+     "text": "The minimum setbacks for EWS and LIG housing in plotted development and group housing shall be"
+    },
+    {
+     "y": 364,
+     "text": "as per paragraph 3.2.4 of the building byelaws."
+    },
+    {
+     "y": 398,
+     "text": "4.3.7 Maximum Building Height"
+    },
+    {
+     "y": 417,
+     "text": "(i) For plotted development, the maximum height of the building shall be 17.5 meters including stilt"
+    },
+    {
+     "y": 430,
+     "text": "floor for multi-unit. Construction of stilts and three floors shall be permissible. Further, the height of a"
+    },
+    {
+     "y": 443,
+     "text": "residential building in plotted development shall be governed by its distance from the protected"
+    },
+    {
+     "y": 456,
+     "text": "monument/ heritage site, airport funnel zone and other statutory restrictions, if any."
+    },
+    {
+     "y": 482,
+     "text": "(ii) For EWS and LIG in group housing scheme, there shall be no restriction on building height in non-"
+    },
+    {
+     "y": 494,
+     "text": "built-up area, however, in built-up area the maximum building height shall be 17.5 meters. However,"
+    },
+    {
+     "y": 507,
+     "text": "the height of the building in group housing project shall be governed by its distance from the protected"
+    },
+    {
+     "y": 520,
+     "text": "monument/heritage site, airport funnel zone and other statutory restrictions if any."
+    },
+    {
+     "y": 541,
+     "text": "4.3.8 Parking Requirements"
+    },
+    {
+     "y": 560,
+     "text": "(i) The parking requirements for EWS and LIG housing shall be as follows."
+    },
+    {
+     "y": 633,
+     "text": "(ii) In both group housing and plotted development projects, stilts shall be permissible for parking"
+    },
+    {
+     "y": 646,
+     "text": "arrangements as per paragraph 3.3.4 of the building byelaws, which shall not be counted in FAR."
+    },
+    {
+     "y": 659,
+     "text": "Only open parking shall be allowed on stilts, if covered parking is made (covered on more than"
+    },
+    {
+     "y": 672,
+     "text": "two sides), it shall be counted in FAR."
+    },
+    {
+     "y": 690,
+     "text": "(iii) For plots of area above 4000 sqm, a separate block for parking is permissible, within the plot."
+    },
+    {
+     "y": 703,
+     "text": "Within the parking block, 10% of ground floor may be utilized for ancillary purposes (free from"
+    },
+    {
+     "y": 716,
+     "text": "FAR) incidental to the principal use."
+    },
+    {
+     "y": 735,
+     "text": "(iv) If separate parking block is built above the ground level, then the distance between the main"
+    },
+    {
+     "y": 748,
+     "text": "building and seperate parking block shall be the minimum setback required as per the height of"
+    },
+    {
+     "y": 775,
+     "text": "80"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.1,
+      578.9,
+      522.9,
+      626.0
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.1,
+         578.9,
+         291.5,
+         582.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         291.5,
+         578.9,
+         522.9,
+         582.7
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.1,
+         582.7,
+         79.2,
+         601.6
+        ]
+       },
+       {
+        "text": "EWS",
+        "fill": "#D9E2F3",
+        "bbox": [
+         79.2,
+         582.7,
+         284.3,
+         601.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         284.3,
+         582.7,
+         291.5,
+         601.6
+        ]
+       },
+       {
+        "text": "LIG",
+        "fill": "#D9E2F3",
+        "bbox": [
+         291.5,
+         582.7,
+         522.9,
+         601.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.1,
+         601.6,
+         291.5,
+         605.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         291.5,
+         601.6,
+         522.9,
+         605.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         72.1,
+         605.4,
+         291.5,
+         609.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "bbox": [
+         291.5,
+         605.4,
+         522.9,
+         609.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         72.1,
+         609.3,
+         79.2,
+         622.2
+        ]
+       },
+       {
+        "text": "2.0 sqm / DU",
+        "bbox": [
+         79.2,
+         609.3,
+         284.3,
+         622.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         284.3,
+         609.3,
+         291.5,
+         622.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         291.5,
+         609.3,
+         298.7,
+         622.2
+        ]
+       },
+       {
+        "text": "4.0 sqm / DU",
+        "bbox": [
+         298.7,
+         609.3,
+         515.7,
+         622.2
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         515.7,
+         609.3,
+         522.9,
+         622.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         72.1,
+         622.2,
+         291.5,
+         626.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "bbox": [
+         291.5,
+         622.2,
+         522.9,
+         626.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 6,
+   "gazettePage": 81,
+   "prose": "the highest block or 6-meters whichever is higher.\n4.3.9 Basement\nThe permissibility of basement for EWS and LIG in plotted development and group housing scheme\nshall be as per paragraph 3.3.3 of the building byelaws.\n4.3.10 Cost Ceiling of Buildings\nThe ceiling cost of EWS and LIG units shall be as below:\nFor cities with more than 10 lakh population, the ceiling cost may be enhanced by 20 percent.\nThe above ceiling cost as amended by the state government from to time shall prevail.\n4.3.11 Calculation of Shelter Fee\nThe shelter fee payable shall be calculated according to the following formula.\nShelter Fees =\n10% of [(total number of dwelling units) X (minimum EWS dwelling unit carpet area + minimum LIG\ndwelling unit carpet area) X Circle Rate]\n4.4 Affordable Housing standards\n4.4.1 Minimum Scheme Area and Plot Size\n(i) Minimum area of the scheme shall be 3000 square meters in case of plotted development. In\ncase of Group Housing, the minimum area of the scheme in built-up area shall be 1000 square\nmeters and 1500 square meters in non-built-up area.\n(ii) The minimum plot size within the scheme (in plotted development) and minimum carpet area (in\ngroup housing) shall be as follows.\nNote-1: For any scheme to qualify as affordable housing, (a) in plotted development at least 50 percent\nof the total plots shall have plot area less than 90 square meters, and (b) in Group Housing, at least 50\npercent of the total units shall have carpet area less than 60 square meters.\nNote-2: In such affordable housing schemes, the provisions of paragraph 4.3.1 shall not be applicable,\ni.e. mandatory EWS and LIG requirements or shelter fee requirements shall not be applicable.\nNote-3: Any private developer may under this scheme, submit a report as per Note-2 above, if EWS\nand LIG houses are constructed as per the scheme, then the FAR of EWS and LIG houses shall not be\nincluded in the calculation of FAR of that scheme.\nNote-4: Construction of multi-units shall be permitted as per the building byelaws.\n81",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "the highest block or 6-meters whichever is higher."
+    },
+    {
+     "y": 92,
+     "text": "4.3.9 Basement"
+    },
+    {
+     "y": 111,
+     "text": "The permissibility of basement for EWS and LIG in plotted development and group housing scheme"
+    },
+    {
+     "y": 124,
+     "text": "shall be as per paragraph 3.3.3 of the building byelaws."
+    },
+    {
+     "y": 145,
+     "text": "4.3.10 Cost Ceiling of Buildings"
+    },
+    {
+     "y": 164,
+     "text": "The ceiling cost of EWS and LIG units shall be as below:"
+    },
+    {
+     "y": 251,
+     "text": "For cities with more than 10 lakh population, the ceiling cost may be enhanced by 20 percent."
+    },
+    {
+     "y": 270,
+     "text": "The above ceiling cost as amended by the state government from to time shall prevail."
+    },
+    {
+     "y": 291,
+     "text": "4.3.11 Calculation of Shelter Fee"
+    },
+    {
+     "y": 310,
+     "text": "The shelter fee payable shall be calculated according to the following formula."
+    },
+    {
+     "y": 329,
+     "text": "Shelter Fees ="
+    },
+    {
+     "y": 348,
+     "text": "10% of [(total number of dwelling units) X (minimum EWS dwelling unit carpet area + minimum LIG"
+    },
+    {
+     "y": 361,
+     "text": "dwelling unit carpet area) X Circle Rate]"
+    },
+    {
+     "y": 401,
+     "text": "4.4 Affordable Housing standards"
+    },
+    {
+     "y": 424,
+     "text": "4.4.1 Minimum Scheme Area and Plot Size"
+    },
+    {
+     "y": 443,
+     "text": "(i) Minimum area of the scheme shall be 3000 square meters in case of plotted development. In"
+    },
+    {
+     "y": 456,
+     "text": "case of Group Housing, the minimum area of the scheme in built-up area shall be 1000 square"
+    },
+    {
+     "y": 469,
+     "text": "meters and 1500 square meters in non-built-up area."
+    },
+    {
+     "y": 488,
+     "text": "(ii) The minimum plot size within the scheme (in plotted development) and minimum carpet area (in"
+    },
+    {
+     "y": 501,
+     "text": "group housing) shall be as follows."
+    },
+    {
+     "y": 601,
+     "text": "Note-1: For any scheme to qualify as affordable housing, (a) in plotted development at least 50 percent"
+    },
+    {
+     "y": 614,
+     "text": "of the total plots shall have plot area less than 90 square meters, and (b) in Group Housing, at least 50"
+    },
+    {
+     "y": 627,
+     "text": "percent of the total units shall have carpet area less than 60 square meters."
+    },
+    {
+     "y": 646,
+     "text": "Note-2: In such affordable housing schemes, the provisions of paragraph 4.3.1 shall not be applicable,"
+    },
+    {
+     "y": 659,
+     "text": "i.e. mandatory EWS and LIG requirements or shelter fee requirements shall not be applicable."
+    },
+    {
+     "y": 678,
+     "text": "Note-3: Any private developer may under this scheme, submit a report as per Note-2 above, if EWS"
+    },
+    {
+     "y": 691,
+     "text": "and LIG houses are constructed as per the scheme, then the FAR of EWS and LIG houses shall not be"
+    },
+    {
+     "y": 703,
+     "text": "included in the calculation of FAR of that scheme."
+    },
+    {
+     "y": 722,
+     "text": "Note-4: Construction of multi-units shall be permitted as per the building byelaws."
+    },
+    {
+     "y": 775,
+     "text": "81"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.0,
+      183.0,
+      518.8,
+      244.9
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.0,
+         183.0,
+         251.1,
+         186.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         251.1,
+         183.0,
+         518.8,
+         186.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.0,
+         186.8,
+         79.2,
+         199.6
+        ]
+       },
+       {
+        "text": "Category",
+        "fill": "#D9E2F3",
+        "bbox": [
+         79.2,
+         186.8,
+         243.9,
+         199.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         243.9,
+         186.8,
+         251.1,
+         199.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         251.1,
+         186.8,
+         256.5,
+         199.6
+        ]
+       },
+       {
+        "text": "Ceiling Cost",
+        "fill": "#D9E2F3",
+        "bbox": [
+         256.5,
+         186.8,
+         513.0,
+         199.6
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         513.0,
+         186.8,
+         518.8,
+         199.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.0,
+         199.6,
+         251.1,
+         203.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         251.1,
+         199.6,
+         518.8,
+         203.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "EWS",
+        "bbox": [
+         72.0,
+         203.3,
+         251.1,
+         224.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Rs. 4,50,000/-",
+        "bbox": [
+         251.1,
+         203.3,
+         518.8,
+         224.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "LIG",
+        "bbox": [
+         72.0,
+         224.1,
+         251.1,
+         244.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Rs. 9,00,000/-",
+        "bbox": [
+         251.1,
+         224.1,
+         518.8,
+         244.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      72.0,
+      519.7,
+      518.8,
+      581.5
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.0,
+         519.7,
+         256.5,
+         523.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         256.5,
+         519.7,
+         327.2,
+         523.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         327.2,
+         519.7,
+         398.1,
+         523.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         398.1,
+         519.7,
+         518.8,
+         523.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.0,
+         523.4,
+         256.5,
+         536.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         256.5,
+         523.4,
+         263.6,
+         536.4
+        ]
+       },
+       {
+        "text": "EWS",
+        "fill": "#D9E2F3",
+        "bbox": [
+         263.6,
+         523.4,
+         320.0,
+         536.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         320.0,
+         523.4,
+         327.2,
+         536.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         327.2,
+         523.4,
+         334.4,
+         536.4
+        ]
+       },
+       {
+        "text": "LIG",
+        "fill": "#D9E2F3",
+        "bbox": [
+         334.4,
+         523.4,
+         390.9,
+         536.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         390.9,
+         523.4,
+         398.1,
+         536.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         398.1,
+         523.4,
+         402.4,
+         536.4
+        ]
+       },
+       {
+        "text": "Others income groups",
+        "fill": "#D9E2F3",
+        "bbox": [
+         402.4,
+         523.4,
+         513.0,
+         536.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         513.0,
+         523.4,
+         518.8,
+         536.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.0,
+         536.4,
+         256.5,
+         540.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         256.5,
+         536.4,
+         327.2,
+         540.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         327.2,
+         536.4,
+         398.1,
+         540.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         398.1,
+         536.4,
+         518.8,
+         540.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Plotted (Plot size in sqm)",
+        "bbox": [
+         72.0,
+         540.1,
+         256.5,
+         560.9
+        ]
+       },
+       {
+        "text": "=>35 \u2013 40",
+        "bbox": [
+         256.5,
+         540.1,
+         327.2,
+         560.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ">40 \u2013 50",
+        "bbox": [
+         327.2,
+         540.1,
+         398.1,
+         560.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ">50 - 150",
+        "bbox": [
+         398.1,
+         540.1,
+         518.8,
+         560.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Group Housing (Carpet area in sqm)",
+        "bbox": [
+         72.0,
+         560.9,
+         256.5,
+         581.5
+        ]
+       },
+       {
+        "text": "=>30 \u2013 35",
+        "bbox": [
+         256.5,
+         560.9,
+         327.2,
+         581.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ">35 \u2013 45",
+        "bbox": [
+         327.2,
+         560.9,
+         398.1,
+         581.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ">45 - 90",
+        "bbox": [
+         398.1,
+         560.9,
+         518.8,
+         581.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 7,
+   "gazettePage": 82,
+   "prose": "4.4.2 Means of Access\nFor affordable housing, the minimum width of the access road shall be 9.0 meters in built-up areas and\n12-meters in in non-built-up areas.\n4.4.3 Ground Coverage and FAR\n(i) After ensuring minimum setback and mandatory open space requirements, maximum ground\ncoverage shall be permissible on group housing plots.\n(ii) The maximum permissible FAR for Affordable housing in plotted development shall be 2.0\n(iii) Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter\n9 of the building byelaws. Basis approach road width, the maximum permissible FAR (including Base\nFAR) for Affordable housing in group housing schemes in built-up and the non-built-up areas shall be\nas follows:\nNote-1: BFAR \u2013 Base FAR, PFAR \u2013 Purchasable FAR, PPFAR \u2013 Premium Purchasable FAR, MFAR\n\u2013 Maximum Permissible FAR which includes Base FAR, UR \u2013 Unrestricted FAR.\n(iv) In green building, additional FAR over and above maximum permissible FAR shall be provided as\nper paragraph 9.3 of the building byelaws.\n4.4.4 Minimum Setback\nThe minimum setbacks for Affordable housing in plotted development and affordable group housing\nshall be as per paragraph 3.2.4 of the building byelaws.\n4.4.5 Maximum Building Height\n(i) For plotted development, the maximum height of the building shall be 17.5 meters including stilt\nfloor for multi-unit. Construction of stilts and three floors shall be permissible. Further, the height of a\nresidential building in plotted development shall be governed by its distance from the protected\nmonument/ heritage site, airport funnel zone and other statutory restrictions, if any.\n(ii) For affordable housing in group housing scheme, there shall be no restriction on building height in\nnon-built-up area, however, in built-up area the maximum building height shall be 17.5 meters.\nHowever, the height of the building in group housing project shall be governed by its distance from the\nprotected monument/heritage site, airport funnel zone and other statutory restrictions if any.\n4.4.6 Parking Requirements\n(i) The parking requirements for affordable group housing shall be as follows.\n82",
+   "proseLines": [
+    {
+     "y": 74,
+     "text": "4.4.2 Means of Access"
+    },
+    {
+     "y": 93,
+     "text": "For affordable housing, the minimum width of the access road shall be 9.0 meters in built-up areas and"
+    },
+    {
+     "y": 105,
+     "text": "12-meters in in non-built-up areas."
+    },
+    {
+     "y": 139,
+     "text": "4.4.3 Ground Coverage and FAR"
+    },
+    {
+     "y": 158,
+     "text": "(i) After ensuring minimum setback and mandatory open space requirements, maximum ground"
+    },
+    {
+     "y": 171,
+     "text": "coverage shall be permissible on group housing plots."
+    },
+    {
+     "y": 190,
+     "text": "(ii) The maximum permissible FAR for Affordable housing in plotted development shall be 2.0"
+    },
+    {
+     "y": 209,
+     "text": "(iii) Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter"
+    },
+    {
+     "y": 222,
+     "text": "9 of the building byelaws. Basis approach road width, the maximum permissible FAR (including Base"
+    },
+    {
+     "y": 235,
+     "text": "FAR) for Affordable housing in group housing schemes in built-up and the non-built-up areas shall be"
+    },
+    {
+     "y": 248,
+     "text": "as follows:"
+    },
+    {
+     "y": 389,
+     "text": "Note-1: BFAR \u2013 Base FAR, PFAR \u2013 Purchasable FAR, PPFAR \u2013 Premium Purchasable FAR, MFAR"
+    },
+    {
+     "y": 402,
+     "text": "\u2013 Maximum Permissible FAR which includes Base FAR, UR \u2013 Unrestricted FAR."
+    },
+    {
+     "y": 421,
+     "text": "(iv) In green building, additional FAR over and above maximum permissible FAR shall be provided as"
+    },
+    {
+     "y": 434,
+     "text": "per paragraph 9.3 of the building byelaws."
+    },
+    {
+     "y": 455,
+     "text": "4.4.4 Minimum Setback"
+    },
+    {
+     "y": 474,
+     "text": "The minimum setbacks for Affordable housing in plotted development and affordable group housing"
+    },
+    {
+     "y": 487,
+     "text": "shall be as per paragraph 3.2.4 of the building byelaws."
+    },
+    {
+     "y": 521,
+     "text": "4.4.5 Maximum Building Height"
+    },
+    {
+     "y": 540,
+     "text": "(i) For plotted development, the maximum height of the building shall be 17.5 meters including stilt"
+    },
+    {
+     "y": 553,
+     "text": "floor for multi-unit. Construction of stilts and three floors shall be permissible. Further, the height of a"
+    },
+    {
+     "y": 565,
+     "text": "residential building in plotted development shall be governed by its distance from the protected"
+    },
+    {
+     "y": 578,
+     "text": "monument/ heritage site, airport funnel zone and other statutory restrictions, if any."
+    },
+    {
+     "y": 604,
+     "text": "(ii) For affordable housing in group housing scheme, there shall be no restriction on building height in"
+    },
+    {
+     "y": 617,
+     "text": "non-built-up area, however, in built-up area the maximum building height shall be 17.5 meters."
+    },
+    {
+     "y": 630,
+     "text": "However, the height of the building in group housing project shall be governed by its distance from the"
+    },
+    {
+     "y": 643,
+     "text": "protected monument/heritage site, airport funnel zone and other statutory restrictions if any."
+    },
+    {
+     "y": 664,
+     "text": "4.4.6 Parking Requirements"
+    },
+    {
+     "y": 683,
+     "text": "(i) The parking requirements for affordable group housing shall be as follows."
+    },
+    {
+     "y": 775,
+     "text": "82"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.4,
+      267.0,
+      520.9,
+      382.2
+     ],
+     "rows": [
+      [
+       {
+        "text": "FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.4,
+         267.0,
+         146.7,
+         282.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         146.7,
+         267.0,
+         191.4,
+         282.8
+        ]
+       },
+       {
+        "text": "Road Width (< 18m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         191.4,
+         267.0,
+         274.4,
+         282.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (\u226518 -24m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         274.4,
+         267.0,
+         357.1,
+         282.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>24 - 45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         357.1,
+         267.0,
+         439.9,
+         282.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Road Width (>45m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         439.9,
+         267.0,
+         520.9,
+         282.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.4,
+         282.8,
+         146.7,
+         289.9
+        ]
+       },
+       {
+        "text": "BFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         146.7,
+         282.8,
+         191.4,
+         296.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         191.4,
+         282.8,
+         219.6,
+         289.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         219.6,
+         282.8,
+         247.3,
+         289.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         247.3,
+         282.8,
+         274.4,
+         289.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         274.4,
+         282.8,
+         302.3,
+         289.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         302.3,
+         282.8,
+         330.1,
+         289.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         330.1,
+         282.8,
+         357.1,
+         289.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         357.1,
+         282.8,
+         385.0,
+         289.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         385.0,
+         282.8,
+         412.8,
+         289.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         412.8,
+         282.8,
+         439.9,
+         289.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         439.9,
+         282.8,
+         467.9,
+         289.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         467.9,
+         282.8,
+         495.5,
+         289.9
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.5,
+         282.8,
+         520.9,
+         289.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Affordable",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.4,
+         289.9,
+         146.7,
+         303.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         191.4,
+         289.9,
+         219.6,
+         303.3
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         219.6,
+         289.9,
+         247.3,
+         303.3
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         247.3,
+         289.9,
+         274.4,
+         303.3
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         274.4,
+         289.9,
+         302.3,
+         303.3
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         302.3,
+         289.9,
+         330.1,
+         303.3
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         330.1,
+         289.9,
+         357.1,
+         303.3
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         357.1,
+         289.9,
+         385.0,
+         303.3
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         385.0,
+         289.9,
+         412.8,
+         303.3
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         412.8,
+         289.9,
+         439.9,
+         303.3
+        ]
+       },
+       {
+        "text": "PFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         439.9,
+         289.9,
+         467.9,
+         303.3
+        ]
+       },
+       {
+        "text": "PPFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         467.9,
+         289.9,
+         495.5,
+         303.3
+        ]
+       },
+       {
+        "text": "MFAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.5,
+         289.9,
+         520.9,
+         303.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         146.7,
+         296.1,
+         191.4,
+         310.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Group Housing",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.4,
+         303.3,
+         146.7,
+         310.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         191.4,
+         303.3,
+         219.6,
+         310.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         219.6,
+         303.3,
+         247.3,
+         310.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         247.3,
+         303.3,
+         274.4,
+         310.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         274.4,
+         303.3,
+         302.3,
+         310.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         302.3,
+         303.3,
+         330.1,
+         310.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         330.1,
+         303.3,
+         357.1,
+         310.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         357.1,
+         303.3,
+         385.0,
+         310.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         385.0,
+         303.3,
+         412.8,
+         310.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         412.8,
+         303.3,
+         439.9,
+         310.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         439.9,
+         303.3,
+         467.9,
+         310.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         467.9,
+         303.3,
+         495.5,
+         310.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         495.5,
+         303.3,
+         520.9,
+         310.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         72.4,
+         310.2,
+         146.7,
+         326.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         146.7,
+         310.2,
+         191.4,
+         326.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         191.4,
+         310.2,
+         219.6,
+         326.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         219.6,
+         310.2,
+         247.3,
+         326.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         247.3,
+         310.2,
+         274.4,
+         326.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         274.4,
+         310.2,
+         302.3,
+         326.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         302.3,
+         310.2,
+         330.1,
+         326.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         330.1,
+         310.2,
+         357.1,
+         326.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         357.1,
+         310.2,
+         385.0,
+         326.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         385.0,
+         310.2,
+         412.8,
+         326.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         412.8,
+         310.2,
+         439.9,
+         326.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         439.9,
+         310.2,
+         467.9,
+         326.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         467.9,
+         310.2,
+         495.5,
+         326.0
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DCDDDF",
+        "bbox": [
+         495.5,
+         310.2,
+         520.9,
+         326.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Group Housing\n(Built-up Area)",
+        "bbox": [
+         72.4,
+         326.0,
+         146.7,
+         344.8
+        ]
+       },
+       {
+        "text": "2.00 (<18m)",
+        "fill": "#FFF2CC",
+        "bbox": [
+         146.7,
+         326.0,
+         191.4,
+         344.8
+        ]
+       },
+       {
+        "text": "0.20",
+        "bbox": [
+         191.4,
+         326.0,
+         219.6,
+         344.8
+        ]
+       },
+       {
+        "text": "0.20",
+        "bbox": [
+         219.6,
+         326.0,
+         247.3,
+         344.8
+        ]
+       },
+       {
+        "text": "2.40",
+        "fill": "#DDEBF7",
+        "bbox": [
+         247.3,
+         326.0,
+         274.4,
+         344.8
+        ]
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         274.4,
+         326.0,
+         302.3,
+         344.8
+        ]
+       },
+       {
+        "text": "1.00",
+        "bbox": [
+         302.3,
+         326.0,
+         330.1,
+         344.8
+        ]
+       },
+       {
+        "text": "2.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         330.1,
+         326.0,
+         357.1,
+         344.8
+        ]
+       },
+       {
+        "text": "2.00",
+        "bbox": [
+         357.1,
+         326.0,
+         385.0,
+         344.8
+        ]
+       },
+       {
+        "text": "3.00",
+        "bbox": [
+         385.0,
+         326.0,
+         412.8,
+         344.8
+        ]
+       },
+       {
+        "text": "7.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         412.8,
+         326.0,
+         439.9,
+         344.8
+        ]
+       },
+       {
+        "text": "2.00",
+        "bbox": [
+         439.9,
+         326.0,
+         467.9,
+         344.8
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         467.9,
+         326.0,
+         495.5,
+         344.8
+        ]
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.5,
+         326.0,
+         520.9,
+         344.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Group Housing\n(Built-up Area)",
+        "bbox": [
+         72.4,
+         344.8,
+         146.7,
+         363.7
+        ]
+       },
+       {
+        "text": "2.25 (\u226518m)",
+        "fill": "#FFF2CC",
+        "bbox": [
+         146.7,
+         344.8,
+         191.4,
+         363.7
+        ]
+       },
+       {
+        "text": "0.23",
+        "bbox": [
+         191.4,
+         344.8,
+         219.6,
+         363.7
+        ]
+       },
+       {
+        "text": "0.23",
+        "bbox": [
+         219.6,
+         344.8,
+         247.3,
+         363.7
+        ]
+       },
+       {
+        "text": "2.71",
+        "fill": "#DDEBF7",
+        "bbox": [
+         247.3,
+         344.8,
+         274.4,
+         363.7
+        ]
+       },
+       {
+        "text": "1.125",
+        "bbox": [
+         274.4,
+         344.8,
+         302.3,
+         363.7
+        ]
+       },
+       {
+        "text": "1.125",
+        "bbox": [
+         302.3,
+         344.8,
+         330.1,
+         363.7
+        ]
+       },
+       {
+        "text": "4.50",
+        "fill": "#DDEBF7",
+        "bbox": [
+         330.1,
+         344.8,
+         357.1,
+         363.7
+        ]
+       },
+       {
+        "text": "2.25",
+        "bbox": [
+         357.1,
+         344.8,
+         385.0,
+         363.7
+        ]
+       },
+       {
+        "text": "3.38",
+        "bbox": [
+         385.0,
+         344.8,
+         412.8,
+         363.7
+        ]
+       },
+       {
+        "text": "7.88",
+        "fill": "#DDEBF7",
+        "bbox": [
+         412.8,
+         344.8,
+         439.9,
+         363.7
+        ]
+       },
+       {
+        "text": "2.25",
+        "bbox": [
+         439.9,
+         344.8,
+         467.9,
+         363.7
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         467.9,
+         344.8,
+         495.5,
+         363.7
+        ]
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.5,
+         344.8,
+         520.9,
+         363.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Group Housing\n(Non-Built-up Area)",
+        "bbox": [
+         72.4,
+         363.7,
+         146.7,
+         382.2
+        ]
+       },
+       {
+        "text": "3.00",
+        "fill": "#FFF2CC",
+        "bbox": [
+         146.7,
+         363.7,
+         191.4,
+         382.2
+        ]
+       },
+       {
+        "text": "0.30",
+        "bbox": [
+         191.4,
+         363.7,
+         219.6,
+         382.2
+        ]
+       },
+       {
+        "text": "0.30",
+        "bbox": [
+         219.6,
+         363.7,
+         247.3,
+         382.2
+        ]
+       },
+       {
+        "text": "3.60",
+        "fill": "#DDEBF7",
+        "bbox": [
+         247.3,
+         363.7,
+         274.4,
+         382.2
+        ]
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         274.4,
+         363.7,
+         302.3,
+         382.2
+        ]
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         302.3,
+         363.7,
+         330.1,
+         382.2
+        ]
+       },
+       {
+        "text": "6.00",
+        "fill": "#DDEBF7",
+        "bbox": [
+         330.1,
+         363.7,
+         357.1,
+         382.2
+        ]
+       },
+       {
+        "text": "3.00",
+        "bbox": [
+         357.1,
+         363.7,
+         385.0,
+         382.2
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         385.0,
+         363.7,
+         412.8,
+         382.2
+        ]
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         412.8,
+         363.7,
+         439.9,
+         382.2
+        ]
+       },
+       {
+        "text": "3.00",
+        "bbox": [
+         439.9,
+         363.7,
+         467.9,
+         382.2
+        ]
+       },
+       {
+        "text": "UR",
+        "bbox": [
+         467.9,
+         363.7,
+         495.5,
+         382.2
+        ]
+       },
+       {
+        "text": "UR",
+        "fill": "#DDEBF7",
+        "bbox": [
+         495.5,
+         363.7,
+         520.9,
+         382.2
+        ]
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      72.4,
+      701.6,
+      520.9,
+      761.6
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.4,
+         701.6,
+         191.4,
+         705.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         191.4,
+         701.6,
+         316.6,
+         705.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         316.6,
+         701.6,
+         520.9,
+         705.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.4,
+         705.4,
+         79.2,
+         724.4
+        ]
+       },
+       {
+        "text": "EWS",
+        "fill": "#D9E2F3",
+        "bbox": [
+         79.2,
+         705.4,
+         183.7,
+         724.4
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         183.7,
+         705.4,
+         191.4,
+         724.4
+        ]
+       },
+       {
+        "text": "LIG",
+        "fill": "#D9E2F3",
+        "bbox": [
+         191.4,
+         705.4,
+         316.6,
+         724.4
+        ]
+       },
+       {
+        "text": "Other income groups",
+        "fill": "#D9E2F3",
+        "bbox": [
+         316.6,
+         705.4,
+         520.9,
+         718.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         316.6,
+         718.4,
+         520.9,
+         724.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         72.4,
+         724.4,
+         191.4,
+         728.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         191.4,
+         724.4,
+         316.6,
+         728.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#D9E2F3",
+        "bbox": [
+         316.6,
+         724.4,
+         520.9,
+         728.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         72.4,
+         728.2,
+         191.4,
+         732.0
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "bbox": [
+         191.4,
+         728.2,
+         316.6,
+         732.0
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         316.6,
+         728.2,
+         520.9,
+         732.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": "2.0 sqm / DU",
+        "bbox": [
+         72.4,
+         732.0,
+         191.4,
+         757.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "4.0 sqm / DU",
+        "bbox": [
+         191.4,
+         732.0,
+         316.6,
+         757.8
+        ]
+       },
+       {
+        "text": "1 ECS / DU",
+        "bbox": [
+         316.6,
+         732.0,
+         520.9,
+         744.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "+10% Visitor Parking for DU > 60 sqm",
+        "bbox": [
+         316.6,
+         744.9,
+         520.9,
+         757.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "bbox": [
+         72.4,
+         757.8,
+         191.4,
+         761.6
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "bbox": [
+         191.4,
+         757.8,
+         316.6,
+         761.6
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         316.6,
+         757.8,
+         520.9,
+         761.6
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 8,
+   "gazettePage": 83,
+   "prose": "(ii) In both group housing and plotted development projects, stilts shall be permissible for parking\narrangements as per paragraph 3.3.4 of the building byelaws, which shall not be counted in FAR.\nOnly open parking shall be allowed on stilts, if covered parking is made (covered on more than\ntwo sides), it shall be counted in FAR.\n(iii) For plots of area above 4000 sqm, a separate block for parking is permissible, within the plot.\nWithin the parking block, 10% of ground floor may be utilized for ancillary purposes (free from\nFAR) incidental to the principal use.\n(iv) If seperate parking block is built above the ground level, then the distance between the main\nbuilding and seperate parking block shall be the minimum setback required as per the height of\nthe highest block or 6-meters whichever is higher.\n4.4.7 Basement\nThe permissibility of basement for affordable housing in plotted development and group housing\nscheme shall be as per paragraph 3.3.3 of the building byelaws.\n4.4.8 Cost of Buildings\nThe provisions of paragraph 4.3.10 shall not be applicable in affordable housing projects.\n4.4.9 Calculation of Development Fee\nThe development fee shall be calculated as per the provisions of Uttar Pradesh Urban Planning and\nDevelopment (Assessment, Levy and Collection of Development Permit Fee, Building Permit Fee and\nInspection Fee) Rules, 2024. There shall be exemption from density-based development fee calculation\nas provided in the said rules.\n83",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "(ii) In both group housing and plotted development projects, stilts shall be permissible for parking"
+    },
+    {
+     "y": 85,
+     "text": "arrangements as per paragraph 3.3.4 of the building byelaws, which shall not be counted in FAR."
+    },
+    {
+     "y": 97,
+     "text": "Only open parking shall be allowed on stilts, if covered parking is made (covered on more than"
+    },
+    {
+     "y": 110,
+     "text": "two sides), it shall be counted in FAR."
+    },
+    {
+     "y": 129,
+     "text": "(iii) For plots of area above 4000 sqm, a separate block for parking is permissible, within the plot."
+    },
+    {
+     "y": 142,
+     "text": "Within the parking block, 10% of ground floor may be utilized for ancillary purposes (free from"
+    },
+    {
+     "y": 155,
+     "text": "FAR) incidental to the principal use."
+    },
+    {
+     "y": 174,
+     "text": "(iv) If seperate parking block is built above the ground level, then the distance between the main"
+    },
+    {
+     "y": 187,
+     "text": "building and seperate parking block shall be the minimum setback required as per the height of"
+    },
+    {
+     "y": 200,
+     "text": "the highest block or 6-meters whichever is higher."
+    },
+    {
+     "y": 221,
+     "text": "4.4.7 Basement"
+    },
+    {
+     "y": 240,
+     "text": "The permissibility of basement for affordable housing in plotted development and group housing"
+    },
+    {
+     "y": 253,
+     "text": "scheme shall be as per paragraph 3.3.3 of the building byelaws."
+    },
+    {
+     "y": 273,
+     "text": "4.4.8 Cost of Buildings"
+    },
+    {
+     "y": 292,
+     "text": "The provisions of paragraph 4.3.10 shall not be applicable in affordable housing projects."
+    },
+    {
+     "y": 313,
+     "text": "4.4.9 Calculation of Development Fee"
+    },
+    {
+     "y": 332,
+     "text": "The development fee shall be calculated as per the provisions of Uttar Pradesh Urban Planning and"
+    },
+    {
+     "y": 345,
+     "text": "Development (Assessment, Levy and Collection of Development Permit Fee, Building Permit Fee and"
+    },
+    {
+     "y": 358,
+     "text": "Inspection Fee) Rules, 2024. There shall be exemption from density-based development fee calculation"
+    },
+    {
+     "y": 371,
+     "text": "as provided in the said rules."
+    },
+    {
+     "y": 775,
+     "text": "83"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  }
+ ]
+}

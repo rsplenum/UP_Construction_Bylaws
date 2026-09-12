@@ -1,0 +1,2471 @@
+{
+ "chapter": "09",
+ "source": "docs/source/gazette/pdf/chapter-09.pdf",
+ "sourceMd5": "1009a3a0fb74ccdb25d83cdbe0dc6bc6",
+ "gazettePages": [
+  108,
+  112
+ ],
+ "pageCount": 5,
+ "tableCount": 4,
+ "fillCounts": {
+  "#DBE5F1": 58
+ },
+ "colourOnlyCells": 17,
+ "colourCodedTableRows": 0,
+ "warnings": [],
+ "pages": [
+  {
+   "pdfPage": 1,
+   "gazettePage": 108,
+   "prose": "9 Additional Floor Area Ratio\n9.1 Compensatory Floor Area Ratio (FAR)\n9.1.1 Permissibility and conditions\n(i) Compensatory FAR may be provided by the Authority to the landowner in lieu of land parcel,\nwhich is required partly or fully for the following public purposes:\na. Development and construction of roads, drains, traffic and transport infrastructure.\nb. Laying of service utilities such as water supply line, sewer lines, communication lines,\nelectrical substations, electric lines, gas lines etc.\nc. Development of greenbelts and public parks/playgrounds.\nd. Any other infrastructure as decided by the Authority.\n(ii) Compensatory FAR shall not be permitted by the authority in following circumstances:\na. For earlier land acquisition or development for which compensation has been already\npaid partly or fully. (a) Where award of land acquisition has been made unless lands\nare withdrawn from the award by the Appropriate Authority according to the provisions\nof the relevant Acts, and (b) If the compensation in the form of FAR has already been\ngranted to the owner/applicant.\nb. Where lawful possession by mutual agreement/or contract has been taken.\n(iii) Compensatory FAR shall as far as possible be provided by the authority in the remaining part of\nthe same plot. In case where it is not possible to use the Compensatory FAR on the same plot,\nthe Authority may allow the owner to use compensatory FAR of the transferred plot on other\nreceiving plot(s) in part or in full for the same land use.\n(iv) The owner shall be allowed Compensatory FAR equal to the permissible FAR on the transferred\nland, subject to not exceeding the maximum permissible FAR (including purchasable FAR) on\nthe transferred plot.\n(v) If the land use of the remaining plot is earmarked for roads, transportation infrastructure,\ngreenbelt, park and/or playground, where FAR is less than 1.0 or FAR and ground coverage is\nnot permissible, then the Compensatory FAR shall be allowed to be used on any other plot.\n(vi) In case the land use of the remaining plot is proposed for more than one multiple uses in the\nmaster/zonal plan, the Compnesatory FAR shall be divided proportionately.\n(vii) Compensatory FAR is non-transferable.\n(viii) The transfer of title of land foregone shall be done as per the procedures laid down by the\ngovernment.\n9.2 Purchasable & Premium Purchasable FAR\n9.2.1 Permissibility\n(i) In order to make FAR flexible as per market demand, purchasable and premium purchasable\nFAR in built-up and non-built-up areas shall be permissible to the Applicant only in the following\ncases:\na. On a vacant plot; or\nb. On a plot where construction is yet to begin as per the sanctioned building plan; or\nc. To construct a new additional building(s); or\n108",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "9 Additional Floor Area Ratio"
+    },
+    {
+     "y": 99,
+     "text": "9.1 Compensatory Floor Area Ratio (FAR)"
+    },
+    {
+     "y": 122,
+     "text": "9.1.1 Permissibility and conditions"
+    },
+    {
+     "y": 141,
+     "text": "(i) Compensatory FAR may be provided by the Authority to the landowner in lieu of land parcel,"
+    },
+    {
+     "y": 154,
+     "text": "which is required partly or fully for the following public purposes:"
+    },
+    {
+     "y": 173,
+     "text": "a. Development and construction of roads, drains, traffic and transport infrastructure."
+    },
+    {
+     "y": 191,
+     "text": "b. Laying of service utilities such as water supply line, sewer lines, communication lines,"
+    },
+    {
+     "y": 204,
+     "text": "electrical substations, electric lines, gas lines etc."
+    },
+    {
+     "y": 223,
+     "text": "c. Development of greenbelts and public parks/playgrounds."
+    },
+    {
+     "y": 242,
+     "text": "d. Any other infrastructure as decided by the Authority."
+    },
+    {
+     "y": 261,
+     "text": "(ii) Compensatory FAR shall not be permitted by the authority in following circumstances:"
+    },
+    {
+     "y": 280,
+     "text": "a. For earlier land acquisition or development for which compensation has been already"
+    },
+    {
+     "y": 293,
+     "text": "paid partly or fully. (a) Where award of land acquisition has been made unless lands"
+    },
+    {
+     "y": 306,
+     "text": "are withdrawn from the award by the Appropriate Authority according to the provisions"
+    },
+    {
+     "y": 319,
+     "text": "of the relevant Acts, and (b) If the compensation in the form of FAR has already been"
+    },
+    {
+     "y": 332,
+     "text": "granted to the owner/applicant."
+    },
+    {
+     "y": 351,
+     "text": "b. Where lawful possession by mutual agreement/or contract has been taken."
+    },
+    {
+     "y": 370,
+     "text": "(iii) Compensatory FAR shall as far as possible be provided by the authority in the remaining part of"
+    },
+    {
+     "y": 383,
+     "text": "the same plot. In case where it is not possible to use the Compensatory FAR on the same plot,"
+    },
+    {
+     "y": 395,
+     "text": "the Authority may allow the owner to use compensatory FAR of the transferred plot on other"
+    },
+    {
+     "y": 408,
+     "text": "receiving plot(s) in part or in full for the same land use."
+    },
+    {
+     "y": 427,
+     "text": "(iv) The owner shall be allowed Compensatory FAR equal to the permissible FAR on the transferred"
+    },
+    {
+     "y": 440,
+     "text": "land, subject to not exceeding the maximum permissible FAR (including purchasable FAR) on"
+    },
+    {
+     "y": 453,
+     "text": "the transferred plot."
+    },
+    {
+     "y": 472,
+     "text": "(v) If the land use of the remaining plot is earmarked for roads, transportation infrastructure,"
+    },
+    {
+     "y": 485,
+     "text": "greenbelt, park and/or playground, where FAR is less than 1.0 or FAR and ground coverage is"
+    },
+    {
+     "y": 498,
+     "text": "not permissible, then the Compensatory FAR shall be allowed to be used on any other plot."
+    },
+    {
+     "y": 517,
+     "text": "(vi) In case the land use of the remaining plot is proposed for more than one multiple uses in the"
+    },
+    {
+     "y": 530,
+     "text": "master/zonal plan, the Compnesatory FAR shall be divided proportionately."
+    },
+    {
+     "y": 549,
+     "text": "(vii) Compensatory FAR is non-transferable."
+    },
+    {
+     "y": 568,
+     "text": "(viii) The transfer of title of land foregone shall be done as per the procedures laid down by the"
+    },
+    {
+     "y": 580,
+     "text": "government."
+    },
+    {
+     "y": 621,
+     "text": "9.2 Purchasable & Premium Purchasable FAR"
+    },
+    {
+     "y": 644,
+     "text": "9.2.1 Permissibility"
+    },
+    {
+     "y": 663,
+     "text": "(i) In order to make FAR flexible as per market demand, purchasable and premium purchasable"
+    },
+    {
+     "y": 676,
+     "text": "FAR in built-up and non-built-up areas shall be permissible to the Applicant only in the following"
+    },
+    {
+     "y": 688,
+     "text": "cases:"
+    },
+    {
+     "y": 707,
+     "text": "a. On a vacant plot; or"
+    },
+    {
+     "y": 726,
+     "text": "b. On a plot where construction is yet to begin as per the sanctioned building plan; or"
+    },
+    {
+     "y": 745,
+     "text": "c. To construct a new additional building(s); or"
+    },
+    {
+     "y": 775,
+     "text": "108"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  },
+  {
+   "pdfPage": 2,
+   "gazettePage": 109,
+   "prose": "d. To construct additional floors(s) in cases where building structure was originally\ndesigned for additional FAR, but permission was obtained for less FAR.\ne. Occupied buildings only after ensuring structural safety certification and adequacy of\ninfrastructure facilities.\n(ii) Purchasable and premium purchasable FAR shall be allowed only on roads with ROW 12m and\nabove in built-up and non-built-up areas. For group housing in built-up areas, this is allowed on\nroads with ROW 9m.\n(iii) Before purchasing additional FAR especially in case of already sanctioned plans, the applicant\nshall comply with provisions of Real Estate (Regulation and Development) Act, 2016 and Uttar\nPradesh Apartment (Promotion of Construction, Ownership and Maintenance) Act, 2010 and\nother relevant Acts as amended from time to time.\n9.2.2 Eligibility for Purchasable & Premium Purchasable FAR\n(i) For the approval of purchasable and premium purchasable FAR, following eligibility criteria\nshall be fulfilled:\na. Provision of setback according to the height of the building shall be made as per the\nstandards prescribed in the building byelaws.\nb. In the group housing scheme, residential units shall be permitted in relation to the\npurchasable Floor Area Ratio (FAR).\nc. Structural safety provisions in the building shall be made as per the requirements\nmentioned in these building byelaws.\nd. For the proposed building, a no objection certificate regarding fire safety shall be\nobtained from the fire department and submitted to the authority.\ne. Parking arrangements shall be made as per the standards prescribed in these building\nbyelaws for the total floor area proposed in the building (after FAR purchase).\n9.2.3 Computation of Purchasable & Premium Purchasable FAR\nThe computation of purchasable FAR (PFAR) and premium purchasable FAR (PPFAR) for buildings\nacross different occupancies in built-up as well as non-built-up areas is dependant on width of the\napproach road or existing right of way (ROW) and shall be as follows:\n*Note-1: Unrestricted FAR shall be availed in the increments of 0.25 times Base FAR.\nNote-2: In case of any difference in the prescribed limits of maximum permissible FAR in chapter-3\nto chapter-7 and the table above, the figures in respective chapters will prevail.\nNote-3: In case of residential plotted development for both single and multi-units, the maximum\npermissible (purchasable) FAR is 2.0 irrespective of the width of the approach road, as follows:\n109",
+   "proseLines": [
+    {
+     "y": 72,
+     "text": "d. To construct additional floors(s) in cases where building structure was originally"
+    },
+    {
+     "y": 85,
+     "text": "designed for additional FAR, but permission was obtained for less FAR."
+    },
+    {
+     "y": 103,
+     "text": "e. Occupied buildings only after ensuring structural safety certification and adequacy of"
+    },
+    {
+     "y": 116,
+     "text": "infrastructure facilities."
+    },
+    {
+     "y": 135,
+     "text": "(ii) Purchasable and premium purchasable FAR shall be allowed only on roads with ROW 12m and"
+    },
+    {
+     "y": 148,
+     "text": "above in built-up and non-built-up areas. For group housing in built-up areas, this is allowed on"
+    },
+    {
+     "y": 161,
+     "text": "roads with ROW 9m."
+    },
+    {
+     "y": 180,
+     "text": "(iii) Before purchasing additional FAR especially in case of already sanctioned plans, the applicant"
+    },
+    {
+     "y": 193,
+     "text": "shall comply with provisions of Real Estate (Regulation and Development) Act, 2016 and Uttar"
+    },
+    {
+     "y": 206,
+     "text": "Pradesh Apartment (Promotion of Construction, Ownership and Maintenance) Act, 2010 and"
+    },
+    {
+     "y": 219,
+     "text": "other relevant Acts as amended from time to time."
+    },
+    {
+     "y": 240,
+     "text": "9.2.2 Eligibility for Purchasable & Premium Purchasable FAR"
+    },
+    {
+     "y": 259,
+     "text": "(i) For the approval of purchasable and premium purchasable FAR, following eligibility criteria"
+    },
+    {
+     "y": 272,
+     "text": "shall be fulfilled:"
+    },
+    {
+     "y": 290,
+     "text": "a. Provision of setback according to the height of the building shall be made as per the"
+    },
+    {
+     "y": 303,
+     "text": "standards prescribed in the building byelaws."
+    },
+    {
+     "y": 322,
+     "text": "b. In the group housing scheme, residential units shall be permitted in relation to the"
+    },
+    {
+     "y": 335,
+     "text": "purchasable Floor Area Ratio (FAR)."
+    },
+    {
+     "y": 354,
+     "text": "c. Structural safety provisions in the building shall be made as per the requirements"
+    },
+    {
+     "y": 367,
+     "text": "mentioned in these building byelaws."
+    },
+    {
+     "y": 386,
+     "text": "d. For the proposed building, a no objection certificate regarding fire safety shall be"
+    },
+    {
+     "y": 399,
+     "text": "obtained from the fire department and submitted to the authority."
+    },
+    {
+     "y": 418,
+     "text": "e. Parking arrangements shall be made as per the standards prescribed in these building"
+    },
+    {
+     "y": 431,
+     "text": "byelaws for the total floor area proposed in the building (after FAR purchase)."
+    },
+    {
+     "y": 451,
+     "text": "9.2.3 Computation of Purchasable & Premium Purchasable FAR"
+    },
+    {
+     "y": 471,
+     "text": "The computation of purchasable FAR (PFAR) and premium purchasable FAR (PPFAR) for buildings"
+    },
+    {
+     "y": 483,
+     "text": "across different occupancies in built-up as well as non-built-up areas is dependant on width of the"
+    },
+    {
+     "y": 496,
+     "text": "approach road or existing right of way (ROW) and shall be as follows:"
+    },
+    {
+     "y": 672,
+     "text": "*Note-1: Unrestricted FAR shall be availed in the increments of 0.25 times Base FAR."
+    },
+    {
+     "y": 692,
+     "text": "Note-2: In case of any difference in the prescribed limits of maximum permissible FAR in chapter-3"
+    },
+    {
+     "y": 706,
+     "text": "to chapter-7 and the table above, the figures in respective chapters will prevail."
+    },
+    {
+     "y": 725,
+     "text": "Note-3: In case of residential plotted development for both single and multi-units, the maximum"
+    },
+    {
+     "y": 738,
+     "text": "permissible (purchasable) FAR is 2.0 irrespective of the width of the approach road, as follows:"
+    },
+    {
+     "y": 775,
+     "text": "109"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.6,
+      515.9,
+      522.7,
+      664.3
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.6,
+         515.9,
+         149.1,
+         525.1
+        ]
+       },
+       {
+        "text": "Base FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         149.1,
+         515.9,
+         226.1,
+         532.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         226.1,
+         515.9,
+         320.2,
+         525.1
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         320.2,
+         515.9,
+         424.6,
+         525.1
+        ]
+       },
+       {
+        "text": "Maximum\nPermissible FAR\n(MFAR)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         424.6,
+         515.9,
+         522.7,
+         562.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Road Width",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.6,
+         525.1,
+         149.1,
+         539.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Purchasable FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         226.1,
+         525.1,
+         320.2,
+         539.2
+        ]
+       },
+       {
+        "text": "Premium Purchasable",
+        "fill": "#DBE5F1",
+        "bbox": [
+         320.2,
+         525.1,
+         424.6,
+         539.2
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "(BFAR)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         149.1,
+         532.1,
+         226.1,
+         546.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "(m)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.6,
+         539.2,
+         149.1,
+         553.1
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "(PFAR)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         226.1,
+         539.2,
+         320.2,
+         553.1
+        ]
+       },
+       {
+        "text": "FAR (PPFAR)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         320.2,
+         539.2,
+         424.6,
+         553.1
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         149.1,
+         546.1,
+         226.1,
+         562.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.6,
+         553.1,
+         149.1,
+         562.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         226.1,
+         553.1,
+         320.2,
+         562.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         320.2,
+         553.1,
+         424.6,
+         562.5
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "(1)",
+        "bbox": [
+         72.6,
+         562.5,
+         149.1,
+         583.5
+        ]
+       },
+       {
+        "text": "(2)",
+        "bbox": [
+         149.1,
+         562.5,
+         226.1,
+         583.5
+        ]
+       },
+       {
+        "text": "(3)",
+        "bbox": [
+         226.1,
+         562.5,
+         320.2,
+         583.5
+        ]
+       },
+       {
+        "text": "(4)",
+        "bbox": [
+         320.2,
+         562.5,
+         424.6,
+         583.5
+        ]
+       },
+       {
+        "text": "(5) = (2)+(3)+(4)",
+        "bbox": [
+         424.6,
+         562.5,
+         522.7,
+         583.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Up to 12m",
+        "bbox": [
+         72.6,
+         583.5,
+         149.1,
+         603.6
+        ]
+       },
+       {
+        "text": "B1",
+        "bbox": [
+         149.1,
+         583.5,
+         226.1,
+         603.6
+        ]
+       },
+       {
+        "text": "Up to 20% of B1",
+        "bbox": [
+         226.1,
+         583.5,
+         320.2,
+         603.6
+        ]
+       },
+       {
+        "text": "Up to 20% of B1",
+        "bbox": [
+         320.2,
+         583.5,
+         424.6,
+         603.6
+        ]
+       },
+       {
+        "text": "140% of B1",
+        "bbox": [
+         424.6,
+         583.5,
+         522.7,
+         603.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "12 \u2013 24m",
+        "bbox": [
+         72.6,
+         603.6,
+         149.1,
+         623.9
+        ]
+       },
+       {
+        "text": "B2",
+        "bbox": [
+         149.1,
+         603.6,
+         226.1,
+         623.9
+        ]
+       },
+       {
+        "text": "Up to 50% of B2",
+        "bbox": [
+         226.1,
+         603.6,
+         320.2,
+         623.9
+        ]
+       },
+       {
+        "text": "Up to 50% of B2",
+        "bbox": [
+         320.2,
+         603.6,
+         424.6,
+         623.9
+        ]
+       },
+       {
+        "text": "200% of B1",
+        "bbox": [
+         424.6,
+         603.6,
+         522.7,
+         623.9
+        ]
+       }
+      ],
+      [
+       {
+        "text": "24 \u2013 45m",
+        "bbox": [
+         72.6,
+         623.9,
+         149.1,
+         644.1
+        ]
+       },
+       {
+        "text": "B3",
+        "bbox": [
+         149.1,
+         623.9,
+         226.1,
+         644.1
+        ]
+       },
+       {
+        "text": "Up to 100% of B3",
+        "bbox": [
+         226.1,
+         623.9,
+         320.2,
+         644.1
+        ]
+       },
+       {
+        "text": "Up to 150% of B3",
+        "bbox": [
+         320.2,
+         623.9,
+         424.6,
+         644.1
+        ]
+       },
+       {
+        "text": "350% of B1",
+        "bbox": [
+         424.6,
+         623.9,
+         522.7,
+         644.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "More than 45m",
+        "bbox": [
+         72.6,
+         644.1,
+         149.1,
+         664.3
+        ]
+       },
+       {
+        "text": "B4",
+        "bbox": [
+         149.1,
+         644.1,
+         226.1,
+         664.3
+        ]
+       },
+       {
+        "text": "Up to 100% of B4",
+        "bbox": [
+         226.1,
+         644.1,
+         320.2,
+         664.3
+        ]
+       },
+       {
+        "text": "Unrestricted*",
+        "bbox": [
+         320.2,
+         644.1,
+         424.6,
+         664.3
+        ]
+       },
+       {
+        "text": "Unrestricted*",
+        "bbox": [
+         424.6,
+         644.1,
+         522.7,
+         664.3
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 3,
+   "gazettePage": 110,
+   "prose": "Note 1: In case of residential plotted development, calculation of purchasable FAR is not dependent\non the width of the approach road and will be allowed on minimum 9-m /7.5-m or 4.0-m road as the\ncase may be.\nFor maximum permissible FAR in TOD zones, refer to paragraph 8.2.2.2.\n9.2.4 Permission for Purchasable & Premium Purchasable FAR\n(i) Permission for purchasable and premium purchasable FAR in built-up and non-built up areas\nshall be given on the basis of the recommendation of the technical committee constituted under\nthe chairmanship of the Vice Chairman, Development Authority / Housing Commissioner, Uttar\nPradesh Awas Vikas Parishad, in which representatives of Public Works Department, Jal Nigam,\nDistrict Magistrate, Chief Town and Country Planner, Fire Department and representatives of\nplanning and engineering departments of the concerned authority, are members.\n(ii) The said committee shall examine maps and conduct site inspection of the proposed building\nbased on the following parameters.\na. Setback,\nb. Structural safety,\nc. Fire safety,\nd. Parking arrangement,\ne. Infrastructure facilities, etc.\n(iii) The committee shall submit its report / recommendation to the Vice Chairman / Housing\nCommissioner on whether purchasable and premium purchasable FAR shall be permitted or not.\nThe Vice Chairman / Housing Commissioner based on the recommendation of the committee\nshall take decision regarding the approval of purchasable and premium purchasable FAR.\n(iv) Purchasable FAR is an enabling provision and shall not be permitted to any applicant as a matter\nof right. However, application for purchasable FAR can be rejected by the authority by recording\nreasons for doing so.\n9.2.5 Computation of Fees for Purchasable & Premium Purchasable FAR\nPurchasable and Premium Purchasable FAR fee shall be calculated as per the following formula: -\nC = Le x Rc x P\nC = Charge\nLe = Proportional land requirement for purchasable/ Premium Purchasable FAR (sq.m.);\ni.e. FP \u00f7 FAR\nFP = Permissible Additional Floor Area (sq.m.) as per PFAR/PPFAR, as the case may be\nFAR = Permissible Floor Area Ratio as per Master Plan / Building Byelaws (Base FAR)\n110",
+   "proseLines": [
+    {
+     "y": 203,
+     "text": "Note 1: In case of residential plotted development, calculation of purchasable FAR is not dependent"
+    },
+    {
+     "y": 216,
+     "text": "on the width of the approach road and will be allowed on minimum 9-m /7.5-m or 4.0-m road as the"
+    },
+    {
+     "y": 229,
+     "text": "case may be."
+    },
+    {
+     "y": 248,
+     "text": "For maximum permissible FAR in TOD zones, refer to paragraph 8.2.2.2."
+    },
+    {
+     "y": 268,
+     "text": "9.2.4 Permission for Purchasable & Premium Purchasable FAR"
+    },
+    {
+     "y": 287,
+     "text": "(i) Permission for purchasable and premium purchasable FAR in built-up and non-built up areas"
+    },
+    {
+     "y": 300,
+     "text": "shall be given on the basis of the recommendation of the technical committee constituted under"
+    },
+    {
+     "y": 313,
+     "text": "the chairmanship of the Vice Chairman, Development Authority / Housing Commissioner, Uttar"
+    },
+    {
+     "y": 326,
+     "text": "Pradesh Awas Vikas Parishad, in which representatives of Public Works Department, Jal Nigam,"
+    },
+    {
+     "y": 339,
+     "text": "District Magistrate, Chief Town and Country Planner, Fire Department and representatives of"
+    },
+    {
+     "y": 352,
+     "text": "planning and engineering departments of the concerned authority, are members."
+    },
+    {
+     "y": 371,
+     "text": "(ii) The said committee shall examine maps and conduct site inspection of the proposed building"
+    },
+    {
+     "y": 384,
+     "text": "based on the following parameters."
+    },
+    {
+     "y": 403,
+     "text": "a. Setback,"
+    },
+    {
+     "y": 416,
+     "text": "b. Structural safety,"
+    },
+    {
+     "y": 429,
+     "text": "c. Fire safety,"
+    },
+    {
+     "y": 441,
+     "text": "d. Parking arrangement,"
+    },
+    {
+     "y": 454,
+     "text": "e. Infrastructure facilities, etc."
+    },
+    {
+     "y": 473,
+     "text": "(iii) The committee shall submit its report / recommendation to the Vice Chairman / Housing"
+    },
+    {
+     "y": 486,
+     "text": "Commissioner on whether purchasable and premium purchasable FAR shall be permitted or not."
+    },
+    {
+     "y": 499,
+     "text": "The Vice Chairman / Housing Commissioner based on the recommendation of the committee"
+    },
+    {
+     "y": 512,
+     "text": "shall take decision regarding the approval of purchasable and premium purchasable FAR."
+    },
+    {
+     "y": 531,
+     "text": "(iv) Purchasable FAR is an enabling provision and shall not be permitted to any applicant as a matter"
+    },
+    {
+     "y": 544,
+     "text": "of right. However, application for purchasable FAR can be rejected by the authority by recording"
+    },
+    {
+     "y": 557,
+     "text": "reasons for doing so."
+    },
+    {
+     "y": 597,
+     "text": "9.2.5 Computation of Fees for Purchasable & Premium Purchasable FAR"
+    },
+    {
+     "y": 617,
+     "text": "Purchasable and Premium Purchasable FAR fee shall be calculated as per the following formula: -"
+    },
+    {
+     "y": 637,
+     "text": "C = Le x Rc x P"
+    },
+    {
+     "y": 657,
+     "text": "C = Charge"
+    },
+    {
+     "y": 677,
+     "text": "Le = Proportional land requirement for purchasable/ Premium Purchasable FAR (sq.m.);"
+    },
+    {
+     "y": 697,
+     "text": "i.e. FP \u00f7 FAR"
+    },
+    {
+     "y": 717,
+     "text": "FP = Permissible Additional Floor Area (sq.m.) as per PFAR/PPFAR, as the case may be"
+    },
+    {
+     "y": 737,
+     "text": "FAR = Permissible Floor Area Ratio as per Master Plan / Building Byelaws (Base FAR)"
+    },
+    {
+     "y": 775,
+     "text": "110"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.3,
+      71.4,
+      523.2,
+      196.2
+     ],
+     "rows": [
+      [
+       {
+        "text": "Plot Area (sqm)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.3,
+         71.4,
+         212.7,
+         97.5
+        ]
+       },
+       {
+        "text": "Base FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         212.7,
+         71.4,
+         360.8,
+         97.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         360.8,
+         71.4,
+         366.2,
+         97.5
+        ]
+       },
+       {
+        "text": "Max. Permissible FAR (including",
+        "fill": "#DBE5F1",
+        "bbox": [
+         366.2,
+         71.4,
+         517.8,
+         84.5
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         517.8,
+         71.4,
+         523.2,
+         97.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "purchasable FAR)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         366.2,
+         84.5,
+         517.8,
+         97.5
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "\u226540 - 150",
+        "bbox": [
+         72.3,
+         97.5,
+         212.7,
+         117.3
+        ]
+       },
+       {
+        "text": "2.00",
+        "bbox": [
+         212.7,
+         97.5,
+         360.8,
+         117.3
+        ]
+       },
+       {
+        "text": "2.0",
+        "bbox": [
+         360.8,
+         97.5,
+         523.2,
+         117.3
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ">150 - 300",
+        "bbox": [
+         72.3,
+         117.3,
+         212.7,
+         136.9
+        ]
+       },
+       {
+        "text": "1.80",
+        "bbox": [
+         212.7,
+         117.3,
+         360.8,
+         136.9
+        ]
+       },
+       {
+        "text": "2.0",
+        "bbox": [
+         360.8,
+         117.3,
+         523.2,
+         136.9
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ">300 - 500",
+        "bbox": [
+         72.3,
+         136.9,
+         212.7,
+         156.4
+        ]
+       },
+       {
+        "text": "1.75",
+        "bbox": [
+         212.7,
+         136.9,
+         360.8,
+         156.4
+        ]
+       },
+       {
+        "text": "2.0",
+        "bbox": [
+         360.8,
+         136.9,
+         523.2,
+         156.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ">500 - 1200",
+        "bbox": [
+         72.3,
+         156.4,
+         212.7,
+         176.5
+        ]
+       },
+       {
+        "text": "1.50",
+        "bbox": [
+         212.7,
+         156.4,
+         360.8,
+         176.5
+        ]
+       },
+       {
+        "text": "2.0",
+        "bbox": [
+         360.8,
+         156.4,
+         523.2,
+         176.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ">1200",
+        "bbox": [
+         72.3,
+         176.5,
+         212.7,
+         196.2
+        ]
+       },
+       {
+        "text": "1.25",
+        "bbox": [
+         212.7,
+         176.5,
+         360.8,
+         196.2
+        ]
+       },
+       {
+        "text": "2.0",
+        "bbox": [
+         360.8,
+         176.5,
+         523.2,
+         196.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 4,
+   "gazettePage": 111,
+   "prose": "Rc = Current rate of land\nNote: The current rate of land refers to the circle rate determined by the District Magistrate,\nwhere such rate is not available, the current residential rate determined by the Authority/Awas\nVikas Parishad whichever is higher.\nP = Factor Coefficient for various land use categories.\nFactor coefficients as per land use shall be as follows: -\nExample:\nIn a group housing scheme of plot area of 2000 sq.m. in non-built-up area with approach road of width\n30m. The calculation of fees for purchasable and premium purchasable FAR shall be as follows.\n9.3 Additional FAR on Green Buildings\nThe Authority shall strive to promote green building concepts and shall provide following incentive in\nthe form of additional FAR, free of cost, for green rated buildings.\na) GRIHA Three star/ IGBC Silver / LEED silver or equivalent rating \u2013 3% additional FAR on\navailed FAR.\nb) GRIHA Four star/IGBC Gold/LEED Gold or equivalent rating \u2013 5% additional FAR on availed\nFAR.\n111",
+   "proseLines": [
+    {
+     "y": 73,
+     "text": "Rc = Current rate of land"
+    },
+    {
+     "y": 93,
+     "text": "Note: The current rate of land refers to the circle rate determined by the District Magistrate,"
+    },
+    {
+     "y": 107,
+     "text": "where such rate is not available, the current residential rate determined by the Authority/Awas"
+    },
+    {
+     "y": 121,
+     "text": "Vikas Parishad whichever is higher."
+    },
+    {
+     "y": 141,
+     "text": "P = Factor Coefficient for various land use categories."
+    },
+    {
+     "y": 161,
+     "text": "Factor coefficients as per land use shall be as follows: -"
+    },
+    {
+     "y": 377,
+     "text": "Example:"
+    },
+    {
+     "y": 397,
+     "text": "In a group housing scheme of plot area of 2000 sq.m. in non-built-up area with approach road of width"
+    },
+    {
+     "y": 411,
+     "text": "30m. The calculation of fees for purchasable and premium purchasable FAR shall be as follows."
+    },
+    {
+     "y": 649,
+     "text": "9.3 Additional FAR on Green Buildings"
+    },
+    {
+     "y": 671,
+     "text": "The Authority shall strive to promote green building concepts and shall provide following incentive in"
+    },
+    {
+     "y": 685,
+     "text": "the form of additional FAR, free of cost, for green rated buildings."
+    },
+    {
+     "y": 705,
+     "text": "a) GRIHA Three star/ IGBC Silver / LEED silver or equivalent rating \u2013 3% additional FAR on"
+    },
+    {
+     "y": 719,
+     "text": "availed FAR."
+    },
+    {
+     "y": 733,
+     "text": "b) GRIHA Four star/IGBC Gold/LEED Gold or equivalent rating \u2013 5% additional FAR on availed"
+    },
+    {
+     "y": 747,
+     "text": "FAR."
+    },
+    {
+     "y": 775,
+     "text": "111"
+    }
+   ],
+   "tables": [
+    {
+     "index": 0,
+     "bbox": [
+      72.7,
+      180.3,
+      522.8,
+      369.0
+     ],
+     "rows": [
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         180.3,
+         113.2,
+         189.4
+        ]
+       },
+       {
+        "text": "Land Use Category",
+        "fill": "#DBE5F1",
+        "bbox": [
+         113.2,
+         180.3,
+         263.6,
+         212.5
+        ]
+       },
+       {
+        "text": "Factor Coefficient (P)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         263.6,
+         180.3,
+         383.9,
+         196.5
+        ]
+       },
+       {
+        "text": "Factor Coefficient (P)",
+        "fill": "#DBE5F1",
+        "bbox": [
+         383.9,
+         180.3,
+         522.8,
+         196.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Sl.",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         189.4,
+         113.2,
+         203.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Purchasable FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         263.6,
+         196.5,
+         383.9,
+         212.5
+        ]
+       },
+       {
+        "text": "Premium Purchasable FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         383.9,
+         196.5,
+         522.8,
+         212.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         203.5,
+         113.2,
+         212.5
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "1",
+        "bbox": [
+         72.7,
+         212.5,
+         113.2,
+         233.7
+        ]
+       },
+       {
+        "text": "Commercial",
+        "bbox": [
+         113.2,
+         212.5,
+         263.6,
+         233.7
+        ]
+       },
+       {
+        "text": "0.50",
+        "bbox": [
+         263.6,
+         212.5,
+         383.9,
+         233.7
+        ]
+       },
+       {
+        "text": "1.0",
+        "bbox": [
+         383.9,
+         212.5,
+         522.8,
+         233.7
+        ]
+       }
+      ],
+      [
+       {
+        "text": "2",
+        "bbox": [
+         72.7,
+         233.7,
+         113.2,
+         254.0
+        ]
+       },
+       {
+        "text": "Mixed Use",
+        "bbox": [
+         113.2,
+         233.7,
+         263.6,
+         254.0
+        ]
+       },
+       {
+        "text": "0.45",
+        "bbox": [
+         263.6,
+         233.7,
+         383.9,
+         254.0
+        ]
+       },
+       {
+        "text": "0.9",
+        "bbox": [
+         383.9,
+         233.7,
+         522.8,
+         254.0
+        ]
+       }
+      ],
+      [
+       {
+        "text": "3",
+        "bbox": [
+         72.7,
+         254.0,
+         113.2,
+         274.2
+        ]
+       },
+       {
+        "text": "Office Buildings / Institutional",
+        "bbox": [
+         113.2,
+         254.0,
+         263.6,
+         274.2
+        ]
+       },
+       {
+        "text": "0.45",
+        "bbox": [
+         263.6,
+         254.0,
+         383.9,
+         274.2
+        ]
+       },
+       {
+        "text": "0.9",
+        "bbox": [
+         383.9,
+         254.0,
+         522.8,
+         274.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": "4",
+        "bbox": [
+         72.7,
+         274.2,
+         113.2,
+         294.3
+        ]
+       },
+       {
+        "text": "Hotels",
+        "bbox": [
+         113.2,
+         274.2,
+         263.6,
+         294.3
+        ]
+       },
+       {
+        "text": "0.40",
+        "bbox": [
+         263.6,
+         274.2,
+         383.9,
+         294.3
+        ]
+       },
+       {
+        "text": "0.8",
+        "bbox": [
+         383.9,
+         274.2,
+         522.8,
+         294.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "5",
+        "bbox": [
+         72.7,
+         294.3,
+         113.2,
+         314.6
+        ]
+       },
+       {
+        "text": "Residential (Plotted)",
+        "bbox": [
+         113.2,
+         294.3,
+         263.6,
+         314.6
+        ]
+       },
+       {
+        "text": "0.40",
+        "bbox": [
+         263.6,
+         294.3,
+         383.9,
+         314.6
+        ]
+       },
+       {
+        "text": "-",
+        "bbox": [
+         383.9,
+         294.3,
+         522.8,
+         314.6
+        ]
+       }
+      ],
+      [
+       {
+        "text": "6",
+        "bbox": [
+         72.7,
+         314.6,
+         113.2,
+         334.8
+        ]
+       },
+       {
+        "text": "Residential (Group Housing)",
+        "bbox": [
+         113.2,
+         314.6,
+         263.6,
+         334.8
+        ]
+       },
+       {
+        "text": "0.40",
+        "bbox": [
+         263.6,
+         314.6,
+         383.9,
+         334.8
+        ]
+       },
+       {
+        "text": "0.8",
+        "bbox": [
+         383.9,
+         314.6,
+         522.8,
+         334.8
+        ]
+       }
+      ],
+      [
+       {
+        "text": "7",
+        "bbox": [
+         72.7,
+         334.8,
+         113.2,
+         369.0
+        ]
+       },
+       {
+        "text": "Community Facilities and\nInfrastructure",
+        "bbox": [
+         113.2,
+         334.8,
+         263.6,
+         369.0
+        ]
+       },
+       {
+        "text": "0.20",
+        "bbox": [
+         263.6,
+         334.8,
+         383.9,
+         369.0
+        ]
+       },
+       {
+        "text": "0.4",
+        "bbox": [
+         383.9,
+         334.8,
+         522.8,
+         369.0
+        ]
+       }
+      ]
+     ]
+    },
+    {
+     "index": 1,
+     "bbox": [
+      72.7,
+      430.7,
+      522.8,
+      620.8
+     ],
+     "rows": [
+      [
+       {
+        "text": "Group Housing",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         430.7,
+         158.8,
+         449.4
+        ]
+       },
+       {
+        "text": "FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         158.8,
+         430.7,
+         236.3,
+         449.4
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "FP",
+        "fill": "#DBE5F1",
+        "bbox": [
+         236.3,
+         430.7,
+         292.1,
+         449.4
+        ]
+       },
+       {
+        "text": "Le",
+        "fill": "#DBE5F1",
+        "bbox": [
+         292.1,
+         430.7,
+         341.1,
+         449.4
+        ]
+       },
+       {
+        "text": "Rc",
+        "fill": "#DBE5F1",
+        "bbox": [
+         341.1,
+         430.7,
+         397.2,
+         449.4
+        ]
+       },
+       {
+        "text": "P",
+        "fill": "#DBE5F1",
+        "bbox": [
+         397.2,
+         430.7,
+         445.9,
+         449.4
+        ]
+       },
+       {
+        "text": "C",
+        "fill": "#DBE5F1",
+        "bbox": [
+         445.9,
+         430.7,
+         522.8,
+         449.4
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Area: Non-built-up",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         449.4,
+         158.8,
+         466.8
+        ]
+       },
+       {
+        "text": "Permis\nsible",
+        "fill": "#DBE5F1",
+        "bbox": [
+         158.8,
+         449.4,
+         193.9,
+         511.2
+        ]
+       },
+       {
+        "text": "Availed",
+        "fill": "#DBE5F1",
+        "bbox": [
+         193.9,
+         449.4,
+         236.3,
+         511.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         236.3,
+         449.4,
+         292.1,
+         466.8
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         292.1,
+         449.4,
+         341.1,
+         466.8
+        ]
+       },
+       {
+        "text": "Current\nLand Rate",
+        "fill": "#DBE5F1",
+        "bbox": [
+         341.1,
+         449.4,
+         397.2,
+         511.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         397.2,
+         449.4,
+         445.9,
+         459.8
+        ]
+       },
+       {
+        "text": "Charge =\nLe x Rc x P",
+        "fill": "#DBE5F1",
+        "bbox": [
+         445.9,
+         449.4,
+         522.8,
+         511.2
+        ]
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Factor",
+        "fill": "#DBE5F1",
+        "bbox": [
+         397.2,
+         459.8,
+         445.9,
+         473.8
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Plot Area: 2000",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         466.8,
+         158.8,
+         480.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Add. FAR x",
+        "fill": "#DBE5F1",
+        "bbox": [
+         236.3,
+         466.8,
+         292.1,
+         480.8
+        ]
+       },
+       {
+        "text": "FP \u00f7 Base",
+        "fill": "#DBE5F1",
+        "bbox": [
+         292.1,
+         466.8,
+         341.1,
+         480.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Coefficien",
+        "fill": "#DBE5F1",
+        "bbox": [
+         397.2,
+         473.8,
+         445.9,
+         487.8
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "sqm,",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         480.8,
+         158.8,
+         494.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "Plot Area",
+        "fill": "#DBE5F1",
+        "bbox": [
+         236.3,
+         480.8,
+         292.1,
+         494.8
+        ]
+       },
+       {
+        "text": "FAR",
+        "fill": "#DBE5F1",
+        "bbox": [
+         292.1,
+         480.8,
+         341.1,
+         494.8
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "t",
+        "fill": "#DBE5F1",
+        "bbox": [
+         397.2,
+         487.8,
+         445.9,
+         501.8
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Road Width: 30m",
+        "fill": "#DBE5F1",
+        "bbox": [
+         72.7,
+         494.8,
+         158.8,
+         511.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         236.3,
+         494.8,
+         292.1,
+         511.2
+        ]
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         292.1,
+         494.8,
+         341.1,
+         511.2
+        ]
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": ""
+       },
+       {
+        "text": "",
+        "fill": "#DBE5F1",
+        "bbox": [
+         397.2,
+         501.8,
+         445.9,
+         511.2
+        ]
+       },
+       {
+        "text": ""
+       }
+      ],
+      [
+       {
+        "text": "Base FAR",
+        "bbox": [
+         72.7,
+         511.2,
+         158.8,
+         532.1
+        ]
+       },
+       {
+        "text": "2.5",
+        "bbox": [
+         158.8,
+         511.2,
+         193.9,
+         532.1
+        ]
+       },
+       {
+        "text": "2.5",
+        "bbox": [
+         193.9,
+         511.2,
+         236.3,
+         532.1
+        ]
+       },
+       {
+        "text": "-",
+        "bbox": [
+         236.3,
+         511.2,
+         292.1,
+         532.1
+        ]
+       },
+       {
+        "text": "-",
+        "bbox": [
+         292.1,
+         511.2,
+         341.1,
+         532.1
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         341.1,
+         511.2,
+         397.2,
+         532.1
+        ]
+       },
+       {
+        "text": "-",
+        "bbox": [
+         397.2,
+         511.2,
+         445.9,
+         532.1
+        ]
+       },
+       {
+        "text": "-",
+        "bbox": [
+         445.9,
+         511.2,
+         522.8,
+         532.1
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Purchasable FAR",
+        "bbox": [
+         72.7,
+         532.1,
+         158.8,
+         566.3
+        ]
+       },
+       {
+        "text": "2.5",
+        "bbox": [
+         158.8,
+         532.1,
+         193.9,
+         566.3
+        ]
+       },
+       {
+        "text": "2.5",
+        "bbox": [
+         193.9,
+         532.1,
+         236.3,
+         566.3
+        ]
+       },
+       {
+        "text": "5000sqm",
+        "bbox": [
+         236.3,
+         532.1,
+         292.1,
+         566.3
+        ]
+       },
+       {
+        "text": "2000sqm",
+        "bbox": [
+         292.1,
+         532.1,
+         341.1,
+         566.3
+        ]
+       },
+       {
+        "text": "35000\nRs/sqm",
+        "bbox": [
+         341.1,
+         532.1,
+         397.2,
+         566.3
+        ]
+       },
+       {
+        "text": "0.40",
+        "bbox": [
+         397.2,
+         532.1,
+         445.9,
+         566.3
+        ]
+       },
+       {
+        "text": "Rs 2,80,00,000",
+        "bbox": [
+         445.9,
+         532.1,
+         522.8,
+         566.3
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Premium\nPurchasable FAR",
+        "bbox": [
+         72.7,
+         566.3,
+         158.8,
+         600.5
+        ]
+       },
+       {
+        "text": "3.75",
+        "bbox": [
+         158.8,
+         566.3,
+         193.9,
+         600.5
+        ]
+       },
+       {
+        "text": "3.0",
+        "bbox": [
+         193.9,
+         566.3,
+         236.3,
+         600.5
+        ]
+       },
+       {
+        "text": "6000sqm",
+        "bbox": [
+         236.3,
+         566.3,
+         292.1,
+         600.5
+        ]
+       },
+       {
+        "text": "2400sqm",
+        "bbox": [
+         292.1,
+         566.3,
+         341.1,
+         600.5
+        ]
+       },
+       {
+        "text": "35000\nRs/sqm",
+        "bbox": [
+         341.1,
+         566.3,
+         397.2,
+         600.5
+        ]
+       },
+       {
+        "text": "0.80",
+        "bbox": [
+         397.2,
+         566.3,
+         445.9,
+         600.5
+        ]
+       },
+       {
+        "text": "Rs 6,72,00,000",
+        "bbox": [
+         445.9,
+         566.3,
+         522.8,
+         600.5
+        ]
+       }
+      ],
+      [
+       {
+        "text": "Total Charge",
+        "bbox": [
+         72.7,
+         600.5,
+         158.8,
+         620.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         158.8,
+         600.5,
+         193.9,
+         620.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         193.9,
+         600.5,
+         236.3,
+         620.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         236.3,
+         600.5,
+         292.1,
+         620.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         292.1,
+         600.5,
+         341.1,
+         620.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         341.1,
+         600.5,
+         397.2,
+         620.8
+        ]
+       },
+       {
+        "text": "",
+        "bbox": [
+         397.2,
+         600.5,
+         445.9,
+         620.8
+        ]
+       },
+       {
+        "text": "Rs 9,52,00,000",
+        "bbox": [
+         445.9,
+         600.5,
+         522.8,
+         620.8
+        ]
+       }
+      ]
+     ]
+    }
+   ],
+   "warnings": []
+  },
+  {
+   "pdfPage": 5,
+   "gazettePage": 112,
+   "prose": "c) GRIHA Five star/ IGBC Platinum/ LEED Platinum or equivalent rating \u2013 7% additional FAR\non availed FAR.\nNote:\nI. Additional FAR mentioned above in point a), b) and c) shall be awarded after pre-certification\nfrom the empanelled agency. This incentive FAR on Green Buildings shall be over and above\nthe MFAR.\nII. In case that the developer fails to achieve committed rating as per pre-certification at the time\nof final occupancy, a penalty shall be imposed at the rate 2 times of the land cost as per the\ncircle rates for the additional FAR for the rating not achieved.\nIII. The authority shall consider certification from any agency identified/ recognised by the State/\nCentral Government.\n.\n112",
+   "proseLines": [
+    {
+     "y": 73,
+     "text": "c) GRIHA Five star/ IGBC Platinum/ LEED Platinum or equivalent rating \u2013 7% additional FAR"
+    },
+    {
+     "y": 87,
+     "text": "on availed FAR."
+    },
+    {
+     "y": 106,
+     "text": "Note:"
+    },
+    {
+     "y": 126,
+     "text": "I. Additional FAR mentioned above in point a), b) and c) shall be awarded after pre-certification"
+    },
+    {
+     "y": 140,
+     "text": "from the empanelled agency. This incentive FAR on Green Buildings shall be over and above"
+    },
+    {
+     "y": 154,
+     "text": "the MFAR."
+    },
+    {
+     "y": 174,
+     "text": "II. In case that the developer fails to achieve committed rating as per pre-certification at the time"
+    },
+    {
+     "y": 188,
+     "text": "of final occupancy, a penalty shall be imposed at the rate 2 times of the land cost as per the"
+    },
+    {
+     "y": 202,
+     "text": "circle rates for the additional FAR for the rating not achieved."
+    },
+    {
+     "y": 222,
+     "text": "III. The authority shall consider certification from any agency identified/ recognised by the State/"
+    },
+    {
+     "y": 236,
+     "text": "Central Government."
+    },
+    {
+     "y": 276,
+     "text": "."
+    },
+    {
+     "y": 775,
+     "text": "112"
+    }
+   ],
+   "tables": [],
+   "warnings": []
+  }
+ ]
+}

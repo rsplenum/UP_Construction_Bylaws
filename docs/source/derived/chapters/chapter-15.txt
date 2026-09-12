@@ -1,0 +1,624 @@
+=== chapter 15 · gazette page 138 · pdf page 1 ===
+15 Zoning Regulations
+15.1 Objectives of Zoning
+In general, only major land uses like residential, commercial, industrial, offices, public and semi-public
+facilities, parks and open spaces, agriculture, etc. are shown in the master plan. Permissible activities
+under major land uses, which are not possible to be shown separately on the master plan map, are
+permitted based on zoning regulations. The competent authority is expected to make provision for
+various ancillary activities/uses in the new plans as per the zoning regulations and effective building
+construction and development byelaws so that public health, welfare, and safety can be ensured.
+15.1.1 Use Zone Definitions (16)
+138
+
+--- table 0 (18 rows × 5 cols) ---
+[#D9E2F3] |  |  | [#D9E2F3] | [#D9E2F3]
+[#D9E2F3] | Sl. | [#D9E2F3] | Land Use Zones | Explanation
+[#D9E2F3] |  |  | [#D9E2F3] | [#D9E2F3]
+1 |  |  | Built-up | Land/ Area marked as “Built-up Area” in the Master Plan.
+2 |  |  | Residential | Land allotted for housing purposes/ activities, including single/ family units, apartments, group housing etc.
+3 |  |  | Mixed Use | Land allotted for combination of residential, commercial, and other uses in both Built-up and Non-Built-up Area
+4 |  |  | Commercial 1 (Retail/ CBD/Sub CBD/ Bazaar Street) | Land allotted for commercial activities, such as retail stores, commercial complex, and bazaar streets, shopping malls etc.
+5 |  |  | Commercial 2 (Wholesale/ Godown / Storage) | Land allotted for commercial activities such as storage and distribution of goods, typically in bulk, for resale to retailers or other businesses.
+6 |  |  | Small Industries | Land allotted for construction of small-scale industries such as cottage industries, non-hazardous industrial establishment that produces products which create less environmental impact.
+7 |  |  | Large Industries | Land allotted for construction of large-scale industries accommodating industrial premises with huge infrastructure, raw material, high manpower requirements. It also includes hazardous industrial establishments.
+8 |  |  | Office Buildings | Land allotted for government, private, corporate offices, banks etc.
+9 |  |  | Public and Semi-public Facilities | Land allotted for institutions such as healthcare and education facilities, community facilities, public utilities, and other services.
+10 |  |  | Traffic and Transportation | Land allotted for roads, railways, airports, and other transportation infrastructure such as terminals, parking etc.
+11 |  |  | Forest | Land earmarked as forest in the development authority area and not predominantly used for agriculture or urban purposes.
+12 |  |  | Recreational (parks, regional parks, playgrounds) | Land allotted for leisure and recreational activities, including parks, playground, sports facilities, and open spaces.
+13 |  |  | Green Belt | Land earmarked to retain areas of largely undeveloped, wild, or agricultural land surrounding or neighboring urban areas.
+14 |  |  | Grameen Abaadi | Land earmarked as rural settlement in the master plan.
+15 |  |  | Agriculture | Land earmarked for agriculture and related activities such as farming, crop cultivation, dairy farms, and animal husbandry etc.
+
+=== chapter 15 · gazette page 139 · pdf page 2 ===
+15.1.2 Permission categories of various activities/appliances
+There shall be the following permission categories for various activities under the major land use zones
+proposed in the master plan:
+(i) Permissible Activities: Those activities which are incidental to the respective major land uses and
+are generally permissible.
+(ii) Prohibited Activities: Those activities which are not permitted in the respective major land use
+zone.
+For activities which are similar to those mentioned as part of paragraph 15.2 of the byelaws, the board
+of the authority may allow their permissibility accordingly. In case of any further clarification, the
+matter may be recommended to the committee constituted as part of paragraph 1.4 of the byelaws.
+Permissibility of activities in the entire development area shall be governed by these zoning regulations
+including layouts approved/ developed by the authority.
+15.1.3 Impact Fee
+(i) Under the schemes approved/developed by the Authority or elsewhere in the development area,
+applications may be received for permission for other activities. Such applications shall be considered
+subject to the provisions contained in paragraph 15.3. For allowing higher use activities in lower land
+use zones, “impact fee” shall be payable by the applicant at the time of such permission as per paragraph
+15.4.
+(ii) The impact fee shall be collected as per the provisions contained in the Uttar Pradesh Urban Planning
+and Development (Impact Fee) Rules, 2025.
+(iii) Impact fee shall not be payable in the following circumstances:
+a) For generally permitted activities/uses in the built-up area,
+b) For public and semi-public facilities/activities to be developed by government and semi-
+government agencies in mixed land use zones,
+c) For activities/uses to be permitted temporarily (maximum time limit one week) in various major
+land use zones,
+d) Impact fee shall not be payable for the activities/uses which have been permitted in certain land
+use zones as per government orders under various policies declared by the State Government -
+Tourism Policy, Information Technology Policy, Film Policy, etc.
+e) Impact fee shall also not be payable for permission of hotels in all other land uses except parks
+and open spaces, gardens, green areas, forest areas, hazardous industries, flood affected areas,
+and for permission of information technology units/information technology parks up to five
+KVA capacity in residential areas.
+f) Impact fee shall not be payable for permission of hotel for use other than hotel or commercial
+use.
+(iv) Activities other than the master plan land use or land use as defined in the approved layouts, shall
+be permitted after inviting objections/suggestions from the public as per prescribed procedure.
+139
+
+--- table 0 (5 rows × 5 cols) ---
+[#D9E2F3] |  |  | [#D9E2F3] | [#D9E2F3]
+[#D9E2F3] | Sl. | [#D9E2F3] | Land Use Zones | Explanation
+[#D9E2F3] |  |  | [#D9E2F3] | [#D9E2F3]
+16 |  |  | Highway Facilities | Land allotted along the highways primarily used for commercial and roadside services to cater to the traveling public, such as rest areas, food courts, retail spaces, and associated infrastructure.
+17 |  |  | Additional Land use[YELLOW] | 
+
+=== chapter 15 · gazette page 140 · pdf page 3 ===
+15.2 Definitions of land use activities
+15.2.1 Residential
+15.2.2 Commercial
+140
+
+--- table 0 (6 rows × 3 cols) ---
+1 | Single unit | Premises consisting of independent residential units (plotted houses).
+2 | Multi-unit | Premises consisting of multiple residential units (in case of plotted houses).
+3 | Group Housing | Premises consisting of a building of two or more storeys with independent residential units on each floor and in which land and services, open spaces and conveyances are shared and co-owned.
+4 | Related Workers/ Employees/ Staff Accommodation | Premises in which residential units for the same use are provided as independent or group accommodation for employees employed in a principal use.
+5 | Watchman / Guard accommodation | The premises in which residential arrangements have been made for the people involved in the security and maintenance of the ancillary sub-use.
+6 | Homestay or Paying guest | Residential premises of local citizens (host) in tourism centric places/ business centric places offered or shared with visitors travelling to such places, in the form of hospitality and lodging.
+
+--- table 1 (9 rows × 3 cols) ---
+1 | Retail Shops | Premises where essential commodities are sold directly to consumers. This includes grocery stores, vegetable stores
+2 | Showroom | The premises where the sale and storage of goods is done with arrangements for displaying them for consumer interest.
+3 | Flour Mill | The premises where wheat, spices, dry food items etc. are ground and prepared for daily use.
+4 | Wholesale Market/Trade | Premises where goods and commodities are sold and delivered to wholesalers. The premises also include storage and godowns and facilities for loading and unloading goods.
+5 | Auction Market | A place where various types of goods are brought only for buying and selling through auction. No kind of storage is allowed at such a place and this place is completely open in which there can be only one operating room.
+6 | Cold Storage | The premises where perishable goods are stored in a covered space using mechanical and electrical equipment to maintain the required temperature etc.
+7 | Hotel | Premises which are used for accommodation on payment with or without meals.
+8 | Motel | That premises, which is situated along the main road and where there are arrangements for the convenience of the passengers including accommodation, food and drinks and parking for vehicles.
+9 | Resort | A natural or artificially created place which is used recreationally for a short/short period of time. In such premises, apart from night rest, other public facilities are also available.
+
+=== chapter 15 · gazette page 141 · pdf page 4 ===
+15.2.3 Industrial
+141
+
+--- table 0 (14 rows × 3 cols) ---
+10 | Canteen | Premises that are used to provide food, including cooking facilities, to the employees of an organization/customers. It may have a seating area.
+11 | Restaurant | Premises used for serving food on a commercial basis, including cooking facilities. The seating area may be covered or open or both. This includes cafes.
+12 | Cinema | A premises that provides movie projection facilities including seating areas for spectators.
+13 | Miniplex | "Miniplex" means a single screen cinema licensed for cinematograph exhibition or exhibition through digital projection system in a permanent building with seating capacity not exceeding 125.
+14 | Multiplex | "Multiplex" means a group or conglomeration of two or more than two cinema halls within same premises with commercial, cultural, and other entertainment related facilities.
+15 | PCO/ Cellular Mobile Service | That premises from where there is provision for local, interstate, country-foreign, etc. telephone or cellular conversation on payment of fee.
+16 | Petrol/ Deisel/ CNG filling station | Premises for selling petroleum products to consumers which may also include servicing of automobiles.
+17 | Gas Godown | The premises where cooking gas or gas cylinders are stored.
+18 | Emergency Stock | Premises where essential items such as food, water, and first-aid supplies are stored, in a readily accessible location for use during a crisis or disaster.
+19 | Junk yard | The premises where covered or semi-covered or open storage is carried out including sale and purchase of unusable goods, articles, and materials.
+20 | Store / Godown | The premises for holding goods, often used by businesses before they are sold.
+21 | Shops for sale of motor vehicle spare parts | These are normal sized shops selling parts (except car body accessories) for the repair of motor vehicles.
+22 | Automobile sales/ purchase, workshop, accessories centre | The premises in which buying and selling of vehicles, showroom of vehicles, servicing and repair of automobiles is done.
+23 | Service Apartments | Service apartments will be fully furnished and self-contained apartments with cooking facilities (Kitchen/Kitchen) and will be used for short term stays.
+
+--- table 1 (2 rows × 3 cols) ---
+1 | Mining related industries | The premises in which digging and processing of stones and other underground minerals is undertaken.
+2 | Software/ Information Technology Park | The premises where computer software is used in information technology, other software of latest technology in this field etc.
+
+=== chapter 15 · gazette page 142 · pdf page 5 ===
+15.2.4 Offices
+142
+
+--- table 0 (7 rows × 3 cols) ---
+3 | Oil Depot | The premises where petroleum products are stored along with all related facilities.
+4 | Milk Collection Centre | Premises where milk is collected for a dairy from the concerned area.
+5 | Cottage Industries | It is a small-scale, non-hazardous industry carried on at home by family members using their own equipment, without the use of hired labour.
+6 | Small Scale Industries (non- polluting) | Small scale industries are non-hazardous industrial establishment that produces products which create less environmental impact than those associated with heavy industry. (Investment limit is ₹10 crore and the turnover limit is ₹50 crore)
+7 | Large Scale Industries | Large scale industries are industrial premises with huge infrastructure, raw material, high manpower requirements and large capital requirements such as Iron and Steel Industry, Automobile Industry, Textile Industry etc. (Investment limit exceeding ₹10 crore)
+8 | Hazardous / Polluting industry | It is a building or place, or part thereof used for storage, handling, manufacture, or processing of radio-active substances or of highly combustible or explosive materials or products which are liable to burn with extreme rapidity and/or producing poisonous gases/fumes.
+9 | Warehouse & Logistics Park | The premises which are used only for storage of goods and commodities as per the requirement of the respective goods. Such premises include facilities for loading and unloading of goods by road transport or rail transport, as the case may be.
+
+--- table 1 (9 rows × 3 cols) ---
+1 | Govt. Office | Premises which are used for central/state government offices.
+2 | Local Body Office | Premises which are used for the offices of local bodies.
+3 | Semi-Government Office | The premises which are used for the offices of the agency, body, council, etc. established under any act.
+4 | Private Office | The premises in which consultancy/servicing for business purposes is provided by an individual or a small group such as chartered accountant, advocate, doctor, architect, designer, computer programmer, tour, and travel agent, etc.
+5 | Cyber café | A place where citizens use internet facilities by paying fees.
+6 | Business Park | An area of the city where many office buildings are established, which are used only for business activities.
+7 | Data Processing Centre | A centre where information (data) related to computer technology is processed, analysed etc., computers, servers, internet servers are installed in such centres, and they are operated by software and hardware engineers.
+8 | Call Centre | A centre where personal information of various consumers, information related to business activities and guidance is given through e-communication.
+9 | Bank | The premises in which arrangements are made to carry out the work and operations of banks.
+
+=== chapter 15 · gazette page 143 · pdf page 6 ===
+15.2.5 Community Facilities, Uses and Services
+143
+
+--- table 0 (5 rows × 3 cols) ---
+10 | Commercial/ Business Office | Premises that are used for offices of business establishments.
+11 | Labour welfare Centre | Premises where facilities are provided to promote the welfare and development of workers.
+12 | Research and Development Centre/ Research Centre | The premises where there are facilities for research and development for the general public and special categories.
+13 | Weather Research Centre | The premises where facilities are available for study/research and development of weather and its related data.
+14 | Bio-tech Park | An industrial park where activities related to research and development of biotechnology are completely carried out.
+
+--- table 1 (11 rows × 3 cols) ---
+1 | Guest House/ Inspection House/ Circuit House | The premises where the staff of government/semi-government undertakings, companies and other persons are accommodated for short periods.
+2 | Dharamshala/ Ashram | A premises in which short-term temporary accommodation is provided on a non-profit basis.
+3 | Boarding/ Lodging House | Premises whose rooms are given on long-term rent for residential purposes.
+4 | Hostel/ Working women’s hostel | A building in which students reside by paying fixed fees for the duration of their education. Apart from the residential rooms of the students, it may also include food facilities for the students, canteen, toilets, indoor games, warden house, etc.
+5 | Orphanage | The premises where facilities are provided for the living of orphan children. Educational facilities can also be arranged in it.
+6 | Night Shelter | A premises in which night accommodation is provided without any fee or at a nominal fee.
+7 | Reformatory | A premises where facilities are provided to keep criminals and reform them.
+8 | Differently abled children home | The premises where there are arrangements for the improvement and medical facilities of handicapped and mentally challenged children. It can be managed by a single person or organization on a commercial or non-commercial basis.
+9 | Creche and Day care Centre | Premises where nursery facilities are provided for infants during daytime. The management of the centre can be done by an individual or an organization on a commercial basis.
+10 | Senior Care Centre/ Old Age Home | Premises where there are commercial or non-commercial arrangements for short/long term living, usually for elderly people. There may also be arrangements for entertainment, general health, food, etc. for the elderly, which can be arranged by a single person or organization.
+11 | Higher Secondary/ Inter School | The premises where there are arrangements for educational and sports facilities for students up to class 10th/12th.
+
+=== chapter 15 · gazette page 144 · pdf page 7 ===
+144
+
+--- table 0 (18 rows × 3 cols) ---
+12 | College | A campus where there are arrangements for teaching, sports and other related facilities for graduate/post-graduate courses under a university.
+13 | Polytechnic | A campus where training facilities are available for courses up to diploma level in a technical field. This will include technical schools, industrial training institutes.
+14 | Medical/ Dental College | That campus where teaching, dental, operation, etc. and treatment and research work is done for the treatment of diseases under human science.
+15 | Higher Technical Institution | A campus where education and training facilities up to graduation or post-graduation in technical fields are available.
+16 | Cottage/ Industry Training | The premises where training is imparted in domestic/small/service industries like tailoring, weaving, embroidery, painting, computer, tour, and travels, etc.
+17 | Management Institute | The premises where there are arrangements for teaching/training facilities in the field of management.
+18 | General Education Institute | The premises where non-technical education is imparted.
+19 | Post Office | Premises where facilities for receiving mail are available for public.
+20 | Post and Telegraph Office | The premises where postal and telecommunication facilities are available for public use.
+21 | Telephone Office/ Centre | The premises where facilities are available for central operation of the telephone system for the concerned area.
+22 | Radio and Television Centre | The premises where facilities are available to record and broadcast news and other programs through the concerned medium.
+23 | Prison | Premises where there are facilities for detaining, imprisoning and reforming criminals under the law.
+24 | Police Station | Premises where facilities for the local police office are provided.
+25 | Nursing Home | A premises which provides medical facilities for inpatients and out- patients with up to 50 beds and is managed on a commercial basis.
+26 | Hospital | The premises where general or specialized type of medical facilities, with more than 50 beds, are arranged for the treatment of indoor and outdoor patients.
+27 | Clinic/ Polyclinic/ Non-bedded medical establishments | A premises where facilities for the treatment of out-patients are provided by a doctor/group of doctors.
+28 | Health Centre/ Family Welfare Centre | A premises having facilities for the treatment of inpatients and out- patients. The health centre can be managed on a non-commercial basis by a public or charitable or other organization. This includes Family Welfare Centre.
+29 | Dispensary | The premises where medical consultation facilities and medicines are available, and which is managed by public or charitable or other institutions.
+
+=== chapter 15 · gazette page 145 · pdf page 8 ===
+145
+
+--- table 0 (19 rows × 3 cols) ---
+30 | Clinical Laboratory/ Diagnostic centres | A premises where facilities are available for carrying out various types of tests to detect symptoms of disease.
+31 | Meeting Hall, Community Hall | The premises where there are arrangements for meetings, social and cultural activities.
+32 | Yoga, Meditation, Spiritual, Religious Discourse Centre/ Satsang Bhawan | The premises where there is provision of facilities related to self- realization, attainment of higher qualities of intellect and body, spiritual and religious pilgrimage etc.
+33 | Religious Centre | A premises that is used for worship and other religious programs.
+34 | Socio-cultural Institution / Building | Premises where facilities for socio-cultural programs are provided by the public or any voluntary person/organization mainly on a non- commercial basis.
+35 | Cultural Centre | The premises where facilities for cultural services for any institution, state and country are provided.
+36 | Marriage Hall/ Banquet Hall | A premises which is used for weddings and other social functions.
+37 | Auditorium | The premises where there is a stage and seating arrangements for the audience for various performances like concerts, plays, musical presentations, ceremonies etc.
+38 | Open Air Theatre | The premises where there are arrangements for seating of spectators in the open and stage facilities, etc. for performances.
+39 | Theatre | The premises where there are arrangements for seating of spectators and facilities etc. for performances.
+40 | Museum | A premises providing facilities for the collection and display of objects illustrative of antiquities, natural history, art, etc.
+41 | Art Gallery/ Exhibition Centre | Premises where facilities are provided for the exhibition and decoration of painting, photography, sculpture, murals, handicrafts, or products of any special category.
+42 | Music / Dance and Drama Arts Training Centre | The premises where there is arrangement for training and teaching of music, dance, and drama arts.
+43 | Library | A premises where there is arrangement for collection of books for reading and reference for the general public or a specific category.
+44 | Reading Room | The premises where there is arrangement for reading newspapers, magazines, etc. for the general public or a specific category.
+45 | Information Centre | The premises where information about various activities of the state and the country are provided.
+46 | Health Club/ Gymnasium | That building in which there is a system to strengthen the human body naturally or with the help of mechanical equipment.
+47 | Fire Station | The premises where fire extinguishing facilities are provided for the area concerned.
+48 | Community Welfare Centre | A premises where facilities are provided to promote the welfare and development of the community, and which is run by a public or charitable or other institution.
+
+=== chapter 15 · gazette page 146 · pdf page 9 ===
+15.2.6 Traffic and Transport
+146
+
+--- table 0 (16 rows × 3 cols) ---
+49 | Electric Crematorium | The premises where facilities are available for burning dead bodies by electric incinerator.
+50 | Crematorium | The premises where facilities are available to complete the last religious rites by burning dead bodies
+51 | Cemetery/ Burial Ground | The premises where facilities for burial of dead bodies are provided.
+52 | Mela Sthal/ Fair | A premises which provides facilities for exhibition and decoration and other cultural/religious activities for a group of participants.
+53 | Microwave and wireless centre | Premises used for communications purposes, including towers.
+54 | Dumping Ground | The premises where garbage (solid waste) is collected from different areas of the city and stored until final treatment.
+55 | Sewage Treatment Plant | The premises where solid and liquid wastes are rendered harmless by technical chemical process.
+56 | Buildings/establishm ents related to public utilities and services | Those premises where there are overhead/underground tanks, pump- houses, etc., oxidation ponds related to sewerage, septic tanks, sewerage pumping stations, etc. for water storage and supply for public use. This also includes public toilets, urinals, and dustbins.
+57 | Compost Plant | The complex where solid waste and waste materials from different areas of the city are converted into fertilizer after treatment through mechanical process
+58 | Electric Sub-station | The premises where electrical installations, etc. are installed for distribution of electricity.
+59 | Water works | The premises in which there are arrangements for water supply like tube wells, overhead /underground reservoir, accommodation for related staff, maintenance of related equipment etc.
+60 | Garbage Collection Centre | A site where domestic waste is collected for a short period.
+61 | Community Guidance Centre | A centre where information related to the route (road condition & direction) and information regarding availability of infrastructure facilities is made available for the convenience of passengers.
+62 | Community Service Centre | Centre where the common people can request for the solution to their various types of problems and can take action to avail the facilities provided by various government agencies.
+63 | ATM Room | The place/room where ATMs are installed by banks for the convenience of citizens.
+64 | Public / Community Toilet | A toilet which is publicly available for use by the general public.
+
+--- table 1 (2 rows × 3 cols) ---
+1 | Parking Lot | A premises which is used for parking of vehicles.
+2 | Bus Stop | A premises which is used by a public transport agency or any institution to park buses for short periods for public convenience and service.
+
+=== chapter 15 · gazette page 147 · pdf page 10 ===
+15.2.7 Parks, Play-grounds/ Open-spaces, Recreational.
+147
+
+--- table 0 (8 rows × 3 cols) ---
+3 | Taxi/ Tempo Rickshaw stand | Premises which are used for parking of intermediate public transport vehicles running on commercial/non-commercial basis.
+4 | Motor Driving School | A premises where facilities are provided for training in driving automobiles.
+5 | Transport Nagar | Premises that are used for short- or long-term parking of trucks. It may also include offices of truck agencies, vehicle repair and servicing, dhabas, spare part shops and warehouses, etc.
+6 | Weighbridge/ Dharmkanta | The premises where loaded or empty trucks are weighed.
+7 | Bus Depot | Premises used by a public transport agency or any other similar agency for parking, maintenance, and repair of buses. It may also include a workshop.
+8 | Bus Terminal | The place from where public service buses starts and end for their predetermined route. Here passengers have the facility to board and deboard the bus. This place can range from just a bus platform to a fully equipped centre with passengers resting place, bus service office, ticket counter, food service, public toilet etc.
+9 | Motor Garage, Service garage/ Workshop | Places where servicing, repair work, denting, painting, etc. work of motor vehicles are done. In such places, vehicles are parked on the premises for the above-mentioned works.
+10 | Helipad | The place where landing and take-off is done by passenger helicopters. Only one control/inspection room can be built at a suitable distance from the edge of this place.
+
+--- table 1 (9 rows × 3 cols) ---
+1 | Park | The premises which have suitable arrangements for recreational activities like lawns, open spaces, greenery etc. It may have provisions for landscaping, parking facility, public toilet, fencing, etc.
+2 | Club | Premises with all associated facilities which are used by a group of people for social and recreational purposes.
+3 | Playground/ Sports Ground | A complex used for outdoor sports with provision for parking facilities, public toilets, etc.
+4 | Amusement Park | Premises where there are parks or grounds for recreational purposes and other facilities related to recreation.
+5 | Stadium | The complex in which there is provision of pavilion, building and stadium for seating of spectators along with related facilities for players.
+6 | Traffic Park | A traffic park is a complex where facilities are provided to provide information and education to children regarding traffic and signalling.
+7 | Swimming Pool | The complex in which there is provision for swimming, seating for spectators and ancillary facilities like dressing-room, toilet, etc.
+8 | Picnic Site/ Camping site | Premises located within a tourist/recreational centre which are used for short-term accommodation for recreational or leisure purposes.
+9 | Flying Club | Premises used for training and fun-riding on gliders and other small aircraft.
+
+=== chapter 15 · gazette page 148 · pdf page 11 ===
+15.2.8 Agricultural
+148
+
+--- table 0 (4 rows × 3 cols) ---
+10 | Shooting Range | The premises which are used for training/practice of shooting, aiming, etc. of different types of pistols/guns.
+11 | Caravan Park | A place where people traveling in groups rest for short periods in the form of camping. Apart from being a group of pedestrians, such a group of passengers can also be a group of different types of vehicles. Apart from public toilets, essential facilities like tourist tents, eating places, etc. are completely temporary in the camping site.
+12 | Monument | A complex with all facilities for visitors where there are structures related to the past or a tomb, mausoleum or monument built in memory of an important person.
+13 | Zoo/ Museum | A premises which is used as a garden /park/aquarium with a collection of animals, fauna and birds for exhibition and study along with all related facilities.
+
+--- table 1 (10 rows × 3 cols) ---
+1 | Nursery | A premises where facilities are provided for growing and selling small plants.
+2 | Dairy Farm | The premises where there are facilities for making and preparing dairy products. It may contain a temporary structure for animal sheds.
+3 | Poultry Farm | The premises where facilities are available for trading in eggs, meat, etc. products of birds like chicken, duck etc. It may have bird sheds in it.
+4 | Farmhouse | A premises where there is a residential building on the same agricultural land for the use of the owner of the farm.
+5 | Garden | The premises which are used for planting trees and plants for flowering purposes
+6 | Forest | The area which contains natural or man-planted trees and plants. City forests will also be included in this.
+7 | Repair and servicing centre for agricultural equipment | The premises where mechanical /electrical equipment used in agriculture like tractors, trolleys, harvesters, etc. are serviced.
+8 | Dhobi Ghat | The premises which are used by washermen / dhobis for washing and drying clothes.
+9 | Cattle Colony | A premises where rearing of cattle, milk collection and treatment etc. is done. At such a place, cattle treatment centre, staff accommodation and other ancillary activities like daily use shops, community centres etc. can also be constructed.
+10 | Animal Breeding Centre | A place where animals are slaughtered for use only as non-vegetarian food.
+
+=== chapter 15 · gazette page 149 · pdf page 12 ===
+15.3 Permissibility of various activities in major land use zones
+15.3.1 Major Land use Zones and Notations
+Standard Use Zones
+The use zones of master plans have been standardized as below:
+Provisions relating to proposed land uses in master plans of development authorities:
+Since the prevailing master plans of different development authorities have use zones other than the above list, for the sake of convenience such use zones are
+grouped under standardized use zones as given in Appendix-15. It is clarified that the zoning regulations pertaining to the standardized use zones shall be
+applicable to those use zones grouped under respective category.
+15.3.2 Matrix for permissibility of Activities in major Land use Zones
+149
+
+--- table 0 (9 rows × 8 cols) ---
+[#002060] | [#002060] | L | and Use Zone | [#002060] | [#002060] | Notation | [#002060]
+1 |  | Built up |  |  | BU |  | 
+2 |  | Residential |  |  | R |  | 
+3 |  | Mixed Use 1 & 2 |  |  | MU |  | 
+4 |  | Commercial 1- Retail/CBD/Sub CBD/ Bazaar Street |  |  | C-1 |  | 
+5 |  | Commercial 2- Wholesale/ Godown |  |  | C-2 |  | 
+6 |  | Small Industries |  |  | SI |  | 
+7 |  | Large Industries |  |  | LI |  | 
+8 |  | Office Buildings |  |  | OB |  | 
+
+--- table 1 (9 rows × 6 cols) ---
+[#002060] | [#002060] | [#002060] | Land Use Zone | [#002060] | Notation
+9 |  | Public & Semi-public |  | PSP | 
+10 |  | Transport 1 & 2, Parking |  | TT | 
+11 |  | Forest |  | F | 
+12 |  | Recreational 1 & 2 |  | RC | 
+13 |  | Green belt |  | GB | 
+14 |  | Rural Abadi |  | RA | 
+15 |  | Agriculture |  | A | 
+16 |  | Highway Facilities |  | HF | 
+
+--- table 2 (4 rows × 4 cols) ---
+[#002060] | Symbol | [#002060] | Permissibility
+[GREEN] | [GREEN] | [GREEN] | Permitted
+[GREEN] | 0[GREEN] | [GREEN] | Permitted with conditions
+[RED] | [RED] | [RED] | Prohibited
+
+--- table 3 (10 rows × 19 cols) ---
+[#002060] | Zoning Regulations - Activities | RW (m) | BU | R | MU | C-1 | C-2 | SI | LI | OB | PSP | TT | F | RC | GB | RA | A | HF
+1 | RESIDENTIAL |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | «band #9BC2E6»
+ | Single Dwelling / Multi-Dwelling (Built-up area), Homestay, | 4 | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+1.1(a) |  |  | 9[GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+ | Paying Guest |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+ | Single Dwelling / Multi-Dwelling (Non-Built-up area), | 9 | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+1.1(b) |  |  | [GREEN] | [GREEN] | 7[GREEN] | [RED] | [RED] | 5[GREEN] | 5[GREEN] | 5[GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+ | Homestay, Paying Guest |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+
+=== chapter 15 · gazette page 150 · pdf page 13 ===
+150
+
+--- table 0 (42 rows × 19 cols) ---
+[#002060] | Zoning Regulations - Activities | RW (m) | BU | R | MU | C-1 | C-2 | SI | LI | OB | PSP | TT | F | RC | GB | RA | A | HF
+1.2(a) | Group Housing (Built-up area) | 9 | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+1.2(b) | Group Housing (Non-Built-up area) | 12 | [GREEN] | [GREEN] | 8[GREEN] | 8[GREEN] | 8[GREEN] | 5[GREEN] | 5[GREEN] | 5[GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+ | Related Workers/ Employees/ Staff Accommodation, Watchmen/ |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN]
+1.3 |  | # | [GREEN] | [GREEN] | [GREEN] | 4[GREEN] | 4[GREEN] | 7[GREEN] | 7[GREEN] | 7[GREEN] | 4[GREEN] | 4[GREEN] | 4[GREEN] | 4[GREEN] | 4a[GREEN] | [GREEN] | 4[GREEN] | 5[GREEN]
+ | Guard Accommodations |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN]
+2 | COMMERCIAL |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | «band #9BC2E6»
+ | Shops / Convenient Shopping / Commercial Units < 100 sqm |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [GREEN] | [RED] | [GREEN]
+2.1 | PA: Retail Shops, Daily Use Shops, PCO/ Cellular Mobile | 9 | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Service, Showroom (other than motor vehicle), Restaurants & |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Canteen |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Shops / Convenient Shopping /Commercial Complex |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+2.2 | Commercial Units >100: Motor Vehicle Showroom (Automobile | 12 | 3[GREEN] | 3[GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | 3[GREEN] | [RED] | [GREEN]
+ | Sales / Purchase, Workshop, Accessories Centre), Shops for sale |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | of Motor Vehicles Spare Parts, Coal & Wood Stock |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+2.3 | Shopping Centre, Cinema/ Miniplex | 12 | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN]
+2.4 | Shopping mall, Multiplex | 18 | 2[GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN]
+ | Hotels up to 20 rooms: Budget Hotel, Heritage Hotels, |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+2.5 |  | 9 | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Permanent Tented Accommodation |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Hotels above 20 rooms: Hotel, Resort, Motel, Service |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+2.6 |  | 12 | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Apartments, Wellness Centre/ Resort, Eco Tourism Resorts |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Wholesale Market / Trade/ Wholesale business, Auction Market, |  | [RED] | [RED] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+2.7 |  | 12 | [RED] | [RED] | 3[GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+ | Wholesale centres for Agriculture produce |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [RED] | [RED] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+ | Petrol Pump / Filling Stations: Stations (Petrol/Diesel/CNG/ |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN]
+2.8(a) |  | 12 | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN]
+ | Bio-Diesel/ Biogas/ EV Charging Stations), Kisan Seva Kendra, |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Way-side Amenities/ Dhaba (Built-up area) |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN]
+ | Petrol Pump / Filling Stations: Stations (Petrol/Diesel/CNG/ |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN]
+2.8(b) |  | 18 | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN]
+ | Bio-Diesel/ Biogas/ EV Charging Stations), Kisan Seva Kendra, |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Way-side Amenities/ Dhaba (Non-Built-up area) |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN]
+2.9 | Gas Godown/ Combustion, Emergency Stock, Junkyard | 18 | [RED] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | 2*[GREEN] | 2*[GREEN]
+2.10 | Cold storage, Store / Godown | 18 | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | 2[GREEN] | 2[GREEN]
+
+=== chapter 15 · gazette page 151 · pdf page 14 ===
+151
+
+--- table 0 (38 rows × 19 cols) ---
+[#002060] | Zoning Regulations - Activities | RW (m) | BU | R | MU | C-1 | C-2 | SI | LI | OB | PSP | TT | F | RC | GB | RA | A | HF
+3 | INDUSTRIAL |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | «band #9BC2E6»
+ | Small Scale Industry, Service / Cottage Industry, Flour Mill, |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+3.1 |  | # # | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | 1[GREEN] | [GREEN]
+ | Milk Collection Centre |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+3.2 | Labourer/ Worker Housing / Dormitory | # # | [GREEN] | [GREEN] | 7[GREEN] | 7[GREEN] | 7[GREEN] | 7[GREEN] | 7[GREEN] | 7[GREEN] | 7[GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+3.3 | Warehouse / Logistic Park | 18 | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | 2[GREEN] | 2[GREEN]
+ | Data Processing Centre, Software / Information Technology |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+3.4 |  | # # | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+ | Park |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+ | Large Scale Industry, Sugar Mill, Rice Cellar, Pasteurizing |  | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED]
+ | Plant, Meat Processing Plant, Mining Related Industries, Brick / |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+3.5 |  | # # | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | 2[GREEN] | [RED]
+ | Lime Kiln, Crusher, Oil Depot, LPG Refilling plant, Bio Diesel |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Plant, Compressed Bio-Diesel Plant, Pasteurizing Plant, Power |  | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED]
+ | Generation Plant, Hazardous/ Dangerous / Polluting Industries |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+4 | OFFICE BUILDINGS |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | «band #9BC2E6»
+ | Govt. / Local Body / Semi Government Office, Corporation |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+4.1 | office, Commercial / Business Office, Business Park, Bio-tech | 12 | [GREEN] | 3[GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+ | Park, Research & Development Centre / Research Centre, Labour |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+ | Welfare Centre, PAC/Police lines, Weather Research Centre |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+4.2 | Private/ Agent Office, Bank, Cyber Café, Call Centre, BPO | 12 | [GREEN] | 6[GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+5 | PUBLIC & SEMI-PUBLIC FACILITIES |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | «band #9BC2E6»
+ | Education: Primary Educational Institute, Sewing, Knitting, |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [RED]
+5.1 | Embroidery, Painting, Computer Training, etc., Library, Reading | 9 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Room, Creche and Day Care Centre and Other Skill |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Development Centres |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Education: Higher Secondary / Inter School, Music / Dance and |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+ | Drama Arts Training Centre, Indoor Sports Training Centre, Arts |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+5.2 |  | 12 |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 2[GREEN] | 2[GREEN]
+ | Gallery / Exhibition Centre, Yoga, Meditation, Spiritual, |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Religious Discourse Centre / Satsang Bhawan, Religious Centre, |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | [GREEN] | [GREEN]
+ | Socio-Cultural Institution / Building, Cultural Centre |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+5.3 | Education: College / Degree College | 18 | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED]
+
+=== chapter 15 · gazette page 152 · pdf page 15 ===
+152
+
+--- table 0 (47 rows × 19 cols) ---
+[#002060] | Zoning Regulations - Activities | RW (m) | BU | R | MU | C-1 | C-2 | SI | LI | OB | PSP | TT | F | RC | GB | RA | A | HF
+ | Education: Polytechnic / Engineering, Higher Technical/ |  | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED]
+5.4 |  | 18 | 3[GREEN] | 3[GREEN] |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Management Institutes, General / Specialized Educational |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Institute, Nursing Institute, Cottage / Industry Training |  | [GREEN] | [GREEN] |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+5.5 | Education: University | 24 | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED]
+ | Healthcare: Non-Bedded Medical Establishments, Dispensary, |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+5.6 | Health Club / Gymnasium, Clinics / Polyclinics, Dental Clinic, | 9 | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Clinical Laboratory, Medical Store / Pharmacy, Senior Care |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Centre/ Old Age Home, Handicapped Children House |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Healthcare: Nursing Home, Primary / Community Health |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+5.7 |  | 12 | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Centre, Small Hospital (Upto 50 beds), Night Shelter, |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Orphanage, Reformatory, Health Centre / Family Welfare Centre |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Healthcare: Hospital (> 50 beds), Trauma Centre, Nursing |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN]
+5.8 |  | 18 | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN]
+ | Institutes |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN]
+5.9 | Healthcare: Medical College/ Dental College | 24 | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN]
+ | Marriage hall / Banquet Hall, Meeting Hall / Community Hall, |  | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+5.10 | Public Facilities Centre, Community Welfare Centre, | 18/24 | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Community Guidance Centre, Public Convenience Centre, |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Information Centre |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Auditorium, Theatre, Open Air Theatre, Convention Centre, |  | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN]
+5.11 |  | 18/24 | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN]
+ | Museum |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN]
+ | Natural Therapy Centre, Dharamshala / Ashram, Boarding / |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+5.12(a) | Lodging House, Hostel, Working women’s hostel, Dormitory, | 9 | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Guest Houses / Inspection House / Circuit House (up to 20 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | rooms) |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Natural Therapy Centre, Dharamshala / Ashram, Boarding / |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+5.12(b) | Lodging House, Hostel, Working women’s hostel, Dormitory, | 12 | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Guest Houses / Inspection House / Circuit House (above 20 |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | rooms) |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Public Utilities: Post office, Post and Telegraph Office, |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+5.13 |  | NA | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Telephone Office / Centre, Radio and Television Centre, Police |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Station / Chowki, Fire Station, ATM Room |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN]
+ | Public Utilities: Electric Crematorium / Crematorium, Cemetery |  | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+5.14 |  | NA | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+ | / Burial Ground |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED]
+
+=== chapter 15 · gazette page 153 · pdf page 16 ===
+153
+
+--- table 0 (40 rows × 19 cols) ---
+[#002060] | Zoning Regulations - Activities | RW (m) | BU | R | MU | C-1 | C-2 | SI | LI | OB | PSP | TT | F | RC | GB | RA | A | HF
+5.15 | Prison | NA | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED]
+ | Public Utilities: Tubewell, Overhead Reservoir, Electricity |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+ | Station/ Substation, Water Works, Microwave and Wireless |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+5.16 |  | NA | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+ | Centre, Sewage Treatment Plant, Dustbin / Garbage Collection |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Centre, Public / Community Toilets, Buildings / Establishments |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+ | related to Public Utilities & Services |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Public Utilities: Compost plant, Scientific Landfill Sites, |  | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED]
+5.17 |  | NA | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED]
+ | Dumping Ground, MRF Facilities, Bio-Medical Waste |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Treatment Facility, Slaughterhouses |  | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED]
+6 | TRAFFIC & TRANSPORTATION |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | «band #9BC2E6»
+6.1 | Parking Lot, Taxi / Tempo Rickshaw Stand, Bus Stop | NA | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN]
+ | Motor Garage, Service Garage / Workshop, Motor Driving |  | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+6.2 |  | NA | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+ | School, Vehicle Scrapping Facility/ Automatic Testing Stations/ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Driver Training Institutes |  | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+ | Transport Nagar, Bus Depot, Bus Terminal, Weighbridge / |  | [RED] | [RED] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN]
+6.3 |  | NA | [RED] | [RED] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN]
+ | Dharmkanta, Loading-Unloading related Facility |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [RED] | [RED] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN]
+6.4 | Airport/ Flying club | NA | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [GREEN]
+7 | PARKS/ OPEN SPACES/ PLAYGROUNDS |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | «band #9BC2E6»
+ | Park, Playground / Sports Ground, Multipurpose Open Spaces, |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN]
+7.1 |  | NA | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN]
+ | Swimming Pool |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN]
+8 | RECREATIONAL |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | «band #9BC2E6»
+8.1 | Shooting Range | NA | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [RED] | [GREEN] | [RED]
+8.2 | Golf Course, Club | NA | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [GREEN] | [RED] | [GREEN] | [RED]
+8.3 | Helipad | NA | [RED] | [#FF5050] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN]
+ | Racecourse, Stadium, Sports College/ Training Centre, Caravan |  | [RED] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN]
+8.4 |  | NA | [RED] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN]
+ | Park, Picnic Site / Camping Site, Traffic Park, Amusement Park, |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ | Aquarium, Zoo / Museum, Bird / Wildlife Sanctuary |  | [RED] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN]
+9 | AGRICULTURE |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | «band #9BC2E6»
+9.1 | Farmhouse, Repair and Servicing Centre for Agricultural Equipment, Farm Stay | 9 | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+ |  |  | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+ |  |  | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN]
+
+=== chapter 15 · gazette page 154 · pdf page 17 ===
+Note1: RW: Road Width, NA: Not Defined, PA: Plot Area, #: As per Principal Use, # #: As per Site Condition, (x) – as per paragraph 15.3.3 of this byelaws.
+Note2: More than one activities which are permissible in a particular land use zone may be permitted.
+154
+
+--- table 0 (8 rows × 19 cols) ---
+[#002060] | Zoning Regulations - Activities | RW (m) | BU | R | MU | C-1 | C-2 | SI | LI | OB | PSP | TT | F | RC | GB | RA | A | HF
+ | Farmhouse: Horticulture, Nursery, Forest, Garden, Botanical |  | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN]
+9.2 |  | 9 | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN]
+ | Garden, Laundry Bay (Dhobi ghat) |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  | [RED] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [GREEN] | [RED] | [GREEN] | [GREEN] | [GREEN]
+9.3 | Dairy Farm, Pasture, Cattle Colony, Pig / Fish/ Poultry Farm/ Beekeeping, Animal Breeding Centre | 9 | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [RED]
+ |  |  | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [RED]
+ |  |  | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [RED] | [GREEN] | [GREEN] | [RED]
+
+=== chapter 15 · gazette page 155 · pdf page 18 ===
+15.3.3 Conditional permissibility for activities within Land Use Zones
+15.4 Order of land use zones from lowest to highest order and determination
+of Impact fee
+Land Use Zones (from lowest to highest) →
+Note:
+155
+
+--- table 0 (10 rows × 7 cols) ---
+No. | [#002060] | [#002060] | Condition | [#002060] | Remarks | [#002060]
+1[GREEN] | [GREEN] | Allowed on 7m wide roads |  |  |  | 
+2[GREEN] | [GREEN] | Allowed on 18m wide roads |  |  |  | 
+3[GREEN] | [GREEN] | Allowed on 24m wide roads |  |  |  | 
+4[GREEN] | [GREEN] | Up to 5% of total permissible FAR |  |  |  | 
+5[GREEN] | [GREEN] | Up to 10% of total permissible FAR |  | May be relaxed by board for Small Industries |  | 
+6[GREEN] | [GREEN] | Up to 25% of total permissible FAR |  |  |  | 
+7[GREEN] | [GREEN] | Up to 30% of total permissible FAR |  |  |  | 
+8[GREEN] | [GREEN] | Except Ground Floor |  |  |  | 
+*[GREEN] | [GREEN] | Minimum 300 meters from Rural Abadi |  |  |  | 
+
+--- table 1 (4 rows × 4 cols) ---
+Exemption from Impact Fee | [#002060] | [#002060] | [#002060]
+Non-Commercial and Charitable Activities/Uses |  | (1)[LIGHTGREEN] | 
+Service and cottage industries |  | (2)[LIGHTGREEN] | [LIGHTGREEN]
+Group housing for related use purposes |  | (3)[LIGHTGREEN] | [LIGHTGREEN]
+
+--- table 2 (4 rows × 4 cols) ---
+[#002060] | Symbol | [#002060] | [#002060]
+Impact fee not applicable |  |  | 
+Impact fee not payable |  |  | [#0070C0]
+Impact fee payable |  |  | [LIGHTGREEN]
+
+--- table 3 (26 rows × 10 cols) ---
+[#9BC2E6] | Activities/Use category | [#9BC2E6] | A/GB/R | PSP | [#9BC2E6] | [#9BC2E6] | [#9BC2E6] | [#9BC2E6] | MU/
+[#9BC2E6] |  | BU |  |  | TT | SI / LI | R/ RA | OB | 
+ |  |  | C/HF |  |  |  |  |  | C1/ C2
+[#9BC2E6] |  | [#9BC2E6] |  |  | [#9BC2E6] | [#9BC2E6] | [#9BC2E6] | [#9BC2E6] | 
+[#9BC2E6] | (from lowest to highest) | [#9BC2E6] | 1 | 2 | 3 | 4 | 5 | 6 | 7
+1 | Agriculture, Greenbelt, Park/ Playground | [#0070C0] |  | [#0070C0] | [#0070C0] | [#0070C0] | [#0070C0] | [#0070C0] | [#0070C0]
+ |  | [#0070C0] |  |  | [#0070C0] | [#0070C0] | [#0070C0] | [#0070C0] | [#0070C0]
+ |  | [#0070C0] |  |  | [#0070C0] | [#0070C0] | [#0070C0] | [#0070C0] | [#0070C0]
+2 | Public & Semi-public Facilities | [#0070C0] | [LIGHTGREEN] |  | [#0070C0] | [#0070C0] | [LIGHTGREEN] | [#0070C0] | [#0070C0]
+ |  | [#0070C0] | 0.25 (1)[LIGHTGREEN] |  | [#0070C0] | [#0070C0] | 0.25 (1)[LIGHTGREEN] | [#0070C0] | [#0070C0]
+ |  | [#0070C0] | [LIGHTGREEN] |  | [#0070C0] | [#0070C0] | [LIGHTGREEN] | [#0070C0] | [#0070C0]
+3 | Traffic & Transportation | [#0070C0] | [LIGHTGREEN] | 0.1[LIGHTGREEN] |  | [#0070C0] | [LIGHTGREEN] | [#0070C0] | [#0070C0]
+ |  | [#0070C0] | 0.3[LIGHTGREEN] |  |  | [#0070C0] | 0.30[LIGHTGREEN] | [#0070C0] | [#0070C0]
+ |  | [#0070C0] | [LIGHTGREEN] |  |  | [#0070C0] | [LIGHTGREEN] | [#0070C0] | [#0070C0]
+4 | Industrial | [#0070C0] | [LIGHTGREEN] | 0.25 (2)[LIGHTGREEN] | [LIGHTGREEN] |  | [LIGHTGREEN] | [#0070C0] | [#0070C0]
+ |  | [#0070C0] | 0.4 (2)[LIGHTGREEN] |  | 0.25 (2)[LIGHTGREEN] |  | 0.40[LIGHTGREEN] | [#0070C0] | [#0070C0]
+ |  | [#0070C0] | [LIGHTGREEN] |  | [LIGHTGREEN] |  | [LIGHTGREEN] | [#0070C0] | [#0070C0]
+5 | Residential, (Incl. rural) | [#0070C0] | [LIGHTGREEN] | 0.4[LIGHTGREEN] | [LIGHTGREEN] | [LIGHTGREEN] |  | [#0070C0] | [#0070C0]
+ |  | [#0070C0] | 0.5[LIGHTGREEN] |  | 0.4[LIGHTGREEN] | 0.25 (3)[LIGHTGREEN] |  | [#0070C0] | [#0070C0]
+ |  | [#0070C0] | [LIGHTGREEN] |  | [LIGHTGREEN] | [LIGHTGREEN] |  | [#0070C0] | [#0070C0]
+6 | Office Buildings | [#0070C0] | [LIGHTGREEN] | 0.75[LIGHTGREEN] | [LIGHTGREEN] | [LIGHTGREEN] | [LIGHTGREEN] |  | [#0070C0]
+ |  | [#0070C0] | 1[LIGHTGREEN] |  | 0.75[LIGHTGREEN] | 0.75[LIGHTGREEN] | 0.5[LIGHTGREEN] |  | [#0070C0]
+ |  | [#0070C0] | [LIGHTGREEN] |  | [LIGHTGREEN] | [LIGHTGREEN] | [LIGHTGREEN] |  | [#0070C0]
+7 | Commercial | [#0070C0] | [LIGHTGREEN] | 1.25[LIGHTGREEN] | [LIGHTGREEN] | [LIGHTGREEN] | [LIGHTGREEN] | [LIGHTGREEN] | 
+ |  | [#0070C0] | 1.5[LIGHTGREEN] |  | 1.25[LIGHTGREEN] | 1[LIGHTGREEN] | 1[LIGHTGREEN] | 0.5[LIGHTGREEN] | 
+ |  | [#0070C0] | [LIGHTGREEN] |  | [LIGHTGREEN] | [LIGHTGREEN] | [LIGHTGREEN] | [LIGHTGREEN] | 
+
+=== chapter 15 · gazette page 156 · pdf page 19 ===
+(i) The value of “Impact Fee Coefficient” determined for permitted activities/uses in different land use
+zones is given in the cells where impact fee is payable.
+(ii) Impact fee shall be assessed based on the current circle rate. The current rate of land refers to the
+circle rate determined by the District Magistrate, where such rate is not available, the current residential
+rate determined by the Authority/Awas Vikas Parishad whichever is higher.
+Example for calculating impact fee:
+For permission of nursing home in Residential area:
+Area of the Plot 350 square meters
+The current residential rate of the authority is Rs 2000 per square meter.
+Impact Fee payable: - (Area of the plot) x (Circle rate) x (Coefficient X 0.25)
+That means 350 x 2000 x 0.25 x 0.25 = Rs 43,750/-
+-End of Chapter-
+156

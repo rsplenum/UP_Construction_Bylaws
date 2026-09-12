@@ -1,0 +1,335 @@
+{
+ "generatedBy": "tools/extract-thresholds.py",
+ "tables": [
+  {
+   "chapter": "05",
+   "gazettePage": 85,
+   "measure": "minPlotAreaSqm",
+   "keyedOn": "facility",
+   "header": [
+    "Commercial Establishments",
+    "Min. Plot Area (sqm)"
+   ],
+   "rows": [
+    {
+     "subject": "Retails Shops",
+     "value": {
+      "from": 10.0,
+      "to": 100.0
+     }
+    },
+    {
+     "subject": "Convenient Shopping / Commercial Units",
+     "value": {
+      "from": 100.0,
+      "to": 300.0
+     }
+    },
+    {
+     "subject": "Commercial Complex (including other commercial)",
+     "value": {
+      "from": 300.0,
+      "to": 3000.0
+     }
+    },
+    {
+     "subject": "Shopping malls",
+     "value": {
+      "from": 3000.0,
+      "to": null
+     }
+    }
+   ]
+  },
+  {
+   "chapter": "05",
+   "gazettePage": 85,
+   "measure": "minRoadWidthM",
+   "keyedOn": "facility",
+   "header": [
+    "Commercial Facilities",
+    "Min. Road Width (m)"
+   ],
+   "rows": [
+    {
+     "subject": "Retail Shops",
+     "value": {
+      "built_up": 6.0,
+      "non_built_up": 9.0
+     }
+    },
+    {
+     "subject": "Convenience Shopping /Commercial Units",
+     "value": 12.0
+    }
+   ]
+  },
+  {
+   "chapter": "05",
+   "gazettePage": 89,
+   "measure": "minPlotAreaSqm",
+   "keyedOn": "facility",
+   "header": [
+    "Type of Building",
+    "Minimum Plot Size (sqm)"
+   ],
+   "rows": [
+    {
+     "subject": "Single Screen Cinema",
+     "value": 500.0
+    },
+    {
+     "subject": "Miniplex (2 screens)",
+     "value": 700.0
+    },
+    {
+     "subject": "Multiplex",
+     "value": 3000.0
+    }
+   ]
+  },
+  {
+   "chapter": "05",
+   "gazettePage": 89,
+   "measure": "minRoadWidthM",
+   "keyedOn": "facility",
+   "header": [
+    "Type of Building",
+    "Minimum Road width (m)"
+   ],
+   "rows": [
+    {
+     "subject": "Single Screen Cinema",
+     "value": 12.0
+    },
+    {
+     "subject": "Miniplex (2 screens)",
+     "value": 12.0
+    },
+    {
+     "subject": "Multiplex",
+     "value": 18.0
+    }
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 94,
+   "measure": "minPlotAreaSqm",
+   "keyedOn": "facility",
+   "header": [
+    "Sl.",
+    "Healthcare facility",
+    "Min. Plot area (sqm)"
+   ],
+   "rows": [
+    {
+     "subject": "Non-Bedded Medical Establishments (Diagnostic Centre/ OPD clinics/ dispensary/ Pathology Lab/ Veterinary Clinics)",
+     "value": 100.0
+    },
+    {
+     "subject": "Nursing Homes / Veterinary Hospitals / Maternity Hospitals/ Small Hospitals (Up to 50 beds)",
+     "value": 300.0
+    },
+    {
+     "subject": "Hospitals (> 50 beds)",
+     "value": 3000.0
+    },
+    {
+     "subject": "Nursing Institutes",
+     "value": 2000.0
+    },
+    {
+     "subject": "Medical College",
+     "value": {
+      "defersTo": "As per NMC / MCI norms"
+     }
+    }
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 94,
+   "measure": "minRoadWidthM",
+   "keyedOn": "facility",
+   "header": [
+    "Sl.",
+    "Healthcare facility",
+    "Min. Road Width (m)"
+   ],
+   "rows": [
+    {
+     "subject": "Non-Bedded Medical Establishments (Diagnostic Centre/ OPD clinics/ dispensary/ Pathology Lab/ Veterinary Clinics)",
+     "value": 9.0
+    },
+    {
+     "subject": "Nursing Homes / Veterinary Hospitals / Maternity Hospitals/ Small Hospitals (Up to 50 beds)",
+     "value": 12.0
+    },
+    {
+     "subject": "Hospitals (> 50 beds)",
+     "value": 18.0
+    },
+    {
+     "subject": "Nursing Institutes",
+     "value": 18.0
+    },
+    {
+     "subject": "Medical College",
+     "value": 24.0
+    }
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 96,
+   "measure": "minPlotAreaSqm",
+   "keyedOn": "facility",
+   "header": [
+    "Sl.",
+    "Educational facility",
+    "Min. Plot area (sqm)"
+   ],
+   "rows": [
+    {
+     "subject": "Nursery",
+     "value": 500.0
+    },
+    {
+     "subject": "Primary",
+     "value": 1000.0
+    },
+    {
+     "subject": "Secondary / High School / Intercollege",
+     "value": 2000.0
+    },
+    {
+     "subject": "Degree College / Technical Institution",
+     "value": 5000.0
+    },
+    {
+     "subject": "Universities",
+     "value": 20000.0
+    }
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 96,
+   "measure": "minRoadWidthM",
+   "keyedOn": "facility",
+   "header": [
+    "Sl.",
+    "Educational building",
+    "Min. Road Width (m)"
+   ],
+   "rows": [
+    {
+     "subject": "Nursery",
+     "value": 9.0
+    },
+    {
+     "subject": "Primary School",
+     "value": {
+      "built_up": 9.0,
+      "non_built_up": 12.0
+     }
+    },
+    {
+     "subject": "Secondary/ High School",
+     "value": 12.0
+    },
+    {
+     "subject": "Degree College/ Technical Institution",
+     "value": 18.0
+    },
+    {
+     "subject": "Universities",
+     "value": 24.0
+    }
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 98,
+   "measure": "minRoadWidthM",
+   "keyedOn": "plotAreaSqm",
+   "header": [
+    "Plot Size (sqm)",
+    "Min. Road Width (m)"
+   ],
+   "rows": [
+    {
+     "subject": "750 - 3000",
+     "value": 18.0
+    },
+    {
+     "subject": "> 3000",
+     "value": 24.0
+    }
+   ]
+  },
+  {
+   "chapter": "06",
+   "gazettePage": 99,
+   "measure": "minPlotAreaSqm",
+   "keyedOn": "roadWidthM",
+   "header": [
+    "Road Width (m)",
+    "Min. Plot Area (sqm)"
+   ],
+   "rows": [
+    {
+     "subject": "18",
+     "value": 1500.0
+    },
+    {
+     "subject": "24",
+     "value": 2000.0
+    }
+   ]
+  },
+  {
+   "chapter": "07",
+   "gazettePage": 101,
+   "measure": "minRoadWidthM",
+   "keyedOn": "facility",
+   "header": [
+    "Industries",
+    "Minimum Road Width (m)"
+   ],
+   "rows": [
+    {
+     "subject": "Industrial Buildings",
+     "value": {
+      "byUseZone": {
+       "agriculture": 7.0,
+       "industrial": 9.0
+      }
+     }
+    },
+    {
+     "subject": "Flatted Factories",
+     "value": {
+      "byUseZone": {
+       "industrial": 12.0
+      }
+     }
+    },
+    {
+     "subject": "Data Centers",
+     "value": 12.0
+    },
+    {
+     "subject": "MSME units",
+     "value": {
+      "byUseZone": {
+       "industrial": 9.0,
+       "agriculture": 7.0
+      }
+     }
+    }
+   ]
+  }
+ ]
+}

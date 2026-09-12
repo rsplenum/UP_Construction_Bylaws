@@ -377,20 +377,38 @@ export const BYELAW_CHAPTERS: ByelawChapter[] = [
     id: 10,
     chapterNumber: "Chapter 10",
     title: "Fire Prevention and Life Safety",
-    pageRange: "pp. 113-116",
-    summary: "UP Fire & Emergency Services Act 2022 compliances, mandatory Fire Safety Certificate criteria (>15m height or special >500 sqm), 21 safety elements, and rules for existing vs new buildings.",
+    pageRange: "pp. 113-115",
+    summary: "UP Fire & Emergency Services Act 2022 compliances, mandatory Fire Safety Certificate criteria (>15m height, or a special building at ANY area, or mixed occupancy >500 sqm), 21 safety elements, and rules for existing vs new buildings.",
     sections: [
+      {
+        id: "10.1.2",
+        clauseNumber: "10.1.2",
+        title: "Compliances for Occupancy Certificate",
+        content: "Occupancy certificate shall not be issued unless the development authority is satisfied that the owner or occupier, individually or jointly, has complied with the fire prevention and life safety provisions.",
+      },
       {
         id: "10.1.3",
         clauseNumber: "10.1.3",
         title: "Mandatory Fire Safety Certificate Scope",
-        content: "Mandatory for:\n(a) Multi-storied buildings exceeding 15 meters in height.\n(b) Special buildings (educational, institutional, assembly, mercantile, industrial, hazardous as per NBC).\n(c) Mixed occupancies with any of the above having >500 sqm covered area.",
+        content: "Mandatory for:\n(a) Multi-storied buildings having more than 15 meters height.\n(b) Special buildings \u2014 educational, institutional, assembly, business, mercantile, industrial, storage and hazardous \u2014 as defined in NBC. NO area threshold applies to this limb.\n(c) Mixed occupancies with any of the above having >500 sqm covered area.\n\nNote: the 500 sqm figure belongs to limb (c) only. Clause 1.2(q) defines \u201cSpecial Building\u201d over a shorter list and does gate it at 500 sqm \u2014 the two do not agree, and the engine applies the stricter Clause 10.1.3 reading (V-034).",
       },
       {
         id: "10.2.1",
         clauseNumber: "10.2.1",
         title: "21 Minimum Fire Prevention and Life Safety Standards",
-        content: "1. Access to building; 2. Exits; 3. Smoke management; 4. Extinguishers; 5. Hose reels; 6. Fire detection & alarm; 7. PA system; 8. Sprinklers; 9. Internal & yard hydrants; 10. Pumping; 11. Captive water tank; 12. Exit signs; 13. Fire lifts; 14. Standby power; 15. Refuge areas; 16. Special risk protection; 17. MOEFA; 18. Electrical audit; 19. Installation certificate; 20. Fire safety officer; 21. Lift safety certificate.",
+        content: "1. Access to building; 2. Exits; 3. Smoke management; 4. Extinguishers; 5. Hose reels; 6. Fire detection & alarm; 7. PA system; 8. Sprinklers; 9. Internal & yard hydrants; 10. Pumping; 11. Captive water tank; 12. Exit signs; 13. Fire lifts; 14. Standby power; 15. Refuge areas; 16. Special risk protection; 17. MOEFA; 18. Electrical audit; 19. Installation certificate; 20. Fire safety officer; 21. Lift safety certificate.\n\nNote: these do not all apply to every building requiring a certificate. Which apply is assessed on covered area, building height and occupancy. \u201cAccess\u201d means a means of approach to each floor, or to the nearest point of the building, for firefighting or rescue \u2014 at least from one side, by road or permanent open space. No road width is prescribed.",
+      },
+      {
+        id: "10.3.1",
+        clauseNumber: "10.3.1",
+        title: "Existing Buildings \u2014 three classes, three treatments",
+        content: "Buildings whose superstructure was completed before the UP Fire and Emergency Services Act 2022 and Rules 2024:\n(1) Approved, with a fire NOC taken at the time \u2014 assessed against the standards and Government Orders in force when that NOC was issued, not today\u2019s; access and exit as per the approved map.\n(2) Approved when a fire safety certificate was not mandatory \u2014 structural changes are NOT mandatory, especially for access and exit; other requirements case to case.\n(3) Old construction whose map was never approved \u2014 access road, setback and fire escape are NOT mandatory; all other requirements case to case.",
+      },
+      {
+        id: "10.3.2",
+        clauseNumber: "10.3.2",
+        title: "Buildings other than existing buildings",
+        content: "Provisional, Final or Renewal Fire Safety Certificates are issued by the fire officers in a prescribed format. Such buildings shall be planned, designed and constructed to NBC 2016, ensuring the fire prevention and life safety provisions of the UP Fire and Emergency Services Rules 2024.",
       }
     ]
   },
@@ -465,31 +483,43 @@ export const BYELAW_CHAPTERS: ByelawChapter[] = [
     chapterNumber: "Chapter 13",
     title: "Environmental Sustainability",
     pageRange: "pp. 127-133",
-    summary: "Rainwater harvesting (plots >=300 sqm), Solar water heating (plots >=500 sqm), Solar PV (>=25% roof area for plots >=5000 sqm), wastewater recycling (>10,000 L/day), and tree plantation.",
+    summary: "Rainwater harvesting (plots of 300 sqm and more), solar photovoltaics (plots of 500 sqm and above), solar water heating (six named building categories, no size threshold), wastewater recycling (>10,000 L/day), tree plantation, and seven tables of environmental conditions keyed on built-up area — including the SEIAA Environment Clearance that withholds development permission above 20,000 sqm.",
     sections: [
       {
         id: "13.1.2",
         clauseNumber: "13.1.2",
         title: "Rainwater Harvesting",
-        content: "Mandatory on all plots >=300 sqm and all group housing. In layouts >10 acres (>4 Ha), rainwater reservoirs must occupy min 1% of scheme area (max depth 2m). Recharge bores: min 1 per 5000 sqm built-up area for buildings >5000 sqm.",
+        content: "Building plan: \"In case of no collective recharge network, roof top rainwater harvesting system in plots of all uses of 300 square meters and more area (including group housing) except waterlogged areas.\" In a waterlogged area recharge is not to be adopted, but rainwater from the roofs is still to be collected.\n\nLayout plans (13.1.2 f): in the 100-300 sqm band an individual system is not mandatory where the rainwater flows into the scheme's collective recharge network; above 300 sqm the owner must install one himself whatever the scheme provides.\n\nLayouts over 10 acres (>4 Ha): reservoirs on min 1% of scheme area, max depth 2 m; concrete in parks not more than 5%.\n\nEnvironmental condition, Category-A and above (5,000 sqm built-up and more): recharge bores, minimum one per 5,000 sqm of built-up area; unpaved area at least 20% of the recreational open spaces.",
       },
       {
         id: "13.2.3",
         clauseNumber: "13.2.3",
         title: "Solar Photovoltaic & Water Heating",
-        content: "- Solar PV: Mandatory on plots >=500 sqm. For buildings >=5000 sqm, rooftop solar PV must cover at least 25% of plinth roof area.\n- Solar Water Heating: Mandatory on residential plots >=500 sqm, hotels, hospitals, hostels with >100 students, and banquet halls.",
+        content: "Two obligations, two different triggers.\n\n- Solar PV (13.2.3.1): \"All plots having size 500 sqm and above shall install solar photovoltaic power generation system\" — any use. Encouraged below 500 sqm. Clause 13.2.3 adds that 25-50% of roof area may be used for solar water heating and PV together; that is a recommendation, not a requirement, and it carries no plot-size qualifier.\n- Solar water heating (13.2.3.2): required in six categories of building that have a hot water installation — (a) hotels, lodges, guest houses, service apartments; (b) hospitals and nursing homes; (c) schools, colleges, universities, technical institutions, training centres; (d) assembly buildings; (e) armed forces, paramilitary and police barracks; (f) hostels with more than 100 students. No plot size, built-up area or height threshold appears anywhere in the clause.",
+      },
+      {
+        id: "13.4",
+        clauseNumber: "13.4",
+        title: "Solid Waste Management",
+        content: "All buildings must segregate dry and wet waste at source. Two dustbins (biodegradable and non-biodegradable) on the ground floor near the plot entrance, for residential buildings including group housing, and for non-residential buildings of more than 500 sqm.\n\nCategory-C and above: non-biodegradable waste to authorised recyclers under a written tie-up; an organic waste composter or vermiculture pit of at least 0.3 kg per tenement per day.",
       },
       {
         id: "13.5",
         clauseNumber: "13.5",
         title: "Wastewater Recycling & Dual Plumbing",
-        content: "Mandatory when estimated discharge exceeds 10,000 liters/day. Must have separate purple-coloured down-take pipes for treated grey water to be reused for flushing, gardening, and car washing.",
+        content: "Mandatory when estimated discharge exceeds 10,000 liters/day. Must have separate purple-coloured down-take pipes for treated grey water to be reused for flushing, gardening, and car washing. The discharge estimate, with its calculations and references, is submitted by the applicant as part of the services plan.",
       },
       {
         id: "13.7",
         clauseNumber: "13.7",
         title: "Green Cover & Tree Plantation Norms",
-        content: "Residential: <200 sqm -> 1 tree; 200-300 sqm -> 2 trees; 301-500 sqm -> 4 trees; >500 sqm -> 1 tree per 100 sqm; Group housing -> 50 trees/Ha. Industrial: 1 tree per 80 sqm. Commercial: 1 tree per 100 sqm. Institutional/parks: 125 trees/Ha (min 20% greenery).",
+        content: "Residential: <200 sqm -> 1 tree; 200-300 sqm -> 2 trees; 301-500 sqm -> 4 trees; >500 sqm -> 1 tree per 100 sqm or part thereof; group housing -> 50 trees/Ha. Industrial: 1 tree per 80 sqm. Commercial: 1 tree per 100 sqm. Institutional/parks: 125 trees/Ha (min 20% greenery).\n\nCategory-A and above: a minimum of 1 tree for every 80 sqm of land — a higher rate than the per-use figures above, and the one that then governs. Compensatory plantation at 1:3 for any tree cut. Existing grown trees that are conserved count against the requirement, and a refundable tree plantation deposit is payable with the application, released after five years.",
+      },
+      {
+        id: "13.8",
+        clauseNumber: "13.8",
+        title: "Environment Impact Assessment",
+        content: "\"No development permission shall be given to the Building and Construction projects, until getting Environment Clearance from SEIAA (State Level Environment Impact Assessment Authority) as required under the Environmental Impact Assessment notification-2006.\" Applies from Category-B — 20,000 sqm of built-up area — upward, and to townships and area development projects in Category-D (>150,000 sqm, or a site over 50 Ha). A phased project needs the clearance before the first phase is approved.",
       }
     ]
   },
@@ -757,7 +787,7 @@ export const DEEMED_NOC_DEPTS: DeemedNocDept[] = [
   { id: 1, department: "Acquisition, Nazul, Improvement Trust, Property, Urban Ceiling, Tehsil", applicability: "Acquisition & Tehsil (All buildings); Nazul/Ceiling/Trust (notified lists)", timeDays: "10 Days" },
   { id: 5, department: "Airport / Defence Authority", applicability: "Colour-coded Red Zone and buildings exceeding Permissible Top Elevation", timeDays: "10 Days" },
   { id: 6, department: "Army / Ministry of Defence", applicability: "Within 10m (Part A stations) or within 100m (Part B stations)", timeDays: "10 Days" },
-  { id: 7, department: "Fire Department", applicability: "Buildings >15m height; special buildings >500 sqm; mixed >500 sqm", timeDays: "Conditional (15 Days)", notes: "Mandatory clearance before permit release" },
+  { id: 7, department: "Fire Department", applicability: "Buildings >15m height; special buildings (NBC groups B\u2013J) at any area; mixed occupancies >500 sqm", timeDays: "Conditional (15 Days)", notes: "Mandatory clearance before permit release" },
   { id: 8, department: "Irrigation / Ground Water Department", applicability: "Non-notified areas under UP Ground Water Act 2019, or within 50m", timeDays: "15 Days" },
   { id: 9, department: "Metro Rail Corporation", applicability: "Within 11m (underground) or 5m (elevated); 50m for under-implementation corridors", timeDays: "15 Days" },
   { id: 10, department: "Forest Department", applicability: "All projects requiring tree felling", timeDays: "15 Days" },
@@ -1434,7 +1464,7 @@ export function calculateTelescopicResidentialFAR(plotArea: number): TelescopicF
   // Road width is irrelevant to the base ladder; pass the purchasable-FAR threshold so
   // the ceiling reported here is the unrestricted one this view has always shown.
   const resolved = resolveBaseFar({
-    occupancy: 'single_unit',
+    occupancy: 'res_single',
     plotArea,
     roadWidth: PURCHASABLE_FAR_MIN_ROAD_WIDTH,
   });

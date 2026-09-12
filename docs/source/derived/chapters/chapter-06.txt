@@ -1,0 +1,304 @@
+=== chapter 06 · gazette page 94 · pdf page 1 ===
+6 Institutional Buildings & Community Facilities
+6.1 Hospitals and healthcare Buildings
+6.1.1 Permissibility
+Permission for construction of hospitals and healthcare buildings shall be provided as per the master
+plan/ zoning regulations.
+6.1.2 Minimum Plot Size
+The minimum plot area for construction of a hospital/healthcare buildings shall be as follows:
+6.1.3 Means of Access
+The minimum width of the existing approach road shall be as follows:
+6.1.4 Ground Coverage and FAR
+Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any, shall
+be permissible on plots for healthcare buildings.
+Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter 9.
+Basis approach road width, the maximum permissible FAR (including Base FAR) for healthcare
+buildings in built-up areas and the non-built-up areas shall be as follows:
+94
+
+--- table 0 (6 rows × 3 cols) ---
+Sl. | Healthcare facility | Min. Plot area (sqm)
+1 | Non-Bedded Medical Establishments (Diagnostic Centre/ OPD clinics/ dispensary/ Pathology Lab/ Veterinary Clinics) | 100
+2 | Nursing Homes / Veterinary Hospitals / Maternity Hospitals/ Small Hospitals (Up to 50 beds) | 300
+3 | Hospitals (> 50 beds) | 3000
+4 | Nursing Institutes | 2000
+5 | Medical College | As per NMC / MCI norms
+
+--- table 1 (6 rows × 3 cols) ---
+Sl. | Healthcare facility | Min. Road Width (m)
+1 | Non-Bedded Medical Establishments (Diagnostic Centre/ OPD clinics/ dispensary/ Pathology Lab/ Veterinary Clinics) | 9
+2 | Nursing Homes / Veterinary Hospitals / Maternity Hospitals/ Small Hospitals (Up to 50 beds) | 12
+3 | Hospitals (> 50 beds) | 18
+4 | Nursing Institutes | 18
+5 | Medical College | 24
+
+=== chapter 06 · gazette page 95 · pdf page 2 ===
+Note-1: BFAR-Base FAR; PFAR-Purchasable FAR; PPFAR-Premium Purchasable FAR; MFAR-Maximum Permissible FAR (including
+BFAR); UR-Unrestricted FAR
+Note-2: No purchasable or premium purchasable FAR shall be allowed for non-bedded medical establishments permissible on roads up to 12
+meters. Base FAR shall be the maximum permissible FAR.
+Note-3: Non-Bedded Medical Establishments include Diagnostic Centre/ OPD clinics/ dispensary/ Pathology Lab/ Veterinary Clinics.
+Note-4: Hospitals up to 50 beds include Nursing Homes, Maternity Hospitals, Veterinary Hospitals
+Note-5: In case green building, additional FAR shall be over and above permissible FAR shall be permissible as per paragraph 9.3 of the
+building byelaws.
+6.1.5 Maximum Building height
+There is no restriction on the maximum building height. However, the maximum height of the building
+shall be governed by its distance from the protected monument/heritage site, airport funnel zone and
+other statutory restrictions.
+6.1.6 Minimum Setback
+Minimum setbacks for hospital/ healthcare buildings shall be per paragraph 3.2.4.
+.
+6.1.7 Parking Requirements
+(i) Parking requirements shall be as per paragraph 3.3.4 of the building byelaws.
+(ii) Standard parking spaces for hospitals and healthcare buildings shall be 1.5 ECS per 125 sqm of
+floor area and ‘one parking space’ for ambulance parking i.e., 10 m x 5 m (50 sqm or 2 ECS open
+parking) for hospitals up to 50 beds and ‘one additional ambulance parking space’ for every 50 beds
+thereafter shall be provided.
+In case of hospitals constructed in plots of area more than 4000 sqm, a separate building block for
+parking is permissible. Within the block, 10% of the ground floor is permissible to be utilized for
+ancillary activities (free from FAR) incidental to hospital activities (principal use).
+95
+
+--- table 0 (14 rows × 33 cols) ---
+[#DBE5F1] | FAR | [#DBE5F1] | BFAR |  |  | [#DBE5F1] | Road Width (>12 -24m) |  |  |  |  |  |  | [#DBE5F1] | [#DBE5F1] | Road Width (>24 - 45m) |  |  |  |  |  |  | [#DBE5F1] | [#DBE5F1] | Road Width (>45m) |  |  |  |  |  |  | [#DBE5F1]
+ | Healthcare Facilities |  |  |  |  | [#DBE5F1] | PFAR | [#DBE5F1] | [#DBE5F1] | PPFAR | [#DBE5F1] | [#DBE5F1] | MFAR | [#DBE5F1] | [#DBE5F1] | PFAR | [#DBE5F1] | [#DBE5F1] | PPFAR | [#DBE5F1] | [#DBE5F1] | MFAR | [#DBE5F1] | [#DBE5F1] | PFAR | [#DBE5F1] | [#DBE5F1] | PPFAR | [#DBE5F1] | [#DBE5F1] | MFAR | [#DBE5F1]
+ | Built-up Area |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | «band #DCDDDF»
+Non-Bedded Medical Establishments |  |  | 1.50 |  |  | 0.75 |  |  | 0.75 |  |  | 3.00 |  |  | 1.50 |  |  | 2.25 |  |  | 5.25 |  |  | 1.50 |  |  | UR |  |  | UR |  | 
+Nursing Homes /Hospitals (Up to 50 beds) |  |  | 1.50 |  |  | 0.75 |  |  | 0.75 |  |  | 3.00 |  |  | 1.50 |  |  | 2.25 |  |  | 5.25 |  |  | 1.50 |  |  | UR |  |  | UR |  | 
+Hospitals > 50 beds |  |  | [#FFF2CC] | 1.50 | [#FFF2CC] | 0.75 |  |  | 0.75 |  |  | [#DDEBF7] | 3.00 | [#DDEBF7] | 1.50 |  |  | 2.25 |  |  | [#DDEBF7] | 5.25 | [#DDEBF7] | 1.50 |  |  | UR |  |  | [#DDEBF7] | UR | [#DDEBF7]
+Nursing college |  |  | [#FFF2CC] | 1.50 | [#FFF2CC] | 0.75 |  |  | 0.75 |  |  | [#DDEBF7] | 3.00 | [#DDEBF7] | 1.50 |  |  | 2.25 |  |  | [#DDEBF7] | 5.25 | [#DDEBF7] | 1.50 |  |  | UR |  |  | [#DDEBF7] | UR | [#DDEBF7]
+Medical College |  |  | [#FFF2CC] | 1.50 | [#FFF2CC] | 0.75 |  |  | 0.75 |  |  | [#DDEBF7] | 3.00 | [#DDEBF7] | 1.50 |  |  | 2.25 |  |  | [#DDEBF7] | 5.25 | [#DDEBF7] | 1.50 |  |  | UR |  |  | [#DDEBF7] | UR | [#DDEBF7]
+ | Non-Built-up Area |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | «band #DCDDDF»
+Non-Bedded Medical Establishments |  |  | 1.50 |  |  | 0.75 |  |  | 0.75 |  |  | 3.00 |  |  | 1.50 |  |  | 2.25 |  |  | 5.25 |  |  | 1.50 |  |  | UR |  |  | UR |  | 
+Nursing Homes /Hospitals (Up to 50 beds) |  |  | 2.00 |  |  | 1.00 |  |  | 1.00 |  |  | 4.00 |  |  | 2.00 |  |  | 3.00 |  |  | 7.00 |  |  | 2.00 |  |  | UR |  |  | UR |  | 
+Hospitals > 50 beds |  |  | [#FFF2CC] | 2.50 | [#FFF2CC] | 1.25 |  |  | 1.25 |  |  | [#DDEBF7] | 5.00 | [#DDEBF7] | 2.50 |  |  | 3.75 |  |  | [#DDEBF7] | 8.75 | [#DDEBF7] | 2.50 |  |  | UR |  |  | [#DDEBF7] | UR | [#DDEBF7]
+Nursing college |  |  | [#FFF2CC] | 2.00 | [#FFF2CC] | 1.00 |  |  | 1.00 |  |  | [#DDEBF7] | 4.00 | [#DDEBF7] | 2.00 |  |  | 3.00 |  |  | [#DDEBF7] | 7.00 | [#DDEBF7] | 2.00 |  |  | UR |  |  | [#DDEBF7] | UR | [#DDEBF7]
+Medical College |  |  | [#FFF2CC] | 2.50 | [#FFF2CC] | 1.25 |  |  | 1.25 |  |  | [#DDEBF7] | 5.00 | [#DDEBF7] | 2.50 |  |  | 3.75 |  |  | [#DDEBF7] | 8.75 | [#DDEBF7] | 2.50 |  |  | UR |  |  | [#DDEBF7] | UR | [#DDEBF7]
+
+=== chapter 06 · gazette page 96 · pdf page 3 ===
+6.1.8 Basement
+The permissibility of basement in hospital and healthcare building shall be as per paragraph 3.3.3 of the
+building byelaws.
+6.2 Educational Institutions
+6.2.1 Permissibility
+Permission for construction of schools and educational institutions shall be as per the master plan zoning
+regulations.
+6.2.2 Minimum Plot Size
+The minimum plot area (in layouts or in cases where plot area norms are not specified) for construction
+of educational institutions such as schools, colleges, technical institutions and university buildings shall
+be as follows:
+However, in case of spatial norms (for minimum plot areas and land requirements based on student
+intake and specializations covered, minimum standards for play areas, playground and open spaces) for
+construction of schools, colleges and universities prescribed by Central Public Works Department
+(CPWD) or affiliated institutions like Uttar Pradesh State Education Board (UPSEB)/ Central Board for
+School Education (CBSE), Indian Certificate for Secondary Education (ICSE), All India Council for
+Technical Education (AICTE), University Grants Commission (UGC), etc., differ from the above norms
+as defined by regulatory/affiliated agencies shall prevail. For example, minimum playground area (for
+Class 1-8 / 10 / 12) of 1000 sqm as prescribed by CBSE norms (amended time to time) shall prevail.
+6.2.3 Means of Access
+The minimum width of the access road shall be as follows:
+Note: Nursery/Creche shall be permissible within 25 percent FAR in residential buildings.
+96
+
+--- table 0 (6 rows × 3 cols) ---
+Sl. | Educational facility | Min. Plot area (sqm)
+1 | Nursery | 500
+2 | Primary | 1000
+3 | Secondary / High School / Intercollege | 2000
+4 | Degree College / Technical Institution | 5000
+5 | Universities | 20000
+
+--- table 1 (6 rows × 3 cols) ---
+Sl. | Educational building | Min. Road Width (m)
+1 | Nursery | 9
+2 | Primary School | 9 – Built-up area 12 – Non-Built-up area
+3 | Secondary/ High School | 12
+4 | Degree College/ Technical Institution | 18
+5 | Universities | 24
+
+=== chapter 06 · gazette page 97 · pdf page 4 ===
+6.2.4 Ground Coverage and FAR
+Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any, shall
+be permissible on plots for educational buildings.
+Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter 9.
+Basis approach road width, the maximum permissible FAR (including Base FAR) for education
+buildings in built-up areas and the non-built-up areas shall be as follows:
+Note-1: BFAR-Base FAR; PFAR-Purchasable FAR; PPFAR-Premium Purchasable FAR; MFAR-Maximum Permissible FAR (including
+BFAR); UR-Unrestricted FAR.
+Note-2: In green buildings, additional FAR over and above the maximum permissible FAR shall be provided as per paragraph 9.3 of the
+building byelaws.
+6.2.5 Maximum Building height
+There is no restriction on the maximum building height. However, the maximum height of the building
+shall be governed by its distance from the protected monument/heritage site, airport funnel zone and
+other statutory restrictions.
+6.2.6 Minimum Setback
+Minimum setbacks for educational buildings shall be as per paragraph 3.2.4 of the building byelaws.
+6.2.7 Parking
+(i) Parking arrangements shall be as per paragraph 3.3.4 of the building byelaws.
+(ii) Standard parking provisions for education facilities shall be one ECS per 125 sqm of built-up area
+and 1 bus parking space i.e., 10 m x 5 m (50 sqm or 2 ECS open parking) for every 120 students.
+Further, a designated place shall be earmarked for pick-up and drop-zones for cars and buses within the
+campus plan.
+For plots of area above 4000 sqm, a separate block for parking is permissible, within the campus.
+Within the parking block, 10% of ground floor may be utilized for ancillary purposes (free from FAR)
+incidental to principal use.
+6.2.8 Basement
+The permissibility of basement in educational buildings shall be as per paragraph 3.3.3 of the building
+byelaws.
+97
+
+--- table 0 (15 rows × 14 cols) ---
+FAR | [#DBE5F1] | Road Width (Upto 12m) |  |  | Road Width (12 -24m) |  |  | Road Width (24 - 45m) |  |  | Road Width (>45m) |  | 
+ | BFAR |  |  |  |  |  |  |  |  |  |  |  | «band #DBE5F1»
+ |  | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR
+Education Facilities | [#DBE5F1] |  |  |  |  |  |  |  |  |  |  |  | 
+ |  | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1] | [#DBE5F1]
+Built-up Area |  |  |  |  |  |  |  |  |  |  |  |  | «band #DCDDDF»
+Schools (primary / nursery) | 1.00 | 0.20 | 0.20 | 1.40 | 0.50 | 0.50 | 2.00 | 1.00 | 1.00 | 3.00 | 1.00 | 1.00 | 3.00
+Secondary / High School/ Intercollege/ Technical Institutes/ Degree Colleges / Universities | [#FFF2CC] | NA | NA | [#DDEBF7] | 0.50 | 0.50 | [#DDEBF7] | 1.00 | 1.50 | [#DDEBF7] | 1.00 | UR | [#DDEBF7]
+ | 1.00 |  |  | NA |  |  | 2.00 |  |  | 3.50 |  |  | UR
+ | [#FFF2CC] |  |  | [#DDEBF7] |  |  | [#DDEBF7] |  |  | [#DDEBF7] |  |  | [#DDEBF7]
+Non-Built-up Area |  |  |  |  |  |  |  |  |  |  |  |  | «band #DCDDDF»
+Schools (primary / nursery) | 1.20 | 0.20 | 0.20 | 1.40 | 0.60 | 0.60 | 2.40 | 1.20 | 1.20 | 3.60 | 1.20 | 1.20 | 3.60
+Secondary / High School/ Intercollege/ Technical Institutes/ Degree Colleges / Universities | [#FFF2CC] | NA | NA | [#DDEBF7] | 1.00 | 1.00 | [#DDEBF7] | 2.00 | 3.00 | [#DDEBF7] | 2.00 | UR | [#DDEBF7]
+ | 2.00 |  |  | NA |  |  | 4.00 |  |  | 7.00 |  |  | UR
+ | [#FFF2CC] |  |  | [#DDEBF7] |  |  | [#DDEBF7] |  |  | [#DDEBF7] |  |  | [#DDEBF7]
+
+=== chapter 06 · gazette page 98 · pdf page 5 ===
+6.3 Marriage Hall / Banquet/ Multi-purpose Hall
+6.3.1 Permissibility
+Construction of Marriage Hall/ Banquet/ Multi-purpose Hall shall be permitted as per the Master Plan
+Zoning Regulations.
+6.3.2 Minimum Plot Size
+Minimum plot size for the construction of marriage hall, banquet or a multi-purpose hall shall be 750
+square meters for built-up area and 1000 square meters for non-built-up area.
+6.3.3 Means of Access
+Minimum width of existing approach road for the construction of a marriage hall, banquet, multi-
+purpose hall or a banquet hall shall be based on plot size as follows:
+6.3.4 Ground Coverage and FAR
+Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any, shall
+be permissible on plots for educational buildings.
+Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter 9.
+Basis approach road width, the maximum permissible FAR (including Base FAR) for marriage
+hall/banquet/ multipurpose hall buildings in built-up areas and the non-built-up areas shall be as follows:
+Note-1: (i) BFAR – Base FAR, PFAR – Purchasable FAR, PPFAR – Premium Purchasable FAR, MFAR –
+Maximum Permissible FAR including Base FAR, UR – Unrestricted
+Note-2: Within the permissible FAR limit, construction of rooms shall be allowed.
+In green building, additional FAR over and above maximum permissible FAR shall be provided
+Note-3:
+as per paragraph 9.3 of the building byelaws.
+6.3.5 Maximum Building Height
+There is no restriction on the maximum building height. However, the maximum height of the building
+shall be governed by its distance from the protected monument/heritage site, airport funnel zone and
+other statutory restrictions.
+98
+
+--- table 0 (3 rows × 5 cols) ---
+[#D9E2F3] | Plot Size (sqm) | [#D9E2F3] | Min. Road Width (m) | [#D9E2F3]
+750 - 3000 |  | 18 |  | 
+> 3000 |  | 24 |  | 
+
+--- table 1 (17 rows × 11 cols) ---
+FAR | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  | 
+ | [#DBE5F1] | Road Width (=>18 - 24m) |  |  | Road Width (>24 - 45m) |  |  | Road Width (>45m) |  | 
+ |  |  |  |  |  |  |  |  |  | MFA«band #DBE5F1»
+Community Buildings | BFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | 
+ |  |  |  |  |  |  |  |  |  | R
+ |  |  |  |  |  |  |  |  |  | 
+Built-up Area |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  | 
+Marriage hall/ Banquet Hall/ Multipurpose Hall | [#FFF2CC] | 1.0 | 1.0 | [#DEEAF6] | 2.0 | 3.0 | [#DEEAF6] | 2.0 | UR | [#DEEAF6]
+ | 2.0 |  |  | 4.0 |  |  | 7.0 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+ |  |  |  |  |  |  |  |  |  | 
+Non-Built-up Area |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  | 
+Marriage hall/ Banquet Hall/ Multipurpose Hall | [#FFF2CC] | 1.5 | 1.5 | [#DEEAF6] | 3.0 | 4.5 | [#DEEAF6] | 3.0 | UR | [#DEEAF6]
+ | 3.0 |  |  | 6.0 |  |  | 10.5 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+
+=== chapter 06 · gazette page 99 · pdf page 6 ===
+6.3.6 Minimum Setback
+Minimum setbacks for of marriage hall/ banquet hall/ multipurpose hall up shall be as per paragraph
+3.2.4 of the building byelaws.
+6.3.7 Parking Requirements
+(i) Parking requirements for marriage hall/ banquet hall/ multipurpose hall shall be as per paragraph
+3.3.4 of the building byelaws.
+(ii) The parking requirement for marriage hall/ banquet hall/ multipurpose hall shall be 2.0 Equivalent
+Car Space per 100 sqm of the floor area. Parking shall be calculated on the maximum permissible floor
+area of the plot.
+6.3.8 Basement
+The permissibility of basement shall be as per paragraph 3.3.3 of the building byelaws.
+6.4 Auditorium and Convention Centre
+6.4.1 Permissibility
+Auditoriums and convention centres shall be permitted as per the master plan zoning regulations.
+6.4.2 Means of Access
+The proposed site for auditorium or a convention centre shall be located on a minimum 18-meter-wide
+existing road in the built-up area and on a minimum 24-meter-wide existing road in the non-built-up
+area.
+6.4.3 Minimum Plot Area
+Minimum plot area for the construction of auditorium or a convention centre shall be based on width
+of the approach road as follows:
+6.4.4 Ground Coverage and FAR
+(i) Maximum ground coverage after ensuring minimum setbacks and open space requirements, if any,
+shall be permissible on plots for auditorium and convention centre.
+(ii) Purchasable and premium purchasable FAR shall be applicable as per the requirements of Chapter
+9. Basis approach road width, the maximum permissible FAR (including Base FAR) for Auditorium
+and Convention centres in built-up areas and the non-built-up areas shall be as follows:
+99
+
+--- table 0 (3 rows × 2 cols) ---
+Road Width (m) | Min. Plot Area (sqm)
+18 | 1500
+24 | 2000
+
+--- table 1 (10 rows × 11 cols) ---
+FAR | [#DBE5F1] | Road Width (=>18 -24m) |  |  | Road Width (>24 - 45m) |  |  | Road Width (>45m) |  | 
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  | 
+Auditorium/ |  |  |  |  |  |  |  |  |  | MFA«band #DBE5F1»
+Convention Centre | BFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | R
+ |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  | 
+Auditorium or a Convention Centre (Built-up area) | [#FFF2CC] | 1.0 | 1.0 | [#DEEAF6] | 2.0 | 3.0 | [#DEEAF6] | 2.0 | UR | [#DEEAF6]
+ | 2.0 |  |  | 4.0 |  |  | 7.0 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]
+
+=== chapter 06 · gazette page 100 · pdf page 7 ===
+Note-1:
+BFAR – Base FAR, PFAR – Purchasable FAR, PPFAR – Premium Purchasable FAR, MFAR –
+Maximum Permissible FAR including Base FAR, UR – Unrestricted
+Note-2: Other ancillary uses such as commercial, hotel, office, entertainment, training centre,
+community facilities, etc., are permissible.
+In green building, additional FAR over and above maximum permissible FAR shall be provided
+Note-3:
+as per paragraph 9.3 of the building byelaws.
+6.4.5 Minimum Setback
+Minimum setbacks for auditorium or a convention centre shall be as per paragraph 3.2.4 of the building
+byelaws.
+6.4.6 Parking Requirements
+(i) Parking requirements for auditorium or a convention centre shall be as per paragraph 3.3.4 of the
+building byelaws.
+(ii) The parking requirement for auditorium or convention centre shall be 1 ECS / 10 seat for the
+auditorium space and additional parking requirement for attached ancillary commercial activities shall
+be 2 ECS / 100 sqm of utilized floor area.
+For plots of area above 4000 sqm, a separate block for parking is permissible, within the campus. Within
+the parking block, 10% of ground floor may be utilized for commercial purposes (free from FAR)
+incidental to principal use.
+6.4.7 Basement
+The permissibility of basement in auditorium or convention centre shall be as per paragraph 3.3.3 of
+the building byelaws.
+100
+
+--- table 0 (11 rows × 11 cols) ---
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  | 
+FAR | [#DBE5F1] | Road Width (=>18 -24m) |  |  | Road Width (>24 - 45m) |  |  | Road Width (>45m) |  | 
+[#DBE5F1] | [#DBE5F1] | [#DBE5F1] |  |  | [#DBE5F1] |  |  | [#DBE5F1] |  | 
+Auditorium/ |  |  |  |  |  |  |  |  |  | MFA«band #DBE5F1»
+Convention Centre | BFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | MFAR | PFAR | PPFAR | R
+ |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  | 
+Auditorium or a Convention Centre (Non-built-up area) | [#FFF2CC] | 1.5 | 1.5 | [#DEEAF6] | 3.0 | 4.5 | [#DEEAF6] | 3.0 | UR | [#DEEAF6]
+ | 3.0 |  |  | 6.0 |  |  | 10.5 |  |  | UR
+ | [#FFF2CC] |  |  | [#DEEAF6] |  |  | [#DEEAF6] |  |  | [#DEEAF6]

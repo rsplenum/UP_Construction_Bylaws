@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { AlertTriangle, FileCheck, Printer } from 'lucide-react';
 import { useProject } from '../context/ProjectContext';
+import {
+  assessSustainability, getOccupancy, RWH_PLOT_AREA_SQM, SOLAR_PV_PLOT_AREA_SQM,
+} from '../domain';
 
 /**
  * Statutory forms, filled from the shared project.
@@ -14,6 +17,7 @@ import { useProject } from '../context/ProjectContext';
 export const FormsAndAppendices: React.FC = () => {
   const { project, patch } = useProject();
   const [selectedForm, setSelectedForm] = useState<string>('form_a');
+  const occupancy = getOccupancy(project.occupancy);
 
   const {
     applicantName,
@@ -32,9 +36,23 @@ export const FormsAndAppendices: React.FC = () => {
   const setArchitectName = (v: string) => patch({ architectName: v });
   const setEngineerName = (v: string) => patch({ engineerName: v });
 
-  // Checklist rows reflect the project rather than asserting compliance unconditionally.
-  const rwhRequired = plotArea > 300;
-  const solarRequired = plotArea > 500;
+  // Checklist rows reflect the project rather than asserting compliance unconditionally,
+  // and the thresholds come from the domain rather than being restated here. Chapter 13
+  // gives the two solar systems different triggers: photovoltaics on plot size, water
+  // heating on the building category (B-035).
+  const green = assessSustainability({
+    plotAreaSqm: plotArea,
+    builtUpAreaSqm: project.proposedBuiltUpArea,
+    occupancyId: project.occupancy,
+    occupancyGroup: occupancy.group,
+    occupancyLabel: occupancy.label,
+    hasRainwaterHarvesting: project.hasRWH,
+    hasSolarPv: project.hasSolarPv,
+    hasSolarWaterHeating: project.hasSolarHeating,
+  });
+  const rwhRequired = green.rainwater.required;
+  const pvRequired = green.solarPv.required;
+  const solarRequired = green.solarWaterHeating.required;
   const checklist = [
     {
       item: '7.1 Setbacks (front / rear / sides)',
@@ -44,15 +62,30 @@ export const FormsAndAppendices: React.FC = () => {
     },
     {
       item: '7.3(e) Rainwater harvesting system',
-      provision: 'Mandatory for plots above 300 sqm',
+      provision: `Clause 13.1.2 — mandatory on plots of ${RWH_PLOT_AREA_SQM} sqm and more`,
       status: rwhRequired ? (project.hasRWH ? 'Installed' : 'NOT PROVIDED — required') : 'Not applicable',
       ok: !rwhRequired || project.hasRWH,
     },
     {
+      // No form item number: 7.3(e) and (f) are the form's own, and this row is a
+      // requirement of the byelaws that the form does not itemise. Inventing "(g)" would
+      // put a number on a statutory form that the form does not carry.
+      item: 'Solar photovoltaic power generation',
+      provision: `Clause 13.2.3.1 — mandatory on plots of ${SOLAR_PV_PLOT_AREA_SQM} sqm and above`,
+      status: pvRequired ? (project.hasSolarPv ? 'Installed' : 'NOT PROVIDED — required') : 'Not applicable',
+      ok: !pvRequired || project.hasSolarPv,
+    },
+    {
       item: '7.3(f) Solar water heating plant',
-      provision: 'Mandatory for plots above 500 sqm',
+      provision: 'Clause 13.2.3.2 — mandatory for hotels, hospitals, schools and assembly buildings with a hot water system',
       status: solarRequired ? (project.hasSolarHeating ? 'Installed' : 'NOT PROVIDED — required') : 'Not applicable',
       ok: !solarRequired || project.hasSolarHeating,
+    },
+    {
+      item: 'Landscape plan — tree plantation',
+      provision: `${green.trees.clause} — ${green.trees.rate}`,
+      status: `${green.trees.trees} ${green.trees.trees === 1 ? 'tree' : 'trees'} to be shown`,
+      ok: true,
     },
   ];
 

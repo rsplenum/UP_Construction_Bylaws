@@ -8,7 +8,13 @@
  */
 
 import { Band, assertContiguousLadder, resolveBand } from './bands';
-import type { Occupancy, GreenRating } from './project';
+import type { GreenRating } from './project';
+import {
+  asCeiling, bandForRoad, purchasableRowFor, strictCeiling,
+  type PurchasableBand, type PurchasableRow,
+} from './purchasable-far';
+import { PURCHASABLE_SHARE_BY_ROAD } from './purchasable-fee';
+import { OccupancyId, getOccupancy } from './occupancy';
 
 export interface FarSlab extends Band {
   readonly index: number;
@@ -34,34 +40,156 @@ export const RESIDENTIAL_TELESCOPIC_SLABS: readonly FarSlab[] = [
 
 assertContiguousLadder('RESIDENTIAL_TELESCOPIC_SLABS', RESIDENTIAL_TELESCOPIC_SLABS);
 
-/** Section 3.2.2.2 / 4.2.8 / 5.2.5 — road-width driven Base FAR for non-plotted occupancies. */
+/**
+ * Section 3.2.2.2 / 4.2.8 / 5.2.5 — road width sets the CEILING, not the base.
+ *
+ * VERIFIED against the gazette, 2026-09-10. The engine previously had this backwards:
+ * it escalated Base FAR with road width (1.75 → 2.5 for group housing) and derived a
+ * ceiling by adding a purchasable increment. The gazette holds Base FAR flat per
+ * occupancy and area type, and uses road width to set Max FAR — the amount of purchasable
+ * FAR available is the difference between them.
+ *
+ * Gazette, Residential – Group Housing:
+ *   Built-up      base 1.50   max: 9–12m 2.0 | >12–18m 3.0 | >18–24m 3.0 | >24–45m 5.25 | >45m unrestricted
+ *   Non-built-up  base 2.50   max: … >24–45m 8.75 | >45m unrestricted
+ * Gazette, Commercial – Shops / Convenience / Commercial Units:
+ *   Built-up      base 1.50   max: ≤12m 2.1 | >12–24m 3.0 | >24–45m 5.0 | >45m unrestricted
+ *   Non-built-up  base 1.75   max: ≤12m 2.45 | >12–24m 3.5 | …
+ */
+/** Whether the site sits inside an already built-up area or a new layout. */
+export type AreaType = 'built_up' | 'non_built_up';
+
 export interface RoadFarBand extends Band {
   readonly label: string;
-  readonly baseFar: number;
-  /** Additional FAR purchasable on top of Base FAR at this road width. */
-  readonly purchasableFar: number;
+  /** Ceiling on total FAR at this road width. Infinity where the gazette says unrestricted. */
+  readonly maxFar: number;
 }
 
-export const GROUP_HOUSING_ROAD_FAR: readonly RoadFarBand[] = [
-  { label: 'Below 9m',   overMoreThan: 0,  upToAndIncluding: 9,        baseFar: 0,    purchasableFar: 0 },
-  { label: '9m to 12m',  overMoreThan: 9,  upToAndIncluding: 12,       baseFar: 1.75, purchasableFar: 0.3 },
-  { label: '>12m to 18m', overMoreThan: 12, upToAndIncluding: 18,      baseFar: 2.0,  purchasableFar: 0.5 },
-  { label: '>18m to 24m', overMoreThan: 18, upToAndIncluding: 24,      baseFar: 2.25, purchasableFar: 0.75 },
-  { label: '>24m',        overMoreThan: 24, upToAndIncluding: Infinity, baseFar: 2.5, purchasableFar: 1.0 },
-];
+/**
+ * Max FAR is keyed on road width AND area type. The gazette prints a separate row for
+ * every occupancy in each of "(Built up)" and "(Non-Built up)", and they do not carry
+ * the same ceilings — non-built-up group housing on a 30 m road tops out at 8.75, not
+ * 5.25. The engine held one ladder per occupancy and applied the built-up ceilings to
+ * both, understating a new layout's entitlement by up to 3.5 FAR (B-013).
+ *
+ * Non-built-up group housing has no band below 12 m: the gazette's first row is
+ * ">12 - 18m". A 9 m road carries group housing in a built-up area and not in a new
+ * layout, so the zero band here is the gazette's silence, not a rounding.
+ */
+export const GROUP_HOUSING_MAX_FAR: Readonly<Record<AreaType, readonly RoadFarBand[]>> = {
+  built_up: [
+    { label: 'Below 9m',    overMoreThan: 0,  upToAndIncluding: 9,        maxFar: 0 },
+    { label: '9 to 12m',    overMoreThan: 9,  upToAndIncluding: 12,       maxFar: 2.0 },
+    { label: '>12 to 18m',  overMoreThan: 12, upToAndIncluding: 18,       maxFar: 3.0 },
+    { label: '>18 to 24m',  overMoreThan: 18, upToAndIncluding: 24,       maxFar: 3.0 },
+    { label: '>24 to 45m',  overMoreThan: 24, upToAndIncluding: 45,       maxFar: 5.25 },
+    { label: '>45m',        overMoreThan: 45, upToAndIncluding: Infinity, maxFar: Infinity },
+  ],
+  non_built_up: [
+    { label: 'Up to 12m',   overMoreThan: 0,  upToAndIncluding: 12,       maxFar: 0 },
+    { label: '>12 to 18m',  overMoreThan: 12, upToAndIncluding: 18,       maxFar: 5.0 },
+    { label: '>18 to 24m',  overMoreThan: 18, upToAndIncluding: 24,       maxFar: 5.0 },
+    { label: '>24 to 45m',  overMoreThan: 24, upToAndIncluding: 45,       maxFar: 8.75 },
+    { label: '>45m',        overMoreThan: 45, upToAndIncluding: Infinity, maxFar: Infinity },
+  ],
+};
 
-export const COMMERCIAL_ROAD_FAR: readonly RoadFarBand[] = [
-  { label: 'Below 9m',    overMoreThan: 0,  upToAndIncluding: 9,        baseFar: 0,   purchasableFar: 0 },
-  { label: '9m to 12m',   overMoreThan: 9,  upToAndIncluding: 12,       baseFar: 1.5, purchasableFar: 0.3 },
-  { label: '>12m to 18m', overMoreThan: 12, upToAndIncluding: 18,       baseFar: 1.75, purchasableFar: 0.5 },
-  { label: '>18m to 24m', overMoreThan: 18, upToAndIncluding: 24,       baseFar: 2.0, purchasableFar: 0.75 },
-  { label: '>24m',        overMoreThan: 24, upToAndIncluding: Infinity, baseFar: 2.5, purchasableFar: 1.0 },
-];
+/**
+ * Gazette row 3(a)/3(b), "Shops / Convenience Shopping / Commercial Units".
+ *
+ * The gazette's first band is "Up to 12m" with no floor under it. The 9 m floor below is
+ * the engine's, not the byelaw's — a road narrower than 9 m is unlikely to carry a
+ * commercial frontage, but the gazette does not say so here. Logged as V-007.
+ */
+export const COMMERCIAL_MAX_FAR: Readonly<Record<AreaType, readonly RoadFarBand[]>> = {
+  built_up: [
+    { label: 'Below 9m',    overMoreThan: 0,  upToAndIncluding: 9,        maxFar: 0 },
+    { label: 'Up to 12m',   overMoreThan: 9,  upToAndIncluding: 12,       maxFar: 2.1 },
+    { label: '>12 to 24m',  overMoreThan: 12, upToAndIncluding: 24,       maxFar: 3.0 },
+    { label: '>24 to 45m',  overMoreThan: 24, upToAndIncluding: 45,       maxFar: 5.0 },
+    { label: '>45m',        overMoreThan: 45, upToAndIncluding: Infinity, maxFar: Infinity },
+  ],
+  non_built_up: [
+    { label: 'Below 9m',    overMoreThan: 0,  upToAndIncluding: 9,        maxFar: 0 },
+    { label: 'Up to 12m',   overMoreThan: 9,  upToAndIncluding: 12,       maxFar: 2.45 },
+    { label: '>12 to 24m',  overMoreThan: 12, upToAndIncluding: 24,       maxFar: 3.5 },
+    { label: '>24 to 45m',  overMoreThan: 24, upToAndIncluding: 45,       maxFar: 6.0 },
+    { label: '>45m',        overMoreThan: 45, upToAndIncluding: Infinity, maxFar: Infinity },
+  ],
+};
 
-assertContiguousLadder('GROUP_HOUSING_ROAD_FAR', GROUP_HOUSING_ROAD_FAR);
-assertContiguousLadder('COMMERCIAL_ROAD_FAR', COMMERCIAL_ROAD_FAR);
+/**
+ * Clause 8.1.3.1 — mixed-use development has its own table, and it is not the commercial
+ * one the engine had been reading.
+ *
+ * Mixed use was assessed on rows 3(a)/3(b), written for shops: base 1.5 built-up and
+ * 1.75 in a new layout. Chapter 8 gives it base 2.0 and 2.5, so every mixed-use project
+ * was told it had between a quarter and a third less base floor area than the byelaws
+ * allow. Chapter 3's matrix has no mixed-use row at all, so unlike every other
+ * cross-chapter conflict so far there is no second figure to fall back on: this table is
+ * the only one the byelaws print for the use.
+ *
+ * Two of its eight cells contradict themselves and both are resolved to the lowest
+ * reading the clause supports — 4.5 rather than the printed 5.25 at >24–45 m built-up,
+ * and the printed 6.25 rather than the components' 8.75 in a new layout. The reasoning
+ * is in GAZETTE_ARITHMETIC_DEFECTS, and `purchasable-far.test.ts` asserts that the two
+ * ladders below still agree with `strictCeiling` on the extracted rows, so neither can
+ * be edited into disagreeing with the gazette quietly.
+ *
+ * The floor is the gazette's own, not the engine's: Clause 8.1.3 puts the means of
+ * access for the most permissive location — a plot of up to 100 m² in a mixed-use zone —
+ * at 9 m, and every other location at 12 m or 24 m, so below 9 m no mixed use is
+ * permissible anywhere. That is the distinction V-007 records for the commercial ladder,
+ * where the same 9 m floor is an inference the gazette does not state.
+ */
+export const MIXED_USE_MAX_FAR: Readonly<Record<AreaType, readonly RoadFarBand[]>> = {
+  built_up: [
+    { label: 'Below 9m',    overMoreThan: 0,  upToAndIncluding: 9,        maxFar: 0 },
+    { label: 'Up to 12m',   overMoreThan: 9,  upToAndIncluding: 12,       maxFar: 2.0 },
+    { label: '>12 to 24m',  overMoreThan: 12, upToAndIncluding: 24,       maxFar: 4.0 },
+    { label: '>24 to 45m',  overMoreThan: 24, upToAndIncluding: 45,       maxFar: 4.5 },
+    { label: '>45m',        overMoreThan: 45, upToAndIncluding: Infinity, maxFar: Infinity },
+  ],
+  non_built_up: [
+    { label: 'Below 9m',    overMoreThan: 0,  upToAndIncluding: 9,        maxFar: 0 },
+    { label: 'Up to 12m',   overMoreThan: 9,  upToAndIncluding: 12,       maxFar: 2.5 },
+    { label: '>12 to 24m',  overMoreThan: 12, upToAndIncluding: 24,       maxFar: 5.0 },
+    { label: '>24 to 45m',  overMoreThan: 24, upToAndIncluding: 45,       maxFar: 6.25 },
+    { label: '>45m',        overMoreThan: 45, upToAndIncluding: Infinity, maxFar: Infinity },
+  ],
+};
 
-/** Chapter 9.3 — green-building FAR incentive, expressed as a fraction of Base FAR. */
+for (const areaType of ['built_up', 'non_built_up'] as const) {
+  assertContiguousLadder(`GROUP_HOUSING_MAX_FAR.${areaType}`, GROUP_HOUSING_MAX_FAR[areaType]);
+  assertContiguousLadder(`COMMERCIAL_MAX_FAR.${areaType}`, COMMERCIAL_MAX_FAR[areaType]);
+  assertContiguousLadder(`MIXED_USE_MAX_FAR.${areaType}`, MIXED_USE_MAX_FAR[areaType]);
+}
+
+/** Base FAR is a property of the occupancy and the area type, not of the road. */
+export const BASE_FAR: Readonly<
+  Record<'group_housing' | 'commercial' | 'mixed_use', Record<AreaType, number>>
+> = {
+  group_housing: { built_up: 1.5, non_built_up: 2.5 },
+  commercial:    { built_up: 1.5, non_built_up: 1.75 },
+  mixed_use:     { built_up: 2.0, non_built_up: 2.5 },
+};
+
+/**
+ * Ceiling on total FAR for plotted residential, from the gazette's own table: Max FAR is
+ * 2.0 in every band, whatever the base works out to. The engine previously added a
+ * purchasable increment on top of the telescopic base and so permitted up to 2.4.
+ */
+export const PLOTTED_RESIDENTIAL_MAX_FAR = 2.0;
+
+/**
+ * Chapter 9.3 — green-building incentive, as a fraction of the FAR availed.
+ *
+ * VERIFIED against the gazette, 2026-09-10: "3% / 5% / 7% additional FAR on availed FAR",
+ * and "This incentive FAR on Green Buildings shall be over and above the MFAR". The
+ * engine previously folded this into the Base FAR and then capped the result, which both
+ * understated the entitlement and consumed purchasable headroom that the gazette does not
+ * touch. It is granted above the ceiling, not inside it.
+ */
 export const GREEN_FAR_BONUS: Readonly<Record<GreenRating, number>> = {
   none: 0,
   silver: 0.03,
@@ -77,7 +205,108 @@ export interface SlabContribution {
   readonly builtUpArea: number;
 }
 
+export interface PurchasableTranche {
+  /** PFAR — FAR points available at the ordinary purchasable coefficient. */
+  readonly purchasableCapacity: number;
+  /** PPFAR — FAR points available at the premium coefficient, above the ordinary tranche. */
+  readonly premiumPurchasableCapacity: number;
+  readonly band: string;
+  /**
+   * `chapter-table` — read from the printed BFAR/PFAR/PPFAR row for this occupancy.
+   * `clause-9.2.3` — the general ladder, used where no chapter row covers the use.
+   */
+  readonly source: 'chapter-table' | 'clause-9.2.3';
+  readonly rowId?: string;
+  readonly clause: string;
+  /**
+   * Set where the printed row this split came from states a different base FAR than the
+   * one the engine applied — V-014's Chapter 3 / Chapter 5 conflict, surfaced at the
+   * point it actually affects a number instead of only in the log.
+   */
+  readonly baseFarDivergence?: { readonly chapterBaseFar: number; readonly applied: number };
+}
+
+/**
+ * Divide the headroom into the two priced tranches.
+ *
+ * A chapter row states both columns outright. Where none covers the occupancy, Clause
+ * 9.2.3 column (3) gives the ordinary tranche as a percentage of base FAR and everything
+ * above it is premium. Either way the result is clamped to the headroom the engine has
+ * actually allowed, so a stricter Chapter 3 ceiling still governs the total.
+ */
+function resolveTranche(input: {
+  occupancy: OccupancyId;
+  areaType: AreaType;
+  plotArea: number;
+  roadWidth: number;
+  baseFar: number;
+  headroom: number;
+  isAffordableHousingScheme?: boolean;
+}): PurchasableTranche | null {
+  if (!(input.headroom > 0)) return null;
+
+  const row: PurchasableRow | undefined = purchasableRowFor({
+    occupancy: input.occupancy,
+    areaType: input.areaType,
+    plotAreaSqm: input.plotArea,
+    isAffordableHousingScheme: input.isAffordableHousingScheme,
+    roadWidthM: input.roadWidth,
+  });
+  const band: PurchasableBand | undefined = row ? bandForRoad(row, input.roadWidth) : undefined;
+
+  if (row && band) {
+    const printedPurchasable = asCeiling(band.purchasable);
+    const printedPremium = asCeiling(band.premiumPurchasable);
+    if (printedPurchasable !== null) {
+      // An unrestricted premium column leaves the whole remainder at the premium rate.
+      const purchasable = Math.min(input.headroom, printedPurchasable);
+      const remainder = Math.max(0, input.headroom - purchasable);
+      const premium = printedPremium === null ? 0 : Math.min(remainder, printedPremium);
+      return {
+        purchasableCapacity: round(purchasable, 2),
+        premiumPurchasableCapacity: round(premium, 2),
+        band: band.label,
+        source: 'chapter-table',
+        rowId: row.id,
+        clause: `${row.chapter} (gazette p.${row.gazettePage}), ${row.useType}`,
+        // V-014: where the chapter row's own base differs from the Chapter 3 base the
+        // engine applies, the split and the ceiling come from different readings. The
+        // columns are absolute FAR figures rather than percentages, so pairing them is
+        // sound arithmetic — but it is still two chapters in one answer, and saying so
+        // is the difference between a resolved conflict and a hidden one.
+        baseFarDivergence: row.baseFar !== null && Math.abs(row.baseFar - input.baseFar) > 0.001
+          ? { chapterBaseFar: row.baseFar, applied: input.baseFar }
+          : undefined,
+      };
+    }
+  }
+
+  const ladder = PURCHASABLE_SHARE_BY_ROAD.find(
+    (b) => input.roadWidth > b.overMoreThan
+      && (b.upToAndIncluding === null || input.roadWidth <= b.upToAndIncluding),
+  ) ?? PURCHASABLE_SHARE_BY_ROAD[0];
+  const capacity = round(input.baseFar * ladder.purchasable, 2);
+  const purchasable = Math.min(input.headroom, capacity);
+  return {
+    purchasableCapacity: round(purchasable, 2),
+    premiumPurchasableCapacity: round(Math.max(0, input.headroom - purchasable), 2),
+    band: ladder.label,
+    source: 'clause-9.2.3',
+    clause: 'Clause 9.2.3 columns (3) and (4) — the general ladder',
+  };
+}
+
 export interface BaseFarResult {
+  /**
+   * The register entry these figures came from.
+   *
+   * Four ladders can answer "how much floor area", and `findings.ts` used to stamp every
+   * answer with `far.telescopic-residential`. A warehouse read off the commercial ladder
+   * — `far.road-width-commercial`, confidence `inferred`, carrying V-003's challenge that
+   * ten occupancies read a table written for shops — was reported as "verified against
+   * the gazette" with no dispute at all (B-045).
+   */
+  readonly rule: string;
   readonly plotArea: number;
   readonly baseFar: number;
   readonly baseBuiltUpArea: number;
@@ -85,8 +314,27 @@ export interface BaseFarResult {
   readonly effectiveBaseFar: number;
   readonly effectiveBuiltUpArea: number;
   readonly greenBonusFraction: number;
+  /**
+   * The Max FAR the gazette prints for this occupancy, area type and road width, before
+   * Chapter 9.2.1's bar on purchasing below a 12 m road. Exposed so the ladder can be
+   * checked against the table it came from: `maxPermissibleFar` folds in that bar and so
+   * reads lower than the gazette's own figure on a narrow road.
+   */
+  readonly ceilingFar: number;
   /** Extra FAR the project may purchase at this road width (0 when barred). */
   readonly purchasableFar: number;
+  /**
+   * How that headroom divides into the two tranches Chapter 9.2.5 prices differently —
+   * capacity, not what a project has taken. Null where no purchase is possible.
+   *
+   * Chapter 3 states a base and a maximum and never the split, so this is the one figure
+   * the per-occupancy tables supply that Chapter 3 cannot contradict. That is why the
+   * source here is the printed chapter row wherever one exists, while `ceilingFar` above
+   * still comes from the Chapter 3 ladder: Clause 9.2.3 Note-2 subordinates the chapter-9
+   * master table to chapters 3–7, but nothing subordinates chapter 5 to chapter 3, so
+   * V-014's conflict is left exactly as it was.
+   */
+  readonly purchasableTranche: PurchasableTranche | null;
   /** Absolute ceiling: effective base + purchasable. Nothing may be sanctioned beyond this. */
   readonly maxPermissibleFar: number;
   readonly maxPermissibleBuiltUpArea: number;
@@ -104,34 +352,94 @@ const round = (n: number, dp = 3): number => Number(n.toFixed(dp));
 /** Minimum abutting road width, in metres, below which no FAR may be purchased (Chapter 9.2.1). */
 export const PURCHASABLE_FAR_MIN_ROAD_WIDTH = 12;
 
+/**
+ * Clause 9.2.1(ii) and 9.2.3 Note-1 carve two exceptions out of that 12 m bar, and the
+ * engine applied it flatly to everything.
+ *
+ *   9.2.1(ii)  "Purchasable and premium purchasable FAR shall be allowed only on roads
+ *              with ROW 12m and above in built-up and non-built-up areas. For group
+ *              housing in built-up areas, this is allowed on roads with ROW 9m."
+ *   9.2.3 N-1  "In case of residential plotted development, calculation of purchasable
+ *              FAR is not dependent on the width of the approach road and will be allowed
+ *              on minimum 9-m /7.5-m or 4.0-m road as the case may be."
+ *
+ * Both were barred outright before (B-027). The plotted-residential case matters most: its
+ * ceiling is a flat 2.0 at every road width, so barring the purchase left a house on a
+ * 6 m road stuck at its telescopic base with headroom it was entitled to buy.
+ */
+export function canPurchaseFarAt(input: {
+  occupancy: OccupancyId;
+  roadWidth: number;
+  areaType: AreaType;
+}): { allowed: boolean; threshold: number; reason: string } {
+  const definition = getOccupancy(input.occupancy);
+
+  if (definition.farBasis === 'telescopic_plotted') {
+    return {
+      allowed: true, threshold: 0,
+      reason: 'Clause 9.2.3 Note-1: for residential plotted development the purchase does '
+        + 'not depend on the road width at all.',
+    };
+  }
+
+  if (input.occupancy === 'res_group_housing' && input.areaType === 'built_up') {
+    return {
+      allowed: input.roadWidth >= 9, threshold: 9,
+      reason: 'Clause 9.2.1(ii): group housing in a built-up area may purchase from a 9 m road.',
+    };
+  }
+
+  return {
+    allowed: input.roadWidth >= PURCHASABLE_FAR_MIN_ROAD_WIDTH,
+    threshold: PURCHASABLE_FAR_MIN_ROAD_WIDTH,
+    reason: `Clause 9.2.1(ii): purchasable FAR needs a ${PURCHASABLE_FAR_MIN_ROAD_WIDTH} m right of way.`,
+  };
+}
+
 export function resolveBaseFar(input: {
-  occupancy: Occupancy;
+  occupancy: OccupancyId;
   plotArea: number;
   roadWidth: number;
   greenRating?: GreenRating;
+  /** Defaults to built-up, the more restrictive of the two. */
+  areaType?: AreaType;
+  /** Clause 4.4 schemes read their own printed table — see purchasableRowFor. */
+  isAffordableHousingScheme?: boolean;
 }): BaseFarResult {
+  const definition = getOccupancy(input.occupancy);
   const plotArea = Math.max(0, Number(input.plotArea) || 0);
   const roadWidth = Math.max(0, Number(input.roadWidth) || 0);
+  const areaType: AreaType = input.areaType ?? 'built_up';
   const greenBonusFraction = GREEN_FAR_BONUS[input.greenRating ?? 'none'] ?? 0;
   const caveats: string[] = [];
 
   let baseFar = 0;
-  let purchasableFar = 0;
+  let ceilingFar = 0;
   let workings = '';
   let clauseRef = '';
+  let rule = 'far.telescopic-residential';
+  /**
+   * The Chapter 3 figure before the clamp below. Kept because the road-width bar on
+   * purchasing is a fact about the road, not about which of two ceilings won: clamping
+   * the ceiling down to base would otherwise silence the "purchasable FAR is barred"
+   * caveat on exactly the narrow roads it exists to explain.
+   */
+  let chapter3Ceiling = 0;
   const slabs: SlabContribution[] = [];
 
   if (plotArea === 0) {
     return {
       plotArea: 0, baseFar: 0, baseBuiltUpArea: 0, effectiveBaseFar: 0, effectiveBuiltUpArea: 0,
-      greenBonusFraction, purchasableFar: 0, maxPermissibleFar: 0, maxPermissibleBuiltUpArea: 0,
+      greenBonusFraction, ceilingFar: 0, purchasableFar: 0, purchasableTranche: null, maxPermissibleFar: 0, maxPermissibleBuiltUpArea: 0,
       slabs: [], workings: 'Plot area is zero — no FAR can be derived.',
+      rule: 'far.telescopic-residential',
       clauseRef: 'Chapter 3.2.2', caveats: ['Enter a plot area to compute FAR.'],
     };
   }
 
-  if (input.occupancy === 'single_unit' || input.occupancy === 'multi_unit') {
-    clauseRef = 'Chapter 3.2.2 & 3.2.2.1 (Telescopic Ladder)';
+  if (definition.farBasis === 'telescopic_plotted') {
+    clauseRef = 'Section 3.2.2 & 3.2.2.1 (Telescopic ladder), verified against the gazette';
+    rule = 'far.telescopic-residential';
     let remaining = plotArea;
     let totalBuiltUp = 0;
 
@@ -140,70 +448,156 @@ export function resolveBaseFar(input: {
       const areaInSlab = Math.min(remaining, slab.capacity);
       const builtUp = areaInSlab * slab.far;
       slabs.push({
-        index: slab.index,
-        label: slab.label,
-        plotAreaInSlab: round(areaInSlab, 2),
-        far: slab.far,
-        builtUpArea: round(builtUp, 2),
+        index: slab.index, label: slab.label,
+        plotAreaInSlab: round(areaInSlab, 2), far: slab.far, builtUpArea: round(builtUp, 2),
       });
       totalBuiltUp += builtUp;
       remaining -= areaInSlab;
     }
 
     baseFar = round(totalBuiltUp / plotArea);
-    workings = slabs
-      .map((s) => `${s.plotAreaInSlab} × ${s.far}`)
-      .join(' + ') + ` = ${round(totalBuiltUp, 2)} sqm ÷ ${plotArea} sqm = FAR ${baseFar}`;
-
-    // Chapter 9.2.1 — purchasable FAR is barred on sub-12m roads.
-    purchasableFar = roadWidth >= PURCHASABLE_FAR_MIN_ROAD_WIDTH ? 0.4 : 0;
-    if (purchasableFar === 0) {
-      caveats.push(
-        `Purchasable FAR is barred: abutting road is ${roadWidth}m, below the ${PURCHASABLE_FAR_MIN_ROAD_WIDTH}m threshold (Chapter 9.2.1).`,
-      );
-    }
+    ceilingFar = PLOTTED_RESIDENTIAL_MAX_FAR;
+    workings = slabs.map((s) => `${s.plotAreaInSlab} × ${s.far}`).join(' + ')
+      + ` = ${round(totalBuiltUp, 2)} sqm ÷ ${plotArea} sqm = FAR ${baseFar}`;
   } else {
-    const table = input.occupancy === 'group_housing' ? GROUP_HOUSING_ROAD_FAR : COMMERCIAL_ROAD_FAR;
-    clauseRef =
-      input.occupancy === 'group_housing'
-        ? 'Chapter 3.2.2.2 & 4.2.8 (Road-Width FAR Matrix)'
-        : 'Chapter 5.2.5 (Commercial Road-Width FAR Matrix)';
+    const key = ({
+      road_width_group_housing: 'group_housing',
+      road_width_commercial: 'commercial',
+      road_width_mixed_use: 'mixed_use',
+    } as const)[definition.farBasis];
+    const table = {
+      group_housing: GROUP_HOUSING_MAX_FAR,
+      commercial: COMMERCIAL_MAX_FAR,
+      mixed_use: MIXED_USE_MAX_FAR,
+    }[key][areaType];
+    clauseRef = {
+      group_housing: 'Section 3.2.2.2 & 4.2.8 (Group Housing), verified against the gazette',
+      commercial: 'Section 5.2.5 (Commercial), verified against the gazette',
+      mixed_use: 'Clause 8.1.3.1 (Mixed use), verified against the gazette',
+    }[key];
+    rule = {
+      group_housing: 'far.road-width-group-housing',
+      commercial: 'far.road-width-commercial',
+      mixed_use: 'far.mixed-use',
+    }[key];
+
+    baseFar = BASE_FAR[key][areaType];
 
     const resolved = resolveBand(table, roadWidth);
     if (!resolved.ok) {
-      caveats.push(`Road width ${roadWidth}m could not be matched to a FAR band; treating Base FAR as nil.`);
+      caveats.push(`Road width ${roadWidth}m could not be matched to a FAR band; no ceiling applied.`);
+      ceilingFar = baseFar;
       workings = `No FAR band matches a ${roadWidth}m road.`;
     } else {
-      baseFar = resolved.band.baseFar;
-      purchasableFar = roadWidth >= PURCHASABLE_FAR_MIN_ROAD_WIDTH ? resolved.band.purchasableFar : 0;
-      workings = `Road width ${roadWidth}m falls in band "${resolved.band.label}" → Base FAR ${baseFar}`;
-      if (baseFar === 0) {
+      ceilingFar = resolved.band.maxFar;
+
+      // V-053 / B-046. Chapter 3 and the per-chapter tables both print a maximum, and
+      // where they differ standing rule 4 says take the lower. `CROSS_CHAPTER_MAX_FAR_CONFLICTS`
+      // enumerates six places Chapter 3 is the lower one and the engine kept it — but
+      // nobody had enumerated the bands where Chapter 3 is the HIGHER one, and there the
+      // engine kept it too, against its own stated policy. On a 12 m road a bazaar shop
+      // or a commercial unit over 100 m² was given a ceiling of 2.1 (built-up) or 2.45
+      // (new layout) where Clauses 5.1.4 and 5.2.5 print 1.5 and 1.75 — 0.6 to 0.7 FAR of
+      // over-permission. Found by the conflict query in `rules/conflicts.ts`.
+      const printedRow = purchasableRowFor({
+        occupancy: input.occupancy,
+        areaType,
+        plotAreaSqm: plotArea,
+        isAffordableHousingScheme: input.isAffordableHousingScheme,
+        roadWidthM: roadWidth,
+      });
+      const printedBand = printedRow ? bandForRoad(printedRow, roadWidth) : undefined;
+      const printedCeiling = printedRow && printedBand ? strictCeiling(printedRow, printedBand) : null;
+      chapter3Ceiling = ceilingFar;
+      if (printedCeiling !== null && printedCeiling < ceilingFar) {
         caveats.push(
-          `A ${roadWidth}m road is below the minimum right-of-way for ${input.occupancy.replace('_', ' ')}; no FAR is sanctionable.`,
+          `Chapter 3 gives a ceiling of ${resolved.band.maxFar} for a ${roadWidth}m road; `
+          + `${printedRow!.chapter} (gazette p.${printedRow!.gazettePage}), ${printedRow!.useType} `
+          + `prints ${printedCeiling} over the same band. Nothing subordinates either chapter, so `
+          + `the lower governs (V-053).`,
         );
+        ceilingFar = printedCeiling;
       }
-      if (purchasableFar === 0 && resolved.band.purchasableFar > 0) {
+
+      const ceilingText = Number.isFinite(ceilingFar) ? String(ceilingFar) : 'unrestricted';
+      workings = `Base FAR ${baseFar} (${areaType.replace(/_/g, '-')}), ceiling for a ${roadWidth}m road (${resolved.band.label}) is ${ceilingText}`;
+      if (ceilingFar === 0) {
         caveats.push(
-          `Purchasable FAR is barred: abutting road is ${roadWidth}m, below the ${PURCHASABLE_FAR_MIN_ROAD_WIDTH}m threshold (Chapter 9.2.1).`,
+          `A ${roadWidth}m road is below the minimum right-of-way for ${definition.label.toLowerCase()} in a ${areaType.replace(/_/g, '-')} area; no FAR is sanctionable.`,
         );
+        baseFar = 0;
       }
     }
   }
 
-  const effectiveBaseFar = round(baseFar * (1 + greenBonusFraction));
-  const maxPermissibleFar = round(effectiveBaseFar + purchasableFar);
+  // Base FAR is what the ladder gives; the green incentive does not alter it.
+  const effectiveBaseFar = baseFar;
+
+  // Purchasable FAR is the gap between base and the ceiling. Clause 9.2.1(ii) gates the
+  // purchase on road width, with two exceptions — see canPurchaseFarAt.
+  const purchaseGate = canPurchaseFarAt({ occupancy: input.occupancy, roadWidth, areaType });
+  const canPurchase = purchaseGate.allowed;
+  const headroom = Number.isFinite(ceilingFar) ? Math.max(0, round(ceilingFar - baseFar)) : Infinity;
+  const purchasableFar = canPurchase ? headroom : 0;
+  const purchasableTranche = canPurchase
+    ? resolveTranche({
+      occupancy: input.occupancy,
+      areaType,
+      plotArea,
+      roadWidth,
+      baseFar,
+      headroom: Number.isFinite(headroom) ? headroom : Infinity,
+      isAffordableHousingScheme: input.isAffordableHousingScheme,
+    })
+    : null;
+  const headroomBeforeChapterClamp = Number.isFinite(chapter3Ceiling)
+    ? Math.max(0, round(chapter3Ceiling - baseFar))
+    : Infinity;
+  if (!canPurchase && Math.max(headroom, headroomBeforeChapterClamp) > 0) {
+    caveats.push(
+      `Purchasable FAR is barred: the abutting road is ${roadWidth}m, below the `
+      + `${purchaseGate.threshold}m threshold. ${purchaseGate.reason}`,
+    );
+  }
+
+  // The ceiling actually available to this project, before the green incentive.
+  const availableFar = canPurchase && Number.isFinite(ceilingFar) ? ceilingFar : baseFar;
+
+  // Chapter 9.3 grants the incentive above that ceiling, as a percentage of FAR availed.
+  const greenBonusFar = round(availableFar * greenBonusFraction);
+  const maxPermissibleFar = Number.isFinite(availableFar)
+    ? round(availableFar + greenBonusFar)
+    : Infinity;
 
   if (greenBonusFraction > 0) {
-    workings += ` · Green incentive +${(greenBonusFraction * 100).toFixed(0)}% → ${effectiveBaseFar}`;
+    workings += ` · Chapter 9.3 green incentive +${(greenBonusFraction * 100).toFixed(0)}% above the ceiling → ${maxPermissibleFar}`;
+  }
+
+  if (purchasableTranche?.baseFarDivergence) {
+    const d = purchasableTranche.baseFarDivergence;
+    caveats.push(
+      `The purchasable/premium split is read from ${purchasableTranche.clause}, which states a `
+      + `base FAR of ${d.chapterBaseFar}. The engine applies Chapter 3's ${d.applied}, the lower `
+      + 'of the two, so the ceiling and the split come from different chapters (V-014).',
+    );
+  }
+
+  if (purchasableTranche && Number.isFinite(headroom)) {
+    workings += ` · purchasable ${purchasableTranche.purchasableCapacity}`
+      + ` + premium ${purchasableTranche.premiumPurchasableCapacity}`
+      + ` (${purchasableTranche.source === 'chapter-table' ? purchasableTranche.clause : 'Clause 9.2.3 ladder'})`;
   }
 
   return {
+    rule,
     plotArea,
     baseFar,
+    purchasableTranche,
     baseBuiltUpArea: round(plotArea * baseFar, 2),
     effectiveBaseFar,
     effectiveBuiltUpArea: round(plotArea * effectiveBaseFar, 2),
     greenBonusFraction,
+    ceilingFar,
     purchasableFar,
     maxPermissibleFar,
     maxPermissibleBuiltUpArea: round(plotArea * maxPermissibleFar, 2),
