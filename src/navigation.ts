@@ -1,4 +1,4 @@
-import { BookOpen, Bot, FileCheck2, FileText, Globe, Sparkles } from 'lucide-react';
+import { BookOpen, Bot, FileCheck2, FileText, Globe, LandPlot, Sparkles } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 /**
@@ -9,7 +9,7 @@ import type { LucideIcon } from 'lucide-react';
  * single menu and the workspace is what you land on.
  */
 export type ViewId =
-  | 'workspace' | 'maps' | 'navigator' | 'gazette' | 'rationale' | 'forms' | 'ask';
+  | 'workspace' | 'plot' | 'maps' | 'navigator' | 'gazette' | 'rationale' | 'forms' | 'ask';
 
 export interface ReferenceView {
   id: Exclude<ViewId, 'workspace'>;
@@ -19,6 +19,10 @@ export interface ReferenceView {
 }
 
 export const REFERENCE_VIEWS: readonly ReferenceView[] = [
+  {
+    id: 'plot', label: 'What fits on my plot', icon: LandPlot,
+    description: 'Two plans from the plot alone — as of right, and stretched with fees',
+  },
   {
     id: 'maps', label: 'Find the site', icon: Globe,
     description: 'Locate the plot on the master plan and check zone buffers',

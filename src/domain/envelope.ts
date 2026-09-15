@@ -29,11 +29,11 @@
  * deserves to see what the sixth would have cost them.
  */
 
-import { GreenRating, ProjectState } from './project';
+import { GreenRating } from './project';
 import { OccupancyId, getOccupancy } from './occupancy';
 import { AreaType, resolveBaseFar } from './far';
 import { GroundCoverageLimit, resolveGroundCoverage } from './ground-coverage';
-import { PlotRoads, resolvePlotRoads } from './roads';
+import { PlotRoads } from './roads';
 import {
   HIGH_RISE_THRESHOLD_M, RequiredSetbacks, SetbackFace, resolveRequiredSetbacks,
 } from './setbacks';
@@ -530,27 +530,4 @@ export function studyEnvelope(input: EnvelopeInput): EnvelopeStudy {
       ...far.caveats,
     ],
   };
-}
-
-/** Read the study straight off a project, so the workspace and the plot tool agree. */
-export function studyProject(project: ProjectState, overrides?: Partial<EnvelopeInput>): EnvelopeStudy {
-  const roads = resolvePlotRoads({
-    front: project.roadWidth,
-    cornerWithoutWidths: project.isCornerPlot,
-  });
-  const depthM = project.plotDepth > 0
-    ? project.plotDepth
-    : project.plotFrontage > 0 ? project.plotArea / project.plotFrontage : 0;
-  return studyEnvelope({
-    occupancy: project.occupancy,
-    plotAreaSqm: project.plotArea,
-    frontageM: project.plotFrontage,
-    depthM,
-    roads,
-    areaType: project.areaType,
-    greenRating: project.greenRating,
-    isAffordableHousingScheme: project.isAffordableHousingScheme,
-    zonalCoverageCapPct: project.zonalCoverageCapPct,
-    ...overrides,
-  });
 }

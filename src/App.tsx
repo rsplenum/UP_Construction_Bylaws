@@ -9,6 +9,7 @@ import { Workspace } from './workspace/Workspace';
 import { Footer } from './components/Footer';
 
 // The workspace ships with the app; reference material loads only when opened.
+const PlotStudy = lazy(() => import('./plot/PlotStudy').then((m) => ({ default: m.PlotStudy })));
 const MapServerExplorer = lazy(() => import('./components/MapServerExplorer').then((m) => ({ default: m.MapServerExplorer })));
 const ByelawsNavigator = lazy(() => import('./components/ByelawsNavigator').then((m) => ({ default: m.ByelawsNavigator })));
 const OfficialPdfViewer = lazy(() => import('./components/OfficialPdfViewer').then((m) => ({ default: m.OfficialPdfViewer })));
@@ -88,6 +89,7 @@ function AppShell() {
           ) : (
             <div className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6 lg:px-8">
               <Suspense fallback={<PanelSkeleton />}>
+                {view === 'plot' && <PlotStudy />}
                 {view === 'maps' && <MapServerExplorer />}
                 {view === 'navigator' && <ByelawsNavigator searchQuery={searchQuery} />}
                 {view === 'gazette' && <OfficialPdfViewer />}
