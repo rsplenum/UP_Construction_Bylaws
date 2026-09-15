@@ -131,7 +131,10 @@ export function generateAuditPdfReport(state: ProjectState, assessment: Assessme
   doc.setFont('helvetica', 'bold');
   doc.text('Stilt Parking:', col2X, py);
   doc.setFont('helvetica', 'normal');
-  doc.text(state.hasStilt ? 'YES (Free FAR)' : 'NO', col2X + 22, py);
+  // Not "YES (Free FAR)": nothing in the engine reads `hasStilt`, so no FAR is exempted on
+  // account of it and the report must not say one is. See `inputs.ts`, which carries the
+  // reason, and conflicts.ts C-016.
+  doc.text(state.hasStilt ? 'YES' : 'NO', col2X + 22, py);
 
   doc.setFont('helvetica', 'bold');
   doc.text('Parking Bays:', col3X, py);

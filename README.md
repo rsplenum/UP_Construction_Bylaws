@@ -22,16 +22,38 @@ stops you, what it costs, and what to change — on one screen.
   building?          setbacks shaded          ⚠ 3 to settle
   Built yet?         buildable area           ✓ 7 clear
   How big?
-  Which road?        605 m² permitted         each one expands to the
-  How much           450 m² drawn             rule, the arithmetic,
-  floor area?                                 and a one-click fix
-  How tall?
+                     605 m² permitted         each one expands to the
+  then whichever     450 m² drawn             rule, the arithmetic,
+  other answers                               and a one-click fix
+  could change
+  the verdict —                               built from 3 answers you
+  each one the app                            gave and 19 the app
+  supplied marked                             supplied, 10 of which
+  as the app's                                could change this
 ```
 
-**Simple** mode asks six questions in plain words. **Advanced** mode adds the fields a
-drawing needs — plot shape, each setback, provisions, circle rate. Both write to the same
-project and run the same engine, so switching never loses work and never changes the
-answer, only how much of it you are shown.
+The workspace asks three questions of everyone — what you are building, whether it is
+built yet, and how big the plot is — because without those three there is no question. It
+works out the rest by asking the engine.
+
+The engine is deterministic and costs about four-tenths of a millisecond a run, so on
+every edit the app re-runs it once for every other answer you could have given — around a
+hundred and thirty runs, thirteen milliseconds — and keeps the answers that moved
+something. What moved the verdict is asked next; what only moves the bill is offered
+below; what changes nothing is not asked at all. A 320 m² plot is never asked about solar
+photovoltaics, because Clause 13.2.3.1 binds at 500; the same plot at 600 m² is.
+
+**Every value you have not given is marked as the app's**, with what it is holding up
+written next to it — *Assumed 3.5 m, a common front setback rather than one read off your
+drawing — decides where the building sits on the plot* — and a finding that rests on one
+says so. This is the part that matters: the engine needs twenty-five inputs and nobody
+opens an app and supplies twenty-five, so the alternative to marking them is presenting a
+verdict built from the app's furniture with exactly the confidence of one built from your
+drawing.
+
+**Plain** and **Precise** change how much detail the *answers* carry — the clause, the
+arithmetic, the byelaws' own names for things. They do not change which questions get
+asked, and they never change the verdict.
 
 *Built yet?* is the one question that looks optional and is not. Chapter 16 prices a
 deviation that exists; a drawing that breaks a rule is redrawn, not fined. Asked of a
@@ -102,9 +124,13 @@ src/
     impact-fee.ts  Clause 15.4 — the charge for a higher use in a lower zone
     findings.ts    assessProject() — every rule, applied to one project
     project.ts     The shared project model
+    inputs.ts      Every question the engine can be asked, declared once
+    sensitivity.ts Which of them could change THIS answer, measured by
+                   re-running the engine against every other answer
   workspace/       The application
     Workspace.tsx  The three panels
-    SitePanel.tsx  What you have (simple and advanced)
+    SitePanel.tsx  The questions, ordered by what turns on them
+    InputControl.tsx  One registered question, rendered
     SitePlan.tsx   The drawing
     VerdictPanel.tsx  What the byelaws say about it
   context/         ProjectContext, ThemeContext, ToastContext
@@ -112,6 +138,35 @@ src/
   data/            Byelaw text, tables and the GIS dataset
 server.ts          Express: static hosting plus the /api/chat proxy
 ```
+
+### Which questions this project needs
+
+`inputs.ts` declares every question the engine can be asked — twenty-five of them — and
+nothing else may render a control. A field added to the project model and left out of the
+registry fails a test rather than quietly going unasked, which is how `masterPlanZone`
+came to decide Clause 15.3 for all sixteen occupancies while having no control anywhere on
+screen, with the verdict panel nagging *"set the master plan zone to settle it"* at a user
+who had no way to set it.
+
+`sensitivity.ts` decides which of them matter here, by measurement rather than by a
+curated list. For each question it re-runs `assessProject` against the other answers and
+diffs the result, sorting each into: changes whether you may build at all, flips a check,
+moves the bill or the buildable area, changes only wording, or changes nothing. The same
+sweep inverts to give each finding the inputs it rests on.
+
+For a boolean or a fixed set of choices the sweep tries every value the field can hold, so
+"cannot change your answer" is exact. For a number it is a ladder laid across the
+thresholds the byelaws actually use, so the claim is the weaker *"six other values were
+tried and none of them changed anything"* — and the interface prints whichever is true.
+
+Two things this measured on the code as it stands. `hasStilt` is a checkbox the user could
+tick that changes nothing: `conflicts.ts` says in its own words that it "exists and is
+deliberately not consulted", because whether a stilt lifts the 15 m high-rise threshold to
+17.5 m is open conflict C-016. It is now shown under *cannot change this answer*, with
+that reason. And the circle rate — assumed at ₹35,000/m² since the app shipped — reaches
+nothing on a proposal, because a drawing that exceeds its entitlement is redrawn rather
+than charged; ask the same question of a building already standing and it swings the bill
+by ₹37 lakh.
 
 ### One assessment, many findings
 

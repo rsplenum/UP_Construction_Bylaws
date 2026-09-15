@@ -1,5 +1,6 @@
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { DEFAULT_PROJECT, LEGACY_OCCUPANCY, ProjectState } from '../domain/project';
+import { InputId, isInputId } from '../domain/inputs';
 import { OCCUPANCIES, OccupancyId } from '../domain/occupancy';
 
 const STORAGE_KEY = 'up_byelaws_2025_project';
@@ -18,8 +19,23 @@ export interface SavedProject {
 
 interface ProjectContextValue {
   project: ProjectState;
-  /** Patch one or more fields. Every screen writes through this. */
+  /**
+   * Patch one or more fields. Every screen writes through this.
+   *
+   * Writing a field is also how a question gets answered: any registered input id in
+   * `changes` joins `project.answered`, so the app stops calling that value an assumption
+   * of its own. That includes a value written by a finding's own "fix" button — the user
+   * pressed it, so the number is theirs.
+   */
   patch: (changes: Partial<ProjectState>) => void;
+  /**
+   * Accept the app's assumption as the answer, without changing the number.
+   *
+   * Needed because `patch` only records a field it actually changes, and the commonest way
+   * to answer a question is to look at what was assumed and find it already right. Without
+   * this, agreeing with the app would be indistinguishable from never having read it.
+   */
+  affirm: (ids: readonly InputId[]) => void;
   replace: (next: ProjectState) => void;
   reset: () => void;
   undo: () => void;
@@ -87,6 +103,16 @@ function sanitize(candidate: unknown): ProjectState {
   if (Number.isFinite(Number(input.latitude))) out.latitude = Number(input.latitude);
   if (Number.isFinite(Number(input.longitude))) out.longitude = Number(input.longitude);
 
+  // Which questions the user answered, rather than the app. The loop above types fields
+  // against their default and an array matches none of number/boolean/string, so this is
+  // handled here. Unknown ids are dropped: a project saved against an older registry must
+  // not be able to claim provenance for a question that no longer exists. A project saved
+  // before this field existed arrives with none, which is the correct reading — nothing in
+  // it can be shown to have been answered.
+  if (Array.isArray(input.answered)) {
+    out.answered = [...new Set(input.answered.filter(isInputId))];
+  }
+
   return out;
 }
 
@@ -116,10 +142,29 @@ export const ProjectProvider: React.FC<{ children: React.ReactNode }> = ({ child
     (changes: Partial<ProjectState>) => {
       setProject((prev) => {
         const next = { ...prev, ...changes };
-        const changed = (Object.keys(changes) as (keyof ProjectState)[]).some((k) => prev[k] !== next[k]);
-        if (!changed) return prev;
+        const touched = (Object.keys(changes) as (keyof ProjectState)[]).filter((k) => prev[k] !== next[k]);
+        if (touched.length === 0) return prev;
+        const answered = new Set(prev.answered);
+        for (const key of touched) if (isInputId(key)) answered.add(key);
+        // `plotDepth: 0` is written alongside a frontage edit to mean "recompute the depth
+        // from the area", which is the app deriving a number, not the user stating one.
+        if (changes.plotDepth === 0) answered.delete('plotDepth');
         pushUndo(prev);
-        return next;
+        return { ...next, answered: [...answered] };
+      });
+    },
+    [pushUndo],
+  );
+
+  const affirm = useCallback(
+    (ids: readonly InputId[]) => {
+      setProject((prev) => {
+        const answered = new Set(prev.answered);
+        const before = answered.size;
+        for (const id of ids) answered.add(id);
+        if (answered.size === before) return prev;
+        pushUndo(prev);
+        return { ...prev, answered: [...answered] };
       });
     },
     [pushUndo],
@@ -210,11 +255,11 @@ export const ProjectProvider: React.FC<{ children: React.ReactNode }> = ({ child
 
   const value = useMemo<ProjectContextValue>(
     () => ({
-      project, patch, replace, reset, undo, canUndo,
+      project, patch, affirm, replace, reset, undo, canUndo,
       savedProjects, saveSnapshot, loadSnapshot, deleteSnapshot,
       exportJson, importJson, lastSavedLabel,
     }),
-    [project, patch, replace, reset, undo, canUndo, savedProjects, saveSnapshot, loadSnapshot, deleteSnapshot, exportJson, importJson, lastSavedLabel],
+    [project, patch, affirm, replace, reset, undo, canUndo, savedProjects, saveSnapshot, loadSnapshot, deleteSnapshot, exportJson, importJson, lastSavedLabel],
   );
 
   return <ProjectContext.Provider value={value}>{children}</ProjectContext.Provider>;

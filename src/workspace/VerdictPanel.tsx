@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { AlertTriangle, Check, ChevronRight, Info, ShieldQuestion, Wand2, XCircle } from 'lucide-react';
+import { AlertTriangle, Check, ChevronRight, CircleDashed, Info, ShieldQuestion, Wand2, XCircle } from 'lucide-react';
 import { Assessment, Finding, FindingStatus, FindingTopic, TOPIC_LABELS } from '../domain/findings';
+import { InputId, describeAnswer, getInput } from '../domain/inputs';
+import { Provenance, Sensitivity } from '../domain/sensitivity';
 import {
   CHALLENGE_KIND_BLURB,
   CHALLENGE_KIND_LABEL,
@@ -52,7 +54,11 @@ const KIND_ORDER: readonly ChallengeKind[] = ['source_gap', 'needs_a_fact', 'amb
 
 interface VerdictPanelProps {
   assessment: Assessment;
+  sensitivity: Sensitivity;
+  provenance: Provenance;
   onHoverFinding?: (finding: Finding | null) => void;
+  /** Send the cursor to a question in the left panel. */
+  onAsk?: (id: InputId) => void;
 }
 
 /**
@@ -62,8 +68,10 @@ interface VerdictPanelProps {
  * left the reader to assemble an answer. This renders the answer, and reveals the rule
  * behind any line on demand.
  */
-export const VerdictPanel: React.FC<VerdictPanelProps> = ({ assessment, onHoverFinding }) => {
-  const { project, patch } = useProject();
+export const VerdictPanel: React.FC<VerdictPanelProps> = ({
+  assessment, sensitivity, provenance, onHoverFinding, onAsk,
+}) => {
+  const { project, patch, affirm } = useProject();
   const simple = project.mode === 'simple';
   const [openId, setOpenId] = useState<string | null>(null);
   const [showSettled, setShowSettled] = useState(false);
@@ -103,6 +111,18 @@ export const VerdictPanel: React.FC<VerdictPanelProps> = ({ assessment, onHoverF
     }
     return { total, parts };
   })();
+
+  /**
+   * The answers a line is standing on that nobody gave it.
+   *
+   * Only the ones that can flip this finding's status count: a caveat that fires on every
+   * line is the same as none, and an assumption that merely reworded a sentence is not
+   * something to warn a reader about. Filtered to assumptions, because an answer the user
+   * gave is theirs to trust and needs no flag.
+   */
+  const assumedSet = new Set<InputId>(provenance.assumed);
+  const restsOn = (findingId: string): InputId[] =>
+    (sensitivity.flippedBy[findingId] ?? []).filter((id) => assumedSet.has(id));
 
   const grouped = visible.reduce<Partial<Record<FindingTopic, Finding[]>>>((acc, f) => {
     (acc[f.topic] ??= []).push(f);
@@ -145,6 +165,40 @@ export const VerdictPanel: React.FC<VerdictPanelProps> = ({ assessment, onHoverF
           </p>
         )}
 
+        {/*
+          * Where this verdict came from.
+          *
+          * Simple mode asked six questions and computed from twenty-four, and said nothing
+          * about the other eighteen. The bottom line looked exactly as firm either way, so
+          * a reader had no way to tell a verdict built from their drawing from one built
+          * from the app's furniture. This line says which it is, in the same box as the
+          * answer, and goes to the questions that are still the app's.
+          */}
+        {provenance.assumed.length === 0 ? (
+          <p className="mt-2.5 flex items-start gap-1.5 rounded-lg bg-white/70 px-2.5 py-1.5 text-[11px] leading-snug text-slate-700 dark:bg-black/25 dark:text-slate-300">
+            <Check className="mt-px h-3 w-3 flex-shrink-0" aria-hidden="true" />
+            <span>Built from {provenance.answered.length} answers, all of them yours.</span>
+          </p>
+        ) : (
+          <button
+            type="button"
+            onClick={() => onAsk?.(provenance.decisive[0] ?? provenance.assumed[0])}
+            className="mt-2.5 flex w-full items-start gap-1.5 rounded-lg bg-white/70 px-2.5 py-1.5 text-left text-[11px] leading-snug text-slate-700 transition-colors hover:bg-white dark:bg-black/25 dark:text-slate-300 dark:hover:bg-black/40"
+          >
+            <CircleDashed className="mt-px h-3 w-3 flex-shrink-0 text-amber-700 dark:text-amber-400" aria-hidden="true" />
+            <span>
+              {provenance.answered.length === 0
+                ? `Built entirely from values the app supplied — ${provenance.assumed.length} of them`
+                : `Built from ${provenance.answered.length} ${provenance.answered.length === 1 ? 'answer' : 'answers'} you gave`
+                  + ` and ${provenance.assumed.length} the app supplied`}
+              {provenance.decisive.length > 0
+                ? `, ${provenance.decisive.length} of which could change this verdict`
+                : ''}
+              . <span className="font-semibold underline decoration-dotted underline-offset-2">Go through them</span>
+            </span>
+          </button>
+        )}
+
         <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[11px] font-medium">
           {assessment.blocked > 0 && <span className="text-rose-700 dark:text-rose-300">{assessment.blocked} blocking</span>}
           {assessment.attention > 0 && <span className="text-amber-800 dark:text-amber-300">{assessment.attention} to settle</span>}
@@ -170,6 +224,7 @@ export const VerdictPanel: React.FC<VerdictPanelProps> = ({ assessment, onHoverF
                 const style = STATUS[finding.status];
                 const Icon = style.icon;
                 const isOpen = openId === finding.id;
+                const resting = restsOn(finding.id);
                 return (
                   <li
                     key={finding.id}
@@ -205,6 +260,14 @@ export const VerdictPanel: React.FC<VerdictPanelProps> = ({ assessment, onHoverF
                           >
                             <ShieldQuestion className="h-2.5 w-2.5" aria-hidden="true" />
                             {CHALLENGE_KIND_LABEL[finding.dispute.kind]}
+                          </span>
+                        )}
+                        {resting.length > 0 && (
+                          <span className="ml-1.5 mt-1 inline-flex items-center gap-1 text-[10.5px] font-medium text-amber-800 dark:text-amber-400">
+                            <CircleDashed className="h-2.5 w-2.5" aria-hidden="true" />
+                            {resting.length === 1
+                              ? 'rests on an assumption'
+                              : `rests on ${resting.length} assumptions`}
                           </span>
                         )}
                       </span>
@@ -263,6 +326,45 @@ export const VerdictPanel: React.FC<VerdictPanelProps> = ({ assessment, onHoverF
                             <p className="mt-1.5 font-mono text-[10px] text-slate-500 dark:text-slate-400">
                               {finding.dispute.id} · docs/VERIFICATION-LOG.md
                             </p>
+                          </div>
+                        )}
+
+                        {resting.length > 0 && (
+                          <div className="rounded-lg border border-dashed border-amber-300 bg-amber-50/60 p-2.5 dark:border-amber-500/30 dark:bg-amber-500/[0.07]">
+                            <p className="flex items-center gap-1.5 text-[11px] font-bold text-slate-900 dark:text-slate-100">
+                              <CircleDashed className="h-3 w-3 flex-shrink-0" aria-hidden="true" />
+                              This rests on {resting.length === 1 ? 'an answer' : 'answers'} you have not given
+                            </p>
+                            <p className="mt-1 text-[11px] leading-relaxed text-slate-700 dark:text-slate-300">
+                              The app supplied {resting.length === 1 ? 'it' : 'them'}, and a different
+                              {resting.length === 1 ? ' answer' : ' set of answers'} would change what this line says.
+                            </p>
+                            <ul className="mt-2 space-y-1.5">
+                              {resting.map((inputId) => (
+                                <li key={inputId} className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[11px]">
+                                  <span className="text-slate-700 dark:text-slate-300">
+                                    {getInput(inputId).label}:{' '}
+                                    <span className="font-semibold tabular-nums text-slate-900 dark:text-white">
+                                      {describeAnswer(project, inputId)}
+                                    </span>
+                                  </span>
+                                  <button
+                                    type="button"
+                                    onClick={() => onAsk?.(inputId)}
+                                    className="rounded-full border border-slate-300 px-2 py-0.5 text-[10px] font-semibold text-slate-700 transition-colors hover:bg-white dark:border-white/15 dark:text-slate-300 dark:hover:bg-white/10"
+                                  >
+                                    Change it
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => affirm([inputId])}
+                                    className="rounded-full border border-slate-300 px-2 py-0.5 text-[10px] font-semibold text-slate-700 transition-colors hover:bg-white dark:border-white/15 dark:text-slate-300 dark:hover:bg-white/10"
+                                  >
+                                    That's right
+                                  </button>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
                         )}
 

@@ -171,6 +171,24 @@ export interface ProjectState {
    */
   zonalCoverageCapPct: number;
 
+  /**
+   * The ids of the questions this user has actually answered.
+   *
+   * Every other field of this object still holds a value — it has to, the engine cannot run
+   * on a blank — and until this list existed there was no way to tell the two apart. Simple
+   * mode asked six questions and computed the verdict from twenty-four, so a front setback
+   * of 3.5 m, a parking count of four and a circle rate of ₹35,000/m² went into a bill that
+   * was then presented with exactly the confidence of a bill built from the applicant's own
+   * drawing. The numbers were reasonable; presenting them as the user's was not.
+   *
+   * So provenance travels with the project: `ProjectContext.patch` adds the ids it writes,
+   * `sanitize` carries the list through a save, an export and a colleague's import, and
+   * `sensitivity.ts` sorts the rest into what the app is assuming and how much each
+   * assumption is holding up. Entries are `InputId`s from `domain/inputs.ts`; typed as
+   * strings here only to keep the registry importing the model rather than the reverse.
+   */
+  answered: readonly string[];
+
   /** Which depth of the app the person is working in. */
   mode: Mode;
 
@@ -219,6 +237,9 @@ export const DEFAULT_PROJECT: ProjectState = {
 
   circleRate: 35000,
   zonalCoverageCapPct: 0,
+
+  // Nothing has been answered yet, so everything above is the app's assumption and says so.
+  answered: [],
   mode: 'simple',
 };
 

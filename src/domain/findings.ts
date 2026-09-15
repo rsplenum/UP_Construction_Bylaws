@@ -76,6 +76,23 @@ export const TOPIC_LABELS: Readonly<Record<FindingTopic, string>> = {
   procedure: 'Getting it sanctioned',
 };
 
+/**
+ * The same nine topics said mid-sentence. `TOPIC_LABELS` are column headings — "Can you
+ * build this here" — and reading a heading back inside a sentence gives "decides can you
+ * build this here". Used wherever a topic is named as the thing an answer governs.
+ */
+export const TOPIC_IN_SENTENCE: Readonly<Record<FindingTopic, string>> = {
+  permissibility: 'whether this use is allowed here',
+  bulk: 'how much you can build',
+  envelope: 'where the building sits on the plot',
+  height: 'how tall it can be',
+  parking: 'parking and charging',
+  safety: 'fire and life safety',
+  services: 'water, energy and waste',
+  social: 'the affordable-housing obligation',
+  procedure: 'how it gets sanctioned',
+};
+
 export interface Finding {
   id: string;
   topic: FindingTopic;

@@ -14,6 +14,12 @@ interface NumberFieldProps {
   warning?: string;
   disabled?: boolean;
   className?: string;
+  /**
+   * Overrides the generated DOM id, so another panel can send focus here by name. The
+   * verdict says which answers a finding rests on; pressing one of them has to land the
+   * cursor in the right box.
+   */
+  inputId?: string;
 }
 
 /**
@@ -25,9 +31,10 @@ interface NumberFieldProps {
  * on blur, which is also where the min/max are enforced.
  */
 export const NumberField: React.FC<NumberFieldProps> = ({
-  label, value, onChange, min, max, step = 0.1, unit, hint, warning, disabled, className = '',
+  label, value, onChange, min, max, step = 0.1, unit, hint, warning, disabled, className = '', inputId,
 }) => {
-  const id = useId();
+  const generated = useId();
+  const id = inputId ?? generated;
   const [draft, setDraft] = useState<string>(String(value));
   const [focused, setFocused] = useState(false);
 

@@ -1,12 +1,14 @@
-import React, { useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { Building2, FileDown, RotateCcw, Undo2 } from 'lucide-react';
 import { useProject } from '../context/ProjectContext';
 import { assessProject } from '../domain/findings';
 import { resolveRequiredSetbacks } from '../domain/setbacks';
 import { getOccupancy } from '../domain/occupancy';
 import { Finding } from '../domain/findings';
+import { InputId } from '../domain/inputs';
+import { analyse, provenanceOf } from '../domain/sensitivity';
 import { ChargesCard } from './ChargesCard';
-import { SitePanel } from './SitePanel';
+import { FocusRequest, SitePanel } from './SitePanel';
 import { SitePlan } from './SitePlan';
 import { VerdictPanel } from './VerdictPanel';
 
@@ -24,8 +26,19 @@ const FACE_OF: Record<string, 'front' | 'rear' | 'side1' | 'side2' | null> = {
 export const Workspace: React.FC = () => {
   const { project, patch, reset, undo, canUndo, lastSavedLabel } = useProject();
   const [hovered, setHovered] = useState<Finding | null>(null);
+  const [focusRequest, setFocusRequest] = useState<FocusRequest | null>(null);
 
   const assessment = useMemo(() => assessProject(project), [project]);
+  // One sweep, read by both panels: the left one to decide which questions are worth
+  // asking, the right one to say which answers a finding is resting on. Computed here
+  // rather than in each so the engine is not run twice over the same project.
+  const sensitivity = useMemo(() => analyse(project, assessment), [project, assessment]);
+  const provenance = useMemo(() => provenanceOf(project, sensitivity), [project, sensitivity]);
+
+  const askFor = useCallback(
+    (id: InputId) => setFocusRequest({ id, nonce: Date.now() }),
+    [],
+  );
   const required = useMemo(
     () =>
       resolveRequiredSetbacks({
@@ -44,7 +57,12 @@ export const Workspace: React.FC = () => {
     <div className="mx-auto grid w-full max-w-[1600px] flex-1 grid-cols-1 gap-px overflow-hidden bg-slate-200 lg:h-[calc(100vh-8.5rem)] lg:grid-cols-[minmax(280px,320px)_1fr_minmax(340px,420px)] dark:bg-white/10">
       {/* what you have */}
       <aside aria-label="Your site" className="bg-white lg:overflow-hidden dark:bg-[#161617]">
-        <SitePanel />
+        <SitePanel
+          assessment={assessment}
+          sensitivity={sensitivity}
+          provenance={provenance}
+          focusRequest={focusRequest}
+        />
       </aside>
 
       {/* what it means */}
@@ -60,21 +78,32 @@ export const Workspace: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-1.5">
-            {/* Simple / Advanced */}
-            <div className="flex rounded-full bg-slate-200/70 p-0.5 dark:bg-white/10" role="group" aria-label="Detail level">
-              {(['simple', 'advanced'] as const).map((m) => (
+            {/*
+              * How much detail the ANSWERS carry — not how many questions get asked.
+              *
+              * It used to be both, and the second half was the problem: "Simple" hid
+              * fourteen inputs and then computed with them anyway. Which questions appear
+              * is now decided by whether the engine can be made to change its mind by the
+              * answer, so this switch does the one thing left for it to do, and is labelled
+              * for that rather than for a depth of interface that no longer varies.
+              */}
+            <div className="flex rounded-full bg-slate-200/70 p-0.5 dark:bg-white/10" role="group" aria-label="How much detail the answers carry">
+              {([['simple', 'Plain'], ['advanced', 'Precise']] as const).map(([m, label]) => (
                 <button
                   key={m}
                   type="button"
                   onClick={() => patch({ mode: m })}
                   aria-pressed={project.mode === m}
-                  className={`rounded-full px-3 py-1 text-[11.5px] font-semibold capitalize transition-colors ${
+                  title={m === 'simple'
+                    ? 'Answers in plain words'
+                    : 'Answers with the clause, the arithmetic and the byelaws\' own names'}
+                  className={`rounded-full px-3 py-1 text-[11.5px] font-semibold transition-colors ${
                     project.mode === m
                       ? 'bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white'
                       : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
                   }`}
                 >
-                  {m}
+                  {label}
                 </button>
               ))}
             </div>
@@ -144,7 +173,13 @@ export const Workspace: React.FC = () => {
 
       {/* what the byelaws say */}
       <aside aria-label="What the byelaws say" className="bg-white lg:overflow-hidden dark:bg-[#161617]">
-        <VerdictPanel assessment={assessment} onHoverFinding={setHovered} />
+        <VerdictPanel
+          assessment={assessment}
+          sensitivity={sensitivity}
+          provenance={provenance}
+          onHoverFinding={setHovered}
+          onAsk={askFor}
+        />
       </aside>
     </div>
   );

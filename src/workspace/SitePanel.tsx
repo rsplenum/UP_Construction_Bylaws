@@ -1,222 +1,323 @@
-import React from 'react';
-import { ChevronDown } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { ChevronRight, CircleDashed, Sparkles } from 'lucide-react';
 import { useProject } from '../context/ProjectContext';
-import { NumberField } from '../components/ui/NumberField';
+import { Assessment, TOPIC_IN_SENTENCE } from '../domain/findings';
 import {
-  OCCUPANCY_GROUPS,
-  OccupancyId,
-  forArea, getOccupancy,
-  occupanciesInGroup,
-} from '../domain/occupancy';
-import { BUILDING_STAGE_LABEL, BuildingStage, derivePlotDepth } from '../domain/project';
+  FRAMING_INPUTS, GROUP_LABEL, InputGroup, InputId, getInput,
+} from '../domain/inputs';
+import { Influence, Provenance, Sensitivity } from '../domain/sensitivity';
+import { InputControl, domIdFor } from './InputControl';
+
+export interface FocusRequest {
+  readonly id: InputId;
+  /** Changes on every request, so asking twice for the same field works. */
+  readonly nonce: number;
+}
+
+interface SitePanelProps {
+  assessment: Assessment;
+  sensitivity: Sensitivity;
+  provenance: Provenance;
+  focusRequest: FocusRequest | null;
+}
+
+const inr = (n: number): string => `₹${Math.round(n).toLocaleString('en-IN')}`;
 
 /**
- * What you have and what you want to build.
+ * What an unanswered question is holding up, in the reader's terms.
  *
- * Simple mode asks six questions in plain words. Advanced mode adds the fields a
- * drawing needs. Both write to the same project, so switching modes never loses work
- * and never changes the answer — only how much of the input you are shown.
+ * Not "impact: status" but "could change what the byelaws say about parking" — the point
+ * of ranking the questions is to tell someone which one to go and find out, and a rank is
+ * only useful if it says what turns on it.
  */
-export const SitePanel: React.FC = () => {
-  const { project, patch } = useProject();
-  const simple = project.mode === 'simple';
-  const occupancy = getOccupancy(project.occupancy);
-  // Clause 4.1.3 / 4.2.3: the minimum road width differs between a built-up area
-  // and a new layout.
-  const minRoadWidth = forArea(occupancy.minRoadWidthM, project.areaType ?? 'built_up');
-  const depth = derivePlotDepth(project);
+function whatItMoves(influence: Influence, assessment: Assessment): string {
+  if (influence.impact === 'verdict' || influence.impact === 'status') {
+    const topics = [...new Set(
+      influence.flips
+        .map((id) => assessment.findings.find((f) => f.id === id)?.topic)
+        .filter((t): t is NonNullable<typeof t> => Boolean(t)),
+    )];
+    const named = topics.slice(0, 2).map((t) => TOPIC_IN_SENTENCE[t]);
+    const rest = topics.length > 2 ? ` and ${topics.length - 2} more` : '';
+    // Naming what each answer governs, and not how severe it is. Six of the eight
+    // assumptions on a plain house can produce a blocking finding at some value, so "can
+    // block the build outright" written against six of them says nothing — which is the
+    // lesson the caveat chips in the verdict panel already learned. The severity is carried
+    // once, by the heading this group sits under, and by the order within it.
+    return named.length > 0 ? `decides ${named.join(', ')}${rest}` : 'decides how this is checked';
+  }
+
+  if (influence.impact === 'money') {
+    const parts: string[] = [];
+    if (influence.moneySwing > 1) parts.push(`the bill by up to ${inr(influence.moneySwing)}`);
+    if (influence.areaSwing > 0.05) parts.push(`the buildable floor area by up to ${influence.areaSwing.toFixed(0)} m²`);
+    return `moves ${parts.join(' and ') || 'what the government charges'}`;
+  }
+
+  return 'changes only how an answer is worded';
+}
+
+/** The honest form of "this makes no difference", which depends on how it was tested. */
+function inertBecause(influence: Influence): string {
+  return influence.exhaustive
+    ? `Every value this can take was tried; none of them changed anything.`
+    : `${influence.tried} other values were tried and none of them changed anything.`;
+}
+
+const Assumed: React.FC<{ id: InputId; influence: Influence; assessment: Assessment }> = ({
+  id, influence, assessment,
+}) => {
+  const { affirm, project } = useProject();
+  const def = getInput(id);
+  return (
+    // A dashed box round each of eight assumptions reads as eight alarms, and so reads as
+    // none — the same lesson the caveat chips already learned. A rule in the margin marks
+    // the value as the app's without shouting about it.
+    <div className="border-l-2 border-amber-400/70 pl-3 dark:border-amber-500/50">
+      <InputControl id={id} />
+      <p className="mt-1.5 text-[10.5px] leading-snug text-slate-600 dark:text-slate-400">
+        <span className="font-semibold text-amber-800 dark:text-amber-400">Assumed</span>{' '}
+        {def.because} — {whatItMoves(influence, assessment)}.{' '}
+        <button
+          type="button"
+          onClick={() => affirm([id])}
+          className="font-semibold text-slate-700 underline decoration-dotted underline-offset-2 transition-colors hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+        >
+          {def.kind === 'number' || def.kind === 'text'
+            ? `${String(project[id as keyof typeof project])}${def.unit ? ` ${def.unit}` : ''} is right`
+            : "That's right"}
+        </button>
+      </p>
+    </div>
+  );
+};
+
+const Section: React.FC<{
+  id: string;
+  title: string;
+  subtitle?: string;
+  open: boolean;
+  onToggle: () => void;
+  children: React.ReactNode;
+}> = ({ id, title, subtitle, open, onToggle, children }) => (
+  <div className="border-t border-slate-200 pt-3 dark:border-white/10">
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-expanded={open}
+      aria-controls={`section-${id}`}
+      className="flex w-full items-center gap-1.5 text-left"
+    >
+      <ChevronRight className={`h-3.5 w-3.5 flex-shrink-0 text-slate-400 transition-transform ${open ? 'rotate-90' : ''}`} aria-hidden="true" />
+      <span className="flex-1">
+        <span className="block text-[11px] font-semibold text-slate-700 dark:text-slate-300">{title}</span>
+        {subtitle && <span className="block text-[10.5px] text-slate-600 dark:text-slate-400">{subtitle}</span>}
+      </span>
+    </button>
+    {open && <div id={`section-${id}`} className="mt-3 space-y-3">{children}</div>}
+  </div>
+);
+
+/**
+ * The questions, in the order this project needs them answered.
+ *
+ * The previous version of this panel asked a fixed six in Simple mode and a fixed twenty
+ * in Advanced, both hand-picked, and neither matched what the engine reads: it asked a
+ * house about stilt parking, which nothing consults, while never once asking anybody for
+ * the master-plan zone that decides whether the use is permitted at all. Worse, the ten
+ * inputs Simple mode did not ask still went into the verdict — as defaults, presented with
+ * the same confidence as the six the applicant had actually given.
+ *
+ * So the panel no longer holds a list of questions. It asks the three without which there
+ * is no question, and then reads `sensitivity.ts` — which re-runs the engine against every
+ * other answer this project could give — to sort the rest into what would change the
+ * verdict, what only moves the bill, what changes a sentence, and what the engine does not
+ * read at all. Every value the app supplied is on screen, marked as the app's and not the
+ * user's, with what it is holding up written next to it.
+ */
+export const SitePanel: React.FC<SitePanelProps> = ({
+  assessment, sensitivity, provenance, focusRequest,
+}) => {
+  const { project } = useProject();
+  const [open, setOpen] = useState<Record<string, boolean>>({ answered: true });
+  const toggle = (id: string) => setOpen((prev) => ({ ...prev, [id]: !prev[id] }));
+
+  const told = useMemo(() => new Set(project.answered), [project.answered]);
+  const framing = FRAMING_INPUTS;
+  const answered = provenance.answered.filter((id) => !framing.includes(id));
+  const decisive = provenance.decisive.filter((id) => !framing.includes(id));
+  const material = provenance.material.filter((id) => !framing.includes(id));
+  const cosmetic = provenance.cosmetic.filter((id) => !framing.includes(id));
+  // A framing question is asked at the top whatever its influence, so it must not appear a
+  // second time lower down — `buildingStage` is inert for a proposal and decisive the
+  // moment the building is standing, and would otherwise render twice in the first case.
+  const inert = provenance.inert.filter((id) => !framing.includes(id));
+
+  // Which collapsed section a question lives in, so a request to focus it can open that
+  // section first. Answered and decisive questions are always on screen.
+  const sectionOf = (id: InputId): string | null =>
+    (material.includes(id) && 'material')
+    || (cosmetic.includes(id) && 'cosmetic')
+    || (inert.includes(id) && 'inert')
+    || null;
+
+  useEffect(() => {
+    if (!focusRequest) return;
+    const section = sectionOf(focusRequest.id);
+    if (section) setOpen((prev) => ({ ...prev, [section]: true }));
+    const frame = requestAnimationFrame(() => {
+      const el = document.getElementById(domIdFor(focusRequest.id));
+      el?.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      el?.focus({ preventScroll: true });
+    });
+    return () => cancelAnimationFrame(frame);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [focusRequest]);
+
+  const assumedCount = provenance.assumed.length;
+  const answeredCount = provenance.answered.length;
+  const decisiveTotal = provenance.decisive.length;
+  const framingDecisive = provenance.decisive.filter((id) => framing.includes(id)).length;
+  const framingAnswered = provenance.answered.filter((id) => framing.includes(id)).length;
+
+  const grouped = answered.reduce<Partial<Record<InputGroup, InputId[]>>>((acc, id) => {
+    (acc[getInput(id).group] ??= []).push(id);
+    return acc;
+  }, {});
 
   return (
-    <div className="flex h-full flex-col gap-5 overflow-y-auto p-5">
+    <div className="flex h-full flex-col gap-4 overflow-y-auto p-5" id="your-site">
       <div>
         <h2 className="text-[13px] font-semibold text-slate-900 dark:text-white">Your site</h2>
-        <p className="mt-0.5 text-[11.5px] text-slate-600 dark:text-slate-400">
-          {simple ? 'Six questions. Everything else is worked out for you.' : 'Full specification.'}
+        <p className="mt-0.5 text-[11.5px] leading-snug text-slate-600 dark:text-slate-400">
+          {answeredCount === 0
+            ? 'Nothing here is yours yet — every value below was supplied by the app, '
+              + `${decisiveTotal} of them able to change the verdict.`
+            : assumedCount === 0
+              ? 'Every answer that reaches the verdict is one you gave. Nothing below was supplied for you.'
+              : `${answeredCount} ${answeredCount === 1 ? 'answer is' : 'answers are'} yours. `
+                + `${assumedCount} more came from the app`
+                + (decisiveTotal > 0
+                  ? `, ${decisiveTotal} of ${decisiveTotal === 1 ? 'which can' : 'them able to'} change the verdict.`
+                  : ', none of which can change the verdict.')}
         </p>
       </div>
 
-      {/* 1. What are you building? */}
-      <div>
-        <label htmlFor="ws-occupancy" className="mb-1 block text-[11px] font-medium text-slate-600 dark:text-slate-400">
-          What are you building?
-        </label>
-        <div className="relative">
-          <select
-            id="ws-occupancy"
-            value={project.occupancy}
-            onChange={(e) => patch({ occupancy: e.target.value as OccupancyId })}
-            className="h-10 w-full appearance-none rounded-lg border border-slate-200 bg-white pl-3 pr-9 text-sm text-slate-900 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/25 dark:border-white/10 dark:bg-white/[0.06] dark:text-white"
-          >
-            {OCCUPANCY_GROUPS.map((group) => (
-              <optgroup key={group} label={group}>
-                {occupanciesInGroup(group).map((o) => (
-                  <option key={o.id} value={o.id}>
-                    {simple ? o.plain : o.label}
-                  </option>
-                ))}
-              </optgroup>
+      {/* The three without which there is no question. */}
+      <div className="space-y-3">
+        {framing.map((id) => (
+          <div key={id}>
+            <InputControl id={id} />
+            {!told.has(id) && sensitivity.byInput[id].impact !== 'none' && (
+              <p className="mt-1 flex items-start gap-1.5 text-[10.5px] leading-snug text-slate-600 dark:text-slate-400">
+                <CircleDashed className="mt-px h-3 w-3 flex-shrink-0 text-amber-700 dark:text-amber-400" aria-hidden="true" />
+                <span>Assumed {getInput(id).because}.</span>
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {decisive.length > 0 && (
+        <div className="border-t border-slate-200 pt-3 dark:border-white/10">
+          <h3 className="text-[11px] font-semibold text-amber-800 dark:text-amber-300">
+            {/* "more" where one of the three framing questions above is also still the
+                app's, so this count and the one in the summary line agree. */}
+            {framingDecisive > 0 ? `${decisive.length} more ` : `${decisive.length} `}
+            {decisive.length === 1 ? 'answer would' : 'answers would'} change your verdict
+          </h3>
+          <p className="mt-0.5 text-[10.5px] leading-snug text-slate-600 dark:text-slate-400">
+            The app has supplied these. They are the ones worth going and finding out.
+          </p>
+          <div className="mt-3 space-y-3">
+            {decisive.map((id) => (
+              <Assumed key={id} id={id} influence={sensitivity.byInput[id]} assessment={assessment} />
             ))}
-          </select>
-          <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" aria-hidden="true" />
+          </div>
         </div>
-        <p className="mt-1.5 text-[10.5px] leading-snug text-slate-600 dark:text-slate-400">{occupancy.note}</p>
-      </div>
-
-      {/* 2. Has it been built? — asked of everyone, because it changes what the rest means.
-             Chapter 16 prices a deviation that exists; a drawing that breaks a rule is
-             redrawn, not fined, and an applicant who is asked nothing gets the wrong one. */}
-      <div>
-        <p className="mb-1 block text-[11px] font-medium text-slate-600 dark:text-slate-400">
-          Has it been built?
-        </p>
-        <div className="space-y-1.5">
-          {(Object.keys(BUILDING_STAGE_LABEL) as BuildingStage[]).map((stage) => (
-            <label
-              key={stage}
-              className="flex cursor-pointer items-start gap-2 text-[12px] text-slate-700 dark:text-slate-300"
-            >
-              <input
-                type="radio"
-                name="building-stage"
-                checked={project.buildingStage === stage}
-                onChange={() => patch({ buildingStage: stage })}
-                className="mt-0.5 text-emerald-700 focus:ring-emerald-500"
-              />
-              <span>{BUILDING_STAGE_LABEL[stage]}</span>
-            </label>
-          ))}
-        </div>
-        <p className="mt-1.5 text-[10.5px] leading-snug text-slate-600 dark:text-slate-400">
-          {project.buildingStage === 'proposed'
-            ? simple
-              ? 'Nothing is built yet, so anything that breaks a rule can simply be redrawn.'
-              : 'A drawing that breaks a rule is redrawn, not fined — so Chapter 16 compounding does not apply.'
-            : simple
-              ? 'Where you have built more than you were entitled to, you can pay to keep it — '
-                + 'either by buying the floor area or by compounding it. The cheaper one is used.'
-              : 'Chapter 16 applies. Where floor area exceeds the entitlement you may buy it or '
-                + 'compound it; the cheaper route is used and the other is shown.'}
-        </p>
-      </div>
-
-      {/* 3-4. The plot */}
-      <div className="grid grid-cols-2 gap-3">
-        <NumberField
-          label="Plot area" unit="m²" value={project.plotArea}
-          onChange={(v) => patch({ plotArea: v })} min={10} step={10}
-        />
-        <NumberField
-          label="Road width" unit="m" value={project.roadWidth}
-          onChange={(v) => patch({ roadWidth: v })} min={3} step={1}
-          warning={project.roadWidth < minRoadWidth ? `Needs ${minRoadWidth} m` : undefined}
-        />
-      </div>
-
-      {/* 5-6. The building */}
-      <div className="grid grid-cols-2 gap-3">
-        <NumberField
-          label="Floor area you want" unit="m²" value={project.proposedBuiltUpArea}
-          onChange={(v) => patch({ proposedBuiltUpArea: v })} min={10} step={10}
-        />
-        <NumberField
-          label="Height" unit="m" value={project.buildingHeight}
-          onChange={(v) => patch({ buildingHeight: v })} min={3} step={0.5}
-          hint={project.buildingHeight > 15 ? 'High-rise rules apply' : undefined}
-        />
-      </div>
-
-      {!simple && (
-        <>
-          <div className="border-t border-slate-200 pt-4 dark:border-white/10">
-            <h3 className="mb-2.5 text-[11px] font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
-              Plot shape
-            </h3>
-            <div className="grid grid-cols-2 gap-3">
-              <NumberField
-                label="Frontage" unit="m" value={project.plotFrontage}
-                onChange={(v) => patch({ plotFrontage: v, plotDepth: 0 })} min={3} step={0.5}
-                hint={`Depth ${depth.toFixed(1)} m`}
-              />
-              <NumberField
-                label="Circle rate" unit="₹/m²" value={project.circleRate}
-                onChange={(v) => patch({ circleRate: v })} min={0} step={1000}
-              />
-              {/* Clause 3.2.2 sets no coverage percentage, so this can only come from the
-                  applicant's own notified zonal plan. Blank means none. See B-056, V-064. */}
-              <NumberField
-                label="Zonal coverage cap" unit="%" value={project.zonalCoverageCapPct}
-                onChange={(v) => patch({ zonalCoverageCapPct: v })} min={0} max={100} step={5}
-                hint={project.zonalCoverageCapPct > 0
-                  ? 'From your zonal plan — this clips the envelope'
-                  : 'Byelaws set none; leave 0 unless your plan does'}
-              />
-            </div>
-            <label className="mt-3 flex cursor-pointer items-center gap-2 text-[12px] text-slate-700 dark:text-slate-300">
-              <input
-                type="checkbox" checked={project.isCornerPlot}
-                onChange={(e) => patch({ isCornerPlot: e.target.checked })}
-                className="rounded text-emerald-700 focus:ring-emerald-500"
-              />
-              Corner plot — two road frontages
-            </label>
-          </div>
-
-          <div className="border-t border-slate-200 pt-4 dark:border-white/10">
-            <h3 className="mb-2.5 text-[11px] font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
-              Setbacks you have drawn
-            </h3>
-            <div className="grid grid-cols-2 gap-3">
-              <NumberField label="Front" unit="m" value={project.frontSetbackProvided} onChange={(v) => patch({ frontSetbackProvided: v })} min={0} step={0.1} />
-              <NumberField label="Rear" unit="m" value={project.rearSetbackProvided} onChange={(v) => patch({ rearSetbackProvided: v })} min={0} step={0.1} />
-              <NumberField label="Left side" unit="m" value={project.side1Provided} onChange={(v) => patch({ side1Provided: v })} min={0} step={0.1} />
-              <NumberField label="Right side" unit="m" value={project.side2Provided} onChange={(v) => patch({ side2Provided: v })} min={0} step={0.1} />
-            </div>
-          </div>
-
-          <div className="border-t border-slate-200 pt-4 dark:border-white/10">
-            <h3 className="mb-2.5 text-[11px] font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
-              Provisions
-            </h3>
-            <NumberField
-              label="Parking" unit="car spaces" value={project.parkingBaysProvided}
-              onChange={(v) => patch({ parkingBaysProvided: v })} min={0} step={1}
-            />
-            <div className="mt-3 space-y-2 text-[12px] text-slate-700 dark:text-slate-300">
-              {([
-                ['hasRWH', 'Rainwater harvesting system'],
-                ['hasSolarPv', 'Solar photovoltaics'],
-                ['hasSolarHeating', 'Solar water heating'],
-                ['hasStilt', 'Stilt floor for parking'],
-              ] as const).map(([key, label]) => (
-                <label key={key} className="flex cursor-pointer items-center gap-2">
-                  <input
-                    type="checkbox" checked={Boolean(project[key])}
-                    onChange={(e) => patch({ [key]: e.target.checked })}
-                    className="rounded text-emerald-700 focus:ring-emerald-500"
-                  />
-                  {label}
-                </label>
-              ))}
-            </div>
-            <div className="mt-3">
-              <label htmlFor="ws-green" className="mb-1 block text-[11px] font-medium text-slate-600 dark:text-slate-400">
-                Green rating
-              </label>
-              <select
-                id="ws-green"
-                value={project.greenRating}
-                onChange={(e) => patch({ greenRating: e.target.value as typeof project.greenRating })}
-                className="h-9 w-full rounded-lg border border-slate-200 bg-white px-3 text-[13px] text-slate-900 focus:border-emerald-500 focus:outline-none dark:border-white/10 dark:bg-white/[0.06] dark:text-white"
-              >
-                <option value="none">None</option>
-                <option value="silver">GRIHA 3-star / IGBC Silver (+3% FAR)</option>
-                <option value="gold">GRIHA 4-star / IGBC Gold (+5% FAR)</option>
-                <option value="platinum">GRIHA 5-star / IGBC Platinum (+7% FAR)</option>
-              </select>
-            </div>
-          </div>
-        </>
       )}
+
+      {material.length > 0 && (
+        <Section
+          id="material"
+          title={`${material.length} more ${material.length === 1 ? 'moves' : 'move'} the bill, not the verdict`}
+          subtitle="Supplied by the app. Wrong here costs money, not permission."
+          open={Boolean(open.material)}
+          onToggle={() => toggle('material')}
+        >
+          {material.map((id) => (
+            <Assumed key={id} id={id} influence={sensitivity.byInput[id]} assessment={assessment} />
+          ))}
+        </Section>
+      )}
+
+      {cosmetic.length > 0 && (
+        <Section
+          id="cosmetic"
+          title={`${cosmetic.length} more ${cosmetic.length === 1 ? 'changes' : 'change'} only the wording`}
+          subtitle="Supplied by the app. They alter how an answer reads, not what it is."
+          open={Boolean(open.cosmetic)}
+          onToggle={() => toggle('cosmetic')}
+        >
+          {cosmetic.map((id) => (
+            <Assumed key={id} id={id} influence={sensitivity.byInput[id]} assessment={assessment} />
+          ))}
+        </Section>
+      )}
+
+      {answered.length > 0 && (
+        <Section
+          id="answered"
+          // "more" for the same reason the decisive heading says it: a framing question
+          // answered at the top is counted in the summary line but rendered there, not here.
+          title={`${answered.length}${framingAnswered > 0 ? ' more' : ''} `
+            + `${answered.length === 1 ? 'answer' : 'answers'} you gave`}
+          open={Boolean(open.answered)}
+          onToggle={() => toggle('answered')}
+        >
+          {(Object.keys(grouped) as InputGroup[]).map((group) => (
+            <div key={group}>
+              <h4 className="mb-2 text-[10px] font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">
+                {GROUP_LABEL[group]}
+              </h4>
+              <div className="space-y-3">
+                {grouped[group]!.map((id) => <InputControl key={id} id={id} asQuestion={false} />)}
+              </div>
+            </div>
+          ))}
+        </Section>
+      )}
+
+      {inert.length > 0 && (
+        <Section
+          id="inert"
+          title={`${inert.length} ${inert.length === 1 ? 'question' : 'questions'} cannot change this answer`}
+          subtitle="Asked by the engine of some projects, but not of this one."
+          open={Boolean(open.inert)}
+          onToggle={() => toggle('inert')}
+        >
+          {inert.map((id) => {
+            const def = getInput(id);
+            return (
+              <div key={id} className="rounded-lg border border-slate-200 bg-slate-50 p-3 opacity-90 dark:border-white/10 dark:bg-white/[0.03]">
+                <InputControl id={id} asQuestion={false} />
+                <p className="mt-2 text-[10.5px] leading-snug text-slate-600 dark:text-slate-400">
+                  {def.notConsulted ?? inertBecause(sensitivity.byInput[id])}
+                </p>
+              </div>
+            );
+          })}
+        </Section>
+      )}
+
+      <p className="mt-auto flex items-start gap-1.5 border-t border-slate-200 pt-3 text-[10px] leading-snug text-slate-600 dark:border-white/10 dark:text-slate-400">
+        <Sparkles className="mt-px h-3 w-3 flex-shrink-0" aria-hidden="true" />
+        <span>
+          Which questions appear here was worked out by running the byelaws engine {sensitivity.runs} times
+          over this project — once for every other answer you could have given — and keeping the ones that
+          moved something.
+        </span>
+      </p>
     </div>
   );
 };
