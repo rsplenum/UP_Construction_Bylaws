@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "leaflet/dist/leaflet.css";
 
+@theme {
+  /* Used only by the verdict line. Everything else stays on the system sans. */
+  --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+}
+
 @variant dark (&:where(.dark, .dark *));
 
 :root {
