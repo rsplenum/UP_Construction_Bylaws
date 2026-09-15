@@ -7,7 +7,9 @@
  */
 
 import { Band, assertContiguousLadder, resolveBand } from './bands';
+import type { AreaType } from './far';
 import { OccupancyId, getOccupancy } from './occupancy';
+import { PlotRoads, roadFacingFaces } from './roads';
 
 export interface SetbackSet {
   readonly front: number;
@@ -21,6 +23,20 @@ export interface PlottedSetbackBand extends Band, SetbackSet {
   readonly typology: string;
   readonly maxHeight: number;
   readonly maxFloors: string;
+  /**
+   * The same ceiling as a number, excluding the stilt.
+   *
+   * `maxFloors` is prose — "3 floors + stilt" — and prose cannot be compared against a
+   * floor count. Nothing in the engine could therefore check the ceiling Clause 3.2.4.1
+   * states in terms, so a fourth storey on a 300 m² plot passed every test the engine had
+   * as long as it stayed under 15 m. It is the height limb of V-010 that was enforced and
+   * the floor limb that was not, and the two do not catch the same building: at a 2.75 m
+   * clear floor (Clause 3.4.1's "Mandatory height of floors") four storeys reach 15 m
+   * exactly. The prose is kept for display; this is what the engine reads.
+   */
+  readonly maxFloorsNum: number;
+  /** True where the ceiling above is stated "+ stilt", which does not count as a floor. */
+  readonly stiltAllowed: boolean;
   readonly note: string;
 }
 
@@ -29,31 +45,31 @@ export const PLOTTED_RESIDENTIAL_LADDER: readonly PlottedSetbackBand[] = [
   {
     label: 'Up to 150 sqm', overMoreThan: 0, upToAndIncluding: 150,
     front: 1.0, rear: 0, side1: 0, side2: 0,
-    typology: 'Row Housing', maxHeight: 15, maxFloors: '3 floors + stilt',
+    typology: 'Row Housing', maxHeight: 15, maxFloors: '3 floors + stilt', maxFloorsNum: 3, stiltAllowed: true,
     note: 'No rear or side setback required; maximum coverage behind the front setback.',
   },
   {
     label: '>150 to 300 sqm', overMoreThan: 150, upToAndIncluding: 300,
     front: 3.0, rear: 1.5, side1: 0, side2: 0,
-    typology: 'Row Housing', maxHeight: 15, maxFloors: '3 floors + stilt',
+    typology: 'Row Housing', maxHeight: 15, maxFloors: '3 floors + stilt', maxFloorsNum: 3, stiltAllowed: true,
     note: 'Zero side setback permitted; rear light court mandatory.',
   },
   {
     label: '>300 to 500 sqm', overMoreThan: 300, upToAndIncluding: 500,
     front: 3.0, rear: 3.0, side1: 0, side2: 0,
-    typology: 'Row Housing', maxHeight: 17.5, maxFloors: '4 storeys + stilt',
+    typology: 'Row Housing', maxHeight: 17.5, maxFloors: '4 storeys + stilt', maxFloorsNum: 4, stiltAllowed: true,
     note: '4 storeys with stilt permitted up to 17.5m.',
   },
   {
     label: '>500 to 1200 sqm', overMoreThan: 500, upToAndIncluding: 1200,
     front: 4.5, rear: 4.5, side1: 1.5, side2: 0,
-    typology: 'Semi-Detached', maxHeight: 17.5, maxFloors: '4 storeys + stilt',
+    typology: 'Semi-Detached', maxHeight: 17.5, maxFloors: '4 storeys + stilt', maxFloorsNum: 4, stiltAllowed: true,
     note: 'Construction permitted on 40% of the rear setback up to 7m height unless stilted.',
   },
   {
     label: '>1200 sqm', overMoreThan: 1200, upToAndIncluding: Infinity,
     front: 6.0, rear: 6.0, side1: 1.5, side2: 1.5,
-    typology: 'Detached', maxHeight: 17.5, maxFloors: '4 storeys + stilt',
+    typology: 'Detached', maxHeight: 17.5, maxFloors: '4 storeys + stilt', maxFloorsNum: 4, stiltAllowed: true,
     note: 'Detached on all four sides.',
   },
 ];
@@ -239,6 +255,12 @@ export interface RequiredSetbacks extends SetbackSet {
   readonly typology: string;
   readonly maxHeight: number;
   readonly maxFloors: string;
+  /**
+   * The floor ceiling as a number, or null where no table states one and the count is
+   * governed by FAR and height instead. Excludes a stilt where `stiltAllowed`.
+   */
+  readonly maxFloorsNum: number | null;
+  readonly stiltAllowed: boolean;
   readonly note: string;
   readonly cornerRuleApplied: boolean;
   readonly caveats: readonly string[];
@@ -251,6 +273,30 @@ export function resolveRequiredSetbacks(input: {
   isCornerPlot: boolean;
   /** Needed only by the bazaar-street ladder (Clause 5.1.5), which is keyed on it. */
   roadWidth?: number;
+  /**
+   * The full road geometry, where the caller has it. Supersedes `isCornerPlot`: it says
+   * not just that the plot is a corner but which sides the roads are on, which is what
+   * the corner rule needs once there are more than two of them.
+   */
+  roads?: PlotRoads;
+  /**
+   * Which limb of the corner rule to read. Table 3.2.1 Note-2 splits on whether the plot
+   * sits in a new layout or an already approved one; the project model's nearest fact is
+   * `areaType`, and the mapping is stated on the caveat rather than assumed silently.
+   */
+  areaType?: AreaType;
+  /**
+   * Ground-floor covered area, for Clause 3.2.4.3 Note-1 — which lifts the rear and side
+   * setbacks off a small commercial building altogether. Omitted means the note is not
+   * applied, which is the stricter reading.
+   */
+  groundFloorCoveredAreaSqm?: number;
+  /**
+   * Whether light and ventilation are otherwise ensured, which Clause 3.2.4.3 Note-1
+   * conditions its allowance on. The engine cannot see a drawing, so this is the
+   * applicant's declaration and defaults to false.
+   */
+  lightVentilationEnsured?: boolean;
 }): RequiredSetbacks {
   const definition = getOccupancy(input.occupancy);
   const plotArea = Math.max(0, Number(input.plotArea) || 0);
@@ -266,6 +312,8 @@ export function resolveRequiredSetbacks(input: {
   let typology = definition.label;
   let maxHeight = definition.maxHeightM;
   let maxFloors = '—';
+  let maxFloorsNum: number | null = null;
+  let stiltAllowed = false;
   let note = definition.note;
 
   const AREA_LADDERS: Record<string, readonly (Band & SetbackSet & { label: string })[]> = {
@@ -431,6 +479,8 @@ export function resolveRequiredSetbacks(input: {
       // reading is obviously the drafter's intent, so the stricter one governs.
       maxHeight = Math.min(definition.maxHeightM, plotted.maxHeight);
       maxFloors = plotted.maxFloors;
+      maxFloorsNum = plotted.maxFloorsNum;
+      stiltAllowed = plotted.stiltAllowed;
       note = plotted.note;
       if (plottedBelowItsOwnCeiling) {
         caveats.push(
@@ -456,12 +506,137 @@ export function resolveRequiredSetbacks(input: {
     }
   }
 
-  // Table 3.2.1 Note 2 — a corner plot's secondary frontage carries the full front setback.
-  let cornerRuleApplied = false;
-  if (input.isCornerPlot && set.side2 < set.front) {
-    set = { ...set, side2: set.front };
-    cornerRuleApplied = true;
+  /**
+   * Clause 3.2.4.3 Note-1 — the small commercial building that needs no rear or side setback.
+   *
+   * Gazette: "In commercial building with covered area on ground floor up to 500 sqm, if
+   * lighting and ventilation requirements are ensured, then setbacks shall not be mandatory
+   * along the rear and the side edges, whereas in the corner plots, side setback equal to
+   * the front set-back shall be mandatory."
+   *
+   * The engine held no limb of this note. On a 500 m² commercial plot at 20 x 25 m it cost
+   * the applicant 112.5 m² of footprint per floor — 297.5 m² against the 410 m² the note
+   * permits, a fifth of the plot — and over-restriction is the same class of defect as
+   * over-permission (B-001, B-029). It is quieter only because nobody complains that a
+   * compliance tool was too strict.
+   *
+   * Two conditions gate it and the engine can check neither on its own, so both are carried
+   * as inputs and default to withholding the allowance: the covered area is the applicant's
+   * own figure, and "lighting and ventilation requirements are ensured" is a judgement about
+   * a drawing. The note's own closing limb survives it — a corner plot still owes the front
+   * setback on its side — and is applied by the corner rule below, which runs after this.
+   */
+  let commercialNote1Applied = false;
+  if (definition.setbackTable === 'commercial' && !isHighRise) {
+    const gfArea = Math.max(0, Number(input.groundFloorCoveredAreaSqm) || 0);
+    if (gfArea > 0 && gfArea <= 500 && input.lightVentilationEnsured) {
+      set = { ...set, rear: 0, side1: 0, side2: 0 };
+      commercialNote1Applied = true;
+      caveats.push(
+        `Clause 3.2.4.3 Note-1: with ${gfArea} m² covered on the ground floor — at or below the `
+        + '500 m² the note sets — and light and ventilation otherwise ensured, no setback is '
+        + 'mandatory along the rear or the side edges. The front setback is unaffected, and on a '
+        + 'corner plot the side towards the road still carries it.',
+      );
+    } else if (gfArea > 500) {
+      caveats.push(
+        `Clause 3.2.4.3 Note-1 lifts the rear and side setbacks for a commercial building covering `
+        + `up to 500 m² on the ground floor. This one covers ${gfArea} m², so the table governs.`,
+      );
+    }
   }
+
+  /**
+   * The corner rule — Table 3.2.1 Note-2 for a house, Clause 3.2.4.3 Note-4 for a shop, in
+   * word-for-word identical terms:
+   *
+   *     "The side setback in a corner plot in the new layouts shall be the same as the front
+   *      setback of the concerned plot. In already approved layouts, if setback is not
+   *      prescribed in the layout plan, the minimum side set-back in corner plots up to 500
+   *      square meters shall be 1.5 meters and in corner plots having area more than 500
+   *      square meters, the side set-back shall be as per the above table."
+   *
+   * The note has two limbs and the engine applied only the first, to every corner plot
+   * whatever its layout. `rules/citations.ts` has quoted the whole note since it was
+   * written, so the app printed the rule and then computed something else. On a 300 m²
+   * corner at 12 x 25 m in an approved colony it cost 30.75 m² of footprint per floor —
+   * 92 m² over three floors — by demanding a 3 m side where the note sets 1.5.
+   *
+   * Which limb governs turns on a fact the project model does not hold exactly. `areaType`
+   * distinguishes a built-up area from a non-built-up one, and the note distinguishes an
+   * already approved layout from a new one; they are close but not the same question, so
+   * the mapping is named on the caveat and the figure the other limb would give is printed
+   * beside it. The approved-layout limb also opens "if setback is not prescribed in the
+   * layout plan" — the layout plan wins where it speaks, and no engine can read it.
+   */
+  let cornerRuleApplied = false;
+  const isCorner = input.roads ? input.roads.isCorner : Boolean(input.isCornerPlot);
+  const hasPrintedCornerNote =
+    definition.setbackTable === 'plotted_residential' || definition.setbackTable === 'commercial';
+
+  if (isCorner) {
+    const faces = input.roads
+      ? roadFacingFaces(input.roads).filter((f) => f !== 'front')
+      : (['side2'] as const);
+    const approvedLayout = hasPrintedCornerNote && input.areaType === 'built_up';
+    const smallPlot = plotArea <= 500;
+
+    // New layout, or any table with no printed note: the side matches the front. In an
+    // approved layout the note sets a floor of 1.5 m below 500 m² and nothing at all above
+    // it, where the table's own figure stands.
+    const target = !hasPrintedCornerNote || !approvedLayout
+      ? set.front
+      : smallPlot ? 1.5 : 0;
+
+    const before = { ...set };
+    for (const face of faces) {
+      if (set[face] < target) {
+        set = { ...set, [face]: target };
+        cornerRuleApplied = true;
+      }
+    }
+
+    if (hasPrintedCornerNote) {
+      const noteRef = definition.setbackTable === 'plotted_residential'
+        ? 'Table 3.2.1 Note-2' : 'Clause 3.2.4.3 Note-4';
+      const raised = faces.filter((f) => set[f] !== before[f]);
+      const sideNames = raised.length
+        ? raised.map((f) => (f === 'side1' ? 'left' : f === 'side2' ? 'right' : f)).join(' and ')
+        : 'no';
+      const otherLimb = approvedLayout
+        ? `in a new layout it would be ${set.front} m, the front setback`
+        : smallPlot
+          ? 'in an already approved layout it would be 1.5 m'
+          : 'in an already approved layout the table figure would stand, with no uplift at all';
+      caveats.push(
+        `${noteRef}, ${approvedLayout ? 'already-approved-layout' : 'new-layout'} limb: `
+        + (cornerRuleApplied
+            ? `the ${sideNames} side of this corner plot carries ${target} m — `
+            : `this corner plot of ${plotArea} m² takes no uplift on its road-facing side — `)
+        + `${otherLimb}. Which limb governs is read from the plot being in a `
+        + `${approvedLayout ? 'built-up' : 'non-built-up'} area, which is the project model's `
+        + `nearest fact to the layout status the note turns on. The approved-layout limb also `
+        + `opens "if setback is not prescribed in the layout plan": where a sanctioned layout `
+        + `plan prescribes a setback, it governs over both readings.`,
+      );
+    } else {
+      caveats.push(
+        `The byelaws print a corner-plot note under Table 3.2.1 and Clause 3.2.4.3 and none under `
+        + `${clauseRef}. The front setback is applied to the road-facing side here for want of a `
+        + `rule, which is the stricter reading and this engine's extension, not the gazette's.`,
+      );
+    }
+
+    if (commercialNote1Applied && cornerRuleApplied) {
+      caveats.push(
+        'Clause 3.2.4.3 Note-1 closes "whereas in the corner plots, side setback equal to the '
+        + 'front set-back shall be mandatory", so the setback it lifts off the side edges is put '
+        + 'back on the side that faces a road.',
+      );
+    }
+  }
+
+  if (input.roads) caveats.push(...input.roads.caveats);
 
   return {
     ...set,
@@ -472,6 +647,8 @@ export function resolveRequiredSetbacks(input: {
     typology,
     maxHeight,
     maxFloors,
+    maxFloorsNum,
+    stiltAllowed,
     note,
     cornerRuleApplied,
     caveats,
