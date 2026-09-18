@@ -61,9 +61,13 @@ function AppShell() {
     return () => window.removeEventListener('keydown', onKey);
   }, [view, goTo]);
 
-  const heading = view === 'workspace'
-    ? 'Check a building against the UP Building Byelaws 2025'
-    : REFERENCE_VIEWS.find((v) => v.id === view)?.label ?? '';
+  // The two screens that answer a question, as against the shelf that supports them.
+  const primary = view === 'plot' || view === 'workspace';
+  const heading = view === 'plot'
+    ? 'What can be built on this plot under the UP Building Byelaws 2025'
+    : view === 'workspace'
+      ? 'Check a building against the UP Building Byelaws 2025'
+      : REFERENCE_VIEWS.find((v) => v.id === view)?.label ?? '';
 
   return (
     <div className="flex min-h-screen flex-col bg-[#fbfbfd] font-sans text-[#1d1d1f] antialiased selection:bg-emerald-500 selection:text-white dark:bg-black dark:text-[#f5f5f7]">
@@ -84,12 +88,14 @@ function AppShell() {
       <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col outline-none">
         <h1 id="page-heading" className="sr-only">{heading}</h1>
         <ErrorBoundary label={heading}>
-          {view === 'workspace' ? (
-            <Workspace />
+          {primary ? (
+            <Suspense fallback={<PanelSkeleton />}>
+              {view === 'plot' && <PlotStudy />}
+              {view === 'workspace' && <Workspace />}
+            </Suspense>
           ) : (
             <div className="mx-auto w-full max-w-7xl flex-1 px-4 py-6 sm:px-6 lg:px-8">
               <Suspense fallback={<PanelSkeleton />}>
-                {view === 'plot' && <PlotStudy />}
                 {view === 'maps' && <MapServerExplorer />}
                 {view === 'navigator' && <ByelawsNavigator searchQuery={searchQuery} />}
                 {view === 'gazette' && <OfficialPdfViewer />}
@@ -102,7 +108,7 @@ function AppShell() {
         </ErrorBoundary>
       </main>
 
-      {view !== 'workspace' && <Footer />}
+      {!primary && <Footer />}
     </div>
   );
 }

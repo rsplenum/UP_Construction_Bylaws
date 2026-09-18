@@ -55,6 +55,8 @@ export const PlotStudy: React.FC = () => {
     front: 12, rear: 0, left: 0, right: 0,
   });
   const [lightVent, setLightVent] = useState(false);
+  /** null = "as many as the byelaws allow", which is the answer most people want. */
+  const [wantedFloors, setWantedFloors] = useState<number | null>(null);
   const [landRate, setLandRate] = useState(35000);
 
   const result = useMemo(() => {
@@ -82,16 +84,48 @@ export const PlotStudy: React.FC = () => {
   const geometryMismatch = Math.abs(frontage * depth - plotArea) > Math.max(1, plotArea * 0.02);
   const boughtArea = study.maximum.floorAreaSqm - study.standard.floorAreaSqm;
 
+  // The ladder already holds every floor count the engine evaluated, so wanting a
+  // particular number of floors selects a rung rather than driving the arithmetic. A
+  // person knows how many floors they want; nobody knows their own floor area.
+  const allowed = study.ladder.filter((r) => !r.refusedBecause);
+  const chosen = wantedFloors === null
+    ? null
+    : study.ladder.find((r) => r.floors === wantedFloors) ?? null;
+
+  // Computed from the same study that draws the plans, so the answer at the top and the
+  // drawings beneath it cannot disagree.
+  const buildable = study.standard.floorAreaSqm > 0.5;
+  const verdictWord = !buildable
+    ? 'Nothing, yet.'
+    : chosen?.refusedBecause
+      ? `${chosen.floors} floors: no.`
+      : 'Yes.';
+  const verdictTone = !buildable || chosen?.refusedBecause
+    ? 'text-rose-700 dark:text-rose-400'
+    : 'text-emerald-700 dark:text-emerald-400';
+  const verdictLine = !buildable
+    ? 'No floor area can be sanctioned on these figures. Check the plot size and the road widths.'
+    : chosen?.refusedBecause
+      ? chosen.refusedBecause
+      : `${study.standard.floorAreaSqm.toFixed(0)} m² across ${study.standard.floors} `
+        + `floor${study.standard.floors === 1 ? '' : 's'}, as of right. `
+        + (boughtArea > 0.5
+          ? `Up to ${study.maximum.floorAreaSqm.toFixed(0)} m² if you buy the extra density.`
+          : 'Buying extra density adds nothing on this plot.');
+
   return (
     <div className="mx-auto w-full max-w-[1120px] px-4 py-6">
-      <header className="mb-5">
-        <h1 className="text-[19px] font-semibold tracking-tight text-slate-900 dark:text-slate-100">
-          What can I build on this plot?
-        </h1>
-        <p className="mt-1 max-w-[62ch] text-[12.5px] leading-relaxed text-slate-600 dark:text-slate-400">
-          Tell it about the ground and it works out the building. The floor area, the height, the
-          number of floors and every offset are answers here, not questions — each one is fixed by
-          the byelaws once the plot is known.
+      <header className="mb-6">
+        <h2 className={`font-serif text-[clamp(2.4rem,8vw,3.6rem)] font-semibold leading-[1.04] tracking-[-0.022em] ${verdictTone}`}>
+          {verdictWord}
+        </h2>
+        <p className="mt-2.5 max-w-[46ch] font-serif text-[clamp(1rem,2.8vw,1.2rem)] leading-snug text-slate-700 dark:text-slate-300">
+          {verdictLine}
+        </p>
+        <p className="mt-2 max-w-[62ch] text-[12px] leading-relaxed text-slate-500 dark:text-slate-400">
+          Tell it about the ground and it works out the building. The floor area, the height and
+          every offset are answers here, not questions — each one is fixed by the byelaws once the
+          plot is known.
         </p>
       </header>
 
@@ -205,6 +239,60 @@ export const PlotStudy: React.FC = () => {
             label="Land rate" value={landRate} onChange={setLandRate} min={0} step={1000} unit="₹/m²"
             hint="The residential circle rate — what the fees are worked out on"
           />
+
+          {/* The one thing about the building a person does know. It selects a rung of the
+              ladder the engine has already worked out; it does not drive the arithmetic. */}
+          {allowed.length > 0 && (
+            <fieldset className="border-0 p-0">
+              <legend className="mb-1.5 text-[11px] font-medium text-slate-600 dark:text-slate-400">
+                How many floors do you want?
+              </legend>
+              <div className="flex flex-wrap gap-1.5">
+                <button
+                  type="button" onClick={() => setWantedFloors(null)}
+                  aria-pressed={wantedFloors === null}
+                  className={`rounded-lg border px-2.5 py-1 text-[12px] transition-colors ${
+                    wantedFloors === null
+                      ? 'border-emerald-600 bg-emerald-600 text-white'
+                      : 'border-slate-200 text-slate-700 hover:border-slate-300 dark:border-white/10 dark:text-slate-300'
+                  }`}
+                >
+                  As many as allowed
+                </button>
+                {study.ladder.map((rung) => (
+                  <button
+                    key={rung.floors} type="button"
+                    onClick={() => setWantedFloors(rung.floors)}
+                    aria-pressed={wantedFloors === rung.floors}
+                    title={rung.refusedBecause ?? `${rung.usableSqm.toFixed(0)} m² usable`}
+                    className={`rounded-lg border px-2.5 py-1 text-[12px] tabular-nums transition-colors ${
+                      wantedFloors === rung.floors
+                        ? 'border-emerald-600 bg-emerald-600 text-white'
+                        : rung.refusedBecause
+                          ? 'border-slate-200 text-slate-400 line-through dark:border-white/10 dark:text-slate-600'
+                          : 'border-slate-200 text-slate-700 hover:border-slate-300 dark:border-white/10 dark:text-slate-300'
+                    }`}
+                  >
+                    {rung.floors}
+                  </button>
+                ))}
+              </div>
+              {chosen && !chosen.refusedBecause && (
+                <p className="mt-1.5 text-[11px] leading-snug text-slate-600 dark:text-slate-400">
+                  {chosen.floors} floors gives {chosen.usableSqm.toFixed(0)} m² at{' '}
+                  {chosen.heightM} m
+                  {chosen.usableSqm < study.standard.floorAreaSqm - 0.5
+                    ? ` — ${(study.standard.floorAreaSqm - chosen.usableSqm).toFixed(0)} m² less than the best this plot can do.`
+                    : '.'}
+                </p>
+              )}
+              {chosen?.refusedBecause && (
+                <p className="mt-1.5 text-[11px] leading-snug text-rose-700 dark:text-rose-400">
+                  {chosen.refusedBecause}
+                </p>
+              )}
+            </fieldset>
+          )}
         </form>
 
         {/* --------------------------------------------------------------- results */}

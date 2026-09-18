@@ -25,17 +25,19 @@ export const Header: React.FC<HeaderProps> = ({ view, onNavigate, searchQuery, s
   const ThemeIcon = preference === 'system' ? Monitor : resolved === 'dark' ? Sun : Moon;
   const themeLabel =
     preference === 'system' ? 'Theme: match system' : preference === 'dark' ? 'Theme: dark' : 'Theme: light';
-  const onWorkspace = view === 'workspace';
+  // "Back" means back to the screen you landed on, so it belongs on the shelf views and
+  // nowhere else. The plot study is the landing screen now; the workspace is a peer of it.
+  const atHome = view === 'plot' || view === 'workspace';
   const current = REFERENCE_VIEWS.find((v) => v.id === view);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-black/[0.07] bg-white/85 backdrop-blur-xl print:hidden dark:border-white/[0.08] dark:bg-[#161617]/85">
       <div className="mx-auto flex h-14 max-w-[1600px] items-center justify-between gap-3 px-4 sm:px-6">
         <div className="flex min-w-0 items-center gap-3">
-          {!onWorkspace && (
+          {!atHome && (
             <button
               type="button"
-              onClick={() => onNavigate('workspace')}
+              onClick={() => onNavigate('plot')}
               className="flex items-center gap-1 rounded-full py-1 pl-1 pr-2.5 text-[12px] font-semibold text-slate-700 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/10"
             >
               <ChevronLeft className="h-4 w-4" aria-hidden="true" />
@@ -45,7 +47,7 @@ export const Header: React.FC<HeaderProps> = ({ view, onNavigate, searchQuery, s
 
           <button
             type="button"
-            onClick={() => onNavigate('workspace')}
+            onClick={() => onNavigate('plot')}
             className="flex min-w-0 items-center gap-2.5 rounded-lg text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/40"
           >
             <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-500 to-teal-700 text-[11px] font-bold text-white">

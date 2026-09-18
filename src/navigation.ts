@@ -1,4 +1,4 @@
-import { BookOpen, Bot, FileCheck2, FileText, Globe, LandPlot, Sparkles } from 'lucide-react';
+import { BookOpen, Bot, ClipboardCheck, FileCheck2, FileText, Globe, Sparkles } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 /**
@@ -12,7 +12,7 @@ export type ViewId =
   | 'workspace' | 'plot' | 'maps' | 'navigator' | 'gazette' | 'rationale' | 'forms' | 'ask';
 
 export interface ReferenceView {
-  id: Exclude<ViewId, 'workspace'>;
+  id: ViewId;
   label: string;
   description: string;
   icon: LucideIcon;
@@ -20,8 +20,8 @@ export interface ReferenceView {
 
 export const REFERENCE_VIEWS: readonly ReferenceView[] = [
   {
-    id: 'plot', label: 'What fits on my plot', icon: LandPlot,
-    description: 'Two plans from the plot alone — as of right, and stretched with fees',
+    id: 'workspace', label: 'Check a specific design', icon: ClipboardCheck,
+    description: 'You have a floor area and a height in mind — test that building against every chapter',
   },
   {
     id: 'maps', label: 'Find the site', icon: Globe,
@@ -49,7 +49,15 @@ export const REFERENCE_VIEWS: readonly ReferenceView[] = [
   },
 ];
 
-export const DEFAULT_VIEW: ViewId = 'workspace';
+/**
+ * What fits on this plot is the question people arrive with, so it is what they land on.
+ *
+ * It used to be the second item in a menu labelled "Reference" — the screen that answers
+ * the question, filed as supporting material, next to the statutory forms. Nobody looks
+ * for the answer in the appendix. The workspace is still there for the other job: testing
+ * a building you have already designed.
+ */
+export const DEFAULT_VIEW: ViewId = 'plot';
 
 export function isViewId(value: string): value is ViewId {
   return value === 'workspace' || REFERENCE_VIEWS.some((v) => v.id === value);
