@@ -6,6 +6,10 @@ import { PLOT_SIDES, SIDE_LABEL, type PlotSide, resolvePlotRoads } from '../doma
 import { studyEnvelope } from '../domain/envelope';
 import { pricePlans } from '../domain/plan-pricing';
 import { resolveBaseFar } from '../domain/far';
+import { assessSanctionRoute } from '../domain/permission';
+import { HIGH_RISE_THRESHOLD_M } from '../domain/setbacks';
+import { getOccupancy } from '../domain/occupancy';
+import { AREA_UNITS, UNIT_LABEL, formatArea, fromSqm, toSqm, type AreaUnit } from '../domain/units';
 import type { AreaType } from '../domain/far';
 import type { OccupancyId } from '../domain/occupancy';
 
@@ -49,6 +53,9 @@ export const PlotStudy: React.FC = () => {
   const [use, setUse] = useState<OccupancyId>('res_single');
   const [areaType, setAreaType] = useState<AreaType>('built_up');
   const [plotArea, setPlotArea] = useState(300);
+  // Gaj is how land is bought and sold across Uttar Pradesh, so it is the default;
+  // the engine still only ever sees square metres.
+  const [unit, setUnit] = useState<AreaUnit>('gaj');
   const [frontage, setFrontage] = useState(12);
   const [depth, setDepth] = useState(25);
   const [widths, setWidths] = useState<Record<PlotSide, number>>({
@@ -81,8 +88,37 @@ export const PlotStudy: React.FC = () => {
   }, [use, areaType, plotArea, frontage, depth, widths, lightVent, landRate]);
 
   const { roads, study, priced } = result;
+
+  // The question people actually arrive with. UP's own coverage of these byelaws led on
+  // it — "no approved map under 1,000 sq ft", "an architect's certificate up to 5,000" —
+  // and the engine has answered it all along on a screen nobody opened.
+  const route = assessSanctionRoute({
+    occupancy: getOccupancy(use),
+    plotAreaSqm: plotArea,
+    buildingHeightM: study.standard.heightM,
+    highRiseThresholdM: HIGH_RISE_THRESHOLD_M,
+  });
+  const ROUTE_HEADLINE: Record<typeof route.route, string> = {
+    exempt: 'No approved map needed.',
+    instant_ltp: 'Approved online, on your architect\u2019s certificate.',
+    full_scrutiny: 'This one goes through full scrutiny.',
+  };
   const geometryMismatch = Math.abs(frontage * depth - plotArea) > Math.max(1, plotArea * 0.02);
   const boughtArea = study.maximum.floorAreaSqm - study.standard.floorAreaSqm;
+
+  // Area is the number people actually know — a plot is bought and sold by it, and the
+  // byelaws meter by it — so an area edit carries the rectangle with it, keeping the shape
+  // it had, instead of leaving the width and depth behind to contradict it one field later.
+  // Typing a width or a depth still stands on its own: a plot that is not a rectangle is a
+  // real thing, and the note under Depth is for that case, not for this one.
+  const setPlotAreaKeepingShape = (nextSqm: number) => {
+    setPlotArea(nextSqm);
+    if (!(nextSqm > 0) || !(frontage > 0) || !(depth > 0)) return;
+    const scale = Math.sqrt(nextSqm / (frontage * depth));
+    const nextFrontage = Math.max(3, Math.round(frontage * scale * 10) / 10);
+    setFrontage(nextFrontage);
+    setDepth(Math.max(3, Math.round((nextSqm / nextFrontage) * 10) / 10));
+  };
 
   // The ladder already holds every floor count the engine evaluated, so wanting a
   // particular number of floors selects a rung rather than driving the arithmetic. A
@@ -122,10 +158,49 @@ export const PlotStudy: React.FC = () => {
         <p className="mt-2.5 max-w-[46ch] font-serif text-[clamp(1rem,2.8vw,1.2rem)] leading-snug text-slate-700 dark:text-slate-300">
           {verdictLine}
         </p>
+
+        {/* Permission, answered on the same screen as size. A reader's first worry is
+            whether they need a sanctioned map at all — a bigger relief than any FAR
+            figure, and until now it lived two clicks away on a different screen. */}
+        {buildable && (
+          <div className="mt-3.5 flex flex-wrap items-baseline gap-x-2.5 gap-y-1 text-[13px]">
+            <span className={`font-semibold ${
+              route.route === 'full_scrutiny'
+                ? 'text-slate-800 dark:text-slate-200'
+                : 'text-emerald-800 dark:text-emerald-300'
+            }`}
+            >
+              {ROUTE_HEADLINE[route.route]}
+            </span>
+            <span className="text-slate-600 dark:text-slate-400">{route.because}</span>
+            <span className="font-mono text-[11px] text-slate-500 dark:text-slate-500">
+              {route.clause}
+            </span>
+          </div>
+        )}
+
+        {/* The conditions are real — any one of them failing moves you to a slower route —
+            but four clauses of prose set above the fold buried the answer they qualify.
+            Folded: one line says the route has strings, opening it names every one. */}
+        {buildable && route.conditional && route.conditions.length > 0 && (
+          <details className="group mt-1.5 max-w-[62ch]">
+            <summary className="cursor-pointer list-none text-[12px] text-amber-800 marker:content-none hover:underline dark:text-amber-300">
+              {route.conditions.length === 1
+                ? 'One thing must be true for this route'
+                : `${route.conditions.length} things must be true for this route`}
+              <span className="ml-1 text-amber-700/70 group-open:hidden dark:text-amber-400/70">
+                — show them
+              </span>
+            </summary>
+            <ul className="mt-1.5 space-y-1 border-l border-amber-300 pl-3 text-[12px] leading-snug text-amber-800 dark:border-amber-500/40 dark:text-amber-300">
+              {route.conditions.map((c) => <li key={c}>{c}</li>)}
+            </ul>
+          </details>
+        )}
         <p className="mt-2 max-w-[62ch] text-[12px] leading-relaxed text-slate-500 dark:text-slate-400">
-          Tell it about the ground and it works out the building. The floor area, the height and
-          every offset are answers here, not questions — each one is fixed by the byelaws once the
-          plot is known.
+          Tell it about the ground and it works out the building. The floor area, the height,
+          every offset and which approval route you are on are answers here, not questions —
+          each one is fixed by the byelaws once the plot is known.
         </p>
       </header>
 
@@ -158,12 +233,35 @@ export const PlotStudy: React.FC = () => {
               The plot
             </legend>
             <div className="space-y-2.5">
-              <NumberField label="Plot area" value={plotArea} onChange={setPlotArea} min={20} step={10} unit="m²" />
+              <div>
+                <NumberField
+                  label="Plot area"
+                  value={Number(fromSqm(plotArea, unit).toFixed(unit === 'sqm' ? 1 : 0))}
+                  onChange={(v) => setPlotAreaKeepingShape(toSqm(v, unit))}
+                  min={1} step={unit === 'sqm' ? 10 : 10} unit={UNIT_LABEL[unit]}
+                  hint={unit === 'sqm' ? undefined : formatArea(plotArea, 'sqm')}
+                />
+                <div className="mt-1.5 flex gap-1" role="group" aria-label="Unit for plot area">
+                  {AREA_UNITS.map((u) => (
+                    <button
+                      key={u} type="button" onClick={() => setUnit(u)}
+                      aria-pressed={unit === u}
+                      className={`rounded px-2 py-0.5 text-[11px] transition-colors ${
+                        unit === u
+                          ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'
+                          : 'text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-white/10'
+                      }`}
+                    >
+                      {UNIT_LABEL[u]}
+                    </button>
+                  ))}
+                </div>
+              </div>
               <NumberField label="Width at the road" value={frontage} onChange={setFrontage} min={3} step={0.5} unit="m" />
               <NumberField
                 label="Depth" value={depth} onChange={setDepth} min={3} step={0.5} unit="m"
                 warning={geometryMismatch
-                  ? `${frontage} × ${depth} is ${(frontage * depth).toFixed(0)} m², not ${plotArea} m². The drawing uses the width and depth.`
+                  ? `${frontage} × ${depth} m is ${formatArea(frontage * depth, unit)}, not ${formatArea(plotArea, unit)}. The drawing uses the width and depth.`
                   : undefined}
               />
             </div>
