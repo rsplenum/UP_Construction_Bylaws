@@ -79,11 +79,19 @@ field nobody renders.
 > file may use square feet. […] Small errors in unit conversion can cost you thousands of
 > rupees.
 
-We shipped gaj / sq ft / m² today. What is still missing is **bigha and biswa**, which are
-the units rural and peri-urban UP land is actually sold in — and bigha has no national
-value (≈17,424 sq ft in UP, ≈27,225 in West Bengal), so a buyer quoting bigha from a
-national conversion chart is already wrong. A UP-specific bigha is a small module and a
-real piece of local authority.
+We shipped gaj / sq ft / m² first, then **biswa**, which is 151.25 gaj and means the same
+thing across Uttar Pradesh.
+
+**The bigha is deliberately not a unit**, and the first draft of this memo got it wrong.
+It quoted ≈17,424 sq ft as the UP bigha; that is Rajasthan's kachha bigha. Inside UP the
+bigha runs from **5 biswa** (much of the west, 6,806.25 sq ft) through **6⅔ biswa** (some
+western districts, 9,075 sq ft) to **20 biswa** (eastern UP, Purvanchal and Lucknow —
+the pucca bigha, 27,225 sq ft). A spread of four to one, inside the one state we serve.
+
+Putting "bigha" in a unit picker would mean choosing one of those silently, and a plot
+entered at a quarter or four times its true size produces a confident, fully cited answer
+about a building that cannot be built. So a bigha is converted only after the reader says
+which bigha they were quoted, and the answer is given in biswa.
 
 ### 4. Mobile is the device, and our layout is a desktop layout.
 

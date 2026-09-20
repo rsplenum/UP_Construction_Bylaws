@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
-  AREA_UNITS, formatArea, formatBoth, fromSqm, isAreaUnit, toSqm, type AreaUnit,
+  AREA_UNITS, UP_BIGHA_RECKONINGS, bighaToSqm, formatArea, formatBoth, fromSqm, isAreaUnit,
+  toSqm, type AreaUnit,
 } from '../units';
 import { EXEMPT_RESIDENTIAL_MAX_SQM, INSTANT_RESIDENTIAL_MAX_SQM } from '../permission';
 
@@ -60,5 +61,38 @@ describe('the units a plot owner uses', () => {
   it('treats junk as zero rather than NaN, so a half-typed number cannot poison a verdict', () => {
     expect(toSqm(Number.NaN, 'gaj')).toBe(0);
     expect(fromSqm(Number.NaN, 'sqft')).toBe(0);
+  });
+});
+
+describe('biswa and the bigha', () => {
+  it('holds a biswa at exactly 151.25 gaj', () => {
+    expect(fromSqm(toSqm(1, 'biswa'), 'gaj')).toBeCloseTo(151.25, 9);
+    expect(fromSqm(toSqm(1, 'biswa'), 'sqft')).toBeCloseTo(1361.25, 6);
+  });
+
+  it('does not offer bigha as a unit at all', () => {
+    // Every unit in the picker is a fixed quantity. The bigha is not, and a silent
+    // choice between its readings would size a plot wrong by up to four to one while
+    // the answer stayed confident and fully cited.
+    expect(AREA_UNITS).not.toContain('bigha');
+    expect(isAreaUnit('bigha')).toBe(false);
+  });
+
+  it('converts a bigha only against a stated reckoning, and they really do differ', () => {
+    const [pucca, kachha, western] = UP_BIGHA_RECKONINGS;
+    expect(fromSqm(bighaToSqm(1, pucca), 'sqft')).toBeCloseTo(27_225, 0);
+    expect(fromSqm(bighaToSqm(1, kachha), 'sqft')).toBeCloseTo(9_075, 0);
+    expect(fromSqm(bighaToSqm(1, western), 'sqft')).toBeCloseTo(6_806.25, 0);
+    // The spread is the whole reason this is not a unit.
+    expect(bighaToSqm(1, pucca) / bighaToSqm(1, western)).toBeCloseTo(4, 6);
+  });
+
+  it('keeps every reckoning distinct and named for somewhere', () => {
+    const ids = UP_BIGHA_RECKONINGS.map((r) => r.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const r of UP_BIGHA_RECKONINGS) {
+      expect(r.biswaPerBigha).toBeGreaterThan(0);
+      expect(r.where.length).toBeGreaterThan(10);
+    }
   });
 });

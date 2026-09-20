@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { AlertTriangle, ArrowLeftRight, Ban } from 'lucide-react';
 import { NumberField } from '../components/ui/NumberField';
 import { comparePlots, type PlotCandidate } from '../domain/compare';
+import { ScopeFooter } from './ScopeFooter';
 import { AREA_UNITS, UNIT_LABEL, formatArea, fromSqm, toSqm, type AreaUnit } from '../domain/units';
 import type { AreaType } from '../domain/far';
 import type { OccupancyId } from '../domain/occupancy';
@@ -260,6 +261,8 @@ export const PlotCompare: React.FC = () => {
         here can disagree with what that screen says about either one. Open a plot there to
         see its drawings, its setbacks and what the deviations would cost.
       </p>
+
+      <ScopeFooter />
     </div>
   );
 };

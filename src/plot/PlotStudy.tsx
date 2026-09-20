@@ -1,15 +1,23 @@
 import React, { useMemo, useState } from 'react';
 import { AlertTriangle, Ruler, TrendingDown } from 'lucide-react';
+import { Clause } from '../components/ui/Clause';
 import { NumberField } from '../components/ui/NumberField';
 import { PlanDrawing } from './PlanDrawing';
 import { PLOT_SIDES, SIDE_LABEL, type PlotSide, resolvePlotRoads } from '../domain/roads';
 import { studyEnvelope } from '../domain/envelope';
+import {
+  COST_RATES, QUALITY_LABEL, estimateBuildCost, type BuildQuality,
+} from '../domain/build-cost';
 import { pricePlans } from '../domain/plan-pricing';
 import { resolveBaseFar } from '../domain/far';
 import { assessSanctionRoute } from '../domain/permission';
 import { HIGH_RISE_THRESHOLD_M } from '../domain/setbacks';
 import { getOccupancy } from '../domain/occupancy';
-import { AREA_UNITS, UNIT_LABEL, formatArea, fromSqm, toSqm, type AreaUnit } from '../domain/units';
+import { ScopeFooter } from './ScopeFooter';
+import {
+  AREA_UNITS, UNIT_LABEL, UP_BIGHA_RECKONINGS, bighaToSqm, formatArea, fromSqm, toSqm,
+  type AreaUnit,
+} from '../domain/units';
 import type { AreaType } from '../domain/far';
 import type { OccupancyId } from '../domain/occupancy';
 
@@ -65,6 +73,10 @@ export const PlotStudy: React.FC = () => {
   /** null = "as many as the byelaws allow", which is the answer most people want. */
   const [wantedFloors, setWantedFloors] = useState<number | null>(null);
   const [landRate, setLandRate] = useState(35000);
+  const [costRateId, setCostRateId] = useState(COST_RATES[0].id);
+  const [quality, setQuality] = useState<BuildQuality>('standard');
+  const [bigha, setBigha] = useState(1);
+  const [reckoningId, setReckoningId] = useState(UP_BIGHA_RECKONINGS[0].id);
 
   const result = useMemo(() => {
     const roads = resolvePlotRoads(widths);
@@ -98,11 +110,32 @@ export const PlotStudy: React.FC = () => {
     buildingHeightM: study.standard.heightM,
     highRiseThresholdM: HIGH_RISE_THRESHOLD_M,
   });
+  // A citation is the receipt for the sentence beside it, so it has to be the right one.
+  // The first cut printed the setback table whatever bound, which put Table 3.2.1 under
+  // "Floor Area Ratio is what stops you" — a wrong citation is worse than none, because
+  // a reader who follows it finds a table that says nothing about their problem. Only the
+  // two setback-driven cases have a ref to hand, so only they carry one.
+  const BINDING_SENTENCE: Record<typeof study.standard.binding, string> = {
+    far: 'The FAR entitlement is what stops you.',
+    footprint: 'The setbacks are what stop you.',
+    floors: 'The floor-count ceiling is what stops you.',
+    height: 'The height ceiling is what stops you.',
+  };
+  const bindingCite = study.standard.binding === 'footprint' || study.standard.binding === 'floors'
+    ? study.standard.setbacks.clauseRef
+    : null;
+
   const ROUTE_HEADLINE: Record<typeof route.route, string> = {
     exempt: 'No approved map needed.',
     instant_ltp: 'Approved online, on your architect\u2019s certificate.',
     full_scrutiny: 'This one goes through full scrutiny.',
   };
+  const costRate = COST_RATES.find((r) => r.id === costRateId) ?? COST_RATES[0];
+  const buildCost = estimateBuildCost({
+    floorAreaSqm: study.standard.floorAreaSqm, rate: costRate, quality,
+  });
+  const reckoning = UP_BIGHA_RECKONINGS.find((r) => r.id === reckoningId) ?? UP_BIGHA_RECKONINGS[0];
+
   const geometryMismatch = Math.abs(frontage * depth - plotArea) > Math.max(1, plotArea * 0.02);
   const boughtArea = study.maximum.floorAreaSqm - study.standard.floorAreaSqm;
 
@@ -173,10 +206,26 @@ export const PlotStudy: React.FC = () => {
               {ROUTE_HEADLINE[route.route]}
             </span>
             <span className="text-slate-600 dark:text-slate-400">{route.because}</span>
-            <span className="font-mono text-[11px] text-slate-500 dark:text-slate-500">
-              {route.clause}
-            </span>
+            <Clause>{route.clause}</Clause>
           </div>
+        )}
+
+        {/* What stopped the building, which the engine has always known and never said.
+            A competitor's entire marketing line is this one sentence — "which bylaw binds
+            first" — and ours was the third bullet of a panel near the bottom of the page.
+            The stranded area is the part that stings: entitlement you hold and cannot use. */}
+        {buildable && (
+          <p className="mt-2 flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[13px]">
+            <span className="font-semibold text-slate-800 dark:text-slate-200">
+              {BINDING_SENTENCE[study.standard.binding]}
+            </span>
+            {study.standard.strandedSqm > 0.5 && (
+              <span className="text-slate-600 dark:text-slate-400">
+                {study.standard.strandedSqm.toFixed(0)} m² of the entitlement is out of reach.
+              </span>
+            )}
+            {bindingCite && <Clause>{bindingCite}</Clause>}
+          </p>
         )}
 
         {/* The conditions are real — any one of them failing moves you to a slower route —
@@ -197,6 +246,29 @@ export const PlotStudy: React.FC = () => {
             </ul>
           </details>
         )}
+        {/* The number that turns an entitlement into a decision, and the only figure on
+            this screen the gazette has no view on — so it sits below everything the
+            byelaws settle, behind a rule, wearing a label saying what it is not. */}
+        {buildable && buildCost.totalRupees > 0 && (
+          <p className="mt-3 flex flex-wrap items-baseline gap-x-2 gap-y-1 border-t border-dashed border-slate-300 pt-2.5 text-[13px] dark:border-white/15">
+            <span className="text-slate-800 dark:text-slate-200">
+              About <span className="font-semibold">{inr(buildCost.totalRupees)}</span> to build
+              it — {costRate.label} rates, {QUALITY_LABEL[quality].toLowerCase()}.
+            </span>
+            <span className="rounded bg-slate-200 px-1.5 py-px text-[10.5px] font-medium uppercase tracking-wide text-slate-600 dark:bg-white/10 dark:text-slate-400">
+              Not a byelaws figure
+            </span>
+          </p>
+        )}
+
+        <a
+          href="#plot-inputs"
+          className="mt-3 inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-1.5 text-[12px] font-medium text-slate-700 transition hover:bg-slate-100 lg:hidden dark:border-white/15 dark:text-slate-200 dark:hover:bg-white/10"
+        >
+          <Ruler className="h-3 w-3" aria-hidden="true" />
+          Change the plot
+        </a>
+
         <p className="mt-2 max-w-[62ch] text-[12px] leading-relaxed text-slate-500 dark:text-slate-400">
           Tell it about the ground and it works out the building. The floor area, the height,
           every offset and which approval route you are on are answers here, not questions —
@@ -204,9 +276,19 @@ export const PlotStudy: React.FC = () => {
         </p>
       </header>
 
+      {/* On a phone the two columns stack, and stacking put thirteen input fields
+          between the answer and the drawings that explain it — the reader scrolled a
+          form to reach the thing they came for. The order is reversed below the large
+          breakpoint so the answer is followed by its evidence, with the inputs after it
+          and a way to jump to them. On a wide screen both are visible at once and the
+          form belongs on the left, where it has always been. */}
       <div className="grid gap-6 lg:grid-cols-[264px_1fr]">
         {/* ---------------------------------------------------------------- inputs */}
-        <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+        <form
+          id="plot-inputs"
+          className="order-2 space-y-4 lg:order-1"
+          onSubmit={(e) => e.preventDefault()}
+        >
           <fieldset>
             <legend className="mb-1.5 text-[10.5px] font-medium uppercase tracking-wider text-slate-600 dark:text-slate-400">
               What are you building
@@ -256,6 +338,54 @@ export const PlotStudy: React.FC = () => {
                     </button>
                   ))}
                 </div>
+
+                {/* The bigha is not in the picker above and cannot be: inside UP alone it
+                    runs from 5 biswa to 20, so choosing one silently would size a plot
+                    wrong by up to four to one while the answer stayed confident and fully
+                    cited. Folded away, because most readers were quoted in gaj and should
+                    not have to read any of this. */}
+                <details className="group mt-2">
+                  <summary className="cursor-pointer list-none text-[11px] text-sky-700 marker:content-none hover:underline dark:text-sky-400">
+                    Quoted in bigha?
+                  </summary>
+                  <div className="mt-1.5 rounded-lg border border-slate-200 p-2 dark:border-white/10">
+                    <p className="text-[11px] leading-snug text-slate-600 dark:text-slate-400">
+                      A bigha is not one size in Uttar Pradesh. Say which one you were
+                      quoted — getting it wrong is a factor of four.
+                    </p>
+                    <div className="mt-1.5 flex flex-wrap gap-1">
+                      {UP_BIGHA_RECKONINGS.map((r) => (
+                        <button
+                          key={r.id} type="button" onClick={() => setReckoningId(r.id)}
+                          aria-pressed={reckoningId === r.id} title={r.where}
+                          className={`rounded px-2 py-1 text-[11px] transition-colors ${
+                            reckoningId === r.id
+                              ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'
+                              : 'text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-white/10'
+                          }`}
+                        >
+                          {r.label}
+                        </button>
+                      ))}
+                    </div>
+                    <p className="mt-1.5 text-[10.5px] leading-snug text-slate-500 dark:text-slate-400">
+                      {reckoning.where}
+                    </p>
+                    <div className="mt-2">
+                      <NumberField
+                        label="Bigha" value={bigha} onChange={setBigha}
+                        min={0} step={0.25} unit="bigha"
+                      />
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => setPlotAreaKeepingShape(bighaToSqm(bigha, reckoning))}
+                      className="mt-1.5 w-full rounded-lg bg-sky-600 px-2 py-1.5 text-[11.5px] font-medium text-white transition hover:bg-sky-700"
+                    >
+                      Use {formatArea(bighaToSqm(bigha, reckoning), unit)}
+                    </button>
+                  </div>
+                </details>
               </div>
               <NumberField label="Width at the road" value={frontage} onChange={setFrontage} min={3} step={0.5} unit="m" />
               <NumberField
@@ -338,6 +468,46 @@ export const PlotStudy: React.FC = () => {
             hint="The residential circle rate — what the fees are worked out on"
           />
 
+          {/* Market rates, kept visibly apart from everything the gazette settles. */}
+          <fieldset>
+            <legend className="mb-1.5 text-[10.5px] font-medium uppercase tracking-wider text-slate-600 dark:text-slate-400">
+              Build cost — not a byelaws figure
+            </legend>
+            <div className="flex flex-wrap gap-1">
+              {COST_RATES.map((r) => (
+                <button
+                  key={r.id} type="button" onClick={() => setCostRateId(r.id)}
+                  aria-pressed={costRateId === r.id} title={r.note}
+                  className={`rounded px-2 py-1 text-[11px] transition-colors ${
+                    costRateId === r.id
+                      ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'
+                      : 'text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-white/10'
+                  }`}
+                >
+                  {r.label}
+                </button>
+              ))}
+            </div>
+            <div className="mt-1.5 flex flex-wrap gap-1">
+              {(['basic', 'standard', 'premium'] as const).map((q) => (
+                <button
+                  key={q} type="button" onClick={() => setQuality(q)}
+                  aria-pressed={quality === q}
+                  className={`rounded px-2 py-1 text-[11px] transition-colors ${
+                    quality === q
+                      ? 'bg-sky-600 text-white'
+                      : 'text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-white/10'
+                  }`}
+                >
+                  {QUALITY_LABEL[q]}
+                </button>
+              ))}
+            </div>
+            <p className="mt-1.5 text-[10.5px] leading-snug text-slate-500 dark:text-slate-400">
+              {inr(buildCost.perSqft)}/sq ft. {costRate.note}
+            </p>
+          </fieldset>
+
           {/* The one thing about the building a person does know. It selects a rung of the
               ladder the engine has already worked out; it does not drive the arithmetic. */}
           {allowed.length > 0 && (
@@ -394,7 +564,7 @@ export const PlotStudy: React.FC = () => {
         </form>
 
         {/* --------------------------------------------------------------- results */}
-        <div className="min-w-0 space-y-5">
+        <div className="order-1 min-w-0 space-y-5 lg:order-2">
           <div className="grid gap-5 md:grid-cols-2">
             <div className="rounded-xl border border-slate-200 bg-white p-3.5 dark:border-white/10 dark:bg-[#161617]">
               <PlanDrawing
@@ -535,6 +705,7 @@ export const PlotStudy: React.FC = () => {
               </summary>
               <ul className="mt-2 space-y-1.5 border-l-2 border-slate-200 pl-3 text-[11px] leading-relaxed text-slate-600 dark:border-white/10 dark:text-slate-400">
                 {[
+                  buildCost.sourceNote,
                   ...study.caveats,
                   ...study.maximum.setbacks.caveats,
                   ...(priced.compounding?.caveats ?? []),
@@ -544,6 +715,8 @@ export const PlotStudy: React.FC = () => {
           </section>
         </div>
       </div>
+
+      <ScopeFooter />
     </div>
   );
 };

@@ -39,3 +39,21 @@ model both, apply the stricter, surface the alternative, and log it. Never prese
 figure the engine inferred as one the gazette states.
 
 Run `npm run lint` (typecheck plus the full test suite) before committing.
+
+## How a screen is laid out
+
+The answer comes first, then the evidence for it, then the inputs that produced it. The
+technique has a name — **progressive disclosure**, Nielsen 1995 — and stating it here beats
+rediscovering it one screen at a time, which is what has happened so far: the route
+conditions ran to four clauses of prose above the verdict they qualified, and on a phone
+thirteen input fields sat between the answer and the drawings explaining it.
+
+So: show only what is needed to act, keep the rest one gesture away, and never make a
+reader pass through a form to reach a conclusion they have already been given.
+
+Two things this does **not** license. Nothing that changes the verdict may be folded away —
+a condition that can cost the reader their approval route gets a visible line saying so,
+even if the detail is behind a disclosure. And a citation is never small print: it is the
+receipt for the sentence beside it, it goes through `components/ui/Clause`, and it must be
+the clause that actually governs. A wrong citation is worse than none, because a reader who
+follows it finds a table that says nothing about their problem.
