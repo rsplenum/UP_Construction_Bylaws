@@ -4,7 +4,7 @@ import { Clause } from '../components/ui/Clause';
 import { NumberField } from '../components/ui/NumberField';
 import { PlanDrawing } from './PlanDrawing';
 import { PLOT_SIDES, SIDE_LABEL, type PlotSide, resolvePlotRoads } from '../domain/roads';
-import { studyEnvelope } from '../domain/envelope';
+import { studyEnvelope, DEFAULT_FLOOR_TO_FLOOR_M } from '../domain/envelope';
 import {
   COST_RATES, QUALITY_LABEL, estimateBuildCost, type BuildQuality,
 } from '../domain/build-cost';
@@ -70,6 +70,8 @@ export const PlotStudy: React.FC = () => {
     front: 12, rear: 0, left: 0, right: 0,
   });
   const [lightVent, setLightVent] = useState(false);
+  /** null = let the engine assume 3 m. Set, it is the reader's own figure. */
+  const [floorToFloor, setFloorToFloor] = useState<number | null>(null);
   /** null = "as many as the byelaws allow", which is the answer most people want. */
   const [wantedFloors, setWantedFloors] = useState<number | null>(null);
   const [landRate, setLandRate] = useState(35000);
@@ -88,6 +90,7 @@ export const PlotStudy: React.FC = () => {
       roads,
       areaType,
       lightVentilationEnsured: use === 'com_complex' && lightVent,
+      ...(floorToFloor !== null ? { floorToFloorM: floorToFloor } : {}),
     });
     const far = resolveBaseFar({
       occupancy: use, plotArea, roadWidth: roads.governingRoadWidthM, areaType,
@@ -97,7 +100,7 @@ export const PlotStudy: React.FC = () => {
       baseFar: far.effectiveBaseFar || far.baseFar,
     });
     return { roads, study, priced };
-  }, [use, areaType, plotArea, frontage, depth, widths, lightVent, landRate]);
+  }, [use, areaType, plotArea, frontage, depth, widths, lightVent, landRate, floorToFloor]);
 
   const { roads, study, priced } = result;
 
@@ -507,6 +510,45 @@ export const PlotStudy: React.FC = () => {
               {inr(buildCost.perSqft)}/sq ft. {costRate.note}
             </p>
           </fieldset>
+
+          {/* Height is an answer here, not a question: the byelaws cap it, and it follows
+              from the floor count and the storey height. But the storey height is the one
+              part of that the gazette does not settle — it fixes a 2.75 m minimum room
+              height and no floor-to-floor figure at all — so the engine had to assume 3 m,
+              and a reader who wants taller ceilings had no way to say so even though it
+              changes how many floors fit under the cap. Folded away, because 3 m is right
+              for almost everyone. */}
+          <details className="group">
+            <summary className="cursor-pointer list-none text-[11px] text-sky-700 marker:content-none hover:underline dark:text-sky-400">
+              Want taller ceilings?
+            </summary>
+            <div className="mt-1.5 rounded-lg border border-slate-200 p-2 dark:border-white/10">
+              <p className="text-[11px] leading-snug text-slate-600 dark:text-slate-400">
+                The building’s total height is set by the byelaws and is not yours to choose.
+                The height of one storey is: the gazette fixes only a 2.75 m minimum room
+                height. Raise it and fewer floors fit under the same cap.
+              </p>
+              <div className="mt-2">
+                <NumberField
+                  label="Floor to floor"
+                  value={floorToFloor ?? DEFAULT_FLOOR_TO_FLOOR_M}
+                  onChange={(v) => setFloorToFloor(v)}
+                  min={2.75} max={6} step={0.25} unit="m"
+                  hint={floorToFloor === null
+                    ? `Assumed at ${DEFAULT_FLOOR_TO_FLOOR_M} m — the minimum room height plus a slab`
+                    : 'Your figure, not the gazette\u2019s'}
+                />
+              </div>
+              {floorToFloor !== null && (
+                <button
+                  type="button" onClick={() => setFloorToFloor(null)}
+                  className="mt-1.5 text-[11px] text-sky-700 hover:underline dark:text-sky-400"
+                >
+                  Back to the {DEFAULT_FLOOR_TO_FLOOR_M} m assumption
+                </button>
+              )}
+            </div>
+          </details>
 
           {/* The one thing about the building a person does know. It selects a rung of the
               ladder the engine has already worked out; it does not drive the arithmetic. */}

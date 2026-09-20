@@ -523,10 +523,18 @@ export function studyEnvelope(input: EnvelopeInput): EnvelopeStudy {
     compoundable,
     cliff: bought.cliff ?? asOfRight.cliff,
     caveats: [
-      `Floor-to-floor height is taken at ${input.floorToFloorM ?? DEFAULT_FLOOR_TO_FLOOR_M} m — the `
-      + `byelaws' ${MIN_ROOM_HEIGHT_M} m minimum room height plus a slab. The byelaws set no `
-      + 'floor-to-floor figure, so this is an assumption and it moves the floor count under any '
-      + 'height cap.',
+      // Once the reader states their own floor-to-floor height it stops being the
+      // engine's assumption and becomes their figure, and the caveat has to say which
+      // it is. Presenting someone's own input back to them as something we guessed is
+      // the same failure as presenting a guess as something the gazette states.
+      input.floorToFloorM !== undefined
+        ? `Floor-to-floor height is ${input.floorToFloorM} m, as you set it. The byelaws fix no `
+          + `floor-to-floor figure — only a ${MIN_ROOM_HEIGHT_M} m minimum room height — so this `
+          + 'one is yours, and it moves the floor count under any height cap.'
+        : `Floor-to-floor height is taken at ${DEFAULT_FLOOR_TO_FLOOR_M} m — the byelaws' `
+          + `${MIN_ROOM_HEIGHT_M} m minimum room height plus a slab. The byelaws set no `
+          + 'floor-to-floor figure, so this is an assumption and it moves the floor count under '
+          + 'any height cap.',
       ...far.caveats,
     ],
   };

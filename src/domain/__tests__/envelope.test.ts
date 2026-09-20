@@ -238,3 +238,40 @@ describe('pricing keeps a sanction and a regularisation apart', () => {
     expect(p.compounding!.caveats.join(' ')).toMatch(/already been carried out/);
   });
 });
+
+describe('the storey height, which the gazette does not fix', () => {
+  const caveat = (s: ReturnType<typeof study>) =>
+    s.caveats.find((c) => c.startsWith('Floor-to-floor')) ?? '';
+
+  it('calls the default an assumption, because it is one', () => {
+    const c = caveat(study());
+    expect(c).toContain(`taken at ${DEFAULT_FLOOR_TO_FLOOR_M} m`);
+    expect(c).toContain('this is an assumption');
+  });
+
+  it('stops calling it an assumption once the reader supplies it', () => {
+    // Handing someone their own input back as something we guessed is the same failure
+    // as presenting a guess as something the gazette states.
+    const c = caveat(study({ floorToFloorM: 3.6 }));
+    expect(c).toContain('3.6 m, as you set it');
+    expect(c).not.toContain('this is an assumption');
+    expect(c).toContain('this one is yours');
+  });
+
+  it('fits fewer floors under the same cap when the storeys get taller', () => {
+    const normal = study();
+    const tall = study({ floorToFloorM: 4.5 });
+    expect(tall.standard.floors).toBeLessThanOrEqual(normal.standard.floors);
+    expect(tall.standard.heightM).toBeLessThanOrEqual(
+      Math.max(normal.standard.heightM, tall.standard.floors * 4.5),
+    );
+  });
+
+  it('leaves the plot area and the FAR entitlement untouched', () => {
+    // Storey height moves how the entitlement is stacked, never how much there is.
+    const normal = study();
+    const tall = study({ floorToFloorM: 3.6 });
+    expect(tall.standard.farEntitlement).toBe(normal.standard.farEntitlement);
+    expect(tall.standard.farEntitlementSqm).toBeCloseTo(normal.standard.farEntitlementSqm, 6);
+  });
+});
