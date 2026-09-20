@@ -2876,6 +2876,22 @@ minimum by area type: 9 m built-up, 12 m in a new layout.
 Minimum road widths, plot sizes and parking ratios for the sixteen occupancies were
 reasoned from the four that existed, not read from the gazette.
 
+### Deliberately not shipped — case law on the face of the compoundable plan
+
+Internet research into what plot owners actually ask turned up High Court litigation over
+compounding and regularisation in Uttar Pradesh, and the suggestion was to put a citation on
+the face of the "amber ring" card so a reader sees that courts have taken the point
+seriously, not just that the byelaws say so.
+
+It was not shipped. This repository closes a claim only against `docs/source/gazette/`, and
+a case name is a legal assertion, not a statutory figure — a wrong or misremembered citation
+on that card would be worse than no citation, because a reader would rely on it. The card
+now disowns the amber ring in Chapter 16's own words instead.
+
+**To close:** a citation read from the judgment itself (or a reliable report of it), with the
+court, the year, and the proposition it actually stands for recorded here before it appears
+in the UI.
+
 ### Not yet modelled
 - Built-up versus non-built-up area type is now in the FAR engine but not in the UI, so
   every project is assessed as built-up — the more restrictive reading.

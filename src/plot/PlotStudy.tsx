@@ -400,7 +400,7 @@ export const PlotStudy: React.FC = () => {
               <PlanDrawing
                 plan={study.standard} roads={roads} frontageM={frontage} depthM={depth}
                 title="Standard planning"
-                subtitle="What a sanction grants you, without buying anything."
+                subtitle="What a sanction grants you, without buying anything. This is the plan you apply for."
               />
               <dl className="mt-3 space-y-1 border-t border-slate-200 pt-2.5 text-[11.5px] dark:border-white/10">
                 <div className="flex justify-between gap-2">
@@ -426,9 +426,21 @@ export const PlotStudy: React.FC = () => {
               <PlanDrawing
                 plan={study.maximum} roads={roads} frontageM={frontage} depthM={depth}
                 margin={study.compoundable}
-                title="Stretched, with fees"
-                subtitle="Green is bought and sanctioned. Amber is a breach you would be paying to have forgiven."
+                title="The most you can buy"
+                subtitle="Also sanctioned — you pay for the extra density before you build."
               />
+              {/* The ring is drawn on this plan, so it has to be disowned on this plan.
+                  Placed below the card the reader has already taken the two drawings for
+                  two options by the time they reach it. */}
+              {study.compoundable.totalEncroachmentSqm > 0 && (
+                <p className="mt-2.5 flex items-start gap-1.5 rounded-lg bg-amber-50 px-2 py-1.5 text-[11px] leading-snug text-amber-900 dark:bg-amber-500/10 dark:text-amber-200">
+                  <AlertTriangle className="mt-[3px] h-3 w-3 shrink-0" aria-hidden="true" />
+                  <span>
+                    The amber ring is not part of this plan, and there is no application for it.
+                    Chapter 16 prices building that has already happened.
+                  </span>
+                </p>
+              )}
               <dl className="mt-3 space-y-1 border-t border-slate-200 pt-2.5 text-[11.5px] dark:border-white/10">
                 <div className="flex justify-between gap-2">
                   <dt className="text-slate-600 dark:text-slate-400">Floor area</dt>
@@ -454,8 +466,8 @@ export const PlotStudy: React.FC = () => {
                   </dd>
                 </div>
                 {priced.compounding && priced.compounding.total > 0 && (
-                  <div className="flex justify-between gap-2">
-                    <dt className="text-amber-700 dark:text-amber-400">Amber band, if built</dt>
+                  <div className="mt-1.5 flex justify-between gap-2 border-t border-dashed border-amber-300 pt-1.5 dark:border-amber-500/40">
+                    <dt className="text-amber-700 dark:text-amber-400">Amber ring, if already built</dt>
                     <dd className="font-semibold tabular-nums text-amber-700 dark:text-amber-400">
                       {inr(priced.compounding.total)}
                     </dd>
