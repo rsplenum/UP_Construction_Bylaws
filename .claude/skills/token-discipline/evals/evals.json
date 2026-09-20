@@ -1,0 +1,96 @@
+{
+  "skill_name": "token-discipline",
+  "evals": [
+    {
+      "id": 0,
+      "name": "repeats-the-90-percent-claim",
+      "prompt": "I read that you can cut Claude costs by up to 90% by having Opus orchestrate and delegate the dirty work to Sonnet. I want to set that up for my codebase-refactoring sessions. What's the actual saving I should expect and how do I wire it up?",
+      "expected_output": "Corrects 90% to ~60% for Opus 5 -> Sonnet 5 ($5/$25 vs $2/$10), attributes the ~90% figure to prompt caching instead, and notes that the larger real saving from delegation is keeping bulk material out of the orchestrator's context entirely.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "a0-corrects-90-to-60",
+          "text": "Corrects the 90% figure: states the Opus 5 -> Sonnet 5 saving is about 60%, not 90%"
+        },
+        {
+          "id": "a0-real-rates",
+          "text": "Quotes per-million-token rates consistent with Opus 5 at $5/$25 and Sonnet 5 at $2/$10"
+        },
+        {
+          "id": "a0-90-is-caching",
+          "text": "Attributes the ~90% figure to prompt caching (cache reads ~1/10 of input rate), not to swapping models"
+        },
+        {
+          "id": "a0-context-saving",
+          "text": "Explains that the larger real saving from delegation is keeping bulk material out of the orchestrator's context so it is not re-sent every turn"
+        },
+        {
+          "id": "a0-model-scoped-cache",
+          "text": "Warns that caches are model-scoped, so a two-model cascade forfeits cache reuse between them"
+        },
+        {
+          "id": "a0-no-uncorrected-90",
+          "text": "Does not leave the user believing a model swap alone yields ~90% savings"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "mid-chat-effort-switch",
+      "prompt": "im like 40 messages deep in a claude code session doing a big migration and its getting expensive. can i drop to low effort now for the last few tweaks? someone told me you can switch effort mid-conversation and it doesnt break the cache",
+      "expected_output": "Corrects the claim: a mid-conversation top-level effort change DOES invalidate the messages cache. Notes it is only cache-safe via the per-message effort system message (beta mid-conversation-output-config-2026-07-01) on Opus 5 / Fable 5.1 / Mythos 5.1, and that at turn 40 the invalidation may cost more than the effort change saves.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "a1-corrects-cache-claim",
+          "text": "States plainly that a mid-conversation top-level effort change DOES invalidate the messages cache, contradicting what the user was told"
+        },
+        {
+          "id": "a1-names-safe-route",
+          "text": "Names the cache-safe alternative: a per-message effort system message (beta mid-conversation-output-config-2026-07-01)"
+        },
+        {
+          "id": "a1-names-models",
+          "text": "Notes that the cache-safe route is limited to specific models (Opus 5 / Fable 5.1 / Mythos 5.1)"
+        },
+        {
+          "id": "a1-net-cost-warning",
+          "text": "Warns that at ~40 messages deep the cache invalidation may cost more than the effort reduction saves"
+        },
+        {
+          "id": "a1-does-not-affirm",
+          "text": "Does not simply agree with the user's incorrect premise"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "vague-cost-complaint",
+      "prompt": "my claude code sessions burn through credits way faster than my teammates' and i cant work out why. nothing i do feels that different from what they do. where should i even start looking?",
+      "expected_output": "Leads with caching (the free lever) and context hygiene before model choice, explains that unused MCP/connector tool schemas are re-sent every request, mentions one-task-per-chat, and frames the goal as cost per completed task rather than per request.",
+      "files": [],
+      "assertions": [
+        {
+          "id": "a2-caching-first",
+          "text": "Leads with the free levers (prompt caching and/or context hygiene) before suggesting a cheaper model"
+        },
+        {
+          "id": "a2-tool-schema-tax",
+          "text": "Explains that unused connectors, MCP servers, plugins or skills contribute tool schemas to every request, not just once"
+        },
+        {
+          "id": "a2-one-task-per-chat",
+          "text": "Recommends one task per conversation / starting a fresh session when the subject changes"
+        },
+        {
+          "id": "a2-per-completed-task",
+          "text": "Frames the goal as cost per completed task rather than cost per request"
+        },
+        {
+          "id": "a2-actionable-diagnosis",
+          "text": "Gives the user something concrete to check rather than only general advice"
+        }
+      ]
+    }
+  ]
+}
