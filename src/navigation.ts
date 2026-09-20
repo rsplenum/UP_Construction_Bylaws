@@ -1,4 +1,6 @@
-import { BookOpen, Bot, ClipboardCheck, FileCheck2, FileText, Globe, Sparkles } from 'lucide-react';
+import {
+  ArrowLeftRight, BookOpen, Bot, ClipboardCheck, FileCheck2, FileText, Globe, Sparkles,
+} from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
 /**
@@ -9,7 +11,8 @@ import type { LucideIcon } from 'lucide-react';
  * single menu and the workspace is what you land on.
  */
 export type ViewId =
-  | 'workspace' | 'plot' | 'maps' | 'navigator' | 'gazette' | 'rationale' | 'forms' | 'ask';
+  | 'workspace' | 'plot' | 'compare' | 'maps' | 'navigator' | 'gazette' | 'rationale'
+  | 'forms' | 'ask';
 
 export interface ReferenceView {
   id: ViewId;
@@ -22,6 +25,10 @@ export const REFERENCE_VIEWS: readonly ReferenceView[] = [
   {
     id: 'workspace', label: 'Check a specific design', icon: ClipboardCheck,
     description: 'You have a floor area and a height in mind — test that building against every chapter',
+  },
+  {
+    id: 'compare', label: 'Choosing between two plots', icon: ArrowLeftRight,
+    description: 'Neither one is bought yet \u2014 see what the byelaws do to each before you commit',
   },
   {
     id: 'maps', label: 'Find the site', icon: Globe,

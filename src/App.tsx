@@ -10,6 +10,7 @@ import { Footer } from './components/Footer';
 
 // The workspace ships with the app; reference material loads only when opened.
 const PlotStudy = lazy(() => import('./plot/PlotStudy').then((m) => ({ default: m.PlotStudy })));
+const PlotCompare = lazy(() => import('./plot/PlotCompare').then((m) => ({ default: m.PlotCompare })));
 const MapServerExplorer = lazy(() => import('./components/MapServerExplorer').then((m) => ({ default: m.MapServerExplorer })));
 const ByelawsNavigator = lazy(() => import('./components/ByelawsNavigator').then((m) => ({ default: m.ByelawsNavigator })));
 const OfficialPdfViewer = lazy(() => import('./components/OfficialPdfViewer').then((m) => ({ default: m.OfficialPdfViewer })));
@@ -61,13 +62,14 @@ function AppShell() {
     return () => window.removeEventListener('keydown', onKey);
   }, [view, goTo]);
 
-  // The two screens that answer a question, as against the shelf that supports them.
-  const primary = view === 'plot' || view === 'workspace';
-  const heading = view === 'plot'
-    ? 'What can be built on this plot under the UP Building Byelaws 2025'
-    : view === 'workspace'
-      ? 'Check a building against the UP Building Byelaws 2025'
-      : REFERENCE_VIEWS.find((v) => v.id === view)?.label ?? '';
+  // The screens that answer a question, as against the shelf that supports them.
+  const primary = view === 'plot' || view === 'workspace' || view === 'compare';
+  const HEADINGS: Partial<Record<ViewId, string>> = {
+    plot: 'What can be built on this plot under the UP Building Byelaws 2025',
+    compare: 'Compare two plots under the UP Building Byelaws 2025',
+    workspace: 'Check a building against the UP Building Byelaws 2025',
+  };
+  const heading = HEADINGS[view] ?? REFERENCE_VIEWS.find((v) => v.id === view)?.label ?? '';
 
   return (
     <div className="flex min-h-screen flex-col bg-[#fbfbfd] font-sans text-[#1d1d1f] antialiased selection:bg-emerald-500 selection:text-white dark:bg-black dark:text-[#f5f5f7]">
@@ -91,6 +93,7 @@ function AppShell() {
           {primary ? (
             <Suspense fallback={<PanelSkeleton />}>
               {view === 'plot' && <PlotStudy />}
+              {view === 'compare' && <PlotCompare />}
               {view === 'workspace' && <Workspace />}
             </Suspense>
           ) : (
