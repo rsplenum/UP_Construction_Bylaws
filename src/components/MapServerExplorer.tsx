@@ -72,6 +72,18 @@ export function calculatePolygonAreaSqMeters(coords: [number, number][]): number
   return Math.abs((area * R * R) / 2);
 }
 
+/**
+ * Tiles come from somebody else's server, and when that server cannot be reached the map
+ * went blank and said nothing: a grey rectangle with the zoning polygons floating on it
+ * and no hint that anything was wrong. A corporate firewall, an offline laptop or a
+ * content-security policy all produce it, and the reader concludes the app is broken.
+ *
+ * So when a basemap stops answering, fall through to the next provider before giving up,
+ * and if they all fail, say so. These three sit on unrelated networks, because whatever
+ * blocks tiles usually blocks a whole host.
+ */
+const TILE_FALLBACKS = ['carto_positron', 'esri_gray', 'osm_standard'];
+
 export const MapServerExplorer: React.FC = () => {
   const toast = useToast();
 
@@ -79,6 +91,9 @@ export const MapServerExplorer: React.FC = () => {
   const [selectedAuthority, setSelectedAuthority] = useState<GISAuthority>(UP_DEVELOPMENT_AUTHORITIES[1]); // Default Lucknow
   const [searchQuery, setSearchQuery] = useState('');
   const [activeBasemapId, setActiveBasemapId] = useState<string>('carto_positron');
+  const [tilesUnavailable, setTilesUnavailable] = useState(false);
+  const basemapChosenByUser = useRef(false);
+  const fallbackStep = useRef(0);
   const [customProviders, setCustomProviders] = useState<BasemapProvider[]>([]);
   const [isConnectorModalOpen, setIsConnectorModalOpen] = useState<boolean>(false);
   const [isDossierOpen, setIsDossierOpen] = useState<boolean>(false);
@@ -303,7 +318,39 @@ export const MapServerExplorer: React.FC = () => {
       subdomains: basemap.subdomains || 'abc',
     }).addTo(mapInstanceRef.current);
 
+    // A handful of tiles fail on any map — the edge of a zoom level, a momentary
+    // timeout — so one error means nothing. A run of them with nothing loading in
+    // between means the host is unreachable, and that is worth acting on.
+    let consecutiveErrors = 0;
+    const onTileError = () => {
+      consecutiveErrors += 1;
+      if (consecutiveErrors < 4) return;
+      newLayer.off('tileerror', onTileError);
+
+      // Somebody who picked this basemap deliberately should not have it swapped under
+      // them; they are told instead.
+      const nextId = basemapChosenByUser.current
+        ? undefined
+        : TILE_FALLBACKS[fallbackStep.current + 1];
+      if (!nextId) {
+        setTilesUnavailable(true);
+        return;
+      }
+      fallbackStep.current += 1;
+      setActiveBasemapId(nextId);
+    };
+    const onTileLoad = () => {
+      consecutiveErrors = 0;
+      setTilesUnavailable((was) => (was ? false : was));
+    };
+    newLayer.on('tileerror', onTileError);
+    newLayer.on('tileload', onTileLoad);
+
     tileLayerRef.current = newLayer;
+    return () => {
+      newLayer.off('tileerror', onTileError);
+      newLayer.off('tileload', onTileLoad);
+    };
   }, [activeBasemapId, allBasemapProviders]);
 
   // Render & Update Statutory Zoning Polygons with dynamic opacity
@@ -1009,7 +1056,11 @@ export const MapServerExplorer: React.FC = () => {
               {allBasemapProviders.map((base) => (
                 <button
                   key={base.id}
-                  onClick={() => setActiveBasemapId(base.id)}
+                  onClick={() => {
+                    basemapChosenByUser.current = true;
+                    setTilesUnavailable(false);
+                    setActiveBasemapId(base.id);
+                  }}
                   className={`px-3 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all ${
                     activeBasemapId === base.id
                       ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-950 font-semibold shadow-xs'
@@ -1362,6 +1413,26 @@ export const MapServerExplorer: React.FC = () => {
 
             {/* Native Map Element */}
             <div ref={mapContainerRef} className="w-full h-full" />
+
+            {/* The grey rectangle explains itself. The zoning geometry is ours and is
+                drawn from the byelaws' own appendices, so it is still on the map and
+                still correct — it is only the photograph underneath that is missing. */}
+            {tilesUnavailable && (
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[500] p-3">
+                <div className="pointer-events-auto mx-auto max-w-lg rounded-xl border border-amber-300 bg-amber-50/95 p-3 shadow-lg backdrop-blur dark:border-amber-500/40 dark:bg-amber-950/90">
+                  <p className="text-[12.5px] font-semibold text-amber-900 dark:text-amber-200">
+                    The background map could not be loaded.
+                  </p>
+                  <p className="mt-1 text-[11.5px] leading-snug text-amber-900/90 dark:text-amber-200/90">
+                    All three tile providers were unreachable — usually a network or
+                    content policy blocking them, not a fault here. The zoning polygons,
+                    buffers and every figure on this page come from the byelaws and are
+                    unaffected; only the aerial backdrop is missing. Pick another basemap
+                    above to try again.
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* 3. Real-Time Click-to-Audit Spatial Compliance Drawer */}

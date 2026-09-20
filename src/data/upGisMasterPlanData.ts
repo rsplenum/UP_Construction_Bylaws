@@ -114,9 +114,11 @@ export const BASEMAP_PROVIDERS: BasemapProvider[] = [
     name: 'Survey Transport Grid',
     provider: 'OpenStreetMap Foundation',
     type: 'tile',
-    url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    // The OSMF tile policy asks for exactly this host and no subdomains: the a/b/c
+    // aliases are deprecated, buy nothing over HTTP/2, and "may be slower or withdrawn
+    // without notice". We were asking for tiles from hosts we had been told not to use.
+    url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    subdomains: 'abc',
     maxZoom: 19,
     isDark: false,
   },
