@@ -78,6 +78,12 @@ one model.
 - `max` only when correctness matters more than money, and only after measuring that
   there is headroom at the level below.
 
+**Check the clock first.** The default cache TTL is about five minutes, refreshed on
+each read. If more than that has passed since the last turn, the cache has already
+expired and there is nothing left to invalidate — switching effort costs nothing. This is
+the commonest case in a session someone has stepped away from, and it makes the rest of
+this paragraph moot.
+
 **Correction worth knowing:** changing top-level `effort` mid-conversation **does**
 invalidate the messages cache. The claim that you can drop to low effort late in a chat
 "without breaking the cache" is only true through a specific mechanism — a per-message
@@ -109,6 +115,16 @@ The real saving is **not** the per-token rate. It is that the bulk material neve
 the orchestrator's context at all, so it is not re-sent on every subsequent turn. A
 100k-token transcript read by a subagent that returns a 2k summary saves far more than
 60% of 100k — it saves 100k × every remaining turn.
+
+**The exception that reverses the whole calculation.** Material already sitting in the
+orchestrator's warm cache is *cheaper to re-read than to delegate.* Opus 5 reads its own
+cache at about $0.50/MTok; Sonnet 5 reads fresh input at $2.00. Handing a subagent a file
+the orchestrator has already cached costs roughly four times more than letting the
+orchestrator look again — and the subagent throws away a cache whose write premium you
+have already paid.
+
+So delegate what has **not** been read yet. Once something is in the warm prefix,
+delegating it is a loss.
 
 What to delegate: reading, searching, extracting, summarising, mechanical
 transformation, first-pass research.
