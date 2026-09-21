@@ -2949,13 +2949,30 @@ floors, which)` builds a plan from the rung on the matching ladder. A new bindin
 themselves. Eight tests in `__tests__/plan-at-floors.test.ts`, including one asserting the
 two ladders are never crossed.
 
-A third problem surfaced on reading the result back: the fee rows did not follow the
-choice either, so a card drawing two floors showed "Buy the density ₹2.21 L" for a
-purchase that buys nothing at two floors, and an amber compounding figure computed for the
-plot's best plan. Those rows are now suppressed while a floor choice is showing, with a
-line saying whose plan the fees belong to. Recomputing the compoundable margin and the fees
-against an arbitrary chosen plan is the fuller fix and is not done: `resolveCompoundableMargin`
-takes a plan and would serve, but `pricePlans` is built around the study's own maximum.
+A third problem surfaced on reading the result back: the fee rows did not follow the choice
+either, so a card drawing two floors showed "Buy the density ₹2.21 L" for a purchase that
+buys nothing at two floors, beside an amber compounding figure computed for a different
+building. Suppressing those rows was the first fix, and thin — the reader asked a real
+question and got a blank.
+
+**Closed properly.** `EnvelopeStudy` now carries the `occupancy` and the
+`maxPermissibleBuiltUpAreaSqm` it was computed against, so `studyAtFloors(study, floors)`
+can derive a whole study for another floor count: both plans from the matching ladders, and
+the compoundable margin recomputed by `resolveCompoundableMargin` against the plan actually
+drawn. Everything downstream then follows without knowing a choice was made — `pricePlans`
+takes a study, `PlanDrawing` takes a plan and a margin, and neither needed a special case.
+
+The margin is genuinely different, not a rescaling, and the difference is the useful part.
+Clause 16.3.8(v) bars compounding above the maximum permissible FAR, so the plot's best plan
+— which reaches that ceiling — can regularise **no floor area at any price**. At one floor
+fewer the headroom reappears: on the 300 m² default the same plot answers "None" at three
+floors and **60 m²** at two, with the compounding bill moving from ₹6.30 L to ₹17.09 L
+because there is now floor area to regularise as well as encroachment. Suppressing the rows
+had been hiding the more informative answer.
+
+Sixteen tests in `__tests__/plan-at-floors.test.ts`, including one that walks every rung of
+the as-of-right ladder and asserts 16.3.8(v) holds at each: no chosen plan plus its
+compoundable extra may exceed the maximum permissible FAR.
 
 ### B-060 — the compoundable drawing showed the band but never its area — CLOSED
 

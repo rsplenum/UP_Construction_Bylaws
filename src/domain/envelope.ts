@@ -178,6 +178,13 @@ export interface CompoundableMargin {
 }
 
 export interface EnvelopeStudy {
+  /** What this was computed for, so a study at another floor count can be derived from it. */
+  readonly occupancy: OccupancyId;
+  /**
+   * The FAR ceiling the compoundable margin is measured against — Clause 16.3.8(v)'s
+   * "maximum permissible FAR". Carried so the margin can be recomputed for another plan.
+   */
+  readonly maxPermissibleBuiltUpAreaSqm: number;
   readonly roads: PlotRoads;
   readonly plotAreaSqm: number;
   readonly frontageM: number;
@@ -531,6 +538,8 @@ export function studyEnvelope(input: EnvelopeInput): EnvelopeStudy {
   });
 
   return {
+    occupancy: input.occupancy,
+    maxPermissibleBuiltUpAreaSqm: far.maxPermissibleBuiltUpArea,
     roads: input.roads,
     plotAreaSqm: input.plotAreaSqm,
     frontageM: input.frontageM,
@@ -609,5 +618,49 @@ export function planAtFloors(
         + `${source.floors}, which would give ${round2(source.floorAreaSqm)} m² — `
         + `${round2(stranded)} m² more than this. Nothing in the byelaws stops you here.`,
     strandedSqm: round2(stranded),
+  };
+}
+
+/**
+ * The whole study as it stands at a floor count the reader asked for.
+ *
+ * `planAtFloors` fixed the drawings and left the money behind: the fees and the
+ * compoundable margin were still the plot's best plan's, so a card drawing two floors
+ * carried a purchase price for a building of three and an amber band measured against a
+ * different envelope. Suppressing those rows was honest but thin — the reader asked a real
+ * question and got a blank.
+ *
+ * Deriving a whole study instead means everything downstream follows without knowing
+ * anything about the choice: `pricePlans` takes a study, `PlanDrawing` takes a plan and a
+ * margin, and none of them need a special case.
+ *
+ * The margin is genuinely different, not merely rescaled. Clause 16.3.8(v) bars compounding
+ * above the maximum permissible FAR, so on a plan that already reaches that ceiling the
+ * allowance of 16.3.3 has nothing to sit in and regularising buys no floor area at all. Drop
+ * to a smaller plan and the headroom reappears, so the same plot answers "None" at its best
+ * floor count and a real figure below it. That is the byelaws' own arithmetic, and hiding it
+ * was hiding the more useful answer.
+ *
+ * Returns null where the floor count was never evaluated or is refused; the study itself
+ * when the choice is the plot's best, so callers can compare by identity.
+ */
+export function studyAtFloors(study: EnvelopeStudy, floors: number): EnvelopeStudy | null {
+  const standard = planAtFloors(study, floors, 'standard');
+  const maximum = planAtFloors(study, floors, 'maximum');
+  if (!standard || !maximum) return null;
+  if (standard === study.standard && maximum === study.maximum) return study;
+
+  return {
+    ...study,
+    standard,
+    maximum,
+    compoundable: resolveCompoundableMargin({
+      occupancy: study.occupancy,
+      plotAreaSqm: study.plotAreaSqm,
+      frontageM: study.frontageM,
+      depthM: study.depthM,
+      plan: maximum,
+      maxPermissibleBuiltUpAreaSqm: study.maxPermissibleBuiltUpAreaSqm,
+    }),
   };
 }

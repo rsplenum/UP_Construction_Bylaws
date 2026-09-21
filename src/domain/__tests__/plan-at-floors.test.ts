@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
 import { resolvePlotRoads } from '../roads';
-import { planAtFloors, studyEnvelope } from '../envelope';
+import { planAtFloors, studyAtFloors, studyEnvelope } from '../envelope';
+import { pricePlans } from '../plan-pricing';
+import { resolveBaseFar } from '../far';
 
 /**
  * The floor picker used to change the verdict sentence and leave both site plans drawing
@@ -79,5 +81,89 @@ describe('planAtFloors', () => {
       const bought = s.ladder.find((r) => r.floors === rung.floors);
       if (bought) expect(rung.usableSqm).toBeLessThanOrEqual(bought.usableSqm + 1e-9);
     }
+  });
+});
+
+describe('studyAtFloors', () => {
+  it('hands back the same object when the choice is the plot’s best', () => {
+    const s = study();
+    expect(studyAtFloors(s, s.standard.floors)).toBe(s);
+  });
+
+  it('returns null for a floor count that was never evaluated', () => {
+    expect(studyAtFloors(study(), 99)).toBeNull();
+  });
+
+  it('recomputes the compoundable margin against the plan actually chosen', () => {
+    const s = study();
+    const fewer = studyAtFloors(s, s.standard.floors - 1)!;
+    expect(fewer.compoundable).not.toBe(s.compoundable);
+    expect(fewer.maximum.floors).toBe(s.standard.floors - 1);
+  });
+
+  it('finds FAR headroom for compounding that the best plan has none of', () => {
+    // This is the whole point of recomputing rather than suppressing. Clause 16.3.8(v)
+    // bars compounding above the maximum permissible FAR, so a plan that already reaches
+    // that ceiling can regularise no floor area at any price. Drop a floor and the
+    // headroom reappears — the same plot answers "None" at its best and a real figure
+    // below it, and that is the byelaws' own arithmetic, not a rescaling.
+    const s = study();
+    expect(s.compoundable.farHeadroomExhausted).toBe(true);
+    expect(s.compoundable.extraFarSqm).toBeCloseTo(0, 6);
+
+    const fewer = studyAtFloors(s, s.standard.floors - 1)!;
+    expect(fewer.compoundable.farHeadroomExhausted).toBe(false);
+    expect(fewer.compoundable.extraFarSqm).toBeGreaterThan(0);
+  });
+
+  it('never lets compounding carry a plan above the maximum permissible FAR', () => {
+    // 16.3.8(v), at every rung, not just the best one.
+    const s = study();
+    for (const rung of s.standardLadder.filter((r) => !r.refusedBecause)) {
+      const at = studyAtFloors(s, rung.floors);
+      if (!at) continue;
+      expect(at.maximum.floorAreaSqm + at.compoundable.extraFarSqm)
+        .toBeLessThanOrEqual(s.maxPermissibleBuiltUpAreaSqm + 1e-6);
+    }
+  });
+
+  it('carries the ladders, the plot and the caveats through unchanged', () => {
+    const s = study();
+    const fewer = studyAtFloors(s, s.standard.floors - 1)!;
+    expect(fewer.ladder).toBe(s.ladder);
+    expect(fewer.standardLadder).toBe(s.standardLadder);
+    expect(fewer.plotAreaSqm).toBe(s.plotAreaSqm);
+    expect(fewer.caveats).toBe(s.caveats);
+    expect(fewer.maxPermissibleBuiltUpAreaSqm).toBe(s.maxPermissibleBuiltUpAreaSqm);
+  });
+});
+
+describe('the fees follow the plan that is drawn', () => {
+  const price = (s: ReturnType<typeof study>) => pricePlans({
+    study: s, occupancy: 'res_single', areaType: 'built_up', landRate: 35_000,
+    baseFar: resolveBaseFar({
+      occupancy: 'res_single', plotArea: s.plotAreaSqm,
+      roadWidth: s.roads.governingRoadWidthM, areaType: 'built_up',
+    }).effectiveBaseFar || 0,
+  });
+
+  it('charges nothing for density a smaller plan does not buy', () => {
+    const s = study();
+    const fewer = studyAtFloors(s, s.standard.floors - 1)!;
+    // At the lower floor count the geometry binds before either entitlement does, so the
+    // two plans build the same area and there is no density to buy.
+    expect(fewer.maximum.floorAreaSqm - fewer.standard.floorAreaSqm).toBeLessThan(0.5);
+    expect(price(fewer).maximum.total).toBe(0);
+    expect(price(s).maximum.total).toBeGreaterThan(0);
+  });
+
+  it('prices the compounding of the chosen plan, not of the best one', () => {
+    const s = study();
+    const fewer = studyAtFloors(s, s.standard.floors - 1)!;
+    const a = price(s).compounding?.total ?? 0;
+    const b = price(fewer).compounding?.total ?? 0;
+    expect(a).toBeGreaterThan(0);
+    expect(b).toBeGreaterThan(0);
+    expect(b).not.toBeCloseTo(a, 0);
   });
 });
