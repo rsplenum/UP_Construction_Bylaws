@@ -4,7 +4,7 @@ import { Clause } from '../components/ui/Clause';
 import { NumberField } from '../components/ui/NumberField';
 import { PlanDrawing } from './PlanDrawing';
 import { PLOT_SIDES, SIDE_LABEL, type PlotSide, resolvePlotRoads } from '../domain/roads';
-import { studyEnvelope, DEFAULT_FLOOR_TO_FLOOR_M } from '../domain/envelope';
+import { studyEnvelope, planAtFloors, DEFAULT_FLOOR_TO_FLOOR_M } from '../domain/envelope';
 import {
   COST_RATES, QUALITY_LABEL, estimateBuildCost, type BuildQuality,
 } from '../domain/build-cost';
@@ -104,6 +104,16 @@ export const PlotStudy: React.FC = () => {
 
   const { roads, study, priced } = result;
 
+  // What the two site plans draw. Asking for three floors used to change the sentence and
+  // leave both drawings showing four; a drawing that disagrees with the sentence above it
+  // is worse than no drawing. Each is measured against its own entitlement — the ladders
+  // differ, and the maximum one is clamped to the purchasable ceiling.
+  const standardPlan = (wantedFloors !== null && planAtFloors(study, wantedFloors, 'standard'))
+    || study.standard;
+  const maximumPlan = (wantedFloors !== null && planAtFloors(study, wantedFloors, 'maximum'))
+    || study.maximum;
+  const showingChoice = standardPlan !== study.standard || maximumPlan !== study.maximum;
+
   // The question people actually arrive with. UP's own coverage of these byelaws led on
   // it — "no approved map under 1,000 sq ft", "an architect's certificate up to 5,000" —
   // and the engine has answered it all along on a screen nobody opened.
@@ -123,6 +133,7 @@ export const PlotStudy: React.FC = () => {
     footprint: 'The setbacks are what stop you.',
     floors: 'The floor-count ceiling is what stops you.',
     height: 'The height ceiling is what stops you.',
+    choice: 'Nothing stops you — this is the floor count you asked for.',
   };
   const bindingCite = study.standard.binding === 'footprint' || study.standard.binding === 'floors'
     ? study.standard.setbacks.clauseRef
@@ -135,7 +146,7 @@ export const PlotStudy: React.FC = () => {
   };
   const costRate = COST_RATES.find((r) => r.id === costRateId) ?? COST_RATES[0];
   const buildCost = estimateBuildCost({
-    floorAreaSqm: study.standard.floorAreaSqm, rate: costRate, quality,
+    floorAreaSqm: standardPlan.floorAreaSqm, rate: costRate, quality,
   });
   const reckoning = UP_BIGHA_RECKONINGS.find((r) => r.id === reckoningId) ?? UP_BIGHA_RECKONINGS[0];
 
@@ -164,6 +175,7 @@ export const PlotStudy: React.FC = () => {
     ? null
     : study.ladder.find((r) => r.floors === wantedFloors) ?? null;
 
+
   // Computed from the same study that draws the plans, so the answer at the top and the
   // drawings beneath it cannot disagree.
   const buildable = study.standard.floorAreaSqm > 0.5;
@@ -179,11 +191,18 @@ export const PlotStudy: React.FC = () => {
     ? 'No floor area can be sanctioned on these figures. Check the plot size and the road widths.'
     : chosen?.refusedBecause
       ? chosen.refusedBecause
-      : `${study.standard.floorAreaSqm.toFixed(0)} m² across ${study.standard.floors} `
-        + `floor${study.standard.floors === 1 ? '' : 's'}, as of right. `
-        + (boughtArea > 0.5
-          ? `Up to ${study.maximum.floorAreaSqm.toFixed(0)} m² if you buy the extra density.`
-          : 'Buying extra density adds nothing on this plot.');
+      : `${standardPlan.floorAreaSqm.toFixed(0)} m² across ${standardPlan.floors} `
+        + `floor${standardPlan.floors === 1 ? '' : 's'}, as of right. `
+        + (maximumPlan.floorAreaSqm - standardPlan.floorAreaSqm > 0.5
+          ? `Up to ${maximumPlan.floorAreaSqm.toFixed(0)} m² if you buy the extra density.`
+          : 'Buying extra density adds nothing on this plot.')
+        // A reader who has asked for fewer floors than the plot allows should be told
+        // what the choice costs them, once, rather than left to compare two numbers.
+        + (showingChoice && study.standard.floorAreaSqm - standardPlan.floorAreaSqm > 0.5
+          ? ` Your ${standardPlan.floors} floors leave `
+            + `${(study.standard.floorAreaSqm - standardPlan.floorAreaSqm).toFixed(0)} m² unused: `
+            + `this plot would take ${study.standard.floors}.`
+          : '');
 
   return (
     <div className="mx-auto w-full max-w-[1120px] px-4 py-6">
@@ -597,7 +616,7 @@ export const PlotStudy: React.FC = () => {
           <div className="grid gap-5 md:grid-cols-2">
             <div className="rounded-xl border border-slate-200 bg-white p-3.5 dark:border-white/10 dark:bg-[#161617]">
               <PlanDrawing
-                plan={study.standard} roads={roads} frontageM={frontage} depthM={depth}
+                plan={standardPlan} roads={roads} frontageM={frontage} depthM={depth}
                 title="Standard planning"
                 subtitle="What a sanction grants you, without buying anything. This is the plan you apply for."
               />
@@ -605,13 +624,13 @@ export const PlotStudy: React.FC = () => {
                 <div className="flex justify-between gap-2">
                   <dt className="text-slate-600 dark:text-slate-400">Floor area</dt>
                   <dd className="font-semibold text-slate-900 tabular-nums dark:text-slate-100">
-                    {study.standard.floorAreaSqm.toFixed(0)} m²
+                    {standardPlan.floorAreaSqm.toFixed(0)} m²
                   </dd>
                 </div>
                 <div className="flex justify-between gap-2">
                   <dt className="text-slate-600 dark:text-slate-400">Floors</dt>
                   <dd className="tabular-nums text-slate-800 dark:text-slate-200">
-                    {study.standard.floors} at {study.standard.heightM} m
+                    {standardPlan.floors} at {standardPlan.heightM} m
                   </dd>
                 </div>
                 <div className="flex justify-between gap-2">
@@ -623,7 +642,7 @@ export const PlotStudy: React.FC = () => {
 
             <div className="rounded-xl border border-slate-200 bg-white p-3.5 dark:border-white/10 dark:bg-[#161617]">
               <PlanDrawing
-                plan={study.maximum} roads={roads} frontageM={frontage} depthM={depth}
+                plan={maximumPlan} roads={roads} frontageM={frontage} depthM={depth}
                 margin={study.compoundable}
                 title="The most you can buy"
                 subtitle="Also sanctioned — you pay for the extra density before you build."
@@ -644,10 +663,10 @@ export const PlotStudy: React.FC = () => {
                 <div className="flex justify-between gap-2">
                   <dt className="text-slate-600 dark:text-slate-400">Floor area</dt>
                   <dd className="font-semibold text-slate-900 tabular-nums dark:text-slate-100">
-                    {study.maximum.floorAreaSqm.toFixed(0)} m²
-                    {boughtArea > 0.5 && (
+                    {maximumPlan.floorAreaSqm.toFixed(0)} m²
+                    {maximumPlan.floorAreaSqm - standardPlan.floorAreaSqm > 0.5 && (
                       <span className="ml-1 font-normal text-emerald-700 dark:text-emerald-400">
-                        +{boughtArea.toFixed(0)}
+                        +{(maximumPlan.floorAreaSqm - standardPlan.floorAreaSqm).toFixed(0)}
                       </span>
                     )}
                   </dd>
@@ -655,29 +674,46 @@ export const PlotStudy: React.FC = () => {
                 <div className="flex justify-between gap-2">
                   <dt className="text-slate-600 dark:text-slate-400">Floors</dt>
                   <dd className="tabular-nums text-slate-800 dark:text-slate-200">
-                    {study.maximum.floors} at {study.maximum.heightM} m
+                    {maximumPlan.floors} at {maximumPlan.heightM} m
                   </dd>
                 </div>
-                <div className="flex justify-between gap-2">
-                  <dt className="text-slate-600 dark:text-slate-400">Buy the density</dt>
-                  <dd className="font-semibold tabular-nums text-slate-900 dark:text-slate-100">
-                    {priced.maximum.total > 0 ? inr(priced.maximum.total) : '—'}
-                  </dd>
-                </div>
-                {priced.compounding && priced.compounding.total > 0 && (
-                  <div className="mt-1.5 flex justify-between gap-2 border-t border-dashed border-amber-300 pt-1.5 dark:border-amber-500/40">
-                    <dt className="text-amber-700 dark:text-amber-400">Amber ring, if already built</dt>
-                    <dd className="font-semibold tabular-nums text-amber-700 dark:text-amber-400">
-                      {inr(priced.compounding.total)}
-                    </dd>
-                  </div>
+                {/* The fees are worked out for the plot's best plan, and once a reader
+                    picks a smaller floor count they are the price of a different
+                    building. Showing "Buy the density" against a card that buys nothing
+                    at this floor count is a wrong number, so it is not shown — a blank
+                    with a reason beats a figure for somebody else's plan. */}
+                {showingChoice ? (
+                  <p className="mt-1.5 border-t border-dashed border-slate-300 pt-1.5 text-[11px] leading-snug text-slate-500 dark:border-white/15 dark:text-slate-400">
+                    The fees and the compoundable band are worked out for this plot's best
+                    plan of {study.maximum.floors} floors, not for the {maximumPlan.floors} you
+                    asked for. Clear the floor choice to see them.
+                  </p>
+                ) : (
+                  <>
+                    <div className="flex justify-between gap-2">
+                      <dt className="text-slate-600 dark:text-slate-400">Buy the density</dt>
+                      <dd className="font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+                        {priced.maximum.total > 0 ? inr(priced.maximum.total) : '—'}
+                      </dd>
+                    </div>
+                    {priced.compounding && priced.compounding.total > 0 && (
+                      <div className="mt-1.5 flex justify-between gap-2 border-t border-dashed border-amber-300 pt-1.5 dark:border-amber-500/40">
+                        <dt className="text-amber-700 dark:text-amber-400">Amber ring, if already built</dt>
+                        <dd className="font-semibold tabular-nums text-amber-700 dark:text-amber-400">
+                          {inr(priced.compounding.total)}
+                        </dd>
+                      </div>
+                    )}
+                  </>
                 )}
               </dl>
             </div>
           </div>
 
-          {/* The amber band is the one thing on this screen that can be misread. */}
-          {priced.compounding && (
+          {/* The amber band is the one thing on this screen that can be misread. Hidden
+              while a floor choice is showing, because every figure in it belongs to the
+              plot's best plan rather than the one drawn above. */}
+          {priced.compounding && !showingChoice && (
             <section className="rounded-xl border-2 border-amber-400 bg-amber-50 p-3.5 dark:border-amber-500/50 dark:bg-amber-500/10">
               <h2 className="flex items-center gap-1.5 text-[12.5px] font-semibold text-amber-900 dark:text-amber-200">
                 <AlertTriangle className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />

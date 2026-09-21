@@ -74,6 +74,12 @@ export type BindingConstraint =
   | 'footprint'
   /** A printed floor-count ceiling — Table 3.2.1's "3 floors + stilt". */
   | 'floors'
+  /**
+   * Nothing in the byelaws — the reader asked for fewer floors than the plot allows.
+   * Kept distinct because saying "the floor-count ceiling stops you" about somebody's own
+   * choice would blame the gazette for a decision it had no part in.
+   */
+  | 'choice'
   /** A printed height ceiling. */
   | 'height';
 
@@ -82,6 +88,7 @@ export const BINDING_LABEL: Readonly<Record<BindingConstraint, string>> = {
   footprint: 'The setbacks',
   floors: 'The floor-count ceiling',
   height: 'The height ceiling',
+  choice: 'The floor count you asked for',
 };
 
 /** One candidate building: a floor count and everything that follows from it. */
@@ -176,8 +183,17 @@ export interface EnvelopeStudy {
   readonly frontageM: number;
   readonly depthM: number;
   readonly floorToFloorM: number;
-  /** Every floor count evaluated, so the reader can see what the next one would cost. */
+  /**
+   * Every floor count evaluated against the MAXIMUM entitlement, so the reader can see
+   * what the next floor would cost once the extra density is bought.
+   */
   readonly ladder: readonly FloorRung[];
+  /**
+   * The same ladder against the as-of-right entitlement. Kept separate because every
+   * rung of `ladder` is clamped to the purchasable ceiling, and feeding one of those into
+   * the standard plan would credit the reader with floor area they have not bought.
+   */
+  readonly standardLadder: readonly FloorRung[];
   /** What a sanction grants without any extra payment. */
   readonly standard: BuildablePlan;
   /** What it grants once purchasable and premium FAR are bought. */
@@ -521,6 +537,7 @@ export function studyEnvelope(input: EnvelopeInput): EnvelopeStudy {
     depthM: input.depthM,
     floorToFloorM: input.floorToFloorM ?? DEFAULT_FLOOR_TO_FLOOR_M,
     ladder: bought.ladder,
+    standardLadder: asOfRight.ladder,
     standard: asOfRight.plan,
     maximum: bought.plan,
     compoundable,
@@ -540,5 +557,57 @@ export function studyEnvelope(input: EnvelopeInput): EnvelopeStudy {
           + 'any height cap.',
       ...far.caveats,
     ],
+  };
+}
+
+/**
+ * The plan at a floor count the reader asked for, rather than the one the plot is best at.
+ *
+ * The floor picker looked its choice up in the ladder and used it for the verdict sentence
+ * only; both site plans were handed `study.standard` and `study.maximum` regardless, so
+ * asking for three floors on a plot whose best is four changed the words and left the
+ * drawings showing four. A drawing that disagrees with the sentence above it is worse than
+ * no drawing.
+ *
+ * `which` picks the entitlement the rung is measured against. They are different ladders —
+ * the maximum one is clamped to the purchasable ceiling — and crossing them would credit an
+ * as-of-right plan with density nobody has bought.
+ *
+ * Returns null where that floor count was never evaluated or is refused outright, which the
+ * caller should treat as "draw the plan you already had", not as an error.
+ */
+export function planAtFloors(
+  study: EnvelopeStudy, floors: number, which: 'standard' | 'maximum',
+): BuildablePlan | null {
+  const source = which === 'standard' ? study.standard : study.maximum;
+  const rungs = which === 'standard' ? study.standardLadder : study.ladder;
+  const rung = rungs.find((r) => r.floors === floors);
+  if (!rung || rung.refusedBecause) return null;
+  if (rung.floors === source.floors) return source;
+
+  const entitlementSqm = source.farEntitlementSqm;
+  const clampedByFar = rung.grossSqm > entitlementSqm + 1e-9;
+  const stranded = Math.max(0, entitlementSqm - rung.usableSqm);
+
+  return {
+    floors: rung.floors,
+    heightM: rung.heightM,
+    setbacks: rung.setbacks,
+    coverage: rung.coverage,
+    footprintSqm: round2(rung.footprintSqm),
+    floorAreaSqm: round2(rung.usableSqm),
+    farAchieved: study.plotAreaSqm > 0 ? round2(rung.usableSqm / study.plotAreaSqm) : 0,
+    farEntitlement: source.farEntitlement,
+    farEntitlementSqm: entitlementSqm,
+    // A reader who asks for fewer floors than the plot allows is not being stopped by the
+    // byelaws, and naming a clause here would blame the gazette for their own decision.
+    binding: clampedByFar ? 'far' : 'choice',
+    bindingNote: clampedByFar
+      ? `At ${rung.floors} floors the setbacks would carry ${round2(rung.grossSqm)} m², but the `
+        + `FAR entitlement of ${source.farEntitlement} stops at ${round2(entitlementSqm)} m².`
+      : `You asked for ${rung.floors} floor${rung.floors === 1 ? '' : 's'}. This plot allows `
+        + `${source.floors}, which would give ${round2(source.floorAreaSqm)} m² — `
+        + `${round2(stranded)} m² more than this. Nothing in the byelaws stops you here.`,
+    strandedSqm: round2(stranded),
   };
 }

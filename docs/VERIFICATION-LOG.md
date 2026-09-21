@@ -2892,7 +2892,7 @@ now disowns the amber ring in Chapter 16's own words instead.
 court, the year, and the proposition it actually stands for recorded here before it appears
 in the UI.
 
-### B-0xx — Note-1 reassigns the front for the tables but not for the geometry — OPEN
+### B-058 — Note-1 reassigned the front for the tables but not for the geometry — CLOSED
 
 Reported by the repository owner as "the side road offsets need verification", and they
 were right.
@@ -2920,30 +2920,54 @@ the wrong way round. The caveat states the correct rule, so the prose and the nu
 disagree — which is worse than either being wrong alone, because the caveat is what a
 reader would check.
 
-**To close:** rotate the face mapping when `frontReassigned` is true, so the face named
-`front` is the side that Note-1 makes the front, and `PlanDrawing` draws each face against
-the edge it actually governs. Needs a test per rotation, and the drawing has to be read
-back, not just the numbers.
+**Closed.** `faceOfSide()` walks the sides from whichever one is the front, giving front,
+side1, rear, side2; starting at `front` reproduces the old fixed mapping exactly, so an
+ordinary plot does not move. `setbacksBySide()` re-expresses the faces against the edges
+they physically govern, and both `ground-coverage.ts` and `PlanDrawing` read it.
 
-### B-0xx — the floor picker moves the words and not the drawings — OPEN
+The arithmetic was wrong, not only the drawing: 12 × 25 m came out at 570 m² whichever road
+was wider. With the front on the 12 m frontage it is 529 m². Twelve tests in
+`__tests__/note1-rotation.test.ts`, written against the clause rather than the previous
+output — the rotation is a bijection, the rear stays opposite the front, the four distances
+are conserved, and the corner uplift lands on the narrower road.
+
+### B-059 — the floor picker moved the words and not the drawings — CLOSED
 
 Also reported by the owner. `PlotStudy` lets a reader choose a floor count and looks the
 rung up in `study.ladder`, but both `PlanDrawing`s are passed `study.standard` and
 `study.maximum` unconditionally. Choosing 3 floors on a plot whose best is 4 changes the
 verdict sentence and leaves both site plans drawing 4 floors.
 
-There is a second problem underneath it. `study.ladder` is built from the **maximum**
-solve, so every rung's `usableSqm` is clamped to the purchasable ceiling, not the
-as-of-right one. Feeding a rung straight into the standard drawing would overstate the
-as-of-right plan. Closing this properly means exposing the as-of-right ladder too, or
-deriving a plan per entitlement.
+There was a second problem underneath it. `study.ladder` is built from the **maximum**
+solve, so every rung's `usableSqm` is clamped to the purchasable ceiling. Feeding a rung
+straight into the standard drawing would have credited the reader with floor area they had
+not bought.
 
-### B-0xx — the compoundable drawing shows the band but never its area — OPEN
+**Closed.** `EnvelopeStudy` now carries `standardLadder` as well, and `planAtFloors(study,
+floors, which)` builds a plan from the rung on the matching ladder. A new binding value,
+`'choice'`, keeps the engine from blaming the gazette for a floor count the reader picked
+themselves. Eight tests in `__tests__/plan-at-floors.test.ts`, including one asserting the
+two ladders are never crossed.
+
+A third problem surfaced on reading the result back: the fee rows did not follow the
+choice either, so a card drawing two floors showed "Buy the density ₹2.21 L" for a
+purchase that buys nothing at two floors, and an amber compounding figure computed for the
+plot's best plan. Those rows are now suppressed while a floor choice is showing, with a
+line saying whose plan the fees belong to. Recomputing the compoundable margin and the fees
+against an arbitrary chosen plan is the fuller fix and is not done: `resolveCompoundableMargin`
+takes a plan and would serve, but `pricePlans` is built around the study's own maximum.
+
+### B-060 — the compoundable drawing showed the band but never its area — CLOSED
 
 `CompoundableMargin` carries `extraFarSqm` (what compounding could still add after Clause
-16.3.8(v)) and `farAllowanceSqm` (16.3.3's 10% before that ceiling). `PlanDrawing` draws
-the amber ring and labels neither. A reader sees a band and no figure for the area it
+16.3.8(v)) and `farAllowanceSqm` (16.3.3's 10% before that ceiling). `PlanDrawing` drew the
+amber ring and labelled neither. A reader saw a band and no figure for the area it
 represents or what regularising it would buy.
+
+**Closed.** The drawing now prints the ground the band covers and the floor area
+regularising it would buy — which on a plan that already reaches the maximum permissible
+FAR is **None**, with 16.3.3's allowance and 16.3.8(v)'s bar both named. That is the case a
+reader is most likely to get wrong, and it was the one the drawing was silent about.
 
 ### Not yet modelled
 - Para 3.2.4.9 Note-2: an alternative compliance path trading ground-floor setback

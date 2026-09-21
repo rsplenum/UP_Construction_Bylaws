@@ -318,6 +318,40 @@ export const PlanDrawing: React.FC<PlanDrawingProps> = ({
           </li>
         )}
       </ul>
+
+      {/*
+        The band had no number on it. A reader could see that something extra was drawn
+        around the envelope and had no way to tell how much ground it was, or whether
+        regularising it would buy them any floor area at all — which, once Clause
+        16.3.8(v) has capped compounding at the maximum permissible FAR, is very often
+        none. Both figures are on the margin already; neither was ever rendered.
+      */}
+      {margin && margin.totalEncroachmentSqm > 0 && (
+        <dl className="mt-2 space-y-1 border-t border-amber-300/60 pt-2 text-[11px] dark:border-amber-500/30">
+          <div className="flex justify-between gap-2">
+            <dt className="text-amber-800 dark:text-amber-300">Ground the band covers</dt>
+            <dd className="font-semibold tabular-nums text-amber-900 dark:text-amber-200">
+              {margin.totalEncroachmentSqm.toFixed(0)} m²
+            </dd>
+          </div>
+          <div className="flex justify-between gap-2">
+            <dt className="text-amber-800 dark:text-amber-300">
+              Floor area regularising it buys
+            </dt>
+            <dd className="font-semibold tabular-nums text-amber-900 dark:text-amber-200">
+              {margin.extraFarSqm > 0.5 ? `${margin.extraFarSqm.toFixed(0)} m²` : 'None'}
+            </dd>
+          </div>
+          {margin.farHeadroomExhausted && (
+            <p className="pt-0.5 leading-snug text-amber-800/90 dark:text-amber-300/90">
+              Clause 16.3.3 would have allowed {margin.farAllowanceSqm.toFixed(0)} m² — ten per
+              cent of the permissible FAR — but 16.3.8(v) bars compounding above the maximum
+              permissible FAR, and this plan already reaches it. The band buys a wider
+              footprint for the same total area, not a bigger building.
+            </p>
+          )}
+        </dl>
+      )}
     </figure>
   );
 };
