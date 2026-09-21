@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import type { SetbackFace } from '../domain/setbacks';
 import type { BuildablePlan, CompoundableMargin } from '../domain/envelope';
-import { PLOT_SIDES, type PlotRoads, type PlotSide } from '../domain/roads';
+import { PLOT_SIDES, setbacksBySide, type PlotRoads, type PlotSide } from '../domain/roads';
 
 interface PlanDrawingProps {
   plan: BuildablePlan;
@@ -57,32 +57,38 @@ export const PlanDrawing: React.FC<PlanDrawingProps> = ({
     const x = margins.left + (availW - plotW) / 2;
     const y = margins.top + (availH - plotH) / 2;
 
+    // Faces resolved to the edges they actually govern. On an ordinary plot this is the
+    // identity; where Clause 3.2.4.9 Note-1 has moved the front to a side road the front
+    // setback belongs on that edge, and drawing it at the bottom regardless drew the plot
+    // with its offsets rotated a quarter turn away from the building it describes.
+    const bySide = setbacksBySide(plan.setbacks, roads.frontSide);
     const inset = {
-      front: plan.setbacks.front * scale,
-      rear: plan.setbacks.rear * scale,
-      side1: plan.setbacks.side1 * scale,
-      side2: plan.setbacks.side2 * scale,
+      front: bySide.front * scale,
+      rear: bySide.rear * scale,
+      left: bySide.left * scale,
+      right: bySide.right * scale,
     };
 
-    // The front faces the road and is drawn at the bottom, as a site plan is read.
+    // The nominated front is drawn at the bottom, as a site plan is read.
     const envelope = {
-      x: x + inset.side1,
+      x: x + inset.left,
       y: y + inset.rear,
-      w: Math.max(0, plotW - inset.side1 - inset.side2),
+      w: Math.max(0, plotW - inset.left - inset.right),
       h: Math.max(0, plotH - inset.rear - inset.front),
     };
 
-    const stretched = margin
+    const marginBySide = margin ? setbacksBySide(margin.depthM, roads.frontSide) : null;
+    const stretched = marginBySide
       ? {
-        x: envelope.x - margin.depthM.side1 * scale,
-        y: envelope.y - margin.depthM.rear * scale,
-        w: envelope.w + (margin.depthM.side1 + margin.depthM.side2) * scale,
-        h: envelope.h + (margin.depthM.rear + margin.depthM.front) * scale,
+        x: envelope.x - marginBySide.left * scale,
+        y: envelope.y - marginBySide.rear * scale,
+        w: envelope.w + (marginBySide.left + marginBySide.right) * scale,
+        h: envelope.h + (marginBySide.rear + marginBySide.front) * scale,
       }
       : null;
 
     return { VB_W, VB_H, x, y, plotW, plotH, scale, envelope, stretched, width, depth };
-  }, [plan, frontageM, depthM, margin]);
+  }, [plan, frontageM, depthM, margin, roads.frontSide]);
 
   const { VB_W, VB_H, x, y, plotW, plotH, scale, envelope, stretched, width, depth } = g;
   const uid = React.useId().replace(/:/g, '');

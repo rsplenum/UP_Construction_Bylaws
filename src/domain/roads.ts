@@ -184,9 +184,68 @@ export function resolvePlotRoads(input: {
   };
 }
 
+export type SetbackFaceName = 'front' | 'rear' | 'side1' | 'side2';
+
+/** The four sides in order around the plot, starting at the nominated front. */
+const SIDE_CYCLE: readonly PlotSide[] = ['front', 'left', 'rear', 'right'];
+
+/**
+ * Which setback face sits on each physical edge, once Clause 3.2.4.9 Note-1 has had its say.
+ *
+ * `FACE_OF_SIDE` pins left to `side1` and right to `side2` and never moves. That is right
+ * only while the plot fronts the side it was entered as fronting. Note-1 says that where a
+ * plot faces two roads of different widths the side towards the WIDER road is the front,
+ * and `resolvePlotRoads` duly reports `frontSide: 'left'` on a plot with a 9 m nominated
+ * front and a 12 m road on the left — but with the mapping fixed, the 3 m front setback
+ * was still computed against the 9 m edge and the 1.5 m corner side setback against the
+ * 12 m one. Exactly the wrong way round, while the caveat printed beside it said the left
+ * road "is treated as the front — for the setback it carries".
+ *
+ * So the faces rotate with the front. Walking the sides in a fixed order from whichever is
+ * the front gives front, side1, rear, side2; starting at `front` reproduces
+ * `FACE_OF_SIDE` exactly, so nothing changes on the ordinary plot.
+ *
+ * Which flank is `side1` and which `side2` stays arbitrary — the gazette names no left or
+ * right — but it has to be decided once, because tables print different figures for the
+ * two and the corner rule raises one of them.
+ */
+export function faceOfSide(frontSide: PlotSide = 'front'): Readonly<Record<PlotSide, SetbackFaceName>> {
+  const start = Math.max(0, SIDE_CYCLE.indexOf(frontSide));
+  const order = SIDE_CYCLE.map((_, i) => SIDE_CYCLE[(start + i) % SIDE_CYCLE.length]);
+  return {
+    [order[0]]: 'front',
+    [order[1]]: 'side1',
+    [order[2]]: 'rear',
+    [order[3]]: 'side2',
+  } as Record<PlotSide, SetbackFaceName>;
+}
+
+/**
+ * The required setbacks re-expressed against the edges they physically govern.
+ *
+ * Everything downstream — the footprint arithmetic in `ground-coverage.ts`, the site plan
+ * — works in physical edges: the frontage runs between the left and right boundaries and
+ * the depth between the front and rear ones. Those are not the same thing as the faces
+ * once Note-1 has moved the front, and reading `setbacks.side1` as "the left edge" is what
+ * put the wrong distance on the wrong boundary.
+ */
+export function setbacksBySide(
+  setbacks: Readonly<Record<SetbackFaceName, number>>,
+  frontSide: PlotSide = 'front',
+): Readonly<Record<PlotSide, number>> {
+  const face = faceOfSide(frontSide);
+  return {
+    front: setbacks[face.front],
+    rear: setbacks[face.rear],
+    left: setbacks[face.left],
+    right: setbacks[face.right],
+  };
+}
+
 /** The sides that carry a road, expressed as setback faces. */
-export function roadFacingFaces(roads: PlotRoads): readonly ('front' | 'rear' | 'side1' | 'side2')[] {
-  const faces = PLOT_SIDES.filter((s) => roads.widths[s] > 0).map((s) => FACE_OF_SIDE[s]);
+export function roadFacingFaces(roads: PlotRoads): readonly SetbackFaceName[] {
+  const face = faceOfSide(roads.frontSide);
+  const faces = PLOT_SIDES.filter((s) => roads.widths[s] > 0).map((s) => face[s]);
   // A legacy corner knows it has a second road but not which side, and the drawing has to
   // put it somewhere. The right flank is the conventional choice and matches the rule the
   // engine applied before this module existed, which raised `side2` alone.

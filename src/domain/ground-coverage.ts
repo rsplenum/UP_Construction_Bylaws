@@ -55,6 +55,7 @@
 import type { AreaType } from './far';
 import type { OccupancyId } from './occupancy';
 import type { RequiredSetbacks } from './setbacks';
+import { setbacksBySide, type PlotSide } from './roads';
 
 /** What holds the footprint down. */
 export type CoverageBasis =
@@ -179,6 +180,12 @@ export function resolveGroundCoverage(input: {
   readonly plotAreaSqm: number;
   readonly plotFrontageM: number;
   readonly plotDepthM: number;
+  /**
+   * Which physical edge the byelaws treat as the front, after Clause 3.2.4.9 Note-1.
+   * Omitted means the plot fronts the side it was entered as fronting, which is the
+   * ordinary case and leaves the arithmetic exactly as it was.
+   */
+  readonly frontSide?: PlotSide;
   readonly required: Pick<RequiredSetbacks, 'front' | 'rear' | 'side1' | 'side2'>;
   /**
    * A percentage cap from outside Clause 3.2.2 — a master plan figure the user has read off
@@ -194,8 +201,14 @@ export function resolveGroundCoverage(input: {
   // Geometry is kept exact. Rounding it here would move the 2.4 m habitability boundary
   // `findings.ts` tests against by up to 5 mm, which is the class of numeric-edge defect
   // `bands.ts` exists to prevent. Callers round for display.
-  const width = Math.max(0, frontage - positive(input.required.side1) - positive(input.required.side2));
-  const usableDepth = Math.max(0, depth - positive(input.required.front) - positive(input.required.rear));
+  // The frontage runs between the left and right boundaries and the depth between the
+  // front and rear ones — physical edges, not setback faces. They coincide on an ordinary
+  // plot, and stop coinciding the moment Clause 3.2.4.9 Note-1 moves the front to a side
+  // road: there the front setback eats the frontage axis and a flank setback eats the
+  // depth. Reading side1/side2 as "the two flanks" put both on the wrong axis.
+  const bySide = setbacksBySide(input.required, input.frontSide);
+  const width = Math.max(0, frontage - positive(bySide.left) - positive(bySide.right));
+  const usableDepth = Math.max(0, depth - positive(bySide.front) - positive(bySide.rear));
   const envelopeSqm = width * usableDepth;
   const envelopePct = plotArea > 0 ? round((envelopeSqm / plotArea) * 100) : 0;
 

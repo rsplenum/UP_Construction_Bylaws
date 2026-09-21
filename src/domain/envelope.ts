@@ -249,6 +249,9 @@ function solve(input: EnvelopeInput, farCapSqm: number, farEntitlement: number):
       plotAreaSqm: input.plotAreaSqm,
       plotFrontageM: input.frontageM,
       plotDepthM: input.depthM,
+      // Which edge the byelaws front the plot on, so the setbacks land on the axis they
+      // actually govern rather than the one they were named after.
+      frontSide: input.roads.frontSide,
     };
 
     // The table's own answer.
