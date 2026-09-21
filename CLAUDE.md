@@ -40,6 +40,18 @@ figure the engine inferred as one the gazette states.
 
 Run `npm run lint` (typecheck plus the full test suite) before committing.
 
+## The shape of the project
+
+Four stages, and everything in `src/` is one of them: the gazette as typed tables, the few
+things we ask a person, the solvers that read one against the other, and one answer drawn
+and cited. `docs/ARCHITECTURE.md` maps every module to its stage, names the two paths that
+share the rule tables, and gives the measured line counts.
+
+Two things it is worth knowing before you add a file. A gazette table and the function that
+reads it belong in the same module — splitting them separates every figure from the rule
+that uses it. And `domain/rules/` is a verification harness reachable only from tests: that
+is its correct state, not dead code.
+
 ## How a screen is laid out
 
 The answer comes first, then the evidence for it, then the inputs that produced it. The
