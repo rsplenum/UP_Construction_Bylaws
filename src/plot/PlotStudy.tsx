@@ -60,12 +60,19 @@ const LAYOUTS: readonly { id: AreaType; label: string; hint: string }[] = [
 export const PlotStudy: React.FC = () => {
   const [use, setUse] = useState<OccupancyId>('res_single');
   const [areaType, setAreaType] = useState<AreaType>('built_up');
-  const [plotArea, setPlotArea] = useState(300);
+
   // Gaj is how land is bought and sold across Uttar Pradesh, so it is the default;
   // the engine still only ever sees square metres.
   const [unit, setUnit] = useState<AreaUnit>('gaj');
   const [frontage, setFrontage] = useState(12);
   const [depth, setDepth] = useState(25);
+  /**
+   * Derived, never stored. Width and length are what a person paces out and what the sale
+   * deed records; the area is arithmetic. Holding it as a third independent number meant
+   * the three could disagree, and they did — a warning under the depth field on every
+   * plot whose owner had rounded, about a contradiction the form had created itself.
+   */
+  const plotArea = frontage * depth;
   const [widths, setWidths] = useState<Record<PlotSide, number>>({
     front: 12, rear: 0, left: 0, right: 0,
   });
@@ -74,6 +81,8 @@ export const PlotStudy: React.FC = () => {
   const [floorToFloor, setFloorToFloor] = useState<number | null>(null);
   /** null = "as many as the byelaws allow", which is the answer most people want. */
   const [wantedFloors, setWantedFloors] = useState<number | null>(null);
+  /** A height in metres the reader wants to stay under. Null = take the byelaws' own cap. */
+  const [wantedHeight, setWantedHeight] = useState<number | null>(null);
   const [landRate, setLandRate] = useState(35000);
   const [costRateId, setCostRateId] = useState(COST_RATES[0].id);
   const [quality, setQuality] = useState<BuildQuality>('standard');
@@ -96,7 +105,15 @@ export const PlotStudy: React.FC = () => {
     // building, and it has its own fees and its own compoundable margin. Deriving the
     // whole study for that floor count means everything below here — the drawings, the
     // pricing, the verdict — follows without knowing a choice was made at all.
-    const study = (wantedFloors !== null && studyAtFloors(best, wantedFloors)) || best;
+      // A height is a ceiling to stay under, so it picks the tallest rung the byelaws
+    // already cleared that does not go over it — the reader is never asked to divide a
+    // height by a storey height, and cannot ask for a height the byelaws refuse.
+    const cleared = best.standardLadder.filter((r) => !r.refusedBecause);
+    const byHeight = wantedHeight === null
+      ? null
+      : [...cleared].reverse().find((r) => r.heightM <= wantedHeight + 1e-9)?.floors ?? null;
+    const floors = wantedFloors ?? byHeight;
+    const study = (floors !== null && studyAtFloors(best, floors)) || best;
     const far = resolveBaseFar({
       occupancy: use, plotArea, roadWidth: roads.governingRoadWidthM, areaType,
     });
@@ -104,11 +121,13 @@ export const PlotStudy: React.FC = () => {
       study, occupancy: use, areaType, landRate,
       baseFar: far.effectiveBaseFar || far.baseFar,
     });
-    return { roads, best, study, priced };
+    return { roads, best, study, priced, cleared };
   }, [use, areaType, plotArea, frontage, depth, widths, lightVent, landRate, floorToFloor,
-      wantedFloors]);
+      wantedFloors, wantedHeight]);
 
-  const { roads, best, study, priced } = result;
+  const { roads, best, study, priced, cleared } = result;
+  /** The tallest the byelaws allow on this plot, which is the ceiling on the height field. */
+  const tallest = cleared.length ? cleared[cleared.length - 1].heightM : best.standard.heightM;
 
   const showingChoice = study !== best;
 
@@ -148,7 +167,6 @@ export const PlotStudy: React.FC = () => {
   });
   const reckoning = UP_BIGHA_RECKONINGS.find((r) => r.id === reckoningId) ?? UP_BIGHA_RECKONINGS[0];
 
-  const geometryMismatch = Math.abs(frontage * depth - plotArea) > Math.max(1, plotArea * 0.02);
   const boughtArea = study.maximum.floorAreaSqm - study.standard.floorAreaSqm;
 
   // Area is the number people actually know — a plot is bought and sold by it, and the
@@ -157,7 +175,6 @@ export const PlotStudy: React.FC = () => {
   // Typing a width or a depth still stands on its own: a plot that is not a rectangle is a
   // real thing, and the note under Depth is for that case, not for this one.
   const setPlotAreaKeepingShape = (nextSqm: number) => {
-    setPlotArea(nextSqm);
     if (!(nextSqm > 0) || !(frontage > 0) || !(depth > 0)) return;
     const scale = Math.sqrt(nextSqm / (frontage * depth));
     const nextFrontage = Math.max(3, Math.round(frontage * scale * 10) / 10);
@@ -316,20 +333,38 @@ export const PlotStudy: React.FC = () => {
               ))}
             </div>
           </fieldset>
-
+          {/* Width and length are what a person paces out and what a sale deed records;
+              the area is arithmetic, and asking for it separately invited the two to
+              disagree \u2014 which they did, loudly, with a warning under the depth field on
+              every plot whose owner had rounded. So it is derived, and the reader who
+              only knows the area can still set it through the disclosure below, which
+              moves the rectangle to match. */}
           <fieldset>
             <legend className="mb-1.5 text-[10.5px] font-medium uppercase tracking-wider text-slate-600 dark:text-slate-400">
               The plot
             </legend>
             <div className="space-y-2.5">
-              <div>
-                <NumberField
-                  label="Plot area"
-                  value={Number(fromSqm(plotArea, unit).toFixed(unit === 'sqm' ? 1 : 0))}
-                  onChange={(v) => setPlotAreaKeepingShape(toSqm(v, unit))}
-                  min={1} step={unit === 'sqm' ? 10 : 10} unit={UNIT_LABEL[unit]}
-                  hint={unit === 'sqm' ? undefined : formatArea(plotArea, 'sqm')}
-                />
+              <NumberField
+                label="Width at the road" value={frontage} onChange={setFrontage}
+                min={3} step={0.5} unit="m"
+              />
+              <NumberField
+                label="Length front to back" value={depth} onChange={setDepth}
+                min={3} step={0.5} unit="m"
+              />
+
+              <div className="rounded-lg bg-slate-100 px-2.5 py-2 dark:bg-white/[0.06]">
+                <div className="flex items-baseline justify-between gap-2">
+                  <span className="text-[11px] text-slate-600 dark:text-slate-400">Plot area</span>
+                  <span className="font-semibold tabular-nums text-slate-900 dark:text-slate-100">
+                    {formatArea(plotArea, unit)}
+                  </span>
+                </div>
+                {unit !== 'sqm' && (
+                  <p className="mt-0.5 text-right text-[10.5px] text-slate-500 dark:text-slate-400">
+                    {formatArea(plotArea, 'sqm')}
+                  </p>
+                )}
                 <div className="mt-1.5 flex gap-1" role="group" aria-label="Unit for plot area">
                   {AREA_UNITS.map((u) => (
                     <button
@@ -338,27 +373,35 @@ export const PlotStudy: React.FC = () => {
                       className={`rounded px-2 py-0.5 text-[11px] transition-colors ${
                         unit === u
                           ? 'bg-slate-900 text-white dark:bg-white dark:text-slate-900'
-                          : 'text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-white/10'
+                          : 'text-slate-600 hover:bg-slate-200 dark:text-slate-400 dark:hover:bg-white/10'
                       }`}
                     >
                       {UNIT_LABEL[u]}
                     </button>
                   ))}
                 </div>
+              </div>
 
-                {/* The bigha is not in the picker above and cannot be: inside UP alone it
-                    runs from 5 biswa to 20, so choosing one silently would size a plot
-                    wrong by up to four to one while the answer stayed confident and fully
-                    cited. Folded away, because most readers were quoted in gaj and should
-                    not have to read any of this. */}
-                <details className="group mt-2">
-                  <summary className="cursor-pointer list-none text-[11px] text-sky-700 marker:content-none hover:underline dark:text-sky-400">
-                    Quoted in bigha?
-                  </summary>
-                  <div className="mt-1.5 rounded-lg border border-slate-200 p-2 dark:border-white/10">
+              {/* For the reader who was told an area and never measured the sides. */}
+              <details className="group">
+                <summary className="cursor-pointer list-none text-[11px] text-sky-700 marker:content-none hover:underline dark:text-sky-400">
+                  Know the area but not the sides?
+                </summary>
+                <div className="mt-1.5 space-y-2 rounded-lg border border-slate-200 p-2 dark:border-white/10">
+                  <NumberField
+                    label={`Area in ${UNIT_LABEL[unit]}`}
+                    value={Number(fromSqm(plotArea, unit).toFixed(unit === 'sqm' ? 1 : 0))}
+                    onChange={(v) => setPlotAreaKeepingShape(toSqm(v, unit))}
+                    min={1} step={10} unit={UNIT_LABEL[unit]}
+                    hint="Sets the width and length to match, keeping the shape"
+                  />
+
+                  {/* The bigha is not in the unit picker and cannot be: inside UP alone it
+                      runs from 5 biswa to 20, so choosing one silently would size a plot
+                      wrong by up to four to one while the answer stayed fully cited. */}
+                  <div className="border-t border-slate-200 pt-2 dark:border-white/10">
                     <p className="text-[11px] leading-snug text-slate-600 dark:text-slate-400">
-                      A bigha is not one size in Uttar Pradesh. Say which one you were
-                      quoted — getting it wrong is a factor of four.
+                      Quoted in bigha? It is not one size in Uttar Pradesh \u2014 say which one.
                     </p>
                     <div className="mt-1.5 flex flex-wrap gap-1">
                       {UP_BIGHA_RECKONINGS.map((r) => (
@@ -375,14 +418,11 @@ export const PlotStudy: React.FC = () => {
                         </button>
                       ))}
                     </div>
-                    <p className="mt-1.5 text-[10.5px] leading-snug text-slate-500 dark:text-slate-400">
+                    <p className="mt-1 text-[10.5px] leading-snug text-slate-500 dark:text-slate-400">
                       {reckoning.where}
                     </p>
-                    <div className="mt-2">
-                      <NumberField
-                        label="Bigha" value={bigha} onChange={setBigha}
-                        min={0} step={0.25} unit="bigha"
-                      />
+                    <div className="mt-1.5">
+                      <NumberField label="Bigha" value={bigha} onChange={setBigha} min={0} step={0.25} unit="bigha" />
                     </div>
                     <button
                       type="button"
@@ -392,18 +432,10 @@ export const PlotStudy: React.FC = () => {
                       Use {formatArea(bighaToSqm(bigha, reckoning), unit)}
                     </button>
                   </div>
-                </details>
-              </div>
-              <NumberField label="Width at the road" value={frontage} onChange={setFrontage} min={3} step={0.5} unit="m" />
-              <NumberField
-                label="Depth" value={depth} onChange={setDepth} min={3} step={0.5} unit="m"
-                warning={geometryMismatch
-                  ? `${frontage} × ${depth} m is ${formatArea(frontage * depth, unit)}, not ${formatArea(plotArea, unit)}. The drawing uses the width and depth.`
-                  : undefined}
-              />
+                </div>
+              </details>
             </div>
           </fieldset>
-
           <fieldset>
             <legend className="mb-1 text-[10.5px] font-medium uppercase tracking-wider text-slate-600 dark:text-slate-400">
               Roads
@@ -428,6 +460,130 @@ export const PlotStudy: React.FC = () => {
               ))}
             </div>
           </fieldset>
+
+          {/* Asked for, at last, and as a height rather than a floor count.
+              The byelaws cap total height and the engine derives it, which is why it was
+              an answer here and not a question — but a person planning a building thinks
+              "I want it about twelve metres", not "I want rung three of the ladder". So
+              the height is what is asked, and the floor count is what follows from it:
+              the tallest rung the byelaws allow that does not go over. Nobody is asked to
+              divide one by the other, and no entered height can exceed the cap, because
+              only rungs the engine already cleared are selectable. */}
+          {allowed.length > 0 && (
+            <fieldset className="border-0 p-0">
+              <legend className="mb-1.5 text-[11px] font-medium text-slate-600 dark:text-slate-400">
+                How tall do you want it?
+              </legend>
+              <div className="mb-2">
+                <NumberField
+                  label="Building height" value={wantedHeight ?? study.standard.heightM}
+                  onChange={setWantedHeight}
+                  min={allowed[0].heightM} max={tallest} step={0.5} unit="m"
+                  hint={wantedHeight === null
+                    ? `As tall as the byelaws allow — ${tallest} m here`
+                    : `${study.standard.floors} floor${study.standard.floors === 1 ? '' : 's'} `
+                      + `at ${study.floorToFloorM} m fit under ${wantedHeight} m`}
+                />
+                {wantedHeight !== null && (
+                  <button
+                    type="button" onClick={() => setWantedHeight(null)}
+                    className="mt-1 text-[11px] text-sky-700 hover:underline dark:text-sky-400"
+                  >
+                    As tall as allowed
+                  </button>
+                )}
+              </div>
+              <p className="mb-1.5 text-[11px] text-slate-600 dark:text-slate-400">
+                Or pick the floor count directly.
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                <button
+                  type="button" onClick={() => setWantedFloors(null)}
+                  aria-pressed={wantedFloors === null}
+                  className={`rounded-lg border px-2.5 py-1 text-[12px] transition-colors ${
+                    wantedFloors === null
+                      ? 'border-emerald-600 bg-emerald-600 text-white'
+                      : 'border-slate-200 text-slate-700 hover:border-slate-300 dark:border-white/10 dark:text-slate-300'
+                  }`}
+                >
+                  As many as allowed
+                </button>
+                {study.ladder.map((rung) => (
+                  <button
+                    key={rung.floors} type="button"
+                    onClick={() => setWantedFloors(rung.floors)}
+                    aria-pressed={wantedFloors === rung.floors}
+                    title={rung.refusedBecause ?? `${rung.usableSqm.toFixed(0)} m² usable`}
+                    className={`rounded-lg border px-2.5 py-1 text-[12px] tabular-nums transition-colors ${
+                      wantedFloors === rung.floors
+                        ? 'border-emerald-600 bg-emerald-600 text-white'
+                        : rung.refusedBecause
+                          ? 'border-slate-200 text-slate-400 line-through dark:border-white/10 dark:text-slate-600'
+                          : 'border-slate-200 text-slate-700 hover:border-slate-300 dark:border-white/10 dark:text-slate-300'
+                    }`}
+                  >
+                    {rung.floors}
+                  </button>
+                ))}
+              </div>
+              {/* Measured against the plot's best, not against the plan now on screen —
+                  which, once a choice is showing, IS this plan, and the comparison would
+                  read "0 m² less than the best this plot can do". */}
+              {chosen && !chosen.refusedBecause && (
+                <p className="mt-1.5 text-[11px] leading-snug text-slate-600 dark:text-slate-400">
+                  {study.standard.floors} floor{study.standard.floors === 1 ? '' : 's'} gives{' '}
+                  {study.standard.floorAreaSqm.toFixed(0)} m² at {study.standard.heightM} m
+                  {study.standard.floorAreaSqm < best.standard.floorAreaSqm - 0.5
+                    ? ` — ${(best.standard.floorAreaSqm - study.standard.floorAreaSqm).toFixed(0)} m² less than the best this plot can do.`
+                    : '.'}
+                </p>
+              )}
+              {chosen?.refusedBecause && (
+                <p className="mt-1.5 text-[11px] leading-snug text-rose-700 dark:text-rose-400">
+                  {chosen.refusedBecause}
+                </p>
+              )}
+            </fieldset>
+          )}
+
+          {/* Height is an answer here, not a question: the byelaws cap it, and it follows
+              from the floor count and the storey height. But the storey height is the one
+              part of that the gazette does not settle — it fixes a 2.75 m minimum room
+              height and no floor-to-floor figure at all — so the engine had to assume 3 m,
+              and a reader who wants taller ceilings had no way to say so even though it
+              changes how many floors fit under the cap. Folded away, because 3 m is right
+              for almost everyone. */}
+          <details className="group">
+            <summary className="cursor-pointer list-none text-[11px] text-sky-700 marker:content-none hover:underline dark:text-sky-400">
+              Want taller ceilings?
+            </summary>
+            <div className="mt-1.5 rounded-lg border border-slate-200 p-2 dark:border-white/10">
+              <p className="text-[11px] leading-snug text-slate-600 dark:text-slate-400">
+                The building’s total height is set by the byelaws and is not yours to choose.
+                The height of one storey is: the gazette fixes only a 2.75 m minimum room
+                height. Raise it and fewer floors fit under the same cap.
+              </p>
+              <div className="mt-2">
+                <NumberField
+                  label="Floor to floor"
+                  value={floorToFloor ?? DEFAULT_FLOOR_TO_FLOOR_M}
+                  onChange={(v) => setFloorToFloor(v)}
+                  min={2.75} max={6} step={0.25} unit="m"
+                  hint={floorToFloor === null
+                    ? `Assumed at ${DEFAULT_FLOOR_TO_FLOOR_M} m — the minimum room height plus a slab`
+                    : 'Your figure, not the gazette\u2019s'}
+                />
+              </div>
+              {floorToFloor !== null && (
+                <button
+                  type="button" onClick={() => setFloorToFloor(null)}
+                  className="mt-1.5 text-[11px] text-sky-700 hover:underline dark:text-sky-400"
+                >
+                  Back to the {DEFAULT_FLOOR_TO_FLOOR_M} m assumption
+                </button>
+              )}
+            </div>
+          </details>
 
           <fieldset>
             <legend className="mb-1.5 text-[10.5px] font-medium uppercase tracking-wider text-slate-600 dark:text-slate-400">
@@ -515,101 +671,7 @@ export const PlotStudy: React.FC = () => {
             </p>
           </fieldset>
 
-          {/* Height is an answer here, not a question: the byelaws cap it, and it follows
-              from the floor count and the storey height. But the storey height is the one
-              part of that the gazette does not settle — it fixes a 2.75 m minimum room
-              height and no floor-to-floor figure at all — so the engine had to assume 3 m,
-              and a reader who wants taller ceilings had no way to say so even though it
-              changes how many floors fit under the cap. Folded away, because 3 m is right
-              for almost everyone. */}
-          <details className="group">
-            <summary className="cursor-pointer list-none text-[11px] text-sky-700 marker:content-none hover:underline dark:text-sky-400">
-              Want taller ceilings?
-            </summary>
-            <div className="mt-1.5 rounded-lg border border-slate-200 p-2 dark:border-white/10">
-              <p className="text-[11px] leading-snug text-slate-600 dark:text-slate-400">
-                The building’s total height is set by the byelaws and is not yours to choose.
-                The height of one storey is: the gazette fixes only a 2.75 m minimum room
-                height. Raise it and fewer floors fit under the same cap.
-              </p>
-              <div className="mt-2">
-                <NumberField
-                  label="Floor to floor"
-                  value={floorToFloor ?? DEFAULT_FLOOR_TO_FLOOR_M}
-                  onChange={(v) => setFloorToFloor(v)}
-                  min={2.75} max={6} step={0.25} unit="m"
-                  hint={floorToFloor === null
-                    ? `Assumed at ${DEFAULT_FLOOR_TO_FLOOR_M} m — the minimum room height plus a slab`
-                    : 'Your figure, not the gazette\u2019s'}
-                />
-              </div>
-              {floorToFloor !== null && (
-                <button
-                  type="button" onClick={() => setFloorToFloor(null)}
-                  className="mt-1.5 text-[11px] text-sky-700 hover:underline dark:text-sky-400"
-                >
-                  Back to the {DEFAULT_FLOOR_TO_FLOOR_M} m assumption
-                </button>
-              )}
-            </div>
-          </details>
 
-          {/* The one thing about the building a person does know. It selects a rung of the
-              ladder the engine has already worked out; it does not drive the arithmetic. */}
-          {allowed.length > 0 && (
-            <fieldset className="border-0 p-0">
-              <legend className="mb-1.5 text-[11px] font-medium text-slate-600 dark:text-slate-400">
-                How many floors do you want?
-              </legend>
-              <div className="flex flex-wrap gap-1.5">
-                <button
-                  type="button" onClick={() => setWantedFloors(null)}
-                  aria-pressed={wantedFloors === null}
-                  className={`rounded-lg border px-2.5 py-1 text-[12px] transition-colors ${
-                    wantedFloors === null
-                      ? 'border-emerald-600 bg-emerald-600 text-white'
-                      : 'border-slate-200 text-slate-700 hover:border-slate-300 dark:border-white/10 dark:text-slate-300'
-                  }`}
-                >
-                  As many as allowed
-                </button>
-                {study.ladder.map((rung) => (
-                  <button
-                    key={rung.floors} type="button"
-                    onClick={() => setWantedFloors(rung.floors)}
-                    aria-pressed={wantedFloors === rung.floors}
-                    title={rung.refusedBecause ?? `${rung.usableSqm.toFixed(0)} m² usable`}
-                    className={`rounded-lg border px-2.5 py-1 text-[12px] tabular-nums transition-colors ${
-                      wantedFloors === rung.floors
-                        ? 'border-emerald-600 bg-emerald-600 text-white'
-                        : rung.refusedBecause
-                          ? 'border-slate-200 text-slate-400 line-through dark:border-white/10 dark:text-slate-600'
-                          : 'border-slate-200 text-slate-700 hover:border-slate-300 dark:border-white/10 dark:text-slate-300'
-                    }`}
-                  >
-                    {rung.floors}
-                  </button>
-                ))}
-              </div>
-              {/* Measured against the plot's best, not against the plan now on screen —
-                  which, once a choice is showing, IS this plan, and the comparison would
-                  read "0 m² less than the best this plot can do". */}
-              {chosen && !chosen.refusedBecause && (
-                <p className="mt-1.5 text-[11px] leading-snug text-slate-600 dark:text-slate-400">
-                  {study.standard.floors} floor{study.standard.floors === 1 ? '' : 's'} gives{' '}
-                  {study.standard.floorAreaSqm.toFixed(0)} m² at {study.standard.heightM} m
-                  {study.standard.floorAreaSqm < best.standard.floorAreaSqm - 0.5
-                    ? ` — ${(best.standard.floorAreaSqm - study.standard.floorAreaSqm).toFixed(0)} m² less than the best this plot can do.`
-                    : '.'}
-                </p>
-              )}
-              {chosen?.refusedBecause && (
-                <p className="mt-1.5 text-[11px] leading-snug text-rose-700 dark:text-rose-400">
-                  {chosen.refusedBecause}
-                </p>
-              )}
-            </fieldset>
-          )}
         </form>
 
         {/* --------------------------------------------------------------- results */}

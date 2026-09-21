@@ -167,3 +167,32 @@ describe('the fees follow the plan that is drawn', () => {
     expect(b).not.toBeCloseTo(a, 0);
   });
 });
+
+describe('the band and the allowance are different quantities', () => {
+  it('measures the band as the ground it covers times the floors it is built on', () => {
+    const s = study();
+    const m = s.compoundable;
+    expect(m.bandFloorAreaSqm)
+      .toBeCloseTo(m.totalEncroachmentSqm * s.maximum.floors, 1);
+  });
+
+  it('does not equal the allowance, which is what the two were shown as', () => {
+    // A 20 m² band on three floors is 60 m² of floor area. Clause 16.3.3's allowance is
+    // ten per cent of the permissible FAR, wherever the construction happens to be, and
+    // printing it beside the band's ground area invited the wrong sum.
+    const s = studyEnvelope({
+      occupancy: 'com_complex', plotAreaSqm: 301, frontageM: 15, depthM: 22.3,
+      roads: resolvePlotRoads({ front: 15, right: 6, rear: 13.5 }), areaType: 'built_up',
+    });
+    expect(s.compoundable.bandFloorAreaSqm).not.toBeCloseTo(s.compoundable.extraFarSqm, 0);
+    expect(s.compoundable.farAllowanceSqm)
+      .toBeCloseTo(s.maxPermissibleBuiltUpAreaSqm * 0.10, 1);
+  });
+
+  it('follows the floor count the reader chose', () => {
+    const s = study();
+    const fewer = studyAtFloors(s, s.standard.floors - 1)!;
+    expect(fewer.compoundable.bandFloorAreaSqm)
+      .toBeLessThan(s.compoundable.bandFloorAreaSqm);
+  });
+});

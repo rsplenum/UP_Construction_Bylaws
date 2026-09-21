@@ -336,10 +336,22 @@ export const PlanDrawing: React.FC<PlanDrawingProps> = ({
           </div>
           <div className="flex justify-between gap-2">
             <dt className="text-amber-800 dark:text-amber-300">
-              Floor area regularising it buys
+              That band over {plan.floors} floor{plan.floors === 1 ? '' : 's'}
             </dt>
             <dd className="font-semibold tabular-nums text-amber-900 dark:text-amber-200">
-              {margin.extraFarSqm > 0.5 ? `${margin.extraFarSqm.toFixed(0)} m²` : 'None'}
+              {margin.bandFloorAreaSqm.toFixed(0)} m² of floor area
+            </dd>
+          </div>
+          {/* The allowance is a different quantity from the band and was printed beside it
+              as though it were the same one — so a 20 m² band on three floors sat next to
+              "90 m²", and 20 x 3 is 60. It is what Chapter 16 will forgive in total,
+              wherever the construction is, and the band is one particular piece of it. */}
+          <div className="flex justify-between gap-2">
+            <dt className="text-amber-800 dark:text-amber-300">
+              Most Chapter 16 will forgive
+            </dt>
+            <dd className="font-semibold tabular-nums text-amber-900 dark:text-amber-200">
+              {margin.extraFarSqm > 0.5 ? `${margin.extraFarSqm.toFixed(0)} m²` : 'Nothing'}
             </dd>
           </div>
           {margin.farHeadroomExhausted && (

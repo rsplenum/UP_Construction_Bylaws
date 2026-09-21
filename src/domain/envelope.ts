@@ -153,6 +153,19 @@ export interface CompoundableMargin {
    * then 0: for that building compounding buys shape, not size.
    */
   readonly extraFarSqm: number;
+  /**
+   * The floor area the band on the drawing would actually be, if it were built on every
+   * floor: the ground it covers times the floor count.
+   *
+   * This is not `extraFarSqm` and the two were shown as though they were. `extraFarSqm` is
+   * the allowance — ten per cent of the permissible FAR under Clause 16.3.3, capped by
+   * 16.3.8(v)'s ceiling — and it is what compounding may forgive wherever the construction
+   * is, which need not be in the setbacks at all. The band is one particular piece of
+   * construction, and on a three-storey plan a 20 m² band is 60 m² of floor area, not 90.
+   * Printing the allowance beside the band's ground area invited exactly that sum to be
+   * read wrong, and it was.
+   */
+  readonly bandFloorAreaSqm: number;
   /** The 10% of 16.3.3 before 16.3.8(v)'s ceiling is applied, so the two can be shown apart. */
   readonly farAllowanceSqm: number;
   /** True where 16.3.8(v) has taken the whole allowance away. */
@@ -455,6 +468,7 @@ export function resolveCompoundableMargin(input: {
   const farAllowanceSqm = round2(input.maxPermissibleBuiltUpAreaSqm * limits.farFraction);
   const headroomToCeiling = Math.max(0, input.maxPermissibleBuiltUpAreaSqm - input.plan.floorAreaSqm);
   const extraFarSqm = round2(Math.min(farAllowanceSqm, headroomToCeiling));
+  const bandFloorAreaSqm = round2(totalEncroachmentSqm * Math.max(1, input.plan.floors));
   const farHeadroomExhausted = extraFarSqm <= 1e-9 && farAllowanceSqm > 1e-9;
 
   const caveats: string[] = [
@@ -505,6 +519,7 @@ export function resolveCompoundableMargin(input: {
     encroachmentSqm,
     totalEncroachmentSqm,
     extraFarSqm,
+    bandFloorAreaSqm,
     farAllowanceSqm,
     farHeadroomExhausted,
     extraHeightM: round2(ceilingM * limits.heightFraction),
