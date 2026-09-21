@@ -264,14 +264,6 @@ export const PlotStudy: React.FC = () => {
           </p>
         )}
 
-        <a
-          href="#plot-inputs"
-          className="mt-3 inline-flex items-center gap-1.5 rounded-lg border border-slate-300 px-3 py-1.5 text-[12px] font-medium text-slate-700 transition hover:bg-slate-100 lg:hidden dark:border-white/15 dark:text-slate-200 dark:hover:bg-white/10"
-        >
-          <Ruler className="h-3 w-3" aria-hidden="true" />
-          Change the plot
-        </a>
-
         <p className="mt-2 max-w-[62ch] text-[12px] leading-relaxed text-slate-500 dark:text-slate-400">
           Tell it about the ground and it works out the building. The floor area, the height,
           every offset and which approval route you are on are answers here, not questions —
@@ -279,19 +271,14 @@ export const PlotStudy: React.FC = () => {
         </p>
       </header>
 
-      {/* On a phone the two columns stack, and stacking put thirteen input fields
-          between the answer and the drawings that explain it — the reader scrolled a
-          form to reach the thing they came for. The order is reversed below the large
-          breakpoint so the answer is followed by its evidence, with the inputs after it
-          and a way to jump to them. On a wide screen both are visible at once and the
-          form belongs on the left, where it has always been. */}
+      {/* The verdict already sits above this block, so the answer comes first on every
+          width without moving anything. An earlier version pushed the form below the
+          drawings on a phone as well; that solved nothing — the answer was never behind
+          the form — and left a reader who wanted to change their plot area scrolling
+          past two site plans to find the field. Reverted. */}
       <div className="grid gap-6 lg:grid-cols-[264px_1fr]">
         {/* ---------------------------------------------------------------- inputs */}
-        <form
-          id="plot-inputs"
-          className="order-2 space-y-4 lg:order-1"
-          onSubmit={(e) => e.preventDefault()}
-        >
+        <form id="plot-inputs" className="space-y-4" onSubmit={(e) => e.preventDefault()}>
           <fieldset>
             <legend className="mb-1.5 text-[10.5px] font-medium uppercase tracking-wider text-slate-600 dark:text-slate-400">
               What are you building
@@ -606,7 +593,7 @@ export const PlotStudy: React.FC = () => {
         </form>
 
         {/* --------------------------------------------------------------- results */}
-        <div className="order-1 min-w-0 space-y-5 lg:order-2">
+        <div className="min-w-0 space-y-5">
           <div className="grid gap-5 md:grid-cols-2">
             <div className="rounded-xl border border-slate-200 bg-white p-3.5 dark:border-white/10 dark:bg-[#161617]">
               <PlanDrawing

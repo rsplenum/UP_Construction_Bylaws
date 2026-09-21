@@ -2892,14 +2892,70 @@ now disowns the amber ring in Chapter 16's own words instead.
 court, the year, and the proposition it actually stands for recorded here before it appears
 in the UI.
 
+### B-0xx — Note-1 reassigns the front for the tables but not for the geometry — OPEN
+
+Reported by the repository owner as "the side road offsets need verification", and they
+were right.
+
+Clause 3.2.4.9 Note-1 says that where a plot faces two roads of different widths, the side
+towards the **wider** road is the front. `resolvePlotRoads` implements this: on a plot with
+a 9 m nominated front and a 12 m road on the left it sets `frontSide: 'left'` and reads
+12 m into the FAR tables, which is correct, and it prints a caveat saying the left road
+"is treated as the front — for the setback it carries and for the road width the FAR
+tables read."
+
+The setback it carries is not the front setback. `FACE_OF_SIDE` maps left to `side1`
+unconditionally, so the faces are never rotated: the 3 m front setback is computed and
+drawn against the geometric front — the 9 m road — while the 12 m road gets the 1.5 m
+corner-plot side setback. Measured:
+
+| plot | frontSide | front | rear | left | right |
+|---|---|---|---|---|---|
+| front 12 m, left 9 m | front | 3 | 1.5 | 1.5 | 0 |
+| front 9 m, **left 12 m** | **left** | **3** | 1.5 | **1.5** | 0 |
+
+The two rows are identical in their setbacks although Note-1 fired on the second. The
+front setback belongs on the 12 m edge and the corner uplift on the 9 m edge, and they are
+the wrong way round. The caveat states the correct rule, so the prose and the numbers
+disagree — which is worse than either being wrong alone, because the caveat is what a
+reader would check.
+
+**To close:** rotate the face mapping when `frontReassigned` is true, so the face named
+`front` is the side that Note-1 makes the front, and `PlanDrawing` draws each face against
+the edge it actually governs. Needs a test per rotation, and the drawing has to be read
+back, not just the numbers.
+
+### B-0xx — the floor picker moves the words and not the drawings — OPEN
+
+Also reported by the owner. `PlotStudy` lets a reader choose a floor count and looks the
+rung up in `study.ladder`, but both `PlanDrawing`s are passed `study.standard` and
+`study.maximum` unconditionally. Choosing 3 floors on a plot whose best is 4 changes the
+verdict sentence and leaves both site plans drawing 4 floors.
+
+There is a second problem underneath it. `study.ladder` is built from the **maximum**
+solve, so every rung's `usableSqm` is clamped to the purchasable ceiling, not the
+as-of-right one. Feeding a rung straight into the standard drawing would overstate the
+as-of-right plan. Closing this properly means exposing the as-of-right ladder too, or
+deriving a plan per entitlement.
+
+### B-0xx — the compoundable drawing shows the band but never its area — OPEN
+
+`CompoundableMargin` carries `extraFarSqm` (what compounding could still add after Clause
+16.3.8(v)) and `farAllowanceSqm` (16.3.3's 10% before that ceiling). `PlanDrawing` draws
+the amber ring and labels neither. A reader sees a band and no figure for the area it
+represents or what regularising it would buy.
+
 ### Not yet modelled
-- Built-up versus non-built-up area type is now in the FAR engine but not in the UI, so
-  every project is assessed as built-up — the more restrictive reading.
-- Para 3.2.4.9 Note-1: on a plot facing two roads of different widths, the side facing
-  the **wider** road is the front.
 - Para 3.2.4.9 Note-2: an alternative compliance path trading ground-floor setback
   against upper-floor stepping.
-- Table Note-2 on corner plots distinguishes new layouts from already-approved ones.
+
+*(Three entries were removed from this list in September 2026 because they had been
+implemented and the list never updated: built-up versus non-built-up is now a UI control
+on the plot screen; Note-1's front reassignment is in `resolvePlotRoads` — though see the
+open entry above for what it does not do; and Table 3.2.1 Note-2's new-layout versus
+already-approved-layout limbs are both in `setbacks.ts`, verified against the gazette text
+and behaving correctly. A stale "not modelled" list is its own trust problem: it is the
+first place a reader checks what has been done.)*
 
 ---
 
